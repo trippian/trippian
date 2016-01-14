@@ -36,19 +36,22 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
 #### W1 - Thursday January 14 2016
 - **Prepare** 
   * Mini-sprint: MMVP, wireframe, database design 
-  * Learn: react hot loading, ES6 decorator, react (route, link, higher order component)
-  * Explore: Dockr, commitizen, semantic versioning
-  * Discuss: git flow, wiki update, open-source, coding standard, change log (with semantic versioning...), node-restful
+  * Explore: Dockr 
+  * Discuss: wiki update, git-issue management, open-source, coding standard, change log (with semantic versioning...), node-restful
 
 - **Morning Planning** - 10:00am
+  * Tasks 
+    - wireframe (trippian profile page, inquiry page, landing page, destination page)
+    - database design (group, and Elliot on documenting)
+    - setup planning folder (Audrey)
+    - setup wiki submodule (Elliot)
 
 
-
-- **Middle Day Progress Review** - 3pm 
-
-
-- **Demo Time** - 5pm
-
+- **Middle Day Progress Review (Audrey's Coding Session)** - 3pm 
+  * Intro for open source project, commitizen, semantic versioning, testing, Travis CI
+  * react hot loading, react (route, link, higher order component)
+  
+- **Demo Time** (skip due to time limit) - 5pm
 
 - **Daily Review** - 7:55pm 
 
@@ -61,7 +64,7 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
   * Mini-sprint: static front-end mockup (will add build process first)
   * Learn: basic testing, git flow and deployment (CI) integrated with testing
   * Explore: 
-  * Discuss: project management platform, scrumb master tasks for project tracking 
+  * Discuss: git flow, project management platform, tasks for project tracking 
 
 - **Morning Planning** - 10:00am
 
