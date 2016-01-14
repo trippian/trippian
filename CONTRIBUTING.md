@@ -38,7 +38,7 @@ do not work on too many files at once. This will likely cause you to have errors
 
 ## Merge Conflicts
 If there are no merge conflicts, a rebase will just update your feature branch with the most recent changes. If you make a commit and 
-rebase, your most recent commits will be replayed. onto your feature branch. However, you can run into some merge conflicts if you are 
+rebase, your most recent commits will be updated onto your feature branch. However, you can run into some merge conflicts if you are 
 not consistently rebasing.
 
 If there are any conflicts while rebasing, git will pause the rebase and allow you to fix all the conflicts. When you have fixed all 
