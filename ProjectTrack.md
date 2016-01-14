@@ -6,23 +6,27 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
 ### Important Info and Notice 
 
 - Project Overview
- * routes  (paging will be added to most routes)
-   * MMVP 
-   - `/destinations/popular`                  -> [] a list of popular destinations 
-   - `/destinations/:id`                      -> {} a destination info object 
-   - `/trippians/popular`                     -> [] a list of popular trippians
-   - `/trippians/popular?destinationId=123`   -> [] a list of popular trippians in the target desination 
-   - `/trippians?destinationId=123`           -> [] a list of all trippians in the target desination 
-   - `/trippians/:id`                         -> {} a trippian's info object
-   - `/inquiries/:id`                         -> {} an inquiry's info object
+  * routes  (paging will be added to most routes, try to group similar routes (only different in params) into one)
+    * MMVP 
+      - `/destinations?cat=popular`                   -> [], GET, a list of popular destinations 
+      - `/destinations/:id`                           -> {}, GET,POST,PUT, a destination info object 
    
-   * MVP 
-   - `/inquiries?userid=123&is-trippian=true` -> [] a list of all inquiries under a trippian or trippee, if user is admin, we'll give full access to all inquiries 
-   - `/reviews?userid=123&is-trippian=true`   -> [] a list of reviews for a trippian if is-trippian is true, else, we'll return a list of reviews written by the trippee. if user is admin, we'll give full access to all reviews 
-   - 
+      - `/trippians?cat=popular`                      -> [], GET, a list of popular trippians
+      - `/trippians?cat=popular&destinationId=123`    -> [], GET, a list of popular trippians in the target desination 
+      - `/trippians?destinationId=123`                -> [], GET, a list of all trippians in the target desination 
+      - `/trippians/:id`                              -> {}, GET,POST,PUT, a trippian's info object
+   
+      - `/inquiries/:id`                              -> {}, GET,POST,PUT, an inquiry's info object
+      - `/reviews/:id`                                -> {}, GET,POST,PUT, an review's info object
+   
 
-   * NiceToHaves 
-   - 
+    * MVP 
+      - `/inquiries?userid=123&is-trippian=true`       -> [] a list of all inquiries under a trippian or trippee, if user is admin, we'll give full access to all inquiries 
+      - `/reviews?userid=123&is-trippian=true`         -> [] a list of reviews for a trippian if is-trippian is true, else, we'll return a list of reviews written by the trippee. if user is admin, we'll give full access to all reviews 
+      - 
+
+    * NiceToHaves 
+      - 
 
 
 ### Meeting Memo 
@@ -34,7 +38,7 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
   * Mini-sprint: MMVP, wireframe, database design 
   * Learn: react hot loading, ES6 decorator, react (route, link, higher order component)
   * Explore: Dockr, commitizen, semantic versioning
-  * Discuss: git flow, wiki update, open-source, coding standard, change log (with semantic versioning...),
+  * Discuss: git flow, wiki update, open-source, coding standard, change log (with semantic versioning...), node-restful
 
 - **Morning Planning** - 10:00am
 
