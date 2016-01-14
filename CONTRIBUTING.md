@@ -36,6 +36,17 @@ do not work on too many files at once. This will likely cause you to have errors
     
 7. Submit a pull request from your fork's feature branch to the development branch of the original repository
 
+## Merge Conflicts
+If there are no merge conflicts, a rebase will just update your feature branch with the most recent changes. If you make a commit and 
+rebase, your most recent commits will be updated onto your feature branch. However, you can run into some merge conflicts if you are 
+not consistently rebasing.
+
+If there are any conflicts while rebasing, git will pause the rebase and allow you to fix all the conflicts. When you have fixed all 
+your files, add all the files with a `git add <file>` and type the following command `git rebase --continue` to continue the rebasing 
+process. 
+
+A good rule of thumb is to always check that your changes have not broken anything through tests and running it locally.
+
 ## Tests
 ALWAYS run tests before pushing any code.
 
