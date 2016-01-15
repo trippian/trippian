@@ -8,7 +8,7 @@ export default class HelloWorld extends React.Component {
 
   render() {
     return (
-      <div> {this.props.name} hello again </div>
+      <div>Hello, {this.props.name}</div>
     )
   }
 }

@@ -4,6 +4,26 @@ We created this file to track the whole project, including important info, notic
 After our daily meeting, we'll move the tasks under meeting memo to Github issues so that we can better track our progress.
 
 ### Important Info and Notice 
+- Info 
+  - Project Scopes for commit messages: 
+    
+    when in doubt, add the file name or the feature, or consult with team. A few scopes to choose: 
+    - UI: static mockups, style changes, html changes 
+    - **Server**: any server side changes (can be more specic, such as DB, ServerRoutes, testing...)
+    - **Client**: any client side changes (can be more specific, such as ClientRoutes, testing... )
+    - **package.json**: if you are not sure, just put the name here, so it's clear 
+    - **Client(routes.js)**: as routes can be at server and client, it's good to prefix with the scope here 
+    - **Server(app.spec.js)**:...
+
+  - Quick Ref on commiting messages:
+    - feat: A new feature
+    - fix: A bug fix
+    - docs: Documentation only changes
+    - style: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
+    - refactor: A code change that neither fixes a bug nor adds a feature
+    - perf: A code change that improves performance
+    - test: Adding missing tests
+    - chore: Changes to the build process or auxiliary tools and libraries such as documentation generation
 
 - Project Overview
   * routes  (paging will be added to most routes, try to group similar routes (only different in params) into one)
@@ -29,6 +49,8 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
       - 
 
 
+### Milestone 
+
 ### Ongoing Topics 
   * Dockr? 
   * EC2, S3 deployment
@@ -40,15 +62,23 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
 
 #### W1D4 - Friday January 15 2016
 - **Prepare** 
-  * Mini-sprint: static front-end mockup (will add build process first)
-  * Learn: basic testing, git flow and deployment (CI) integrated with testing
+  * Mini-sprint: static front-end mockup (will add build process first), project milestones
+  * Learn: basic react, testing, git flow and deployment (CI) integrated with testing
   * Explore: 
-  * Discuss: git flow, project management platform, tasks for project tracking 
+  * Discuss: git flow, tasks for project tracking, project scopes (for commit msg)
 
 - **Morning Planning** - 10:00am
   * Tasks 
+    - Manage issues and track tasks  -> Yale 
+    - Create sample json data for each route - Elliot (main) & Audrey (alignment later)
     - Setup building process UI Design - Audrey 
-    - 
+    - Talk about React architecture (~5pm) -> Audrey 
+    - Folder Structure (~7pm) - Group discussion -> Audrey 
+    - Static html mockup for HomePage, DestinationsPage, TrippianProfilePage, InquiryPage -> Joe (assign one, and mark the rest as 'up for grab')
+    - Create overall tasks and group related tasks into milestones in github issues - Yale 
+    - S3 setup -> Elliot
+    - Setup basic server with Test -> Elliot
+
 - **Middle Day Progress Review(Audrey's Coding Session)** - 3pm 
   * react (route, link, higher order component)
   * react testing 

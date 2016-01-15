@@ -43,6 +43,7 @@
     "babel-preset-react": "6.3.13",
     "babel-preset-stage-2": "6.3.13",
     "chai": "3.4.1",
+    "chai-equal-jsx": "1.0.9",
     "codecov.io": "0.1.6",
     "commitizen": "2.5.0",
     "css-loader": "^0.16.0",
