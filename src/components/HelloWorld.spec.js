@@ -1,9 +1,10 @@
+import HelloWorld from './HelloWorld'
 import {
   expect
 }
 from 'chai'
 
-describe('empty', () => {
+describe('HelloWorld', () => {
   it('should work', () => {
     expect(true).to.equal(true)
   })
