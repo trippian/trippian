@@ -17,6 +17,10 @@ Your local trip companion
 `npm run test`
 This will watch *.spec.js and run the test (update this part later)
 
+
+### UI Design 
+All design files are under `_planning/static/
+
 ###Develop 
 - `npm run dev` will start the dev server and run/watch all test files ending with '*.spec.js'. In general this is enough. 
 - Write the tests first, and add related features
