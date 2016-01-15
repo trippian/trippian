@@ -1,42 +1,69 @@
 {
   "name": "trippian",
-  "version": "1.0.0",
   "description": "your local travel companion ",
   "main": "src/entry.js",
   "scripts": {
     "commit": "git-cz",
-    "test": "mocha src/index.spec.js -w",
+    "test": "mocha src/**/**/*.spec.js -w --compilers js:babel-core/register",
+    "test:single": "istanbul cover -x *.test.js _mocha -- -R spec src/**/**/*.spec.js --compilers js:babel-core/register",
     "check-coverage": "istanbul check-coverage --statements 100 --branches 100 --functions 100 --lines 100",
     "report-coverage": "cat ./coverage/lcov.info | codecov",
-    "test:single": "istanbul cover -x *.test.js _mocha -- -R spec src/index.spec.js",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "webpack-server": "webpack-dev-server --hot --progress --colors",
+    "web-server": "http-server -p 3000 ./dist",
+    "start": "npm run webpack-server & npm run web-server"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/trippian/trippian.git"
+    "url": "https://github.com/trippian/trippian.git"
   },
   "keywords": [
     "trippian",
     "travel"
   ],
-  "author": "Trippian Team(https://github.com/trippian)",
+  "author": "Trippian Team: Audrey, Elliot, Joe, Yale(https://github.com/trippian)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/trippian/trippian/issues"
   },
   "homepage": "https://github.com/trippian/trippian#readme",
   "dependencies": {
-    "lodash": "4.0.0"
+    "lodash": "4.0.0",
+    "hello-international": "2.2.0",
+    "react": "0.14.6",
+    "react-dom": "0.14.6"
   },
   "devDependencies": {
-    "commitizen": "2.5.0",
+    "autoprefixer-loader": "^2.0.0",
+    "babel-core": "5.8.34",
+    "babel-loader": "5.4.0",
+    "babel-preset-stage-1": "^6.3.13",
     "chai": "3.4.1",
     "codecov.io": "0.1.6",
+    "commitizen": "2.5.0",
+    "css-loader": "^0.16.0",
     "cz-conventional-changelog": "1.1.5",
+    "expect": "1.13.4",
+    "file-loader": "^0.8.4",
     "ghooks": "1.0.3",
+    "http-server": "^0.8.0",
+    "img-loader": "^1.2.0",
     "istanbul": "0.4.2",
+    "json-loader": "0.5.4",
     "mocha": "2.3.4",
-    "semantic-release": "^4.3.5"
+    "node-sass": "^3.2.0",
+    "postcss-loader": "^0.5.1",
+    "react-addons-test-utils": "0.14.6",
+    "react-hot-loader": "1.3.0",
+    "sass-loader": "^2.0.1",
+    "semantic-release": "^4.3.5",
+    "source-map-loader": "^0.1.5",
+    "style-loader": "^0.12.3",
+    "svgo": "^0.5.6",
+    "svgo-loader": "^1.1.0",
+    "url-loader": "^0.5.6",
+    "webpack": "1.12.11",
+    "webpack-dev-server": "^1.10.1"
   },
   "config": {
     "commitizen": {

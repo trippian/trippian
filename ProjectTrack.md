@@ -32,6 +32,7 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
 ### Ongoing Topics 
   * Dockr? 
   * EC2, S3 deployment
+  * Automatic deployment 
 
 ### Meeting Memo 
 
