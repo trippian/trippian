@@ -1,6 +1,5 @@
 {
   "name": "trippian",
-  "version": "1.0.0",
   "description": "your local travel companion ",
   "main": "src/entry.js",
   "scripts": {
@@ -16,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/trippian/trippian.git"
+    "url": "https://github.com/trippian/trippian.git"
   },
   "keywords": [
     "trippian",
