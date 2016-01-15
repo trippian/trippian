@@ -1,5 +1,16 @@
 {
-  "name": "Lorem ipsum dolor.",
-  "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem eos deleniti ratione libero possimus eum, modi dolor odit quaerat explicabo animi quae quos minus est, maxime voluptas facere ipsa laboriosam!",
-  "image": "http://lorempixel.com/400/200/animals/"
+  "inquiries": [
+    {
+      "subject": "Lorem ipsum dolor.",
+      "message": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem eos deleniti ratione libero possimus eum, modi dolor odit quaerat explicabo animi quae quos minus est, maxime voluptas facere ipsa laboriosam!",
+      "date": "Lorem ipsum Duis laborum nulla officia.",
+      "personCount": 3
+    },
+    {
+      "subject": "Lorem ipsum Irure sint in anim proident et.",
+      "message": "Lorem ipsum Non proident mollit non ullamco.",
+      "data": "Lorem ipsum Id reprehenderit dolore officia officia.",
+      "personCount": 4
+    }
+  ]
 }
