@@ -1,7 +1,10 @@
-import expect from 'expect'
+import {
+  expect
+}
+from 'chai'
 
 describe('empty', () => {
   it('should work', () => {
-    expect(true).toEqual(true)
+    expect(true).to.equal(true)
   })
 })
