@@ -1,0 +1,17 @@
+//
+// Scaffolding
+// --------------------------------------------------
+
+body.landing { 
+  background: url('../img/landing-bkg.png') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.main {
+  border: 2px solid $brand-primary;
+  border-radius: $border-radius-large;
+  padding: 20px 30px 30px;
+}
