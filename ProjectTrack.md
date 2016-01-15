@@ -14,7 +14,7 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
     - **package.json**: if you are not sure, just put the name here, so it's clear 
     - **Client(routes.js)**: as routes can be at server and client, it's good to prefix with the scope here 
     - **Server(app.spec.js)**:...
-    
+
   - Quick Ref on commiting messages:
     - feat: A new feature
     - fix: A bug fix
@@ -70,12 +70,14 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
 - **Morning Planning** - 10:00am
   * Tasks 
     - Manage issues and track tasks  -> Yale 
-    - Setup building process UI Design - Audrey 
-    - Create overall tasks and group related tasks into milestones in github issues - Yale 
     - Create sample json data for each route - Elliot (main) & Audrey (alignment later)
-    - Folder Structure - Group discussion -> Audrey 
-    - Talk about React architecture (~7pm) -> Audrey 
+    - Setup building process UI Design - Audrey 
+    - Talk about React architecture (~5pm) -> Audrey 
+    - Folder Structure (~7pm) - Group discussion -> Audrey 
     - Static html mockup for HomePage, DestinationsPage, TrippianProfilePage, InquiryPage -> Joe (assign one, and mark the rest as 'up for grab')
+    - Create overall tasks and group related tasks into milestones in github issues - Yale 
+    - S3 setup -> Elliot
+    - Setup basic server with Test -> Elliot
 
 - **Middle Day Progress Review(Audrey's Coding Session)** - 3pm 
   * react (route, link, higher order component)
