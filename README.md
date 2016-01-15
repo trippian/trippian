@@ -18,7 +18,8 @@ Your local trip companion
 This will watch *.spec.js and run the test (update this part later)
 
 ###Develop 
-
+- `npm run dev` will start the dev server and run/watch all test files ending with '*.spec.js'. In general this is enough. 
 - Write the tests first, and add related features
 - Once you finished writing the feature and ready to commit, check if the tests still pass
-- Run `npm run test` and follow the commitizen flow to add related messages following [Angular Commiting Guideline](https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md#commit)
+- Add staged files 
+- Run `npm run commit` and follow the commitizen flow to add related messages following [Angular Commiting Guideline](https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md#commit)
