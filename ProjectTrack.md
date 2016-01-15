@@ -29,11 +29,35 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
       - 
 
 
+### Ongoing Topics 
+  * Dockr? 
+  * EC2, S3 deployment
+
 ### Meeting Memo 
 
 
 
-#### W1 - Thursday January 14 2016
+#### W1D4 - Friday January 15 2016
+- **Prepare** 
+  * Mini-sprint: static front-end mockup (will add build process first)
+  * Learn: basic testing, git flow and deployment (CI) integrated with testing
+  * Explore: 
+  * Discuss: git flow, project management platform, tasks for project tracking 
+
+- **Morning Planning** - 10:00am
+  * Tasks 
+    - Setup building process UI Design - Audrey 
+    - 
+- **Middle Day Progress Review(Audrey's Coding Session)** - 3pm 
+  * react (route, link, higher order component)
+  * react testing 
+
+- **Demo Time** - 5pm
+
+
+- **Daily Review** - 7:55pm 
+
+#### W1D3 - Thursday January 14 2016
 - **Prepare** 
   * Mini-sprint: MMVP, wireframe, database design 
   * Explore: Dockr 
@@ -49,7 +73,7 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
 
 - **Middle Day Progress Review (Audrey's Coding Session)** - 3pm 
   * Intro for open source project, commitizen, semantic versioning, testing, Travis CI
-  * react hot loading, react (route, link, higher order component)
+  * react hot loading
   
 - **Demo Time** (skip due to time limit) - 5pm
 
@@ -58,25 +82,6 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
 
 ### Achieved or Future Planning 
 
-
-#### W1 - Friday January 15 2016
-- **Prepare** 
-  * Mini-sprint: static front-end mockup (will add build process first)
-  * Learn: basic testing, git flow and deployment (CI) integrated with testing
-  * Explore: 
-  * Discuss: git flow, project management platform, tasks for project tracking 
-
-- **Morning Planning** - 10:00am
-
-
-
-- **Middle Day Progress Review** - 3pm 
-
-
-- **Demo Time** - 5pm
-
-
-- **Daily Review** - 7:55pm 
 
 
 #### W1 - Saturday January 17 2016
