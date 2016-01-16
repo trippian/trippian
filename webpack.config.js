@@ -7,7 +7,7 @@ function getEntrySources(sources) {
 }
 
 module.exports = {
-  entry: getEntrySources(['./src/entry.js']),
+  entry: getEntrySources(['./src/client/entry.js']),
   output: {
     publicPath: 'http://localhost:8080/',
     filename: 'dist/bundle.js'

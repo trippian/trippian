@@ -19,7 +19,12 @@ This will watch *.spec.js and run the test (update this part later)
 
 
 ### UI Design 
-All design files are under `_planning/static/
+All design files are under `_planning/static/` directory
+
+When designing, run `gulp` and change the files under `_planning/static/src/` folder, the browser will auto-reload the files whenever any file changes.
+
+When you finsihed the design, run `gulp copy`, and all your files except html under `_planning/static/build/` will be copied to `dist/` directory. 
+
 
 ###Develop 
 - `npm run dev` will start the dev server and run/watch all test files ending with '*.spec.js'. In general this is enough. 

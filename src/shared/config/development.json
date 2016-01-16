@@ -1,8 +1,0 @@
-{
-  "host": "http://localhost:3000",
-  "S3Bucket": "TrippianBuket",
-  "S3AccessKey": "AKIAJL3PERRKJAA??",
-  "S3Secret": "90aDpgXppbjhkCIbgBYJgGWMbP0KAD1zx7??",
-  "dbURL": "mongodb://@ds027483.mongolab.com:27483/TrippianBuket"
-}
-
