@@ -68,7 +68,7 @@ main {
         bottom: 0;
     }
     .content-container {
-        margin-bottom: 100px;
+        margin-bottom: 200px;
         .section {
             margin-bottom: 32px;
             .section-header {
@@ -79,6 +79,7 @@ main {
     }
     .main-content-container {
         margin-top: 100px;
+        margin-bottom: 200px;
         @media screen and (max-width: 1200px) {
             margin-top: 200px;
         }

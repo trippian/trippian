@@ -4,8 +4,9 @@
             a {
                 display: inline-block;
                 width: 100%;
-                min-height: 150px;
+                min-height: 200px;
                 position: relative;
+                @include cover-background();
                 span {
                     position: absolute;
                     color: white;
@@ -15,6 +16,28 @@
                     left: 0;
                     width: 100%;
                 }
+            }
+        }
+    }
+    .popular-trippians {
+        // display: flex;
+        // justify-content: center;
+        .popular-trippians-item {
+            width: 30% !important;
+            width: 180px;
+            height: 232px;
+            float: left;
+            margin: 1%;
+            @media screen and (max-width: 600px) {
+                width: 46% !important;
+            }
+            @media screen and (max-width: 450px) {
+                width: 100% !important;
+                margin: 0;
+            }
+            .circle-image {
+                width: 180px;
+                height: 180px;
             }
         }
     }
