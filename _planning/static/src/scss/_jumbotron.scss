@@ -1,0 +1,5 @@
+.jumbotron {
+    min-height: $jumbotron-min-height;
+    padding-top: 250px;
+    @include cover-background();
+}
