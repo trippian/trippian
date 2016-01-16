@@ -60,10 +60,22 @@ main {
     margin: 0 auto;
     z-index: 0;
     min-height: $main-min-height;
+    .full-length-container {
+        background-color: rgba(0, 0, 0, 0.2);
+        height: 100px;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+    }
     .content-container {
-        padding: 80px 0;
-        margin-bottom: 200px;
-        .content-container-header {}
+        margin-bottom: 100px;
+        .section {
+            margin-bottom: 32px;
+            .section-header {
+                padding-bottom: 10px;
+            }
+            .section-body {}
+        }
     }
     .main-content-container {
         margin-top: 100px;
@@ -100,4 +112,8 @@ footer {
             margin: 4px 10px;
         }
     }
+}
+
+.btn-bordered {
+    border: 2px solid white;
 }

@@ -9,7 +9,7 @@ var paths = {
   // all our client app js files, not including 3rd party js files
   html: ['./_planning/static/src/**/*.html'],
   images: ['./_planning/static/src/img/*.*'],
-  styles: ['./_planning/static/src/**/*.scss'],
+  styles: ['./_planning/static/src/**/**/*.scss'],
   stylebuild: './_planning/static/build',
   serve: ['./_planning/static/build/'],
   all: ['./_planning/static/**/*.*'],
