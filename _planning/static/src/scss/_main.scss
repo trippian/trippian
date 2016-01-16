@@ -18,6 +18,7 @@ body {
     color: $gray-darker;
     font-size: 1.1rem;
     font-family: $roboto;
+    background-color: $main-bg-color;
 }
 
 a {
@@ -67,24 +68,26 @@ main {
         position: absolute;
         bottom: 0;
     }
+    .main-content-container {
+        // margin-top: 100px;
+        margin-bottom: 130px;
+        @media screen and (max-width: 1200px) {
+            margin-top: 200px;
+        }
+        @media screen and (max-width: 450px) {
+            margin-top: 250px;
+        }
+    }
     .content-container {
-        margin-bottom: 200px;
+        padding: 32px;
+        // margin-bottom: 50px;
+        background-color: $main-content-bg-color;
         .section {
             margin-bottom: 32px;
             .section-header {
                 padding-bottom: 10px;
             }
             .section-body {}
-        }
-    }
-    .main-content-container {
-        margin-top: 100px;
-        margin-bottom: 200px;
-        @media screen and (max-width: 1200px) {
-            margin-top: 200px;
-        }
-        @media screen and (max-width: 450px) {
-            margin-top: 250px;
         }
     }
 }

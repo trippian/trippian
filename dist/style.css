@@ -7919,7 +7919,8 @@ body {
   margin-bottom: 80px;
   color: #222222;
   font-size: 1.1rem;
-  font-family: "Roboto", sans-serif; }
+  font-family: "Roboto", sans-serif;
+  background-color: #eeeeee; }
 
 a {
   font-family: "Roboto Slab", serif;
@@ -7958,21 +7959,21 @@ main {
     width: 100%;
     position: absolute;
     bottom: 0; }
-  main .content-container {
-    margin-bottom: 200px; }
-    main .content-container .section {
-      margin-bottom: 32px; }
-      main .content-container .section .section-header {
-        padding-bottom: 10px; }
   main .main-content-container {
-    margin-top: 100px;
-    margin-bottom: 200px; }
+    margin-bottom: 130px; }
     @media screen and (max-width: 1200px) {
       main .main-content-container {
         margin-top: 200px; } }
     @media screen and (max-width: 450px) {
       main .main-content-container {
         margin-top: 250px; } }
+  main .content-container {
+    padding: 32px;
+    background-color: #fff; }
+    main .content-container .section {
+      margin-bottom: 32px; }
+      main .content-container .section .section-header {
+        padding-bottom: 10px; }
 
 /*
 * Footer styling
@@ -8010,6 +8011,9 @@ footer {
   .navbar .btn-bordered {
     font-size: 14px;
     font-weight: bold; }
+
+#home-page .main-content-container {
+  margin-bottom: 50px; }
 
 #home-page .popular-destinations .popular-destinations-item a {
   display: inline-block;
@@ -8060,6 +8064,9 @@ footer {
   #destination-page .trippian-list .trippian-list-item .avatar {
     width: 200px;
     min-height: 200px; }
+
+#trippian-profile-page .main-content-container {
+  margin-top: 80px; }
 
 #trippian-profile-page .jumbotron {
   max-height: 400px;
