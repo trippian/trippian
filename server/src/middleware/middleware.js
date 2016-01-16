@@ -1,6 +1,6 @@
 const bodyParser = require('body-parser');
-const morgan = require('morgan');
 const path = require('path');
+const morgan = require('morgan');
 const utils = require('./utils.js');
 
 module.exports = function (app, express) {
