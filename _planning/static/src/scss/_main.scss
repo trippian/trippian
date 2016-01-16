@@ -1,0 +1,103 @@
+/*
+* Global styling
+* ========================================================================== */
+
+* {
+    @include box-shadow(none);
+}
+
+html {
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin: 0;
+    margin-bottom: 80px;
+    color: $gray-darker;
+    font-size: 1.1rem;
+    font-family: $roboto;
+}
+
+a {
+    font-family: $roboto-slab;
+    color: $link-color;
+    &:hover,
+    &:focus {
+        color: $link-hover-color;
+        text-decoration: none;
+    }
+}
+
+.active {
+    color: $primary-color-dark !important;
+}
+
+.flex-row-wrap {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.vertical-align {
+    display: flex;
+    flex-direction: row;
+}
+
+.vertical-align > [class^="col-"],
+.vertical-align > [class*=" col-"] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/*
+* Main styling
+* ========================================================================== */
+
+main {
+    margin: 0 auto;
+    z-index: 0;
+    min-height: $main-min-height;
+    .content-container {
+        padding: 80px 0;
+        margin-bottom: 200px;
+        .content-container-header {}
+    }
+    .main-content-container {
+        margin-top: 100px;
+        @media screen and (max-width: 1200px) {
+            margin-top: 200px;
+        }
+        @media screen and (max-width: 450px) {
+            margin-top: 250px;
+        }
+    }
+}
+
+
+/*
+* Footer styling
+* ========================================================================== */
+
+footer {
+    text-align: center;
+    height: 98px;
+    width: 100%;
+    padding: 32px 0;
+    position: absolute;
+    bottom: 0;
+    background-color: $gray-base;
+    color: $gray-light;
+    a {
+        color: $gray-dark;
+    }
+    .footer-links {
+        a {
+            color: $primary-color-light;
+            display: inline-block;
+            margin: 4px 10px;
+        }
+    }
+}
