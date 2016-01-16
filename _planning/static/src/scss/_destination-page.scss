@@ -1,0 +1,28 @@
+#destination-page {
+    .jumbotron {
+        position: relative;
+        .full-length-container {
+            .text-intro {
+                a {
+                    display: inline;
+                    margin-right: 16px;
+                }
+            }
+        }
+    }
+    .main-content-container {
+        .content-container {}
+    }
+    .trippian-list {
+        .row {
+            background-color: blue;
+        }
+        .trippian-list-item {
+            background-color: blue;
+            .avatar {
+                width: 200px;
+                min-height: 200px;
+            }
+        }
+    }
+}
