@@ -1,21 +1,41 @@
 $bootstrap-sass-asset-helper: false !default;
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab|Roboto:400,700);
 //
 // Variables
+// Misc
+$main-min-height:500px;
+$jumbotron-min-height: 600px;
 // --------------------------------------------------
 //== Colors
-//
+//##Material Design Colors
+$primary-color-dark: #E64A19;
+$primary-color: #FF5722;
+$primary-color-light: #FFCCBC;
+$primary-color-text: #FFFFFF;
+$accent-color: #9E9E9E;
+$primary-text-color: #212121;
+$secondary-text-color: #727272;
+$divider-color: #B6B6B6;
 //## Gray and brand colors for use across Bootstrap.
 $gray-base: #000 !default;
+$white-base: #fff !default;
 $gray-darker: lighten($gray-base, 13.5%) !default; // #222
 $gray-dark: lighten($gray-base, 20%) !default; // #333
 $gray: lighten($gray-base, 33.5%) !default; // #555
 $gray-light: lighten($gray-base, 46.7%) !default; // #777
 $gray-lighter: lighten($gray-base, 93.5%) !default; // #eee
-$brand-primary: darken(#FFA000, 6.5%) !default; // #337ab7
+$brand-primary: darken(#E64A19, 6.5%) !default; // #337ab7
 $brand-success: #5cb85c !default;
 $brand-info: #5bc0de !default;
 $brand-warning: #f0ad4e !default;
 $brand-danger: #d9534f !default;
+$main-bg-color: $gray-lighter;
+$main-content-bg-color
+: $white-base;
+$roboto: 'Roboto',
+sans-serif;
+$roboto-slab: 'Roboto Slab',
+serif;
 //== Scaffolding
 //
 //## Settings for some of the most global styles.

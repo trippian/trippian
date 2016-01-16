@@ -1,12 +1,5 @@
-//
-// Jumbotron
-// --------------------------------------------------
-
 .jumbotron {
-  padding-top: 130px;
-  padding-bottom: 60px;
-}
-
-.jumbotron h1 {
-  margin-bottom: 40px;
+    min-height: $jumbotron-min-height;
+    padding-top: 250px;
+    @include cover-background();
 }
