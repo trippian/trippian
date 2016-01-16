@@ -1,8 +1,0 @@
-//
-// Buttons
-// --------------------------------------------------
-
-.btn-xlg {
-  // line-height: ensure even-numbered height of button next to large input
-  @include button-size($padding-large-vertical, 30px, 28px, $line-height-large, 0);
-}
