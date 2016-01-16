@@ -32,7 +32,9 @@
   "homepage": "https://github.com/trippian/trippian#readme",
   "dependencies": {
     "babel-polyfill": "6.3.14",
+    "es6-promise": "3.0.2",
     "hello-international": "2.2.0",
+    "isomorphic-fetch": "2.2.1",
     "koa": "1.1.2",
     "koa-body-parser": "1.1.2",
     "koa-cors": "0.0.16",
@@ -90,5 +92,8 @@
     "ghooks": {
       "pre-commit": "npm run test:single && npm run test:server && npm run check-coverage"
     }
+  },
+  "engines": {
+    "node": "4.1.1"
   }
 }
