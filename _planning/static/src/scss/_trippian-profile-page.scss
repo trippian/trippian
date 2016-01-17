@@ -1,6 +1,12 @@
 #trippian-profile-page {
     .main-content-container {
         margin-top: 80px;
+        @media screen and (max-width: 1200px) {
+            margin-top: 200px;
+        }
+        @media screen and (max-width: 450px) {
+            margin-top: 250px;
+        }
         .content-container {
             .youtube-video {
                 margin: 32px 0;
