@@ -13,6 +13,13 @@ Your local trip companion
 ###Setup
 `npm install`
 
+Config the node environment (not complete yet):
+- S3AccessKey
+- S3Secret
+- FACEBOOK_ID
+- FACEBOOK_SECRET
+....
+
 ###Test 
 `npm run test`
 This will watch *.spec.js and run the test (update this part later)
@@ -32,3 +39,5 @@ When you finsihed the design, run `gulp copy`, and all your files except html un
 - Once you finished writing the feature and ready to commit, check if the tests still pass
 - Add staged files 
 - Run `npm run commit` and follow the commitizen flow to add related messages following [Angular Commiting Guideline](https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md#commit)
+
+

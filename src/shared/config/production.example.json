@@ -1,7 +1,0 @@
-{
-  "host": "http://www.trippian.com",
-  "S3Bucket": "TrippianBuket",
-  "S3AccessKey": "PUT CONTENT HERE",
-  "S3Secret": "PUT CONTENT HERE",
-  "dbURL": "PUT CONTENT HERE"
-}

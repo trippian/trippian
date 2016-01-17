@@ -1,11 +1,13 @@
 @import "settings";
 @import "../../bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 @import "mixins";
-// @import "font-awesome";
+@import "font-awesome";
 @import "main";
 @import "nav";
 @import "home-page";
+@import "become-trippian-page";
 @import "destination-page";
+@import "inquiry-page";
 @import "trippian-profile-page";
 @import "circle-image";
 @import "animations";

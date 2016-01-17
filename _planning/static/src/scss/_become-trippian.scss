@@ -1,0 +1,12 @@
+#become-trippian-page {
+    .main-content-container {
+        margin-top: 80px;
+        @media screen and (max-width: 1200px) {
+            margin-top: 50px;
+        }
+        @media screen and (max-width: 450px) {
+            margin-top: 250px;
+        }
+        .content-container {}
+    }
+}
