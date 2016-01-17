@@ -1,0 +1,4 @@
+{
+  "HOST": "http://localhost:3000",
+  "S3_BUCKET": "TrippianBuket"
+}
