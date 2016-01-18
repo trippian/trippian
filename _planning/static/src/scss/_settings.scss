@@ -11,7 +11,6 @@ $jumbotron-min-height: 600px;
 $primary-color-dark: #E64A19;
 $primary-color: #FF5722;
 $primary-color-light: #FFCCBC;
-$primary-color-lighter: rgba(255, 204, 188, 0.15);
 $primary-color-text: #FFFFFF;
 $accent-color: #9E9E9E;
 $primary-text-color: #212121;
@@ -31,7 +30,8 @@ $brand-info: #5bc0de !default;
 $brand-warning: #f0ad4e !default;
 $brand-danger: #d9534f !default;
 $main-bg-color: $gray-lighter;
-$main-content-bg-color: $white-base;
+$main-content-bg-color
+: $white-base;
 $roboto: 'Roboto',
 sans-serif;
 $roboto-slab: 'Roboto Slab',

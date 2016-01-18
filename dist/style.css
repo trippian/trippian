@@ -7982,7 +7982,7 @@ footer {
   background-color: #000;
   color: #777777; }
   footer a {
-    color: #777777; }
+    color: #333333; }
   footer .footer-links a {
     color: #FFCCBC;
     display: inline-block;
@@ -7998,19 +7998,10 @@ footer {
   height: 20px;
   left: 0;
   z-index: 100;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold; }
-  .navbar .navbar-header .navbar-brand {
-    font-size: 60px; }
   .navbar .navbar-nav li a {
     padding: 8px !important; }
-    .navbar .navbar-nav li a.btn-bordered {
-      border: 3px solid #fff;
-      font-size: 20px; }
-      .navbar .navbar-nav li a.btn-bordered:hover {
-        color: #fff;
-        background-color: #FF5722;
-        border: none; }
 
 #home-page .main-content-container {
   margin-bottom: 50px; }
@@ -8053,47 +8044,20 @@ footer {
 #become-trippian-page .main-content-container {
   margin-bottom: 50px; }
 
-#become-trippian-edit-page .main-content-container {
-  margin-bottom: 50px; }
-
-#become-trippian-edit-page .inquiries .list-group-item {
-  display: inline-block;
-  width: 100%; }
-  #become-trippian-edit-page .inquiries .list-group-item.active {
-    background-color: rgba(255, 204, 188, 0.15); }
-  #become-trippian-edit-page .inquiries .list-group-item .item-content-container .item-detail-left {
-    padding: 0;
-    min-height: 24px; }
-    #become-trippian-edit-page .inquiries .list-group-item .item-content-container .item-detail-left b {
-      padding-right: 8px; }
-  #become-trippian-edit-page .inquiries .list-group-item .item-content-container .right-icons-container {
-    padding: 0;
-    min-height: 24px; }
-    #become-trippian-edit-page .inquiries .list-group-item .item-content-container .right-icons-container .icon-right {
-      padding: 0 8px; }
-      #become-trippian-edit-page .inquiries .list-group-item .item-content-container .right-icons-container .icon-right .fa-check {
-        color: #5cb85c; }
-      #become-trippian-edit-page .inquiries .list-group-item .item-content-container .right-icons-container .icon-right .fa-trash {
-        color: #777777; }
-  #become-trippian-edit-page .inquiries .list-group-item .item-content-container .inquiry-item-detail {
-    padding: 0;
-    color: #222222; }
-    #become-trippian-edit-page .inquiries .list-group-item .item-content-container .inquiry-item-detail h4 {
-      font-weight: bold;
-      margin-bottom: 8px;
-      margin-top: 16px; }
-
 #destination-page .jumbotron {
   position: relative; }
   #destination-page .jumbotron .full-length-container .text-intro a {
     display: inline;
     margin-right: 16px; }
 
-#destination-page .main-content-container .content-container .trippian-list .trippian-list-item {
-  border-bottom: 1px dotted #B6B6B6;
-  padding: 16px 0; }
-  #destination-page .main-content-container .content-container .trippian-list .trippian-list-item .avatar {
-    width: 100%; }
+#destination-page .trippian-list .row {
+  background-color: blue; }
+
+#destination-page .trippian-list .trippian-list-item {
+  background-color: blue; }
+  #destination-page .trippian-list .trippian-list-item .avatar {
+    width: 200px;
+    min-height: 200px; }
 
 #inquiry-page .main-content-container {
   margin-top: 80px; }
