@@ -15,20 +15,20 @@ describe('config (global)', () => {
     expect(config.S3_BUCKET).to.be.a('string')
   })
 
-  it('should have S3_ACCESS_KEY field', () => {
-    expect(config.S3_ACCESS_KEY).to.be.a('string')
+  it('should have AWS_ACCESS_KEY field', () => {
+    expect(config.AWS_ACCESS_KEY).to.be.a('string')
   })
 
-  it('should have S3_SECRET field', () => {
-    expect(config.S3_SECRET).to.be.a('string')
+  it('should have AWS_SECRET_KEY field', () => {
+    expect(config.AWS_SECRET_KEY).to.be.a('string')
   })
 
-  it('should have DBURL field', () => {
-    expect(config.DBURL).to.be.a('string')
+  it('should have DATATBASE_URI field', () => {
+    expect(config.DATATBASE_URI).to.be.a('string')
   })
 
-  it('should have FACEBOOK_ID field', () => {
-    expect(config.FACEBOOK_ID).to.be.a('string')
+  it('should have GOOGLE_APP_ID field', () => {
+    expect(config.GOOGLE_APP_ID).to.be.a('string')
   })
 
 })

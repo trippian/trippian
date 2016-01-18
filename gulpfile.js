@@ -3,6 +3,7 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var concat = require('gulp-concat');
+var clean = require('gulp-clean');
 var browserSync = require('browser-sync').create();
 
 var paths = {
@@ -15,7 +16,11 @@ var paths = {
   all: ['./_planning/static/**/*.*'],
   distcopy: ['./_planning/static/build/style.css', './_planning/static/build/img/*.*', './_planning/static/build/fonts/*.*'],
   dispath: './dist/',
-  serveFiles: ['./_planning/static/build/**/*.*', '!./_planning/static/build/**/*.html', '!./_planning/static/build/bootstrap-sass/', '!./_planning/static/build/font-awesome/']
+  dispathCleanFiles: ['./dist/**/*.*', '!./dist/index.html'],
+  serveFiles: ['./_planning/static/build/**/*.*', '!./_planning/static/build/**/*.html', '!./_planning/static/build/bootstrap-sass/', '!./_planning/static/build/font-awesome/'],
+  serveImage: ['./_planning/static/build/img/*.*'],
+  serveFonts: ['./_planning/static/build/fonts/*.*'],
+  serveStyles: './_planning/static/build/style.css'
 };
 
 
@@ -47,8 +52,17 @@ gulp.task('sass', function () {
     .pipe(browserSync.stream());
 });
 
+gulp.task('clean', function () {
+  return gulp.src(paths.dispathCleanFiles)
+    .pipe(clean());
+})
+
 gulp.task('copy', function () {
-  gulp.src(paths.serveFiles)
+  gulp.src(paths.serveImage)
+    .pipe(gulp.dest(paths.dispath + 'img/'));
+  gulp.src(paths.serveFonts)
+    .pipe(gulp.dest(paths.dispath + 'fonts/'));
+  gulp.src(paths.serveStyles)
     .pipe(gulp.dest(paths.dispath));
 });
 
