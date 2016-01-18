@@ -8,13 +8,18 @@ import {
 }
 from 'react-router'
 
-export default class App extends Component {
-  displayName: 'App'
+import {
+  NavWidget
+}
+from '../../components/index'
 
-    constructor(props) {
-      super(props)
-    }
-    // just add the links temperarily, will move to NavWidget later 
+export default class App extends Component {
+
+  constructor(props) {
+    super(props)
+  }
+
+  // just add the links temperarily, will move to NavWidget later 
   render() {
     return (
       <div>
@@ -37,3 +42,4 @@ App.propTypes = {
   children: PropTypes.element.isRequired,
   name: PropTypes.string
 }
+App.displayName = 'App'

@@ -1,13 +1,15 @@
 import React from 'react'
 
-export default () => {
+const StarRatingWidget = ({
+  name = 'StarRatingWidget'
+}) => {
   return (
-    <div className="start-rating">
-        <span className="glyphicon glyphicon-star"></span>
-        <span className="glyphicon glyphicon-star"></span>
-        <span className="glyphicon glyphicon-star"></span>
-        <span className="glyphicon glyphicon-star"></span>
-        <span className="glyphicon glyphicon-star-empty"></span>
+    <div> 
+    <h3>Widget</h3>
+    {name}
     </div>
   )
 }
+StarRatingWidget.displayName = 'StarRatingWidget'
+
+export default StarRatingWidget
