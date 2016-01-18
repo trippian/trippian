@@ -1,11 +1,15 @@
 import React from 'react'
 
-export default ({
-  message = 'There is no content'
+const NoContentWidget = ({
+  name = 'NoContentWidget'
 }) => {
   return (
-    <div className="no-content">
-        <h3>{message}</h3>
+    <div> 
+    <h3>Widget</h3>
+    {name}
     </div>
   )
 }
+NoContentWidget.displayName = 'NoContentWidget'
+
+export default NoContentWidget

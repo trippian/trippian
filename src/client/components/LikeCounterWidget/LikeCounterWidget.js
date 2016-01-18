@@ -4,7 +4,11 @@ import {
   COLOR_LIGHT_BLACK, SPACING_XSMALL
 }
 from '../../utils/styleGuide'
-import Icon from '../../../components/IconWidget'
+
+import {
+  IconWidget
+}
+from '../../components/index'
 
 const LikeCounter = ({
   count, isActive, activeColor, handleLikes
@@ -26,7 +30,7 @@ const LikeCounter = ({
   } >
   <div>
       <span style={{marginRight: SPACING_XSMALL, display: 'inline-block'}}>
-        <Icon name='thumbs-up' />
+        <IconWidget name='thumbs-up' />
       </span>
       <span>{count} likes</span>
     </div> < /a>
@@ -39,4 +43,5 @@ LikeCounter.propTypes = {
   isActive: React.PropTypes.bool
 }
 
+LikeCounter.displayName = 'LikeCounter'
 export default LikeCounter

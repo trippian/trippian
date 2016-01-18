@@ -40,8 +40,8 @@ function watchChangeHandler() {
   gulp.src(paths.html)
     .pipe(gulp.dest(paths.serve[0]));
   //copy the style file to dist folder 
-  gulp.src(paths.distcopy)
-    .pipe(gulp.dest(paths.dispath))
+  //gulp.src(paths.distcopy)
+  //.pipe(gulp.dest(paths.dispath))
 };
 
 gulp.task('sass', function () {

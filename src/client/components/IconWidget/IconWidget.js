@@ -4,7 +4,7 @@ import {
 }
 from '../../utils/styleGuide'
 
-const Icon = ({
+const IconWidget = ({
   name
 }) => {
   return (
@@ -16,8 +16,9 @@ const Icon = ({
   )
 }
 
-Icon.propTypes = {
+IconWidget.propTypes = {
   name: React.PropTypes.string.isRequired
 }
 
-export default Icon
+IconWidget.displayName = 'IconWidget'
+export default IconWidget
