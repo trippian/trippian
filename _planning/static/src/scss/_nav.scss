@@ -5,12 +5,26 @@
     height: 20px;
     left: 0;
     z-index: 100;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
+    .navbar-header {
+        .navbar-brand {
+            font-size: 60px;
+        }
+    }
     .navbar-nav {
         li {
             a {
                 padding: 8px !important;
+                &.btn-bordered {
+                    border: 3px solid $white-base;
+                    font-size: 20px;
+                    &:hover {
+                        color: $white-base;
+                        background-color: $primary-color;
+                        border: none;
+                    }
+                }
             }
         }
     }

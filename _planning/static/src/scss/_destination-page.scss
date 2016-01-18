@@ -11,17 +11,16 @@
         }
     }
     .main-content-container {
-        .content-container {}
-    }
-    .trippian-list {
-        .row {
-            background-color: blue;
-        }
-        .trippian-list-item {
-            background-color: blue;
-            .avatar {
-                width: 200px;
-                min-height: 200px;
+        .content-container {
+            .trippian-list {
+                .trippian-list-item {
+                    border-bottom: 1px dotted $divider-color;
+                    padding: 16px 0;
+                    .avatar {
+                        width: 100%;
+                        // min-height: 200px;
+                    }
+                }
             }
         }
     }
