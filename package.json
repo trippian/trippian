@@ -38,6 +38,7 @@
     "es6-promise": "3.0.2",
     "express": "^4.13.3",
     "hello-international": "2.2.0",
+    "history": "1.17.0",
     "isomorphic-fetch": "2.2.1",
     "lodash": "4.0.0",
     "morgan": "^1.6.1",
@@ -46,7 +47,8 @@
     "passport-google-oauth": "^0.2.0",
     "path": "^0.12.7",
     "react": "0.14.6",
-    "react-dom": "0.14.6"
+    "react-dom": "0.14.6",
+    "react-router": "1.0.3"
   },
   "devDependencies": {
     "autoprefixer-loader": "^2.0.0",
@@ -58,6 +60,7 @@
     "browser-sync": "2.11.0",
     "chai": "3.4.1",
     "chai-equal-jsx": "1.0.9",
+    "classnames": "2.2.3",
     "codecov.io": "0.1.6",
     "commitizen": "2.5.0",
     "css-loader": "^0.16.0",

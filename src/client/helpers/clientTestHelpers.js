@@ -1,10 +1,3 @@
-import chai from 'chai'
-import equalJSX from 'chai-equal-jsx';
-
-function useEqualJSX() {
-  chai.use(equalJSX)
-}
-
 export default {
   React: require('react'),
   chai: require('chai'),
