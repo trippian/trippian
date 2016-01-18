@@ -41,12 +41,13 @@
     "isomorphic-fetch": "2.2.1",
     "lodash": "4.0.0",
     "morgan": "^1.6.1",
-    "node-neo4j": "^2.0.3",
     "passport-facebook": "^2.0.0",
     "passport-google-oauth": "^0.2.0",
     "path": "^0.12.7",
     "react": "0.14.6",
-    "react-dom": "0.14.6"
+    "react-dom": "0.14.6",
+    "seraph": "^0.14.0",
+    "seraph-model": "^0.7.5"
   },
   "devDependencies": {
     "autoprefixer-loader": "^2.0.0",
