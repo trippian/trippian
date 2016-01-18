@@ -9,9 +9,11 @@ import {
 from 'react-router'
 
 export default class App extends Component {
-  constructor(props) {
-    super(props)
-  }
+  displayName: 'App'
+
+    constructor(props) {
+      super(props)
+    }
     // just add the links temperarily, will move to NavWidget later 
   render() {
     return (
@@ -30,6 +32,8 @@ export default class App extends Component {
     )
   }
 }
+
 App.propTypes = {
+  children: PropTypes.element.isRequired,
   name: PropTypes.string
 }
