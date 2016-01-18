@@ -1,11 +1,10 @@
 import {
   expect
 }
-from 'chai'
+from './helpers/clientTestHelpers'
 
 describe('empty', () => {
   it('should work', () => {
-    expect(true
-).to.equal(true)
+    expect(true).to.equal(true)
   })
 })

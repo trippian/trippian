@@ -3,6 +3,9 @@ import React, {
 }
 from 'react'
 import ReactDOM from 'react-dom'
-import HelloWorld from './components/HelloWorldWidget/HelloWorld'
+import {
+  HelloWorldWidget
+}
+from './components/index'
 
-ReactDOM.render( < HelloWorld name = "Joe hello" / > , document.getElementById('app'))
+ReactDOM.render( < HelloWorldWidget name = "Joe hello" / > , document.getElementById('app'))

@@ -40,4 +40,10 @@ When you finsihed the design, run `gulp copy`, and all your files except html un
 - Add staged files 
 - Run `npm run commit` and follow the commitizen flow to add related messages following [Angular Commiting Guideline](https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md#commit)
 
+- To prevent conflict at a particular file, e.g. package.json, do the following before commit: 
+```
+git add -u
+git reset -- package.json 
+```
+
 
