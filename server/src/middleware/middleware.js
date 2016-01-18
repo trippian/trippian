@@ -1,7 +1,8 @@
 const bodyParser = require('body-parser');
 const path = require('path');
 const morgan = require('morgan');
-const utils = require('./utils.js');
+const utils = require('./utils');
+const router = require('../routes/routes');
 
 module.exports = function (app, express) {
   // let router = express.Router();
@@ -9,7 +10,7 @@ module.exports = function (app, express) {
   app.use(morgan('dev'));
   // app.use(bodyParser.urlencoded({err(xtended: true}));
   app.use(bodyParser.json());
-  // app.use(express.static(path.join(__dirname, '/dist')));
+  // app.use(express.static(path.join(__dirname, 'dist')));
 
   // app.use('/', router);
 

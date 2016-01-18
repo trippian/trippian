@@ -4,11 +4,12 @@ const config = require('./config');
 
 module.exports = function(passport) {
   passport.serializeUser(function(user, done) {
-    done(null, user.id);
+    done(null, user);
   });
 
-  passport.deserializeUser(function(id, done) {
+  passport.deserializeUser(function(user, done) {
     // after we write user model, we will search for that user node
+    done(null, user);
   });
 
   passport.use(new FacebookStrategy({
@@ -19,7 +20,8 @@ module.exports = function(passport) {
   function(token, refreshToken, profile, done) {
     process.nextTick(function() {
       // find user node in database based on their facebookID
-    })
+      return done(null, profile);
+    });
   }
   ));
 }
