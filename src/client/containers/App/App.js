@@ -4,11 +4,6 @@ import React, {
 from 'react'
 
 import {
-  Link
-}
-from 'react-router'
-
-import {
   NavWidget
 }
 from '../../components/index'
@@ -23,16 +18,12 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <h2>App</h2>
-        <ul>
-            <li><Link to='/'> Home </Link></li>
-            <li><Link to='about'> About </Link></li>
-            <li><Link to='login'> Login </Link></li>
-            <li><Link to='trippian/123'> Trippian Detail </Link></li>
-        </ul>
-        <i>just add the links temperarily, will move to NavWidget later </i>
-        {name}
-        {this.props.children}
+        <header>
+          <NavWidget />
+        </header>
+        <main className="row">
+          {this.props.children}
+        </main>
       </div>
     )
   }
