@@ -15,4 +15,4 @@ config.FACEBOOK_SECRET = process.env.FACEBOOK_SECRET || ''
 config.GOOGLE_ID = process.env.GOOGLE_ID || ''
 config.GOOGLE_SECRET = process.env.GOOGLE_SECRET || ''
 
-export default config;
+export default config

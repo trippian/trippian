@@ -45,5 +45,13 @@ When you finsihed the design, run `gulp copy`, and all your files except html un
 git add -u
 git reset -- package.json 
 ```
+If you already pushed, try to run reset:
+```
+git reset HEAD~1   
+git add -u
+git reset -- package.json # or any other fiels 
+npm run commit 
+git push origin develop -f # force push to your remote branch 
+```
 
 

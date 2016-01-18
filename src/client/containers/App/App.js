@@ -10,8 +10,8 @@ from 'react-router'
 
 export default class App extends Component {
   constructor(props) {
-      super(props)
-    }
+    super(props)
+  }
     // just add the links temperarily, will move to NavWidget later 
   render() {
     return (

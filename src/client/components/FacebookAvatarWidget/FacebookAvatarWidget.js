@@ -29,12 +29,12 @@ export default class FacebookAvatarWidget extends React.Component {
       .then(data => {
         if (!data.is_silhouette) {
           this.setState({
-            src: data.url
-          })
+              src: data.url
+            })
           store.dispatch({
-            type: 'LOGIN',
-            userId: this.state.id
-          })
+              type: 'LOGIN',
+              userId: this.state.id
+            })
         }
       })
   }

@@ -6,7 +6,7 @@ import {
 from '../../utils/styleGuide'
 import Icon from '../../../components/IconWidget'
 
-export default ({
+const LikeCounter = ({
   count, isActive, activeColor, handleLikes
 }) => ( < a className = {
     classnames({
@@ -30,11 +30,13 @@ export default ({
       </span>
       <span>{count} likes</span>
     </div> < /a>
-);
+)
 
 LikeCounter.propTypes = {
-  count: React.PropTypes.number.isRequired,
-  isActive: React.PropTypes.bool,
   activeColor: React.PropTypes.string,
-  handleLikes: React.PropTypes.func
+  count: React.PropTypes.number.isRequired,
+  handleLikes: React.PropTypes.func,
+  isActive: React.PropTypes.bool
 }
+
+export default LikeCounter

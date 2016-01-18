@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 import {
   FONT_SIZE_LARGE
 }
-from '../../utils/styleGuide';
+from '../../utils/styleGuide'
 
 const Icon = ({
   name

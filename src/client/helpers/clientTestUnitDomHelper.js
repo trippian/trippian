@@ -8,8 +8,8 @@ export default () => {
 
   Object.keys(window).forEach((key) => {
     if (!(key in global)) {
-      global[key] = window[key]
-    }
+        global[key] = window[key]
+      }
   })
 
   console.log('finishing setting up dom helper')

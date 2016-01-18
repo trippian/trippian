@@ -11,13 +11,13 @@ const get = (url) => (
 // default to json format
 const post = (url, data) => {
   fetch(url, {
-      method: 'post',
-      headers: {
+    method: 'post',
+    headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(data)
-    })
+    body: JSON.stringify(data)
+  })
     .then((res) =>
       res.json()
     )
