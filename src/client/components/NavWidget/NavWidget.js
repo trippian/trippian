@@ -12,7 +12,7 @@ const NavWidget = ({
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
             </button>
-            <a className="navbar-brand" href="/"><img src="http://lorempixel.com/200/200/" alt="" /></a>
+            <a className="navbar-brand" href="/">Trippian</a>
         </div>
         <div className="collapse navbar-collapse navbar-ex1-collapse">
             <form className="navbar-form navbar-left" role="search">

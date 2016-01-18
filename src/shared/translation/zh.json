@@ -1,3 +1,128 @@
 {
-
+  "hello": {
+    "zh-cn": "您好"
+  },
+  "goodbye": {
+    "zh-cn": "再见"
+  },
+  "signin": {
+    "zh-cn": "签到"
+  },
+  "signup": {
+    "zh-cn": "注册"
+  },
+  "about": {
+    "zh-cn": "关于"
+  },
+  "careers": {
+    "zh-cn": "职业生涯"
+  },
+  "press": {
+    "zh-cn": "新闻"
+  },
+  "terms-privacy": {
+    "zh-cn": "条款和隐私"
+  },
+  "discover": {
+    "zh-cn": "发现"
+  },
+  "menu": {
+    "zh-cn": "菜单"
+  },
+  "submit": {
+    "zh-cn": "提交"
+  },
+  "destination": {
+    "zh-cn": "目的地"
+  },
+  "my-inquiries": {
+    "zh-cn": "我的咨询"
+  },
+  "inquiries": {
+    "zh-cn": "查询"
+  },
+  "inquiries": {
+    "zh-cn": "查询"
+  },
+  "search": {
+    "zh-cn": "搜索"
+  },
+  "become-trippian": {
+    "zh-cn": "成为 Trippian"
+  },
+  "already-member": {
+    "zh-cn": "已经是 Trippian 会员"
+  },
+  "where-do-want-go": {
+    "zh-cn": "你想去哪儿去了"
+  },
+  "where-you-going": {
+    "zh-cn": "你要去哪里"
+  },
+  "checkin": {
+    "zh-cn": "报到"
+  },
+  "checkout": {
+    "zh-cn": "查看"
+  },
+  "guest": {
+    "zh-cn": "来宾"
+  },
+  "just-for-weekend": {
+    "zh-cn": "只是周末"
+  },
+  "discover-new-places": {
+    "zh-cn": "发现离家很近新的，鼓舞人心的地方"
+  },
+  "explore-the-world": {
+    "zh-cn": "探索世界"
+  },
+  "see-where-people-travel": {
+    "zh-cn": "看到人们旅行，在世界各地"
+  },
+  "reviews": {
+    "zh-cn": "评论"
+  },
+  "bedroom": {
+    "zh-cn": "卧室"
+  },
+  "private-bathroom": {
+    "zh-cn": "私人浴室"
+  },
+  "public-bathroom": {
+    "zh-cn": "公共浴室"
+  },
+  "about-listing": {
+    "zh-cn": "此广告"
+  },
+  "request-to-book": {
+    "zh-cn": "请求调度"
+  },
+  "total": {
+    "zh-cn": "总"
+  },
+  "service-fee": {
+    "zh-cn": "服务费"
+  },
+  "per-night": {
+    "zh-cn": "每晚"
+  },
+  "contact-host": {
+    "zh-cn": "联系主机"
+  },
+  "cancel": {
+    "zh-cn": "取消"
+  },
+  "cancellation": {
+    "zh-cn": "消除"
+  },
+  "your-dream-awaits": {
+    "zh-cn": "你的梦想目的地等待您的光临。不要再等待了！"
+  },
+  "find-your-escape": {
+    "zh-cn": "寻找你的下一个梦想逃生"
+  },
+  "find-trip-around-world": {
+    "zh-cn": "寻找世界各地的当地的旅行伴侣"
+  }
 }

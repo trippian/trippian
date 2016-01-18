@@ -4,7 +4,7 @@ import React, {
 from 'react'
 
 import {
-  NavWidget
+  NavWidget, FooterWidget
 }
 from '../../components/index'
 
@@ -24,6 +24,7 @@ export default class App extends Component {
         <main className="row">
           {this.props.children}
         </main>
+        <FooterWidget />
       </div>
     )
   }

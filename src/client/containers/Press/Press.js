@@ -3,7 +3,7 @@ import React, {
 }
 from 'react'
 
-export default class About extends Component {
+export default class Press extends Component {
   constructor(props) {
     super(props)
   }
@@ -11,14 +11,13 @@ export default class About extends Component {
   render() {
     return (
       <div>
-        <h2>About</h2>
+        <h2>Press</h2>
         {name}
       </div>
     )
   }
 }
-About.propTypes = {
+Press.propTypes = {
   name: PropTypes.string
 }
-
-About.displayName = 'About Page'
+Press.displayName = 'PressPage'

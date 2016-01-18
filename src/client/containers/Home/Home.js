@@ -28,7 +28,7 @@ export default class Home extends Component {
                          <div className="section">
                              <div className="content-container-header text-center section-header">
                                  <h2>Popular Destinations</h2>
-                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, ad! <a href="" title="more">more</a></p>
+                                 <p> Lorem Again Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, ad! <a href="" title="more">more</a></p>
                              </div>
                              <div className="popular-destinations section-body clearfix">
                                  <div className="col-xs-12 col-sm-6 col-md-4 popular-destinations-item
