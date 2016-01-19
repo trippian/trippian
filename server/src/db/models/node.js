@@ -5,7 +5,7 @@ const _ = require('lodash');
 
 module.exports = {
   // get relationship between two nodes
-  getRelationships = function(nodeId, relationDirection, relationLabel) {
+  getRelationships: function(nodeId, relationDirection, relationLabel) {
     return new Promise(function(resolve) {
       return db.relationshipsAsync(nodeId, relationDirection, relationLabel)
         .then(function(relationship) {
