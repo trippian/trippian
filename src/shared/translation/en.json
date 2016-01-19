@@ -1,128 +1,129 @@
 {
-  "hello": {
-    "en-us": "hello"
-  },
-  "goodbye": {
-    "en-us": "goodbye"
-  },
-  "signin": {
-    "en-us": "sign in"
-  },
-  "signup": {
-    "en-us": "sign up"
-  },
-  "about": {
-    "en-us": "about"
-  },
-  "careers": {
-    "en-us": "careers"
-  },
-  "press": {
-    "en-us": "press"
-  },
-  "terms-privacy": {
-    "en-us": "terms and privacy"
-  },
-  "discover": {
-    "en-us": "discover"
-  },
-  "menu": {
-    "en-us": "menu"
-  },
-  "submit": {
-    "en-us": "submit"
-  },
-  "destination": {
-    "en-us": "destination"
-  },
+ "hello": {
+   "en-us": "hello"
+ },
+ "goodbye": {
+   "en-us": "goodbye"
+ },
+ "signin": {
+   "en-us": "sign in"
+ },
+ "signup": {
+   "en-us": "sign up"
+ },
+ "about": {
+   "en-us": "about"
+ },
+ "careers": {
+   "en-us": "careers"
+   },
+ "press": {
+   "en-us": "press"
+ },
+ "terms-privacy": {
+   "en-us": "terms and privacy"
+ },
+ "discover": {
+   "en-us": "discover"
+ },
+ "menu": {
+   "en-us": "menu"
+ },
+ "submit": {
+   "en-us": "submit"
+ },
+ "destination": {
+   "en-us": "destination"
+ },
   "my-inquiries": {
-    "en-us": "my inquiries"
-  },
+   "en-us": "my inquiries"
+ },
+   "inquiries": {
+   "en-us": "inquiries"
+ },
   "inquiries": {
-    "en-us": "inquiries"
-  },
-  "inquiries": {
-    "en-us": "inquiry"
-  },
-  "search": {
-    "en-us": "search"
-  },
-  "become-trippian": {
-    "en-us": "become a Trippian"
-  },
-  "already-member": {
-    "en-us": "already a Trippian member?"
-  },
-  "where-do-want-go": {
-    "en-us": "where do you want to go?"
-  },
-  "where-you-going": {
-    "en-us": "where are you going?"
-  },
-  "checkin": {
-    "en-us": "check in"
-  },
-  "checkout": {
-    "en-us": "check out"
-  },
-  "guest": {
-    "en-us": "guest"
-  },
-  "just-for-weekend": {
-    "en-us": "just for the weekend"
-  },
-  "discover-new-places": {
-    "en-us": "discover new, inspiring places close to home"
-  },
-  "explore-the-world": {
-    "en-us": "explore the world"
-  },
-  "see-where-people-travel": {
-    "en-us": "see where people are traveling, all around the world"
-  },
-  "reviews": {
-    "en-us": "reviews"
-  },
-  "bedroom": {
-    "en-us": "bedroom"
-  },
-  "private-bathroom": {
-    "en-us": "private bathroom"
-  },
-  "public-bathroom": {
-    "en-us": "private bathroom"
-  },
-  "about-listing": {
-    "en-us": "about this listing"
-  },
-  "request-to-book": {
-    "en-us": "request to book"
-  },
-  "total": {
-    "en-us": "total"
-  },
-  "service-fee": {
-    "en-us": "service fee"
-  },
-  "per-night": {
-    "en-us": "per night"
-  },
-  "contact-host": {
-    "en-us": "contact house"
-  },
-  "cancel": {
-    "en-us": "cancel"
-  },
-  "cancellation": {
-    "en-us": "cancellation"
-  },
-  "your-dream-awaits": {
-    "en-us": "Your dream destination is waiting for you to visit. Don't wait any longer!"
-  },
-  "find-your-escape": {
-    "en-us": "Find your next dream escape"
-  },
+   "en-us": "inquiry"
+ },
+ "search": {
+   "en-us": "search"
+ },
+ "become-trippian": {
+   "en-us": "become a Trippian"
+
+ },
+ "already-member": {
+   "en-us": "already a Trippian member?"
+ },
+ "where-do-want-go": {
+   "en-us": "where do you want to go?"
+ },
+ "where-you-going": {
+   "en-us": "where are you going?"
+ },
+ "checkin": {
+   "en-us": "check in"
+ },
+ "checkout": {
+   "en-us": "check out"
+ },
+ "guest": {
+   "en-us": "guest"
+ },
+ "just-for-weekend": {
+   "en-us": "just for the weekend"
+ },
+ "discover-new-places": {
+   "en-us": "discover new, inspiring places close to home"
+ },
+ "explore-the-world": {
+   "en-us": "explore the world"
+ },
+ "see-where-people-travel": {
+   "en-us": "see where people are traveling, all around the world"
+ },
+ "reviews": {
+   "en-us": "reviews"
+ },
+ "bedroom": {
+   "en-us": "bedroom"
+ },
+ "private-bathroom": {
+   "en-us": "private bathroom"
+ },
+ "public-bathroom": {
+   "en-us": "private bathroom"
+ },
+ "about-listing": {
+   "en-us": "about this listing"
+ },
+ "request-to-book": {
+   "en-us": "request to book"
+ },
+ "total": {
+   "en-us": "total"
+ },
+ "service-fee": {
+   "en-us": "service fee"
+ },
+ "per-night": {
+   "en-us": "per night"
+ },
+ "contact-host": {
+   "en-us": "contact house"
+ },
+ "cancel": {
+   "en-us": "cancel"
+ },
+ "cancellation": {
+   "en-us": "cancellation"
+ },
+ "your-dream-awaits": {
+   "en-us": "Your dream destination is waiting for you to visit. Don't wait any longer!"
+ },
+ "find-your-escape": {
+   "en-us": "Find your next dream escape"
+ },
   "find-trip-around-world": {
-    "en-us": "Find your local trip companion around the world"
-  }
+   "en-us": "Find your local trip companion around the world"
+ }
 }
