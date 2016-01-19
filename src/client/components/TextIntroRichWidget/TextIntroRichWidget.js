@@ -1,12 +1,11 @@
 import React from 'react'
 
 const TextIntroRichWidget = ({
-  name = 'TextIntroRichWidget'
+  content = 'Rich Content here ', expandable = false
 }) => {
   return (
     <div> 
-    <h3>Widget</h3>
-    {name}
+        {content}
     </div>
   )
 }

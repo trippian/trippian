@@ -1,12 +1,20 @@
 import React from 'react'
 
+import {
+  ReviewListItemWidget
+}
+from '../index'
+
 const ReviewListWidget = ({
   name = 'ReviewListWidget'
 }) => {
   return (
-    <div> 
-    <h3>Widget</h3>
-    {name}
+    <div className="section-body review-list">
+        <ReviewListItemWidget />
+        <ReviewListItemWidget />
+        <ReviewListItemWidget />
+        <ReviewListItemWidget />
+        <ReviewListItemWidget />
     </div>
   )
 }

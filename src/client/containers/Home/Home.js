@@ -4,16 +4,15 @@ import React, {
 from 'react'
 
 import {
-  JumbotronWidget, DestinationListWidget, TrippianListWidget
+  JumbotronWidget, DestinationListWidget, SectionHeaderWidget, TrippianListRoundWidget
 }
 from '../../components/index'
 
+const popDestTitle = 'Popular Destinations'
+const popDestSubTitle = 'Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet.'
+const popTrippianTitle = 'Popular Trippians'
+const popTrippianSubTitle = 'Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur.'
 
-const styles = {
-  backgroundImage: {
-    backgroundImage: 'url(http://lorempixel.com/800/400/city/)'
-  }
-}
 export default class Home extends Component {
   constructor(props) {
     super(props)
@@ -26,20 +25,13 @@ export default class Home extends Component {
          <div className="container main-content-container">
              <div className="col-sm-12 col-md-12 content-container">
                  <div className="section">
-                     <div className="content-container-header text-center section-header">
-                         <h2>Popular Destinations</h2>
-                         <p> Lorem Again Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, ad! <a href="" title="more">more</a></p>
-                     </div>
+                    <SectionHeaderWidget title={popDestTitle} subTitle={popDestSubTitle} />
                     <DestinationListWidget name="hello world" />
                   </div>
 
                  <div className="section">
-                   <div className="section-header text-center">
-                       <h2>Popular Trippians</h2>
-                       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, ad! <a href="" title="more">more</a></p>
-                   </div>
-                   <TrippianListWidget />
-
+                  <SectionHeaderWidget title={popTrippianTitle} subTitle={popTrippianSubTitle} />
+                  <TrippianListRoundWidget />
                  </div>
              </div>
          </div>
