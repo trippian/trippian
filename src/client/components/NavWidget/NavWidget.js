@@ -26,16 +26,11 @@ const NavWidget = ({
             </form>
             <ul className="nav navbar-nav navbar-right">
                 <li><Link to='become-a-trippian' className="btn btn-bordered">Become a Trippian</Link></li>
-                <li><Link to='trippian/212'>Trippian List</Link></li>
-                <li><Link to='trippian/212'>Trippian Detail</Link></li>
-                <li><Link to='destination/2'>Destination</Link></li>
-                <li><Link to='inquiry/2'>Inquiry</Link></li>
-                <li><Link to='inquiry'>Inquiry List</Link></li>
                 <li className="dropdown">
                     <a href="#" className="dropdown-toggle" data-toggle="dropdown">Menu <b className="caret"></b></a>
                     <ul className="dropdown-menu">
-                        <li><a href="#">Account</a></li>
-                        <li><a href="#"> Friends</a></li>
+                        <li><Link to='trippian-edit'>Edit My Profile</Link></li>
+                        <li><a href="#">Friends</a></li>
                         <li><a href="#">Logout</a></li>
                     </ul>
                 </li>

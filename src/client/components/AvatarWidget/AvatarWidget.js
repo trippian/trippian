@@ -1,12 +1,20 @@
 import React from 'react'
-
-export default ({
-  name = 'AvatarWidget'
+import {
+  Link
+}
+from 'react-router'
+const AvatarWidget = ({
+  link = 'http://trippian.com', imgSrc = 'http://lorempixel.com/200/200/people/', title = 'Avatar'
 }) => {
   return (
-    <div> 
-    <h3>Widget</h3>
-    {name}
-    </div>
+    <Link to={link}>
+        <div className="circle-image avatar">
+            <img src={imgSrc} alt={title} />
+        </div>
+    </Link>
   )
 }
+
+AvatarWidget.displayName = 'AvatarWidget'
+
+export default AvatarWidget

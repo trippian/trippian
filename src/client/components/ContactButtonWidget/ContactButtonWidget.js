@@ -1,13 +1,14 @@
 import React from 'react'
+import {
+  Link
+}
+from 'react-router'
 
 const ContactButtonWidget = ({
-  name = 'ContactButtonWidget'
+  to = 'contact', text = 'Contact'
 }) => {
   return (
-    <div> 
-    <h3>Widget</h3>
-    {name}
-    </div>
+    <Link to={to} className="btn btn-primary btn-lg">{text}</Link>
   )
 }
 ContactButtonWidget.displayName = 'ContactButtonWidget'

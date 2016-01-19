@@ -4,7 +4,7 @@ import React, {
 from 'react'
 
 import {
-  JumbotronWidget, DestinationListWidget, SectionHeaderWidget, TrippianListRoundWidget
+  JumbotronHomeWidget, DestinationListWidget, SectionHeaderWidget, TrippianListRoundWidget
 }
 from '../../components/index'
 
@@ -21,7 +21,7 @@ export default class Home extends Component {
   render() {
     return (
       <div id="home-page">
-       <JumbotronWidget/> 
+       <JumbotronHomeWidget/> 
          <div className="container main-content-container">
              <div className="col-sm-12 col-md-12 content-container">
                  <div className="section">
