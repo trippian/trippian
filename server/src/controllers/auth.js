@@ -6,11 +6,13 @@ module.exports = {
   facebookCallback: passport.authenticate('facebook', failureRedirect: '/'),
 
   logout: function(req, res) {
-
+    req.logout()
+    res.clearCookie('trippian cookie')
+    res.redirect('/')
   },
   // function that validates whether the user is logged in
   
-  validate: function(req, res) {
-
+  validate: function(req, res, next) {
+    
   }
 }

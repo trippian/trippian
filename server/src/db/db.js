@@ -1,10 +1,7 @@
-const Seraph = require('seraph');
-const Promise = require('bluebird');
+import Seraph from 'seraph';
+import Promise from 'bluebird';
+
 let config = require('../../../src/shared/config/config');
 let DATABASE_URI = process.env.GRAPHSTORY_URL || require('../../../src/shared/config/config').neo4j;
 
-let db = Seraph(DATABASE_URI);
-
-db = Promise.promisifyAll(db);
-
-module.exports = db;
+export let db = Promise.promisifyAll(Seraph(DATABASE_URI));

@@ -10,10 +10,9 @@ describe('config (global)', () => {
     const host = env !== 'production' ? 'http://localhost:3000' : 'http://www.trippian.com'
     expect(config.HOST).to.equal(host)
   })
-
-  it('should have S3_BUCKET field', () => {
-    expect(config.S3_BUCKET).to.be.a('string')
-  })
+   it('should have Port field', () => {
+    expect(config.PORT).to.be.a('number')
+  }) 
 
   it('should have AWS_ACCESS_KEY field', () => {
     expect(config.AWS_ACCESS_KEY).to.be.a('string')
@@ -23,12 +22,20 @@ describe('config (global)', () => {
     expect(config.AWS_SECRET_KEY).to.be.a('string')
   })
 
-  it('should have DATATBASE_URI field', () => {
+  it('should have S3_BUCKET field', () => {
+    expect(config.S3_BUCKET).to.be.a('string')
+  })
+
+  it('should have DATABASE_URI field', () => {
     expect(config.DATATBASE_URI).to.be.a('string')
   })
 
   it('should have GOOGLE_APP_ID field', () => {
     expect(config.GOOGLE_APP_ID).to.be.a('string')
+  })
+
+  it('should have FACEBOOK_APP_ID field', () => {
+    expect(config.FACEBOOK_APP_ID).to.be.a('string')
   })
 
 })

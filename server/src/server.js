@@ -1,6 +1,6 @@
-const app = require('./server-config.js');
+import app from './server-config.js';
 
-const port = process.env.PORT || 3000;
+let port = process.env.PORT || 3000;
 
 app.set('port', port);
 
