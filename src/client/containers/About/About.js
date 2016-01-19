@@ -20,3 +20,5 @@ export default class About extends Component {
 About.propTypes = {
   name: PropTypes.string
 }
+
+About.displayName = 'About Page'

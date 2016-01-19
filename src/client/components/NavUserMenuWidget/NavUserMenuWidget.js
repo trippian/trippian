@@ -1,7 +1,6 @@
 import React from 'react'
 
-export default class HelloWorld extends React.Component {
-
+export default class NavUserMenuWidget extends React.Component {
   constructor(props) {
     super(props)
   }
@@ -13,6 +12,7 @@ export default class HelloWorld extends React.Component {
   }
 }
 
-HelloWorld.propTypes = {
+NavUserMenuWidget.propTypes = {
   name: React.PropTypes.string
 }
+NavUserMenuWidget.displayName = 'NavUserMenuWidget'

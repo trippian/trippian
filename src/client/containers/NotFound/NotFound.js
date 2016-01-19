@@ -1,10 +1,24 @@
-import React from 'react'
-
-export default function NotFound() {
-  return (
-    <div className="container">
-      <h1>Doh! 404!</h1>
-      <p>These are <em>not</em> the droids you are looking for!</p>
-    </div>
-  )
+import React, {
+  Component, PropTypes
 }
+from 'react'
+
+export default class NotFound extends Component {
+  constructor(props) {
+    super(props)
+  }
+
+  render() {
+    return (
+      <div>
+        <h2>NotFound</h2>
+        {name}
+      </div>
+    )
+  }
+}
+NotFound.propTypes = {
+  name: PropTypes.string
+}
+
+NotFound.displayName = 'NotFound Page'
