@@ -1,12 +1,14 @@
 import React from 'react'
 
 const TrippianListItemWidget = ({
-  name = 'TrippianListItemWidget'
+  name = 'Amanda . Sydney'
 }) => {
   return (
-    <div> 
-    <h3>Widget</h3>
-    {name}
+    <div className="popular-trippians-item text-center">
+        <div className="circle-image">
+            <img src="http://lorempixel.com/200/200/people/" alt="" />
+        </div>
+        <h4>{name}</h4>
     </div>
   )
 }

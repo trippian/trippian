@@ -20,4 +20,4 @@ export default class Press extends Component {
 Press.propTypes = {
   name: PropTypes.string
 }
-Press.displayName = 'PressPage'
+Press.displayName = 'Press Page'

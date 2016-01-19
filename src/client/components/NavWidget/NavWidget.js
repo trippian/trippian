@@ -1,5 +1,8 @@
 import React from 'react'
-
+import {
+  Link
+}
+from 'react-router'
 const NavWidget = ({
   name = 'NavWidget'
 }) => {
@@ -22,11 +25,12 @@ const NavWidget = ({
                 <button type="submit" className="btn btn-default">Submit</button>
             </form>
             <ul className="nav navbar-nav navbar-right">
-                <li><a href="become-trippian.html" className="btn btn-bordered">Become a Trippian</a></li>
-                <li><a href="trippian.html" title="">Trippian</a></li>
-                <li><a href="destination.html" title="">Destination</a></li>
-                <li><a href="inquiry.html" title="">Inquiry</a></li>
-                <li><a href="become-trippian-edit.html" title="">Inquiries</a></li>
+                <li><Link to='become-a-trippian' className="btn btn-bordered">Become a Trippian</Link></li>
+                <li><Link to='trippian/212'>Trippian List</Link></li>
+                <li><Link to='trippian/212'>Trippian Detail</Link></li>
+                <li><Link to='destination/2'>Destination</Link></li>
+                <li><Link to='inquiry/2'>Inquiry</Link></li>
+                <li><Link to='inquiry'>Inquiry List</Link></li>
                 <li className="dropdown">
                     <a href="#" className="dropdown-toggle" data-toggle="dropdown">Menu <b className="caret"></b></a>
                     <ul className="dropdown-menu">
