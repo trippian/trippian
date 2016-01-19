@@ -8,12 +8,6 @@ import {
 }
 from '../../components/index'
 
-
-const styles = {
-  backgroundImage: {
-    backgroundImage: 'url(http://lorempixel.com/800/400/city/)'
-  }
-}
 export default class Home extends Component {
   constructor(props) {
     super(props)

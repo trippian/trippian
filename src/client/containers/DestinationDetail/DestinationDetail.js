@@ -3,6 +3,13 @@ import React, {
 }
 from 'react'
 
+import {
+  JumbotronDestinationWidget
+}
+
+from '../../components/index'
+
+
 export default class DestinationDetail extends Component {
   constructor(props) {
     super(props)
