@@ -4,7 +4,7 @@
 // from 'chai'
 
 // const app = require('../src/server-config.js');
-import { app } from '../src/server-config'
+import app from '../src/server-config'
 const request = require('supertest').agent(app.listen());
 
 describe('express server', function () {
