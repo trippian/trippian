@@ -8,7 +8,7 @@ module.exports = {
   },
   getUserById: function(id) {
     return new Promise(function(resolve) {
-      let cypher = 'match (user:User) where user.facebookId=' + id ' return user';
+      let cypher = 'match (user:User) where user.facebookId=' + id + ' return user';
       db.queryAsync(cypher)
         .then(function(user) {
           if (user) {
