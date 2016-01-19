@@ -1,0 +1,133 @@
+#trippian-edit-page {
+    .main-content-container {
+        margin-top: 80px;
+        @media screen and (max-width: 1200px) {
+            margin-top: 200px;
+        }
+        @media screen and (max-width: 450px) {
+            margin-top: 250px;
+        }
+        .inquiry-list {
+            .list-group-item {
+                display: inline-block;
+                width: 100%;
+                &.active {
+                    background-color: $primary-color-lighter;
+                }
+                .item-content-container {
+                    .item-detail-left {
+                        padding: 0;
+                        min-height: 24px;
+                        b {
+                            padding-right: 8px;
+                        }
+                    }
+                    .right-icons-container {
+                        padding: 0;
+                        min-height: 24px;
+                        .icon-right {
+                            padding: 0 8px;
+                            .fa-check {
+                                color: $brand-success;
+                            }
+                            .fa-trash {
+                                color: $gray-light;
+                            }
+                        }
+                    }
+                    .inquiry-item-detail {
+                        padding: 0;
+                        color: $gray-darker;
+                        h4 {
+                            font-weight: bold;
+                            margin-bottom: 8px;
+                            margin-top: 16px;
+                        }
+                    }
+                }
+            }
+        }
+        .content-container {
+            .youtube-video {
+                margin: 32px 0;
+                width: 100%;
+                min-height: 400px;
+                iframe {
+                    width: 100%;
+                    height: 100%;
+                    min-height: 400px;
+                }
+            }
+            .google-map {
+                width: 100%;
+                min-height: 400px;
+                margin: 32px 0;
+                iframe {
+                    width: 100%;
+                    height: 100%;
+                    min-height: 400px;
+                }
+            }
+            .review {
+                .section-body {
+                    .meta-info {
+                        font-size: 14px;
+                        font-style: italic;
+                        color: $secondary-text-color;
+                    }
+                }
+            }
+        }
+    }
+    .jumbotron {
+        max-height: 400px;
+        position: relative;
+        .full-length-container {
+            background-color: rgba(0, 0, 0, 0.2);
+            height: 100px;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            .container {
+                height: 100px;
+                // overflow: hidden;
+                .avatar {
+                    float: left;
+                    width: 200px;
+                    img {
+                        width: 150px;
+                        height: 150px;
+                        border: 5px solid white;
+                    }
+                }
+                .meta-info {
+                    float: left;
+                    @media screen and (max-width: 1200px) {
+                        width: 100%;
+                        margin: 0;
+                        color: black;
+                    }
+                    .left {
+                        float: left;
+                        width: 70%;
+                        min-width: 300px;
+                        padding-right: 16px;
+                    }
+                    .right {
+                        width: 20%;
+                        float: left;
+                        .btn {
+                            margin: 8px;
+                            margin-top: 26px;
+                        }
+                    }
+                    .text-intro {
+                        width: 100%;
+                        margin-left: 16px;
+                    }
+                    .star-rating {}
+                }
+            }
+        }
+    }
+}

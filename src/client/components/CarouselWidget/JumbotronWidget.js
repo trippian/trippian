@@ -1,8 +1,8 @@
 import React from 'react'
 
-const JumbotronWidget = () => {
-    return ( 
-     <div className="col-sm-12 col-md-6">
+const JumbotronHomeWidget = () => {
+  return (
+    <div className="col-sm-12 col-md-6">
          <div id="carousel-id" className="carousel slide" data-ride="carousel">
              <ol className="carousel-indicators">
                  <li data-target="#1" data-slide-to="0" className=""></li>
@@ -49,6 +49,6 @@ const JumbotronWidget = () => {
 }
 
 
-JumbotronWidget.displayName = 'JumbotronWidget'
+JumbotronHomeWidget.displayName = 'JumbotronHomeWidget'
 
-export default JumbotronWidget
+export default JumbotronHomeWidget

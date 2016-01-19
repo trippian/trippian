@@ -36,8 +36,9 @@ export default class TrippianDetail extends Component {
 
   render() {
     return (
-      <div id="trippian-profile-page">
-        <JumbotronTrippianWidget />
+      <div id="trippian - profile - page
+">
+        <JumbotronTrippianWidget isMetad />
         <div className="container main-content-container">
             <div className="col-sm-12 col-md-8 col-md-offset-2 content-container">
                 <div className="section">

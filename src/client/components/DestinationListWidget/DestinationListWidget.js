@@ -18,6 +18,9 @@ export default class DestinationListWidget extends Component {
         <DestinationListItemWidget />
         <DestinationListItemWidget />
         <DestinationListItemWidget />
+        <DestinationListItemWidget />
+        <DestinationListItemWidget />
+        <DestinationListItemWidget />
       </div>
     )
   }

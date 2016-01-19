@@ -4,7 +4,7 @@ import {
 }
 from 'react-router'
 import {
-  CircleImageWidget
+  CircleImageWidget, ContactButtonWidget
 }
 from '../index'
 
@@ -30,7 +30,7 @@ const TrippianListItemWidget = ({
             <i className="fa fa-star"></i>
             <i className="fa fa-star"></i>
         </span>
-            <a href="#" className="btn btn-primary">Contact</a>
+          <ContactButtonWidget />
         </div>
     </div>
   )
