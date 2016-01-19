@@ -27,4 +27,3 @@ export let schema = new GraphQLSchema({
     }
   })
 })
-

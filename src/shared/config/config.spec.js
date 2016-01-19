@@ -10,7 +10,7 @@ describe('config (global)', () => {
     const host = env !== 'production' ? 'http://localhost:3000' : 'http://www.trippian.com'
     expect(config.HOST).to.equal(host)
   })
-   it('should have Port field', () => {
+   it('should have PORT field', () => {
     expect(config.PORT).to.be.a('number')
   }) 
 
@@ -27,7 +27,7 @@ describe('config (global)', () => {
   })
 
   it('should have DATABASE_URI field', () => {
-    expect(config.DATATBASE_URI).to.be.a('string')
+    expect(config.DATABASE_URI).to.be.a('string')
   })
 
   it('should have GOOGLE_APP_ID field', () => {
