@@ -3,14 +3,14 @@
 // }
 // from 'chai'
 
-const app = require('../src/server-config.js');
+// const app = require('../src/server-config.js');
+import { app } from '../src/server-config'
 const request = require('supertest').agent(app.listen());
 
-describe('Hello from expressjs', function () {
-  it('should say "Hello from expressjs', function (done) {
+describe('express server', function () {
+  it("should return 404 for route that doesn't exist", function (done) {
     request
       .get('/')
-      .expect(200)
-      .expect('Hello from expressjs', done);
+      .expect(404, done());
   });
 });

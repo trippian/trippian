@@ -7,6 +7,7 @@ const config = require(configFile)
 // environment specfic configurations (secret), some data may not be needed now. Just for future features
 config.PORT = process.env.PORT || 3000
 config.DEBUG = process.env.DEBUG || true
+config.S3_BUCKET = process.env.S3_BUCKET || ''
 config.AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY || ''
 config.AWS_SECRET_KEY = process.env.AWS_SECRET_KEY|| ''
 config.DATATBASE_URI = process.env.GRAPHSTORY_URL || ''

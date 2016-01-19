@@ -1,8 +1,7 @@
-const express = require('express');
-const db = require('./db/db');
+import express from 'express';
+import db from './db/db';
 
-let app = express();
+export let app = express();
 
 require('./middleware/middleware.js')(app, express);
 
-module.exports = app;
