@@ -11,6 +11,7 @@ export CircleImageLinkWidget from './CircleImageLinkWidget/CircleImageLinkWidget
 export ContactButtonWidget from './ContactButtonWidget/ContactButtonWidget'
 export CrumbWidget from './CrumbWidget/CrumbWidget'
 export DestinationListItemWidget from './DestinationListItemWidget/DestinationListItemWidget'
+export DestinationListWidget from './DestinationListWidget/DestinationListWidget'
 export FacebookAvatarWidget from './FacebookAvatarWidget/FacebookAvatarWidget'
 export FacebookLoginWidget from './FacebookLoginWidget/FacebookLoginWidget'
 export FooterWidget from './FooterWidget/FooterWidget'

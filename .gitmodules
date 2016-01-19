@@ -1,3 +1,6 @@
 [submodule "wiki"]
 	path = wiki
 	url = https://github.com/vidaaudrey/trippian.wiki.git
+[submodule "docs"]
+	path = docs
+	url = https://github.com/trippian/trippian.wiki.git

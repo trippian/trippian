@@ -3,7 +3,7 @@ import React, {
 }
 from 'react'
 
-export default class NotFound extends Component {
+export default class DestinationDetail extends Component {
   constructor(props) {
     super(props)
   }
@@ -11,14 +11,14 @@ export default class NotFound extends Component {
   render() {
     return (
       <div>
-        <h2>NotFound</h2>
+        <h2>DestinationDetail</h2>
         {name}
       </div>
     )
   }
 }
-NotFound.propTypes = {
+DestinationDetail.propTypes = {
   name: PropTypes.string
 }
 
-NotFound.displayName = 'NotFound Page'
+DestinationDetail.displayName = 'DestinationDetail Page'

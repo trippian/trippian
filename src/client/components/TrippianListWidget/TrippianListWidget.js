@@ -1,12 +1,20 @@
 import React from 'react'
+import {
+  TrippianListItemWidget
+}
+from '../index'
 
 const TrippianListWidget = ({
   name = 'TrippianListWidget'
 }) => {
   return (
-    <div> 
-    <h3>Widget</h3>
-    {name}
+    <div className="popular-trippians section-body clearfix">
+        <TrippianListItemWidget />
+        <TrippianListItemWidget />
+        <TrippianListItemWidget />
+        <TrippianListItemWidget />
+        <TrippianListItemWidget />
+        <TrippianListItemWidget />
     </div>
   )
 }
