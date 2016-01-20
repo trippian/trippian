@@ -4,18 +4,26 @@ import db from '../db';
 
 export default {
   createUser: function(facebookId) {
-    return new Promise(function(resolve) {
-      let cypher = 'create (user:User {facebookId: ${facebookId}, trippian:false})';
-      db.queryAsync(cypher)
+    // return new Promise(function(resolve) {
+    //   let cypher = 'create (user:User {facebookId:' + facebookId + ', trippian:false})';
+    //   db.queryAsync(cypher)
+    //     .then(function(user) {
+    //       if (user) {
+    //         resolve(user);
+    //       } reject('user could not be created');
+    //     });
+    // });
+    return new Promise(function(resolve, reject) {
+      db.saveAsync({facebookId:facebookId, trippian:false})
         .then(function(user) {
           if (user) {
             resolve(user);
           } reject('user could not be created');
-        });
-    });
+        })
+    })
   },
   becomeTrippian: function(id, field, value) {
-    return new Promise(function(resolve) {
+    return new Promise(function(resolve, reject) {
       let cypher = 'match (user:User) where user.facebookId=' + id + ' set user.trippian=true return n';
       db.queryAsync(cypher)
         .then(function(user) {
@@ -26,7 +34,7 @@ export default {
     });
   },
   getUserById: function(id) {
-    return new Promise(function(resolve) {
+    return new Promise(function(resolve, reject) {
       let cypher = 'match (user:User) where user.facebookId=' + id + ' return user';
       db.queryAsync(cypher)
         .then(function(user) {

@@ -10,12 +10,11 @@ export default function(app) {
   // LANDING PAGE - GET POPULAR TRIPPIANS AND DESTINATIONS
   // app.get('/destination', getPopularDestinations);
   // app.get('/trippian', getPopularTrippians);
-  app.post('/users', createUser);
-  app.get('/destination', function(req, res) {
-    console.log('destination');
+  app.post('/users/:facebookId', createUser);
+  app.get('/destination/:destinationId', function(req, res) {
     res.send(destination);
   });
-  app.get('/trippian', function(req, res) {
+  app.get('/trippian/:userId', function(req, res) {
     res.send(trippian);
   })
 
