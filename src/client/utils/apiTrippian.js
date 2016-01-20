@@ -3,8 +3,8 @@ import {
   routeConfig
 }
 from '../config/appConfig'
-
 import config from '../../shared/config/config'
+
 export const getDestinationById = (id) => {
   const url = `${config.API_HOST}${routeConfig.destination}${id}`
   return api.get(url)
