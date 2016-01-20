@@ -16,7 +16,7 @@ var paths = {
   all: ['./_planning/static/**/*.*'],
   distcopy: ['./_planning/static/build/style.css', './_planning/static/build/img/*.*', './_planning/static/build/fonts/*.*'],
   dispath: './dist/',
-  dispathCleanFiles: ['./dist/**/*.*', '!./dist/index.html'],
+  dispathCleanFiles: ['./dist/**/*.*', '!./dist/index.html', '!./dist/*.png', '!./dist/*.svg', '!./dist/*.icon', '!./dist/*.xml', '!./dist/*.json'],
   serveFiles: ['./_planning/static/build/**/**/*.*', '!./_planning/static/build/**/*.html', '!./_planning/static/build/bootstrap-sass/', '!./_planning/static/build/font-awesome/'],
   serveImage: ['./_planning/static/build/img/*.*'],
   serveFonts: ['./_planning/static/build/fonts/**/*.*'],

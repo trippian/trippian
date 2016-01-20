@@ -8041,9 +8041,15 @@ footer {
   left: 0;
   z-index: 100;
   font-size: 18px;
-  font-weight: bold; }
+  font-weight: bold;
+  padding-top: 10px; }
   .navbar .navbar-header .navbar-brand {
     font-size: 60px; }
+    .navbar .navbar-header .navbar-brand img {
+      max-width: 350px;
+      margin-top: -30px; }
+  .navbar .navbar-nav li .navbar-form {
+    margin: 0; }
   .navbar .navbar-nav li a {
     padding: 8px !important; }
     .navbar .navbar-nav li a.btn-bordered {

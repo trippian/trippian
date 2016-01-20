@@ -8,9 +8,9 @@ function renderSearchForm() {
   return (
     <form className="navbar-form navbar-left" role="search">
         <div className="form-group">
-            <input type="text" className="form-control" placeholder="Search" />
+            <input type="text" className="form-control" placeholder="Search..." />
         </div>
-        <button type="submit" className="btn btn-default">Submit</button>
+        <button type="submit" className="btn btn-default">Go</button>
     </form>
   )
 }
@@ -27,11 +27,15 @@ const NavWidget = ({
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
             </button>
-            <a className="navbar-brand" href="/">Trippian</a>
+            <a className="navbar-brand" href="/">
+                <img src="logo.png" alt="Trippian"/>
+            </a>
         </div>
         <div className="collapse navbar-collapse navbar-ex1-collapse">
-            {currentPath === '/'  ? null : renderSearchForm() }
+
             <ul className="nav navbar-nav navbar-right">
+                <li>{currentPath === '/'  ? null : renderSearchForm() }</li>
+
                 <li><Link to='become-a-trippian' className="btn btn-bordered">Become a Trippian</Link></li>
                 <li className="dropdown">
                     <a href="#" className="dropdown-toggle" data-toggle="dropdown">Menu <b className="caret"></b></a>
