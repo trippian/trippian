@@ -22,7 +22,8 @@ export default class Home extends Component {
     return (
       <div id="home-page">
        <JumbotronHomeWidget/> 
-         <div className="container main-content-container">
+         <div className="container">
+            <div className="main-content-container">
              <div className="col-sm-12 col-md-12 content-container">
                  <div className="section">
                     <SectionHeaderWidget title={popDestTitle} subTitle={popDestSubTitle} />
@@ -34,6 +35,7 @@ export default class Home extends Component {
                   <TrippianListRoundWidget />
                  </div>
              </div>
+          </div>
          </div>
         </div>
     )

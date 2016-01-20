@@ -8,7 +8,7 @@ const ContactButtonWidget = ({
   to = 'contact', text = 'Contact'
 }) => {
   return (
-    <Link to={to} className="btn btn-primary btn-lg">{text}</Link>
+    <Link to={to} className="btn btn-primary">{text}</Link>
   )
 }
 ContactButtonWidget.displayName = 'ContactButtonWidget'

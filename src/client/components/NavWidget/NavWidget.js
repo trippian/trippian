@@ -3,8 +3,20 @@ import {
   Link
 }
 from 'react-router'
+
+function renderSearchForm() {
+  return (
+    <form className="navbar-form navbar-left" role="search">
+        <div className="form-group">
+            <input type="text" className="form-control" placeholder="Search" />
+        </div>
+        <button type="submit" className="btn btn-default">Submit</button>
+    </form>
+  )
+}
+
 const NavWidget = ({
-  name = 'NavWidget'
+  name = 'NavWidget', currentPath
 }) => {
   return (
     <nav className="navbar navbar-default" role="navigation">
@@ -18,12 +30,7 @@ const NavWidget = ({
             <a className="navbar-brand" href="/">Trippian</a>
         </div>
         <div className="collapse navbar-collapse navbar-ex1-collapse">
-            <form className="navbar-form navbar-left" role="search">
-                <div className="form-group">
-                    <input type="text" className="form-control" placeholder="Search" />
-                </div>
-                <button type="submit" className="btn btn-default">Submit</button>
-            </form>
+            {currentPath === '/'  ? null : renderSearchForm() }
             <ul className="nav navbar-nav navbar-right">
                 <li><Link to='become-a-trippian' className="btn btn-bordered">Become a Trippian</Link></li>
                 <li className="dropdown">

@@ -5,7 +5,7 @@ import {
 from 'react-router'
 
 import {
-  ContactButtonWidget
+  ContactButtonWidget, StarRatingWidget
 }
 from '../index'
 
@@ -36,12 +36,7 @@ const renderMetaArea = (isNoContact) => {
                 <div className="meta-info">
                     <div className="left">
                         <h2>John Smith</h2>
-                        <span className="star-rating">
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                        </span>
+                        <StarRatingWidget rating="2" />
                         <span className="text-intro">
                             Paris, Sydney. Lorem ipsum
                         </span>
