@@ -1,8 +1,28 @@
-const express = require('express');
-const AWS_S3 = require('../controllers/aws.js');
+import express from 'express';
+import { getPopularDestinations } from '../controllers/destinationController';
+import { createUser, getPopularTrippians } from '../controllers/userController';
+import { getSignedRequest } from '../controllers/aws';
+// import { authController } from '../controllers/auth';
+import destination from '../../../_planning/json-data-format/destination.json';
+import trippian from '../../../_planning/json-data-format/trippian.json';
 
-module.exports = function(app) {
-  app.get('/auth/google')
-  app.get('/auth/facebook')
-  
+export default function(app) {
+  // LANDING PAGE - GET POPULAR TRIPPIANS AND DESTINATIONS
+  // app.get('/destination', getPopularDestinations);
+  // app.get('/trippian', getPopularTrippians);
+  app.post('/users', createUser);
+  app.get('/destination', function(req, res) {
+    console.log('destination');
+    res.send(destination);
+  });
+  app.get('/trippian', function(req, res) {
+    res.send(trippian);
+  })
+
+  // FACEBOOK AUTH
+  // app.get('/auth/facebook', authController.facebook);
+  // app.get('/auth/facebook/callback', authController.facebookCallback, authController.validate);
+
+  // AMAZON S3
+  app.get('/signS3', getSignedRequest);
 }

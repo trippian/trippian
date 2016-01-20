@@ -1,10 +1,18 @@
-const Promise = require('bluebird');
-const _ = require('lodash');
-const db = require('../db');
+import Promise from 'bluebird';
+import _ from 'lodash';
+import db from '../db';
 
-module.exports = {
-  createUser: function(username) {
-    
+export default {
+  createUser: function(facebookId) {
+    return new Promise(function(resolve) {
+      let cypher = 'create (user:User {facebookId: ${facebookId}, trippian:false})';
+      db.queryAsync(cypher)
+        .then(function(user) {
+          if (user) {
+            resolve(user);
+          } reject('user could not be created');
+        });
+    });
   },
   becomeTrippian: function(id, field, value) {
     return new Promise(function(resolve) {
@@ -52,6 +60,4 @@ module.exports = {
         });
     });
   }
-
-
 }

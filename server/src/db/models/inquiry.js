@@ -1,7 +1,7 @@
-const Promise = require('bluebird');
-const db = require('../db');
+import Promise from 'bluebird';
+import db from '../db'
 
-module.exports = {
+export default {
   // function for a user to create an inquiry
   createInquiry = function(trippeeId, trippianId) {
     return new Promise(function(resolve) {

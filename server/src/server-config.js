@@ -3,6 +3,8 @@ import db from './db/db';
 
 let app = express();
 
-require('./middleware/middleware.js')(app, express);
+import middleware from './middleware/middleware';
 
-module.exports = app;
+middleware(app, express);
+
+export default app;
