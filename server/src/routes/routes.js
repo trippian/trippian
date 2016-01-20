@@ -12,7 +12,6 @@ export default function(app) {
   // app.get('/trippian', getPopularTrippians);
   app.post('/users', createUser);
   app.get('/destination', function(req, res) {
-    console.log('destination');
     res.send(destination);
   });
   app.get('/trippian', function(req, res) {

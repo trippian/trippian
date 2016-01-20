@@ -1,4 +1,4 @@
-import { urlencoded, json } from 'body-parser';
+import { json, urlencoded } from 'body-parser';
 import { join } from 'path';
 import { errorHandler, errorLogger } from './utils';
 import Router from '../routes/routes';
@@ -10,8 +10,9 @@ export default function (app, express) {
   let router = express.Router();
 
   app.use(morgan('dev'));
-  app.use(urlencoded({extended: true}));
   app.use(json());
+  app.use(urlencoded({extended: true}));
+
   // app.use(express.static(join(__dirname, 'dist')));
 
   // graph ql route => we will use this later

@@ -1,9 +1,8 @@
 import express from 'express';
 import db from './db/db';
+import middleware from './middleware/middleware';
 
 let app = express();
-
-import middleware from './middleware/middleware';
 
 middleware(app, express);
 
