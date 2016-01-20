@@ -5,8 +5,8 @@ const renderItem = () => {
 }
 const renderExpanded = () => {
   return (
-    <div class="inquiry-item-detail col-sm-12 col-md-12">
-           <span class="text-muted">
+    <div className="inquiry-item-detail col-sm-12 col-md-12">
+           <span className="text-muted">
             3 days, 2 people, Jan. 2 ~ Jan. 5
            </span>
            <h4>Contact Info</h4>
