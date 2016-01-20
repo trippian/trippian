@@ -20,7 +20,9 @@ var paths = {
   serveFiles: ['./_planning/static/build/**/**/*.*', '!./_planning/static/build/**/*.html', '!./_planning/static/build/bootstrap-sass/', '!./_planning/static/build/font-awesome/'],
   serveImage: ['./_planning/static/build/img/*.*'],
   serveFonts: ['./_planning/static/build/fonts/**/*.*'],
-  serveStyles: './_planning/static/build/style.css'
+  serveStyles: './_planning/static/build/style.css',
+  dist: ['./dist/**/*.*', '!./dist/index.html'],
+  deploy: './deploy/'
 };
 
 
@@ -64,6 +66,11 @@ gulp.task('copy', function () {
     .pipe(gulp.dest(paths.dispath + 'fonts/'));
   gulp.src(paths.serveStyles)
     .pipe(gulp.dest(paths.dispath));
+});
+
+gulp.task('copyd', function () {
+  gulp.src(paths.dist)
+    .pipe(gulp.dest(paths.deploy));
 });
 
 gulp.task('default', ['serve']);

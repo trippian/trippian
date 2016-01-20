@@ -8057,6 +8057,9 @@ footer {
 #home-page .main-content-container {
   margin: 32px 0 50px 0; }
 
+#home-page .popular-destinations .popular-destinations-item:hover {
+  cursor: pointer; }
+
 #home-page .popular-destinations .popular-destinations-item a {
   display: inline-block;
   width: 100%;
@@ -8081,6 +8084,8 @@ footer {
   height: 232px;
   float: left;
   margin: 1%; }
+  #home-page .popular-trippians .popular-trippians-item:hover {
+    cursor: pointer; }
   @media screen and (max-width: 600px) {
     #home-page .popular-trippians .popular-trippians-item {
       width: 46% !important; } }

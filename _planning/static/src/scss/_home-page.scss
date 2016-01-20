@@ -5,6 +5,9 @@
     }
     .popular-destinations {
         .popular-destinations-item {
+            &:hover {
+                cursor: pointer;
+            }
             a {
                 display: inline-block;
                 width: 100%;
@@ -27,6 +30,9 @@
         // display: flex;
         // justify-content: center;
         .popular-trippians-item {
+            &:hover {
+                cursor: pointer;
+            }
             width: 30% !important;
             width: 180px;
             height: 232px;

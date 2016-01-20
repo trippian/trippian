@@ -61,3 +61,6 @@ babel-node server/src/server.js --presets es2015
 visit: [http://localhost:4000/api/destination/123](http://localhost:4000/api/destination/123)
 or [http://localhost:4000/api/trippian/123](http://localhost:4000/api/trippian/123)
 
+### Deploy 
+Run `gulp copyd` to copy all asset files to deploy folder. 
+
