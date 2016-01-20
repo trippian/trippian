@@ -1,29 +1,40 @@
 {
   "destinations":[
     {
-      "name": "San Francisco, California",
-      "image": "http://lorempixel.com/400/200/animals/"
+      "destinationName": "San Francisco, California",
+      "destinationImage": "http://lorempixel.com/400/200/animals/",
+      "id":1
     },
     {
-      "name": "Portland, Oregon",
-      "image": "http://lorempixel.com/400/200/animals/"
+      "destinationName": "Portland, Oregon",
+      "destinationImage": "http://lorempixel.com/400/200/animals/",
+      "id":2
     },
   ],
   "trippians": [
     {
-      "name": "Lorem ipsum Est est consectetur adipisicing anim sint.",
+      "name": "Joe Lagasse",
+      "slogan": "lalalal",
       "profilePicture": "http://lorempixel.com/400/200/animals/",
-      "rating": 5
+      "averageRating": 5,
+      "contactPreference": "you can contact me at u know",
+      "id":1
     },
     {
-      "name": "Lorem ipsum Est est consectetur adipisicing anim sint.",
+      "name": "desperate elli",
+      "slogan": "lalalal",
       "profilePicture": "http://lorempixel.com/400/200/animals/",
-      "rating": 5
+      "averageRating": 5,
+      "contactPreference": "call me pls....",
+      "id":2
     },
     {
-      "name": "Lorem ipsum Est est consectetur adipisicing anim sint.",
+      "name": "creepy Andy",
+      "slogan": "lalala",
       "profilePicture": "http://lorempixel.com/400/200/animals/",
-      "rating": 5
+      "averageRating": 5,
+      "contactPreference": "call me bae",
+      "id":3
     }
   ]
 }
