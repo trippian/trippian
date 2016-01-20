@@ -1,4 +1,4 @@
-import { json, urlencoded } from 'body-parser'
+import { json } from 'body-parser'
 import { join } from 'path'
 import { errorHandler, errorLogger } from './utils'
 import Router from '../routes/routes'
@@ -18,7 +18,7 @@ export default function (app, express) {
   app.use(morgan('dev'))
   app.use(json())
 
-  app.use(express.static(join(__dirname, 'deploy')));
+  app.use(express.static(join(__dirname, '../../../deploy')))
 
   // graph ql route => we will use this later
   // app.use('/api', graphqlHTTP({schema: MyGraphQLSchema, graphiql: true }));
