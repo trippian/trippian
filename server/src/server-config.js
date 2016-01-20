@@ -1,7 +1,10 @@
 import express from 'express';
 import db from './db/db';
 
-export let app = express();
+let app = express();
 
-require('./middleware/middleware.js')(app, express);
+import middleware from './middleware/middleware';
 
+middleware(app, express);
+
+export default app;

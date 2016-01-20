@@ -1,21 +1,33 @@
-import bodyParser from 'body-parser';
-import path from 'path';
-import utils from './utils';
-import graphqlHTTP from 'express-graphql';
-import MyGraphQLSchema from '../graphQL/graphQLSchema';
+import { urlencoded, json } from 'body-parser';
+import { join } from 'path';
+import { errorHandler, errorLogger } from './utils';
+import Router from '../routes/routes';
+import morgan from 'morgan';
+// import graphqlHTTP from 'express-graphql';
+// import MyGraphQLSchema from '../graphQL/graphQLSchema';
 
-module.exports = function (app, express) {
+export default function (app, express) {
+  let router = express.Router();
 
-  app.use(bodyParser.urlencoded({extended: true}));
-  app.use(bodyParser.json());
-  // app.use(express.static(path.join(__dirname, 'dist')));
+  app.use(morgan('dev'));
+  app.use(urlencoded({extended: true}));
+  app.use(json());
+  // app.use(express.static(join(__dirname, 'dist')));
 
-  app.use('/api', graphqlHTTP({schema: MyGraphQLSchema, graphiql: true }));
+  // graph ql route => we will use this later
+  // app.use('/api', graphqlHTTP({schema: MyGraphQLSchema, graphiql: true }));
+  // app.use('/', function(req, res) {
+  //   res.send('Hello');
+  // });
 
-   app.use('*', function(req, res) {
+  app.use('/api', router);
+
+  app.use('*', function(req, res) {
     res.status(404).send('404: Page not found');
   });
 
-  app.use(utils.errorHandler);
-  app.use(utils.errorLogger);
+  Router(router);
+
+  app.use(errorHandler);
+  app.use(errorLogger);
 }

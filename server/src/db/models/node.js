@@ -1,9 +1,7 @@
-const Promise = require('bluebird');
-const User = require('./user');
-const db = require('../db');
-const _ = require('lodash');
+import Promise from 'bluebird';
+import db from '../db';
 
-module.exports = {
+export default {
   // get relationship between two nodes
   getRelationships: function(nodeId, relationDirection, relationLabel) {
     return new Promise(function(resolve) {

@@ -1,7 +1,7 @@
-const Promise = require('bluebird');
-const db = require('../db');
+import Promise from 'bluebird';
+import db from '../db';
 
-module.exports = {
+export default {
   // function that creates a new trip node and adds a POSTED relationship between a user and the trip
   createNewTrip: function(userId) {
     return new Promise(function(resolve) {
