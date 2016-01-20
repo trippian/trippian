@@ -1,4 +1,5 @@
 {
   "HOST": "http://www.trippian.com",
-  "S3_BUCKET": "TrippianBuket"
+  "S3_BUCKET": "TrippianBuket",
+  "API_HOST": "http://www.trippian.com/api/"
 }
