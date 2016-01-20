@@ -54,4 +54,10 @@ npm run commit
 git push origin develop -f # force push to your remote branch 
 ```
 
+### Serve API:
+```
+babel-node server/src/server.js --presets es2015
+```
+visit: [http://localhost:4000/api/destination/123](http://localhost:4000/api/destination/123)
+or [http://localhost:4000/api/trippian/123](http://localhost:4000/api/trippian/123)
 
