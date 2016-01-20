@@ -3,11 +3,15 @@ import {
   Link
 }
 from 'react-router'
+import {
+  InquiryAddFormWidget as appConfig
+}
+from '../../config/appConfig'
 
-const InquiryAddForm = () => {
+const InquiryAddFormWidget = () => {
   return (
     <form action="" method="POST" role="form">
-        <legend>Submit Inquiry</legend>
+        <legend>{appConfig.formTitle}</legend>
         <div className="form-group">
             <label>Name</label>
             <input type="text" className="form-control" id="" placeholder="Name" />
@@ -44,6 +48,6 @@ const InquiryAddForm = () => {
 }
 
 
-InquiryAddForm.displayName = 'InquiryAddForm'
+InquiryAddFormWidget.displayName = 'InquiryAddFormWidget'
 
-export default InquiryAddForm
+export default InquiryAddFormWidget

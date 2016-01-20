@@ -4,6 +4,11 @@ import {
 }
 from 'react-router'
 
+import {
+  JumbotronInquiryWidget as appConfigJumbotron
+}
+from '../../config/appConfig'
+
 const styles = {
   backgroundImage: {
     backgroundImage: 'url(http://lorempixel.com/800/400/city/)'
@@ -20,8 +25,8 @@ const JumbotronInquiryWidget = ({
         <div className = "container" >
           <div className="col-sm-12 col-md-8 col-md-offset-2 text-center">
 
-            <h1>{title}</h1> 
-            <p>{subTitle}</p>
+            <h1>{appConfigJumbotron.title}</h1> 
+            <p>{appConfigJumbotron.subTitle}</p>
           </div>
         < /div> 
         <div className="full-length-container">
