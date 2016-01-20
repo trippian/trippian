@@ -24,7 +24,7 @@ const JumbotronHomeWidget = () => {
         className = "form-inline"
         role = "form" >
         <div className="form-group">
-      <label className="sr-only">search for destinations</label> < input type = "text" className = "form-contro" placeholder = {appConfigSearch.placeholderText} / >
+      <label className="sr-only">search for destinations</label> < input type = "text" className = "form-control" placeholder = {appConfigSearch.placeholderText} / >
    < /div> 
    < button type = "submit"
     className = "btn btn-primary" > {appConfigSearch.searchButtonText} < /button> < /form >
