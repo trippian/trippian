@@ -3,6 +3,7 @@ import {
   Link
 }
 from 'react-router'
+
 const AvatarWidget = ({
   link = 'http://trippian.com', imgSrc = 'http://lorempixel.com/200/200/people/', title = 'Avatar'
 }) => {
