@@ -27,14 +27,14 @@ describe('express server', function() {
 describe('post request to users/:facebookId', function() {
   it('should create user and return user object', function(done) {
     request
-      .post('/users/1')
+      .post('/api/users/1')
       .expect(200)
       .expect('Content-Type', /json/, done());
   });
 
   it('object should contain properties', function(done) {
     request
-      .post('/users/1')
+      .post('/api/users/1')
       .expect(200)
       .end(function(err, res) {
         res.body.should.have.property('facebookId');
@@ -48,7 +48,7 @@ describe('post request to users/:facebookId', function() {
 describe('/destination/:destinationId', function() {
   it('should return an object', function(done) {
     request
-      .get('/destination/1')
+      .get('/api/destination/1')
       .expect(200)
       .end(function(err, res) {
         expect(res.body).to.be.an('object');
@@ -58,7 +58,7 @@ describe('/destination/:destinationId', function() {
 
   it('should have appropriate properties', function(done) {
     request
-      .get('/destination/1')
+      .get('/api/destination/1')
       .end(function(err, res) {
         res.body.should.have.property('destinationName');
       });
@@ -69,7 +69,7 @@ describe('/destination/:destinationId', function() {
 describe('/trippian/:trippianId', function() {
   it('should return an object', function(done) {
     request
-      .get('/trippian/1')
+      .get('/api/trippian/1')
       .expect(200)
       .end(function(err, res) {
         expect(res.body).to.be.an('object');
@@ -79,7 +79,7 @@ describe('/trippian/:trippianId', function() {
 
   it('should have appropriate properties', function(done) {
     request
-      .get('/trippian/1')
+      .get('/api/trippian/1')
       .expect(200)
       .end(function(err, res) {
         res.body.should.have.property('name');
