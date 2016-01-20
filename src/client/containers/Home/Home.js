@@ -26,12 +26,12 @@ export default class Home extends Component {
             <div className="main-content-container">
              <div className="col-sm-12 col-md-12 content-container">
                  <div className="section">
-                    <SectionHeaderWidget title={appConfig.popularDestinations.title} subTitle={homePage.popularDestinations.subTitle} />
+                    <SectionHeaderWidget title={appConfig.popularDestinations.title} subTitle={appConfig.popularDestinations.subTitle} />
                     <DestinationListWidget name="hello world" />
                   </div>
-
+  
                  <div className="section">
-                  <SectionHeaderWidget title={appConfig.popularTrippians.title} subTitle={homePage.popularTrippians.subTitle} />
+                  <SectionHeaderWidget title={appConfig.popularTrippians.title} subTitle={appConfig.popularTrippians.subTitle} />
                   <TrippianListRoundWidget />
                  </div>
              </div>

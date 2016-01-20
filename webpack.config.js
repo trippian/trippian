@@ -1,9 +1,9 @@
 function getEntrySources(sources) {
   if (process.env.NODE_ENV !== 'production') {
-    sources.push('webpack-dev-server/client?http://localhost:8080');
-    sources.push('webpack/hot/only-dev-server');
+    sources.push('webpack-dev-server/client?http://localhost:8080')
+    sources.push('webpack/hot/only-dev-server')
   }
-  return sources;
+  return sources
 }
 
 module.exports = {
@@ -16,7 +16,7 @@ module.exports = {
   module: {
     preLoaders: [{
       test: /\.json$/,
-      loader: 'json-loader',
+      loader: 'json-loader'
     }, {
       test: /\.jsx?$/,
       exclude: /(node_modules|bower_components)/,
@@ -47,4 +47,4 @@ module.exports = {
     }]
   }
 
-};
+}

@@ -6,7 +6,7 @@ const _ = require('lodash')
 describe('index', function () {
   describe('helloMaker', function () {
     it('return `Hello, world`', function () {
-        expect(index.helloMaker()).to.equal('Hello, world!')
-      })
+      expect(index.helloMaker()).to.equal('Hello, world!')
+    })
   })
 })
