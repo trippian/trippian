@@ -11,7 +11,7 @@ export default function (app, express) {
 
   app.use(morgan('dev'));
   app.use(json());
-  app.use(urlencoded({extended: true}));
+  // app.use(urlencoded({extended: true}));
 
   // app.use(express.static(join(__dirname, 'dist')));
 
@@ -21,7 +21,7 @@ export default function (app, express) {
   //   res.send('Hello');
   // });
 
-  app.use('/api', router);
+  app.use('/', router);
 
   app.use('*', function(req, res) {
     res.status(404).send('404: Page not found');

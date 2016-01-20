@@ -18,7 +18,7 @@ export const getPopularTrippians = function(req, res, next) {
 }
 
 export const createUser = function(req, res, next) {
-  let facebookId = req.body.facebookId;
+  let facebookId = req.params.facebookId;
 
   User.createUser(facebookId)
     .then(function(user) {
