@@ -1,19 +1,23 @@
 {
   "destinationName": "Lorem ipsum dolor.",
   "destinationDescription": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem eos deleniti ratione libero possimus eum, modi dolor odit quaerat explicabo animi quae quos minus est, maxime voluptas facere ipsa laboriosam!",
+  "whyVisit": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...",
   "destinationImage": "http://lorempixel.com/400/200/animals/",
-  "trips": [
+  "id":1,
+  "popularTrips": [
     {
       "title": "Lorem ipsum Deserunt aute sunt do laborum.",
-      "rating": 4,
-      "numberOfRatings": 100,
-      "summary": "Lorem ipsum Dolore nostrud aliqua in laborum."
+      "netVote": 70,
+      "totalVotes": 100,
+      "summary": "Lorem ipsum Dolore nostrud aliqua in laborum.",
+      "id":1
     },
     {
       "title": "Lorem ipsum Deserunt aute sunt do laborum.",
-      "rating": 5,
-      "numberOfRatings": 200,
-      "summary": "Lorem ipsum Dolore nostrud aliqua in laborum."
+      "netVote": 180,
+      "totalVotes": 200,
+      "summary": "Lorem ipsum Dolore nostrud aliqua in laborum.",
+      "id":2
     }
   ]
 }

@@ -1,20 +1,45 @@
 {
   "name": "Lorem ipsum dolor.",
-  "contactInfo": "Lorem ipsum Commodo occaecat consectetur incididunt.",
-  "intro": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem eos deleniti ratione libero possimus eum, modi dolor odit quaerat explicabo animi quae quos minus est, maxime voluptas facere ipsa laboriosam!",
+  "contactPreference": "Lorem ipsum Commodo occaecat consectetur incididunt.",
+  "location": "San Francisco, CA",
+  "email": "test@test.com",
+  "slogan": "i love life",
+  "website": "google.com",
+  "shortBio": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem eos deleniti ratione libero possimus eum, modi dolor odit quaerat explicabo animi quae quos minus est, maxime voluptas facere ipsa laboriosam!",
   "profilePicture": "http://lorempixel.com/400/200/animals/",
+  "averageRating": 5,
+  "id":1,
+  "facebookId":1,
   "trips": [
     {
       "title": "Lorem ipsum Consectetur deserunt id dolore.",
-      "rating": 4,
-      "numberOfRatings": 100,
-      "details": "Lorem ipsum Incididunt dolore ad exercitation voluptate cupidatat in occaecat velit dolore ut amet dolor ex anim amet labore adipisicing velit deserunt Ut incididunt aute ut culpa commodo."
+      "netVote": 100,
+      "totalVotes": 100,
+      "summary": "Un título tentativo",
+      "details": "Lorem ipsum Incididunt dolore ad exercitation voluptate cupidatat in occaecat velit dolore ut amet dolor ex anim amet labore adipisicing velit deserunt Ut incididunt aute ut culpa commodo.",
+      "id":1
     },
     {
       "title": "Lorem ipsum Consectetur deserunt id dolore.",
-      "rating": 4,
-      "numberOfRatings": 100,
-      "details": "Lorem ipsum Incididunt dolore ad exercitation voluptate cupidatat in occaecat velit dolore ut amet dolor ex anim amet labore adipisicing velit deserunt Ut incididunt aute ut culpa commodo."
+      "netVote": 80,
+      "totalVotes": 100,
+      "summary": "Un título tentativo",
+      "details": "Lorem ipsum Incididunt dolore ad exercitation voluptate cupidatat in occaecat velit dolore ut amet dolor ex anim amet labore adipisicing velit deserunt Ut incididunt aute ut culpa commodo.",
+      "id":2
     }
+    ],
+    "reviews": [
+      {
+        "rating": 5,
+        "review": "Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc., li tot Europa usa li sam vocabularium. Li lingues differe solmen in li grammatica, li pronunciation e li plu commun vocabules...",
+        "timestamp": "",
+        "id":1
+      },
+      {
+        "rating": 4,
+        "review": "I loved Lorem ipsum dolor so much. She is the kindest person I have met in my life",
+        "timestamp": "",
+        "id":2
+      }
     ]
 }
