@@ -10,9 +10,10 @@ describe('config (global)', () => {
     const host = env !== 'production' ? 'http://localhost:3000' : 'http://www.trippian.com'
     expect(config.HOST).to.equal(host)
   })
-   it('should have PORT field', () => {
+
+  it('should have PORT field', () => {
     expect(config.PORT).to.be.a('number')
-  }) 
+  })
 
   it('should have AWS_ACCESS_KEY field', () => {
     expect(config.AWS_ACCESS_KEY).to.be.a('string')
