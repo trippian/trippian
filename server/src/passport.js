@@ -1,16 +1,17 @@
-const FacebookStrategy = require('passport-facebook').Strategy;
-const User = require('./db/models/user');
-const config = require('./config');
+import facebook from 'passport-facebook'
+import User from './db/models/user'
+import config from '../src/config/config'
+const FacebookStrategy = facebook.Strategy
 
-module.exports = function(passport) {
+export default function(passport) {
   passport.serializeUser(function(user, done) {
-    done(null, user);
-  });
+    done(null, user)
+  })
 
   passport.deserializeUser(function(user, done) {
     // after we write user model, we will search for that user node
-    done(null, user);
-  });
+    done(null, user)
+  })
 
   passport.use(new FacebookStrategy({
     clientID: config.FACEBOOK_APP_ID,
@@ -20,8 +21,8 @@ module.exports = function(passport) {
   function(token, refreshToken, profile, done) {
     process.nextTick(function() {
       // find user node in database based on their facebookID
-      return done(null, profile);
-    });
+      return done(null, profile)
+    })
   }
-  ));
+  ))
 }

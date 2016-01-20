@@ -43,4 +43,12 @@ describe('config (global)', () => {
     expect(config.FACEBOOK_APP_ID).to.be.a('string')
   })
 
+  it('should have FACEBOOK_APP_SECRET field', () => {
+    expect(config.FACEBOOK_APP_SECRET).to.be.a('string')
+  })
+
+  it('should have FACEBOOK_CALLBACK_URL filed', () => {
+    expect(config.FACEBOOK_CALLBACK_URL).to.be.a('string')
+  })
+
 })
