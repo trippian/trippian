@@ -8,6 +8,11 @@ import {
 }
 from '../../components/index'
 
+import {
+  getTrippianById
+}
+from '../../utils/apiTrippian'
+
 function dummyRichTextData() {
   return (
     <div>
@@ -32,6 +37,12 @@ function dummyRichTextData() {
 export default class TrippianDetail extends Component {
   constructor(props) {
     super(props)
+  }
+
+  componentDidMount() {
+    getTrippianById(123).then((data) => {
+      console.log('got data', data)
+    })
   }
 
   render() {
