@@ -4,7 +4,7 @@ import React, {
 from 'react'
 
 import {
-  JumbotronInquiryWidget, InquiryAddForm
+  JumbotronInquiryWidget, InquiryAddFormWidget
 }
 from '../../components/index'
 
@@ -19,7 +19,7 @@ export default class InquiryAdd extends Component {
         <JumbotronInquiryWidget />
         <div className="container main-content-container">
           <div className="col-sm-12 col-md-8 col-md-offset-2 content-container">
-            <InquiryAddForm />
+            <InquiryAddFormWidget />
           </div>
         </div>
       </div>

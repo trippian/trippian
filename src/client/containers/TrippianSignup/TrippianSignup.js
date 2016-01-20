@@ -4,6 +4,10 @@ import React, {
 from 'react'
 
 import {
+  becomeATrippianPage as appConfig
+}
+from '../../config/appConfig'
+import {
   JumbotronTrippianWidget, TrippianSignupFormWidget
 }
 from '../../components/index'
@@ -16,12 +20,12 @@ export default class TrippianSignup extends Component {
   render() {
     return (
       <div id="trippian-edit-page">
-        <JumbotronTrippianWidget title='Becoming a Trippian' isNoContact isTitled />
+        <JumbotronTrippianWidget title={appConfig.title} subTitle={appConfig.subTitle} isNoContact isTitled />
         <div className="container main-content-container">
             <div className="col-sm-12 col-md-8 col-md-offset-2 content-container">
                 <div className="section">
                     <div className="section-header">
-                        <h3>Become a Trippian</h3>
+                        <h3>{appConfig.formTitle}</h3>
                     </div>
                     <div className="section-body">
                       <TrippianSignupFormWidget />

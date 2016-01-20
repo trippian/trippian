@@ -8,10 +8,10 @@ import {
 }
 from '../../components/index'
 
-const popDestTitle = 'Popular Destinations'
-const popDestSubTitle = 'Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet.'
-const popTrippianTitle = 'Popular Trippians'
-const popTrippianSubTitle = 'Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur.'
+import {
+  homePage as appConfig
+}
+from '../../config/appConfig'
 
 export default class Home extends Component {
   constructor(props) {
@@ -26,12 +26,12 @@ export default class Home extends Component {
             <div className="main-content-container">
              <div className="col-sm-12 col-md-12 content-container">
                  <div className="section">
-                    <SectionHeaderWidget title={popDestTitle} subTitle={popDestSubTitle} />
+                    <SectionHeaderWidget title={appConfig.popularDestinations.title} subTitle={homePage.popularDestinations.subTitle} />
                     <DestinationListWidget name="hello world" />
                   </div>
 
                  <div className="section">
-                  <SectionHeaderWidget title={popTrippianTitle} subTitle={popTrippianSubTitle} />
+                  <SectionHeaderWidget title={appConfig.popularTrippians.title} subTitle={homePage.popularTrippians.subTitle} />
                   <TrippianListRoundWidget />
                  </div>
              </div>
