@@ -41,8 +41,6 @@ export default class DestinationDetail extends Component {
                   <TrippianListWidget />
                 </div>
               </div>
-
-
           </div>
         </div>
       </div>

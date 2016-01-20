@@ -2,179 +2,180 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Trippian</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Latest compiled and minified JS -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Trippian</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Latest compiled and minified JS -->
 </head>
 
 <body>
-    <header>
-        <!-- Component: Nav  -->
-        <nav class="navbar navbar-default" role="navigation">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/">Trippian</a>
+  <header>
+    <!-- Component: Nav  -->
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Trippian</a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <!-- optionally display the search form based on if home page  -->
+          <!-- Component: SearchBox -->
+          <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search">
             </div>
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <!-- optionally display the search form based on if home page  -->
-                <!-- Component: SearchBox -->
-                <form class="navbar-form navbar-left" role="search">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                    </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
-                </form>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="become-trippian.html" class="btn btn-bordered">Become a Trippian</a></li>
-                    <li><a href="trippian.html" title="">Trippian</a></li>
-                    <li><a href="destination.html" title="">Destination</a></li>
-                    <li><a href="inquiry.html" title="">Inquiry</a></li>
-                    <li><a href="become-trippian-edit.html" title="">Inquiries</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Account</a></li>
-                            <li><a href="#"> Friends</a></li>
-                            <li><a href="#">Logout</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+          </form>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="become-trippian.html" class="btn btn-bordered">Become a Trippian</a></li>
+            <li><a href="trippian.html" title="">Trippian</a></li>
+            <li><a href="destination.html" title="">Destination</a></li>
+            <li><a href="inquiry.html" title="">Inquiry</a></li>
+            <li><a href="become-trippian-edit.html" title="">Inquiries</a></li>
+            <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Account</a></li>
+                <li><a href="#"> Friends</a></li>
+                <li><a href="#">Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
             <!-- /.navbar-collapse -->
-        </nav>
-    </header>
+    </nav>
+  </header>
     <main>
-        <div id="trippian-profile-page">
-            <div class="jumbotron" style="background-image: url(http://lorempixel.com/1000/600/city/)">
-                <div class="full-length-container">
-                    <div class="container">
-                        <div class="col-sm-12 col-md-8 col-md-offset-2">
-                            <div class="circle-image avatar">
-                                <img src="http://lorempixel.com/200/200/people/" alt="">
-                            </div>
-                            <div class="meta-info">
-                                <div class="left">
-                                    <h2>John Smith</h2>
-                                    <span class="star-rating">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </span>
-                                    <span class="text-intro">
-                                        Paris, Sydney. Lorem ipsum
-                                    </span>
-                                </div>
-                                <div class="right">
-                                    <a class="btn btn-primary btn-lg">Contact</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+      <div id="trippian-profile-page">
+        <div class="jumbotron" style="background-image: url(http://lorempixel.com/1000/600/city/)">
+          <div class="full-length-container">
+            <div class="container">
+              <div class="col-sm-12 col-md-8 col-md-offset-2">
+                <div class="circle-image avatar">
+                  <img src="http://lorempixel.com/200/200/people/" alt="">
                 </div>
-            </div>
-            <div class="container main-content-container">
-                <div class="col-sm-12 col-md-8 col-md-offset-2 content-container">
-                    <div class="section">
-                        <div class="section-header">
-                            <h3>Bio</h3>
-                        </div>
-                        <!--Component: intro-expandable -->
-                        <div class="intro-expandable">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam fuga ab, asperiores quidem suscipit quia quos exercitationem, totam ipsum odit molestias, beatae porro possimus consectetur expedita sequi excepturi adipisci reiciendis?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum dolorem quam, perferendis ipsum modi iusto fugiat, iste quia asperiores magnam!
-                        </div>
-                    </div>
-                    <div class="section">
-                        <div class="section-header">
-                            <h3>My Trips</h3>
-                        </div>
-                        <div class="section-body">
-                            <ul class="list-group">
-                                <li class="list-group-item">Trip 1: Lorem ipsum dolor sit.</li>
-                                <li class="list-group-item">Trip 2: Lorem ipsum dolor.</li>
-                                <li class="list-group-item">Trip 3: Lorem ipsum dolor sit amet.</li>
-                            </ul>
-                            <div class="youtube-video">
-                                <iframe src="https://www.youtube.com/embed/AQ6GmpMu5L8" frameborder="0" allowfullscreen></iframe>
-                            </div>
-                            <div class="google-map">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.9971829383094!2d2.2923237802887466!3d48.85826410877076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66fe1f3bfb4ad%3A0x7bd31375becf28cd!2sEiffel+Tower%2C+5+Avenue+Anatole+France%2C+75007+Paris%2C+France!5e0!3m2!1sen!2sus!4v1452992121001" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="section review">
-                        <div class="section-header">
-                            <h3>Reviews</h3>
-                        </div>
-                        <div class="section-body review-list">
-                            <div class="review-list-item">
-                                <div class="col-xs-12 col-sm-2 col-md-2">
-                                    <div class="circle-image">
-                                        <img src="http://lorempixel.com/200/200/people/" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-10 col-md-10 text-expandable">
-                                    <h4><a href="#" title="">James Chang</a></h4>
-                                    <div class="meta-info">
-                                        <span class="star-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>                                    
-                                </span> 3m ago
-                                    </div>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus odio eveniet sit consequuntur minus labore, error fugiat expedita praesentium recusandae perspiciatis odit sunt voluptatem porro
-                                </div>
-                            </div>
-                            <div class="review-list-item">
-                                <div class="col-xs-12 col-sm-2 col-md-2">
-                                    <div class="circle-image">
-                                        <img src="http://lorempixel.com/200/200/people/" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-10 col-md-10 text-expandable">
-                                    <h4><a href="#" title="">James Chang</a></h4>
-                                    <div class="meta-info">
-                                        <span class="star-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>                                    
-                                </span> 5d ago
-                                    </div>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus odio eveniet sit consequuntur minus labore, error fugiat expedita praesentium recusandae perspiciatis odit sunt voluptatem porro
-                                </div>
-                            </div>
-                            <div class="review-list-item">
-                                <div class="col-xs-12 col-sm-2 col-md-2">
-                                    <div class="circle-image">
-                                        <img src="http://lorempixel.com/200/200/people/" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-10 col-md-10 text-expandable">
-                                    <h4><a href="#" title="">James Chang</a></h4>
-                                    <div class="meta-info">
-                                        <span class="star-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>                                    
-                                </span> 2pm Sep. 21, 2016
-                                    </div>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus odio eveniet sit consequuntur minus labore, error fugiat expedita praesentium recusandae perspiciatis odit sunt voluptatem porro
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="meta-info">
+                  <div class="left">
+                    <h2>John Smith</h2>
+                    <span class="star-rating">
+                      <StarRatingWidget />
+<!--                         <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i> -->
+                    </span>
+                    <span class="text-intro">
+                        Paris, Sydney. Lorem ipsum
+                    </span>
+                  </div>
+                  <div class="right">
+                    <a class="btn btn-primary btn-lg">Contact</a>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
+        </div>
+        <div class="container main-content-container">
+          <div class="col-sm-12 col-md-8 col-md-offset-2 content-container">
+            <div class="section">
+              <div class="section-header">
+                <h3>Bio</h3>
+              </div>
+              <!--Component: intro-expandable -->
+              <div class="intro-expandable">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam fuga ab, asperiores quidem suscipit quia quos exercitationem, totam ipsum odit molestias, beatae porro possimus consectetur expedita sequi excepturi adipisci reiciendis?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum dolorem quam, perferendis ipsum modi iusto fugiat, iste quia asperiores magnam!
+              </div>
+            </div>
+            <div class="section">
+              <div class="section-header">
+                <h3>My Trips</h3>
+              </div>
+              <div class="section-body">
+                <ul class="list-group">
+                  <li class="list-group-item">Trip 1: Lorem ipsum dolor sit.</li>
+                  <li class="list-group-item">Trip 2: Lorem ipsum dolor.</li>
+                  <li class="list-group-item">Trip 3: Lorem ipsum dolor sit amet.</li>
+                </ul>
+                <div class="youtube-video">
+                  <iframe src="https://www.youtube.com/embed/AQ6GmpMu5L8" frameborder="0" allowfullscreen></iframe>
+                </div>
+                  <div class="google-map">
+                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.9971829383094!2d2.2923237802887466!3d48.85826410877076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66fe1f3bfb4ad%3A0x7bd31375becf28cd!2sEiffel+Tower%2C+5+Avenue+Anatole+France%2C+75007+Paris%2C+France!5e0!3m2!1sen!2sus!4v1452992121001" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                  </div>
+              </div>
+            </div>
+            <div class="section review">
+              <div class="section-header">
+                <h3>Reviews</h3>
+              </div>
+              <div class="section-body review-list">
+                <div class="review-list-item">
+                  <div class="col-xs-12 col-sm-2 col-md-2">
+                    <div class="circle-image">
+                      <img src="http://lorempixel.com/200/200/people/" alt="">
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-10 col-md-10 text-expandable">
+                    <h4><a href="#" title="">James Chang</a></h4>
+                    <div class="meta-info">
+                      <span class="star-rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>                                    
+                      </span> 3m ago
+                    </div>
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus odio eveniet sit consequuntur minus labore, error fugiat expedita praesentium recusandae perspiciatis odit sunt voluptatem porro
+                  </div>
+                </div>
+                <div class="review-list-item">
+                  <div class="col-xs-12 col-sm-2 col-md-2">
+                    <div class="circle-image">
+                      <img src="http://lorempixel.com/200/200/people/" alt="">
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-10 col-md-10 text-expandable">
+                    <h4><a href="#" title="">James Chang</a></h4>
+                    <div class="meta-info">
+                      <span class="star-rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>                                    
+                      </span> 5d ago
+                    </div>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus odio eveniet sit consequuntur minus labore, error fugiat expedita praesentium recusandae perspiciatis odit sunt voluptatem porro
+                  </div>
+                </div>
+                <div class="review-list-item">
+                  <div class="col-xs-12 col-sm-2 col-md-2">
+                    <div class="circle-image">
+                      <img src="http://lorempixel.com/200/200/people/" alt="">
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-10 col-md-10 text-expandable">
+                    <h4><a href="#" title="">James Chang</a></h4>
+                    <div class="meta-info">
+                      <span class="star-rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>                                    
+                      </span> 2pm Sep. 21, 2016
+                    </div>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus odio eveniet sit consequuntur minus labore, error fugiat expedita praesentium recusandae perspiciatis odit sunt voluptatem porro
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
     </main>
     <!-- Component: Footer -->
     <footer>
