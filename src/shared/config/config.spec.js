@@ -15,10 +15,6 @@ describe('config (global)', () => {
     expect(config.PORT).to.be.a('number')
   })
 
-  it('should have API_HOST field', () => {
-    expect(config.API_HOST).to.be.a('string')
-  })
-
   it('should have AWS_ACCESS_KEY field', () => {
     expect(config.AWS_ACCESS_KEY).to.be.a('string')
   })
@@ -41,6 +37,14 @@ describe('config (global)', () => {
 
   it('should have FACEBOOK_APP_ID field', () => {
     expect(config.FACEBOOK_APP_ID).to.be.a('string')
+  })
+
+  it('should have FACEBOOK_APP_SECRET field', () => {
+    expect(config.FACEBOOK_APP_SECRET).to.be.a('string')
+  })
+
+  it('should have FACEBOOK_CALLBACK_URL filed', () => {
+    expect(config.FACEBOOK_CALLBACK_URL).to.be.a('string')
   })
 
 })
