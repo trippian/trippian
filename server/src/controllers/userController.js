@@ -3,7 +3,7 @@ import User from '../db/models/user';
 export const getPopularTrippians = function(req, res, next) {
 	let trippianId = req.body.id;
 
-	User.getPopularTrippians
+	User.getPopularTrippians()
     .then(function(trippians) {
       if (trippians) {
         // console.log('this is the popular trippians: ', trippians);
