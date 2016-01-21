@@ -1,4 +1,5 @@
 import AWS from 'aws-sdk';
+require('dotenv').config()
 
 export const getSignedRequest = function (req, res) {
   AWS.config.update({
