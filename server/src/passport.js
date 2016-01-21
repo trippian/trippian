@@ -1,6 +1,7 @@
 import facebook from 'passport-facebook'
 import User from './db/models/user'
 const FacebookStrategy = facebook.Strategy
+require('dotenv').config()
 
 export default function (passport) {
   passport.serializeUser(function (user, done) {
