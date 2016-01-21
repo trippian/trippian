@@ -7,6 +7,7 @@
     "check-coverage": "istanbul check-coverage --statements 90 --branches 90 --functions 90 --lines 90",
     "report-coverage": "cat ./coverage/lcov.info | codecov",
     "dev": "parallelshell 'npm run test' 'npm run start'",
+    "copydist": "gulp copy",
     "lint": "eslint src",
     "lint-server": "eslint server",
     "lint:fix": "eslint --fix src",
@@ -19,7 +20,7 @@
     "webpack-server": "webpack-dev-server --hot --progress --colors",
     "web-server": "http-server -p 3000 ./dist",
     "start": "npm run webpack-server & npm run web-server",
-    "start:server": "nodemon server/src/server.js --exec babel-node --presets es2015"
+    "start:servers": "nodemon server/src/server.js --exec babel-node --presets es2015"
   },
   "repository": {
     "type": "git",
@@ -40,6 +41,7 @@
     "babel-polyfill": "6.3.14",
     "bluebird": "^3.1.1",
     "body-parser": "^1.14.2",
+    "cors": "^2.7.1",
     "es6-promise": "3.0.2",
     "express": "^4.13.3",
     "express-graphql": "^0.4.5",

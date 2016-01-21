@@ -1,6 +1,6 @@
 import facebook from 'passport-facebook'
 import User from './db/models/user'
-import config from '../src/config/config'
+import config from './config/config'
 const FacebookStrategy = facebook.Strategy
 
 export default function(passport) {
