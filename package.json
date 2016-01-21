@@ -4,7 +4,7 @@
   "main": "src/entry.js",
   "scripts": {
     "commit": "git-cz",
-    "check-coverage": "istanbul check-coverage --statements 90 --branches 90 --functions 90 --lines 90",
+    "check-coverage": "istanbul check-coverage --statements 90 --branches 90 --functions 80 --lines 90",
     "report-coverage": "cat ./coverage/lcov.info | codecov",
     "dev": "parallelshell 'npm run test' 'npm run start'",
     "copydist": "gulp copy",
