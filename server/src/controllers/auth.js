@@ -3,7 +3,7 @@ const User = require('../db/models/user');
 
 module.exports = {
   facebook: passport.authenticate('facebook'),
-  facebookCallback: passport.authenticate('facebook', failureRedirect: '/'),
+  facebookCallback: passport.authenticate('facebook', {failureRedirect: '/'}),
 
   logout: function(req, res) {
     req.logout()
