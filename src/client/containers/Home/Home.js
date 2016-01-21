@@ -14,7 +14,7 @@ import {
 from '../../config/appConfig'
 
 import {
-  getDestinationById, getTrippianById
+  getDestinations, getTrippians
 }
 from '../../utils/apiTrippian'
 
@@ -35,16 +35,16 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
-    getTrippianById(123).then((data) => {
+    getTrippians('popular').then((data) => {
       console.log('got trippian data', data)
       this.setState({
-        popularTrippians: [data]
+        popularTrippians: data
       })
     })
-    getDestinationById(123).then((data) => {
+    getDestinations('popular').then((data) => {
       console.log('got destination data', data)
       this.setState({
-        popularDestinations: [data]
+        popularDestinations: data
       })
     })
   }
@@ -61,7 +61,7 @@ export default class Home extends Component {
              <div className="col-sm-12 col-md-12 content-container">
                  <div className="section">
                     <SectionHeaderWidget title={appConfig.popularDestinations.title} subTitle={appConfig.popularDestinations.subTitle} />
-                    <DestinationListWidget name="hello world" />
+                    <DestinationListWidget dataList={this.state.popularDestinations} name="hello world" />
                   </div>
   
                  <div className="section">

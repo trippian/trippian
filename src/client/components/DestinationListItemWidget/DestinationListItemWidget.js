@@ -11,7 +11,7 @@ const styles = {
 }
 
 const DestinationListItemWidget = ({
-  name = 'Sydney'
+  destinationName, destinationImage
 }) => {
   return (
     <div className="col-xs-12 col-sm-6 col-md-4 popular-destinations-item
@@ -19,8 +19,7 @@ const DestinationListItemWidget = ({
         <Link to='destination/12' className="thumbnail text-center" style = {
             styles.backgroundImage
             }>
-            <span>{name}</span>
-          
+            <span>{destinationName}</span>
         </Link>
       </div>
   )

@@ -26,6 +26,6 @@ export const getTrippians = (category = 'popular') => {
 
 export const getDestinations = (category = 'popular') => {
   const url = `${API_HOST}${routeConfig.destination}?cat=${category}`
-  console.log('trippian url', url, category)
+  console.log('destination url', url, category)
   return api.get(url)
 }
