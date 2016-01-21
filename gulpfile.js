@@ -22,12 +22,15 @@ var paths = {
   serveFonts: ['./_planning/static/build/fonts/**/*.*'],
   serveStyles: './_planning/static/build/style.css',
   dist: ['./dist/**/*.*', '!./dist/index.html'],
-  deploy: './deploy/'
+  deploy: './deploy/',
+  bundleJS: './dist/bundle.js'
 };
 
 
 // Static Server + watching scss/html files
 gulp.task('serve', ['sass'], function () {
+  gulp.watch(paths.bundleJS, ['copyd']);
+
   browserSync.init({
     server: paths.serve
   });

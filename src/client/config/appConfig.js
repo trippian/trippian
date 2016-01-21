@@ -6,6 +6,8 @@ export default {
   appName: '',
   appDescription: 'your local travel companion',
 
+
+  API_HOST: 'http://localhost:4000/api/',
   routeConfig: {
     trippian: 'trippian/',
     destination: 'destination/'
