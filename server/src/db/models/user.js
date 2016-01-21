@@ -20,7 +20,8 @@ export default {
       db.saveAsync({
           facebookId: profile.id,
           trippian: false,
-          email: facebookId.emails[0].value
+          email: facebookId.emails[0].value,
+          picture: 'graph.facebook.com/' + profile.id + '/picture?height=500'
         })
         .then(function (user) {
           if (user) {
