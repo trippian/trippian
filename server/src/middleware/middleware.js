@@ -7,6 +7,7 @@ import morgan from 'morgan'
 import passport from 'passport'
 import PassportConnection from '../passport'
 import session from 'express-session'
+import cors from 'cors'
 // import graphqlHTTP from 'express-graphql';
 // import MyGraphQLSchema from '../graphQL/graphQLSchema';
 
@@ -17,6 +18,7 @@ export default function (app, express) {
   PassportConnection(passport)
   app.use(morgan('dev'))
   app.use(json())
+  app.use(cors())
 
   app.use(express.static(join(__dirname, '../../../deploy')))
 
