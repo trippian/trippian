@@ -62,7 +62,7 @@ export default {
       let cypher = 'match(user:User) where user.trippian=true return user';
       db.queryAsync(cypher)
         .then(function(trippians) {
-          if (user) {
+          if (trippians) {
             resolve(trippians);
           } reject('there are no trippians');
         });
