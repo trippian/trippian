@@ -54,6 +54,16 @@ npm run commit
 git push origin develop -f # force push to your remote branch 
 ```
 
+We used the dotenv npm package to configure our development variables. To run locally, you must store a few variables in a .env file.
+- HOST
+- FACEBOOK_APP_ID
+- FACEBOOK_APP_SECRET
+- FACEBOOK_CALLBACK_URL
+- GRAPHSTORY_URL
+- S3_BUCKET
+- AWS_ACCESS_KEY_ID
+- AWS_SECRET_KEY
+
 ### Serve API:
 ```
 babel-node server/src/server.js --presets es2015
