@@ -13,14 +13,12 @@ export default class DestinationListWidget extends Component {
   }
 
   render() {
+    console.log('inside destination list', this.props.dataList, this.props.dataList.length)
     return (
       <div className="popular-destinations section-body clearfix">
-        <DestinationListItemWidget />
-        <DestinationListItemWidget />
-        <DestinationListItemWidget />
-        <DestinationListItemWidget />
-        <DestinationListItemWidget />
-        <DestinationListItemWidget />
+        { this.props.dataList.map((destination, key) => {
+           return <DestinationListItemWidget key={key} {...destination} />
+        })}
       </div>
     )
   }
