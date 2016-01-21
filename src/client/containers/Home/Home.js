@@ -13,6 +13,10 @@ import {
 }
 from '../../config/appConfig'
 
+import {
+  getDestinationById, getTrippianById
+}
+from '../../utils/apiTrippian'
 
 import {
   FormattedNumber, FormattedPlural
@@ -24,8 +28,25 @@ export default class Home extends Component {
     super(props)
     this.state = {
       name: 'Eric',
-      unreadCount: 1000
+      unreadCount: 1000,
+      popularDestinations: [],
+      popularTrippians: []
     }
+  }
+
+  componentDidMount() {
+    getTrippianById(123).then((data) => {
+      console.log('got trippian data', data)
+      this.setState({
+        popularTrippians: [data]
+      })
+    })
+    getDestinationById(123).then((data) => {
+      console.log('got destination data', data)
+      this.setState({
+        popularDestinations: [data]
+      })
+    })
   }
 
   render() {
