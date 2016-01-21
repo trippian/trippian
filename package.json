@@ -4,7 +4,7 @@
   "main": "src/entry.js",
   "scripts": {
     "commit": "git-cz",
-    "check-coverage": "istanbul check-coverage --statements 90 --branches 90 --functions 80 --lines 90",
+    "check-coverage": "istanbul check-coverage --statements 90 --branches 90 --functions 70 --lines 90",
     "report-coverage": "cat ./coverage/lcov.info | codecov",
     "dev": "parallelshell 'npm run test' 'npm run start'",
     "copydist": "gulp copy",
@@ -19,6 +19,7 @@
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
     "webpack-server": "webpack-dev-server --hot --progress --colors",
     "web-server": "http-server -p 3000 ./dist",
+    "build": "NODE_ENV=production webpack && gulp copyd",
     "start": "npm run webpack-server & npm run web-server",
     "start:servers": "nodemon server/src/server.js --exec babel-node --presets es2015"
   },
@@ -60,6 +61,7 @@
     "path": "^0.12.7",
     "react": "0.14.6",
     "react-dom": "0.14.6",
+    "react-intl": "2.0.0-beta-2",
     "react-redux": "4.0.6",
     "react-router": "1.0.3",
     "redux": "3.0.5",
@@ -71,6 +73,7 @@
     "babel-core": "5.8.34",
     "babel-eslint": "4.1.6",
     "babel-loader": "5.4.0",
+    "babel-plugin-react-intl": "2.0.0",
     "babel-preset-es2015": "6.3.13",
     "babel-preset-react": "6.3.13",
     "babel-preset-stage-2": "6.3.13",

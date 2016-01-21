@@ -62,5 +62,5 @@ visit: [http://localhost:4000/api/destination/123](http://localhost:4000/api/des
 or [http://localhost:4000/api/trippian/123](http://localhost:4000/api/trippian/123)
 
 ### Deploy 
-Run `gulp copyd` to copy all asset files to deploy folder. 
+Run `npm run build`, will build the bundle.js file in dist folder and copy all asset files from dist to deploy folder. 
 

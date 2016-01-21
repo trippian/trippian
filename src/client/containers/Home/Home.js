@@ -4,7 +4,7 @@ import React, {
 from 'react'
 
 import {
-  JumbotronHomeWidget, DestinationListWidget, SectionHeaderWidget, TrippianListRoundWidget
+  JumbotronHomeWidget, DestinationListWidget, SectionHeaderWidget, RelativeTimeWidget, TrippianListRoundWidget
 }
 from '../../components/index'
 
@@ -13,12 +13,25 @@ import {
 }
 from '../../config/appConfig'
 
+
+import {
+  FormattedNumber, FormattedPlural
+}
+from 'react-intl'
+
 export default class Home extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      name: 'Eric',
+      unreadCount: 1000
+    }
   }
 
   render() {
+    const {
+      name, unreadCount
+    } = this.state
     return (
       <div id="home-page">
        <JumbotronHomeWidget/> 
@@ -34,6 +47,14 @@ export default class Home extends Component {
                   <SectionHeaderWidget title={appConfig.popularTrippians.title} subTitle={appConfig.popularTrippians.subTitle} />
                   <TrippianListRoundWidget />
                  </div>
+
+                 <RelativeTimeWidget date="Wed Jan 20 2016 19:36:40 GMT-0800 (PST)" intl='fr' ></RelativeTimeWidget>
+                 Hello <b>{name}</b>, you have {' '}
+                                 <FormattedNumber value={unreadCount} /> {' '}
+                                 <FormattedPlural value={unreadCount}
+                                     one="message"
+                                     other="messages"
+                                 />.
              </div>
           </div>
          </div>

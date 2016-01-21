@@ -15,10 +15,6 @@ describe('config (global)', () => {
     expect(config.PORT).to.be.a('number')
   })
 
-  it('should have API_HOST field', () => {
-    expect(config.API_HOST).to.be.a('string')
-  })
-
   it('should have AWS_ACCESS_KEY field', () => {
     expect(config.AWS_ACCESS_KEY).to.be.a('string')
   })
