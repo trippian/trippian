@@ -1,28 +1,30 @@
 import facebook from 'passport-facebook'
 import User from './db/models/user'
-import config from './config/config'
 const FacebookStrategy = facebook.Strategy
 
-export default function(passport) {
-  passport.serializeUser(function(user, done) {
+export default function (passport) {
+  passport.serializeUser(function (user, done) {
     done(null, user)
   })
 
-  passport.deserializeUser(function(user, done) {
+  passport.deserializeUser(function (user, done) {
     // after we write user model, we will search for that user node
     done(null, user)
   })
 
   passport.use(new FacebookStrategy({
-    clientID: config.FACEBOOK_APP_ID,
-    clientSecret: config.FACEBOOK_APP_SECRET,
-    callbackURL: config.FACEBOOK_CALLBACK_URL
-  },
-  function(token, refreshToken, profile, done) {
-    process.nextTick(function() {
-      // find user node in database based on their facebookID
-      return done(null, profile)
-    })
-  }
+      clientID: process.env.FACEBOOK_APP_ID,
+      clientSecret: process.env.FACEBOOK_APP_SECRET,
+      callbackURL: process.env.FACEBOOK_CALLBACK_URL,
+      profileFields: ['emails', 'picture']
+    },
+    function (token, refreshToken, profile, done) {
+      process.nextTick(function () {
+        // find user node in database based on their facebookID
+        // console.log(profile, 'passports.js line 24')
+        User.createUser(profile)
+        return done(null, profile)
+      })
+    }
   ))
 }
