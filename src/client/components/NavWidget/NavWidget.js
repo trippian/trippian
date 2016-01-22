@@ -4,14 +4,13 @@ import {
 }
 from 'react-router'
 
+import { 
+  SearchBoxWidget 
+} from '../index'
+
 function renderSearchForm() {
   return (
-    <form className="navbar-form navbar-left" role="search">
-        <div className="form-group">
-            <input type="text" className="form-control" placeholder="Search..." />
-        </div>
-        <button type="submit" className="btn btn-default">Go</button>
-    </form>
+    <SearchBoxWidget className="navbar-form navbar-left" role="search" />
   )
 }
 

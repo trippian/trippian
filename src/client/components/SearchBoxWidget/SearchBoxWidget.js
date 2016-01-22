@@ -15,12 +15,12 @@ class SearchBoxWidget extends React.Component {
   }
 
   render() {
-    return ( < div >
+    return (
       <form className = "form-inline" role = "form" >
       < div className = "form-group" >
       < label className = "sr-only" > search for destinations < /label> 
       < input type="text" ref="searchText" className="form-control" id ="" placeholder="Bali..." / >
-      < /div> < button type = "submit" onClick={this.handleClick.bind(this)} className = "btn btn-primary" > Go < /button> < /form > < /div>
+      < /div> < button type = "submit" onClick={this.handleClick.bind(this)} className = "btn btn-primary" > Go < /button> < /form >
     )
   }
 }
