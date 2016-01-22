@@ -19,9 +19,9 @@ export default function (router) {
   // })
   router.post('/api/users/:facebookId', createUser)
   router.post('/api/inquiry/:')
-  router.get('/api/destination/:destinationId', function (req, res) {
-    res.send(destination)
-  })
+  // router.get('/api/destination/:destinationId', function (req, res) {
+  //   res.send(destination)
+  // })
   router.get('/api/trippian/:userId', function (req, res) {
     res.send(trippian)
   })

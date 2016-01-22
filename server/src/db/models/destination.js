@@ -1,8 +1,9 @@
 import Promise from 'bluebird'
 import db from '../db'
+import _ from 'lodash'
 
 export default {
-  createOrUpdateDestination: function(details) {
+  createDestination: function(details) {
     return new Promise(function(resolve) {
       // let cypher = 'match (destination:Destination';
       db.saveAsync(details, 'Destination')
@@ -16,13 +17,31 @@ export default {
         })
     })
   },
+  updateDestination: function(details, destinationId) {
+    let updateString = ''
+    _.forEach(details, function(val, key) {
+      updateString += `${key}` + ': "' + `${val}` + '"'
+    })
+    return new Promise(function(resolve) {
+      let cypher = 'match (d:Destination) where id(d)=' + destinationId + ' SET d += {' + updateString + '}' + ' return d;'
+      db.queryAsync(cypher)
+        .then(function(updatedDestination) {
+          if (updatedDestination) {
+            resolve(updatedDestination)
+          }
+        })
+        .catch(function(error) {
+          console.error(error)
+        })
+    })
+  },
   getDestinationById: function(destinationId) {
     return new Promise(function(resolve) {
-      let cypher = 'match (d:Destination {id: ${destinationId}) return d;'
+      let cypher = `match (d:Destination) where id(d)=${destinationId} return d`
       db.queryAsync(cypher)
         .then(function(destination) {
           if (destination) {
-            resolve(destination);
+            resolve(destination)
           } 
         })
         .catch(function(error) {
@@ -32,7 +51,7 @@ export default {
   },
   deleteDestinationById: function(destinationId) {
     return new Promise(function(resolve) {
-      let cypher = 'match (d:Destination {id: ${destinationId}) delete d;'
+      let cypher = `match (d:Destination) where id(d)=${destinationId} delete d;`
       db.queryAsync(cypher)
         .then(function(deleted) {
           if (deleted) {

@@ -5,7 +5,7 @@ export default {
   destinationPost: function(req, res, next) {
     let destinationDetails = req.body
     if (destinationDetails) {
-      Destination.createOrUpdateDestination(destinationDetails)
+      Destination.createdDestination(destinationDetails)
         .then(function(createdDestination) {
           if (createdDestination) {
             res.json(createdDestination)
@@ -19,9 +19,8 @@ export default {
   destinationPut: function(req, res, next) {
     let destinationId = req.params.destinationId
     let destinationUpdateBody = req.body
-    destinationUpdateBody.id = parseInt(destinationId)
-    if (destinationUpdateBody) {
-      Destination.createOrUpdateDestination(destinationUpdateBody)
+    if (destinationUpdateBody && destinationId) {
+      Destination.updateDestination(destinationUpdateBody, destinationId)
         .then(function(updatedDestination) {
           if (updatedDestination) {
             res.json(updatedDestination)
@@ -38,10 +37,15 @@ export default {
     if (destinationId) {
       Destination.getDestinationById(destinationId)
         .then(function(destination) {
-          Trip.getAllTripsAtDestination(destination.destinationName)
+          Trip.getAllTripsAtDestination(destination[0].destinationName)
             .then(function(trips) {
-              destination.popularTrips = trips
-              res.json(destination)
+              if (trips) {
+                // append an array with all popular trips to destinations
+                destination[0].popularTrips = trips
+                // want to send back the destination object in the object
+                res.json(destination[0])
+              }
+              res.json(destination[0])
             })
         })
         .catch(function(error) {

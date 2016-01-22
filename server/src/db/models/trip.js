@@ -45,12 +45,12 @@ export default {
   // this will be used when a user searches a location
   getAllTripsAtDestination: function(destinationName) {
     return new Promise(function(resolve) {
-      let cypher = 'match (trip:Trip) where trip.destination=' + destinationName + ' return trip';
+      let cypher = 'match (t:Trip) where t.destination=' + '"' + destinationName + '"' + ' return t;'
       db.queryAsync(cypher)
         .then(function(trips) {
-          resolve(trips);
-        });
-    });
+          resolve(trips)
+        })
+    })
   },
   // function that takes a userId and creates a WENT_ON relationship with a trip 
   // for trippees. need to 
