@@ -16,7 +16,7 @@ export default {
     //     });
     // });
     // console.log(facebookId, 'profile pic user.js line 17')
-    return new Promise(function (resolve, reject) {
+    return new Promise(function (resolve) {
       db.saveAsync({
           facebookId: parseInt(profile.id),
           trippian: false,
@@ -31,26 +31,24 @@ export default {
     })
   },
   becomeTrippian: function (id, field, value) {
-    return new Promise(function (resolve, reject) {
+    return new Promise(function (resolve) {
       let cypher = 'match (user:User) where user.facebookId=' + id + ' set user.trippian=true return n';
       db.queryAsync(cypher)
         .then(function (user) {
           if (user) {
             resolve(user);
           }
-          reject('user does not exist');
         });
     });
   },
   getUserByFacebookId: function (id) {
-    return new Promise(function (resolve, reject) {
+    return new Promise(function (resolve) {
       let cypher = 'match (user:User) where user.facebookId=' + id + ' return user';
       db.queryAsync(cypher)
         .then(function (user) {
           if (user) {
             resolve(user);
           }
-          reject('user does not exist');
         });
     });
   },
@@ -66,14 +64,13 @@ export default {
   },
   // currently returns all users who are trippians but we need to fix to order by popularity
   getPopularTrippians: function () {
-    return new Promise(function (resolve, reject) {
+    return new Promise(function (resolve) {
       let cypher = 'match(user:User) where user.trippian=true return user';
       db.queryAsync(cypher)
         .then(function (trippians) {
           if (trippians) {
             resolve(trippians);
           }
-          reject('there are no trippians');
         });
     });
   }

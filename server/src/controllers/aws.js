@@ -10,6 +10,7 @@ export const getSignedRequest = function (req, res) {
   });
 
   let s3 = new AWS.S3();
+  console.log(req.query);
   let s3_params = {
     Bucket: process.env.S3_BUCKET,
     Key: req.query.file_type,
@@ -24,7 +25,7 @@ export const getSignedRequest = function (req, res) {
     } else {
       let return_data = {
         signed_request: data,
-        url: 'https://' + S3_BUCKET + '.s3.amazonaws.com/' + req.query.file_name
+        url: 'https://' + process.env.S3_BUCKET + '.s3.amazonaws.com/' + req.query.file_name
       };
       res.write(JSON.stringify(return_data));
       res.end();
