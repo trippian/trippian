@@ -32,3 +32,20 @@ export const createUser = function(req, res, next) {
       next(error);
     });
 }
+
+export default {
+  userGet: function() {
+    // if ()
+  },
+  userPost: function() {
+    if (req.params.facebookId) {
+      User.createUser()
+    }
+  },
+  userPut: function() {
+
+  },
+  userDelete: function() {
+
+  }
+}
