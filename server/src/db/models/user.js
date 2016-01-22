@@ -18,16 +18,15 @@ export default {
     // console.log(facebookId, 'profile pic user.js line 17')
     return new Promise(function (resolve, reject) {
       db.saveAsync({
-          facebookId: profile.id,
+          facebookId: parseInt(profile.id),
           trippian: false,
-          email: facebookId.emails[0].value,
+          email: profile.emails[0].value,
           picture: 'graph.facebook.com/' + profile.id + '/picture?height=500'
-        })
+        }, 'User')
         .then(function (user) {
           if (user) {
             resolve(user);
           }
-          reject('user could not be created');
         })
     })
   },
@@ -43,7 +42,7 @@ export default {
         });
     });
   },
-  getUserById: function (id) {
+  getUserByFacebookId: function (id) {
     return new Promise(function (resolve, reject) {
       let cypher = 'match (user:User) where user.facebookId=' + id + ' return user';
       db.queryAsync(cypher)
@@ -58,13 +57,10 @@ export default {
   // gets a user when searching by a certain parameter ie. field would equal facebookId and value would be the id
   getUserByParameter: function (field, value) {
     return new Promise(function (resolve, reject) {
-      let cypher = 'match (user:User) where ' + field + '=' + value + ' return user';
+      let cypher = 'match (user:User) where ' + 'user.' + field + '=' + value + ' return user';
       db.queryAsync(cypher)
         .then(function (user) {
-          if (user) {
-            resolve(user);
-          }
-          reject('user does not exist with that value');
+          resolve(user);
         });
     });
   },
