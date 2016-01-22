@@ -22,8 +22,18 @@ export default function (app, passport) {
     function (token, refreshToken, profile, done) {
       process.nextTick(function () {
         // find user node in database based on their facebookID
-        // console.log(profile, 'passports.js line 24')
-        User.createUser(profile)
+        User.getUserByParameter('facebookId',profile.id)
+          .then(function(user) {
+            if(user.length) {
+              console.log('user exists as ', user)
+            } else {
+              console.log(user)
+              User.createUser(profile)
+              .then(function(newUser) {
+                console.log('newUser has been created', newUser)
+              })
+            }
+          })
         return done(null, profile)
       })
     }
