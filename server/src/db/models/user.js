@@ -54,7 +54,7 @@ export default {
   },
   // gets a user when searching by a certain parameter ie. field would equal facebookId and value would be the id
   getUserByParameter: function (field, value) {
-    return new Promise(function (resolve, reject) {
+    return new Promise(function (resolve) {
       let cypher = 'match (user:User) where ' + 'user.' + field + '=' + value + ' return user';
       db.queryAsync(cypher)
         .then(function (user) {

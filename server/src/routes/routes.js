@@ -1,19 +1,21 @@
 import express from 'express'
 import destinationController from '../controllers/destinationController'
+import tripController from '../controllers/tripController'
 import { createUser, getPopularTrippians } from '../controllers/userController'
 import { getSignedRequest } from '../controllers/aws'
   // import { authController } from '../controllers/auth';
-import destination from '../../../_planning/json-data-format/destination.json'
-import trippian from '../../../_planning/json-data-format/trippian.json'
-import popular from '../../../_planning/json-data-format/popular'
+
+// import destination from '../../../_planning/json-data-format/destination.json'
+// import trippian from '../../../_planning/json-data-format/trippian.json'
+// import popular from '../../../_planning/json-data-format/popular'
 
 export default function (router) {
   // LANDING PAGE - GET POPULAR TRIPPIANS AND DESTINATIONS
   // router.get('/api/destination', getPopularDestinations)
   // router.get('/api/trippian', getPopularTrippians)
-  router.get('/api/trippian', function (req, res) {
-    res.send(popular.trippians)
-  })
+  // router.get('/api/trippian', function (req, res) {
+  //   res.send(popular.trippians)
+  // })
   // router.get('/api/destination', function (req, res) {
   //   res.send(popular.destinations)
   // })
@@ -22,21 +24,22 @@ export default function (router) {
   // router.get('/api/destination/:destinationId', function (req, res) {
   //   res.send(destination)
   // })
-  router.get('/api/trippian/:userId', function (req, res) {
-    res.send(trippian)
-  })
+  // router.get('/api/trippian/:userId', function (req, res) {
+  //   res.send(trippian)
+  // })
 
   // routes for destination
   router.post('/api/destination', destinationController.destinationPost)
   // separate route to get popular destinations
-  // router.get('/api/destination', getPopularDestinations)
+  router.get('/api/destination', destinationController.getPopularDestinations)
   router.get('/api/destination/:destinationId', destinationController.destinationGet)
   router.put('/api/destination/:destinationId', destinationController.destinationPut)
   router.delete('/api/destination/:destinationId', destinationController.destinationDelete)
 
   // routes for users
 
-  // routes for 
+  // routes for trips
+  router.post('/api/trip/:userId', tripController.tripPost)
 
   // AMAZON S3
   router.get('/signS3', getSignedRequest)
