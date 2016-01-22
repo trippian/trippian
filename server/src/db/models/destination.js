@@ -1,27 +1,47 @@
-import Promise from 'bluebird';
-import db from '../db';
+import Promise from 'bluebird'
+import db from '../db'
 
 export default {
-  createDestination: function(destinationName) {
-    return new Promise(function(resolve, reject) {
+  createOrUpdateDestination: function(details) {
+    return new Promise(function(resolve) {
       // let cypher = 'match (destination:Destination';
-      db.saveAsync({destinationName}, 'Destination')
+      db.saveAsync(details, 'Destination')
         .then(function(destination) {
           if (destination) {
-            resolve(destination);
-          } reject('destination could not be created');
-        });
-    });
+            resolve(destination)
+          } 
+        })
+        .catch(function(err) {
+          console.error(err)
+        })
+    })
   },
   getDestinationById: function(destinationId) {
     return new Promise(function(resolve) {
-      let cypher = '';
+      let cypher = 'match (d:Destination {id: ${destinationId}) return d;'
       db.queryAsync(cypher)
         .then(function(destination) {
           if (destination) {
             resolve(destination);
-          } reject('destination does not exist');
-        });
-    });
+          } 
+        })
+        .catch(function(error) {
+          console.error(error)
+        })
+    })
+  },
+  deleteDestinationById: function(destinationId) {
+    return new Promise(function(resolve) {
+      let cypher = 'match (d:Destination {id: ${destinationId}) delete d;'
+      db.queryAsync(cypher)
+        .then(function(deleted) {
+          if (deleted) {
+            resolve(deleted)
+          }
+        })
+        .catch(function(error) {
+          console.error(error)
+        })
+    })
   }
 }
