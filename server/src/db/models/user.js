@@ -3,68 +3,77 @@ import _ from 'lodash';
 import db from '../db';
 
 export default {
-  createUser: function(facebookId) {
-    // return new Promise(function(resolve) {
-    //   let cypher = 'create (user:User {facebookId:' + facebookId + ', trippian:false})';
+  createUser: function (profile) {
+    // return new Promise(function (resolve) {
+    //   let cypher = 'create (user:User {facebookId:' + facebookId.id + ', trippian: false, email: ' + facebookId.emails[0].value + '});'
     //   db.queryAsync(cypher)
-    //     .then(function(user) {
+    //     .then(function (user) {
     //       if (user) {
     //         resolve(user);
-    //       } reject('user could not be created');
+    //         console.log(user, "line 13");
+    //       }
+    //       reject('user could not be created');
     //     });
     // });
-    return new Promise(function(resolve, reject) {
-      db.saveAsync({facebookId:facebookId, trippian:false})
-        .then(function(user) {
+    // console.log(facebookId, 'profile pic user.js line 17')
+    return new Promise(function (resolve, reject) {
+      db.saveAsync({
+          facebookId: parseInt(profile.id),
+          trippian: false,
+          email: profile.emails[0].value,
+          picture: 'graph.facebook.com/' + profile.id + '/picture?height=500'
+        }, 'User')
+        .then(function (user) {
           if (user) {
             resolve(user);
-          } reject('user could not be created');
+          }
         })
     })
   },
-  becomeTrippian: function(id, field, value) {
-    return new Promise(function(resolve, reject) {
+  becomeTrippian: function (id, field, value) {
+    return new Promise(function (resolve, reject) {
       let cypher = 'match (user:User) where user.facebookId=' + id + ' set user.trippian=true return n';
       db.queryAsync(cypher)
-        .then(function(user) {
+        .then(function (user) {
           if (user) {
             resolve(user);
-          } reject('user does not exist');
+          }
+          reject('user does not exist');
         });
     });
   },
-  getUserById: function(id) {
-    return new Promise(function(resolve, reject) {
+  getUserByFacebookId: function (id) {
+    return new Promise(function (resolve, reject) {
       let cypher = 'match (user:User) where user.facebookId=' + id + ' return user';
       db.queryAsync(cypher)
-        .then(function(user) {
+        .then(function (user) {
           if (user) {
             resolve(user);
-          } reject('user does not exist');
+          }
+          reject('user does not exist');
         });
     });
   },
   // gets a user when searching by a certain parameter ie. field would equal facebookId and value would be the id
-  getUserByParameter: function(field, value) {
-    return new Promise(function(resolve, reject) {
-      let cypher = 'match (user:User) where ' + field + '=' + value + ' return user';
+  getUserByParameter: function (field, value) {
+    return new Promise(function (resolve, reject) {
+      let cypher = 'match (user:User) where ' + 'user.' + field + '=' + value + ' return user';
       db.queryAsync(cypher)
-        .then(function(user) {
-          if (user) {
-            resolve(user);
-          } reject('user does not exist with that value');
+        .then(function (user) {
+          resolve(user);
         });
     });
   },
   // currently returns all users who are trippians but we need to fix to order by popularity
-  getPopularTrippians: function() {
-    return new Promise(function(resolve, reject) {
+  getPopularTrippians: function () {
+    return new Promise(function (resolve, reject) {
       let cypher = 'match(user:User) where user.trippian=true return user';
       db.queryAsync(cypher)
-        .then(function(trippians) {
+        .then(function (trippians) {
           if (trippians) {
             resolve(trippians);
-          } reject('there are no trippians');
+          }
+          reject('there are no trippians');
         });
     });
   }
