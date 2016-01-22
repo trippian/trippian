@@ -3,7 +3,7 @@ import User from './db/models/user'
 const FacebookStrategy = facebook.Strategy
 require('dotenv').config()
 
-export default function (passport) {
+export default function (app, passport) {
   passport.serializeUser(function (user, done) {
     done(null, user)
   })
@@ -17,7 +17,7 @@ export default function (passport) {
       clientID: process.env.FACEBOOK_APP_ID,
       clientSecret: process.env.FACEBOOK_APP_SECRET,
       callbackURL: process.env.FACEBOOK_CALLBACK_URL,
-      profileFields: ['emails', 'picture']
+      profileFields: ['id', 'displayName', 'emails', 'photos']
     },
     function (token, refreshToken, profile, done) {
       process.nextTick(function () {
@@ -28,4 +28,7 @@ export default function (passport) {
       })
     }
   ))
+
+  app.use(passport.initialize())
+  app.use(passport.session())
 }
