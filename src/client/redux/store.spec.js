@@ -12,7 +12,9 @@ from 'immutable'
 describe('redux store', () => {
   describe('reducer', () => {
     it('has default state for trippians and destinations', () => {
-      let state = store.getState()
+      // apiTrippianReducer 
+      let state = store.getState().apiTrippian
+        // console.log('getting state', state.apiTrippian)
       const actualTrippians = state.get('trippians')
       const actualDestinations = state.get('destinations')
       const expected = Immutable.fromJS([])
@@ -27,12 +29,12 @@ describe('redux store', () => {
         name: 'def dest'
       }]
       store.dispatch({
-        type: 'SET_DESTINATIONS',
+        type: 'apiTrippian.SET_DESTINATIONS',
         data: {
           destinations: payload
         }
       })
-      const actual = store.getState().get('destinations')
+      const actual = store.getState().apiTrippian.get('destinations')
 
       // nested object is hard to compare, for now, we just compare individual elements
       expect(actual).to.include(payload[0])

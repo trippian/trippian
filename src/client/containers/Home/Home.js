@@ -66,7 +66,7 @@ export default class Home extends Component {
   
                  <div className="section">
                   <SectionHeaderWidget title={appConfig.popularTrippians.title} subTitle={appConfig.popularTrippians.subTitle} />
-                  <TrippianListRoundWidget />
+                  <TrippianListRoundWidget dataList={this.state.popularTrippians} />
                  </div>
 
                  <RelativeTimeWidget date="Wed Jan 20 2016 19:36:40 GMT-0800 (PST)" intl='fr' ></RelativeTimeWidget>
