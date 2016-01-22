@@ -1,5 +1,5 @@
 import express from 'express'
-import { destinationPost, destinationGet, destinationPut, destinationDelete, getPopularDestinations } from '../controllers/destinationController'
+import destinationController from '../controllers/destinationController'
 import { createUser, getPopularTrippians } from '../controllers/userController'
 import { getSignedRequest } from '../controllers/aws'
   // import { authController } from '../controllers/auth';
@@ -27,12 +27,12 @@ export default function (router) {
   })
 
   // routes for destination
-  router.post('/api/destination', destinationPost)
+  router.post('/api/destination', destinationController.destinationPost)
   // separate route to get popular destinations
   // router.get('/api/destination', getPopularDestinations)
-  router.get('/api/destination/:destinationId', destinationGet)
-  router.put('/api/destination/:destinationId', destinationPut)
-  router.delete('/api/destination/:destinationId', destinationDelete)
+  router.get('/api/destination/:destinationId', destinationController.destinationGet)
+  router.put('/api/destination/:destinationId', destinationController.destinationPut)
+  router.delete('/api/destination/:destinationId', destinationController.destinationDelete)
 
   // routes for users
 
