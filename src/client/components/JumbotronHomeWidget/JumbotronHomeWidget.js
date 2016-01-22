@@ -2,7 +2,14 @@ import React from 'react'
 import {
   JumbotronHomeWidget as appConfigJumbotron, SearchBoxWidget as appConfigSearch
 }
+
 from '../../config/appConfig'
+
+import { 
+  SearchBoxWidget 
+} from '../index'
+
+
 
 const styles = {
   backgroundImage: {
@@ -14,20 +21,10 @@ const JumbotronHomeWidget = () => {
         style = {
           styles.backgroundImage
         } >
-        < div className = "container" >
-        <h1>{appConfigJumbotron.title}</h1> < p > {
-          appConfigJumbotron.subTitle
-        } < /p> 
-
-        < form action = ""
-        method = "POST"
-        className = "form-inline"
-        role = "form" >
-        <div className="form-group">
-      <label className="sr-only">search for destinations</label> < input type = "text" className = "form-control" placeholder = {appConfigSearch.placeholderText} / >
-   < /div> 
-   < button type = "submit"
-    className = "btn btn-primary" > {appConfigSearch.searchButtonText} < /button> < /form >
+        <div className = "container">
+        <h1>{appConfigJumbotron.title}</h1> 
+        <p>{appConfigJumbotron.subTitle}</p> 
+        <SearchBoxWidget />
     < /div >  < /div >
   )
 }
