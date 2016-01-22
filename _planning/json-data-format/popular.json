@@ -1,40 +1,33 @@
 {
-  "destinations":[
-    {
-      "destinationName": "San Francisco, California",
-      "destinationImage": "http://lorempixel.com/400/200/animals/",
-      "id":1
-    },
-    {
-      "destinationName": "Portland, Oregon",
-      "destinationImage": "http://lorempixel.com/400/200/animals/",
-      "id":2
-    },
-  ],
-  "trippians": [
-    {
-      "name": "Joe Lagasse",
-      "slogan": "lalalal",
-      "profilePicture": "http://lorempixel.com/400/200/animals/",
-      "averageRating": 5,
-      "contactPreference": "you can contact me at u know",
-      "id":1
-    },
-    {
-      "name": "desperate elli",
-      "slogan": "lalalal",
-      "profilePicture": "http://lorempixel.com/400/200/animals/",
-      "averageRating": 5,
-      "contactPreference": "call me pls....",
-      "id":2
-    },
-    {
-      "name": "creepy Andy",
-      "slogan": "lalala",
-      "profilePicture": "http://lorempixel.com/400/200/animals/",
-      "averageRating": 5,
-      "contactPreference": "call me bae",
-      "id":3
-    }
-  ]
+  "destinations": [{
+    "destinationName": "San Francisco, California",
+    "destinationImage": "http://lorempixel.com/400/200/animals/",
+    "id": 1
+  }, {
+    "destinationName": "Portland, Oregon",
+    "destinationImage": "http://lorempixel.com/400/200/animals/",
+    "id": 2
+  }],
+  "trippians": [{
+    "name": "Joe Lagasse",
+    "slogan": "lalalal",
+    "profilePicture": "http://lorempixel.com/400/200/animals/",
+    "averageRating": 5,
+    "contactPreference": "you can contact me at u know",
+    "id": 1
+  }, {
+    "name": "desperate elli",
+    "slogan": "lalalal",
+    "profilePicture": "http://lorempixel.com/400/200/animals/",
+    "averageRating": 5,
+    "contactPreference": "call me pls....",
+    "id": 2
+  }, {
+    "name": "creepy Andy",
+    "slogan": "lalala",
+    "profilePicture": "http://lorempixel.com/400/200/animals/",
+    "averageRating": 5,
+    "contactPreference": "call me bae",
+    "id": 3
+  }]
 }

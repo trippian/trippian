@@ -39,6 +39,12 @@ export default {
     formTitle: 'Sign up to become a trippian'
   },
 
+  destinationPostPage: {
+    title: 'Post a Destination',
+    subTitle: 'Lorem ipsum dolor sit.',
+    formTitle: 'Add a Destination'
+  },
+
   // Components 
   AvatarWidget: {
 

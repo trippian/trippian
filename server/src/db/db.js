@@ -1,6 +1,6 @@
 import Seraph from 'seraph'
 import Promise from 'bluebird'
-import config from '../../../src/shared/config/config'
+require('dotenv').config()
 
 let DATABASE_URI = process.env.GRAPHSTORY_URL
 
