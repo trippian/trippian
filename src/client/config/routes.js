@@ -5,7 +5,7 @@ import {
 from 'react-router'
 
 import {
-  App, Home, About, DestinationDetail, InquiryAdd, InquiryList,
+  App, Home, About, DestinationDetail, DestinationPost, InquiryAdd, InquiryList,
   InquiryDetail, JoinUs, Login, NotFound, Press,
   Terms, TrippianDetail, TrippianSignUp, TrippianList, TrippianEdit
 }
@@ -16,6 +16,7 @@ export default (
         <Route component={App} path="/" >
             <Route component={About}  path="about" />
             <Route component={DestinationDetail} path="destination/:id" />
+            <Route component={DestinationPost} path="destination-post" />
             <Route component={JoinUs} path="join-us"  />
             <Route component={InquiryAdd} path="contact"  />
             <Route component={InquiryDetail} path="inquiry/:id"  />

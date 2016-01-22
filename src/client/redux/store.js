@@ -1,20 +1,28 @@
 import {
-  createStore
+  createStore, combineReducers
 }
 from 'redux'
-
+import {
+  reducer as formReducer
+}
+from 'redux-form'
 import {
   Map
 }
 from 'immutable'
 
-const SET_DESTINATIONS = 'SET_DESTINATIONS'
-const SET_TRIPPIANS = 'SET_TRIPPIANS'
-const GET_DESTINATION_BY_ID = 'GET_DESTINATION_BY_ID'
-const GET_TRIPPIAN_BY_ID = 'GET_TRIPPIAN_BY_ID'
-const GET_DESTINATIONS = 'GET_DESTINATIONS'
-const GET_TRIPPIANS = 'GET_TRIPPIANS'
+//will move the reducer out of the file later 
+// import apiTrippianReducer from './reducers'
 
+//action names
+const SET_DESTINATIONS = 'apiTrippian.SET_DESTINATIONS'
+const SET_TRIPPIANS = 'apiTrippian.SET_TRIPPIANS'
+const GET_DESTINATION_BY_ID = 'apiTrippian.GET_DESTINATION_BY_ID'
+const GET_TRIPPIAN_BY_ID = 'apiTrippian.GET_TRIPPIAN_BY_ID'
+const GET_DESTINATIONS = 'apiTrippian.GET_DESTINATIONS'
+const GET_TRIPPIANS = 'apiTrippian.GET_TRIPPIANS'
+
+// initialize the app state 
 const getInitialState = () => {
   return new Map({
     trippians: [],
@@ -22,7 +30,7 @@ const getInitialState = () => {
   })
 }
 
-
+// reducer for the general trippian api 
 function apiTrippianReducer(state = getInitialState(), action) {
   switch (action.type) {
     case SET_DESTINATIONS:
@@ -34,4 +42,10 @@ function apiTrippianReducer(state = getInitialState(), action) {
   }
 }
 
-export default createStore(apiTrippianReducer)
+// combine all reducers 
+const reducer = combineReducers({
+  apiTrippian: apiTrippianReducer,
+  form: formReducer
+})
+
+export default createStore(reducer)

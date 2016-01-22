@@ -13,7 +13,7 @@ export default class DestinationListWidget extends Component {
   }
 
   render() {
-    console.log('inside destination list', this.props.dataList, this.props.dataList.length)
+    // console.log('inside destination list', this.props.dataList, this.props.dataList.length)
     return (
       <div className="popular-destinations section-body clearfix">
         { this.props.dataList.map((destination, key) => {
