@@ -39,7 +39,7 @@ export default {
       Destination.getDestinationById(destinationId)
         .then((destination) => {
           if (destination) {
-            Trip.getAllTripsAtDestination(destination.destinationName)
+            Trip.getAllTripsAtDestination(destinationId)
               .then((trips) => {
                 if (trips) {
                   // append an array with all popular trips to destinations
@@ -70,29 +70,48 @@ export default {
   },
   destinationGetNoParams: (req, res, next) => {
     if (req.query.popular) {
-      Destination.getAllDestinations()
-        .then((allDestinations) => {
-          _.map(allDestinations, (destination) => {
-            Trip.getAllTripsAtDestination(destination.destinationName)
-              .then((tripsAtLocation) => {
-                console.log(tripsAtLocation)
-                // still working on this
-              })
-          })
+      // Destination.getAllDestinations()
+      //   .then((allDestinations) => {
+      //     console.log(allDestinations)
+      //     res.json(_.sortBy(allDestinations, (destination) => {
+      //       // we want to add a property, totalTrips to all destinations to see which one currently has the most trips or the most popular
+      //       Trip.getAllTripsAtDestination(destination.id)
+      //         .then((tripsAtLocation) => {
+      //           destination.totalTrips = tripsAtLocation.length
+      //           return destination.totalTrips
+      //         })
+      //     }))
+        // })
+      Destination.getPopularDestinations()
+        .then((popularDestinations) => {
+          console.log(popularDestinations)
+          if (popularDestinations) {
+            res.json(popularDestinations)
+          }
+        })
+        .catch((error) => {
+          console.error(error)
         })
     }
-
+// if there is a get request with a query string, we want to search for the destination and if it does not exist, we create it
     if (req.query.q) {
       Destination.getDestinationByName(req.query.q)
         .then((destination) => {
           if (destination) {
-            Trip.getAllTripsAtDestination(destination.destinationName)
+            Trip.getAllTripsAtDestination(destination.id)
               .then((trips) => {
                 if (trips) {
                   destination.popularTrips = trips
                   res.json(destination)
                 }
                 res.json(destination)
+              })
+          } else {
+            Destination.createDestination({
+              destinationName: req.query.q
+            })
+              .then((createdDestination) => {
+                res.json(createdDestination)
               })
           }
         })

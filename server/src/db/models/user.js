@@ -1,5 +1,4 @@
 import Promise from 'bluebird'
-import _ from 'lodash'
 import db from '../db'
 import { updateStringObject } from '../../middleware/utils'
 
@@ -69,7 +68,7 @@ export default {
   // gets a user when searching by a certain parameter ie. field would equal facebookId and value would be the id
   getUserByParameter: (field, value) => {
     return new Promise((resolve) => {
-      let cypher = `match (u:User) where user.${field}=${value} return u;`
+      let cypher = `match (u:User) where u.${field}=${value} return u;`
       db.queryAsync(cypher)
         .then((user) => {
           resolve(user)
@@ -96,7 +95,7 @@ export default {
   // currently returns all users who are trippians but we need to fix to order by popularity
   getPopularTrippians: () => {
     return new Promise((resolve) => {
-      let cypher = 'match(user:User) where user.trippian=true return user'
+      let cypher = `match(user:User) where user.trippian=true return user`
       db.queryAsync(cypher)
         .then((trippians) => {
           if (trippians) {
