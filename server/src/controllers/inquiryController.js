@@ -31,6 +31,24 @@ export default {
         })
     }
   },
+  inquiryPut: function(req,res, next) { 
+    //3 cases
+    //1) trippee updates inquiry
+    //2) trippian accepts
+    //3) trippian declines
+    let putDetails = req.body
+    let trippianId = req.params.trippianId 
+    let accept = req.query.accept
+    if (putDetails) {
+      Inquiry.updateInquiry(putDetails) 
+        .then(function(putDetails) {
+          res.json(putDetails)
+        })
+        .catch(function(error) {
+          next (error)
+        })
+    }
+  },
   inquiryDelete: function(req, res, next ) {
     let inquiryId = req.params.inquiryId
     if (inquiryId) {
