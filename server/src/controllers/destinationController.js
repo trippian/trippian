@@ -69,7 +69,8 @@ export default {
     }
   },
   destinationGetNoParams: (req, res, next) => {
-    if (req.query.popular) {
+    if (req.query.cat === 'popular') {
+      console.log('hitting this')
       // Destination.getAllDestinations()
       //   .then((allDestinations) => {
       //     console.log(allDestinations)
@@ -84,9 +85,11 @@ export default {
         // })
       Destination.getPopularDestinations()
         .then((popularDestinations) => {
-          console.log(popularDestinations)
           if (popularDestinations) {
-            res.json(popularDestinations)
+            // need to return just the destinations and not the count(r)
+            res.json(_.map(popularDestinations, (val) => {
+              return val.d
+            }))
           }
         })
         .catch((error) => {
