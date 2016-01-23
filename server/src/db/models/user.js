@@ -8,6 +8,7 @@ export default {
   createUser: function (profile) {
     return new Promise(function (resolve) {
       db.saveAsync({
+        name: profile.displayName,
         facebookId: parseInt(profile.id),
         trippian: false,
         email: profile.emails[0].value,
@@ -36,14 +37,13 @@ export default {
     })
   },
   updateUser: (userId, details) => {
-    let updateString = ''
-    updateStringObject(details, updateString)
+    let updateString = updateStringObject(details, '')
 
     return new Promise((resolve) => {
-      let cypher = `match (u:User) where id(u)${userId} set u += {${updateString}} return u;`
-      db.saveAsync(cypher)
+      let cypher = `match (u:User) where id(u)=${userId} SET u += {${updateString}} return u;`
+      db.queryAsync(cypher)
         .then((updatedUser) => {
-          if (updatedDestination.length) {
+          if (updatedUser.length) {
             resolve(updatedUser[0])
           }
         })
@@ -94,11 +94,11 @@ export default {
     })
   },
   // currently returns all users who are trippians but we need to fix to order by popularity
-  getPopularTrippians: function () {
-    return new Promise(function (resolve) {
+  getPopularTrippians: () => {
+    return new Promise((resolve) => {
       let cypher = 'match(user:User) where user.trippian=true return user'
       db.queryAsync(cypher)
-        .then(function (trippians) {
+        .then((trippians) => {
           if (trippians) {
             resolve(trippians)
           }

@@ -4,92 +4,91 @@ import _ from 'lodash'
 import { updateStringObject } from '../../middleware/utils'
 
 export default {
-  createDestination: function(details) {
-    return new Promise(function(resolve) {
+  createDestination: (details) => {
+    return new Promise((resolve) => {
       // let cypher = 'match (destination:Destination';
       db.saveAsync(details, 'Destination')
-        .then(function(destination) {
+        .then((destination) => {
           if (destination) {
             resolve(destination)
           } 
         })
-        .catch(function(err) {
+        .catch((err) => {
           console.error(err)
         })
     })
   },
-  updateDestination: function(details, destinationId) {
-    let updateString = ''
+  updateDestination: (details, destinationId) => {
     // _.forEach(details, function(val, key) {
     //   updateString += `${key}` + ': "' + `${val}` + '"'
     // })
-    updateStringObject(details, updateString)
+    let updateString = updateStringObject(details, '')
 
-    return new Promise(function(resolve) {
+    return new Promise((resolve) => {
       let cypher = `match (d:Destination) where id(d)= ${destinationId} SET d += {${updateString}} return d;`
       db.queryAsync(cypher)
-        .then(function(updatedDestination) {
+        .then((updatedDestination) => {
           if (updatedDestination) {
             resolve(updatedDestination)
           }
         })
-        .catch(function(error) {
+        .catch((error) => {
           console.error(error)
         })
     })
   },
-  getDestinationById: function(destinationId) {
-    return new Promise(function(resolve) {
+  getDestinationById: (destinationId) => {
+    return new Promise((resolve) => {
       let cypher = `match (d:Destination) where id(d)=${destinationId} return d`
       db.queryAsync(cypher)
-        .then(function(destination) {
+        .then((destination) => {
           if (destination.length) {
             resolve(destination[0])
           } 
         })
-        .catch(function(error) {
+        .catch((error) => {
           console.error(error)
         })
     })
   },
-  getDestinationByName: function(destinationName) {
-    return new Promise(function(resolve) {
+  getDestinationByName: (destinationName) => {
+    return new Promise((resolve) => {
       let cypher = `match (d:Destination {destinationName:` + '"' + `${destinationName}` + '"' + `}) return d;`
       db.queryAsync(cypher)
-        .then(function(destination) {
+        .then((destination) => {
           if (destination.length) {
             resolve(destination[0])
           }
         })
-        .catch(function(error) {
+        .catch((error) => {
           console.error(error)
         })
     })
   },
-  deleteDestinationById: function(destinationId) {
-    return new Promise(function(resolve) {
+  deleteDestinationById: (destinationId) => {
+    return new Promise((resolve) => {
       let cypher = `match (d:Destination) where id(d)=${destinationId} delete d;`
       db.queryAsync(cypher)
-        .then(function(deleted) {
+        .then((deleted) => {
           if (deleted) {
             resolve(deleted)
           }
         })
-        .catch(function(error) {
+        .catch((error) => {
           console.error(error)
         })
     })
   },
-  getAllDestinations: function() {
-    return new Promise(function(resolve) {
+  getAllDestinations: () => {
+    return new Promise((resolve) => {
       let cypher = `match (d:Destination) return d;`
       db.queryAsync(cypher)
-        .then(function(allDestinations) {
+        .then((allDestinations) => {
           if (allDestinations) {
             resolve(allDestinations)
           }
         })
-        .catch(function(error) {
+        .catch((error) => {
           console.error(error)
         })
     })

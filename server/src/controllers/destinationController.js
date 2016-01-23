@@ -3,44 +3,44 @@ import Destination from '../db/models/destination'
 import _ from 'lodash'
 
 export default {
-  destinationPost: function(req, res, next) {
+  destinationPost: (req, res, next) => {
     let destinationDetails = req.body
     if (destinationDetails) {
       Destination.createDestination(destinationDetails)
-        .then(function(createdDestination) {
+        .then((createdDestination) => {
           if (createdDestination) {
             res.json(createdDestination)
           }
         })
-        .catch(function(error) {
+        .catch((error) => {
           next(error)
         })
     }
   },
-  destinationPut: function(req, res, next) {
+  destinationPut: (req, res, next) => {
     let destinationId = req.params.destinationId
     let destinationUpdateBody = req.body
     if (destinationUpdateBody && destinationId) {
       Destination.updateDestination(destinationUpdateBody, destinationId)
-        .then(function(updatedDestination) {
+        .then((updatedDestination) => {
           if (updatedDestination) {
             res.json(updatedDestination)
           }
         })
-        .catch(function(error) {
+        .catch((error) => {
           next(error)
         })
     }
 
   },
-  destinationGet: function(req, res, next) {
+  destinationGet: (req, res, next) => {
     let destinationId = req.params.destinationId
     if (destinationId) {
       Destination.getDestinationById(destinationId)
-        .then(function(destination) {
+        .then((destination) => {
           if (destination) {
             Trip.getAllTripsAtDestination(destination.destinationName)
-              .then(function(trips) {
+              .then((trips) => {
                 if (trips) {
                   // append an array with all popular trips to destinations
                   destination.popularTrips = trips
@@ -51,30 +51,30 @@ export default {
               })
           }
         })
-        .catch(function(error) {
+        .catch((error) => {
           next(error)
         })
     }
   },
-  destinationDelete: function(req, res, next) {
+  destinationDelete: (req, res, next) => {
     let destinationId = req.params.destinationId
     if (destinationId) {
       Destination.deleteDestinationById(destinationId)
-        .then(function(deleted) {
+        .then((deleted) => {
           res.json(deleted)
         })
-        .catch(function(error) {
+        .catch((error) => {
           next(error)
         })
     }
   },
-  getPopularDestinations: function(req, res, next) {
+  destinationGetNoParams: (req, res, next) => {
     if (req.query.popular) {
       Destination.getAllDestinations()
-        .then(function(allDestinations) {
-          _.map(allDestinations, function(destination) {
+        .then((allDestinations) => {
+          _.map(allDestinations, (destination) => {
             Trip.getAllTripsAtDestination(destination.destinationName)
-              .then(function(tripsAtLocation) {
+              .then((tripsAtLocation) => {
                 console.log(tripsAtLocation)
                 // still working on this
               })
@@ -84,10 +84,10 @@ export default {
 
     if (req.query.q) {
       Destination.getDestinationByName(req.query.q)
-        .then(function(destination) {
+        .then((destination) => {
           if (destination) {
             Trip.getAllTripsAtDestination(destination.destinationName)
-              .then(function(trips) {
+              .then((trips) => {
                 if (trips) {
                   destination.popularTrips = trips
                   res.json(destination)
@@ -96,7 +96,7 @@ export default {
               })
           }
         })
-        .catch(function(error) {
+        .catch((error) => {
           next(error)
         })
     }
