@@ -54,5 +54,8 @@ export default {
           reject(inquiry)
         })
     })
+  },
+  updateInquiry: function() {
+    //similar to updateDestination
   }
 }
