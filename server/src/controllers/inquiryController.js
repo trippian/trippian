@@ -18,15 +18,27 @@ export default {
     }
   },
   inquiryPost: function(req, res, next) {
-    let postDetails = req.body //object being passed around
-    let trippianId = req.params.trippianId //trippian reciving inquiry
-    let userId = req.body.id //somehow have to know who's currently logged in and set that as tripeeId
+    let postDetails = req.body 
+    let trippianId = req.params.trippianId 
+    let userId = req.body.id 
     if (postDetails) {
       Inquiry.createInquiry(userId, trippianId, postDetails)
         .then(() => {
           res.json(postDetails)
        })
         .catch((error) => {
+          next(error)
+        })
+    }
+  },
+  inquiryDelete: function(req, res, next ) {
+    let inquiryId = req.params.inquiryId
+    if (inquiryId) {
+      Inquiry.deleteInquiry(inquiryId)
+        .then(function(deleted) {
+          res.json(deleted)
+        })
+        .catch(function(error) {
           next(error)
         })
     }
