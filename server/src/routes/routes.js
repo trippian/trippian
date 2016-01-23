@@ -2,6 +2,7 @@ import express from 'express'
 import destinationController from '../controllers/destinationController'
 import tripController from '../controllers/tripController'
 import userController from '../controllers/userController'
+import inquiryController from '../controllers/inquiryController'
 import { getSignedRequest } from '../controllers/aws'
   // import { authController } from '../controllers/auth';
 
@@ -46,7 +47,13 @@ export default function (router) {
   router.post('/api/trip/:userId', tripController.tripPost)
   router.get('/api/trip/:tripId', tripController.tripGet)
   router.put('/api/trip/:tripId', tripController.tripPut)
+  router.delete('/api/trip/:tripId', tripController.tripDelete)
 
+    //routes for inquiries
+  router.get('/api/inquiry/:userId', inquiryController.inquiryGet)
+  router.post('/api/inquiry/:trippianId', inquiryController.inquiryPost)
+  router.put('/api/inquiry/:inquiryId', inquiryController.inquiryPut)
+  router.delete('/api/inquiry/:inquiryId', inquiryController.inquiryDelete)
   // AMAZON S3
   router.get('/signS3', getSignedRequest)
 }

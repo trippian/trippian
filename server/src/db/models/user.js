@@ -4,8 +4,8 @@ import { updateStringObject } from '../../middleware/utils'
 
 export default {
   // this function is used in passport to create a user in our db when they signup with fb
-  createUser: function (profile) {
-    return new Promise(function (resolve) {
+  createUser: (profile) => {
+    return new Promise((resolve) => {
       db.saveAsync({
         name: profile.displayName,
         facebookId: parseInt(profile.id),
@@ -13,7 +13,7 @@ export default {
         email: profile.emails[0].value,
         picture: 'graph.facebook.com/' + profile.id + '/picture?height=500'
       }, 'User')
-        .then(function (createdUser) {
+        .then((createdUser) => {
           if (createdUser) {
             resolve(createdUser)
           }
@@ -21,11 +21,11 @@ export default {
     })
   },
   // need to work on this function to change all fields that are sent
-  becomeTrippian: function (userId, field) {
-    return new Promise(function (resolve) {
+  becomeTrippian: (userId, field) => {
+    return new Promise((resolve) => {
       let cypher = `match (u:User) where id(u)=${userId} set u.trippian=true return u`
       db.queryAsync(cypher)
-        .then(function (updatedUser) {
+        .then((updatedUser) => {
           if (updatedUser) {
             resolve(updatedUser)
           }

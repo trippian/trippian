@@ -1,5 +1,6 @@
 import Promise from 'bluebird'
 import db from '../db'
+import { updateStringObject } from '../../middleware/utils'
 
 export default {
   // function that creates a new trip node and adds a POSTED relationship between a user and the trip
@@ -36,7 +37,7 @@ export default {
   // get all trip information by ID for get request nah
   getTripById: (tripId) => {
     return new Promise((resolve) => {
-      let cypher = `match (t:Trip) where id(t)=${tripId} return r;`
+      let cypher = `match (t:Trip) where id(t)=${tripId} return t;`
       db.queryAsync(cypher)
         .then((trip) => {
           if (trip) {
@@ -55,6 +56,24 @@ export default {
         })
     })
   },
+  // function to update a trip if a trippian wishes to
+  updateTrip: (tripId, details) => {
+    let updateString = updateStringObject(details, '')
+
+    return new Promise((resolve) => {
+      let cypher = `match (t:Trip) where id(t)=${tripId} set t += {$updateString}} return t;`
+
+      db.queryAsync(cypher)
+        .then((updatedTrip) => {
+          if (updatedTrip.length) {
+            resolve(updatedTrip[0])
+          }
+        })
+        .catch((error) => {
+          console.error(error)
+        })
+    })
+  },
   // allow all users to upvote or downvote a trip
   // client needs to send whether it is upvote or downvote
   upOrDownvoteTrip: (tripId, userId, vote) => {
@@ -67,13 +86,27 @@ export default {
       db.queryAsync(cypher)
         .then((nodes) => {
           if (nodes.length) {
-            resolve()
+            resolve('user has already voted')
           } else {
-            let cypher = `match (u:User), (t:Trip) where id(u)=${userId} and id(t)=${tripId} create (u)-[r:${vote}]->(trip) set t.netVote=t.netVote+${incrementor} and t.totalVotes=t.totalVotes+1 return t`
+            let cypher = `match (u:User), (t:Trip) where id(u)=${userId} and id(t)=${tripId} create (u)-[r:${vote}]->(trip) set t.netVote = t.netVote + ${incrementor}, t.totalVotes = t.totalVotes + 1 return t;`
             db.queryAsync(cypher)
               .then((updatedTrip) => {
                 resolve(updatedTrip)
               })
+          }
+        })
+        .catch((error) => {
+          console.error(error)
+        })
+    })
+  },
+  deleteTrip: (tripId) => {
+    return new Promise((resolve) => {
+      let cypher = `match (t:Trip) where id(t)=${tripId} detach delete u;`
+      db.queryAsync(cypher)
+        .then((deleted) => {
+          if (deleted) {
+            resolve(deleted)
           }
         })
         .catch((error) => {
@@ -94,10 +127,17 @@ export default {
   },
   // function that takes a userId and creates a WENT_ON relationship with a trip 
   // for trippees. need to 
-  userWentOnTrip: (userId) => {
-    userId = parseInt(userId)
+  userWentOnTrip: (userId, tripId, tripDate) => {
+    // userId = parseInt(userId)
     return new Promise((resolve) => {
-      // let cypher = 
+      // let cypher =
+      let cypher =  `match (u:User), (t:Trip) where id(u)=${userId} and id(t)=${tripId} create (u)-[r:WENT_ON]->(t) set r.date=${tripDate}`
+      db.queryAsync(cypher)
+        .then((wentOn) => {
+          if (wentOn.length) {
+            resolve(wentOn[0])
+          }
+        })
     })
   }
 }
