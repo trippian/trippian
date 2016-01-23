@@ -22,8 +22,13 @@ export default {
     let trippianId = req.params.trippianId //trippian reciving inquiry
     let userId = req.body.id //somehow have to know who's currently logged in and set that as tripeeId
     if (postDetails) {
-      //createInquiry: function (trippeeId, trippianId, inquiryProps) {
       Inquiry.createInquiry(userId, trippianId, postDetails)
+        .then(() => {
+          res.json(postDetails)
+       })
+        .catch((error) => {
+          next(error)
+        })
     }
   }
 }
