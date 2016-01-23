@@ -14,7 +14,7 @@ export default function (router) {
   // router.get('/api/destination', getPopularDestinations)
   // router.get('/api/trippian', getPopularTrippians)
   // router.get('/api/trippian', function (req, res) {
-  //   res.send(popular.trippians)
+  //   res.sendst(popular.trippians)
   // })
   // router.get('/api/destination', function (req, res) {
   //   res.send(popular.destinations)
@@ -31,7 +31,7 @@ export default function (router) {
   // routes for destination
   router.post('/api/destination', destinationController.destinationPost)
   // separate route to get popular destinations
-  router.get('/api/destination', destinationController.getPopularDestinations)
+  router.get('/api/destination', destinationController.destinationGetNoParams)
   router.get('/api/destination/:destinationId', destinationController.destinationGet)
   router.put('/api/destination/:destinationId', destinationController.destinationPut)
   router.delete('/api/destination/:destinationId', destinationController.destinationDelete)
@@ -45,6 +45,7 @@ export default function (router) {
   // routes for trips
   router.post('/api/trip/:userId', tripController.tripPost)
   router.get('/api/trip/:tripId', tripController.tripGet)
+  router.put('/api/trip/:tripId', tripController.tripPut)
 
   // AMAZON S3
   router.get('/signS3', getSignedRequest)

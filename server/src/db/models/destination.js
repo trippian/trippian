@@ -92,5 +92,10 @@ export default {
           console.error(error)
         })
     })
+  },
+  getPopularDestinations: () => {
+    return new Promise((resolve) => {
+      let cypher = `match (d:Destination)<-[r:LOCATED_IN]-(t:Trip) return d, count(r) order by count(r)`
+    })
   }
 }
