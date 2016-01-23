@@ -15,17 +15,52 @@ export default {
     }
   },
   tripGet: (req, res, next) => {
-    // if (req.params.tripId) {
-    //   Trip.
-    // }
+    if (req.params.tripId) {
+      Trip.getTripById(req.params.tripId)
+        .then((trip) => {
+          res.json(trip)
+        })
+        .catch((error) => {
+          next(error)
+        })
+    }
   },
   tripPut: (req, res, next) => {
+    if (req.query.voteType && req.body.userId && req.params.tripId) {
+      Trip.upOrDownvoteTrip(req.params.tripId, req.body.userId, req.query.voteType)
+        .then((voted) => {
+          console.log(voted)
+          res.json(voted)
+        })
+        .catch((error) => {
+          next(error)
+        })
+    }
+    else if (req.params.tripId && req.body) {
+      Trip.updateTrip(req.params.tripId, req.body)
+        .then((updatedTrip) => {
+          res.json(updatedTrip)
+        })
+        .catch((error) => {
+          next(error)
+        })
+    }
 
   },
-  tripPutVote: (req, res, next) => {
+  // tripPutVote: (req, res, next) => {
 
-  },
+  // },
   tripDelete: (req, res, next) => {
-    
+    if (req.params.tripId) {
+      Trip.deleteTrip(req.params.TripId)
+        .then((deleted) => {
+          if (deleted) {
+            res.json(deleted)
+          }
+        })
+        .catch((error) => {
+          next(error)
+        })
+    }
   }
 }
