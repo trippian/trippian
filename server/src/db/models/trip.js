@@ -30,6 +30,18 @@ export default {
         })
     })
   },
+  // get all trip information by ID for get request nah
+  getTripById: function(tripId) {
+    return new Promise((resolve) => {
+      let cypher = `match (t:Trip) where id(t)=${tripId} return r;`
+      db.queryAsync(cypher)
+        .then((trip) => {
+          if (trip) {
+            resolve(trip)
+          }
+        })
+    })
+  },
   // get all trips in order of ranking
   getAllTrips: function() {
     return new Promise(function(resolve) {
@@ -51,7 +63,7 @@ export default {
           if (nodes.length) {
             console.log(nodes)
           } else {
-            let cypher = 'match (user:User), (trip:Trip) where user.facebookId=' + userId + ' and id(trip)=' + tripId + ' create (user)-[r:' + vote + ']->(trip) return trip'
+            let cypher = 'match (user:User), (trip:Trip) where user.facebookId=' + userId + ' and id(trip)=' + tripId + ' create (user)-[r:' + vote + ']->(trip) return trip';
             db.queryAsync(cypher)
               .then(resolve)
           }

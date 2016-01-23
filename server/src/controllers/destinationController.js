@@ -34,7 +34,6 @@ export default {
 
   },
   destinationGet: function(req, res, next) {
-    console.log('nah im here in destination get bitch')
     let destinationId = req.params.destinationId
     if (destinationId) {
       Destination.getDestinationById(destinationId)
@@ -70,16 +69,14 @@ export default {
     }
   },
   getPopularDestinations: function(req, res, next) {
-    console.log(req.query.q)
-    console.log(req.query.popular) 
     if (req.query.popular) {
       Destination.getAllDestinations()
         .then(function(allDestinations) {
-          console.log(allDestinations)
           _.map(allDestinations, function(destination) {
             Trip.getAllTripsAtDestination(destination.destinationName)
               .then(function(tripsAtLocation) {
                 console.log(tripsAtLocation)
+                // still working on this
               })
           })
         })

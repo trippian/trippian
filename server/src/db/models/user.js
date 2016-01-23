@@ -1,77 +1,123 @@
-import Promise from 'bluebird';
-import _ from 'lodash';
-import db from '../db';
+import Promise from 'bluebird'
+import _ from 'lodash'
+import db from '../db'
+import { updateStringObject } from '../../middleware/utils'
 
 export default {
+  // this function is used in passport to create a user in our db when they signup with fb
   createUser: function (profile) {
-    // return new Promise(function (resolve) {
-    //   let cypher = 'create (user:User {facebookId:' + facebookId.id + ', trippian: false, email: ' + facebookId.emails[0].value + '});'
-    //   db.queryAsync(cypher)
-    //     .then(function (user) {
-    //       if (user) {
-    //         resolve(user);
-    //         console.log(user, "line 13");
-    //       }
-    //       reject('user could not be created');
-    //     });
-    // });
-    // console.log(facebookId, 'profile pic user.js line 17')
     return new Promise(function (resolve) {
       db.saveAsync({
-          facebookId: parseInt(profile.id),
-          trippian: false,
-          email: profile.emails[0].value,
-          picture: 'graph.facebook.com/' + profile.id + '/picture?height=500'
-        }, 'User')
-        .then(function (user) {
-          if (user) {
-            resolve(user);
+        facebookId: parseInt(profile.id),
+        trippian: false,
+        email: profile.emails[0].value,
+        picture: 'graph.facebook.com/' + profile.id + '/picture?height=500'
+      }, 'User')
+        .then(function (createdUser) {
+          if (createdUser) {
+            resolve(createdUser)
           }
         })
     })
   },
-  becomeTrippian: function (id, field, value) {
+  // need to work on this function to change all fields that are sent
+  becomeTrippian: function (userId, field) {
     return new Promise(function (resolve) {
-      let cypher = 'match (user:User) where user.facebookId=' + id + ' set user.trippian=true return n';
+      let cypher = `match (u:User) where id(u)=${userId} set u.trippian=true return u`
       db.queryAsync(cypher)
-        .then(function (user) {
-          if (user) {
-            resolve(user);
+        .then(function (updatedUser) {
+          if (updatedUser) {
+            resolve(updatedUser)
           }
-        });
-    });
+        })
+        .catch((error) => {
+          console.error(error)
+        })
+    })
   },
-  getUserByFacebookId: function (id) {
-    return new Promise(function (resolve) {
-      let cypher = 'match (user:User) where user.facebookId=' + id + ' return user';
-      db.queryAsync(cypher)
-        .then(function (user) {
-          if (user) {
-            resolve(user);
+  updateUser: (userId, details) => {
+    let updateString = ''
+    updateStringObject(details, updateString)
+
+    return new Promise((resolve) => {
+      let cypher = `match (u:User) where id(u)${userId} set u += {${updateString}} return u;`
+      db.saveAsync(cypher)
+        .then((updatedUser) => {
+          if (updatedDestination.length) {
+            resolve(updatedUser[0])
           }
-        });
-    });
+        })
+        .catch((error) => {
+          console.error(error)
+        })
+    })
+  },
+  getUserById: (userId) => {
+    return new Promise((resolve) => {
+      let cypher = `match (u:User) where id(u)=${userId} return u;`
+      db.queryAsync(cypher)
+        .then((user) => {
+          if (user.length) {
+            resolve(user[0])
+          }
+        })
+        .catch((error) => {
+          console.error(error)
+        })
+    })
   },
   // gets a user when searching by a certain parameter ie. field would equal facebookId and value would be the id
-  getUserByParameter: function (field, value) {
-    return new Promise(function (resolve) {
-      let cypher = 'match (user:User) where ' + 'user.' + field + '=' + value + ' return user';
+  getUserByParameter: (field, value) => {
+    return new Promise((resolve) => {
+      let cypher = `match (u:User) where user.${field}=${value} return u;`
       db.queryAsync(cypher)
-        .then(function (user) {
-          resolve(user);
-        });
-    });
+        .then((user) => {
+          resolve(user)
+        })
+        .catch((error) => {
+          console.error(error)
+        })
+    })
+  },
+  getUserPostedTrips: (userId) => {
+    return new Promise((resolve) => {
+      let cypher = `match (u:User)-[r:POSTED]->(t:Trip) where id(u)=${userId} return t;`
+      db.queryAsync(cypher)
+        .then((trips) => {
+          if (trips.length) {
+            resolve(trips)
+          }
+        })
+        .catch((error) => {
+          console.error(error)
+        })
+    })
   },
   // currently returns all users who are trippians but we need to fix to order by popularity
   getPopularTrippians: function () {
     return new Promise(function (resolve) {
-      let cypher = 'match(user:User) where user.trippian=true return user';
+      let cypher = 'match(user:User) where user.trippian=true return user'
       db.queryAsync(cypher)
         .then(function (trippians) {
           if (trippians) {
-            resolve(trippians);
+            resolve(trippians)
           }
-        });
-    });
+        })
+        .catch((error) => {
+          console.error(error)
+        })
+    })
+  },
+  deleteUser: (userId) => {
+    return new Promise((resolve) => {
+      let cypher = `match (u:User) where id(u)=${userId} detach delete u;`
+      db.queryAsync(cypher)
+        .then((deleted) => {
+          resolve(deleted)
+        })
+        .catch((error) => {
+          console.error(error)
+        })
+    })
   }
 }

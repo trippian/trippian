@@ -1,6 +1,7 @@
 import Promise from 'bluebird'
 import db from '../db'
 import _ from 'lodash'
+import { updateStringObject } from '../../middleware/utils'
 
 export default {
   createDestination: function(details) {
@@ -19,9 +20,11 @@ export default {
   },
   updateDestination: function(details, destinationId) {
     let updateString = ''
-    _.forEach(details, function(val, key) {
-      updateString += `${key}` + ': "' + `${val}` + '"'
-    })
+    // _.forEach(details, function(val, key) {
+    //   updateString += `${key}` + ': "' + `${val}` + '"'
+    // })
+    updateStringObject(details, updateString)
+
     return new Promise(function(resolve) {
       let cypher = `match (d:Destination) where id(d)= ${destinationId} SET d += {${updateString}} return d;`
       db.queryAsync(cypher)

@@ -13,5 +13,10 @@ export default {
           next(error)
         })
     }
+  },
+  tripGet: function(req, res, next) {
+    // if (req.params.tripId) {
+    //   Trip.
+    // }
   }
 }
