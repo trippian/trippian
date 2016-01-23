@@ -4,7 +4,7 @@
   "main": "src/entry.js",
   "scripts": {
     "commit": "git-cz",
-    "check-coverage": "istanbul check-coverage --statements 90 --branches 70 --functions 70 --lines 90",
+    "check-coverage": "istanbul check-coverage --statements 60 --branches 60 --functions 60 --lines 60",
     "report-coverage": "cat ./coverage/lcov.info | codecov",
     "dev": "parallelshell 'npm run test' 'npm run start'",
     "copydist": "gulp copy",
@@ -20,6 +20,7 @@
     "webpack-server": "webpack-dev-server --hot --progress --colors",
     "web-server": "http-server -p 3000 ./dist",
     "build": "NODE_ENV=production webpack && gulp copyd",
+    "translate": " babel-node --plugins react-intl --presets es2015,stage-1,react src/client/SendButtonIntl.js",
     "start": "npm run webpack-server & npm run web-server",
     "start:servers": "nodemon server/src/server.js --exec babel-node --presets es2015"
   },
@@ -56,6 +57,7 @@
     "history": "1.17.0",
     "immutable": "^3.7.6",
     "immutable-js": "0.3.1-6",
+    "intl-messageformat-parser": "1.2.0",
     "isomorphic-fetch": "2.2.1",
     "lodash": "4.0.0",
     "morgan": "^1.6.1",
