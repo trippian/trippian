@@ -8,7 +8,6 @@ export default {
       db.relateAsync(trippeeId, 'INQUIRY', trippianId, inquiryProps)
         .then(function (inquiry) {
           if (inquiry) {
-            console.log(inquiry)
             resolve(inquiry)
           }
           reject('inquiry could not be sent')
@@ -31,7 +30,9 @@ export default {
   // function that deletes the inquiry from db if trippian rejects the request
   deleteInquiry: function (inquiryId) {
     return new Promise(function (resolve, reject) {
-      db.rel.deleteAsync(inquiryId)
+      let cypher = `match (u:User)-[r:INQUIRY]->() where id(r)=${inquiryId} delete r;`
+      console.log(cypher)
+      db.queryAsync(cypher)
         .then(function (deleted) {
           if (deleted) {
             resolve(deleted)
