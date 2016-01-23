@@ -11,6 +11,11 @@ export const errorLogger = function(err, req, res, next) {
 
 export const updateStringObject = (collection, string) => {
   _.forEach(collection, (val, key) => {
-    string += `${key}:` + '"' + `${val}` + '"' 
+    if (typeof val === 'string') {
+      string += `${key}:` + '"' + `${val}` + '"'
+    } else {
+      string += `${key}:${val}`
+    }
   })
+  return string
 }

@@ -1,22 +1,31 @@
 import Trip from '../db/models/trip'
 
 export default {
-  tripPost: function(req, res, next) {
+  tripPost: (req, res, next) => {
     if (req.params.userId && req.body) {
       Trip.createNewTrip(req.params.userId, req.body)
-        .then(function(newTrip) {
+        .then((newTrip) => {
           if (newTrip) {
             res.json(newTrip)
           }
         })
-        .catch(function(error) {
+        .catch((error) => {
           next(error)
         })
     }
   },
-  tripGet: function(req, res, next) {
+  tripGet: (req, res, next) => {
     // if (req.params.tripId) {
     //   Trip.
     // }
+  },
+  tripPut: (req, res, next) => {
+
+  },
+  tripPutVote: (req, res, next) => {
+
+  },
+  tripDelete: (req, res, next) => {
+    
   }
 }

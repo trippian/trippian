@@ -52,8 +52,9 @@ export default {
     }
   },
   userPut: (req, res, next) => {
-    if (req.params.userId) {
-      User.updateUser(req.params.userId)
+    console.log(req.body)
+    if (req.params.userId && req.body) {
+      User.updateUser(req.params.userId, req.body)
         .then((updatedUser) => {
           res.json(updatedUser)
         })
