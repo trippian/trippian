@@ -70,7 +70,6 @@ export default {
   },
   destinationGetNoParams: (req, res, next) => {
     if (req.query.cat === 'popular') {
-      console.log('hitting this')
       // Destination.getAllDestinations()
       //   .then((allDestinations) => {
       //     console.log(allDestinations)
