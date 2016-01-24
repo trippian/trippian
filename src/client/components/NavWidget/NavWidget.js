@@ -4,9 +4,10 @@ import {
 }
 from 'react-router'
 
-import { 
-  SearchBoxWidget 
-} from '../index'
+import {
+  SearchBoxWidget
+}
+from '../index'
 
 function renderSearchForm() {
   return (
@@ -35,6 +36,7 @@ const NavWidget = ({
             <ul className="nav navbar-nav navbar-right">
                 <li>{currentPath === '/'  ? null : renderSearchForm() }</li>
 
+                <li><Link to='intl' className="btn btn-bordered">Intl Demo</Link></li>
                 <li><Link to='become-a-trippian' className="btn btn-bordered">Become a Trippian</Link></li>
                 <li className="dropdown">
                     <a href="#" className="dropdown-toggle" data-toggle="dropdown">Menu <b className="caret"></b></a>

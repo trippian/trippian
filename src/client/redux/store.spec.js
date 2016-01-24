@@ -10,7 +10,7 @@ import Immutable, {
 from 'immutable'
 
 describe('redux store', () => {
-  describe('reducer', () => {
+  describe('apiTrippianReducer', () => {
     it('has default state for trippians and destinations', () => {
       // apiTrippianReducer 
       let state = store.getState().apiTrippian
@@ -30,7 +30,7 @@ describe('redux store', () => {
       }]
       store.dispatch({
         type: 'apiTrippian.SET_DESTINATIONS',
-        data: {
+        payload: {
           destinations: payload
         }
       })
@@ -68,6 +68,37 @@ describe('redux store', () => {
 
     })
 
+  })
+  describe('appStateReducer', () => {
+    it('has default state of en', () => {
+      const expected = store.getState().appState.get('locale')
+      expect(expected).to.equal('en-US')
+    })
 
+    it('can dispatch SET_LOCALE with locale payload', () => {
+      store.dispatch({
+        type: 'appState.SET_LOCALE',
+        payload: {
+          locale: 'zh'
+        }
+      })
+      const expected = store.getState().appState.get('locale')
+      expect(expected).to.equal('zh')
+    })
+
+    it('can dispatch SET_LOCALE_MESSAGES with messages payload', () => {
+      const messages = {
+        'send_button.label': '发送',
+        'send_button.tooltip': '发消息'
+      }
+      store.dispatch({
+        type: 'appState.SET_LOCALE_MESSAGES',
+        payload: {
+          messages: messages
+        }
+      })
+      const expected = store.getState().appState.get('messages')
+      expect(expected).to.equal(messages)
+    })
   })
 })

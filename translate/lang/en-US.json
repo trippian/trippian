@@ -1,4 +1,9 @@
 {
+  "menu.item_en_us_description": "English",
+  "menu.item_zh_description": "中文",
+  "menu.item_es_description": "Espanol",
+  "app.title": "Trippian Intl Demo Page",
+  "app.rich_description": "<h2 style=\"color: red\">大号字 - rich html</h2>",
   "send_button.label": "Send",
   "send_button.tooltip": "Send the message"
 }

@@ -12,3 +12,8 @@ export function getPathNameFromHash(hash) {
     pathName += hash[i]
   }
 }
+
+// load different translated language files based on local 
+export function getMessagesByLocale(locale = 'en-US') {
+  return require(`../../../translate/lang/${locale}.json`)
+}
