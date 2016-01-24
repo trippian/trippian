@@ -18,6 +18,9 @@ export default {
             resolve(createdUser)
           }
         })
+        .catch((error) => {
+          console.error(error)
+        })
     })
   },
   // need to work on this function to change all fields that are sent
