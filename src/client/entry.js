@@ -8,8 +8,6 @@ import {
   IntlProvider, addLocaleData
 }
 from 'react-intl'
-import en from './locale-data/en.js'
-import zh from './locale-data/zh.js'
 import {
   getMessagesByLocale
 }
@@ -19,7 +17,9 @@ import {
   initializeAppStateWithLocale
 }
 from '../shared/utils/clientAppSetup'
-  // set the locale and intialize the store with the messages from that locale 
+
+// set the locale and intialize the store with the messages from that locale 
+// ideally, we'll read from db or user;s ysstem 
 let locale = 'en-US'
 initializeAppStateWithLocale(locale)
 let messages = store.getState().appState.get('messages')

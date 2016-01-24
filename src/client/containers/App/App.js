@@ -17,12 +17,15 @@ import {
 from '../../../shared/utils/clientUtils'
 
 import store from '../../redux/store'
-
-// function mapStateToProps(state) {
-//   return {
-//     messages: state.appState.messages
-//   }
-// }
+import {
+  IntlProvider, addLocaleData
+}
+from 'react-intl'
+  // function mapStateToProps(state) {
+  //   return {
+  //     messages: state.appState.messages
+  //   }
+  // }
 
 class App extends Component {
 
@@ -48,10 +51,11 @@ class App extends Component {
     //     console.log('locale changed', locale, messages)
     //   }
     // })
+    console.log('app', this)
 
     this.props.history.listen(() => {
-      const query = window.location.search
       const currentPath = getPathNameFromHash(window.location.hash)
+      const query = window.location.search
       console.log('currentPath', currentPath, query)
       this.state.currentPath = currentPath
         // will need to set stateTree later 
@@ -81,4 +85,5 @@ App.propTypes = {
 App.displayName = 'App'
 
 // export default connect(mapStateToProps)(App)
+
 export default App
