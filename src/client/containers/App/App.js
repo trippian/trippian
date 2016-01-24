@@ -51,7 +51,7 @@ class App extends Component {
     //     console.log('locale changed', locale, messages)
     //   }
     // })
-    console.log('app', this)
+    // console.log('app', this)
 
     this.props.history.listen(() => {
       const currentPath = getPathNameFromHash(window.location.hash)
