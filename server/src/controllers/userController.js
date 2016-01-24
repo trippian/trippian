@@ -61,6 +61,15 @@ export default {
           next(error)
         })
     }
+    if (req.query.cat === 'trippian' && req.params.userId) {
+      User.becomeTrippian(req.params.userId)
+        .then((trippian) => {
+          res.json(trippian)
+        })
+        .catch((error) => {
+          next(error)
+        })
+    }
   },
   userDelete: (req, res, next) => {
     if (req.params.userId) {

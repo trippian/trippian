@@ -1,9 +1,9 @@
-export default function(app, passport) {
-  app.get('/facebook', passport.authenticate('facebook', {
+export default function(router, passport) {
+  router.get('/facebook', passport.authenticate('facebook', {
     scope: ['email']
   }))
 
-  app.get('/facebook/callback', passport.authenticate('facebook', {
+  router.get('/facebook/callback', passport.authenticate('facebook', {
     successRedirect: '/',
     failureRedirect: '/'
   }))

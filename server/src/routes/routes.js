@@ -49,11 +49,14 @@ export default function (router) {
   router.put('/api/trip/:tripId', tripController.tripPut)
   router.delete('/api/trip/:tripId', tripController.tripDelete)
 
-    //routes for inquiries
+  //routes for inquiries
   router.get('/api/inquiry/:userId', inquiryController.inquiryGet)
   router.post('/api/inquiry/:trippianId', inquiryController.inquiryPost)
   router.put('/api/inquiry/:inquiryId', inquiryController.inquiryPut)
   router.delete('/api/inquiry/:inquiryId', inquiryController.inquiryDelete)
+
+  //routes for users to rate each other
+  router.post('/api/rating/:userId', )
   // AMAZON S3
   router.get('/signS3', getSignedRequest)
 }

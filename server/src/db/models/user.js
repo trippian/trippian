@@ -24,9 +24,9 @@ export default {
     })
   },
   // need to work on this function to change all fields that are sent
-  becomeTrippian: (userId, field) => {
+  becomeTrippian: (userId) => {
     return new Promise((resolve) => {
-      let cypher = `match (u:User) where id(u)=${userId} set u.trippian=true return u`
+      let cypher = `match (u:User) where id(u)=${userId} SET u.trippian = true return u`
       db.queryAsync(cypher)
         .then((updatedUser) => {
           if (updatedUser) {
@@ -98,7 +98,7 @@ export default {
   // currently returns all users who are trippians but we need to fix to order by popularity
   getPopularTrippians: () => {
     return new Promise((resolve) => {
-      let cypher = `match(user:User) where user.trippian=true return user`
+      let cypher = `match (u:User) where u.trippian=true return u`
       db.queryAsync(cypher)
         .then((trippians) => {
           if (trippians) {
