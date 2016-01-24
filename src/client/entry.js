@@ -5,11 +5,11 @@ import routes from './config/routes'
 import store from './redux/store'
 
 import {
-  IntlProvider, addLocaleData
+  IntlProvider
 }
 from 'react-intl'
 import {
-  getMessagesByLocale
+  getLocaleFromQueryString
 }
 from '../shared/utils/clientUtils'
 
@@ -19,23 +19,13 @@ import {
 from '../shared/utils/clientAppSetup'
 
 // set the locale and intialize the store with the messages from that locale 
-// ideally, we'll read from db or user;s ysstem 
-let locale = 'en-US'
+// ideally, we'll read from db (user setting) or user's browser / OS settings
+let locale = getLocaleFromQueryString(window.location.search)
 initializeAppStateWithLocale(locale)
 let messages = store.getState().appState.get('messages')
 
-
-// store.subscribe(() => {
-//   const newLocale = store.getState().appState.get('locale')
-//   console.log(store.getState())
-//   if (newLocale !== locale) {
-//     locale = newLocale
-//     messages = store.getState().appState.get('messages')
-//     console.log('locale changed', locale, messages)
-//   }
-// })
-
-
+// IntlProvider is not necessary since we are managing the locale and messages in App component 
+// but keep it here just in case 
 ReactDOM.render(
   <IntlProvider locale={locale} messages={messages}>
         <Router>{routes}</Router>

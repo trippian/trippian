@@ -7924,7 +7924,8 @@ body {
 
 a {
   font-family: "Roboto Slab", serif;
-  color: #c84016; }
+  color: #c84016;
+  cursor: pointer; }
   a:hover, a:focus {
     color: #832a0e;
     text-decoration: none; }
@@ -8056,8 +8057,7 @@ footer {
   .navbar .navbar-nav li a {
     padding: 8px !important; }
     .navbar .navbar-nav li a.btn-bordered {
-      border: 3px solid #fff;
-      font-size: 20px; }
+      font-size: 18px; }
       .navbar .navbar-nav li a.btn-bordered:hover {
         color: #fff;
         background-color: #FF5722;

@@ -100,5 +100,29 @@ describe('redux store', () => {
       const expected = store.getState().appState.get('messages')
       expect(expected).to.equal(messages)
     })
+
+    it('can dispatch SET_USERNAME with username payload', () => {
+      store.dispatch({
+        type: 'appState.SET_USERNAME',
+        payload: {
+          username: 'vidaaudrey'
+        }
+      })
+      const expected = store.getState().appState.get('username')
+      expect(expected).to.equal('vidaaudrey')
+    })
+
+
+    it('can dispatch SET_DISPLAYNAME with displayName payload', () => {
+      store.dispatch({
+        type: 'appState.SET_DISPLAYNAME',
+        payload: {
+          displayName: 'Audrey Li'
+        }
+      })
+      const expected = store.getState().appState.get('displayName')
+      expect(expected).to.equal('Audrey Li')
+    })
+
   })
 })

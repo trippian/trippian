@@ -24,10 +24,14 @@ const GET_DESTINATIONS = 'apiTrippian.GET_DESTINATIONS'
 const GET_TRIPPIANS = 'apiTrippian.GET_TRIPPIANS'
 const SET_LOCALE = 'appState.SET_LOCALE'
 const SET_LOCALE_MESSAGES = 'appState.SET_LOCALE_MESSAGES'
+const SET_USERNAME = 'appState.SET_USERNAME'
+const SET_DISPLAYNAME = 'appState.SET_DISPLAYNAME'
 
 // initialize the app state 
 const getInitialState = () => {
   return new Map({
+    username: 'vidaaudrey', // update later 
+    displayName: 'Audrey Li', // update later 
     locale: 'en-US',
     availableLocales: ['en-US', 'zh', 'es'],
     messages: defaultMessages,
@@ -56,6 +60,10 @@ function appStateReducer(state = getInitialState(), action) {
 
     case SET_LOCALE_MESSAGES:
       return state.set('messages', action.payload.messages)
+    case SET_USERNAME:
+      return state.set('username', action.payload.username)
+    case SET_DISPLAYNAME:
+      return state.set('displayName', action.payload.displayName)
     default:
       return state
   }

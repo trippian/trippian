@@ -24,6 +24,7 @@ body {
 a {
     font-family: $roboto-slab;
     color: $link-color;
+    cursor: pointer;
     &:hover,
     &:focus {
         color: $link-hover-color;
