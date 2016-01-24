@@ -5,7 +5,7 @@ export default {
   inquiryGet: (req, res, next) => {
     let userId = req.params.userId
     if (userId) {
-      User.getUserByParameter("id", userId)
+      User.getUserByParameter('id', userId)
         .then((inquiry) => {
           Inquiry.getAllInquiriesForTrippian(userId)
           if (inquiry) {
@@ -18,7 +18,7 @@ export default {
     }
   },
   inquiryPost: function(req, res, next) {
-    let postDetails = req.body 
+    let postDetails = req.body
     let trippianId = req.params.trippianId 
     let userId = req.body.id 
     if (postDetails) {
@@ -37,15 +37,35 @@ export default {
     //2) trippian accepts
     //3) trippian declines
     let putDetails = req.body
-    let trippianId = req.params.trippianId 
+    let inquiryId = req.params.inquiryId
     let accept = req.query.accept
-    if (putDetails) {
-      Inquiry.updateInquiry(putDetails) 
+    console.log(accept)
+    if (putDetails && !accept) { //case 1
+      console.log('shit')
+      Inquiry.updateInquiry(putDetails, inquiryId)
         .then(function(putDetails) {
           res.json(putDetails)
         })
         .catch(function(error) {
           next (error)
+        })
+    } else if (accept) { //trippian accepts
+      console.log('true')
+      Inquiry.acceptInquiry(inquiryId, accept)
+        .then(function(inquiry) {
+          res.json(inquiry)
+        })
+        .catch(function(error) {
+          next(error)
+        })
+    } else if (!accept) { //trippian declines inquiry
+      console.log('false')
+      Inquiry.acceptInquiry(inquiryId, accept)
+        .then(function(inquiry) {
+          res.json(inquiry)
+        })
+        .catch(function(error) {
+          next(error)
         })
     }
   },
