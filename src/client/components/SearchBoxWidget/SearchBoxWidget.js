@@ -11,7 +11,7 @@ class SearchBoxWidget extends React.Component {
 
     render() {
         return (
-            <form className = "form-inline" role = "form" >
+            <form className = {`form-inline ${this.props.className}`} role = "form" >
       < div className = "form-group" >
       < label className = "sr-only" > search for destinations < /label> 
       < input type="text" ref="searchText" className="form-control" id ="" placeholder="Bali..." / >
