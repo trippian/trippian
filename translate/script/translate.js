@@ -38,15 +38,15 @@ let defaultMessages = globSync(MESSAGES_PATTERN)
 // UPPERCASING all of the message text. In a real app this would be through some
 // offline process to get the app's messages translated by machine or
 // processional translators.
-let uppercaseTranslator = new Translator((text) => text.toUpperCase())
-let uppercaseMessages = Object.keys(defaultMessages)
-  .map((id) => [id, defaultMessages[id]])
-  .reduce((collection, [id, defaultMessage]) => {
-    collection[id] = uppercaseTranslator.translate(defaultMessage)
-    return collection
-  }, {})
+// let uppercaseTranslator = new Translator((text) => text.toUpperCase())
+// let uppercaseMessages = Object.keys(defaultMessages)
+//   .map((id) => [id, defaultMessages[id]])
+//   .reduce((collection, [id, defaultMessage]) => {
+//     collection[id] = uppercaseTranslator.translate(defaultMessage)
+//     return collection
+//   }, {})
 
 mkdirpSync(LANG_DIR)
 fs.writeFileSync(LANG_DIR + 'en-US.json', JSON.stringify(defaultMessages, null, 2))
-fs.writeFileSync(LANG_DIR + 'zh.json', JSON.stringify(defaultMessages, null, 2))
-fs.writeFileSync(LANG_DIR + 'en-UPPER.json', JSON.stringify(uppercaseMessages, null, 2))
+  // fs.writeFileSync(LANG_DIR + 'zh.json', JSON.stringify(defaultMessages, null, 2))
+  // fs.writeFileSync(LANG_DIR + 'en-UPPER.json', JSON.stringify(uppercaseMessages, null, 2))

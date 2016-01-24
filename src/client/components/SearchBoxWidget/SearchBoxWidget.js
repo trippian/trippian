@@ -1,22 +1,17 @@
 import React from 'react'
 
 class SearchBoxWidget extends React.Component {
+    constructor(props) {
+      super(props)
+    }
 
-  static propTypes = {
-    name: React.PropTypes.string
-  }
+    handleClick() {
+      console.log('clicked', this.refs.searchText.value)
+    }
 
-  constructor(props) {
-    super(props)
-  }
-
-  handleClick() {
-    console.log('clicked', this.refs.searchText.value)
-  }
-
-  render() {
-    return (
-      <form className = "form-inline" role = "form" >
+    render() {
+        return (
+            <form className = "form-inline" role = "form" >
       < div className = "form-group" >
       < label className = "sr-only" > search for destinations < /label> 
       < input type="text" ref="searchText" className="form-control" id ="" placeholder="Bali..." / >
@@ -25,6 +20,10 @@ class SearchBoxWidget extends React.Component {
   }
 }
 
+SearchBoxWidget.propTypes = {
+  name: React.PropTypes.string
+}
+  
 SearchBoxWidget.displayName = 'SearchBoxWidget'
 
 export default SearchBoxWidget

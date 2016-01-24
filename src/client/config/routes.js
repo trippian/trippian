@@ -11,9 +11,11 @@ import {
 }
 from '../containers/index'
 
+import store from '../redux/store'
+
 export default (
   <Router history={browserHistory}>
-        <Route component={App} path="/" >
+        <Route component={App} path="/" store={store} >
             <Route component={About}  path="about" />
             <Route component={DestinationDetail} path="destination/:id" />
             <Route component={DestinationPost} path="destination-post" />

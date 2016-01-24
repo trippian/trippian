@@ -1,0 +1,17 @@
+[
+  {
+    "id": "menu.item_en_us_description",
+    "description": "local menu English text",
+    "defaultMessage": "English"
+  },
+  {
+    "id": "menu.item_zh_description",
+    "description": "local menu Chinese text",
+    "defaultMessage": "中文"
+  },
+  {
+    "id": "menu.item_es_description",
+    "description": "local menu Spanish text",
+    "defaultMessage": "Espanol"
+  }
+]
