@@ -21,11 +21,13 @@ import {
   IntlProvider, addLocaleData
 }
 from 'react-intl'
-  // function mapStateToProps(state) {
-  //   return {
-  //     messages: state.appState.messages
-  //   }
-  // }
+
+function mapStateToProps(state) {
+  return {
+    locale: store.getState().appState.get('locale'),
+    messages: store.getState().appState.get('messages')
+  }
+}
 
 class App extends Component {
 
@@ -33,25 +35,28 @@ class App extends Component {
     super(props)
     this.state = {
       currentPath: '/',
-      locale: store.getState().appState.get('locale')
+      locale: store.getState().appState.get('locale') || 'en-US',
+      messages: store.getState().appState.get('messages')
     }
+    this.store = store
 
   }
   componentDidMount() {
-    // console.log('messages', this.context)
-    // store.subscribe(() => {
-    //   const newLocale = store.getState().appState.get('locale')
-    //   console.log(store.getState())
-    //   if (newLocale !== this.state.locale) {
-    //     this.state.locale = newLocale
-    //     messages = store.getState().appState.get('messages')
-    //     this.setState({
-    //       messages, messages
-    //     })
-    //     console.log('locale changed', locale, messages)
-    //   }
-    // })
-    // console.log('app', this)
+    // temp solution: listen to the store for any locale change and update the App state
+    // ideally, we shoul use store connect and map to automatically update the App Component's state
+    store.subscribe(() => {
+      const newLocale = store.getState().appState.get('locale')
+      console.log('current store', store.getState())
+      if (newLocale !== this.state.locale) {
+        this.state.locale = newLocale
+        const messages = store.getState().appState.get('messages')
+        this.setState({
+          messages: messages
+        })
+        console.log('locale changed', this.state.locale, messages)
+      }
+    })
+
 
     this.props.history.listen(() => {
       const currentPath = getPathNameFromHash(window.location.hash)
@@ -64,7 +69,9 @@ class App extends Component {
 
   // just add the links temperarily, will move to NavWidget later 
   render() {
+
     return (
+      <IntlProvider locale={this.state.locale} messages={this.state.messages}>
       <div>
         <header>
           <NavWidget currentPath={this.state.currentPath} />
@@ -74,6 +81,7 @@ class App extends Component {
         </main>
         <FooterWidget />
       </div>
+      </IntlProvider>
     )
   }
 }

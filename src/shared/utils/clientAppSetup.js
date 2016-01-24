@@ -13,8 +13,7 @@ import {
 from './clientUtils.js'
 
 
-export function initializeAppStateWithLocale
-(locale = 'en-US') {
+export function initializeAppStateWithLocale(locale = 'en-US') {
   //set the local 
   store.dispatch({
     type: 'appState.SET_LOCALE',
@@ -25,8 +24,8 @@ export function initializeAppStateWithLocale
   addLocaleData(en)
   addLocaleData(zh)
 
-  const messages = getMessagesByLocale
-(locale)
+  const messages = getMessagesByLocale(locale)
+
   store.dispatch({
     type: 'appState.SET_LOCALE_MESSAGES',
     payload: {

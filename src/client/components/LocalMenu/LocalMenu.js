@@ -35,6 +35,8 @@ store.subscribe(() => {
     // initializeAppStateWithLocale(store.getState().appState.get('locale'))
 })
 
+
+// in order to get the proper state, must dispatch locale first, then set locale messages
 class LocalesMenu extends Component {
   render() {
     const {
@@ -45,16 +47,17 @@ class LocalesMenu extends Component {
       <menu>
         <li>
             <a href="/?locale=en-US" onClick={()=>{
-              store.dispatch({
-                  type: 'appState.SET_LOCALE',
-                  payload: {
-                   locale: 'zh'
-                  } 
-              })
+             
               store.dispatch({
                   type: 'appState.SET_LOCALE_MESSAGES',
                   payload: {
-                   messages: getMessagesByLocale('zh')
+                   messages: getMessagesByLocale('en-US')
+                  } 
+              })
+              store.dispatch({
+                  type: 'appState.SET_LOCALE',
+                  payload: {
+                   locale: 'en-US'
                   } 
               })
             }}
@@ -64,17 +67,18 @@ class LocalesMenu extends Component {
         </li>
         <li>
             <button onClick={()=>{
-              store.dispatch({
-                  type: 'appState.SET_LOCALE',
-                 payload: {
-                   locale: 'en-US'  
-                }
-           })
+             
               store.dispatch({
                   type: 'appState.SET_LOCALE_MESSAGES',
                   payload: {
                    messages: getMessagesByLocale('en-US')
                   } 
+              })
+                 store.dispatch({
+                     type: 'appState.SET_LOCALE',
+                    payload: {
+                      locale: 'en-US'  
+                   }
               })
 
             }}
@@ -84,16 +88,17 @@ class LocalesMenu extends Component {
         </li>
         <li>
             <button onClick={() =>{
-              store.dispatch({
-                  type: 'appState.SET_LOCALE',
-                  payload: {
-                   locale: 'zh'
-                  } 
-              })
+            
               store.dispatch({
                   type: 'appState.SET_LOCALE_MESSAGES',
                   payload: {
                    messages: getMessagesByLocale('zh')
+                  } 
+              })
+              store.dispatch({
+                  type: 'appState.SET_LOCALE',
+                  payload: {
+                   locale: 'zh'
                   } 
               })
             }}

@@ -13,6 +13,20 @@ export function getPathNameFromHash(hash) {
   }
 }
 
+export function getLocaleFromQueryString(queryString) {
+  if (typeof (queryString) !== 'string') return 'en-US'
+  const locale = getParamFromQueryStringByName(queryString, 'locale')
+  return locale !== '' ? locale : 'en-US'
+}
+//input: ?locale=en-US
+//output: en-US
+export function getParamFromQueryStringByName(search, name) {
+  name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]')
+  var regex = new RegExp('[\\?&]' + name + '=([^&#]*)'),
+    results = regex.exec(search)
+  return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '))
+}
+
 // load different translated language files based on local 
 export function getMessagesByLocale(locale = 'en-US') {
   return require(`../../../translate/lang/${locale}.json`)
