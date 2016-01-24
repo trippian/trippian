@@ -76,7 +76,7 @@ export default {
     }
   },
   trippianGet: (req, res, next) => {
-    if (req.query.popular) {
+    if (req.query.cat === 'popular') {
       User.getPopularTrippians()
         .then((trippians) => {
           if (trippians) {
