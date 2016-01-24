@@ -3,6 +3,22 @@ We created this file to track the whole project, including important info, notic
 
 After our daily meeting, we'll move the tasks under meeting memo to Github issues so that we can better track our progress.
 
+
+### Server & Client Feature Track 
+- Server 
+  - [ ] Add more destination data 
+  - [ ] Add destination photos to database 
+  - [ ] Add 'http://' in front of picture field. Currently it is stored as "graph.facebook.com/955195534516978/picture?height=500"
+  - [ ] Add 'location' and 'rating' to trippian data 
+  - [ ] Review routes 
+
+- Client 
+  - [ ] Localize the whole front-end 
+  - [ ] Handle form submit with redux-form
+  - [ ] Move Common API logic to redux store from the Container Component
+  - [ ] Improve Redux Store 
+
+
 ### Important Info and Notice 
 - Info 
   - Project Scopes for commit messages: 

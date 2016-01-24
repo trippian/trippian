@@ -9,7 +9,6 @@ import {
 from 'mkdirp'
 import Translator from './lib/translator'
 import sortObject from 'sort-object'
-import _ from 'lodash'
 const MESSAGES_PATTERN = './translate/messages/**/*.json'
 const LANG_DIR = './translate/lang/'
 
