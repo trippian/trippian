@@ -8,7 +8,8 @@ import {
 }
 from 'mkdirp'
 import Translator from './lib/translator'
-
+import sortObject from 'sort-object'
+import _ from 'lodash'
 const MESSAGES_PATTERN = './translate/messages/**/*.json'
 const LANG_DIR = './translate/lang/'
 
@@ -33,20 +34,17 @@ let defaultMessages = globSync(MESSAGES_PATTERN)
     return collection
   }, {})
 
-// For the purpose of this example app a fake locale: `en-UPPER` is created and
-// the app's default messages are "translated" into this new "locale" by simply
-// UPPERCASING all of the message text. In a real app this would be through some
-// offline process to get the app's messages translated by machine or
-// processional translators.
-// let uppercaseTranslator = new Translator((text) => text.toUpperCase())
-// let uppercaseMessages = Object.keys(defaultMessages)
-//   .map((id) => [id, defaultMessages[id]])
-//   .reduce((collection, [id, defaultMessage]) => {
-//     collection[id] = uppercaseTranslator.translate(defaultMessage)
-//     return collection
-//   }, {})
+
+// sort the messages by key before writing to file 
+defaultMessages = sortObject(defaultMessages)
 
 mkdirpSync(LANG_DIR)
 fs.writeFileSync(LANG_DIR + 'en-US.json', JSON.stringify(defaultMessages, null, 2))
-  // fs.writeFileSync(LANG_DIR + 'zh.json', JSON.stringify(defaultMessages, null, 2))
-  // fs.writeFileSync(LANG_DIR + 'en-UPPER.json', JSON.stringify(uppercaseMessages, null, 2))
+
+// require the zh.json file, and fill in the gaps 
+let zhMessages = require('../lang/zh.json')
+zhMessages = Object.assign(defaultMessages, zhMessages)
+console.log('zh messages', zhMessages)
+
+// write the zh messages into file 
+fs.writeFileSync(LANG_DIR + 'zh.json', JSON.stringify(zhMessages, null, 2))

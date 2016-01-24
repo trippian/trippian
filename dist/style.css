@@ -8047,11 +8047,9 @@ footer {
   .navbar .navbar-header .navbar-brand {
     font-size: 60px; }
     .navbar .navbar-header .navbar-brand img {
-      background-color: rgba(7, 0, 0, 0.35);
       padding: 20px;
-      margin-left: -20px;
-      max-width: 350px;
-      margin-top: -30px; }
+      max-width: 200px;
+      margin-top: -60px; }
   .navbar .navbar-nav li .navbar-form {
     margin: 0; }
   .navbar .navbar-nav li a {

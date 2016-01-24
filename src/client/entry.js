@@ -20,7 +20,8 @@ from '../shared/utils/clientAppSetup'
 
 // set the locale and intialize the store with the messages from that locale 
 // ideally, we'll read from db (user setting) or user's browser / OS settings
-let locale = getLocaleFromQueryString(window.location.search)
+let locale = store.getState().appState.get('locale') || getLocaleFromQueryString(window.location.search)
+
 initializeAppStateWithLocale(locale)
 let messages = store.getState().appState.get('messages')
 

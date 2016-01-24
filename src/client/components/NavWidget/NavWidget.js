@@ -34,16 +34,24 @@ const NavWidget = ({
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
             </button>
-            <a className="navbar-brand" href="/">
+            <Link className="navbar-brand" to="/">
                 <img src="logo.png" alt="Trippian"/>
-            </a>
+            </Link>
         </div>
         <div className="collapse navbar-collapse navbar-ex1-collapse">
 
             <LocaleMenu className="nav navbar-nav navbar-right list-inline"/>
             <ul className="nav navbar-nav navbar-right">
                 <li>{currentPath === '/'  ? null : renderSearchForm() }</li>
-                <li><Link to='become-a-trippian' className="btn btn-bordered">Become a Trippian</Link></li>
+                <li>
+                    <Link to='become-a-trippian' className="btn btn-bordered">
+                        <FormattedMessage 
+                            id="app-pages.become-a-trippian" 
+                            description="become a trippian page title"
+                            defaultMessage="Become a Trippian"
+                        />
+                    </Link>
+                </li>
                 <li className="dropdown">
                     <a href="#" className="dropdown-toggle" data-toggle="dropdown"> 
                      <FormattedMessage 
@@ -55,9 +63,25 @@ const NavWidget = ({
                     <b className="caret"></b>
                     </a>
                     <ul className="dropdown-menu">
-                        <li><Link to='trippian-edit'>Edit My Profile</Link></li>
+                        <li>
+                            <Link to='trippian-edit'>
+                                <FormattedMessage 
+                                    id="app-pages.trippian-edit-profile" 
+                                    description="trippian edit page title"
+                                    defaultMessage="Edit My Profile"
+                                />
+                            </Link>
+                        </li>
                         <li><a href="#">Friends</a></li>
-                        <li><a href="#">Logout</a></li>
+                        <li>
+                            <a href="#">
+                                <FormattedMessage 
+                                    id="app-shared.logout" 
+                                    description="logout link text"
+                                    defaultMessage="Logout"
+                                />
+                            </a>
+                        </li>
                         <li><Link to='intl' className="btn btn-bordered">Intl Demo</Link></li>
                     </ul>
                 </li>
