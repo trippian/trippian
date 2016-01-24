@@ -1,5 +1,6 @@
 import Promise from 'bluebird'
 import db from '../db'
+import { updateStringObject } from '../../middleware/utils'
 
 export default {
   // function for a user to create an inquiry
@@ -31,7 +32,6 @@ export default {
   deleteInquiry: function (inquiryId) {
     return new Promise(function (resolve, reject) {
       let cypher = `match (u:User)-[r:INQUIRY]->() where id(r)=${inquiryId} delete r;`
-      console.log(cypher)
       db.queryAsync(cypher)
         .then(function (deleted) {
           if (deleted) {
@@ -42,9 +42,9 @@ export default {
     })
   },
   // function for trippians to accept inquiry on put request
-  acceptInquiry: function (inquiryId) {
+  acceptInquiry: function (inquiryId, accept) {
     return new Promise(function (resolve, reject) {
-      let cypher = 'match ()-[r:INQUIRY]->() where r.id=' + inquiryId + ' set r.accepted=true return r'
+      let cypher = `match ()-[r:INQUIRY]->() where id(r)=${inquiryId} set r.accepted=${accept} return r`
       db.queryAsync(cypher)
         .then(function (inquiry) {
           if (inquiry) {
@@ -55,7 +55,19 @@ export default {
         })
     })
   },
-  updateInquiry: function() {
-    //similar to updateDestination
+  updateInquiry: function(details, inquiryId) {
+    let updateString = updateStringObject(details, '')
+    return new Promise(function(resolve) {
+      let cypher = `match ()-[r:INQUIRY]->() where id(r)=${inquiryId} set r += {${updateString}} return r;`
+      db.queryAsync(cypher)
+        .then(function(updatedInquiry) {
+          if (updatedInquiry) {
+            resolve(updatedInquiry)
+          }
+        })
+        .catch(function(error) {
+          console.error(error)
+        })
+    })
   }
 }
