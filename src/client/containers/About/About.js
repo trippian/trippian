@@ -29,9 +29,7 @@ export default class About extends Component {
               <FormattedMessage
                   id="about.title"
                   description="this is a formated title message in about page"
-                  defaultMessage="About Page "
-              />
-
+                  defaultMessage="About Page " />
             </div>
           </div>
         </div>
