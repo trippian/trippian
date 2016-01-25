@@ -9,6 +9,7 @@ export default {
       Destination.createDestination(destinationDetails)
         .then((createdDestination) => {
           if (createdDestination) {
+            console.log(createdDestination)
             res.json(createdDestination)
           }
         })
@@ -24,6 +25,7 @@ export default {
       Destination.updateDestination(destinationUpdateBody, destinationId)
         .then((updatedDestination) => {
           if (updatedDestination) {
+            console.log(updatedDestination)
             res.json(updatedDestination)
           }
         })
@@ -45,8 +47,10 @@ export default {
                   // append an array with all popular trips to destinations
                   destination.popularTrips = trips
                   // want to send back the destination object in the object
+                  console.log(destination)
                   res.json(destination)
                 }
+                console.log(destination)
                 res.json(destination)
               })
           }
@@ -61,6 +65,7 @@ export default {
     if (destinationId) {
       Destination.deleteDestinationById(destinationId)
         .then((deleted) => {
+          console.log(deleted)
           res.json(deleted)
         })
         .catch((error) => {
@@ -85,6 +90,7 @@ export default {
       Destination.getPopularDestinations()
         .then((popularDestinations) => {
           if (popularDestinations) {
+            console.log(popularDestinations)
             // need to return just the destinations and not the count(r)
             res.json(_.map(popularDestinations, (val) => {
               return val.d
@@ -104,6 +110,7 @@ export default {
               .then((trips) => {
                 if (trips) {
                   destination.popularTrips = trips
+                  console.log(destination)
                   res.json(destination)
                 }
                 res.json(destination)
@@ -124,6 +131,7 @@ export default {
       Destination.getAllDestinations()
         .then((destinations) => {
           if (destinations) {
+            console.log(destinations)
             res.json(destinations)
           }
         })

@@ -6,6 +6,7 @@ export default {
       console.log(req.body)
       Rating.createRating(req.query.rater, req.params.userId, req.body)
         .then((rating) => {
+          console.log(rating)
           res.json(rating)
         })
     }
@@ -14,6 +15,7 @@ export default {
     if (req.params.userId) {
       Rating.getAllUserRatings(req.params.userId)
         .then((ratings) => {
+          console.log(ratings)
           res.json(ratings)
         })
     }

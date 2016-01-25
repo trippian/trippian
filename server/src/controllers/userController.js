@@ -43,7 +43,12 @@ export default {
             User.getUserPostedTrips(req.params.userId)
               .then((trips) => {
                 user.trips = trips
-                res.json(user)
+                Rating.getAllUserRatings(req.params.userId)
+                  .then((ratings) => {
+                    user.reviews = ratings
+                    console.log(user)
+                    res.json(user)
+                  })
               })
           }
         })
@@ -56,6 +61,7 @@ export default {
     if (req.params.userId && req.body) {
       User.updateUser(req.params.userId, req.body)
         .then((updatedUser) => {
+          console.log(updatedUser)
           res.json(updatedUser)
         })
         .catch((error) => {
@@ -65,6 +71,7 @@ export default {
     if (req.query.cat === 'trippian' && req.params.userId) {
       User.becomeTrippian(req.params.userId)
         .then((trippian) => {
+          console.log(trippian)
           res.json(trippian)
         })
         .catch((error) => {
@@ -77,6 +84,7 @@ export default {
       User.deleteUser(req.params.userId)
         .then((deleted) => {
           if (deleted) {
+            console.log(deleted)
             res.json(deleted)
           }
         })
@@ -90,6 +98,7 @@ export default {
       User.getPopularTrippians()
         .then((trippians) => {
           if (trippians) {
+            console.log(trippians)
             res.json(trippians)
           }
         })
