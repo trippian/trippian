@@ -18,66 +18,56 @@ export default {
         })
     }
   },
-  inquiryPost: function(req, res, next) {
+  inquiryPost: (req, res, next) => {
     let postDetails = req.body
     let trippianId = req.params.trippianId 
-    let userId = req.body.id 
+    let userId = req.body.userId 
     if (postDetails) {
       Inquiry.createInquiry(userId, trippianId, postDetails)
-        .then(() => {
-          res.json(postDetails)
+        .then((createdInquiry) => {
+          res.json(createdInquiry)
        })
         .catch((error) => {
           next(error)
         })
     }
   },
-  inquiryPut: function(req,res, next) { 
-    //3 cases
-    //1) trippee updates inquiry
-    //2) trippian accepts
-    //3) trippian declines
+  inquiryPut: (req,res, next) => { 
     let putDetails = req.body
     let inquiryId = req.params.inquiryId
-    let accept = req.query.accept
-    console.log(accept)
-    if (putDetails && !accept) { //case 1
-      console.log('shit')
+    let accept = req.query.cat
+    if (putDetails && inquiryId) { //update inquiry
       Inquiry.updateInquiry(putDetails, inquiryId)
-        .then(function(putDetails) {
+        .then((putDetails) => {
           res.json(putDetails)
         })
-        .catch(function(error) {
+        .catch((error) => {
           next (error)
         })
-    } else if (accept) { //trippian accepts
-      console.log('true')
-      Inquiry.acceptInquiry(inquiryId, accept)
-        .then(function(inquiry) {
-          res.json(inquiry)
+    } 
+    if (inquiryId && accept) { //trippian accepts
+      Inquiry.acceptInquiry(inquiryId)
+        .then((accepted) => {
+          if (accepted) {
+            Inquiry.deleteInquiry(inquiryId)
+              .then((deleted) => {
+                res.json(accepted)
+              })
+          }
         })
-        .catch(function(error) {
-          next(error)
-        })
-    } else if (!accept) { //trippian declines inquiry
-      console.log('false')
-      Inquiry.acceptInquiry(inquiryId, accept)
-        .then(function(inquiry) {
-          res.json(inquiry)
-        })
-        .catch(function(error) {
+        .catch((error) => {
           next(error)
         })
     }
   },
-  inquiryDelete: function(req, res, next ) {
+  inquiryDelete: (req, res, next ) => {
     let inquiryId = req.params.inquiryId
     if (inquiryId) {
       Inquiry.deleteInquiry(inquiryId)
-        .then(function(deleted) {
+        .then((deleted) => {
           res.json(deleted)
         })
-        .catch(function(error) {
+        .catch((error) => {
           next(error)
         })
     }
