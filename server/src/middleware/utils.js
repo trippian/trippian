@@ -6,15 +6,23 @@ export const errorHandler = function(err, req, res) {
 
 export const errorLogger = function(err, req, res, next) {
   console.error(err.stack)
-  next(err);
+  next(err)
 }
 
 export const updateStringObject = (collection, string) => {
   _.forEach(collection, (val, key) => {
-    if (typeof val === 'string') {
-      string += `${key}:` + '"' + `${val}` + '"'
+    if (key === Object.keys(collection)[Object.keys(collection).length-1]) {
+      if (typeof val === 'string') {
+        string += `${key}:` + '"' + `${val}` + '"'
+      } else {
+        string += `${key}:${val}`
+      }
     } else {
-      string += `${key}:${val}`
+      if (typeof val === 'string') {
+        string += `${key}:` + '"' + `${val}` + '"' + ','
+      } else {
+        string += `${key}:${val},`
+      }
     }
   })
   return string
