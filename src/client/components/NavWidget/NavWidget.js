@@ -21,10 +21,10 @@ function renderSearchForm() {
   )
 }
 
+
 const NavWidget = ({
-  name = 'NavWidget', currentPath
+  name = 'NavWidget', currentPath, username = '', displayName = ''
 }) => {
-  const username = store.getState().appState.get('displayName')
   return (
     <nav className="navbar navbar-default" role="navigation">
         <div className="navbar-header">
@@ -59,7 +59,7 @@ const NavWidget = ({
                         description="a short welcome message for use at nav menu"
                         defaultMessage="Hello "
                      /> 
-                     {username}  
+                     {` ${displayName}`}  
                     <b className="caret"></b>
                     </a>
                     <ul className="dropdown-menu">

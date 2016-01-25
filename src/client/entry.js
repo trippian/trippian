@@ -3,7 +3,10 @@ import ReactDOM from 'react-dom'
 import Router from 'react-router'
 import routes from './config/routes'
 import store from './redux/store'
-
+import {
+  Provider
+}
+from 'react-redux'
 import {
   IntlProvider
 }
@@ -29,6 +32,6 @@ let messages = store.getState().appState.get('messages')
 // but keep it here just in case 
 ReactDOM.render(
   <IntlProvider locale={locale} messages={messages}>
-        <Router>{routes}</Router>
+        <Router>{routes}</Router> 
     </IntlProvider>,
   document.getElementById('app'))

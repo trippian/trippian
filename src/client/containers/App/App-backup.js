@@ -21,11 +21,14 @@ import {
   IntlProvider, addLocaleData
 }
 from 'react-intl'
-import {
-  Enhance
-}
-from './Enhance'
 
+
+
+function mapStateToProps(state) {
+  return {
+    locale: store.appState
+  }
+}
 
 class App extends Component {
 
@@ -34,10 +37,10 @@ class App extends Component {
     this.state = {
       currentPath: '/',
       locale: store.getState().appState.get('locale') || 'en-US',
-      messages: store.getState().appState.get('messages'),
-      username: store.getState().appState.get('username'),
-      displayName: store.getState().appState.get('displayName')
+      messages: store.getState().appState.get('messages')
     }
+    this.store = store
+
   }
   componentDidMount() {
     // temp solution: listen to the store for any locale change and update the App state
@@ -66,11 +69,13 @@ class App extends Component {
   }
 
   render() {
+    // add redux store to the root component here. Normally you'd do it in entry.js, but it didn't  work with IntlProvider
     return (
+      <Provider store={store}>
       <IntlProvider locale={this.state.locale} messages={this.state.messages}>
       <div>
         <header>
-          <NavWidget currentPath={this.state.currentPath} username={this.state.username} displayName={this.state.displayName}/>
+          <NavWidget currentPath={this.state.currentPath} />
         </header>
         <main className="row">
           {this.props.children}
@@ -79,6 +84,7 @@ class App extends Component {
         <FooterWidget />
       </div>
       </IntlProvider>
+      </Provider>
     )
   }
 }
@@ -89,6 +95,6 @@ App.propTypes = {
 }
 App.displayName = 'App'
 
-// export default Enhance(connect(mapStateToProps)(App))
+// export default connect(mapStateToProps)(App)
 
-export default Enhance(App)
+export default App

@@ -4,11 +4,11 @@ import React, {
 from 'react'
 
 import {
-  JumbotronTrippianWidget, LocaleMenu
+  JumbotronTrippianWidget, LocaleMenu, RelativeTimeWidget
 }
 from '../../components/index'
 import {
-  FormattedMessage, FormattedDate, FormattedNumber, FormattedTime, FormattedHTMLMessage
+  FormattedMessage, FormattedDate, FormattedNumber, FormattedTime, FormattedHTMLMessage, FormattedPlural
 }
 from 'react-intl'
 import SendButtonIntl from '../../SendButtonIntl'
@@ -17,6 +17,8 @@ export default class IntlDemo extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      name: 'Eric',
+      unreadCount: 1000,
       user: {
         name: 'Eric',
         unreadCount: 4,
@@ -32,6 +34,10 @@ export default class IntlDemo extends Component {
   render() {
     let now = Date.now()
     let num = 10000
+    const {
+      name, unreadCount
+    } = this.state
+
     return (
       <div id="intl-demo-page">
         <JumbotronTrippianWidget title='IntlDemo' isNoContact isTitled />
@@ -82,6 +88,16 @@ export default class IntlDemo extends Component {
                        description="this is a formated html message"
                        defaultMessage='<h2 style="color: red">大号字 - rich html</h2>'
                        />
+
+                      <h3>Formtted Relative Time</h3>
+                      
+                       <RelativeTimeWidget date="Wed Jan 20 2016 19:36:40 GMT-0800 (PST)" intl='fr' ></RelativeTimeWidget>
+                       Hello <b>{name}</b>, you have {' '}
+                                       <FormattedNumber value={unreadCount} /> {' '}
+                                       <FormattedPlural value={unreadCount}
+                                           one="message"
+                                           other="messages"
+                                       />.
                     </div>
                 </div>
             </div>

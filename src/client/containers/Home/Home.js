@@ -4,7 +4,7 @@ import React, {
 from 'react'
 
 import {
-  JumbotronHomeWidget, DestinationListWidget, SectionHeaderWidget, RelativeTimeWidget, TrippianListRoundWidget
+  JumbotronHomeWidget, DestinationListWidget, SectionHeaderWidget, TrippianListRoundWidget
 }
 from '../../components/index'
 
@@ -18,10 +18,17 @@ import {
 }
 from '../../utils/apiTrippian'
 
+import store from '../../redux/store'
+import {
+  connect
+}
+from 'react-redux'
+
 import {
   FormattedNumber, FormattedPlural, FormattedMessage, defineMessages, intlShape, injectIntl
 }
 from 'react-intl'
+
 
 const messages = defineMessages({
   jumbotronTitle: {
@@ -57,12 +64,19 @@ const messages = defineMessages({
 
 })
 
+function mapState(state) {
+  return {
+    apiTrippian: state.apiTrippian,
+    appState: state.appState,
+    username: state.appState.get('username'),
+    displayName: state.appState.get('displayName')
+  }
+}
+
 class Home extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      name: 'Eric',
-      unreadCount: 1000,
       popularDestinations: [],
       popularTrippians: []
     }
@@ -84,14 +98,10 @@ class Home extends Component {
   }
 
   render() {
-    const {
-      name, unreadCount
-    } = this.state
 
     const {
       formatMessage
     } = this.props.intl
-
     return (
       <div id="home-page">
        <JumbotronHomeWidget title={formatMessage(messages.jumbotronTitle)} subTitle={formatMessage(messages.jumbotronSubTitle)}/> 
@@ -107,14 +117,7 @@ class Home extends Component {
                   <SectionHeaderWidget title={formatMessage(messages.popularTrippiansTitle)} subTitle={formatMessage(messages.popularTrippiansSubTitle)} />
                   <TrippianListRoundWidget dataList={this.state.popularTrippians} />
                  </div>
-
-                 <RelativeTimeWidget date="Wed Jan 20 2016 19:36:40 GMT-0800 (PST)" intl='fr' ></RelativeTimeWidget>
-                 Hello <b>{name}</b>, you have {' '}
-                                 <FormattedNumber value={unreadCount} /> {' '}
-                                 <FormattedPlural value={unreadCount}
-                                     one="message"
-                                     other="messages"
-                                 />.
+                 {this.props.username}
              </div>
           </div>
          </div>
@@ -128,4 +131,4 @@ Home.propTypes = {
   intl: intlShape.isRequired
 }
 
-export default injectIntl(Home)
+export default connect(mapState)(injectIntl(Home))
