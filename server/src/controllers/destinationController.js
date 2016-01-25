@@ -120,6 +120,16 @@ export default {
         .catch((error) => {
           next(error)
         })
+    } else {
+      Destination.getAllDestinations()
+        .then((destinations) => {
+          if (destinations) {
+            res.json(destinations)
+          }
+        })
+        .catch((error) => {
+          next(error)
+        })
     }
   }
 }
