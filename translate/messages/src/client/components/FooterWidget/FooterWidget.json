@@ -1,0 +1,22 @@
+[
+  {
+    "id": "app-pages.home",
+    "description": "home page title",
+    "defaultMessage": "Home"
+  },
+  {
+    "id": "app-pages.about",
+    "description": "about page title",
+    "defaultMessage": "About"
+  },
+  {
+    "id": "app-pages.join-us",
+    "description": "join us page title",
+    "defaultMessage": "Join Us"
+  },
+  {
+    "id": "app-pages.press",
+    "description": "press page title",
+    "defaultMessage": "Press"
+  }
+]

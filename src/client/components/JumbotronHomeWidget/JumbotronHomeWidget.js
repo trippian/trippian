@@ -1,13 +1,9 @@
 import React from 'react'
+
 import {
-  JumbotronHomeWidget as appConfigJumbotron, SearchBoxWidget as appConfigSearch
+  SearchBoxWidget
 }
-
-from '../../config/appConfig'
-
-import { 
-  SearchBoxWidget 
-} from '../index'
+from '../index'
 
 
 
@@ -16,14 +12,16 @@ const styles = {
     backgroundImage: 'url(http://lorempixel.com/800/400/city/)'
   }
 }
-const JumbotronHomeWidget = () => {
+const JumbotronHomeWidget = ({
+    title, subTitle
+  }) => {
     return ( < div className = "jumbotron text-center"
         style = {
           styles.backgroundImage
         } >
         <div className = "container">
-        <h1>{appConfigJumbotron.title}</h1> 
-        <p>{appConfigJumbotron.subTitle}</p> 
+        <h1>{title}</h1> 
+        <p>{subTitle}</p> 
         <SearchBoxWidget />
     < /div >  < /div >
   )
