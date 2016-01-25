@@ -4,7 +4,7 @@ import React, {
 from 'react'
 
 import {
-  JumbotronTrippianWidget, LocaleMenu, RelativeTimeWidget
+  JumbotronTrippianWidget, LocaleMenuWidget, RelativeTimeWidget
 }
 from '../../components/index'
 import {
@@ -46,7 +46,7 @@ export default class IntlDemo extends Component {
                 <div className="section inquiries">
                     <div className="section-header">
                         <h3>Intl Demos</h3>
-                        <LocaleMenu />
+                        <LocaleMenuWidget />
                     </div>
                       <hr />
 

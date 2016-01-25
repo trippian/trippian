@@ -29,7 +29,9 @@ export JumbotronInquiryWidget from './JumbotronInquiryWidget/JumbotronInquiryWid
 export JumbotronDestinationWidget from './JumbotronDestinationWidget/JumbotronDestinationWidget'
 export JumbotronTrippianWidget from './JumbotronTrippianWidget/JumbotronTrippianWidget'
 export LikeCounterWidget from './LikeCounterWidget/LikeCounterWidget'
-export LocaleMenu from './LocaleMenu/LocaleMenu'
+export LocaleMenuWidget
+ from './LocaleMenuWidget/LocaleMenuWidget'
+export LoginFormWidget from './LoginFormWidget/LoginFormWidget'
 export NavUserMenuWidget from './NavUserMenuWidget/NavUserMenuWidget'
 export NavWidget from './NavWidget/NavWidget'
 export NoContentWidget from './NoContentWidget/NoContentWidget'
