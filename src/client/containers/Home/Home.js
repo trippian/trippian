@@ -137,4 +137,7 @@ Home.propTypes = {
   intl: intlShape.isRequired
 }
 
-export default connect(mapState)(injectIntl(Home))
+export default connect(mapState,
+  // getPopularTrippiansAction,
+  // getPopularDestinationsAction,
+)(injectIntl(Home))

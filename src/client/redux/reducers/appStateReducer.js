@@ -1,7 +1,8 @@
-const SET_LOCALE = 'appState.SET_LOCALE'
-const SET_LOCALE_MESSAGES = 'appState.SET_LOCALE_MESSAGES'
-const SET_USERNAME = 'appState.SET_USERNAME'
-const SET_DISPLAYNAME = 'appState.SET_DISPLAYNAME'
+import {
+  SET_LOCALE, SET_LOCALE_MESSAGES, SET_USERNAME, SET_DISPLAYNAME
+}
+from '../actionTypes'
+
 const defaultMessages = require('../../../../translate/lang/en-US.json')
 import {
   Map
@@ -19,7 +20,6 @@ export default function appStateReducer(state = initialState, action) {
   switch (action.type) {
     case SET_LOCALE:
       return state.set('locale', action.payload.locale)
-
     case SET_LOCALE_MESSAGES:
       return state.set('messages', action.payload.messages)
     case SET_USERNAME:
