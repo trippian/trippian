@@ -3,6 +3,7 @@ import destinationController from '../controllers/destinationController'
 import tripController from '../controllers/tripController'
 import userController from '../controllers/userController'
 import inquiryController from '../controllers/inquiryController'
+import ratingController from '../controllers/ratingController'
 import { getSignedRequest } from '../controllers/aws'
   // import { authController } from '../controllers/auth';
 
@@ -56,7 +57,7 @@ export default function (router) {
   router.delete('/api/inquiry/:inquiryId', inquiryController.inquiryDelete)
 
   //routes for users to rate each other
-  router.post('/api/rating/:userId', )
+  router.post('/api/rating/:userId', ratingController.ratingPost)
   // AMAZON S3
   router.get('/signS3', getSignedRequest)
 }

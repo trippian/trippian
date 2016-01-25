@@ -18,7 +18,7 @@ export default {
               // once our relationship between the user and the trip is created, we want another 
               // relationship between the destination and the trip
               if (userTripRelationship.length) {
-                let cypher = `match (t:Trip), (d:Destination) where id(t)=${newTrip.id} and d.destinationName =` + '"' + `${newTrip.destination}` + '"' + `create (t)-[r:LOCATED_IN]->(d) return r;`
+                let cypher = `match (t:Trip), (d:Destination) where id(t)=${newTrip.id} and d.destinationName =` + '"' + `${newTrip.destination}` + '"' + `create unique (t)-[r:LOCATED_IN]->(d) return r;`
                 db.queryAsync(cypher)
                   .then((tripDestinationRelationship) => {
                     if (tripDestinationRelationship.length) {
@@ -61,7 +61,7 @@ export default {
     let updateString = updateStringObject(details, '')
 
     return new Promise((resolve) => {
-      let cypher = `match (t:Trip) where id(t)=${tripId} set t += {$updateString}} return t;`
+      let cypher = `match (t:Trip) where id(t)=${tripId} set t += {${updateString}} return t;`
 
       db.queryAsync(cypher)
         .then((updatedTrip) => {
@@ -86,9 +86,9 @@ export default {
       db.queryAsync(cypher)
         .then((nodes) => {
           if (nodes.length) {
-            resolve('user has already voted')
+            resolve(new Error('User has already voted for this trip'))
           } else {
-            let cypher = `match (u:User), (t:Trip) where id(u)=${userId} and id(t)=${tripId} create (u)-[r:${vote}]->(trip) set t.netVote = t.netVote + ${incrementor}, t.totalVotes = t.totalVotes + 1 return t;`
+            let cypher = `match (u:User), (t:Trip) where id(u)=${userId} and id(t)=${tripId} create (u)-[r:${vote}]->(t) set t.netVote = t.netVote + ${incrementor}, t.totalVotes = t.totalVotes + 1 return t;`
             db.queryAsync(cypher)
               .then((updatedTrip) => {
                 resolve(updatedTrip)
@@ -102,7 +102,7 @@ export default {
   },
   deleteTrip: (tripId) => {
     return new Promise((resolve) => {
-      let cypher = `match (t:Trip) where id(t)=${tripId} detach delete u;`
+      let cypher = `match (t:Trip) where id(t)=${tripId} detach delete t;`
       db.queryAsync(cypher)
         .then((deleted) => {
           if (deleted) {
