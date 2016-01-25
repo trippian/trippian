@@ -17,7 +17,10 @@ import {
   getDestinations, getTrippians
 }
 from '../../utils/apiTrippian'
-
+import {
+  bindActionCreators
+}
+from 'redux'
 import store, {
   getPopularDestinations, getPopularTrippians
 }
@@ -31,6 +34,11 @@ import {
   FormattedNumber, FormattedPlural, FormattedMessage, defineMessages, intlShape, injectIntl
 }
 from 'react-intl'
+
+import {
+  setUsername, setDisplayName
+}
+from '../../redux/actionCreators'
 
 const messages = defineMessages({
   jumbotronTitle: {
@@ -66,18 +74,6 @@ const messages = defineMessages({
 
 })
 
-// added a lot of store data here for testing purpose, will remove later
-function mapState(state) {
-  return {
-    apiTrippian: state.apiTrippian,
-    appState: state.appState,
-    username: state.appState.get('username'),
-    popularDestinations: state.apiTrippian.get('destinations'),
-    popularTrippians: state.apiTrippian.get('trippians'),
-    error: state.apiTrippian.get('error'),
-    displayName: state.appState.get('displayName')
-  }
-}
 
 class Home extends Component {
   constructor(props) {
@@ -104,11 +100,18 @@ class Home extends Component {
     // })
   }
 
+  handleClick() {
+    this.props.setUsername('James')
+    this.props.setDisplayName('James Zhang')
+
+  }
+
   render() {
 
     const {
       formatMessage
     } = this.props.intl
+    console.log('setUsername', this.props.setUsername)
     return (
       <div id="home-page">
        <JumbotronHomeWidget title={formatMessage(messages.jumbotronTitle)} subTitle={formatMessage(messages.jumbotronSubTitle)}/> 
@@ -124,7 +127,10 @@ class Home extends Component {
                   <SectionHeaderWidget title={formatMessage(messages.popularTrippiansTitle)} subTitle={formatMessage(messages.popularTrippiansSubTitle)} />
                   <TrippianListRoundWidget dataList={this.props.popularTrippians} />
                  </div>
+                 <h3>How to use Redux Store Action Map</h3>
+                 <button type="button" onClick={this.handleClick.bind(this)} className="btn btn-default">change displayName</button>
              </div>
+
           </div>
          </div>
         </div>
@@ -134,7 +140,30 @@ class Home extends Component {
 
 Home.displayName = 'Home'
 Home.propTypes = {
-  intl: intlShape.isRequired
+  intl: intlShape.isRequired,
+  setUsername: PropTypes.func.isRequired,
+  setDisplayName: PropTypes.func.isRequired,
+  username: PropTypes.string.isRequired,
+  displayName: PropTypes.string.isRequired
 }
 
-export default connect(mapState)(injectIntl(Home))
+// added a lot of store data here for testing purpose, will remove later
+function mapStateToProps(state) {
+  return {
+    apiTrippian: state.apiTrippian,
+    appState: state.appState,
+    username: state.appState.get('username'),
+    popularDestinations: state.apiTrippian.get('destinations'),
+    popularTrippians: state.apiTrippian.get('trippians'),
+    error: state.apiTrippian.get('error'),
+    displayName: state.appState.get('displayName')
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    setUsername: bindActionCreators(setUsername, dispatch),
+    setDisplayName: bindActionCreators(setDisplayName, dispatch)
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(Home))

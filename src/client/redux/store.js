@@ -26,11 +26,11 @@ const reducer = combineReducers({
 
 // export default createStore(reducer)
 
-// const logger = createLogger()
-// add thunk as middleware to support aync dispatch 
+const logger = createLogger()
+  // add thunk as middleware to support aync dispatch 
 const createStoreWithMiddleware = applyMiddleware(
-  // thunk, logger
-  thunk
+  thunk, logger
+  // thunk
 )(createStore)
 export default createStoreWithMiddleware(reducer)
 
