@@ -1,4 +1,3 @@
-import express from 'express'
 import destinationController from '../controllers/destinationController'
 import tripController from '../controllers/tripController'
 import userController from '../controllers/userController'
@@ -59,6 +58,7 @@ export default function (router) {
   //routes for users to rate each other
   router.post('/api/rating/:userId', ratingController.ratingPost)
   router.get('/api/rating/:userId', ratingController.ratingGet)
+
   // AMAZON S3
   router.get('/signS3', getSignedRequest)
 }

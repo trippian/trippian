@@ -1,4 +1,5 @@
 import User from '../db/models/user'
+import Rating from '../db/models/rating'
 
 // export const getPopularTrippians = function(req, res, next) {
 // 	let trippianId = req.body.id

@@ -1,6 +1,5 @@
 import Promise from 'bluebird'
 import db from '../db'
-import _ from 'lodash'
 import { updateStringObject } from '../../middleware/utils'
 
 export default {
