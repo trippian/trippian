@@ -5,7 +5,7 @@ import {
 from 'react-router'
 
 import {
-  SearchBoxWidget, LocaleMenu
+  SearchBoxWidget, LocaleMenuWidget
 }
 from '../index'
 
@@ -40,7 +40,7 @@ const NavWidget = ({
         </div>
         <div className="collapse navbar-collapse navbar-ex1-collapse">
 
-            <LocaleMenu className="nav navbar-nav navbar-right list-inline"/>
+            <LocaleMenuWidget className="nav navbar-nav navbar-right list-inline"/>
             <ul className="nav navbar-nav navbar-right">
                 <li>{currentPath === '/'  ? null : renderSearchForm() }</li>
                 <li>
@@ -82,6 +82,8 @@ const NavWidget = ({
                                 />
                             </a>
                         </li>
+                        <li><Link to='destination-post'>Post a Destination</Link></li>
+                        <li><Link to='login'>Login</Link></li>
                         <li><Link to='intl' className="btn btn-bordered">Intl Demo</Link></li>
                     </ul>
                 </li>

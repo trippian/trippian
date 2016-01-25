@@ -85,7 +85,9 @@ Remember to change the .babelrc back for webpack to work properly. (We don't hav
 
 To extract all formatted messages into the language files, run 
 `
-npm run trans 
+npm run translate
 `
 This will create the `/translation/lang/en-US.json` and other related translation files
+
+Diable redux-logger before running `npm run translate`
 

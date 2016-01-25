@@ -22,6 +22,7 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
 
 ### Important Info and Notice 
 - Info 
+  - [Project Backlog](https://docs.google.com/a/audreyli.me/spreadsheets/d/1RCjlMw6CdOXqG81kkGs-ssQaS_IszVXLI0p_6t_q6OE/edit?usp=sharing)
   - Project Scopes for commit messages: 
     
     when in doubt, add the file name or the feature, or consult with team. A few scopes to choose: 
@@ -75,6 +76,29 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
 
 ### Meeting Memo 
 
+
+
+### W2D1 - Monday January 25 2016
+- **Prepare**
+  * Feature List Review 
+  * Focus this week 
+    - Connect features on both front-end and back-end 
+    - Enrich the data
+    - Build and enhance features 
+  * Feature Planning (Inquiry, Voting and Review, Auth, Trips, Chats)
+  * Today 
+    - General 
+      * Data faker (can be either on client side or server side)
+      * Github Issues
+      * Build the product backlog (Audrey)
+    - Server 
+      * Inquiry Post 
+      * CURL Request List 
+    - Client 
+      * Pages(Intl): About, Press, Join Us
+      * Redux Refactor (map dispatch to action)
+      * Redux Demo on extracting form data 
+      * Use Bootstrap React 
 
 
 #### W1D4 - Friday January 15 2016

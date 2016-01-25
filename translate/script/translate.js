@@ -47,3 +47,22 @@ console.log('zh messages', zhMessages)
 
 // write the zh messages into file 
 fs.writeFileSync(LANG_DIR + 'zh.json', JSON.stringify(zhMessages, null, 2))
+
+let esMessages = require('../lang/es.json')
+esMessages = Object.assign(defaultMessages, esMessages)
+fs.writeFileSync(LANG_DIR + 'es.json', JSON.stringify(esMessages, null, 2))
+
+
+let deMessages = require('../lang/de.json')
+deMessages = Object.assign(defaultMessages, deMessages)
+fs.writeFileSync(LANG_DIR + 'de.json', JSON.stringify(deMessages, null, 2))
+
+let frMessages = require('../lang/fr.json')
+frMessages = Object.assign(defaultMessages, frMessages)
+fs.writeFileSync(LANG_DIR + 'fr.json', JSON.stringify(frMessages, null, 2))
+
+// //process kr
+// let krMessages = require('../lang/kr.json')
+// krMessages = Object.assign(defaultMessages, krMessages)
+//   // write the kr messages into file 
+// fs.writeFileSync(LANG_DIR + 'kr.json', JSON.stringify(krMessages, null, 2))
