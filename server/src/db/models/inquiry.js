@@ -4,10 +4,10 @@ import { updateStringObject } from '../../middleware/utils'
 
 export default {
   // function for a user to create an inquiry
-  createInquiry: function (trippeeId, trippianId, inquiryProps) {
-    return new Promise(function (resolve, reject) {
+  createInquiry: (trippeeId, trippianId, inquiryProps) => {
+    return new Promise((resolve) => {
       db.relateAsync(trippeeId, 'INQUIRY', trippianId, inquiryProps)
-        .then(function (inquiry) {
+        .then((inquiry) => {
           if (inquiry) {
             resolve(inquiry)
           } else {
@@ -17,12 +17,11 @@ export default {
     })
   },
   // function that gets back all the inquiries given a trippian id
-  getAllInquiriesForTrippian: function (trippianId) {
-    return new Promise(function (resolve, reject) {
+  getAllInquiriesForTrippian: (trippianId) => {
+    return new Promise((resolve) => {
       db.relationshipsAsync(trippianId, 'in', 'INQUIRY')
-        .then(function (inquiries) {
+        .then((inquiries) => {
           if (inquiries) {
-            console.log('we are receiving all inquiries for the trippian: ', inquiries)
             resolve(inquiries)
           } else {
             resolve(new Error('user has no inquiries at this time'))
@@ -31,11 +30,11 @@ export default {
     })
   },
   // function that deletes the inquiry from db if trippian rejects the request
-  deleteInquiry: function (inquiryId) {
-    return new Promise(function (resolve, reject) {
+  deleteInquiry: (inquiryId) => {
+    return new Promise((resolve, reject) => {
       let cypher = `match (u:User)-[r:INQUIRY]->() where id(r)=${inquiryId} delete r;`
       db.queryAsync(cypher)
-        .then(function (deleted) {
+        .then((deleted) => {
           if (deleted) {
             resolve(deleted)
           } else {
@@ -45,26 +44,25 @@ export default {
     })
   },
   // function for trippians to accept inquiry on put request
-  acceptInquiry: function (inquiryId, accept) {
-    return new Promise(function (resolve, reject) {
-      let cypher = `match ()-[r:INQUIRY]->() where id(r)=${inquiryId} set r.accepted=${accept} return r`
-      db.queryAsync(cypher)
-        .then(function (inquiry) {
-          if (inquiry) {
-            console.log('this is the edited inquiry: ', inquiry)
-            resolve(inquiry)
+  acceptInquiry: (inquiryId) => {
+    return new Promise((resolve) => {
+      let cypher = `match (u1:User)-[r:INQUIRY]->(u2:User) where id(r)=${inquiryId} create (u2)-[t:TOURED]->(u1) set t = r return t`
+      db.queryAsync(cypher) 
+        .then((touredRelationship) => {
+          if (touredRelationship) {
+            resolve(touredRelationship)
           } else {
             resolve(new Error('inquiry could not be accepted or does not exist'))
           }
         })
     })
   },
-  updateInquiry: function(details, inquiryId) {
+  updateInquiry: (details, inquiryId) => {
     let updateString = updateStringObject(details, '')
-    return new Promise(function(resolve) {
+    return new Promise((resolve) => {
       let cypher = `match ()-[r:INQUIRY]->() where id(r)=${inquiryId} set r += {${updateString}} return r;`
       db.queryAsync(cypher)
-        .then(function(updatedInquiry) {
+        .then((updatedInquiry) => {
           if (updatedInquiry) {
             resolve(updatedInquiry)
           }
