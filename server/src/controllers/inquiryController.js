@@ -5,15 +5,16 @@ export default {
   inquiryGet: (req, res, next) => {
     let userId = req.params.userId
     if (userId) {
-      User.getUserByParameter('id', userId)
-        .then((inquiry) => {
-          Inquiry.getAllInquiriesForTrippian(userId)
-          if (inquiry) {
-            res.json(inquiry)
+      User.getUserById(userId)
+        .then((user) => {
+          if (user) {
+            Inquiry.getAllInquiriesForTrippian(userId)
+              .then((inquiries) => {
+                if(inquiries.length) {
+                  res.json(inquiries)
+                }
+              })
           }
-        })
-        .catch((error) => {
-          next(error)
         })
     }
   },
