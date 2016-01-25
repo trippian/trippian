@@ -7,6 +7,10 @@ import {
 from 'react-intl'
 import en from '../../client/locale-data/en'
 import zh from '../../client/locale-data/zh'
+import es from '../../client/locale-data/es'
+import de from '../../client/locale-data/de'
+import fr from '../../client/locale-data/fr'
+
 import {
   getMessagesByLocale
 }
@@ -23,6 +27,9 @@ export function initializeAppStateWithLocale(locale = 'en-US') {
   })
   addLocaleData(en)
   addLocaleData(zh)
+  addLocaleData(es)
+  addLocaleData(de)
+  addLocaleData(fr)
 
   const messages = getMessagesByLocale(locale)
 

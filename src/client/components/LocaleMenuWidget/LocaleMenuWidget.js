@@ -10,19 +10,35 @@ import store from '../../redux/store'
 
 const messages = defineMessages({
   enUSDescription: {
-    id: 'menu.item_en_us_description',
+    id: 'locale-menu-widget.item-en-us-description',
     description: 'local menu English text ',
     defaultMessage: 'English'
   },
   zhDescription: {
-    id: 'menu.item_zh_description',
+    id: 'locale-menu-widget.item-zh-description',
     description: 'local menu Chinese text ',
     defaultMessage: '中文'
   },
+  krDescription: {
+    id: 'locale-menu-widget.item-kr-description',
+    description: 'local menu Korea text ',
+    defaultMessage: '한국어'
+  },
   esDescription: {
-    id: 'menu.item_es_description',
+    id: 'locale-menu-widget.item-es-description',
     description: 'local menu Spanish text ',
     defaultMessage: 'Espanol '
+  },
+  deDescription: {
+    id: 'locale-menu-widget.item-de-description',
+    description: 'local menu German text ',
+    defaultMessage: 'Deutsche '
+  },
+
+  frDescription: {
+    id: 'locale-menu-widget.item-fr-description',
+    description: 'local menu German text ',
+    defaultMessage: 'Français '
   }
 })
 
@@ -82,6 +98,63 @@ class LocalesMenu extends Component {
             }}
             title={formatMessage(messages.zhDescription)} >
                 🇨🇳
+            </a>
+        </li>
+        <li>
+            <a fackehref="#" onClick={() =>{
+              store.dispatch({
+                  type: 'appState.SET_LOCALE_MESSAGES',
+                  payload: {
+                   messages: getMessagesByLocale('fr')
+                  } 
+              })
+              store.dispatch({
+                  type: 'appState.SET_LOCALE',
+                  payload: {
+                   locale: 'fr'
+                  } 
+              })
+            }}
+            title={formatMessage(messages.frDescription)} >
+               🇫🇷 
+            </a>
+        </li>
+        <li>
+            <a fackehref="#" onClick={() =>{
+              store.dispatch({
+                  type: 'appState.SET_LOCALE_MESSAGES',
+                  payload: {
+                   messages: getMessagesByLocale('fr')
+                  } 
+              })
+              store.dispatch({
+                  type: 'appState.SET_LOCALE',
+                  payload: {
+                   locale: 'fr'
+                  } 
+              })
+            }}
+            title={formatMessage(messages.frDescription)} >
+               🇩🇪 
+            </a>
+        </li> 
+        <li>
+            <a fackehref="#" onClick={() =>{
+              store.dispatch({
+                  type: 'appState.SET_LOCALE_MESSAGES',
+                  payload: {
+                   messages: getMessagesByLocale('fr')
+                  } 
+              })
+              store.dispatch({
+                  type: 'appState.SET_LOCALE',
+                  payload: {
+                   locale: 'fr'
+                  } 
+              })
+            }}
+            title={formatMessage(messages.frDescription)} >
+               🇪🇸 
             </a>
         </li>
               

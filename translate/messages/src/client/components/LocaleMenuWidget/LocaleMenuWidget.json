@@ -1,0 +1,22 @@
+[
+  {
+    "id": "locale-menu-widget.item-en-us-description",
+    "description": "local menu English text",
+    "defaultMessage": "English"
+  },
+  {
+    "id": "locale-menu-widget.item-zh-description",
+    "description": "local menu Chinese text",
+    "defaultMessage": "中文"
+  },
+  {
+    "id": "locale-menu-widget.item-kr-description",
+    "description": "local menu Korea text",
+    "defaultMessage": "한국어"
+  },
+  {
+    "id": "locale-menu-widget.item-es-description",
+    "description": "local menu Spanish text",
+    "defaultMessage": "Espanol"
+  }
+]
