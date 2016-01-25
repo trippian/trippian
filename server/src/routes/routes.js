@@ -58,6 +58,7 @@ export default function (router) {
 
   //routes for users to rate each other
   router.post('/api/rating/:userId', ratingController.ratingPost)
+  router.get('/api/rating/:userId', ratingController.ratingGet)
   // AMAZON S3
   router.get('/signS3', getSignedRequest)
 }
