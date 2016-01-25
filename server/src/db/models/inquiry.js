@@ -10,8 +10,9 @@ export default {
         .then(function (inquiry) {
           if (inquiry) {
             resolve(inquiry)
+          } else {
+            resolve(new Error('inquiry could not be sent'))
           }
-          reject('inquiry could not be sent')
         })
     })
   },
@@ -23,8 +24,9 @@ export default {
           if (inquiries) {
             console.log('we are receiving all inquiries for the trippian: ', inquiries)
             resolve(inquiries)
-          }
-          reject('trippian has no inquiries')
+          } else {
+            resolve(new Error('user has no inquiries at this time'))
+          } 
         })
     })
   },
@@ -36,8 +38,9 @@ export default {
         .then(function (deleted) {
           if (deleted) {
             resolve(deleted)
+          } else {
+            resolve(new Error('inquiry was not deleted or does not exist'))
           }
-          reject('inquiry was not deleted or does not exist')
         })
     })
   },
@@ -50,8 +53,9 @@ export default {
           if (inquiry) {
             console.log('this is the edited inquiry: ', inquiry)
             resolve(inquiry)
+          } else {
+            resolve(new Error('inquiry could not be accepted or does not exist'))
           }
-          reject(inquiry)
         })
     })
   },

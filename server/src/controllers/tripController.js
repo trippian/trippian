@@ -26,10 +26,9 @@ export default {
     }
   },
   tripPut: (req, res, next) => {
-    if (req.query.voteType && req.body.userId && req.params.tripId) {
+    if (req.query.voteType && parseInt(req.body.userId) && req.params.tripId) {
       Trip.upOrDownvoteTrip(req.params.tripId, req.body.userId, req.query.voteType)
         .then((voted) => {
-          console.log(voted)
           res.json(voted)
         })
         .catch((error) => {
@@ -52,7 +51,7 @@ export default {
   // },
   tripDelete: (req, res, next) => {
     if (req.params.tripId) {
-      Trip.deleteTrip(req.params.TripId)
+      Trip.deleteTrip(req.params.tripId)
         .then((deleted) => {
           if (deleted) {
             res.json(deleted)
