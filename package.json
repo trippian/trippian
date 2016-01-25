@@ -74,6 +74,8 @@
     "react-router": "1.0.3",
     "redux": "3.0.5",
     "redux-form": "^4.1.5",
+    "redux-logger": "2.4.0",
+    "redux-thunk": "1.0.3",
     "seraph": "^0.14.0",
     "sort-object": "3.0.1"
   },

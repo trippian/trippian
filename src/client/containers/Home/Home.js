@@ -18,7 +18,10 @@ import {
 }
 from '../../utils/apiTrippian'
 
-import store from '../../redux/store'
+import store, {
+  getPopularDestinations, getPopularTrippians
+}
+from '../../redux/store'
 import {
   connect
 }
@@ -28,7 +31,6 @@ import {
   FormattedNumber, FormattedPlural, FormattedMessage, defineMessages, intlShape, injectIntl
 }
 from 'react-intl'
-
 
 const messages = defineMessages({
   jumbotronTitle: {
@@ -64,11 +66,15 @@ const messages = defineMessages({
 
 })
 
+// added a lot of store data here for testing purpose, will remove later
 function mapState(state) {
   return {
     apiTrippian: state.apiTrippian,
     appState: state.appState,
     username: state.appState.get('username'),
+    popularDestinations: state.apiTrippian.get('destinations'),
+    popularTrippians: state.apiTrippian.get('trippians'),
+    error: state.apiTrippian.get('error'),
     displayName: state.appState.get('displayName')
   }
 }
@@ -77,24 +83,25 @@ class Home extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      popularDestinations: [],
-      popularTrippians: []
+      alert: ''
     }
   }
 
   componentDidMount() {
-    getTrippians('popular').then((data) => {
-      console.log('got trippian data', data)
-      this.setState({
-        popularTrippians: data
-      })
+
+    // ask redux store to get remote data, if needed, can do something after then 
+    store.dispatch(getPopularDestinations()).then(() => {
+      console.log('****got destination data', this.props.popularDestinations)
     })
-    getDestinations('popular').then((data) => {
-      console.log('got destination data', data)
-      this.setState({
-        popularDestinations: data
-      })
-    })
+    store.dispatch(getPopularTrippians())
+
+    // this is an older version of the implementation without redux store
+    // getTrippians('popular').then((data) => {
+    //   console.log('got trippian data', data)
+    //   this.setState({
+    //     popularTrippians: data
+    //   })
+    // })
   }
 
   render() {
@@ -110,14 +117,13 @@ class Home extends Component {
              <div className="col-sm-12 col-md-12 content-container">
                  <div className="section">
                     <SectionHeaderWidget title={formatMessage(messages.popularDestinationsTitle)} subTitle={formatMessage(messages.popularDestinationsSubTitle)} />
-                    <DestinationListWidget dataList={this.state.popularDestinations} name="hello world" />
+                    <DestinationListWidget dataList={this.props.popularDestinations} name="hello world" />
                   </div>
   
                  <div className="section">
                   <SectionHeaderWidget title={formatMessage(messages.popularTrippiansTitle)} subTitle={formatMessage(messages.popularTrippiansSubTitle)} />
-                  <TrippianListRoundWidget dataList={this.state.popularTrippians} />
+                  <TrippianListRoundWidget dataList={this.props.popularTrippians} />
                  </div>
-                 {this.props.username}
              </div>
           </div>
          </div>

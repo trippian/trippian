@@ -13,6 +13,9 @@ const get = (url) => {
       }
       return res.json()
     })
+    .catch(function (error) {
+      console.log('posting failed at fetch', error)
+    })
 }
 
 // default to json format
@@ -32,6 +35,9 @@ const post = (url, data) => {
       }
       return res.json()
 
+    })
+    .catch(function (error) {
+      console.log('posting failed at fetch', error)
     })
 }
 

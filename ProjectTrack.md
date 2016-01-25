@@ -13,6 +13,7 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
   - [ ] Review routes 
 
 - Client 
+  - [ ] Add AlertComponent
   - [ ] Localize the whole front-end 
   - [ ] Handle form submit with redux-form
   - [ ] Move Common API logic to redux store from the Container Component
