@@ -8,10 +8,19 @@ import {
 }
 from '../../components/index'
 
+import {
+  postDestination
+}
+from '../../utils/apiTrippian'
+
 import store from '../../redux/store'
 export default class DestinationPost extends Component {
   constructor(props) {
     super(props)
+  }
+
+  componentDidMount() {
+    postDestination().then(data => console.log('posted', data))
   }
 
   handleSubmit() {

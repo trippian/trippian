@@ -20,9 +20,9 @@ const get = (url) => {
 
 // default to json format
 const post = (url, data) => {
+  console.log('got data?', data, url)
   return fetch(url, {
       method: 'post',
-      mode: 'no-cors',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
