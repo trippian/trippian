@@ -34,28 +34,23 @@ class App extends Component {
     this.state = {
       currentPath: '/',
       locale: store.getState().appState.get('locale') || 'en-US',
-      messages: store.getState().appState.get('messages'),
-      username: store.getState().appState.get('username'),
-      displayName: store.getState().appState.get('displayName')
+      messages: store.getState().appState.get('messages')
     }
   }
   componentDidMount() {
     // temp solution: listen to the store for any locale change and update the App state
     // ideally, we shoul use store connect and map to automatically update the App Component's state
-    store.subscribe(() => {
-      const newLocale = store.getState().appState.get('locale')
-      console.log('current store', store.getState())
-      if (newLocale !== this.state.locale) {
-        this.state.locale = newLocale
-        const messages = store.getState().appState.get('messages')
-        this.setState({
-          messages: messages
-        })
-        console.log('locale changed', this.state.locale, messages)
-      }
-    })
-
-
+    // store.subscribe(() => {
+    //   const newLocale = store.getState().appState.get('locale')
+    //   if (newLocale !== this.state.locale) {
+    //     this.state.locale = newLocale
+    //     const messages = store.getState().appState.get('messages')
+    //     this.setState({
+    //       messages: messages
+    //     })
+    //     console.log('locale changed', this.state.locale, messages)
+    //   }
+    // })
     this.props.history.listen(() => {
       const currentPath = getPathNameFromHash(window.location.hash)
       const query = window.location.search
@@ -67,10 +62,10 @@ class App extends Component {
 
   render() {
     return (
-      <IntlProvider locale={this.state.locale} messages={this.state.messages}>
+      <IntlProvider locale={this.state.locale} messages={this.props.messages}>
       <div>
         <header>
-          <NavWidget currentPath={this.state.currentPath} username={this.state.username} displayName={this.state.displayName}/>
+          <NavWidget currentPath={this.state.currentPath} username={this.props.username} displayName={this.props.displayName}/>
         </header>
         <main className="row">
           {this.props.children}
@@ -89,6 +84,14 @@ App.propTypes = {
 }
 App.displayName = 'App'
 
-// export default Enhance(connect(mapStateToProps)(App))
+function mapStateToProps(state) {
+  return {
+    username: state.appState.get('username'),
+    displayName: state.appState.get('displayName'),
+    messages: state.appState.get('messages')
+  }
+}
 
-export default Enhance(App)
+export default Enhance(connect(mapStateToProps)(App))
+
+// export default Enhance(App)

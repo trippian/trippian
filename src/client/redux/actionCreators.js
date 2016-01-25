@@ -15,7 +15,7 @@ export function setLocale(locale) {
 }
 export function setUsername(username) {
   return {
-    type: SET_LOCALE,
+    type: SET_USERNAME,
     payload: {
       username
     }
