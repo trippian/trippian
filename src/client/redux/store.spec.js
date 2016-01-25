@@ -3,7 +3,10 @@ import {
 }
 from '../helpers/clientTestHelpers'
 
-import store from './store'
+import store, {
+  getPopularDestinations, getPopularTrippians
+}
+from './store'
 import Immutable, {
   List
 }
@@ -51,6 +54,23 @@ describe('redux store', () => {
 
     })
 
+    // async testing 
+    it('can dispatch getPopularDestinations', () => {
+      const oldDestinations = store.getState().apiTrippian.get('destinations')
+      store.dispatch(getPopularDestinations()).then(() => {
+        const actual = store.getState().apiTrippian.get('destinations')
+          // console.log(oldDestinations, actual)
+        expect(actual).to.not.equal(oldDestinations)
+      })
+    })
+
+    it('can dispatch getPopularTrippians', () => {
+      const oldTrippians = store.getState().apiTrippian.get('trippians')
+      store.dispatch(getPopularTrippians()).then(() => {
+        const actual = store.getState().apiTrippian.get('trippians')
+        expect(oldTrippians).to.not.equal(actual)
+      })
+    })
 
     // => TODO, will need to add switch case to apiTrippianReducer
     it('can dispatch GET_TRIPPIAN_BY_ID', () => {

@@ -1,20 +1,40 @@
 import {
-  createStore, combineReducers
+  createStore, combineReducers, applyMiddleware
 }
 from 'redux'
+import thunk from 'redux-thunk'
 import {
-  reducer as formReducer
+  reducer as form
 }
 from 'redux-form'
+import createLogger from 'redux-logger'
+import appState from './reducers/appStateReducer'
 
-import appStateReducer from './reducers/appStateReducer'
-import apiTrippianReducer from './reducers/apiTrippianReducer'
+import apiTrippian, {
+  getPopularDestinations,
+  getPopularTrippians
+}
+from './reducers/apiTrippianReducer'
+
 
 // combine all reducers 
 const reducer = combineReducers({
-  apiTrippian: apiTrippianReducer,
-  appState: appStateReducer,
-  form: formReducer
+  apiTrippian,
+  appState,
+  form
 })
 
-export default createStore(reducer)
+// export default createStore(reducer)
+
+const logger = createLogger()
+  // add thunk as middleware to support aync dispatch 
+const createStoreWithMiddleware = applyMiddleware(
+  thunk, logger
+)(createStore)
+export default createStoreWithMiddleware(reducer)
+
+// add all reducer functions to the store export 
+export {
+  getPopularDestinations,
+  getPopularTrippians
+}
