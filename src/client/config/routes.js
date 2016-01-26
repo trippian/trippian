@@ -9,7 +9,9 @@ import {
   InquiryDetail, JoinUs, Login, NotFound, Press,
   Terms, TrippianDetail, TrippianSignUp, TrippianList, TrippianEdit, IntlDemo,
   Admin, AdminDestinationList, AdminDestinationListItem, AdminDestinationListItemEdit,
-  AdminTrippianList, AdminTrippianListItem, AdminTrippianListItemEdit, AdminInquiryList, AdminTripList
+  AdminTrippianList, AdminTrippianListItem, AdminTrippianListItemEdit, AdminInquiryList, AdminTripList,
+  AdminInquiryListItem, AdminInquiryListItemEdit,
+  AdminTripListItem, AdminTripListItemEdit
 }
 from '../containers/index'
 
@@ -44,7 +46,13 @@ export default (
                 <Route component={AdminDestinationListItemEdit} path="destination/:id/edit" />
 
                 <Route component={AdminInquiryList} path="inquiry"  />
+                <Route component={AdminInquiryListItem} path="inquiry:/id"  />
+                <Route component={AdminInquiryListItemEdit} path="inquiry/:id/edit"  />
+
                 <Route component={AdminTripList} path="trip"  />
+                <Route component={AdminTripListItem} path="trip:/id"  />
+                <Route component={AdminTripListItemEdit} path="trip/:id/edit"  />
+
                 <IndexRoute component={AdminDestinationList}/>
             </Route>
             <IndexRoute component={Home}/>
