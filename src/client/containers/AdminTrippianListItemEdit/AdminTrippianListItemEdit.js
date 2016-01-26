@@ -8,7 +8,7 @@ import {
 }
 from '../../components/index'
 
-export default class AdminTrippianList extends Component {
+export default class AdminTrippianListItemEdit extends Component {
   constructor(props) {
     super(props)
   }
@@ -16,13 +16,13 @@ export default class AdminTrippianList extends Component {
   render() {
     return (
       <div id="admin-trippian-page">
-        <h3>Admin Trip List</h3>
+        <h3>AdminTrippianListItemEdit</h3>
       </div>
     )
   }
 }
-AdminTrippianList.propTypes = {
+AdminTrippianListItemEdit.propTypes = {
   // name: PropTypes.string
 }
 
-AdminTrippianList.displayName = 'AdminTrippianList Page'
+AdminTrippianListItemEdit.displayName = 'AdminTrippianListItemEdit Page'

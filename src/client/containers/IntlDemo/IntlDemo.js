@@ -4,14 +4,13 @@ import React, {
 from 'react'
 
 import {
-  JumbotronTrippianWidget, LocaleMenuWidget, RelativeTimeWidget
+  JumbotronTrippianWidget, LocaleMenuWidget, RelativeTimeWidget, SendButtonIntl
 }
 from '../../components/index'
 import {
   FormattedMessage, FormattedDate, FormattedNumber, FormattedTime, FormattedHTMLMessage, FormattedPlural
 }
 from 'react-intl'
-import SendButtonIntl from '../../SendButtonIntl'
 
 export default class IntlDemo extends Component {
   constructor(props) {

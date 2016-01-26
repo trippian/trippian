@@ -8,7 +8,8 @@ import {
   App, Home, About, DestinationDetail, DestinationPost, InquiryAdd, InquiryList,
   InquiryDetail, JoinUs, Login, NotFound, Press,
   Terms, TrippianDetail, TrippianSignUp, TrippianList, TrippianEdit, IntlDemo,
-  Admin, AdminDestinationList, AdminTrippianList, AdminInquiryList, AdminTripList
+  Admin, AdminDestinationList, AdminDestinationListItem, AdminDestinationListItemEdit,
+  AdminTrippianList, AdminTrippianListItem, AdminTrippianListItemEdit, AdminInquiryList, AdminTripList
 }
 from '../containers/index'
 
@@ -33,10 +34,18 @@ export default (
             <Route component={TrippianList} path="trippian" />
             <Route component={TrippianEdit} path="trippian-edit"  />
             <Route component={Admin} path="admin">
-                <Route component={AdminTrippianList} path="trippian"  />
-                <Route component={AdminDestinationList} path="destination"  />
+
+                <Route component={AdminTrippianList} path="trippian" />
+                <Route component={AdminTrippianListItem} path="trippian/:id" />
+                <Route component={AdminTrippianListItemEdit} path="trippian/:id/edit" />
+                
+                <Route component={AdminDestinationList} path="destination" />
+                <Route component={AdminDestinationListItem} path="destination/:id" />
+                <Route component={AdminDestinationListItemEdit} path="destination/:id/edit" />
+
                 <Route component={AdminInquiryList} path="inquiry"  />
                 <Route component={AdminTripList} path="trip"  />
+                <IndexRoute component={AdminDestinationList}/>
             </Route>
             <IndexRoute component={Home}/>
         </Route>

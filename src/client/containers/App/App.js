@@ -65,7 +65,7 @@ class App extends Component {
       <IntlProvider locale={this.state.locale} messages={this.props.messages}>
       <div>
         <header>
-          <NavWidget currentPath={this.state.currentPath} username={this.props.username} displayName={this.props.displayName}/>
+          <NavWidget currentPath={this.state.currentPath} username={this.props.username} displayName={this.props.displayName} isUserAdmin={this.props.isUserAdmin}/>
         </header>
         <main className="row">
           {this.props.children}
@@ -87,6 +87,7 @@ function mapStateToProps(state) {
   return {
     username: state.appState.get('username'),
     displayName: state.appState.get('displayName'),
+    isUserAdmin: state.appState.get('isUserAdmin'),
     messages: state.appState.get('messages')
   }
 }
