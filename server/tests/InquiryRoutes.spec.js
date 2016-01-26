@@ -15,9 +15,9 @@ describe('get request to /api/inquiry/:userId', () => {
       }, done())
   })
 
-  it('should return an error (404) for user inquiry that does not exist in the database', done => {
+  it('should return an error (500) for user inquiry that does not exist in the database', done => {
     request
       .get('/api/inquiry/1')
-      .expect(404, done())
+      .expect(500, done())
   })
 })
