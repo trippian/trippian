@@ -4,13 +4,15 @@ import { updateStringObject } from '../../middleware/utils'
 
 export default {
   createDestination: (details) => {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       // let cypher = 'match (destination:Destination';
       db.saveAsync(details, 'Destination')
         .then((destination) => {
           if (destination) {
             resolve(destination)
-          } 
+          } else {
+            reject(new Error('destination could not be created'))
+          }
         })
         .catch((err) => {
           console.error(err)
@@ -23,12 +25,14 @@ export default {
     // })
     let updateString = updateStringObject(details, '')
 
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       let cypher = `match (d:Destination) where id(d)= ${destinationId} SET d += {${updateString}} return d;`
       db.queryAsync(cypher)
         .then((updatedDestination) => {
           if (updatedDestination) {
             resolve(updatedDestination)
+          } else {
+            reject(new Error('could not updated destination'))
           }
         })
         .catch((error) => {
@@ -37,13 +41,15 @@ export default {
     })
   },
   getDestinationById: (destinationId) => {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       let cypher = `match (d:Destination) where id(d)=${destinationId} return d`
       db.queryAsync(cypher)
         .then((destination) => {
           if (destination.length) {
             resolve(destination[0])
-          } 
+          } else {
+            reject(new Error('could not get destination by id'))
+          }
         })
         .catch((error) => {
           console.error(error)
@@ -51,12 +57,14 @@ export default {
     })
   },
   getDestinationByName: (destinationName) => {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       let cypher = `match (d:Destination {destinationName:` + '"' + `${destinationName}` + '"' + `}) return d;`
       db.queryAsync(cypher)
         .then((destination) => {
           if (destination.length) {
             resolve(destination[0])
+          } else {
+            reject(new Error('could not find destination'))
           }
         })
         .catch((error) => {
@@ -65,12 +73,14 @@ export default {
     })
   },
   deleteDestinationById: (destinationId) => {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       let cypher = `match (d:Destination) where id(d)=${destinationId} delete d;`
       db.queryAsync(cypher)
         .then((deleted) => {
           if (deleted) {
             resolve(deleted)
+          } else {
+            reject(new Error('could not delete destination'))
           }
         })
         .catch((error) => {
@@ -79,12 +89,14 @@ export default {
     })
   },
   getAllDestinations: () => {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       let cypher = `match (d:Destination) return d;`
       db.queryAsync(cypher)
         .then((allDestinations) => {
           if (allDestinations) {
             resolve(allDestinations)
+          } else {
+            reject(new Error('could not get all destinations'))
           }
         })
         .catch((error) => {
@@ -93,14 +105,15 @@ export default {
     })
   },
   getPopularDestinations: () => {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       let cypher = `match (d:Destination)<-[r:LOCATED_IN]-(t:Trip) return d, count(r) order by count(r)`
 
       db.queryAsync(cypher)
         .then((popularDestinations) => {
-          console.log(popularDestinations)
           if (popularDestinations.length) {
             resolve(popularDestinations)
+          } else {
+            reject(new Error('could not get popular destinations'))
           }
         })
         .catch((error) => {
