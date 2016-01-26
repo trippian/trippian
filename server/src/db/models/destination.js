@@ -74,7 +74,7 @@ export default {
   },
   deleteDestinationById: (destinationId) => {
     return new Promise((resolve, reject) => {
-      let cypher = `match (d:Destination) where id(d)=${destinationId} delete d;`
+      let cypher = `match (d:Destination) where id(d)=${destinationId} detach delete d;`
       db.queryAsync(cypher)
         .then((deleted) => {
           if (deleted) {
