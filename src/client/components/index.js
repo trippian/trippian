@@ -6,6 +6,7 @@
  */
 
 export AvatarWidget from './AvatarWidget/AvatarWidget'
+export AlertAutoDismissableWidget from './AlertAutoDismissableWidget/AlertAutoDismissableWidget'
 export CarouselWidget from './CarouselWidget/CarouselWidget'
 export CircleImageWidget from './CircleImageWidget/CircleImageWidget'
 export CircleImageLinkWidget from './CircleImageLinkWidget/CircleImageLinkWidget'
