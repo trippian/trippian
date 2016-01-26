@@ -101,7 +101,8 @@ export default {
           if (trips.length) {
             resolve(trips)
           } else {
-            reject(new Error('could not find trips for that user'))
+            // reject(new Error('could not find trips for that user'))
+            resolve(trips)
           }
         })
         .catch((error) => {
