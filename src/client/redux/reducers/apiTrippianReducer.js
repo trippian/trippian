@@ -13,7 +13,7 @@ import {
 }
 from 'immutable'
 import {
-  getTrippiansByCategory, getDestinationsByCategory, fetchPostDestination, fetchDeleteDestinationById
+  fetchGetTrippiansByCategory, fetchGetDestinationsByCategory, fetchPostDestination, fetchDeleteDestinationById
 
 }
 from '../../utils/apiTrippian'
@@ -62,7 +62,7 @@ export default function apiTrippianReducer(state = initialState, action) {
 }
 export function getPopularDestinations() {
   return (dispatch) => {
-    return getDestinationsByCategory('popular')
+    return fetchGetDestinationsByCategory('popular')
       .then((destinations) => {
         // once get the data, set the store 
         dispatch(setDestinations(destinations))
@@ -74,7 +74,7 @@ export function getPopularDestinations() {
 
 export function getPopularTrippians() {
   return (dispatch) => {
-    return getTrippiansByCategory('popular')
+    return fetchGetTrippiansByCategory('popular')
       .then(trippians => dispatch(setTrippians(trippians)))
       .catch(error => dispatch(apologize(error)))
   }

@@ -3,7 +3,8 @@ import {
   SET_TRIPPIANS, GET_DESTINATIONS_FAIL, GET_DESTINATION_BY_ID, GET_TRIPPIAN_BY_ID, GET_DESTINATIONS, GET_TRIPPIANS,
   SET_LOCALE, SET_LOCALE_MESSAGES, SET_USERNAME, SET_DISPLAYNAME,
   SET_ADMIN_DESTINATIONS, SET_ADMIN_TRIPPIANS, ADD_ADMIN_DESTINATION,
-  REMOVE_ADMIN_DESTINATION, REMOVE_DESTINATION
+  REMOVE_ADMIN_DESTINATION, REMOVE_DESTINATION,
+  SET_ADMIN_CURRENT_DESTINATION
 }
 from './actionTypes'
 
@@ -118,6 +119,14 @@ export function removeDestination(id) {
     type: REMOVE_DESTINATION,
     payload: {
       id
+    }
+  }
+}
+export function setAdminCurrentDestination(destination) {
+  return {
+    type: SET_ADMIN_CURRENT_DESTINATION,
+    payload: {
+      destination
     }
   }
 }

@@ -33,10 +33,12 @@ export default class Admin extends Component {
             <div>
               <ul className="list-inline">
                 <li><Link to='admin/destination'>Destination </Link></li>
+                <li><Link to='admin/user'>User </Link></li>
                 <li><Link to='admin/trippian'>Trippian </Link></li>
                 <li><Link to='admin/inquiry'>Inquiry </Link></li>
                 <li><Link to='admin/trip'>Trip </Link></li>
               </ul>
+              <hr/>
               {this.props.children}
             </div>
          }
