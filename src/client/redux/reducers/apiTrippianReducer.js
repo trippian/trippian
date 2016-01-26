@@ -80,7 +80,7 @@ export function getPopularTrippians() {
   }
 }
 
-export function postDsestination(data) {
+export function postDestination(data) {
   console.log('-- posting a destination now', data)
     // after posting the destination, add the response data to the store on adminDestinations, aslo add to newDestinations on apiTrippians
   return (dispatch) => {

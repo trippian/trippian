@@ -44,6 +44,7 @@ export default class DestinationPost extends Component {
   }
 
   handleSubmit(data) {
+    console.log('posting data from form', data)
     store.dispatch(postDestination(data))
 
     // const formData = store.getState().form.destinationPostForm
