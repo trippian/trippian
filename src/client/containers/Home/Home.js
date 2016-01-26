@@ -90,28 +90,27 @@ class Home extends Component {
       console.log('****got destination data', this.props.popularDestinations)
     })
     store.dispatch(getPopularTrippians())
-
-    // this is an older version of the implementation without redux store
-    // getTrippians('popular').then((data) => {
-    //   console.log('got trippian data', data)
-    //   this.setState({
-    //     popularTrippians: data
-    //   })
-    // })
+      // this is an older version of the implementation without redux store
+      // getTrippians('popular').then((data) => {
+      //   console.log('got trippian data', data)
+      //   this.setState({
+      //     popularTrippians: data
+      //   })
+      // })
   }
 
   handleClick() {
+    // demo how to use 
     this.props.setUsername('James')
     this.props.setDisplayName('James Zhang')
 
   }
 
   render() {
-
     const {
       formatMessage
     } = this.props.intl
-    console.log('setUsername', this.props.setUsername)
+
     return (
       <div id="home-page">
        <JumbotronHomeWidget title={formatMessage(messages.jumbotronTitle)} subTitle={formatMessage(messages.jumbotronSubTitle)}/> 

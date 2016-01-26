@@ -18,15 +18,27 @@ export const getTrippianById = (id) => {
   return api.get(url)
 }
 
-export const getTrippians = (category = 'popular') => {
+export const getTrippiansByCategory = (category = 'popular') => {
   const url = `${API_HOST}${routeConfig.trippian}?cat=${category}`
   console.log('trippian url', url, category)
   return api.get(url)
 }
 
-export const getDestinations = (category = 'popular') => {
+export const getDestinationsByCategory = (category = 'popular') => {
   const url = `${API_HOST}${routeConfig.destination}?cat=${category}`
   console.log('destination url', url, category)
+  return api.get(url)
+}
+
+export const getTrippians = () => {
+  const url = `${API_HOST}${routeConfig.trippian}`
+  console.log('trippian url', url)
+  return api.get(url)
+}
+
+export const getDestinations = (category = 'popular') => {
+  const url = `${API_HOST}${routeConfig.destination}`
+  console.log('destination url', url)
   return api.get(url)
 }
 
@@ -41,12 +53,13 @@ const defaultDestinationData = {
   destinationImage: 'http://lorempixel.com/800/600/city/',
   whyVisit: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum excepturi ducimus ab veniam est, pariatur recusandae cum voluptatem, maiores perferendis!'
 }
-export const postDestination = (data = defaultDestinationData) => {
+export const fetchPostDestination = (data) => {
   const url = `${API_HOST}${routeConfig.destination}`
   return api.post(url, data)
 }
 
-export const deleteDestinationById = (id) => {
+export const fetchDeleteDestinationById = (id) => {
   const url = `${API_HOST}${routeConfig.destination}${id}`
+  console.log('fetcing deleting now', url)
   return api.deleteApi(url)
 }
