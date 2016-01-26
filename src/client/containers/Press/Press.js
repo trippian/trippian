@@ -27,7 +27,7 @@ export default class Press extends Component {
           <JumbotronWidget title="Press" subTitle="This is the press subtitle" />
             <div className="container main-content-container">
               <div className="col-sm-12 col-md-8 col-md-offset-2 content-container">
-                Press page text. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta natus quidem, expedita ipsam, veritatis quo excepturi. Beatae enim, eius doloribus esse aperiam animi aliquam ducimus. In eos corporis voluptate harum.
+                Read about the most recent press releases, product launches, and company announcements.
                 <FormattedMessage id="press.title" description="this is a formatted title message in press page" defaultMessage="Press Page" />
               </div>
             </div>
