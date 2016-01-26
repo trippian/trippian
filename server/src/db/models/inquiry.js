@@ -29,6 +29,20 @@ export default {
         })
     })
   },
+  getAllInquiries: () => {
+    return new Promise((resolve, reject) => {
+      let cypher = `match ()-[i:INQUIRY]->() return i`
+      db.queryAsync(cypher)
+        .then(allInquiries => {
+          if (allInquiries.length) {
+            resolve(allInquiries)
+          }
+        })
+        .catch(error => {
+          console.error(error)
+        })
+    })
+  },
   // function that deletes the inquiry from db if trippian rejects the request
   deleteInquiry: (inquiryId) => {
     return new Promise((resolve, reject) => {

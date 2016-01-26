@@ -76,5 +76,15 @@ export default {
           next(error)
         })
     }
+  },
+  allInquiryGet: (req, res, next) => {
+    Inquiry.getAllInquiries()
+      .then(allInquiries => {
+        console.log(allInquiries)
+        res.json(allInquiries)
+      })
+      .catch(error => {
+        next(error)
+      })
   }
 }
