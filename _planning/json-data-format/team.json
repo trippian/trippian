@@ -1,0 +1,23 @@
+{
+  "team": [{
+    "name" : "Joe Lagasse",
+    "location": "San Francisco",
+    "image" : "http://lorempixel.com/400/200/animals/",
+    "about" : "I eat a lot of Qdoba."
+  }, {
+    "name" : "Audrey Li",
+    "location": "San Francisco",
+    "image" : "http://lorempixel.com/400/200/animals/",
+    "about" : "I dream that one day I will win a game of Blokus."
+  }, {
+    "name" : "Yale Yuen",
+    "location": "San Francisco",
+    "image" : "http://lorempixel.com/400/200/animals/",
+    "about" : "I'm basically married. Elliot is my side piece."
+  }, {
+    "name" : "Elliot Chi",
+    "location": "San Francisco",
+    "image" : "http://lorempixel.com/400/200/animals/",
+    "about" : "I enjoy watching the Warriors and cheering for Steph Curry. I have a man crush on him."
+  }]
+}
