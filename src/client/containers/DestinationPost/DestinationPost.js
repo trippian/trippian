@@ -23,6 +23,10 @@ import {
   connect
 }
 from 'react-redux'
+import {
+  Alert
+}
+from 'react-bootstrap'
 
 function mapStateToProps(state) {
   return {
@@ -35,6 +39,13 @@ connect(mapStateToProps)
 export default class DestinationPost extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      alert: {
+        type: 'danger',
+        title: '',
+        message: ''
+      }
+    }
   }
 
   componentDidMount() {
@@ -46,6 +57,7 @@ export default class DestinationPost extends Component {
   handleSubmit(data) {
     console.log('posting data from form', data)
     store.dispatch(postDestination(data))
+    this.setAlert('success', 'Successfully submitted data', `${data.destinationName} ${data.destinationDescription}`)
 
     // const formData = store.getState().form.destinationPostForm
     // const email = formData.email.value
@@ -54,18 +66,41 @@ export default class DestinationPost extends Component {
     // console.log('submitted', formData, email, firstName, lastName)
     // will do some aync call here 
   }
+  setAlert(type = 'success', title = '', message = '') {
+    this.setState({
+      alert: {
+        type: type,
+        title: title,
+        message: message
+      }
+    })
+  }
+
+  handleAlertDismiss() {
+    this.setAlert()
+  }
 
   render() {
+    const {
+      type, title, message
+    } = this.state.alert
+
     return (
       <div id="destination-post-page">
         <JumbotronWidget title="Post A Destination" subTitle="Lorem ipsum dolor sit."/>
         <div className="container main-content-container">
           <div className="col-sm-12 col-md-8 col-md-offset-2 content-container">
+            {title !== '' && 
+              <Alert bsStyle={type} dismissAfter={3000} onDismiss={this.handleAlertDismiss.bind(this)}>
+                <h4>{title}</h4>
+                <p>{message}</p>
+              </Alert>
+            }
             <div className="pull-right">
               <Link className="btn btn-primary" to='admin/destination'>Manage Destinations</Link>
             </div>
             <h3>Post</h3>
-            <DestinationPostFormWidget onSubmit={this.handleSubmit} />
+            <DestinationPostFormWidget onSubmit={this.handleSubmit.bind(this)} />
           </div>
         </div>
       </div>

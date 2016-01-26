@@ -8,7 +8,7 @@ import {
 }
 from '../../components/index'
 import {
-  Table
+  Table, Alert
 }
 from 'react-bootstrap'
 import {
@@ -28,6 +28,10 @@ import {
   getAdminDestinations, getAdminTrippians, deleteAdminDestinationById
 }
 from '../../redux/apiAdminIndex'
+import {
+  AlertAutoDismissableWidget
+}
+from '../../components/index'
 
 function mapStateToProps(state) {
   return {
@@ -41,6 +45,13 @@ connect(mapStateToProps)
 export default class AdminDestinationList extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      alert: {
+        type: 'danger',
+        title: '',
+        message: ''
+      }
+    }
   }
 
   componentDidMount() {
@@ -50,8 +61,21 @@ export default class AdminDestinationList extends Component {
   handleDelete(id) {
     console.log('deleting destination called', id)
     store.dispatch(deleteAdminDestinationById(id))
-  }
+    this.setAlert('success', 'Successfully deleted data', id)
 
+  }
+  handleAlertDismiss() {
+    this.setAlert()
+  }
+  setAlert(type = 'success', title = '', message = '') {
+    this.setState({
+      alert: {
+        type: type,
+        title: title,
+        message: message
+      }
+    })
+  }
   render() {
     // data format 
     // destinationImage: "http://lorempixel.com/400/200/",
@@ -60,8 +84,18 @@ export default class AdminDestinationList extends Component {
     // whyVisit: "there is a lot of historical sites",
     // id: 62
     // => TODO: create table row widget 
+    const {
+      type, title, message
+    } = this.state.alert
     return (
       <div id="admin-destination-page">
+        {title !== '' && 
+          <Alert bsStyle={type} dismissAfter={3000} onDismiss={this.handleAlertDismiss.bind(this)}>
+            <h4>{title}</h4>
+            <p>{message}</p>
+          </Alert>
+        }
+
         <div className="pull-right">
           <Link className="btn btn-primary" to='destination-post'>Create a Destination</Link>
         </div>
