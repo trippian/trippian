@@ -15,11 +15,12 @@ import apiTrippian, {
   getPopularTrippians
 }
 from './reducers/apiTrippianReducer'
-
+import apiAdmin from './reducers/apiAdminReducer'
 
 // combine all reducers 
 const reducer = combineReducers({
   apiTrippian,
+  apiAdmin,
   appState,
   form
 })

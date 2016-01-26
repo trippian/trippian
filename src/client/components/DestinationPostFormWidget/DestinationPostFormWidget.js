@@ -11,24 +11,28 @@ class DestinationPostFormWidget extends Component {
   render() {
     const {
       fields: {
-        firstName, lastName, email
+        destinationName, destinationDescription, destinationImage, whyVisit
       },
       handleSubmit
     } = this.props
 
     return (
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>First Name</label>
-          <input type="text" placeholder="First Name" {...firstName}/>
+      <form onSubmit={handleSubmit} role="form">
+        <div className="form-group">
+          <label>Destination Name</label>
+          <input type="text" className="form-control" placeholder="Paris..." {...destinationName}/>
         </div>
-        <div>
-          <label>Last Name</label>
-          <input type="text" placeholder="Last Name" {...lastName}/>
+        <div className="form-group">
+          <label>Destination Description</label>
+          <input type="text" className="form-control" placeholder="Awesome place...." {...destinationDescription}/>
         </div>
-        <div>
-          <label>Email</label>
-          <input type="email" placeholder="Email" {...email}/>
+        <div className="form-group">
+          <label>Destination Image</label>
+          <input type="url" className="form-control" placeholder="http://..." {...destinationImage}/>
+        </div>
+        <div className="form-group">
+          <label>Why Visit</label>
+          <textarea name="whyVisit" className="form-control" className="form-control" rows="3" required="required" {...whyVisit}></textarea>
         </div>
         <button onClick={handleSubmit}>Submit</button>
       </form>
@@ -38,7 +42,7 @@ class DestinationPostFormWidget extends Component {
 
 DestinationPostFormWidget = reduxForm({
   form: 'destinationPostForm', // a unique name for this form
-  fields: ['firstName', 'lastName', 'email'] // all the fields in the form
+  fields: ['destinationName', 'destinationDescription', 'destinationImage', 'whyVisit'] // all the fields in the form
 })(DestinationPostFormWidget)
 
 
