@@ -11,7 +11,7 @@ const TrippianListItemRoundWidget = ({
     <div className="popular-trippians-item text-center">
         <Link to={`trippian/${id}`}>
             <div className="circle-image">
-                <img src={`http://${picture}`} alt="" />
+                <img src={picture} alt="" />
             </div> < h4 > {
   name
 } < /h4>

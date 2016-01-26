@@ -23,7 +23,7 @@ function renderSearchForm() {
 
 
 const NavWidget = ({
-  name = 'NavWidget', currentPath, username = '', displayName = ''
+  name = 'NavWidget', currentPath, username = '', displayName = '', isUserAdmin = false
 }) => {
   return (
     <nav className="navbar navbar-default" role="navigation">
@@ -63,6 +63,7 @@ const NavWidget = ({
                     <b className="caret"></b>
                     </a>
                     <ul className="dropdown-menu">
+                        {isUserAdmin && <li><Link to='admin'>Admin Dashboard</Link></li>}
                         <li>
                             <Link to='trippian-edit'>
                                 <FormattedMessage 
