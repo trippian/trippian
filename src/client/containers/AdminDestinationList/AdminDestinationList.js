@@ -36,7 +36,6 @@ function mapStateToProps(state) {
   }
 }
 
-
 @
 connect(mapStateToProps)
 export default class AdminDestinationList extends Component {

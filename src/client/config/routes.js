@@ -11,7 +11,8 @@ import {
   Admin, AdminDestinationList, AdminDestinationListItem, AdminDestinationListItemEdit,
   AdminTrippianList, AdminTrippianListItem, AdminTrippianListItemEdit, AdminInquiryList, AdminTripList,
   AdminInquiryListItem, AdminInquiryListItemEdit,
-  AdminTripListItem, AdminTripListItemEdit
+  AdminTripListItem, AdminTripListItemEdit,
+  AdminUserList, AdminUserListItem, AdminUserListItemEdit
 }
 from '../containers/index'
 
@@ -52,6 +53,11 @@ export default (
                 <Route component={AdminTripList} path="trip"  />
                 <Route component={AdminTripListItem} path="trip:/id"  />
                 <Route component={AdminTripListItemEdit} path="trip/:id/edit"  />
+
+
+                <Route component={AdminUserList} path="user"  />
+                <Route component={AdminUserListItem} path="user:/id"  />
+                <Route component={AdminUserListItemEdit} path="user/:id/edit"  />
 
                 <IndexRoute component={AdminDestinationList}/>
             </Route>

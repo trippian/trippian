@@ -1,5 +1,5 @@
 import {
-  getDestinationById, getTrippianById
+  fetchGetDestinationById, fetchGetTrippianById
 }
 from './apiTrippian'
 import {
@@ -18,12 +18,12 @@ import dummyData from './dummyData'
 
 // describe('apiTrippian', () => {
 
-//   describe('getDestinationById', () => {
+//   describe('fetchGetDestinationById', () => {
 //     // use beforeEach to do aync call and get remote data
 //     // upon getting the data, we'll call the test function itself
 //     let destination
 //     beforeEach((done) => {
-//       getDestinationById(1).then(data => {
+//       fetchGetDestinationById(1).then(data => {
 //         destination = data
 //         done()
 //       })
@@ -38,10 +38,10 @@ import dummyData from './dummyData'
 //   })
 
 
-//   describe('getTrippianById', () => {
+//   describe('fetchGetTrippianById', () => {
 //     let trippian
 //     beforeEach((done) => {
-//       getTrippianById(1).then(data => {
+//       fetchGetTrippianById(1).then(data => {
 //         trippian = data
 //         done()
 //       })
