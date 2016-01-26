@@ -5,6 +5,11 @@
  *
  */
 
+export Admin from './Admin/Admin'
+export AdminInquiryList from './AdminInquiryList/AdminInquiryList'
+export AdminTripList from './AdminTripList/AdminTripList'
+export AdminDestinationList from './AdminDestinationList/AdminDestinationList'
+export AdminTrippianList from './AdminTrippianList/AdminTrippianList'
 export About from './About/About'
 export App from './App/App'
   // export Calendar from './Calendar/Calendar'

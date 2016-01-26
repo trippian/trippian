@@ -39,7 +39,7 @@ const NavWidget = ({
             </Link>
         </div>
         <div className="collapse navbar-collapse navbar-ex1-collapse">
-
+            
             <LocaleMenuWidget className="nav navbar-nav navbar-right list-inline"/>
             <ul className="nav navbar-nav navbar-right">
                 <li>{currentPath === '/'  ? null : renderSearchForm() }</li>

@@ -45,3 +45,8 @@ export const postDestination = (data = defaultDestinationData) => {
   const url = `${API_HOST}${routeConfig.destination}`
   return api.post(url, data)
 }
+
+export const deleteDestinationById = (id) => {
+  const url = `${API_HOST}${routeConfig.destination}${id}`
+  return api.deleteApi(url)
+}

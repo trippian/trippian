@@ -9,7 +9,7 @@ import {
 from '../../components/index'
 
 import {
-  postDestination
+  postDestination, deleteDestinationById
 }
 from '../../utils/apiTrippian'
 
@@ -20,7 +20,9 @@ export default class DestinationPost extends Component {
   }
 
   componentDidMount() {
-    postDestination().then(data => console.log('posted', data))
+    // demo for posting data and deleting data 
+    // postDestination().then(data => console.log('posted', data))
+    deleteDestinationById(55).then(data => console.log('posted', data))
   }
 
   handleSubmit() {

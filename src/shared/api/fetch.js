@@ -20,7 +20,6 @@ const get = (url) => {
 
 // default to json format
 const post = (url, data) => {
-  console.log('got data?', data, url)
   return fetch(url, {
       method: 'post',
       headers: {
@@ -41,8 +40,24 @@ const post = (url, data) => {
     })
 }
 
+const deleteApi = (url) => {
+  return fetch(url, {
+      method: 'delete'
+    })
+    .then((res) => {
+      if (res.status >= 400) {
+        throw new Error('Bad response from server')
+      }
+      return res.json()
+
+    })
+    .catch(function (error) {
+      console.log('deleting failed at fetch', error, url)
+    })
+}
 
 export default {
-  get: get,
-  post: post
+  get,
+  post,
+  deleteApi
 }
