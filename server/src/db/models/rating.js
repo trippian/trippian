@@ -31,13 +31,14 @@ export default {
   },
   getAllUserRatings: (userId) => {
     return new Promise((resolve, reject) => {
-      let cypher = `match(u:User)<-[r:RATED]-() where id(u)=${userId} return r;`
+      let cypher = `match(u:User)<-[r:RATED]-() where id(u)=${userId} return r, avg(r.rating);`
       db.queryAsync(cypher)
         .then((ratings) => {
           if (ratings.length) {
             resolve(ratings)
           } else {
-            reject(new Error('User has no ratings'))
+            // reject(new Error('User has no ratings'))
+            resolve(ratings)
           }
         })
     })
