@@ -17,6 +17,9 @@ export default {
               })
           }
         })
+        .catch((error) => {
+          next(error)
+        })
     }
   },
   inquiryPost: (req, res, next) => {
