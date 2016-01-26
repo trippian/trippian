@@ -29,3 +29,24 @@ export const getDestinations = (category = 'popular') => {
   console.log('destination url', url, category)
   return api.get(url)
 }
+
+// POST /api/destination
+// URL encoded POST request
+// send parameters: destinationName, destinationDescription, whyVisit, destinationImage
+// returns created destination with id and empty popularTrips property
+//curl -X POST -d "destinationName=San Francisco, CA&destinationDescription=a cool city&whyVisit=there is a lot of historical sites&destinationImage=http://lorempixel.com/400/200/" http://localhost:4000/api/destination
+const defaultDestinationData = {
+  destinationName: 'Beijing',
+  destinationDescription: 'A beautiful and vibrant city',
+  destinationImage: 'http://lorempixel.com/800/600/city/',
+  whyVisit: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum excepturi ducimus ab veniam est, pariatur recusandae cum voluptatem, maiores perferendis!'
+}
+export const postDestination = (data = defaultDestinationData) => {
+  const url = `${API_HOST}${routeConfig.destination}`
+  return api.post(url, data)
+}
+
+export const deleteDestinationById = (id) => {
+  const url = `${API_HOST}${routeConfig.destination}${id}`
+  return api.deleteApi(url)
+}

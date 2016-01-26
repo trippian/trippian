@@ -8,10 +8,21 @@ import {
 }
 from '../../components/index'
 
+import {
+  postDestination, deleteDestinationById
+}
+from '../../utils/apiTrippian'
+
 import store from '../../redux/store'
 export default class DestinationPost extends Component {
   constructor(props) {
     super(props)
+  }
+
+  componentDidMount() {
+    // demo for posting data and deleting data 
+    // postDestination().then(data => console.log('posted', data))
+    deleteDestinationById(55).then(data => console.log('posted', data))
   }
 
   handleSubmit() {

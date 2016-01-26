@@ -7,7 +7,8 @@ from 'react-router'
 import {
   App, Home, About, DestinationDetail, DestinationPost, InquiryAdd, InquiryList,
   InquiryDetail, JoinUs, Login, NotFound, Press,
-  Terms, TrippianDetail, TrippianSignUp, TrippianList, TrippianEdit, IntlDemo
+  Terms, TrippianDetail, TrippianSignUp, TrippianList, TrippianEdit, IntlDemo,
+  Admin, AdminDestinationList, AdminTrippianList, AdminInquiryList, AdminTripList
 }
 from '../containers/index'
 
@@ -31,6 +32,12 @@ export default (
             <Route component={TrippianSignUp} path="become-a-trippian" />
             <Route component={TrippianList} path="trippian" />
             <Route component={TrippianEdit} path="trippian-edit"  />
+            <Route component={Admin} path="admin">
+                <Route component={AdminTrippianList} path="trippian"  />
+                <Route component={AdminDestinationList} path="destination"  />
+                <Route component={AdminInquiryList} path="inquiry"  />
+                <Route component={AdminTripList} path="trip"  />
+            </Route>
             <IndexRoute component={Home}/>
         </Route>
     </Router>

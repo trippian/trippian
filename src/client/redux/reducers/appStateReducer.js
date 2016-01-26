@@ -11,6 +11,7 @@ from 'immutable'
 const initialState = new Map({
   username: 'vidaaudrey', // update later 
   displayName: 'Audrey Li', // update later 
+  isUserAdmin: true,
   locale: 'en-US',
   availableLocales: ['en-US', 'zh', 'es'],
   messages: defaultMessages

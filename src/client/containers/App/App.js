@@ -69,7 +69,6 @@ class App extends Component {
         </header>
         <main className="row">
           {this.props.children}
-          }
         </main>
         <FooterWidget />
       </div>
