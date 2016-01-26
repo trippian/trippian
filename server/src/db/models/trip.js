@@ -8,7 +8,7 @@ export default {
     // when a new trip is created, we want to give it a netVote and a total votes property
     details.netVote = 0
     details.totalVotes = 0
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       db.saveAsync(details, 'Trip')
         .then((newTrip) => {
           // when newTrip node is created we want to add a relationship between the user and trip
@@ -24,8 +24,12 @@ export default {
                     if (tripDestinationRelationship.length) {
                       // after the relationship between the destination and the trip is created we want to resolve the promise with all 3 parameters
                       resolve(newTrip, userTripRelationship, tripDestinationRelationship)
+                    } else {
+                      reject(new Error('destination does not exist'))
                     }
                   })
+              } else {
+                reject(new Error('user does not exist'))
               }
             })
         })
@@ -36,23 +40,35 @@ export default {
   },
   // get all trip information by ID for get request nah
   getTripById: (tripId) => {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       let cypher = `match (t:Trip) where id(t)=${tripId} return t;`
       db.queryAsync(cypher)
         .then((trip) => {
           if (trip) {
             resolve(trip)
+          } else {
+            reject(new Error('could not find trip with that id'))
           }
+        })
+        .catch((error) => {
+          console.error(error)
         })
     })
   },
   // get all trips in order of ranking
   getAllTrips: () => {
-    return new Promise(function(resolve) {
+    return new Promise(function(resolve, reject) {
       let cypher = 'match (trip:Trip) return trip'
       db.queryAsync(cypher)
         .then((trips) => {
-          resolve(trips)
+          if (trips.length) {
+            resolve(trips)
+          } else {
+            reject(new Error('could not get all trips'))
+          }
+        })
+        .catch((error) => {
+          console.error(error)
         })
     })
   },
@@ -60,13 +76,15 @@ export default {
   updateTrip: (tripId, details) => {
     let updateString = updateStringObject(details, '')
 
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       let cypher = `match (t:Trip) where id(t)=${tripId} set t += {${updateString}} return t;`
 
       db.queryAsync(cypher)
         .then((updatedTrip) => {
           if (updatedTrip.length) {
             resolve(updatedTrip[0])
+          } else {
+            reject(new Error('could not update trips'))
           }
         })
         .catch((error) => {
@@ -81,17 +99,21 @@ export default {
     if (vote === 'UPVOTE') { incrementor = 1 }
     if (vote === 'DOWNVOTE') { incrementor = -1 }
     userId = parseInt(userId)
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       let cypher = `match (t:Trip), (t)<-[r:${vote}]-(u:User) where id(t)=${tripId} and id(u)=${userId} return r;`
       db.queryAsync(cypher)
         .then((nodes) => {
           if (nodes.length) {
-            resolve(new Error('User has already voted for this trip'))
+            reject(new Error('User has already voted for this trip'))
           } else {
             let cypher = `match (u:User), (t:Trip) where id(u)=${userId} and id(t)=${tripId} create (u)-[r:${vote}]->(t) set t.netVote = t.netVote + ${incrementor}, t.totalVotes = t.totalVotes + 1 return t;`
             db.queryAsync(cypher)
               .then((updatedTrip) => {
-                resolve(updatedTrip)
+                if (updatedTrip.length) {
+                  resolve(updatedTrip)
+                } else {
+                  reject(new Error('User could not vote for this trip'))
+                }
               })
           }
         })
@@ -101,12 +123,14 @@ export default {
     })
   },
   deleteTrip: (tripId) => {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       let cypher = `match (t:Trip) where id(t)=${tripId} detach delete t;`
       db.queryAsync(cypher)
         .then((deleted) => {
           if (deleted) {
             resolve(deleted)
+          } else {
+            reject(new Error('could not delete trip'))
           }
         })
         .catch((error) => {
@@ -117,11 +141,18 @@ export default {
   // given a location name, we will return all the trips at that location 
   // this will be used when a user searches a location
   getAllTripsAtDestination: (destinationId, context = '') => {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       let cypher = `match (d:Destination)<-[r:LOCATED_IN]-(t:Trip) where id(d)=${destinationId} return t order by t.netVote*t.totalVotes ${context};`  
       db.queryAsync(cypher)
         .then((trips) => {
-          resolve(trips)
+          if (trips.length) {
+            resolve(trips)
+          } else {
+            reject(new Error('could not get all trips at destination'))
+          }
+        })
+        .catch((error) => {
+          console.error(error)
         })
     })
   },
@@ -129,14 +160,19 @@ export default {
   // for trippees. need to 
   userWentOnTrip: (userId, tripId, tripDate) => {
     // userId = parseInt(userId)
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       // let cypher =
       let cypher =  `match (u:User), (t:Trip) where id(u)=${userId} and id(t)=${tripId} create (u)-[r:WENT_ON]->(t) set r.date=${tripDate}`
       db.queryAsync(cypher)
         .then((wentOn) => {
           if (wentOn.length) {
             resolve(wentOn[0])
+          } else {
+            reject(new Error('could not add went on relationship'))
           }
+        })
+        .catch((error) => {
+          console.error(error)
         })
     })
   }
