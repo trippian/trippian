@@ -148,7 +148,8 @@ export default {
           if (trips.length) {
             resolve(trips)
           } else {
-            reject(new Error('could not get all trips at destination'))
+            // reject(new Error('could not get all trips at destination'))
+            resolve(trips)
           }
         })
         .catch((error) => {
