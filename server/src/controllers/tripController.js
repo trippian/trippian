@@ -66,5 +66,17 @@ export default {
           next(error)
         })
     }
+  },
+  allTripGet: (req, res, next) => {
+    Trip.getAllTrips()
+      .then(allTrips => {
+        if (allTrips.length) {
+          console.log(allTrips)
+          res.json(allTrips)
+        }
+      })
+      .catch(error => {
+        next(error)
+      })
   }
 }

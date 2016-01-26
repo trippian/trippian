@@ -105,7 +105,24 @@ export default {
         .catch((error) => {
           next(error)
         })
+    } else {
+      User.getAllTrippians()
+        .then(trippians => {
+          if (trippians) {
+            console.log(trippians)
+            res.json(trippians)
+          }
+        })
     }
+  },
+  allUserGet: (req, res, next) => {
+    User.getAllUsers()
+      .then(users => {
+        res.json(users)
+      })
+      .catch(error => {
+        next(error)
+      })
   }
 }
 

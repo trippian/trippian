@@ -39,6 +39,7 @@ export default function (router) {
 
   // routes for users
   router.get('/api/user/:userId', userController.userGet)
+  router.get('/api/user', userController.allUserGet)
   router.get('/api/trippian', userController.trippianGet)
   router.put('/api/user/:userId', userController.userPut)
   router.delete('/api/user/:userId', userController.userDelete)
@@ -46,11 +47,13 @@ export default function (router) {
   // routes for trips
   router.post('/api/trip/:userId', tripController.tripPost)
   router.get('/api/trip/:tripId', tripController.tripGet)
+  router.get('/api/trip', tripController.allTripGet)
   router.put('/api/trip/:tripId', tripController.tripPut)
   router.delete('/api/trip/:tripId', tripController.tripDelete)
 
   //routes for inquiries
   router.get('/api/inquiry/:userId', inquiryController.inquiryGet)
+  router.get('/api/inquiry', inquiryController.allInquiryGet)
   router.post('/api/inquiry/:trippianId', inquiryController.inquiryPost)
   router.put('/api/inquiry/:inquiryId', inquiryController.inquiryPut)
   router.delete('/api/inquiry/:inquiryId', inquiryController.inquiryDelete)

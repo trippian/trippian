@@ -111,7 +111,7 @@ export default {
     })
   },
   // currently returns all users who are trippians but we need to fix to order by popularity
-  getPopularTrippians: () => {
+  getAllTrippians: () => {
     return new Promise((resolve, reject) => {
       let cypher = `match (u:User) where u.trippian=true return u`
       db.queryAsync(cypher)
@@ -119,10 +119,35 @@ export default {
           if (trippians) {
             resolve(trippians)
           } else {
-            reject(new Error('could not get popular trippians'))
+            reject(new Error('could not get trippians'))
           }
         })
         .catch((error) => {
+          console.error(error)
+        })
+    })
+  },
+  getPopularTrippians: () => {
+    return new Promise((resolve, reject) => {
+      let cypher = `match (u:User) where u.trippian=true return u`
+      db.queryAsync(cypher)
+        .then(trippians => {
+          if (trippians.length) {
+            resolve(trippians)
+          }
+        })
+    })
+  },
+  getAllUsers: () => {
+    return new Promise((resolve, reject) => {
+      let cypher = `match (u:User) return u`
+      db.queryAsync(cypher)
+        .then(users => {
+          if (users.length) {
+            resolve(users)
+          }
+        })
+        .catch(error => {
           console.error(error)
         })
     })
