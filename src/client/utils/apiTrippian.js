@@ -6,41 +6,143 @@ from '../config/appConfig'
   // import config from '../../shared/config/config'
 
 
-export const getDestinationById = (id) => {
-  const url = `${API_HOST}${routeConfig.destination}${id}`
-    // console.log('destination url', url, id)
-  return api.get(url)
-}
+//DESTINATION
 
-export const getTrippianById = (id) => {
-  const url = `${API_HOST}${routeConfig.trippian}${id}`
-    // console.log('url', url, id)
-  return api.get(url)
-}
-
-export const getTrippiansByCategory = (category = 'popular') => {
-  const url = `${API_HOST}${routeConfig.trippian}?cat=${category}`
-  console.log('trippian url', url, category)
-  return api.get(url)
-}
-
-export const getDestinationsByCategory = (category = 'popular') => {
-  const url = `${API_HOST}${routeConfig.destination}?cat=${category}`
-  console.log('destination url', url, category)
-  return api.get(url)
-}
-
-export const getTrippians = () => {
-  const url = `${API_HOST}${routeConfig.trippian}`
-  console.log('trippian url', url)
-  return api.get(url)
-}
-
-export const getDestinations = (category = 'popular') => {
+export const fetchGetDestinations = () => {
   const url = `${API_HOST}${routeConfig.destination}`
-  console.log('destination url', url)
+  console.log('fetchGetDestinations', url)
   return api.get(url)
 }
+
+export const fetchGetDestinationById = (id) => {
+  const url = `${API_HOST}${routeConfig.destination}${id}`
+    console.log('fetchGetDestinationById', url, id)
+  return api.get(url)
+}
+
+export const fetchGetDestinationsByCategory = (category = 'popular') => {
+  const url = `${API_HOST}${routeConfig.destination}?cat=${category}`
+  console.log('fetchGetDestinationsByCategory', url, category)
+  return api.get(url)
+}
+
+export const fetchPostDestination = (data) => {
+  const url = `${API_HOST}${routeConfig.destination}`
+  console.log('fetchPostDestination', url, data)
+  return api.post(url, data)
+}
+
+export const fetchDeleteDestinationById = (id) => {
+  const url = `${API_HOST}${routeConfig.destination}${id}`
+  console.log('fetchDeleteDestinationById', url)
+  return api.deleteApi(url)
+}
+
+
+
+
+
+//INQUIRY
+
+export const fetchGetInquires = () => {
+  const url = `{API_HOST}${routeConfig.inquiry}`
+  console.log('fetchGetInquires', url)
+  return api.get(url)
+}
+
+export const fetchGetInquiryById = (id) => {
+  const url = `{API_HOST}${routeConfig.inquiry}${id}`
+  console.log('fetchGetInquiryById', url, id)
+  return api.get(url, id)
+}
+
+export const fetchPostInquiry = (data) => {
+  const url = `${API_HOST}${routeConfig.inquiry}`
+  console.log('fetchPostInquiry', url, data)
+  return api.post(url, data)
+}
+
+export const fetchDeleteInquiryById = (id) => {
+  const url = `{API_HOST}${routeConfig.inquiry}${id}`
+  console.log('fetchDeleteInquiry', url, id)
+  return api.deleteAPI(url)
+}
+
+export const fetchUpdateInuqiry = (id, data) => {
+  const url = `${API_HOST}${routeConfig.inquiry}${id}`
+  console.log('fetchUpdateInuqiry', id, data)
+  return api.put(url, data, id)
+}
+
+//TRIP
+
+
+export const fetchGetTrips = () => {
+  const url = `{API_HOST}${routeConfig.trip}`
+  console.log('fetchUpdateInuqiry', url)
+  return api.get(url)
+}
+
+export const fetchDeleteTripById = (id) => {
+  const url = `${API_HOST}${routeConfig.trip}${id}`
+  console.log('fetchDeleteTripById', url)
+  return api.deleteApi(url)
+}
+
+export const fetchUpdateTrip = (id, data) => {
+  const url = `${API_HOST}${routeConfig.trip}${id}`
+  console.log('fetchUpdateTrip', id, data)
+  return api.put(url, data, id)
+}
+
+export const fetchPostTrip = (data) => {
+  const url = `${API_HOST}${routeConfig.trip}`
+  console.log('fetchPostTrip', url, data)
+  return api.post(url, data)
+}
+
+
+
+//USER
+
+export const fetchGetTrippianById = (id) => {
+  const url = `${API_HOST}${routeConfig.trippian}${id}`
+    console.log('fetchGetTrippianById', url, id)
+  return api.get(url)
+}
+
+export const fetchGetTrippiansByCategory = (category = 'popular') => {
+  const url = `${API_HOST}${routeConfig.trippian}?cat=${category}`
+  console.log('fetchGetTrippiansByCategory', url, category)
+  return api.get(url)
+}
+
+export const fetchGetAllUsers = () => {
+  const url = `${API_HOST}${routeConfig.user}`
+  console.log('fetchGetAllUsers', url)
+  return api.get(url)
+}
+
+export const fetchGetUserById = (id) => {
+  const url = `${API_HOST}${routeConfig.user}${id}`
+  console.log('fetchGetUserById', url, id)
+  return api.get(url)
+}
+
+export fetchDeleteUserById = (id) => {
+  const url = `${API_HOST}${routeConfig.user}${id}`
+  console.log('fetchDeleteUserById', url, id)
+  return api.deleteApi(url)
+}
+
+export const fetchUpdateUserById = (id) => {
+  const url = `${API_HOST}${routeConfig.user}${id}`
+  console.log('fetchUpdateUserById', url, id)
+  return api.put(url, id)
+}
+
+
+
 
 // POST /api/destination
 // URL encoded POST request
@@ -52,14 +154,4 @@ const defaultDestinationData = {
   destinationDescription: 'A beautiful and vibrant city',
   destinationImage: 'http://lorempixel.com/800/600/city/',
   whyVisit: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum excepturi ducimus ab veniam est, pariatur recusandae cum voluptatem, maiores perferendis!'
-}
-export const fetchPostDestination = (data) => {
-  const url = `${API_HOST}${routeConfig.destination}`
-  return api.post(url, data)
-}
-
-export const fetchDeleteDestinationById = (id) => {
-  const url = `${API_HOST}${routeConfig.destination}${id}`
-  console.log('fetcing deleting now', url)
-  return api.deleteApi(url)
 }
