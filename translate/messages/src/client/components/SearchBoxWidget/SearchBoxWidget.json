@@ -1,0 +1,12 @@
+[
+  {
+    "id": "search-box-widget.search-button-text",
+    "description": "text for the search button",
+    "defaultMessage": "Go"
+  },
+  {
+    "id": "search-box-widget.search-input-place-holder",
+    "description": "text for the search input placeholder",
+    "defaultMessage": "Paris..."
+  }
+]

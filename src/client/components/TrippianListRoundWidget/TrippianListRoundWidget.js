@@ -5,16 +5,16 @@ import {
 from '../index'
 
 const TrippianListRoundWidget = ({
-  name = 'TrippianListRoundWidget'
+  dataList = []
 }) => {
+  console.log('inside trippian list', dataList, dataList.length)
   return (
     <div className="popular-trippians section-body clearfix">
-        <TrippianListItemRoundWidget />
-        <TrippianListItemRoundWidget />
-        <TrippianListItemRoundWidget />
-        <TrippianListItemRoundWidget />
-        <TrippianListItemRoundWidget />
-        <TrippianListItemRoundWidget />
+    { 
+       dataList.map((trippian, key) => (
+         <TrippianListItemRoundWidget key={key} {...trippian} />
+      ))
+   }
     </div>
   )
 }

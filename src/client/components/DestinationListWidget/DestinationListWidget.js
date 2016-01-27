@@ -1,32 +1,23 @@
-import React, {
-  Component, PropTypes
-}
-from 'react'
+import React from 'react'
 import {
   DestinationListItemWidget
 }
 from '../index'
 
-export default class DestinationListWidget extends Component {
-  constructor(props) {
-    super(props)
-  }
-
-  render() {
-    return (
-      <div className="popular-destinations section-body clearfix">
-        <DestinationListItemWidget />
-        <DestinationListItemWidget />
-        <DestinationListItemWidget />
-        <DestinationListItemWidget />
-        <DestinationListItemWidget />
-        <DestinationListItemWidget />
-      </div>
-    )
-  }
+const DestinationListWidget = ({
+  dataList = []
+}) => {
+  console.log('inside Destination list', dataList, dataList.length)
+  return (
+    <div className="popular-destinations section-body clearfix">
+    { 
+       dataList.map((destination, key) => (
+         <DestinationListItemWidget key={key} {...destination} />
+      ))
+   }
+    </div>
+  )
 }
-DestinationListWidget.propTypes = {
-  name: PropTypes.string
-}
-
 DestinationListWidget.displayName = 'DestinationListWidget'
+
+export default DestinationListWidget

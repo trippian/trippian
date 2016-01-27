@@ -1,0 +1,32 @@
+[
+  {
+    "id": "home.jumbotron-title",
+    "description": "title for jumbotron",
+    "defaultMessage": "Start Now"
+  },
+  {
+    "id": "home.jumbotron-sub-title",
+    "description": "sub title for jumbotron",
+    "defaultMessage": "Find your local travel companion around the world"
+  },
+  {
+    "id": "home.popular-destinations-title",
+    "description": "title for popular destinations",
+    "defaultMessage": "Popular Destinations"
+  },
+  {
+    "id": "home.popular-destinations-sub-title",
+    "description": "sub title for popular destinations",
+    "defaultMessage": "Explore popular destinations around the world"
+  },
+  {
+    "id": "home.popular-trippians-title",
+    "description": "title for popular Trippians",
+    "defaultMessage": "Popular Trippians"
+  },
+  {
+    "id": "home.popular-trippians-sub-title",
+    "description": "sub title for popular Trippians",
+    "defaultMessage": "Connect with popular Trippians, find interesting trips and more..."
+  }
+]

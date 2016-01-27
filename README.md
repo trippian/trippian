@@ -54,6 +54,16 @@ npm run commit
 git push origin develop -f # force push to your remote branch 
 ```
 
+We used the dotenv npm package to configure our development variables. To run locally, you must store a few variables in a .env file.
+- HOST
+- FACEBOOK_APP_ID
+- FACEBOOK_APP_SECRET
+- FACEBOOK_CALLBACK_URL
+- GRAPHSTORY_URL
+- S3_BUCKET
+- AWS_ACCESS_KEY_ID
+- AWS_SECRET_KEY
+
 ### Serve API:
 ```
 babel-node server/src/server.js --presets es2015
@@ -63,4 +73,21 @@ or [http://localhost:4000/api/trippian/123](http://localhost:4000/api/trippian/1
 
 ### Deploy 
 Run `npm run build`, will build the bundle.js file in dist folder and copy all asset files from dist to deploy folder. 
+
+
+### Internationalization  
+Copy the content from .babelrc1 to .babelrc, and run:
+`
+babel-node --plugins react-intl --presets es2015,stage-1,react src/client/entry.js
+`
+Replace entry.js with any file you wish to translate. 
+Remember to change the .babelrc back for webpack to work properly. (We don't have a solution to make babel work with both webpack and react-intl yet)
+
+To extract all formatted messages into the language files, run 
+`
+npm run translate
+`
+This will create the `/translation/lang/en-US.json` and other related translation files
+
+Diable redux-logger before running `npm run translate`
 

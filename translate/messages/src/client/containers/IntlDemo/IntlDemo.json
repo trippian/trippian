@@ -1,0 +1,12 @@
+[
+  {
+    "id": "app.title",
+    "description": "this is a formated title message",
+    "defaultMessage": "Trippian Intl Demo Page"
+  },
+  {
+    "id": "app.rich_description",
+    "description": "this is a formated html message",
+    "defaultMessage": "<h2 style=\"color: red\">大号字 - rich html</h2>"
+  }
+]

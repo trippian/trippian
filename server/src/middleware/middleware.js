@@ -1,4 +1,4 @@
-import { json } from 'body-parser'
+import { json, urlencoded } from 'body-parser'
 import { join } from 'path'
 import { errorHandler, errorLogger } from './utils'
 import Router from '../routes/routes'
@@ -15,31 +15,34 @@ export default function (app, express) {
   let router = express.Router()
   let authRouter = express.Router()
 
-  PassportConnection(passport)
+  PassportConnection(app, passport)
   app.use(morgan('dev'))
   app.use(json())
+  app.use(urlencoded({extended:true}))
   app.use(cors())
-
-  app.use(express.static(join(__dirname, '../../../deploy')))
 
   // graph ql route => we will use this later
   // app.use('/api', graphqlHTTP({schema: MyGraphQLSchema, graphiql: true }));
 
-  app.use(session({secret: 'no time to eat'}))
-  app.use(passport.initialize())
-  app.use(passport.session())
+  app.use(session({
+    secret: 'no time to eat',
+    resave: true,
+    saveUninitialized: true
+  }))
   // not sure if i need this yet
   // app.use(flash())
+  app.use(express.static(join(__dirname, '../../../deploy')))
 
   app.use('/', router)
   app.use('/auth', authRouter)
 
+  Router(router)
+  AuthRouter(authRouter, passport)
+
   app.use('*', function(req, res) {
     res.status(404).send('404: Page not found')
   })
-
-  Router(router)
-  AuthRouter(authRouter, passport)
+  
 
   app.use(errorHandler)
   app.use(errorLogger)

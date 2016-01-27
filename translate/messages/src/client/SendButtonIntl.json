@@ -1,0 +1,12 @@
+[
+  {
+    "id": "send_button.label",
+    "description": "the label for send button",
+    "defaultMessage": "Send"
+  },
+  {
+    "id": "send_button.tooltip",
+    "description": "the tooltip for send button",
+    "defaultMessage": "Send the message"
+  }
+]

@@ -9,7 +9,7 @@ import {
 from '../../components/index'
 
 import {
-  getTrippianById
+  fetchGetTrippianById
 }
 from '../../utils/apiTrippian'
 
@@ -40,7 +40,7 @@ export default class TrippianDetail extends Component {
   }
 
   componentDidMount() {
-    getTrippianById(123).then((data) => {
+    fetchGetTrippianById(123).then((data) => {
       console.log('got data', data)
     })
   }
