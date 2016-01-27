@@ -130,6 +130,10 @@ export default {
   },
   getPopularTrippians: () => {
     return new Promise((resolve, reject) => {
+      // uses algorithm to search for the most popular trippians
+      // denominator inside the exp function is 10, but if we 
+      // want to give more weight to quantity of votes, then
+      // we should increase that value
       let cypher = `match (u:User) where u.trippian=true return u order by  ((u.averageRating/2) + 5*(1 - exp(-(u.totalRating/10)))) DESC LIMIT 10`
       db.queryAsync(cypher)
         .then(trippians => {
