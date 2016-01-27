@@ -85,10 +85,8 @@ export default {
       let cypher = `match (u:User) where u.${field}=${value} return u;`
       db.queryAsync(cypher)
         .then((user) => {
-          if (user.length) {
+          if (user) {
             resolve(user)
-          } else {
-            reject(new Error('could not find user with those parameter'))
           }
         })
         .catch((error) => {
@@ -132,7 +130,7 @@ export default {
   },
   getPopularTrippians: () => {
     return new Promise((resolve, reject) => {
-      let cypher = `match (u:User) where u.trippian=true return u`
+      let cypher = `match (u:User) where u.trippian=true return u order by  ((u.averageRating/2) + 5*(1 - exp(-(u.totalRating/10)))) DESC LIMIT 10`
       db.queryAsync(cypher)
         .then(trippians => {
           if (trippians.length) {
