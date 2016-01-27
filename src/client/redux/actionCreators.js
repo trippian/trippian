@@ -4,7 +4,9 @@ import {
   SET_LOCALE, SET_LOCALE_MESSAGES, SET_USERNAME, SET_DISPLAYNAME,
   SET_ADMIN_DESTINATIONS, SET_ADMIN_TRIPPIANS, ADD_ADMIN_DESTINATION,
   REMOVE_ADMIN_DESTINATION, REMOVE_DESTINATION,
-  SET_ADMIN_CURRENT_DESTINATION
+  SET_ADMIN_CURRENT_DESTINATION,
+  ADD_ADMIN_TRIPPIAN, REMOVE_ADMIN_TRIPPIAN, SET_ADMIN_CURRENT_TRIPPIAN,
+  SET_ADMIN_USERS, ADD_ADMIN_USER, REMOVE_ADMIN_USER, SET_ADMIN_CURRENT_USER
 }
 from './actionTypes'
 
@@ -33,7 +35,7 @@ export function setLocaleMessages(messages) {
     }
   }
 }
-
+​
 export function setDisplayName(displayName) {
   return {
     type: SET_DISPLAYNAME,
@@ -42,26 +44,11 @@ export function setDisplayName(displayName) {
     }
   }
 }
-
-// apiTrippian related
-export function setDestinations(destinations) {
-  return {
-    type: SET_DESTINATIONS,
-    payload: {
-      destinations
-    }
-  }
-}
-
-export function setTrippians(trippians) {
-  return {
-    type: SET_TRIPPIANS,
-    payload: {
-      trippians
-    }
-  }
-}
-
+//***************************************
+//**** apiTrippian related  *************
+//***************************************
+​
+// general 
 export function apologize(errorMessage) {
   return {
     type: GET_DESTINATIONS_FAIL,
@@ -70,31 +57,63 @@ export function apologize(errorMessage) {
     }
   }
 }
-
-// admin related
-export function setAdminDestinations(destinations) {
+// trippian 
+export function setTrippians(trippians) {
   return {
-    type: SET_ADMIN_DESTINATIONS,
-    payload: {
-      destinations
-    }
-  }
-}
-
-export function setAdminTrippians(trippians) {
-  return {
-    type: SET_ADMIN_TRIPPIANS,
+    type: SET_TRIPPIANS,
     payload: {
       trippians
     }
   }
 }
-
+export function removeTrippian(id) {
+  return {
+    type: GET_TRIPPIANS,
+    payload: {
+      id
+    }
+  }
+}
+// Users
+​
+​
+// destination 
+export function setDestinations(destinations) {
+  return {
+    type: SET_DESTINATIONS,
+    payload: {
+      destinations
+    }
+  }
+}
+export function removeDestination(id) {
+  return {
+    type: REMOVE_DESTINATION,
+    payload: {
+      id
+    }
+  }
+}
+​
 export function addDestination(destination) {
   return {
     type: ADD_DESTINATION,
     payload: {
       destination
+    }
+  }
+}
+​
+//*********************************
+//**** admin related  *************
+//*********************************
+​
+// destination 
+export function setAdminDestinations(destinations) {
+  return {
+    type: SET_ADMIN_DESTINATIONS,
+    payload: {
+      destinations
     }
   }
 }
@@ -114,19 +133,82 @@ export function removeAdminDestination(id) {
     }
   }
 }
-export function removeDestination(id) {
-  return {
-    type: REMOVE_DESTINATION,
-    payload: {
-      id
-    }
-  }
-}
+​
 export function setAdminCurrentDestination(destination) {
   return {
     type: SET_ADMIN_CURRENT_DESTINATION,
     payload: {
       destination
+    }
+  }
+}
+​
+// trippian 
+export function setAdminTrippians(trippians) {
+  return {
+    type: SET_ADMIN_TRIPPIANS,
+    payload: {
+      trippians
+    }
+  }
+}
+export function addAdminTrippian(trippian) {
+  return {
+    type: ADD_ADMIN_TRIPPIAN,
+    payload: {
+      trippian
+    }
+  }
+}
+export function removeAdminTrippian(id) {
+  return {
+    type: REMOVE_ADMIN_TRIPPIAN,
+    payload: {
+      id
+    }
+  }
+}
+​
+export function setAdminCurrentTrippian(trippian) {
+  return {
+    type: SET_ADMIN_CURRENT_TRIPPIAN,
+    payload: {
+      trippian
+    }
+  }
+}
+​
+// user 
+export function setAdminUsers(users) {
+  return {
+    type: SET_ADMIN_USERS,
+    payload: {
+      users
+    }
+  }
+}
+export function addAdminUser(user) {
+  return {
+    type: ADD_ADMIN_USER,
+    payload: {
+      user
+    }
+  }
+}
+export function removeAdminUser(id) {
+  return {
+    type: REMOVE_ADMIN_USER,
+    payload: {
+      id
+    }
+  }
+}
+​
+export function setAdminCurrentUser(user) {
+  return {
+    type: SET_ADMIN_CURRENT_USER,
+    payload: {
+      user
     }
   }
 }
