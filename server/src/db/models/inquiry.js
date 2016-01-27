@@ -5,6 +5,7 @@ import { updateStringObject } from '../../middleware/utils'
 export default {
   // function for a user to create an inquiry
   createInquiry: (trippeeId, trippianId, inquiryProps) => {
+    inquiryProps.createdAt = Date();
     return new Promise((resolve, reject) => {
       db.relateAsync(trippeeId, 'INQUIRY', trippianId, inquiryProps)
         .then((inquiry) => {
