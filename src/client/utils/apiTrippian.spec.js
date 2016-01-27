@@ -1,5 +1,5 @@
 import {
-  fetchGetDestinationById, fetchGetTrippianById
+  getDestinationById, getTrippianById
 }
 from './apiTrippian'
 import {
@@ -8,7 +8,7 @@ import {
 from '../helpers/clientTestHelpers'
 
 // import config from '../../shared/config/config'
-import dummyData from './dummyData'
+// import dummyData from './dummyData'
 
 //************************************************
 //****** disable the API tests for TravisCI to work
@@ -18,12 +18,12 @@ import dummyData from './dummyData'
 
 // describe('apiTrippian', () => {
 
-//   describe('fetchGetDestinationById', () => {
+//   describe('getDestinationById', () => {
 //     // use beforeEach to do aync call and get remote data
 //     // upon getting the data, we'll call the test function itself
 //     let destination
 //     beforeEach((done) => {
-//       fetchGetDestinationById(1).then(data => {
+//       getDestinationById(1).then(data => {
 //         destination = data
 //         done()
 //       })
@@ -38,10 +38,10 @@ import dummyData from './dummyData'
 //   })
 
 
-//   describe('fetchGetTrippianById', () => {
+//   describe('getTrippianById', () => {
 //     let trippian
 //     beforeEach((done) => {
-//       fetchGetTrippianById(1).then(data => {
+//       getTrippianById(1).then(data => {
 //         trippian = data
 //         done()
 //       })

@@ -1,12 +1,15 @@
 import {
   SET_ADMIN_DESTINATIONS, SET_ADMIN_TRIPPIANS,
   GET_DESTINATIONS_FAIL, GET_DESTINATION_BY_ID, GET_TRIPPIAN_BY_ID, GET_DESTINATIONS, GET_TRIPPIANS,
-  REMOVE_ADMIN_DESTINATION, SET_ADMIN_CURRENT_DESTINATION
+  REMOVE_ADMIN_DESTINATION, SET_ADMIN_CURRENT_DESTINATION,
+  SET_ADMIN_USERS
 }
 from '../actionTypes'
 import {
-  setAdminDestinations, setAdminTrippians, apologize, removeAdminDestination, removeDestination,
-  setAdminCurrentDestination
+  setAdminDestinations, apologize, removeAdminDestination, removeDestination, setAdminCurrentDestination,
+  setAdminTrippians, addAdminTrippian, removeAdminTrippian, setAdminCurrentTrippian,
+  setAdminUsers, addAdminUser, removeAdminUser, setAdminCurrentUser
+
 }
 from '../actionCreators'
 
@@ -15,15 +18,72 @@ import {
 }
 from 'immutable'
 import {
-  fetchGetTrippians, fetchGetDestinations, fetchDeleteDestinationById,
-  fetchGetDestinationById
+  fetchGetTrippians, fetchDeleteTrippianById, fetchGetDestinations, fetchDeleteDestinationById,
+  fetchGetDestinationById, fetchGetUsers, fetchDeleteUserById
 }
 from '../../utils/apiTrippian'
 
 const initialState = new Map({
   adminTrippians: [],
   adminDestinations: [],
-  currentTrippian: {},
+  adminUsers: [],
+  adminInquiries: [],
+  adminTrips: [],
+
+  currentUser: {
+    name: '',
+    email: '',
+    picture: 'http://lorempixel.com/200/200/people/'
+  },
+  currentTrippian: {
+    name: '',
+    numberOfReviews: 0,
+    avarageRating: 0,
+    facebookId: 0,
+    email: '',
+    picture: 'http://lorempixel.com/200/200/people/',
+    reviews: [{
+      rating: 0,
+      title: '',
+      content: ''
+    }]
+  },
+  currentInquiry: {
+    sender: {
+      id: 0,
+      displayName: ''
+    },
+    receiver: {
+      id: 0,
+      displayName: ''
+    },
+    type: 'INQUIRY',
+    properties: {
+      personCount: 5,
+      startDate: '',
+      endDate: '',
+      title: 'hi',
+      content: '',
+      accepted: false
+    }
+  },
+  currentTrip: {
+    netVote: 0,
+    totalVotes: 0,
+    destination: '',
+    title: '',
+    summary: '',
+    details: '',
+    feature: 'http://lorempixel.com/400/200/city/',
+    album: []
+  },
+  // currentDestination: {
+  //   name: '',
+  //   description: '',
+  //   whyVisit: '',
+  //   feature: 'http://lorempixel.com/400/200/city/',
+  //   album: []
+  // },
   currentDestination: {
     destinationName: '',
     destinationDescription: '',
@@ -47,6 +107,11 @@ export default function apiTrippianReducer(state = initialState, action) {
       return state.merge(new Map({
         adminTrippians: action.payload.trippians
       }))
+    case SET_ADMIN_USERS:
+      return state.merge(new Map({
+        adminUsers: action.payload.users
+      }))
+
     case GET_DESTINATIONS_FAIL:
       return state.merge(new Map({
         loaded: false,
@@ -81,11 +146,44 @@ export function getAdminDestinations() {
 }
 
 export function getAdminTrippians() {
+  console.log('-- get a trippians now')
   return (dispatch) => {
     return fetchGetTrippians()
       .then(trippians => dispatch(setAdminTrippians(trippians)))
       .catch(error => dispatch(apologize(error)))
   }
+}
+
+export function getAdminUsers() {
+  console.log('-- get a trippians now')
+  return (dispatch) => {
+    return fetchGetUsers()
+      .then(users => dispatch(setAdminUsers(users)))
+      .catch(error => dispatch(apologize(error)))
+  }
+}
+
+export function getAdminInquiries() {
+  console.log('-- get a inquiries now')
+  return (dispatch) => {
+    return fetchGetUsers()
+      .then(users => dispatch(setAdminUsers(users)))
+      .catch(error => dispatch(apologize(error)))
+  }
+}
+
+export function deleteAdminTrippianById(id) {
+  console.log('-- deleting a trippian now', id)
+  return (dispatch) => {
+    return fetchDeleteTrippianById(id)
+      .then(() => {
+        console.log('--deleted trippian', id)
+        dispatch(removeTrippian(id))
+        dispatch(removeAdminTrippian(id))
+      })
+      .catch(error => dispatch(apologize(error)))
+  }
+
 }
 
 export function deleteAdminDestinationById(id) {

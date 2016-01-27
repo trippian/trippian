@@ -1,12 +1,29 @@
 import {
-  getAdminDestinations, getAdminTrippians, deleteAdminDestinationById,
-  getAdminDestinationById
+  getAdminDestinations,
+  getAdminDestinationById,
+  deleteAdminDestinationById,
+
+  getAdminTrippians,
+  getAdminTrippianById,
+  deleteAdminTrippianById,
+
+  getAdminUsers,
+  getAdminUserById,
+  deleteAdminUsersById
 }
 from './reducers/apiAdminReducer'
 
 export default {
-  deleteAdminDestinationById,
   getAdminDestinations,
+  getAdminDestinationById,
+  deleteAdminDestinationById,
+
   getAdminTrippians,
-  getAdminDestinationById
+  getAdminTrippianById,
+  deleteAdminTrippianById,
+
+  getAdminUsers,
+  getAdminUserById,
+  deleteAdminUsersById
+
 }
