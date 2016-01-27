@@ -1,14 +1,17 @@
 import React from 'react'
-import {Link} from 'react-router'
+import {
+  Link
+}
+from 'react-router'
 
 const TrippianListItemRoundWidget = ({
-  name = 'Amanda . Sydney'
+  name = 'Amanda . Sydney', id, picture = 'lorempixel.com/200/200/people/'
 }) => {
   return (
     <div className="popular-trippians-item text-center">
-        <Link to='trippian/123'>
+        <Link to={`trippian/${id}`}>
             <div className="circle-image">
-                <img src="http://lorempixel.com/200/200/people/" alt="" />
+                <img src={picture} alt="" />
             </div> < h4 > {
   name
 } < /h4>
@@ -18,6 +21,6 @@ const TrippianListItemRoundWidget = ({
   )
 }
 TrippianListItemRoundWidget
-.displayName = 'TrippianListItemRoundWidget'
+  .displayName = 'TrippianListItemRoundWidget'
 
 export default TrippianListItemRoundWidget

@@ -10,9 +10,9 @@ import {
 } from 'graphql'
 
 import userModel from '../db/models/user';
-import nodeModel from '../db/models/node';
-import tripMode from '../db/models/trip';
-import inquiry from '../db/models/trip';
+import destinationModel from '../db/models/destination';
+import tripModel from '../db/models/trip';
+import inquiryModel from '../db/models/inquiry';
 
 export let schema = new GraphQLSchema({
   query: new GraphQLObjectType({

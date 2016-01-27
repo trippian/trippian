@@ -8,7 +8,7 @@ import {
 from '../helpers/clientTestHelpers'
 
 // import config from '../../shared/config/config'
-import dummyData from './dummyData'
+// import dummyData from './dummyData'
 
 //************************************************
 //****** disable the API tests for TravisCI to work

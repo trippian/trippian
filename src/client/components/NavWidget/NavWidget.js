@@ -4,19 +4,26 @@ import {
 }
 from 'react-router'
 
+import {
+  SearchBoxWidget, LocaleMenuWidget
+}
+from '../index'
+
+import {
+  FormattedMessage
+}
+from 'react-intl'
+import store from '../../redux/store'
+
 function renderSearchForm() {
   return (
-    <form className="navbar-form navbar-left" role="search">
-        <div className="form-group">
-            <input type="text" className="form-control" placeholder="Search..." />
-        </div>
-        <button type="submit" className="btn btn-default">Go</button>
-    </form>
+    <SearchBoxWidget className="navbar-form navbar-left" role="search" />
   )
 }
 
+
 const NavWidget = ({
-  name = 'NavWidget', currentPath
+  name = 'NavWidget', currentPath, username = '', displayName = '', isUserAdmin = false
 }) => {
   return (
     <nav className="navbar navbar-default" role="navigation">
@@ -27,22 +34,58 @@ const NavWidget = ({
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
             </button>
-            <a className="navbar-brand" href="/">
+            <Link className="navbar-brand" to="/">
                 <img src="logo.png" alt="Trippian"/>
-            </a>
+            </Link>
         </div>
         <div className="collapse navbar-collapse navbar-ex1-collapse">
-
+            
+            <LocaleMenuWidget className="nav navbar-nav navbar-right list-inline"/>
             <ul className="nav navbar-nav navbar-right">
                 <li>{currentPath === '/'  ? null : renderSearchForm() }</li>
-
-                <li><Link to='become-a-trippian' className="btn btn-bordered">Become a Trippian</Link></li>
+                <li>
+                    <Link to='become-a-trippian' className="btn btn-bordered">
+                        <FormattedMessage 
+                            id="app-pages.become-a-trippian" 
+                            description="become a trippian page title"
+                            defaultMessage="Become a Trippian"
+                        />
+                    </Link>
+                </li>
                 <li className="dropdown">
-                    <a href="#" className="dropdown-toggle" data-toggle="dropdown">Menu <b className="caret"></b></a>
+                    <a href="#" className="dropdown-toggle" data-toggle="dropdown"> 
+                     <FormattedMessage 
+                        id="nav-widget.welcome-message"
+                        description="a short welcome message for use at nav menu"
+                        defaultMessage="Hello "
+                     /> 
+                     {` ${displayName}`}  
+                    <b className="caret"></b>
+                    </a>
                     <ul className="dropdown-menu">
-                        <li><Link to='trippian-edit'>Edit My Profile</Link></li>
+                        {isUserAdmin && <li><Link to='admin'>Admin Dashboard</Link></li>}
+                        <li>
+                            <Link to='trippian-edit'>
+                                <FormattedMessage 
+                                    id="app-pages.trippian-edit-profile" 
+                                    description="trippian edit page title"
+                                    defaultMessage="Edit My Profile"
+                                />
+                            </Link>
+                        </li>
                         <li><a href="#">Friends</a></li>
-                        <li><a href="#">Logout</a></li>
+                        <li>
+                            <a href="#">
+                                <FormattedMessage 
+                                    id="app-shared.logout" 
+                                    description="logout link text"
+                                    defaultMessage="Logout"
+                                />
+                            </a>
+                        </li>
+                        <li><Link to='destination-post'>Post a Destination</Link></li>
+                        <li><Link to='login'>Login</Link></li>
+                        <li><Link to='intl' className="btn btn-bordered">Intl Demo</Link></li>
                     </ul>
                 </li>
             </ul>

@@ -10,7 +10,10 @@ export default {
   API_HOST: 'http://localhost:4000/api/',
   routeConfig: {
     trippian: 'trippian/',
-    destination: 'destination/'
+    destination: 'destination/',
+    user: 'user/',
+    trip: 'trip/',
+    inquiry: 'inquiry/'
   },
 
   // general page titles 
@@ -37,6 +40,12 @@ export default {
     title: 'Become a Trippian',
     subTitle: 'Lorem ipsum dolor sit.',
     formTitle: 'Sign up to become a trippian'
+  },
+
+  destinationPostPage: {
+    title: 'Post a Destination',
+    subTitle: 'Lorem ipsum dolor sit.',
+    formTitle: 'Add a Destination'
   },
 
   // Components 

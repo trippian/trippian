@@ -1,56 +1,91 @@
 import Promise from 'bluebird'
 import db from '../db'
+import { updateStringObject } from '../../middleware/utils'
 
 export default {
   // function for a user to create an inquiry
-  createInquiry: function (trippeeId, trippianId, inquiryProps) {
-    return new Promise(function (resolve, reject) {
+  createInquiry: (trippeeId, trippianId, inquiryProps) => {
+    inquiryProps.createdAt = Date();
+    return new Promise((resolve, reject) => {
       db.relateAsync(trippeeId, 'INQUIRY', trippianId, inquiryProps)
-        .then(function (inquiry) {
+        .then((inquiry) => {
           if (inquiry) {
-            console.log(inquiry)
             resolve(inquiry)
+          } else {
+            reject(new Error('inquiry could not be sent'))
           }
-          reject('inquiry could not be sent')
         })
     })
   },
   // function that gets back all the inquiries given a trippian id
-  getAllInquiriesForTrippian: function (trippianId) {
-    return new Promise(function (resolve, reject) {
+  getAllInquiriesForTrippian: (trippianId) => {
+    return new Promise((resolve, reject) => {
       db.relationshipsAsync(trippianId, 'in', 'INQUIRY')
-        .then(function (inquiries) {
+        .then((inquiries) => {
           if (inquiries) {
-            console.log('we are receiving all inquiries for the trippian: ', inquiries)
             resolve(inquiries)
+          } else {
+            reject(new Error('user has no inquiries at this time'))
+          } 
+        })
+    })
+  },
+  getAllInquiries: () => {
+    return new Promise((resolve, reject) => {
+      let cypher = `match ()-[i:INQUIRY]->() return i`
+      db.queryAsync(cypher)
+        .then(allInquiries => {
+          if (allInquiries.length) {
+            resolve(allInquiries)
           }
-          reject('trippian has no inquiries')
+        })
+        .catch(error => {
+          console.error(error)
         })
     })
   },
   // function that deletes the inquiry from db if trippian rejects the request
-  deleteInquiry: function (inquiryId) {
-    return new Promise(function (resolve, reject) {
-      db.rel.deleteAsync(inquiryId)
-        .then(function (deleted) {
+  deleteInquiry: (inquiryId) => {
+    return new Promise((resolve, reject) => {
+      let cypher = `match (u:User)-[r:INQUIRY]->() where id(r)=${inquiryId} delete r;`
+      db.queryAsync(cypher)
+        .then((deleted) => {
           if (deleted) {
             resolve(deleted)
+          } else {
+            reject(new Error('inquiry was not deleted or does not exist'))
           }
-          reject('inquiry was not deleted or does not exist')
         })
     })
   },
   // function for trippians to accept inquiry on put request
-  acceptInquiry: function (inquiryId) {
-    return new Promise(function (resolve, reject) {
-      let cypher = 'match ()-[r:INQUIRY]->() where r.id=' + inquiryId + ' set r.accepted=true return r'
-      db.queryAsync(cypher)
-        .then(function (inquiry) {
-          if (inquiry) {
-            console.log('this is the edited inquiry: ', inquiry)
-            resolve(inquiry)
+  acceptInquiry: (inquiryId) => {
+    return new Promise((resolve, reject) => {
+      let cypher = `match (u1:User)-[r:INQUIRY]->(u2:User) where id(r)=${inquiryId} create (u2)-[t:TOURED]->(u1) set t = r return t`
+      db.queryAsync(cypher) 
+        .then((touredRelationship) => {
+          if (touredRelationship) {
+            resolve(touredRelationship)
+          } else {
+            reject(new Error('inquiry could not be accepted or does not exist'))
           }
-          reject(inquiry)
+        })
+    })
+  },
+  updateInquiry: (details, inquiryId) => {
+    let updateString = updateStringObject(details, '')
+    return new Promise((resolve, reject) => {
+      let cypher = `match ()-[r:INQUIRY]->() where id(r)=${inquiryId} set r += {${updateString}} return r;`
+      db.queryAsync(cypher)
+        .then((updatedInquiry) => {
+          if (updatedInquiry) {
+            resolve(updatedInquiry)
+          } else {
+            reject(new Error('inquiry could not be updated'))
+          }
+        })
+        .catch(function(error) {
+          console.error(error)
         })
     })
   }

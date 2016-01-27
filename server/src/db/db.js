@@ -1,7 +1,11 @@
 import Seraph from 'seraph'
 import Promise from 'bluebird'
-import config from '../../../src/shared/config/config'
+require('dotenv').config()
 
 let DATABASE_URI = process.env.GRAPHSTORY_URL
 
-export default Promise.promisifyAll(Seraph(DATABASE_URI))
+export default Promise.promisifyAll(Seraph({
+  server: DATABASE_URI,
+  user: process.env.DATABASE_USERNAME,
+  pass: process.env.DATABASE_PASSWORD
+}))

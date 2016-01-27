@@ -12,8 +12,10 @@
         .navbar-brand {
             font-size: 60px;
             img {
-                max-width: 350px;
-                margin-top: -30px;
+                // background-color: rgba(7, 0, 0, 0.35);
+                padding: 20px;
+                max-width: 200px;
+                margin-top: -60px;
             }
         }
     }
@@ -25,8 +27,7 @@
             a {
                 padding: 8px !important;
                 &.btn-bordered {
-                    border: 3px solid $white-base;
-                    font-size: 20px;
+                    font-size: 18px;
                     &:hover {
                         color: $white-base;
                         background-color: $primary-color;

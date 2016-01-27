@@ -1,0 +1,8 @@
+{
+    "plugins": [
+        ["react-intl", {
+             "messagesDir": "./translate/messages/",
+            "enforceDescriptions": true
+        }]
+    ]
+}

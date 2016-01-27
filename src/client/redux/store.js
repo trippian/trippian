@@ -1,37 +1,42 @@
 import {
-  createStore
+  createStore, combineReducers, applyMiddleware
 }
 from 'redux'
-
+import thunk from 'redux-thunk'
 import {
-  Map
+  reducer as form
 }
-from 'immutable'
+from 'redux-form'
+import createLogger from 'redux-logger'
+import appState from './reducers/appStateReducer'
 
-const SET_DESTINATIONS = 'SET_DESTINATIONS'
-const SET_TRIPPIANS = 'SET_TRIPPIANS'
-const GET_DESTINATION_BY_ID = 'GET_DESTINATION_BY_ID'
-const GET_TRIPPIAN_BY_ID = 'GET_TRIPPIAN_BY_ID'
-const GET_DESTINATIONS = 'GET_DESTINATIONS'
-const GET_TRIPPIANS = 'GET_TRIPPIANS'
-
-const getInitialState = () => {
-  return new Map({
-    trippians: [],
-    destinations: []
-  })
+import apiTrippian, {
+  getPopularDestinations,
+  getPopularTrippians
 }
+from './reducers/apiTrippianReducer'
+import apiAdmin from './reducers/apiAdminReducer'
 
+// combine all reducers 
+const reducer = combineReducers({
+  apiTrippian,
+  apiAdmin,
+  appState,
+  form
+})
 
-function apiTrippianReducer(state = getInitialState(), action) {
-  switch (action.type) {
-    case SET_DESTINATIONS:
-      return state.merge(new Map({
-        destinations: action.data.destinations
-      }))
-    default:
-      return state
-  }
+// export default createStore(reducer)
+
+const logger = createLogger()
+  // add thunk as middleware to support aync dispatch 
+const createStoreWithMiddleware = applyMiddleware(
+  thunk, logger
+  // thunk
+)(createStore)
+export default createStoreWithMiddleware(reducer)
+
+// add all reducer functions to the store export 
+export {
+  getPopularDestinations,
+  getPopularTrippians
 }
-
-export default createStore(apiTrippianReducer)

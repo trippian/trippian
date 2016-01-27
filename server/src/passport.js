@@ -1,8 +1,9 @@
 import facebook from 'passport-facebook'
 import User from './db/models/user'
 const FacebookStrategy = facebook.Strategy
+require('dotenv').config()
 
-export default function (passport) {
+export default function (app, passport) {
   passport.serializeUser(function (user, done) {
     done(null, user)
   })
@@ -16,15 +17,28 @@ export default function (passport) {
       clientID: process.env.FACEBOOK_APP_ID,
       clientSecret: process.env.FACEBOOK_APP_SECRET,
       callbackURL: process.env.FACEBOOK_CALLBACK_URL,
-      profileFields: ['emails', 'picture']
+      profileFields: ['id', 'displayName', 'emails', 'photos']
     },
     function (token, refreshToken, profile, done) {
       process.nextTick(function () {
         // find user node in database based on their facebookID
-        // console.log(profile, 'passports.js line 24')
-        User.createUser(profile)
+        User.getUserByParameter('facebookId',profile.id)
+          .then(function(user) {
+            if(user.length) {
+              console.log('user exists as ', user)
+            } else {
+              console.log(user)
+              User.createUser(profile)
+              .then(function(newUser) {
+                console.log('newUser has been created', newUser)
+              })
+            }
+          })
         return done(null, profile)
       })
     }
   ))
+
+  app.use(passport.initialize())
+  app.use(passport.session())
 }

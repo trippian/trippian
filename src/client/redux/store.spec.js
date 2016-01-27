@@ -3,16 +3,21 @@ import {
 }
 from '../helpers/clientTestHelpers'
 
-import store from './store'
+import store, {
+  getPopularDestinations, getPopularTrippians
+}
+from './store'
 import Immutable, {
   List
 }
 from 'immutable'
 
 describe('redux store', () => {
-  describe('reducer', () => {
+  describe('apiTrippianReducer', () => {
     it('has default state for trippians and destinations', () => {
-      let state = store.getState()
+      // apiTrippianReducer 
+      let state = store.getState().apiTrippian
+        // console.log('getting state', state.apiTrippian)
       const actualTrippians = state.get('trippians')
       const actualDestinations = state.get('destinations')
       const expected = Immutable.fromJS([])
@@ -27,12 +32,12 @@ describe('redux store', () => {
         name: 'def dest'
       }]
       store.dispatch({
-        type: 'SET_DESTINATIONS',
-        data: {
+        type: 'apiTrippian.SET_DESTINATIONS',
+        payload: {
           destinations: payload
         }
       })
-      const actual = store.getState().get('destinations')
+      const actual = store.getState().apiTrippian.get('destinations')
 
       // nested object is hard to compare, for now, we just compare individual elements
       expect(actual).to.include(payload[0])
@@ -49,6 +54,23 @@ describe('redux store', () => {
 
     })
 
+    // async testing 
+    it('can dispatch getPopularDestinations', () => {
+      const oldDestinations = store.getState().apiTrippian.get('destinations')
+      store.dispatch(getPopularDestinations()).then(() => {
+        const actual = store.getState().apiTrippian.get('destinations')
+          // console.log(oldDestinations, actual)
+        expect(actual).to.not.equal(oldDestinations)
+      })
+    })
+
+    it('can dispatch getPopularTrippians', () => {
+      const oldTrippians = store.getState().apiTrippian.get('trippians')
+      store.dispatch(getPopularTrippians()).then(() => {
+        const actual = store.getState().apiTrippian.get('trippians')
+        expect(oldTrippians).to.not.equal(actual)
+      })
+    })
 
     // => TODO, will need to add switch case to apiTrippianReducer
     it('can dispatch GET_TRIPPIAN_BY_ID', () => {
@@ -66,6 +88,61 @@ describe('redux store', () => {
 
     })
 
+  })
+  describe('appStateReducer', () => {
+    it('has default state of en', () => {
+      const expected = store.getState().appState.get('locale')
+      expect(expected).to.equal('en-US')
+    })
+
+    it('can dispatch SET_LOCALE with locale payload', () => {
+      store.dispatch({
+        type: 'appState.SET_LOCALE',
+        payload: {
+          locale: 'zh'
+        }
+      })
+      const expected = store.getState().appState.get('locale')
+      expect(expected).to.equal('zh')
+    })
+
+    it('can dispatch SET_LOCALE_MESSAGES with messages payload', () => {
+      const messages = {
+        'send_button.label': '发送',
+        'send_button.tooltip': '发消息'
+      }
+      store.dispatch({
+        type: 'appState.SET_LOCALE_MESSAGES',
+        payload: {
+          messages: messages
+        }
+      })
+      const expected = store.getState().appState.get('messages')
+      expect(expected).to.equal(messages)
+    })
+
+    it('can dispatch SET_USERNAME with username payload', () => {
+      store.dispatch({
+        type: 'appState.SET_USERNAME',
+        payload: {
+          username: 'vidaaudrey'
+        }
+      })
+      const expected = store.getState().appState.get('username')
+      expect(expected).to.equal('vidaaudrey')
+    })
+
+
+    it('can dispatch SET_DISPLAYNAME with displayName payload', () => {
+      store.dispatch({
+        type: 'appState.SET_DISPLAYNAME',
+        payload: {
+          displayName: 'Audrey Li'
+        }
+      })
+      const expected = store.getState().appState.get('displayName')
+      expect(expected).to.equal('Audrey Li')
+    })
 
   })
 })

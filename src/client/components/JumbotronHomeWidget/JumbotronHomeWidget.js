@@ -1,33 +1,28 @@
 import React from 'react'
+
 import {
-  JumbotronHomeWidget as appConfigJumbotron, SearchBoxWidget as appConfigSearch
+  SearchBoxWidget
 }
-from '../../config/appConfig'
+from '../index'
+
+
 
 const styles = {
   backgroundImage: {
     backgroundImage: 'url(http://lorempixel.com/800/400/city/)'
   }
 }
-const JumbotronHomeWidget = () => {
+const JumbotronHomeWidget = ({
+    title, subTitle
+  }) => {
     return ( < div className = "jumbotron text-center"
         style = {
           styles.backgroundImage
         } >
-        < div className = "container" >
-        <h1>{appConfigJumbotron.title}</h1> < p > {
-          appConfigJumbotron.subTitle
-        } < /p> 
-
-        < form action = ""
-        method = "POST"
-        className = "form-inline"
-        role = "form" >
-        <div className="form-group">
-      <label className="sr-only">search for destinations</label> < input type = "text" className = "form-control" placeholder = {appConfigSearch.placeholderText} / >
-   < /div> 
-   < button type = "submit"
-    className = "btn btn-primary" > {appConfigSearch.searchButtonText} < /button> < /form >
+        <div className = "container">
+        <h1>{title}</h1> 
+        <p>{subTitle}</p> 
+        <SearchBoxWidget />
     < /div >  < /div >
   )
 }
