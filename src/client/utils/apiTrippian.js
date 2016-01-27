@@ -44,14 +44,14 @@ export const fetchDeleteDestinationById = (id) => {
 
 //INQUIRY
 
-export const fetchGetInquires = () => {
-  const url = `{API_HOST}${routeConfig.inquiry}`
-  console.log('fetchGetInquires', url)
+export const fetchGetInquiries = () => {
+  const url = `${API_HOST}${routeConfig.inquiry}`
+  console.log('fetchGetInquiries', url)
   return api.get(url)
 }
 
 export const fetchGetInquiryById = (id) => {
-  const url = `{API_HOST}${routeConfig.inquiry}${id}`
+  const url = `${API_HOST}${routeConfig.inquiry}${id}`
   console.log('fetchGetInquiryById', url, id)
   return api.get(url, id)
 }
@@ -63,7 +63,7 @@ export const fetchPostInquiry = (data) => {
 }
 
 export const fetchDeleteInquiryById = (id) => {
-  const url = `{API_HOST}${routeConfig.inquiry}${id}`
+  const url = `${API_HOST}${routeConfig.inquiry}${id}`
   console.log('fetchDeleteInquiry', url, id)
   return api.deleteAPI(url)
 }
@@ -78,7 +78,7 @@ export const fetchUpdateInuqiry = (id, data) => {
 
 
 export const fetchGetTrips = () => {
-  const url = `{API_HOST}${routeConfig.trip}`
+  const url = `${API_HOST}${routeConfig.trip}`
   console.log('fetchUpdateInuqiry', url)
   return api.get(url)
 }

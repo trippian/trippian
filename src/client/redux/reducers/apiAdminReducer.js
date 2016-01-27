@@ -8,7 +8,9 @@ from '../actionTypes'
 import {
   setAdminDestinations, apologize, removeAdminDestination, removeDestination, setAdminCurrentDestination,
   setAdminTrippians, addAdminTrippian, removeAdminTrippian, setAdminCurrentTrippian,
-  setAdminUsers, addAdminUser, removeAdminUser, setAdminCurrentUser
+  setAdminUsers, addAdminUser, removeAdminUser, setAdminCurrentUser,
+  setAdminInquiries, addAdminInquiry, removeAdminInquiry, setAdminCurrentInquiry,
+  setAdminTrips, addAdminTrip, removeAdminTrip, setAdminCurrentTrip
 
 }
 from '../actionCreators'
@@ -18,8 +20,11 @@ import {
 }
 from 'immutable'
 import {
-  fetchGetTrippians, fetchDeleteTrippianById, fetchGetDestinations, fetchDeleteDestinationById,
-  fetchGetDestinationById, fetchGetUsers, fetchDeleteUserById
+  fetchGetDestinations, fetchDeleteDestinationById, fetchGetDestinationById,
+  fetchGetTrippians, fetchDeleteTrippianById,
+  fetchGetInquiries,
+  fetchGetTrips,
+  fetchGetUsers
 }
 from '../../utils/apiTrippian'
 
@@ -166,8 +171,17 @@ export function getAdminUsers() {
 export function getAdminInquiries() {
   console.log('-- get a inquiries now')
   return (dispatch) => {
-    return fetchGetUsers()
-      .then(users => dispatch(setAdminUsers(users)))
+    return fetchGetInquiries()
+      .then(inquiries => dispatch(setAdminInquiries(inquiries)))
+      .catch(error => dispatch(apologize(error)))
+  }
+}
+
+export function getAdminTrips() {
+  console.log('-- get a trips now')
+  return (dispatch) => {
+    return fetchGetTrips()
+      .then(trips => dispatch(setAdminTrips(trips)))
       .catch(error => dispatch(apologize(error)))
   }
 }
@@ -178,12 +192,11 @@ export function deleteAdminTrippianById(id) {
     return fetchDeleteTrippianById(id)
       .then(() => {
         console.log('--deleted trippian', id)
-        dispatch(removeTrippian(id))
+          // dispatch(removeTrippian(id))
         dispatch(removeAdminTrippian(id))
       })
       .catch(error => dispatch(apologize(error)))
   }
-
 }
 
 export function deleteAdminDestinationById(id) {
