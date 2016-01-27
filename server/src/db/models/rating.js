@@ -56,10 +56,5 @@ export default {
           }
         })
     })
-  },
-  getAverageRating: userId => {
-    return new Promise ((resolve, reject) => {
-      let cypher = `match (u: User) `
-    })
   }
 }

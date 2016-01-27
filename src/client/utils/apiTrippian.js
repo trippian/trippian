@@ -129,7 +129,7 @@ export const fetchGetUserById = (id) => {
   return api.get(url)
 }
 
-export fetchDeleteUserById = (id) => {
+export const fetchDeleteUserById = (id) => {
   const url = `${API_HOST}${routeConfig.user}${id}`
   console.log('fetchDeleteUserById', url, id)
   return api.deleteApi(url)
