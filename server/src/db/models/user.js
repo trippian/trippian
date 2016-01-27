@@ -11,7 +11,10 @@ export default {
         facebookId: parseInt(profile.id),
         trippian: false,
         email: profile.emails[0].value,
-        picture: 'https://graph.facebook.com/' + profile.id + '/picture?height=500'
+        picture: 'https://graph.facebook.com/' + profile.id + '/picture?height=500',
+        totalRating: 0,
+        numberOfReviews: 0,
+        averageRating: 0
       }, 'User')
         .then((createdUser) => {
           if (createdUser) {

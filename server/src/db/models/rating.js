@@ -13,7 +13,21 @@ export default {
             db.queryAsync(cypher)
               .then((rating) => {
                 if (rating.length) {
-                  resolve(rating)
+                  // resolve(rating)
+                  let cypher = `match (u:User) where id(u)=${userId} set u.totalRating = u.totalRating + ${details.rating}, u.numberOfReviews = u.numberOfReviews + 1, u.averageRating = u.totalRating/u.numberOfReviews return u;`
+                  db.queryAsync(cypher)
+                    .then(updatedUser => {
+                      if (updatedUser.length) {
+                        resolve(rating)
+                      } else {
+                        reject(new Error('User could not be updated'))
+                      }
+                    })
+                    .catch(error => {
+                      console.error(error)
+                    })
+                } else {
+                  reject(new Error('Rating could not be created'))
                 }
               })
               .catch((error) => {
@@ -31,7 +45,7 @@ export default {
   },
   getAllUserRatings: (userId) => {
     return new Promise((resolve, reject) => {
-      let cypher = `match(u:User)<-[r:RATED]-() where id(u)=${userId} return r, avg(r.rating);`
+      let cypher = `match (u:User)<-[r:RATED]-() where id(u)=${userId} return r;`
       db.queryAsync(cypher)
         .then((ratings) => {
           if (ratings.length) {
@@ -41,6 +55,11 @@ export default {
             resolve(ratings)
           }
         })
+    })
+  },
+  getAverageRating: userId => {
+    return new Promise ((resolve, reject) => {
+      let cypher = `match (u: User) `
     })
   }
 }
