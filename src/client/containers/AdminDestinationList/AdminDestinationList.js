@@ -15,23 +15,17 @@ import {
   Link
 }
 from 'react-router'
-import {
-  bindActionCreators
-}
-from 'redux'
+
 import {
   connect
 }
 from 'react-redux'
 import store from '../../redux/store'
 import {
-  getAdminDestinations, getAdminTrippians, deleteAdminDestinationById
+  getAdminDestinations, deleteAdminDestinationById
 }
 from '../../redux/apiAdminIndex'
-import {
-  AlertAutoDismissableWidget
-}
-from '../../components/index'
+
 
 function mapStateToProps(state) {
   return {
@@ -55,7 +49,7 @@ export default class AdminDestinationList extends Component {
   }
 
   componentDidMount() {
-    store.dispatch(getAdminTrippians())
+    // store.dispatch(getAdminTrippians())
     store.dispatch(getAdminDestinations())
   }
   handleDelete(id) {
