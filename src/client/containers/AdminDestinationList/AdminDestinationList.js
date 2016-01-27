@@ -109,8 +109,8 @@ export default class AdminDestinationList extends Component {
               return  (
                <tr key={key}>
                 <td>{key+1}</td>
-                <td><Link to={`admin/destination/${destination.id}`}>{destination.destinationName}</Link></td>
-                <td>{destination.destinationDescription}</td>
+                <td><Link to={`admin/destination/${destination.id}`}>{destination.name}</Link></td>
+                <td>{destination.description}</td>
                 <td>  
                   <a onClick={this.handleDelete.bind(this, destination.id)}><span aria-hidden="true" className="glyphicon glyphicon-remove" ></span></a>
                   &nbsp;&nbsp;&nbsp;&nbsp;
