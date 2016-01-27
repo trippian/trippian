@@ -9,7 +9,15 @@ import {
 
   getAdminUsers,
   getAdminUserById,
-  deleteAdminUsersById
+  deleteAdminUsersById,
+
+  // getAdminTrips,
+  // getAdminTripById,
+  // deleteAdminTripsById,
+
+  getAdminInquiries,
+  getAdminInquiryById,
+  deleteAdminInquirysById
 }
 from './reducers/apiAdminReducer'
 
@@ -24,6 +32,14 @@ export default {
 
   getAdminUsers,
   getAdminUserById,
-  deleteAdminUsersById
+  deleteAdminUsersById,
+
+  // getAdminTrips,
+  // getAdminTripById,
+  // deleteAdminTripsById,
+
+  getAdminInquiries,
+  getAdminInquiryById,
+  deleteAdminInquirysById
 
 }

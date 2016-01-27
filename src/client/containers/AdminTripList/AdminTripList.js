@@ -22,7 +22,7 @@ import {
 from 'react-redux'
 import store from '../../redux/store'
 import {
-  getAdminUsers, deleteAdminUserId
+  getAdminTrips, deleteAdminTripById
 
 }
 from '../../redux/apiAdminIndex'
@@ -30,7 +30,7 @@ from '../../redux/apiAdminIndex'
 
 function mapStateToProps(state) {
   return {
-    users: state.apiAdmin.get('adminUsers')
+    trips: state.apiAdmin.get('adminTrips')
   }
 }
 
@@ -49,13 +49,13 @@ export default class AdminTripList extends Component {
   }
 
   componentDidMount() {
-    store.dispatch(getAdminUsers())
+    store.dispatch(getAdminTrips())
   }
 
   handleDelete(id) {
-    console.log('deleting user called', id)
-    store.dispatch(deleteAdminUserId(id))
-    this.setAlert('success', 'Successfully deleted trippian. Id:', id)
+    console.log('deleting trip called', id)
+    store.dispatch(deleteAdminTripById(id))
+    this.setAlert('success', 'Successfully deleted trip. Id:', id)
 
   }
   handleAlertDismiss() {
@@ -71,7 +71,7 @@ export default class AdminTripList extends Component {
     })
   }
   render() {
-    console.log('rendering admint', this.props.users)
+    console.log('rendering trips', this.props.trips)
     const {
       type, title, message
     } = this.state.alert
@@ -88,7 +88,7 @@ export default class AdminTripList extends Component {
           <Link className="btn btn-primary" to='/'>Create a User(disabled)</Link>
         </div>
           <br/>
-        <h3>Trippian List</h3>
+        <h3>Trip List</h3>
         <Table striped bordered condensed hover>
             <thead>
               <tr>
@@ -98,21 +98,7 @@ export default class AdminTripList extends Component {
                <th>Action</th>
               </tr>
             </thead>
-            <tbody>
-            {this.props.users.map((user, key) => {
-              return  (
-               <tr key={key}>
-                <td>{key+1}</td>
-                <td><Link to={`admin/user/${user.id}`}>{user.name}</Link></td>
-                <td>{user.name}</td>
-                <td>  
-                  <a onClick={this.handleDelete.bind(this, user.id)}><span aria-hidden="true" className="glyphicon glyphicon-remove" ></span></a>
-                  &nbsp;&nbsp;&nbsp;&nbsp;
-                  <Link to="admin/user/58/edit"><span aria-hidden="true" className="glyphicon glyphicon-pencil" ></span></Link>
-                </td>
-              </tr>
-              )
-            })} 
+            <tbody> 
             </tbody>
           </Table>
 
@@ -121,7 +107,7 @@ export default class AdminTripList extends Component {
   }
 }
 AdminTripList.propTypes = {
-  users: PropTypes.object
+  trips: PropTypes.object
 }
 
 AdminTripList.displayName = 'AdminTripList Page'
