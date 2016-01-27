@@ -6,7 +6,9 @@ import {
   REMOVE_ADMIN_DESTINATION, REMOVE_DESTINATION,
   SET_ADMIN_CURRENT_DESTINATION,
   ADD_ADMIN_TRIPPIAN, REMOVE_ADMIN_TRIPPIAN, SET_ADMIN_CURRENT_TRIPPIAN,
-  SET_ADMIN_USERS, ADD_ADMIN_USER, REMOVE_ADMIN_USER, SET_ADMIN_CURRENT_USER
+  SET_ADMIN_USERS, ADD_ADMIN_USER, REMOVE_ADMIN_USER, SET_ADMIN_CURRENT_USER,
+  SET_ADMIN_TRIPS, ADD_ADMIN_TRIP, REMOVE_ADMIN_TRIP, SET_ADMIN_CURRENT_TRIP,
+  SET_ADMIN_INQUIRIES, ADD_ADMIN_INQUIRY, REMOVE_ADMIN_INQUIRY, SET_ADMIN_CURRENT_INQUIRY
 }
 from './actionTypes'
 
@@ -35,7 +37,7 @@ export function setLocaleMessages(messages) {
     }
   }
 }
-​
+
 export function setDisplayName(displayName) {
   return {
     type: SET_DISPLAYNAME,
@@ -47,7 +49,7 @@ export function setDisplayName(displayName) {
 //***************************************
 //**** apiTrippian related  *************
 //***************************************
-​
+
 // general 
 export function apologize(errorMessage) {
   return {
@@ -75,8 +77,8 @@ export function removeTrippian(id) {
   }
 }
 // Users
-​
-​
+
+
 // destination 
 export function setDestinations(destinations) {
   return {
@@ -94,7 +96,7 @@ export function removeDestination(id) {
     }
   }
 }
-​
+
 export function addDestination(destination) {
   return {
     type: ADD_DESTINATION,
@@ -103,11 +105,11 @@ export function addDestination(destination) {
     }
   }
 }
-​
+
 //*********************************
 //**** admin related  *************
 //*********************************
-​
+
 // destination 
 export function setAdminDestinations(destinations) {
   return {
@@ -133,7 +135,7 @@ export function removeAdminDestination(id) {
     }
   }
 }
-​
+
 export function setAdminCurrentDestination(destination) {
   return {
     type: SET_ADMIN_CURRENT_DESTINATION,
@@ -142,7 +144,7 @@ export function setAdminCurrentDestination(destination) {
     }
   }
 }
-​
+
 // trippian 
 export function setAdminTrippians(trippians) {
   return {
@@ -168,7 +170,7 @@ export function removeAdminTrippian(id) {
     }
   }
 }
-​
+
 export function setAdminCurrentTrippian(trippian) {
   return {
     type: SET_ADMIN_CURRENT_TRIPPIAN,
@@ -177,7 +179,7 @@ export function setAdminCurrentTrippian(trippian) {
     }
   }
 }
-​
+
 // user 
 export function setAdminUsers(users) {
   return {
@@ -203,12 +205,82 @@ export function removeAdminUser(id) {
     }
   }
 }
-​
+
 export function setAdminCurrentUser(user) {
   return {
     type: SET_ADMIN_CURRENT_USER,
     payload: {
       user
+    }
+  }
+}
+
+// trip 
+export function setAdminTrips(trip) {
+  return {
+    type: SET_ADMIN_TRIPS,
+    payload: {
+      trip
+    }
+  }
+}
+export function addAdminTrip(trip) {
+  return {
+    type: ADD_ADMIN_TRIP,
+    payload: {
+      trip
+    }
+  }
+}
+export function removeAdminTrip(id) {
+  return {
+    type: REMOVE_ADMIN_TRIP,
+    payload: {
+      id
+    }
+  }
+}
+
+export function setAdminCurrentTrip(trip) {
+  return {
+    type: SET_ADMIN_CURRENT_TRIP,
+    payload: {
+      trip
+    }
+  }
+}
+
+// inquiry
+export function setAdminInquirys(inquiry) {
+  return {
+    type: SET_ADMIN_INQUIRIES,
+    payload: {
+      inquiry
+    }
+  }
+}
+export function addAdminInquiry(inquiry) {
+  return {
+    type: ADD_ADMIN_INQUIRY,
+    payload: {
+      inquiry
+    }
+  }
+}
+export function removeAdminInquiry(id) {
+  return {
+    type: REMOVE_ADMIN_INQUIRY,
+    payload: {
+      id
+    }
+  }
+}
+
+export function setAdminCurrentInquiry(inquiry) {
+  return {
+    type: SET_ADMIN_CURRENT_INQUIRY,
+    payload: {
+      inquiry
     }
   }
 }
