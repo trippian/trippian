@@ -4,7 +4,7 @@ import { updateStringObject } from '../../middleware/utils'
 
 export default {
   // this function is used in passport to create a user in our db when they signup with fb
-  createUser: (profile) => {
+  createFacebookUser: (profile) => {
     return new Promise((resolve, reject) => {
       db.saveAsync({
         name: profile.displayName,
@@ -26,6 +26,17 @@ export default {
         .catch((error) => {
           console.error(error)
         })
+    })
+  },
+  createUser: (details) => {
+    return new Promise((resolve, reject) => {
+      db.saveAsync(details, 'User')
+        .then(createdUser => {
+          resolve(createdUser)
+        })
+    })
+    .catch(error => {
+      console.error(error)
     })
   },
   // need to work on this function to change all fields that are sent
