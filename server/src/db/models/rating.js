@@ -13,6 +13,7 @@ export default {
             db.queryAsync(cypher)
               .then((rating) => {
                 if (rating.length) {
+                  rating.userId = userId
                   // resolve(rating)
                   let cypher = `match (u:User) where id(u)=${userId} set u.totalRating = u.totalRating + ${details.rating}, u.numberOfReviews = u.numberOfReviews + 1, u.averageRating = u.totalRating/u.numberOfReviews return u;`
                   db.queryAsync(cypher)
