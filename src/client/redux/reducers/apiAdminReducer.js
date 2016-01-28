@@ -25,7 +25,7 @@ import {
   fetchGetDestinations, fetchDeleteDestinationById, fetchGetDestinationById,
   fetchGetTrippians, fetchDeleteTrippianById, fetchGetTrippianById,
   fetchGetUsers, fetchDeleteUserById, fetchGetUserById,
-  fetchGetInquiries, fetchDeleteInquiryById, fetchGetInquiryById,
+  fetchGetInquiries, fetchDeleteInquiryById, fetchGetInquiryByReceiverId,
   fetchGetTrips, fetchDeleteTripById, fetchGetTripById
 }
 from '../../utils/apiTrippian'
@@ -40,34 +40,39 @@ const initialState = new Map({
   currentUser: {
     name: '',
     email: '',
+    facebookId: null,
     picture: 'http://lorempixel.com/200/200/people/'
   },
   currentTrippian: {
     name: '',
+    email: '',
+    location: '',
+    mobile: '',
+    slogan: '',
+    website: '',
+    bio: '',
+    introduction: '',
+
+    availabileTime: '',
     numberOfReviews: 0,
     avarageRating: 0,
-    facebookId: 0,
-    email: '',
+    facebookId: null,
     picture: 'http://lorempixel.com/200/200/people/',
     reviews: [{
       rating: 0,
       title: '',
       content: ''
     }]
+
   },
   currentInquiry: {
     type: 'INQUIRY',
     start: 0,
     end: 1,
     properties: {
-      sender: {
-        id: 0,
-        displayName: ''
-      },
-      receiver: {
-        id: 0,
-        displayName: ''
-      },
+      createdAt: '',
+      senderId: 0,
+      receiverId: 0,
       personCount: 5,
       startDate: '2015-02-14',
       endDate: '2015-02-28',
@@ -429,7 +434,7 @@ export function getAdminTrippianById(id) {
 export function getAdminInquiryById(id) {
   console.log('-- get a Inquiry now', id)
   return (dispatch) => {
-    return fetchGetInquiryById(id)
+    return fetchGetInquiryByReceiverId(id)
       .then((inquiry) => {
         console.log('--got inquiry', inquiry)
         dispatch(setAdminCurrentInquiry(inquiry))

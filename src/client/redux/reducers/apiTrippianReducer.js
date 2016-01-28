@@ -131,7 +131,7 @@ export function postUser(data) {
   }
 }
 export function postTrippian(data) {
-  console.log('-- posting a trip now', data)
+  console.log('-- posting a trippian now', data)
   return (dispatch) => {
     return fetchPostTrippian(data)
       .then(trippian => {

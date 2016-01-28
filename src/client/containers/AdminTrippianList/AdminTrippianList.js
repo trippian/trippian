@@ -26,7 +26,10 @@ import {
 
 }
 from '../../redux/apiAdminIndex'
-
+import {
+  postTrippian
+}
+from '../../redux/apiIndex'
 
 function mapStateToProps(state) {
   return {
@@ -60,8 +63,8 @@ export default class AdminTrippianList extends Component {
   }
   handleSubmit(data) {
     console.log('posting data from form', data)
-      // store.dispatch(postDestination(data))
-    this.setAlert('success', 'Successfully submitted data', `${data.name} ${data.description}`)
+    store.dispatch(postTrippian(data))
+    this.setAlert('success', 'Successfully submitted data', data)
   }
   handleAlertDismiss() {
     this.setAlert()
@@ -91,7 +94,7 @@ export default class AdminTrippianList extends Component {
         }
 
         <div className="pull-right">
-          <button onClick={()=> this.setState({showForm: !this.state.showForm})} className="btn btn-primary">Create a Trip</button>
+          <button onClick={()=> this.setState({showForm: !this.state.showForm})} className="btn btn-primary">Create a Trippian</button>
         </div>
           {this.state.showForm && 
             <TrippianPostFormWidget onSubmit={this.handleSubmit.bind(this)} /> 
@@ -104,8 +107,9 @@ export default class AdminTrippianList extends Component {
               <tr>
                 <th>#</th>
                 <th>Id</th>
+               <th>isTrippian?</th>
                 <th>Name & Link</th>
-               <th>Description</th>
+               <th>facebookId</th>
                <th>Action</th>
               </tr>
             </thead>
@@ -116,8 +120,9 @@ export default class AdminTrippianList extends Component {
       <tr key={key}>
                 <td>{key+1}</td>
                 <td>{trippian.id}</td>
+                <td>{trippian.trippian ? 'Yes' : null}</td>
                 <td><Link to={`admin/trippian/${trippian.id}`}>{trippian.name}</Link></td>
-                <td>{trippian.name}</td>
+                <td>{trippian.facebookId}</td>
                 <td>  
                   <a onClick={this.handleDelete.bind(this, trippian.id)}><span aria-hidden="true" className="glyphicon glyphicon-remove" ></span></a>
                   &nbsp;&nbsp;&nbsp;&nbsp;

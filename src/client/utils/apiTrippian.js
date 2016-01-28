@@ -50,9 +50,15 @@ export const fetchGetInquiries = () => {
   return api.get(url)
 }
 
-export const fetchGetInquiryById = (id) => {
+// export const fetchGetInquiryById = (id) => {
+//   const url = `${API_HOST}${routeConfig.inquiry}/${id}`
+//   console.log('fetchGetInquiryById', url, id)
+//   return api.get(url, id)
+// }
+
+export const fetchGetInquiryByReceiverId = (id) => {
   const url = `${API_HOST}${routeConfig.inquiry}/${id}`
-  console.log('fetchGetInquiryById', url, id)
+  console.log('fetchGetInquiryByReceiverId', url, id)
   return api.get(url, id)
 }
 
@@ -113,19 +119,20 @@ export const fetchGetTrippians = () => {
 }
 
 export const fetchGetTrippianById = (id) => {
-  const url = `${API_HOST}${routeConfig.trippian}/${id}`
+  const url = `${API_HOST}${routeConfig.user}/${id}`
   console.log('fetchGetTrippianById', url, id)
   return api.get(url)
 }
 
 export const fetchDeleteTrippianById = (id) => {
-  const url = `${API_HOST}${routeConfig.trippian}/${id}`
+  const url = `${API_HOST}${routeConfig.user}/${id}`
   console.log('fetchDeleteTrippianById', url, id)
   return api.deleteApi(url)
 }
 
 export const fetchPostTrippian = (data) => {
-  const url = `${API_HOST}${routeConfig.trippian}/${data.userId}`
+  data.trippian = true
+  const url = `${API_HOST}${routeConfig.user}`
   console.log('fetchPostTrippian', url, data)
   return api.post(url, data)
 }

@@ -48,7 +48,14 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
   - [ ] ReviewList 
   - [ ] Add Review Form 
   - [ ] Vote 
+  - [ ] Add popular trips to home page 
+  - [ ] TripsListPage 
+  - [ ] TripsListDetailPage
 
+- Joe
+ - [ ] update destination page 
+ - [ ] update trippian page 
+ - [ ] review widget update (wait for server team to get the data ready )
 
 ### Important Info and Notice 
 - Info 
