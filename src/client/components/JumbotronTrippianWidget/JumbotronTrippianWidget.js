@@ -9,6 +9,7 @@ import {
 }
 from '../index'
 
+//This needs to be of an image that the user chooses
 const styles = {
   backgroundImage: {
     backgroundImage: 'url(http://lorempixel.com/800/400/city/)'
