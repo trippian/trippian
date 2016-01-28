@@ -7,6 +7,7 @@ import {
 }
 from 'redux-form'
 
+
 class InquiryPostFormWidget extends Component {
   render() {
     const {

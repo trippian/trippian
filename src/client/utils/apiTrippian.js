@@ -96,7 +96,7 @@ export const fetchUpdateTrip = (id, data) => {
 }
 
 export const fetchPostTrip = (data) => {
-  const url = `${API_HOST}${routeConfig.trip}`
+  const url = `${API_HOST}${routeConfig.trip}/${data.userId}`
   console.log('fetchPostTrip', url, data)
   return api.post(url, data)
 }

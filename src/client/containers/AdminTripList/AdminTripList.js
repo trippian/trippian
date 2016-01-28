@@ -26,7 +26,10 @@ import {
 
 }
 from '../../redux/apiAdminIndex'
-
+import {
+  postTrip
+}
+from '../../redux/apiIndex'
 
 function mapStateToProps(state) {
   return {
@@ -64,7 +67,7 @@ export default class AdminTripList extends Component {
   }
   handleSubmit(data) {
     console.log('posting data from form', data)
-      // store.dispatch(postDestination(data))
+    store.dispatch(postTrip(data))
     this.setAlert('success', 'Successfully submitted data', `${data.name} ${data.description}`)
   }
 
@@ -104,7 +107,9 @@ export default class AdminTripList extends Component {
             <thead>
               <tr>
                 <th>#</th>
+                <th>Id</th>
                 <th>Name & Link</th>
+                <th>Destination</th>
                <th>Description</th>
                <th>Action</th>
               </tr>
@@ -115,7 +120,9 @@ export default class AdminTripList extends Component {
                  <tr key={key}>
                   <td>{key+1}</td>
                   <td><Link to={`admin/trip/${trip.id}`}>{trip.id}</Link></td>
+                  <td>{trip.destination}</td>
                   <td>{trip.title}</td>
+                  <td>{trip.summary}</td>
                   <td>  
                     <a onClick={this.handleDelete.bind(this, trip.id)}><span aria-hidden="true" className="glyphicon glyphicon-remove" ></span></a>
                     &nbsp;&nbsp;&nbsp;&nbsp;

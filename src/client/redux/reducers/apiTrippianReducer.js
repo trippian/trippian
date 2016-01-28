@@ -4,7 +4,12 @@ import {
 }
 from '../actionTypes'
 import {
-  setDestinations, setTrippians, apologize, addDestination, addAdminDestination
+  apologize,
+  setDestinations, addDestination, addAdminDestination,
+  setTrippians, addTrippian, addAdminTrippian,
+  setUsers, addUser, addAdminUser,
+  setInquirys, addInquiry, addAdminInquiry,
+  setTrips, addTrip, addAdminTrip
 }
 from '../actionCreators'
 
@@ -13,8 +18,8 @@ import {
 }
 from 'immutable'
 import {
-  fetchGetTrippiansByCategory, fetchGetDestinationsByCategory, fetchPostDestination, fetchDeleteDestinationById
-
+  fetchGetTrippiansByCategory, fetchGetDestinationsByCategory, fetchPostDestination, fetchDeleteDestinationById,
+  fetchPostTrip
 }
 from '../../utils/apiTrippian'
 
@@ -89,6 +94,20 @@ export function postDestination(data) {
         console.log('---posted', destination)
         dispatch(addDestination(destination))
         dispatch(addAdminDestination(destination))
+      })
+      .catch(error => dispatch(apologize(error)))
+  }
+}
+
+export function postTrip(data) {
+  data.userId = 64
+  console.log('-- posting a trip now', data)
+  return (dispatch) => {
+    return fetchPostTrip(data)
+      .then(trip => {
+        console.log('---posted', trip)
+        dispatch(addTrip(trip))
+        dispatch(addAdminTrip(trip))
       })
       .catch(error => dispatch(apologize(error)))
   }

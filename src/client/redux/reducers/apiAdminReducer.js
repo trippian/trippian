@@ -24,9 +24,9 @@ from 'immutable'
 import {
   fetchGetDestinations, fetchDeleteDestinationById, fetchGetDestinationById,
   fetchGetTrippians, fetchDeleteTrippianById,
-  fetchGetInquiries,
-  fetchGetTrips,
-  fetchGetUsers
+  fetchGetUsers, fetchDeleteUserById,
+  fetchGetInquiries, fetchDeleteInquiryById,
+  fetchGetTrips, fetchDeleteTripById
 }
 from '../../utils/apiTrippian'
 
@@ -142,12 +142,19 @@ export default function apiTrippianReducer(state = initialState, action) {
         error: action.payload.errorMessage
       }))
     case REMOVE_ADMIN_DESTINATION:
-      const id = action.payload.id
       let oldDestinations = state.get('adminDestinations')
-      oldDestinations = oldDestinations.filter(x => x.id !== id)
+      oldDestinations = oldDestinations.filter(x => x.id !== action.payload.id)
       return state.merge(new Map({
         adminDestinations: oldDestinations
       }))
+
+    case REMOVE_ADMIN_TRIP:
+      let oldTrip = state.get('adminTrips')
+      oldTrip = oldTrip.filter(x => x.id !== action.payload.id)
+      return state.merge(new Map({
+        adminTrips: oldTrip
+      }))
+
 
     case SET_ADMIN_CURRENT_DESTINATION:
       return state.merge(new Map({
@@ -228,6 +235,19 @@ export function deleteAdminDestinationById(id) {
         console.log('--deleted', id)
         dispatch(removeDestination(id))
         dispatch(removeAdminDestination(id))
+      })
+      .catch(error => dispatch(apologize(error)))
+  }
+}
+
+export function deleteAdminTripById(id) {
+  console.log('-- deleting a trip now', id)
+  return (dispatch) => {
+    return fetchDeleteTripById(id)
+      .then(() => {
+        console.log('--deleted', id)
+          // dispatch(removeTrip(id))
+        dispatch(removeAdminTrip(id))
       })
       .catch(error => dispatch(apologize(error)))
   }
