@@ -50,5 +50,5 @@ export TrippianListWidget from './TrippianListWidget/TrippianListWidget'
 export TrippianListItemWidget from './TrippianListItemWidget/TrippianListItemWidget'
 export TrippianListRoundWidget from './TrippianListRoundWidget/TrippianListRoundWidget'
 export TrippianListItemRoundWidget from './TrippianListItemRoundWidget/TrippianListItemRoundWidget'
-export TrippianSignupFormWidget
-from './TrippianSignupFormWidget/TrippianSignupFormWidget'
+export TrippianSignupFormWidget from './TrippianSignupFormWidget/TrippianSignupFormWidget'
+export TripsTableWidget from './TripsTableWidget/TripsTableWidget'
