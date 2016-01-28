@@ -4,14 +4,53 @@ import {
 }
 from '../index'
 
+
+var destinationList = [
+  {
+    "summary": "meet at 5 pm and go to sightglass",
+    "netVote": 0,
+    "totalVotes": 0,
+    "destination": "San Francisco, CA",
+    "details": "we are going to drink coffee",
+    "title": "Go to sightglass",
+    "id": 159
+  },
+  {
+    "summary": "meet at 5 pm and go to sightglass",
+    "netVote": 0,
+    "totalVotes": 0,
+    "destination": "San Francisco, CA",
+    "details": "we are going to drink coffee",
+    "title": "Go to sightglass",
+    "id": 158
+  },
+  {
+    "summary": "meet at 5 pm and go to sightglass",
+    "netVote": 0,
+    "totalVotes": 0,
+    "destination": "San Francisco, CA",
+    "details": "we are going to drink coffee",
+    "title": "Go to sightglass",
+    "id": 157
+  },
+  {
+    "summary": "meet at 5 pm and go to sightglass",
+    "netVote": 0,
+    "totalVotes": 0,
+    "destination": "San Francisco, CA",
+    "details": "we are going to drink coffee",
+    "title": "Go to sightglass",
+    "id": 156
+  }
+]
+
 const DestinationListWidget = ({
-  dataList = []
+  destinations = destinationList
 }) => {
-  console.log('inside Destination list', dataList, dataList.length)
   return (
     <div className="popular-destinations section-body clearfix">
     { 
-       dataList.map((destination, key) => (
+       destinations.map((destination, key) => (
          <DestinationListItemWidget key={key} {...destination} />
       ))
    }

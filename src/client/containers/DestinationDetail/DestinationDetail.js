@@ -38,7 +38,7 @@ export default class DestinationDetail extends Component {
               <div className="row section">
                 <SectionHeaderWidget title={popTrippianTitle} subTitle={popTrippianSubTitle} />
                 <div className="section-body">
-                  <TrippianListWidget />
+                  <DestinationListWidget />
                 </div>
               </div>
           </div>
