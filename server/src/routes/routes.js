@@ -3,6 +3,7 @@ import tripController from '../controllers/tripController'
 import userController from '../controllers/userController'
 import inquiryController from '../controllers/inquiryController'
 import ratingController from '../controllers/ratingController'
+import chatController from '../controllers/chatController'
 import { getSignedRequest } from '../controllers/aws'
   // import { authController } from '../controllers/auth';
 
@@ -28,6 +29,10 @@ export default function (router) {
   // router.get('/api/trippian/:userId', function (req, res) {
   //   res.send(trippian)
   // })
+  
+  // routes for chats
+  router.get('/api/chats', chatController.chatGet)
+  router.post('/api/chats', chatController.chatPost)
 
   // routes for destination
   router.post('/api/destination', destinationController.destinationPost)
