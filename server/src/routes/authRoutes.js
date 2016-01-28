@@ -9,7 +9,7 @@ export default function(router, passport) {
   }))
 
   router.get('/google', passport.authenticate('google', {
-    scope: 'https://www.google.com/m8/feeds'
+    scope: ['profile', 'email']
   }))
 
   router.get('/google/callback', passport.authenticate('google', {

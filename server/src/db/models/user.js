@@ -4,31 +4,53 @@ import { updateStringObject } from '../../middleware/utils'
 
 export default {
   // this function is used in passport to create a user in our db when they signup with fb
-  createFacebookUser: (profile) => {
-    return new Promise((resolve, reject) => {
-      db.saveAsync({
-        name: profile.displayName,
-        facebookId: parseInt(profile.id),
-        trippian: false,
-        email: profile.emails[0].value,
-        picture: `https://graph.facebook.com/${profile.id}/picture?height=500`,
-        totalRating: 0,
-        numberOfReviews: 0,
-        averageRating: 0
-      }, 'User')
-        .then((createdUser) => {
-          if (createdUser) {
-            resolve(createdUser)
-          } else {
-            reject(new Error('user could not be created'))
-          }
-        })
-        .catch((error) => {
-          console.error(error)
-        })
-    })
-  },
+  // createFacebookUser: (profile) => {
+  //   return new Promise((resolve, reject) => {
+  //     db.saveAsync({
+  //       name: profile.displayName,
+  //       facebookId: parseInt(profile.id),
+  //       trippian: false,
+  //       email: profile.emails[0].value,
+  //       picture: `https://graph.facebook.com/${profile.id}/picture?height=500`,
+  //       totalRating: 0,
+  //       numberOfReviews: 0,
+  //       averageRating: 0
+  //     }, 'User')
+  //       .then((createdUser) => {
+  //         if (createdUser) {
+  //           resolve(createdUser)
+  //         } else {
+  //           reject(new Error('user could not be created'))
+  //         }
+  //       })
+  //       .catch((error) => {
+  //         console.error(error)
+  //       })
+  //   })
+  // },
+  // createGoogleUser: profile => {
+  //   console.log(profile)
+  //   return new Promise((resolve, reject) => {
+  //     db.saveAsync({
+
+  //     }, 'User')
+  //       .then(createdUser => {
+  //         if (createdUser.length) {
+  //           resolve(createdUser)
+  //         } else {
+  //           reject(new Error('google user could not be created'))
+  //         }
+  //       })
+  //       .catch(error => {
+  //         console.error(error)
+  //       })
+  //   })
+  // },
   createUser: (details) => {
+    details.totalRating = 0
+    details.numberOfReviews = 0
+    details.averageRating = 0
+    details.trippian = false
     return new Promise((resolve, reject) => {
       db.saveAsync(details, 'User')
         .then(createdUser => {
