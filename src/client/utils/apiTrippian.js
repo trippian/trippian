@@ -83,6 +83,12 @@ export const fetchGetTrips = () => {
   return api.get(url)
 }
 
+export const fetchGetTripById = (id) => {
+  const url = `${API_HOST}${routeConfig.trip}/${id}`
+  console.log('fetchGetTripById', url, id)
+  return api.get(url, id)
+}
+
 export const fetchDeleteTripById = (id) => {
   const url = `${API_HOST}${routeConfig.trip}/${id}`
   console.log('fetchDeleteTripById', url)
@@ -107,13 +113,6 @@ export const fetchGetTrippians = () => {
   console.log('fetchGetTrippians', url)
   return api.get(url)
 }
-export const fetchDeleteTrippianById = (id) => {
-  const url = `${API_HOST}${routeConfig.trippian}/${id}`
-  console.log('fetchDeleteTrippianById', url, id)
-  return api.deleteApi(url)
-}
-
-//USER
 
 export const fetchGetTrippianById = (id) => {
   const url = `${API_HOST}${routeConfig.trippian}/${id}`
@@ -121,6 +120,19 @@ export const fetchGetTrippianById = (id) => {
   return api.get(url)
 }
 
+export const fetchDeleteTrippianById = (id) => {
+  const url = `${API_HOST}${routeConfig.trippian}/${id}`
+  console.log('fetchDeleteTrippianById', url, id)
+  return api.deleteApi(url)
+}
+
+export const fetchPostTrippian = (data) => {
+  const url = `${API_HOST}${routeConfig.trippian}/${data.userId}`
+  console.log('fetchPostTrippian', url, data)
+  return api.post(url, data)
+}
+
+//USER
 export const fetchGetTrippiansByCategory = (category = 'popular') => {
   const url = `${API_HOST}${routeConfig.trippian}?cat=${category}`
   console.log('fetchGetTrippiansByCategory', url, category)

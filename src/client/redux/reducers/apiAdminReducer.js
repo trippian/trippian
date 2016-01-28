@@ -23,10 +23,10 @@ import {
 from 'immutable'
 import {
   fetchGetDestinations, fetchDeleteDestinationById, fetchGetDestinationById,
-  fetchGetTrippians, fetchDeleteTrippianById,
-  fetchGetUsers, fetchDeleteUserById,
-  fetchGetInquiries, fetchDeleteInquiryById,
-  fetchGetTrips, fetchDeleteTripById
+  fetchGetTrippians, fetchDeleteTrippianById, fetchGetTrippianById,
+  fetchGetUsers, fetchDeleteUserById, fetchGetUserById,
+  fetchGetInquiries, fetchDeleteInquiryById, fetchGetInquiryById,
+  fetchGetTrips, fetchDeleteTripById, fetchGetTripById
 }
 from '../../utils/apiTrippian'
 
@@ -160,6 +160,23 @@ export default function apiTrippianReducer(state = initialState, action) {
       return state.merge(new Map({
         currentDestination: action.payload.destination
       }))
+    case SET_ADMIN_CURRENT_TRIP:
+      return state.merge(new Map({
+        currentTrip: action.payload.trip
+      }))
+    case SET_ADMIN_CURRENT_USER:
+      return state.merge(new Map({
+        currentUser: action.payload.user
+      }))
+    case SET_ADMIN_CURRENT_TRIPPIAN:
+      return state.merge(new Map({
+        currentTrippian: action.payload.trippian
+      }))
+    case SET_ADMIN_CURRENT_INQUIRY:
+      return state.merge(new Map({
+        currentInquiry: action.payload.inquiry
+      }))
+
 
     default:
       return state
@@ -278,6 +295,72 @@ export function getAdminDestinationById(id) {
       .then((destination) => {
         console.log('--got it', destination)
         dispatch(setAdminCurrentDestination(destination))
+      })
+      .catch(error => dispatch(apologize(error)))
+  }
+}
+
+export function getAdminTripById(id) {
+  console.log('-- get a Trip now', id)
+
+  // first check if the store already have the data 
+  // const localTrips = store.getState().apiAdmin.get('adminTrips')
+  // const cached = null
+
+  // for (let i = 0; i < localTrips.length; i++) {
+  //   const trip = localTrips[i]
+  //     // console.log('*** cached?', dest, dest.id === id, dest.id, dest['id'], dest.destinationName)
+  //   if (+trip.id === +id) {
+  //     console.log('**getting trip from cached', id)
+  //     return (dispatch) => {
+  //       dispatch(setAdminCurrentTrip(trip))
+  //     }
+  //   }
+  // }
+
+  // console.log('** no cached data available, getting from remote')
+  // go on the network and fetch the data 
+  return (dispatch) => {
+    return fetchGetTripById(id)
+      .then((trip) => {
+        console.log('--got it', trip)
+          // TODO: update once server is updated 
+        dispatch(setAdminCurrentTrip(trip['0']))
+      })
+      .catch(error => dispatch(apologize(error)))
+  }
+}
+
+export function getAdminUserById(id) {
+  console.log('-- get a User now', id)
+  return (dispatch) => {
+    return fetchGetUserById(id)
+      .then((user) => {
+        console.log('--got user', user)
+        dispatch(setAdminCurrentUser(user))
+      })
+      .catch(error => dispatch(apologize(error)))
+  }
+}
+export function getAdminTrippianById(id) {
+  console.log('-- get a Trippian now', id)
+  return (dispatch) => {
+    return fetchGetTrippianById(id)
+      .then((trippian) => {
+        console.log('--got trippian', trippian)
+        dispatch(setAdminCurrentTrippian(trippian))
+      })
+      .catch(error => dispatch(apologize(error)))
+  }
+}
+
+export function getAdminInquiryById(id) {
+  console.log('-- get a Inquiry now', id)
+  return (dispatch) => {
+    return fetchGetInquiryById(id)
+      .then((inquiry) => {
+        console.log('--got inquiry', inquiry)
+        dispatch(setAdminCurrentInquiry(inquiry))
       })
       .catch(error => dispatch(apologize(error)))
   }

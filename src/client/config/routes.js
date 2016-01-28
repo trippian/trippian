@@ -42,21 +42,22 @@ export default (
                 <Route component={AdminTrippianListItem} path="trippian/:id" />
                 <Route component={AdminTrippianListItemEdit} path="trippian/:id/edit" />
                 
+
+                <Route component={AdminTripList} path="trip"  />
+                <Route component={AdminTripListItem} path="trip/:id"  />
+                <Route component={AdminTripListItemEdit} path="trip/:id/edit"  />
+
+
                 <Route component={AdminDestinationList} path="destination" />
                 <Route component={AdminDestinationListItem} path="destination/:id" />
                 <Route component={AdminDestinationListItemEdit} path="destination/:id/edit" />
 
                 <Route component={AdminInquiryList} path="inquiry"  />
-                <Route component={AdminInquiryListItem} path="inquiry:/id"  />
+                <Route component={AdminInquiryListItem} path="inquiry/:id"  />
                 <Route component={AdminInquiryListItemEdit} path="inquiry/:id/edit"  />
 
-                <Route component={AdminTripList} path="trip"  />
-                <Route component={AdminTripListItem} path="trip:/id"  />
-                <Route component={AdminTripListItemEdit} path="trip/:id/edit"  />
-
-
                 <Route component={AdminUserList} path="user"  />
-                <Route component={AdminUserListItem} path="user:/id"  />
+                <Route component={AdminUserListItem} path="user/:id"  />
                 <Route component={AdminUserListItemEdit} path="user/:id/edit"  />
 
                 <IndexRoute component={AdminDestinationList}/>
