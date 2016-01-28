@@ -4,7 +4,7 @@ import React, {
 from 'react'
 
 import {
-  JumbotronWidget
+ TrippianPostFormWidget
 }
 from '../../components/index'
 import {
@@ -58,11 +58,17 @@ export default class AdminTrippianList extends Component {
     this.setAlert('success', 'Successfully deleted trippian. Id:', id)
 
   }
+  handleSubmit(data) {
+    console.log('posting data from form', data)
+    // store.dispatch(postDestination(data))
+    this.setAlert('success', 'Successfully submitted data', `${data.name} ${data.description}`)
+  }
   handleAlertDismiss() {
     this.setAlert()
   }
   setAlert(type = 'success', title = '', message = '') {
     this.setState({
+      showForm: false,
       alert: {
         type: type,
         title: title,
@@ -85,8 +91,12 @@ export default class AdminTrippianList extends Component {
         }
 
         <div className="pull-right">
-          <Link className="btn btn-primary" to='become-a-trippian'>Create a Trippian</Link>
+          <button onClick={()=> this.setState({showForm: !this.state.showForm})} className="btn btn-primary">Create a Trip</button>
         </div>
+          {this.state.showForm && 
+            <TrippianPostFormWidget onSubmit={this.handleSubmit.bind(this)} /> 
+          }
+
           <br/>
         <h3>Trippian List</h3>
         <Table striped bordered condensed hover>
@@ -99,9 +109,10 @@ export default class AdminTrippianList extends Component {
               </tr>
             </thead>
             <tbody>
-            {this.props.trippians.map((trippian, key) => {
-              return  (
-               <tr key={key}>
+            {
+  this.props.trippians.map((trippian, key) => {
+    return (
+      <tr key={key}>
                 <td>{key+1}</td>
                 <td><Link to={`admin/trippian/${trippian.id}`}>{trippian.name}</Link></td>
                 <td>{trippian.name}</td>
@@ -111,8 +122,10 @@ export default class AdminTrippianList extends Component {
                   <Link to="admin/trippian/58/edit"><span aria-hidden="true" className="glyphicon glyphicon-pencil" ></span></Link>
                 </td>
               </tr>
-              )
-            })} 
+    )
+  })
+}
+
             </tbody>
           </Table>
 

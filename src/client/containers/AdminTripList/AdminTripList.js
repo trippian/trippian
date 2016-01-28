@@ -4,7 +4,7 @@ import React, {
 from 'react'
 
 import {
-  JumbotronWidget
+  JumbotronWidget, TripPostFormWidget
 }
 from '../../components/index'
 import {
@@ -40,6 +40,7 @@ export default class AdminTripList extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      showForm: false,
       alert: {
         type: 'success',
         title: '',
@@ -61,6 +62,12 @@ export default class AdminTripList extends Component {
   handleAlertDismiss() {
     this.setAlert()
   }
+  handleSubmit(data) {
+    console.log('posting data from form', data)
+      // store.dispatch(postDestination(data))
+    this.setAlert('success', 'Successfully submitted data', `${data.name} ${data.description}`)
+  }
+
   setAlert(type = 'success', title = '', message = '') {
     this.setState({
       alert: {
@@ -85,8 +92,12 @@ export default class AdminTripList extends Component {
         }
 
         <div className="pull-right">
-          <Link className="btn btn-primary" to='/'>Create a User(disabled)</Link>
+          <button onClick={()=> this.setState({showForm: !this.state.showForm})} className="btn btn-primary">Create a Trip</button>
         </div>
+          {this.state.showForm && 
+            <TripPostFormWidget onSubmit={this.handleSubmit.bind(this)} /> 
+          }
+
           <br/>
         <h3>Trip List</h3>
         <Table striped bordered condensed hover>

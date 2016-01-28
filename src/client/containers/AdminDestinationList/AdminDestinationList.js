@@ -67,6 +67,7 @@ export default class AdminDestinationList extends Component {
     this.setAlert()
   }
 
+
   handleSubmit(data) {
     console.log('posting data from form', data)
     store.dispatch(postDestination(data))

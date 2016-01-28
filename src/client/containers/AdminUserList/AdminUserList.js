@@ -4,7 +4,7 @@ import React, {
 from 'react'
 
 import {
-  JumbotronWidget
+  UserPostFormWidget
 }
 from '../../components/index'
 import {
@@ -40,6 +40,7 @@ export default class AdminUserList extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      showForm: false,
       alert: {
         type: 'success',
         title: '',
@@ -50,6 +51,12 @@ export default class AdminUserList extends Component {
 
   componentDidMount() {
     store.dispatch(getAdminUsers())
+  }
+
+  handleSubmit(data) {
+    console.log('posting data from form', data)
+      // store.dispatch(postDestination(data))
+    this.setAlert('success', 'Successfully submitted data', `${data.name} ${data.description}`)
   }
 
   handleDelete(id) {
@@ -86,9 +93,13 @@ export default class AdminUserList extends Component {
         }
 
         <div className="pull-right">
-          <Link className="btn btn-primary" to='/'>Create a User(disabled)</Link>
-        </div>
-          <br/>
+            <button onClick={()=> this.setState({showForm: !this.state.showForm})} className="btn btn-primary">Create a User</button>
+          </div>
+            {this.state.showForm && 
+              <UserPostFormWidget onSubmit={this.handleSubmit.bind(this)} /> 
+            }
+      <br/>
+
         <h3>Trippian List</h3>
         <Table striped bordered condensed hover>
             <thead>
