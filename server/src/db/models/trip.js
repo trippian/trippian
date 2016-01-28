@@ -44,8 +44,8 @@ export default {
       let cypher = `match (t:Trip) where id(t)=${tripId} return t;`
       db.queryAsync(cypher)
         .then((trip) => {
-          if (trip) {
-            resolve(trip)
+          if (trip.length) {
+            resolve(trip[0])
           } else {
             reject(new Error('could not find trip with that id'))
           }
