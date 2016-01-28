@@ -4,14 +4,14 @@ import React, {
 from 'react'
 
 import {
-  JumbotronDestinationWidget, CarouselWidget, SectionHeaderWidget, TrippianListWidget
+  JumbotronDestinationWidget, CarouselWidget, SectionHeaderWidget, DestinationListWidget
 }
 
 from '../../components/index'
 
 
-const popTrippianTitle = 'Popular Trippians'
-const popTrippianSubTitle = 'Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur.'
+const popTrippianTitle = 'Popular Destinations'
+const popTrippianSubTitle = 'Find something past Trippees loved!'
 
 export default class DestinationDetail extends Component {
   constructor(props) {
