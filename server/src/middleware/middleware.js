@@ -8,10 +8,11 @@ import passport from 'passport'
 import PassportConnection from '../passport'
 import session from 'express-session'
 import cors from 'cors'
+import express from 'express'
 // import graphqlHTTP from 'express-graphql';
 // import MyGraphQLSchema from '../graphQL/graphQLSchema';
 
-export default function (app, express) {
+export default function (app) {
   let router = express.Router()
   let authRouter = express.Router()
 
@@ -37,7 +38,7 @@ export default function (app, express) {
   app.use('/auth', authRouter)
 
   Router(router)
-  AuthRouter(authRouter, passport)
+  AuthRouter(authRouter)
 
   app.use('*', function(req, res) {
     res.status(404).send('404: Page not found')
