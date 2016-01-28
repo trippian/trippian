@@ -107,8 +107,9 @@ export default class AdminTrippianList extends Component {
               <tr>
                 <th>#</th>
                 <th>Id</th>
+               <th>isTrippian?</th>
                 <th>Name & Link</th>
-               <th>Description</th>
+               <th>facebookId</th>
                <th>Action</th>
               </tr>
             </thead>
@@ -119,8 +120,9 @@ export default class AdminTrippianList extends Component {
       <tr key={key}>
                 <td>{key+1}</td>
                 <td>{trippian.id}</td>
+                <td>{trippian.trippian ? 'Yes' : null}</td>
                 <td><Link to={`admin/trippian/${trippian.id}`}>{trippian.name}</Link></td>
-                <td>{trippian.name}</td>
+                <td>{trippian.facebookId}</td>
                 <td>  
                   <a onClick={this.handleDelete.bind(this, trippian.id)}><span aria-hidden="true" className="glyphicon glyphicon-remove" ></span></a>
                   &nbsp;&nbsp;&nbsp;&nbsp;

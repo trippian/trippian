@@ -124,9 +124,9 @@ export default class AdminInquiryList extends Component {
               return  (
                <tr key={key}>
                 <td>{key+1}</td>
-                <td><Link to={`admin/inquiry/${inquiry.id}`}>{inquiry.id}</Link></td>
+                <td>{inquiry.id}</td>
                 <td>{inquiry.start}</td>
-                <td>{inquiry.end}</td>
+                <td><Link to={`admin/inquiry/${inquiry.properties.trippianId}`}>{inquiry.properties.trippianId}</Link></td>
                 <td>{inquiry.properties.subject}</td>
                 <td>{inquiry.properties.content}</td>
                 <td>  

@@ -50,9 +50,15 @@ export const fetchGetInquiries = () => {
   return api.get(url)
 }
 
-export const fetchGetInquiryById = (id) => {
+// export const fetchGetInquiryById = (id) => {
+//   const url = `${API_HOST}${routeConfig.inquiry}/${id}`
+//   console.log('fetchGetInquiryById', url, id)
+//   return api.get(url, id)
+// }
+
+export const fetchGetInquiryByReceiverId = (id) => {
   const url = `${API_HOST}${routeConfig.inquiry}/${id}`
-  console.log('fetchGetInquiryById', url, id)
+  console.log('fetchGetInquiryByReceiverId', url, id)
   return api.get(url, id)
 }
 
