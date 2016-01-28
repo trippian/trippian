@@ -13,7 +13,7 @@ export const getSignedRequest = function (req, res) {
   console.log(req.query)
   let s3_params = {
     Bucket: process.env.S3_BUCKET,
-    Key: req.query.file_type,
+    Key: req.query.file_name,
     Expires: 60,
     ContentType: req.query.file_type,
     ACL: 'public-read'

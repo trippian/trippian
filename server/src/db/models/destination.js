@@ -58,7 +58,7 @@ export default {
   },
   getDestinationByName: (destinationName) => {
     return new Promise((resolve, reject) => {
-      let cypher = `match (d:Destination {destinationName:` + '"' + `${destinationName}` + '"' + `}) return d;`
+      let cypher = `match (d:Destination {name:` + '"' + `${destinationName}` + '"' + `}) return d;`
       db.queryAsync(cypher)
         .then((destination) => {
           if (destination.length) {
