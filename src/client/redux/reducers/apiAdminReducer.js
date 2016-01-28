@@ -1,8 +1,10 @@
 import {
-  SET_ADMIN_DESTINATIONS, SET_ADMIN_TRIPPIANS,
-  GET_DESTINATIONS_FAIL, GET_DESTINATION_BY_ID, GET_TRIPPIAN_BY_ID, GET_DESTINATIONS, GET_TRIPPIANS,
-  REMOVE_ADMIN_DESTINATION, SET_ADMIN_CURRENT_DESTINATION,
-  SET_ADMIN_USERS
+  GET_DESTINATIONS_FAIL,
+  SET_ADMIN_DESTINATIONS, ADD_ADMIN_DESTINATION, REMOVE_ADMIN_DESTINATION, SET_ADMIN_CURRENT_DESTINATION,
+  SET_ADMIN_TRIPPIANS, ADD_ADMIN_TRIPPIAN, REMOVE_ADMIN_TRIPPIAN, SET_ADMIN_CURRENT_TRIPPIAN,
+  SET_ADMIN_USERS, ADD_ADMIN_USER, REMOVE_ADMIN_USER, SET_ADMIN_CURRENT_USER,
+  SET_ADMIN_TRIPS, ADD_ADMIN_TRIP, REMOVE_ADMIN_TRIP, SET_ADMIN_CURRENT_TRIP,
+  SET_ADMIN_INQUIRIES, ADD_ADMIN_INQUIRY, REMOVE_ADMIN_INQUIRY, SET_ADMIN_CURRENT_INQUIRY
 }
 from '../actionTypes'
 import {
@@ -11,8 +13,8 @@ import {
   setAdminUsers, addAdminUser, removeAdminUser, setAdminCurrentUser,
   setAdminInquiries, addAdminInquiry, removeAdminInquiry, setAdminCurrentInquiry,
   setAdminTrips, addAdminTrip, removeAdminTrip, setAdminCurrentTrip
-
 }
+
 from '../actionCreators'
 
 import {
@@ -82,13 +84,6 @@ const initialState = new Map({
     feature: 'http://lorempixel.com/400/200/city/',
     album: []
   },
-  // currentDestination: {
-  //   name: '',
-  //   description: '',
-  //   whyVisit: '',
-  //   feature: 'http://lorempixel.com/400/200/city/',
-  //   album: []
-  // },
   currentDestination: {
     destinationName: '',
     destinationDescription: '',
@@ -115,6 +110,21 @@ export default function apiTrippianReducer(state = initialState, action) {
     case SET_ADMIN_USERS:
       return state.merge(new Map({
         adminUsers: action.payload.users
+      }))
+
+    case SET_ADMIN_TRIPS:
+      return state.merge(new Map({
+        adminTrips: action.payload.trips
+      }))
+
+    case SET_ADMIN_INQUIRIES:
+      return state.merge(new Map({
+        adminInquiries: action.payload.inquiries
+      }))
+
+    case SET_ADMIN_TRIPS:
+      return state.merge(new Map({
+        adminTrips: action.payload.trips
       }))
 
     case GET_DESTINATIONS_FAIL:
@@ -172,7 +182,10 @@ export function getAdminInquiries() {
   console.log('-- get a inquiries now')
   return (dispatch) => {
     return fetchGetInquiries()
-      .then(inquiries => dispatch(setAdminInquiries(inquiries)))
+      .then(inquiries => {
+        console.log('--- got inquiries', inquiries)
+        dispatch(setAdminInquiries(inquiries))
+      })
       .catch(error => dispatch(apologize(error)))
   }
 }
