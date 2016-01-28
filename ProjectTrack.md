@@ -19,6 +19,36 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
   - [ ] Move Common API logic to redux store from the Container Component
   - [ ] Improve Redux Store 
 
+- Admin 
+
+  - [X] Delete Trip By Id
+  - [ ] Trip Detail 
+
+  - [ ] Inquiry Detail 
+  - [ ] Add Inquiry Form 
+  - [ ] Delete Inquiry By Id
+  
+  - [ ] User Detail 
+  - [ ] Add User Form 
+  - [ ] Delete User By Id 
+
+  - [ ] Trippian Detail 
+  - [ ] Delete Trippian By ID
+  - [ ] Add Trippian Form 
+
+- Front-end 
+  - [ ] Login with Facebook 
+  - [ ] DestinationDetailPage
+    - [ ]  PopularTrippiansList 
+  - [ ] Contact (Inquiry) Page 
+  - [ ] User 
+    - [ ] InquiryList 
+    - [ ] User Profile 
+    - [ ] Logout  
+  - [ ] ReviewList 
+  - [ ] Add Review Form 
+  - [ ] Vote 
+
 
 ### Important Info and Notice 
 - Info 

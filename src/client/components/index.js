@@ -15,7 +15,13 @@ export CrumbWidget from './CrumbWidget/CrumbWidget'
 export SectionHeaderWidget from './SectionHeaderWidget/SectionHeaderWidget'
 export DestinationListItemWidget from './DestinationListItemWidget/DestinationListItemWidget'
 export DestinationListWidget from './DestinationListWidget/DestinationListWidget'
+
 export DestinationPostFormWidget from './DestinationPostFormWidget/DestinationPostFormWidget'
+export UserPostFormWidget from './UserPostFormWidget/UserPostFormWidget'
+export TrippianPostFormWidget from './TrippianPostFormWidget/TrippianPostFormWidget'
+export InquiryPostFormWidget from './InquiryPostFormWidget/InquiryPostFormWidget'
+export TripPostFormWidget from './TripPostFormWidget/TripPostFormWidget'
+
 export FacebookAvatarWidget from './FacebookAvatarWidget/FacebookAvatarWidget'
 export FacebookLoginWidget from './FacebookLoginWidget/FacebookLoginWidget'
 export FooterWidget from './FooterWidget/FooterWidget'

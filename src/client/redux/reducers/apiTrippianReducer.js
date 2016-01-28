@@ -4,7 +4,12 @@ import {
 }
 from '../actionTypes'
 import {
-  setDestinations, setTrippians, apologize, addDestination, addAdminDestination
+  apologize,
+  setDestinations, addDestination, addAdminDestination,
+  setTrippians, addTrippian, addAdminTrippian,
+  setUsers, addUser, addAdminUser,
+  setInquirys, addInquiry, addAdminInquiry,
+  setTrips, addTrip, addAdminTrip
 }
 from '../actionCreators'
 
@@ -13,8 +18,8 @@ import {
 }
 from 'immutable'
 import {
-  fetchGetTrippiansByCategory, fetchGetDestinationsByCategory, fetchPostDestination, fetchDeleteDestinationById
-
+  fetchGetTrippiansByCategory, fetchGetDestinationsByCategory, fetchDeleteDestinationById,
+  fetchPostDestination, fetchPostTrip, fetchPostUser, fetchPostInquiry, fetchPostTrippian
 }
 from '../../utils/apiTrippian'
 
@@ -80,6 +85,7 @@ export function getPopularTrippians() {
   }
 }
 
+// posting 
 export function postDestination(data) {
   console.log('-- posting a destination now', data)
     // after posting the destination, add the response data to the store on adminDestinations, aslo add to newDestinations on apiTrippians
@@ -89,6 +95,62 @@ export function postDestination(data) {
         console.log('---posted', destination)
         dispatch(addDestination(destination))
         dispatch(addAdminDestination(destination))
+      })
+      .catch(error => dispatch(apologize(error)))
+  }
+}
+
+export function postTrip(data) {
+  //TODO, update userId to global 
+  data.userId = 32
+  console.log('-- posting a trip now', data)
+  return (dispatch) => {
+    return fetchPostTrip(data)
+      .then(trip => {
+        console.log('---posted', trip)
+          //TODO 
+          // dispatch(addTrip(trip))
+        dispatch(addAdminTrip(trip))
+      })
+      .catch(error => dispatch(apologize(error)))
+  }
+}
+
+export function postUser(data) {
+  //TODO, update userId to global 
+  data.senderId = 32
+  data.trippianId = 31
+  console.log('-- posting a trip now', data)
+  return (dispatch) => {
+    return fetchPostUser(data)
+      .then(user => {
+        console.log('---posted', user)
+        dispatch(addAdminUser(user))
+      })
+      .catch(error => dispatch(apologize(error)))
+  }
+}
+export function postTrippian(data) {
+  console.log('-- posting a trip now', data)
+  return (dispatch) => {
+    return fetchPostTrippian(data)
+      .then(trippian => {
+        console.log('---posted', trippian)
+        dispatch(addAdminTrippian(trippian))
+      })
+      .catch(error => dispatch(apologize(error)))
+  }
+}
+export function postInquiry(data) {
+  //TODO, update userId to global 
+  data.senderId = 32
+  data.trippianId = 31
+  console.log('-- posting a trip now', data)
+  return (dispatch) => {
+    return fetchPostInquiry(data)
+      .then(inquiry => {
+        console.log('---posted', inquiry)
+        dispatch(addAdminInquiry(inquiry))
       })
       .catch(error => dispatch(apologize(error)))
   }

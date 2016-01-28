@@ -4,7 +4,7 @@ import React, {
 from 'react'
 
 import {
-  JumbotronWidget
+  InquiryPostFormWidget
 }
 from '../../components/index'
 import {
@@ -25,7 +25,10 @@ import {
   getAdminInquiries, deleteAdminInquiryById
 }
 from '../../redux/apiAdminIndex'
-
+import {
+  postInquiry
+}
+from '../../redux/apiIndex'
 
 function mapStateToProps(state) {
   return {
@@ -39,6 +42,7 @@ export default class AdminInquiryList extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      showForm: false,
       alert: {
         type: 'success',
         title: '',
@@ -64,6 +68,12 @@ export default class AdminInquiryList extends Component {
   handleAlertDismiss() {
     this.setAlert()
   }
+  handleSubmit(data) {
+    console.log('posting data from form', data)
+    store.dispatch(postInquiry(data))
+    this.setAlert('success', 'Successfully submitted data')
+  }
+
   setAlert(type = 'success', title = '', message = '') {
     this.setState({
       alert: {
@@ -88,16 +98,24 @@ export default class AdminInquiryList extends Component {
         }
 
         <div className="pull-right">
-          <Link className="btn btn-primary" to='destination-post'>Create an Inquiry </Link>
+          <button onClick={()=> this.setState({showForm: !this.state.showForm})} className="btn btn-primary">Create a Inquiry</button>
         </div>
+
+          {this.state.showForm && 
+            <InquiryPostFormWidget onSubmit={this.handleSubmit.bind(this)} /> 
+          }
+
           <br/>
         <h3>Inquiry List</h3>
         <Table striped bordered condensed hover>
             <thead>
               <tr>
                 <th>#</th>
-                <th>Name & Link</th>
-               <th>Description</th>
+                <th>Id</th>
+                <th>Sender</th>
+                <th>Receiver</th>
+               <th>Subject</th>
+               <th>Content</th>
                <th>Action</th>
               </tr>
             </thead>
@@ -107,7 +125,10 @@ export default class AdminInquiryList extends Component {
                <tr key={key}>
                 <td>{key+1}</td>
                 <td><Link to={`admin/inquiry/${inquiry.id}`}>{inquiry.id}</Link></td>
-                <td>{inquiry.id}</td>
+                <td>{inquiry.start}</td>
+                <td>{inquiry.end}</td>
+                <td>{inquiry.properties.subject}</td>
+                <td>{inquiry.properties.content}</td>
                 <td>  
                   <a onClick={this.handleDelete.bind(this, inquiry.id)}><span aria-hidden="true" className="glyphicon glyphicon-remove" ></span></a>
                   &nbsp;&nbsp;&nbsp;&nbsp;
