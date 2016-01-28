@@ -56,16 +56,18 @@ const initialState = new Map({
     }]
   },
   currentInquiry: {
-    sender: {
-      id: 0,
-      displayName: ''
-    },
-    receiver: {
-      id: 0,
-      displayName: ''
-    },
     type: 'INQUIRY',
+    start: 0,
+    end: 1,
     properties: {
+      sender: {
+        id: 0,
+        displayName: ''
+      },
+      receiver: {
+        id: 0,
+        displayName: ''
+      },
       personCount: 5,
       startDate: '',
       endDate: '',
@@ -99,18 +101,11 @@ import store from '../store'
 export default function apiTrippianReducer(state = initialState, action) {
   console.log('dispatching', action.type, action.payload)
   switch (action.type) {
+    // setting 
     case SET_ADMIN_DESTINATIONS:
       return state.merge(new Map({
         adminDestinations: action.payload.destinations
       }))
-
-    case ADD_ADMIN_DESTINATION:
-      let oldDestAdd = state.get('adminDestinations')
-      oldDestAdd.push(action.payload.destination)
-      return state.merge(new Map({
-        adminDestinations: oldDestAdd
-      }))
-
     case SET_ADMIN_TRIPPIANS:
       return state.merge(new Map({
         adminTrippians: action.payload.trippians
@@ -130,32 +125,39 @@ export default function apiTrippianReducer(state = initialState, action) {
         adminInquiries: action.payload.inquiries
       }))
 
-    case SET_ADMIN_TRIPS:
-      return state.merge(new Map({
-        adminTrips: action.payload.trips
-      }))
-
-    case GET_DESTINATIONS_FAIL:
-      return state.merge(new Map({
-        loaded: false,
-        loading: false,
-        error: action.payload.errorMessage
-      }))
+      // deleting
     case REMOVE_ADMIN_DESTINATION:
       let oldDestinations = state.get('adminDestinations')
       oldDestinations = oldDestinations.filter(x => x.id !== action.payload.id)
       return state.merge(new Map({
         adminDestinations: oldDestinations
       }))
-
     case REMOVE_ADMIN_TRIP:
       let oldTrip = state.get('adminTrips')
       oldTrip = oldTrip.filter(x => x.id !== action.payload.id)
       return state.merge(new Map({
         adminTrips: oldTrip
       }))
+    case REMOVE_ADMIN_USER:
+      let oldUser = state.get('adminUsers')
+      oldUser = oldUser.filter(x => x.id !== action.payload.id)
+      return state.merge(new Map({
+        adminUsers: oldUser
+      }))
+    case REMOVE_ADMIN_TRIPPIAN:
+      let oldTrippian = state.get('adminTrippians')
+      oldTrippian = oldTrippian.filter(x => x.id !== action.payload.id)
+      return state.merge(new Map({
+        adminTrippians: oldTrippian
+      }))
+    case REMOVE_ADMIN_INQUIRY:
+      let oldInquiries = state.get('adminInquiries')
+      oldInquiries = oldInquiries.filter(x => x.id !== action.payload.id)
+      return state.merge(new Map({
+        adminInquiries: oldInquiries
+      }))
 
-
+      // setting current 
     case SET_ADMIN_CURRENT_DESTINATION:
       return state.merge(new Map({
         currentDestination: action.payload.destination
@@ -177,11 +179,53 @@ export default function apiTrippianReducer(state = initialState, action) {
         currentInquiry: action.payload.inquiry
       }))
 
+      // adding one item 
+    case ADD_ADMIN_DESTINATION:
+      let oldDestAdd = state.get('adminDestinations')
+      oldDestAdd.push(action.payload.destination)
+      return state.merge(new Map({
+        adminDestinations: oldDestAdd
+      }))
+    case ADD_ADMIN_TRIP:
+      let oldTripAdd = state.get('adminTrips')
+      oldTripAdd.push(action.payload.trip)
+      return state.merge(new Map({
+        adminTrips: oldTripAdd
+      }))
+
+    case ADD_ADMIN_USER:
+      let oldUserAdd = state.get('adminUsers')
+      oldUserAdd.push(action.payload.user)
+      return state.merge(new Map({
+        adminUsers: oldUserAdd
+      }))
+    case ADD_ADMIN_TRIPPIAN:
+      let oldTrippianAdd = state.get('adminTrippians')
+      oldTrippianAdd.push(action.payload.trippian)
+      return state.merge(new Map({
+        adminTrippians: oldTrippianAdd
+      }))
+    case ADD_ADMIN_INQUIRY:
+      let oldInquiriesAdd = state.get('adminInquiries')
+      oldInquiriesAdd.push(action.payload.inquiry)
+      return state.merge(new Map({
+        adminInquiries: oldInquiriesAdd
+      }))
+
+      // error handling, will add more later 
+    case GET_DESTINATIONS_FAIL:
+      return state.merge(new Map({
+        loaded: false,
+        loading: false,
+        error: action.payload.errorMessage
+      }))
 
     default:
       return state
   }
 }
+
+//getting 
 export function getAdminDestinations() {
   return (dispatch) => {
     return fetchGetDestinations()
@@ -231,6 +275,19 @@ export function getAdminTrips() {
   }
 }
 
+// deleting 
+export function deleteAdminDestinationById(id) {
+  console.log('-- deleting a destination now', id)
+  return (dispatch) => {
+    return fetchDeleteDestinationById(id)
+      .then(() => {
+        console.log('--deleted', id)
+        dispatch(removeDestination(id))
+        dispatch(removeAdminDestination(id))
+      })
+      .catch(error => dispatch(apologize(error)))
+  }
+}
 export function deleteAdminTrippianById(id) {
   console.log('-- deleting a trippian now', id)
   return (dispatch) => {
@@ -244,25 +301,24 @@ export function deleteAdminTrippianById(id) {
   }
 }
 
-export function deleteAdminDestinationById(id) {
-  console.log('-- deleting a destination now', id)
+export function deleteAdminUserById(id) {
+  console.log('-- deleting a User now', id)
   return (dispatch) => {
-    return fetchDeleteDestinationById(id)
+    return fetchDeleteUserById(id)
       .then(() => {
-        console.log('--deleted', id)
-        dispatch(removeDestination(id))
-        dispatch(removeAdminDestination(id))
+        console.log('--deleted User', id)
+          // dispatch(removeUser(id))
+        dispatch(removeAdminUser(id))
       })
       .catch(error => dispatch(apologize(error)))
   }
 }
-
 export function deleteAdminTripById(id) {
   console.log('-- deleting a trip now', id)
   return (dispatch) => {
     return fetchDeleteTripById(id)
       .then(() => {
-        console.log('--deleted', id)
+        console.log('--deleted Trip', id)
           // dispatch(removeTrip(id))
         dispatch(removeAdminTrip(id))
       })
@@ -270,6 +326,20 @@ export function deleteAdminTripById(id) {
   }
 }
 
+export function deleteAdminInquiryById(id) {
+  console.log('-- deleting a Inquiry now', id)
+  return (dispatch) => {
+    return fetchDeleteInquiryById(id)
+      .then(() => {
+        console.log('--deleted Inquiry', id)
+          // dispatch(removeInquiry(id))
+        dispatch(removeAdminInquiry(id))
+      })
+      .catch(error => dispatch(apologize(error)))
+  }
+}
+
+// getting one
 export function getAdminDestinationById(id) {
   console.log('-- get a destination now', id)
 

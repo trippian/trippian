@@ -64,8 +64,8 @@ export const fetchPostInquiry = (data) => {
 
 export const fetchDeleteInquiryById = (id) => {
   const url = `${API_HOST}${routeConfig.inquiry}/${id}`
-  console.log('fetchDeleteInquiry', url, id)
-  return api.deleteAPI(url)
+  console.log('fetchDeleteInquiryById', url, id)
+  return api.deleteApi(url)
 }
 
 export const fetchUpdateInuqiry = (id, data) => {
@@ -75,8 +75,6 @@ export const fetchUpdateInuqiry = (id, data) => {
 }
 
 //TRIP
-
-
 export const fetchGetTrips = () => {
   const url = `${API_HOST}${routeConfig.trip}`
   console.log('fetchUpdateInuqiry', url)
