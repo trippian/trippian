@@ -12,7 +12,7 @@ class InquiryPostFormWidget extends Component {
   render() {
     const {
       fields: {
-        name, description, feature, whyVisit
+        personCount, startDate, endDate, email, mobile, title, content
       },
       handleSubmit
     } = this.props
@@ -20,20 +20,33 @@ class InquiryPostFormWidget extends Component {
     return (
       <form onSubmit={handleSubmit} role="form">
         <div className="form-group">
-          <label>Destination Name</label>
-          <input type="text" className="form-control" placeholder="Paris..." {...name}/>
+          <label>Number of People</label>
+          <input type="number" className="form-control" value="1" {...personCount}/>
         </div>
         <div className="form-group">
-          <label>Destination Description</label>
-          <input type="text" className="form-control" placeholder="Awesome place...." {...description}/>
+          <label>Start Date</label>
+          <input type="date" className="form-control" value="2016-02-12" {...startDate} />
         </div>
         <div className="form-group">
-          <label>Feature Image</label>
-          <input type="url" className="form-control" placeholder="http://..." {...feature}/>
+          <label>End Date</label>
+          <input type="date" className="form-control" value="2016-02-28" {...endDate} />
         </div>
         <div className="form-group">
-          <label>Why Visit</label>
-          <textarea name="whyVisit" className="form-control" className="form-control" rows="3" required="required" {...whyVisit}></textarea>
+          <label>Email</label>
+          <input type="email" className="form-control" value='me@audreyli.me'  {...email}/>
+        </div>
+        <div className="form-group">
+          <label>Mobile</label>
+          <input type="tel" className="form-control" placeholder="+001 123 456 789" value="+001 123 456 789" {...mobile}/>
+        </div>
+
+        <div className="form-group">
+          <label>Title</label>
+          <input type="text" className="form-control" placeholder="" value="title here..." {...title}/>
+        </div>
+        <div className="form-group">
+          <label>Content</label>
+          <textarea name="content" className="form-control" className="form-control" rows="3" required="required" value="Lorem ipsum dolor." {...content}></textarea>
         </div>
         <button onClick={handleSubmit}>Submit</button>
       </form>
@@ -42,8 +55,8 @@ class InquiryPostFormWidget extends Component {
 }
 
 InquiryPostFormWidget = reduxForm({
-  form: 'destinationPostForm', // a unique name for this form
-  fields: ['name', 'description', 'feature', 'whyVisit'] // all the fields in the form
+  form: 'inquiryPostForm', // a unique name for this form
+  fields: ['personCount', 'startDate', 'endDate', 'email', 'mobile', 'title', 'content']
 })(InquiryPostFormWidget)
 
 

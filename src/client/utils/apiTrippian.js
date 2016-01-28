@@ -57,7 +57,7 @@ export const fetchGetInquiryById = (id) => {
 }
 
 export const fetchPostInquiry = (data) => {
-  const url = `${API_HOST}${routeConfig.inquiry}`
+  const url = `${API_HOST}${routeConfig.inquiry}/${data.trippianId}`
   console.log('fetchPostInquiry', url, data)
   return api.post(url, data)
 }
@@ -68,7 +68,7 @@ export const fetchDeleteInquiryById = (id) => {
   return api.deleteApi(url)
 }
 
-export const fetchUpdateInuqiry = (id, data) => {
+export const fetchUpdateInquiry = (id, data) => {
   const url = `${API_HOST}${routeConfig.inquiry}/${id}`
   console.log('fetchUpdateInuqiry', id, data)
   return api.put(url, data, id)

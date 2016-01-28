@@ -70,6 +70,8 @@ const initialState = new Map({
       },
       personCount: 5,
       startDate: '',
+      email: '',
+      mobile: '',
       endDate: '',
       title: 'hi',
       content: '',

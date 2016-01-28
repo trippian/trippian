@@ -105,6 +105,7 @@ export default class AdminUserList extends Component {
             <thead>
               <tr>
                 <th>#</th>
+                <th>id</th>
                 <th>Name & Link</th>
                <th>Description</th>
                <th>Action</th>
@@ -115,6 +116,7 @@ export default class AdminUserList extends Component {
               return  (
                <tr key={key}>
                 <td>{key+1}</td>
+                <td>{user.id}</td>
                 <td><Link to={`admin/user/${user.id}`}>{user.name}</Link></td>
                 <td>{user.name}</td>
                 <td>  

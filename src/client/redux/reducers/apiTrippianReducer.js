@@ -101,6 +101,7 @@ export function postDestination(data) {
 }
 
 export function postTrip(data) {
+  //TODO, update userId to global 
   data.userId = 32
   console.log('-- posting a trip now', data)
   return (dispatch) => {
@@ -116,6 +117,9 @@ export function postTrip(data) {
 }
 
 export function postUser(data) {
+  //TODO, update userId to global 
+  data.senderId = 32
+  data.trippianId = 31
   console.log('-- posting a trip now', data)
   return (dispatch) => {
     return fetchPostUser(data)
@@ -138,6 +142,9 @@ export function postTrippian(data) {
   }
 }
 export function postInquiry(data) {
+  //TODO, update userId to global 
+  data.senderId = 32
+  data.trippianId = 31
   console.log('-- posting a trip now', data)
   return (dispatch) => {
     return fetchPostInquiry(data)

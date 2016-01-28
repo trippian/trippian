@@ -4,7 +4,7 @@ import React, {
 from 'react'
 
 import {
- TrippianPostFormWidget
+  TrippianPostFormWidget
 }
 from '../../components/index'
 import {
@@ -60,7 +60,7 @@ export default class AdminTrippianList extends Component {
   }
   handleSubmit(data) {
     console.log('posting data from form', data)
-    // store.dispatch(postDestination(data))
+      // store.dispatch(postDestination(data))
     this.setAlert('success', 'Successfully submitted data', `${data.name} ${data.description}`)
   }
   handleAlertDismiss() {
@@ -103,6 +103,7 @@ export default class AdminTrippianList extends Component {
             <thead>
               <tr>
                 <th>#</th>
+                <th>Id</th>
                 <th>Name & Link</th>
                <th>Description</th>
                <th>Action</th>
@@ -114,6 +115,7 @@ export default class AdminTrippianList extends Component {
     return (
       <tr key={key}>
                 <td>{key+1}</td>
+                <td>{trippian.id}</td>
                 <td><Link to={`admin/trippian/${trippian.id}`}>{trippian.name}</Link></td>
                 <td>{trippian.name}</td>
                 <td>  

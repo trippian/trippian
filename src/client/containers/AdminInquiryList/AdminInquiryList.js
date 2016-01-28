@@ -25,7 +25,10 @@ import {
   getAdminInquiries, deleteAdminInquiryById
 }
 from '../../redux/apiAdminIndex'
-
+import {
+  postInquiry
+}
+from '../../redux/apiIndex'
 
 function mapStateToProps(state) {
   return {
@@ -67,8 +70,8 @@ export default class AdminInquiryList extends Component {
   }
   handleSubmit(data) {
     console.log('posting data from form', data)
-      // store.dispatch(postDestination(data))
-    this.setAlert('success', 'Successfully submitted data', `${data.name} ${data.description}`)
+    store.dispatch(postInquiry(data))
+    this.setAlert('success', 'Successfully submitted data')
   }
 
   setAlert(type = 'success', title = '', message = '') {
