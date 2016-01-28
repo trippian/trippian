@@ -1,4 +1,6 @@
-export default function(router, passport) {
+import passport from 'passport'
+
+export default function(router) {
   router.get('/facebook', passport.authenticate('facebook', {
     scope: ['email']
   }))
