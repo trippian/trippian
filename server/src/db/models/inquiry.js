@@ -4,15 +4,14 @@ import { updateStringObject } from '../../middleware/utils'
 
 export default {
   // function for a user to create an inquiry
-  createInquiry: (trippeeId, trippianId, inquiryProps) => {
+  createInquiry: (senderId, receiverId, inquiryProps) => {
     inquiryProps.createdAt = Date()
-    inquiryProps.sender = trippeeId
-    inquiryProps.receiver = trippianId
+    inquiryProps.receiverId = receiverId
     return new Promise((resolve, reject) => {
-      if (trippeeId === trippianId) {
+      if (senderId === receiverId) {
         reject(new Error('user cannot make inquiry to self'))
       } else {
-        db.relateAsync(trippeeId, 'INQUIRY', trippianId, inquiryProps)
+        db.relateAsync(senderId, 'INQUIRY', receiverId, inquiryProps)
           .then((inquiry) => {
             if (inquiry) {
               resolve(inquiry)
