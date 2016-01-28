@@ -50,6 +50,11 @@ export default class AdminInquiryList extends Component {
   componentDidMount() {
     store.dispatch(getAdminInquiries())
   }
+
+  componentWillReceiveProps(newProps) {
+    console.log('inside  will receive props', newProps)
+
+  }
   handleDelete(id) {
     console.log('deleting inquiry called', id)
     store.dispatch(deleteAdminInquiryById(id))
@@ -69,6 +74,7 @@ export default class AdminInquiryList extends Component {
     })
   }
   render() {
+    console.log('inside render', this.props.inquiries)
     const {
       type, title, message
     } = this.state.alert
@@ -100,8 +106,8 @@ export default class AdminInquiryList extends Component {
               return  (
                <tr key={key}>
                 <td>{key+1}</td>
-                <td><Link to={`admin/inquiry/${inquiry.id}`}>{inquiry.inquiryName}</Link></td>
-                <td>{inquiry.inquiryDescription}</td>
+                <td><Link to={`admin/inquiry/${inquiry.id}`}>{inquiry.id}</Link></td>
+                <td>{inquiry.id}</td>
                 <td>  
                   <a onClick={this.handleDelete.bind(this, inquiry.id)}><span aria-hidden="true" className="glyphicon glyphicon-remove" ></span></a>
                   &nbsp;&nbsp;&nbsp;&nbsp;

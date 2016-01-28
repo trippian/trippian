@@ -11,9 +11,9 @@ import {
   getAdminUserById,
   deleteAdminUsersById,
 
-  // getAdminTrips,
-  // getAdminTripById,
-  // deleteAdminTripsById,
+  getAdminTrips,
+  getAdminTripById,
+  deleteAdminTripsById,
 
   getAdminInquiries,
   getAdminInquiryById,
@@ -34,9 +34,9 @@ export default {
   getAdminUserById,
   deleteAdminUsersById,
 
-  // getAdminTrips,
-  // getAdminTripById,
-  // deleteAdminTripsById,
+  getAdminTrips,
+  getAdminTripById,
+  deleteAdminTripsById,
 
   getAdminInquiries,
   getAdminInquiryById,

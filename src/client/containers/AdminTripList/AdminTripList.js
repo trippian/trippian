@@ -99,6 +99,20 @@ export default class AdminTripList extends Component {
               </tr>
             </thead>
             <tbody> 
+              {this.props.trips.map((trip, key) => {
+                return  (
+                 <tr key={key}>
+                  <td>{key+1}</td>
+                  <td><Link to={`admin/trip/${trip.id}`}>{trip.id}</Link></td>
+                  <td>{trip.title}</td>
+                  <td>  
+                    <a onClick={this.handleDelete.bind(this, trip.id)}><span aria-hidden="true" className="glyphicon glyphicon-remove" ></span></a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <Link to={`admin/trip/${trip.id}/edit`}><span aria-hidden="true" className="glyphicon glyphicon-pencil" ></span></Link>
+                  </td>
+                </tr>
+                )
+              })} 
             </tbody>
           </Table>
 
