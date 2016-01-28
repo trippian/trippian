@@ -58,13 +58,6 @@ export default class DestinationPost extends Component {
     console.log('posting data from form', data)
     store.dispatch(postDestination(data))
     this.setAlert('success', 'Successfully submitted data', `${data.destinationName} ${data.destinationDescription}`)
-
-    // const formData = store.getState().form.destinationPostForm
-    // const email = formData.email.value
-    // const firstName = formData.firstName.value
-    // const lastName = formData.lastName.value
-    // console.log('submitted', formData, email, firstName, lastName)
-    // will do some aync call here 
   }
   setAlert(type = 'success', title = '', message = '') {
     this.setState({
@@ -108,7 +101,7 @@ export default class DestinationPost extends Component {
   }
 }
 DestinationPost.propTypes = {
-  // postDestination: PropTypes.func.isRequired
+  postDestination: PropTypes.func.isRequired
 }
 
 DestinationPost.displayName = 'DestinationPost Page'

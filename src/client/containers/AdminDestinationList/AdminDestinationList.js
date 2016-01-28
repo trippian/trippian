@@ -4,7 +4,7 @@ import React, {
 from 'react'
 
 import {
-  JumbotronWidget
+  JumbotronWidget, DestinationPostFormWidget
 }
 from '../../components/index'
 import {
@@ -26,6 +26,10 @@ import {
 }
 from '../../redux/apiAdminIndex'
 
+import {
+  postDestination
+}
+from '../../redux/apiIndex'
 
 function mapStateToProps(state) {
   return {
@@ -40,6 +44,7 @@ export default class AdminDestinationList extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      showForm: false,
       alert: {
         type: 'danger',
         title: '',
@@ -61,6 +66,13 @@ export default class AdminDestinationList extends Component {
   handleAlertDismiss() {
     this.setAlert()
   }
+
+  handleSubmit(data) {
+    console.log('posting data from form', data)
+    store.dispatch(postDestination(data))
+    this.setAlert('success', 'Successfully submitted data', `${data.name} ${data.description}`)
+  }
+
   setAlert(type = 'success', title = '', message = '') {
     this.setState({
       alert: {
@@ -91,28 +103,36 @@ export default class AdminDestinationList extends Component {
         }
 
         <div className="pull-right">
-          <Link className="btn btn-primary" to='destination-post'>Create a Destination</Link>
+
+          <button onClick={()=> this.setState({showForm: !this.state.showForm})} className="btn btn-primary">Create a Destination</button>
         </div>
+          {this.state.showForm && 
+            <DestinationPostFormWidget onSubmit={this.handleSubmit.bind(this)} /> 
+          }
+
           <br/>
         <h3>Destination List</h3>
         <Table striped bordered condensed hover>
             <thead>
               <tr>
                 <th>#</th>
+                <th>Id</th>
                 <th>Name & Link</th>
                <th>Description</th>
                <th>Action</th>
               </tr>
             </thead>
             <tbody>
-            {this.props.destinations.map((destination, key) => {
+            {this.props.destinations.sort((d1, d2)=> d1.id < d2.id).map((destination, key) => {
+              const {id, name, description} = destination 
               return  (
                <tr key={key}>
                 <td>{key+1}</td>
-                <td><Link to={`admin/destination/${destination.id}`}>{destination.name}</Link></td>
-                <td>{destination.description}</td>
+                <td>{id}</td>
+                <td><Link to={`admin/destination/${id}`}>{name}</Link></td>
+                <td>{description}</td>
                 <td>  
-                  <a onClick={this.handleDelete.bind(this, destination.id)}><span aria-hidden="true" className="glyphicon glyphicon-remove" ></span></a>
+                  <a onClick={this.handleDelete.bind(this, id)}><span aria-hidden="true" className="glyphicon glyphicon-remove" ></span></a>
                   &nbsp;&nbsp;&nbsp;&nbsp;
                   <Link to="admin/destination/58/edit"><span aria-hidden="true" className="glyphicon glyphicon-pencil" ></span></Link>
                 </td>
@@ -121,16 +141,15 @@ export default class AdminDestinationList extends Component {
             })} 
             </tbody>
           </Table>
+          
+                
 
       </div>
     )
   }
 }
 AdminDestinationList.propTypes = {
-  // destinations: PropTypes.object,
-  // trippians: PropTypes.object
-
-
+  destinations: PropTypes.object
 }
 
 AdminDestinationList.displayName = 'AdminDestinationList Page'
