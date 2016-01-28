@@ -11,7 +11,7 @@ class DestinationPostFormWidget extends Component {
   render() {
     const {
       fields: {
-        destinationName, destinationDescription, destinationImage, whyVisit
+        name, description, feature, whyVisit
       },
       handleSubmit
     } = this.props
@@ -20,15 +20,15 @@ class DestinationPostFormWidget extends Component {
       <form onSubmit={handleSubmit} role="form">
         <div className="form-group">
           <label>Destination Name</label>
-          <input type="text" className="form-control" placeholder="Paris..." {...destinationName}/>
+          <input type="text" className="form-control" placeholder="Paris..." {...name}/>
         </div>
         <div className="form-group">
           <label>Destination Description</label>
-          <input type="text" className="form-control" placeholder="Awesome place...." {...destinationDescription}/>
+          <input type="text" className="form-control" placeholder="Awesome place...." {...description}/>
         </div>
         <div className="form-group">
-          <label>Destination Image</label>
-          <input type="url" className="form-control" placeholder="http://..." {...destinationImage}/>
+          <label>Feature Image</label>
+          <input type="url" className="form-control" placeholder="http://..." {...feature}/>
         </div>
         <div className="form-group">
           <label>Why Visit</label>
@@ -42,7 +42,7 @@ class DestinationPostFormWidget extends Component {
 
 DestinationPostFormWidget = reduxForm({
   form: 'destinationPostForm', // a unique name for this form
-  fields: ['destinationName', 'destinationDescription', 'destinationImage', 'whyVisit'] // all the fields in the form
+  fields: ['name', 'description', 'feature', 'whyVisit'] // all the fields in the form
 })(DestinationPostFormWidget)
 
 

@@ -85,9 +85,9 @@ const initialState = new Map({
     album: []
   },
   currentDestination: {
-    destinationName: '',
-    destinationDescription: '',
-    destinationImage: 'http://lorempixel.com/400/200/city/',
+    name: '',
+    description: '',
+    feature: 'http://lorempixel.com/400/200/city/',
     whyVisit: ''
   },
   loaded: false,
@@ -103,6 +103,14 @@ export default function apiTrippianReducer(state = initialState, action) {
       return state.merge(new Map({
         adminDestinations: action.payload.destinations
       }))
+
+    case ADD_ADMIN_DESTINATION:
+      let oldDestAdd = state.get('adminDestinations')
+      oldDestAdd.push(action.payload.destination)
+      return state.merge(new Map({
+        adminDestinations: oldDestAdd
+      }))
+
     case SET_ADMIN_TRIPPIANS:
       return state.merge(new Map({
         adminTrippians: action.payload.trippians
@@ -227,15 +235,14 @@ export function deleteAdminDestinationById(id) {
 
 export function getAdminDestinationById(id) {
   console.log('-- get a destination now', id)
-    // first check if the store already have the data 
+
+  // first check if the store already have the data 
   const localDestinations = store.getState().apiAdmin.get('adminDestinations')
   const cached = null
 
-
   for (let i = 0; i < localDestinations.length; i++) {
     const dest = localDestinations[i]
-
-    // console.log('*** cached?', dest, dest.id === id, dest.id, dest['id'], dest.destinationName)
+      // console.log('*** cached?', dest, dest.id === id, dest.id, dest['id'], dest.destinationName)
     if (+dest.id === +id) {
       console.log('**getting destination from cached', id)
       return (dispatch) => {
@@ -245,8 +252,7 @@ export function getAdminDestinationById(id) {
   }
 
   console.log('** no cached data available, getting from remote')
-
-  // go on the network and fetch the data 
+    // go on the network and fetch the data 
   return (dispatch) => {
     return fetchGetDestinationById(id)
       .then((destination) => {
