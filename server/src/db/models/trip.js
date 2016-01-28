@@ -1,6 +1,7 @@
 import Promise from 'bluebird'
 import db from '../db'
 import { updateStringObject } from '../../middleware/utils'
+import Destination from './destination'
 
 export default {
   // function that creates a new trip node and adds a POSTED relationship between a user and the trip
@@ -9,33 +10,47 @@ export default {
     details.netVote = 0
     details.totalVotes = 0
     return new Promise((resolve, reject) => {
-      db.saveAsync(details, 'Trip')
-        .then((newTrip) => {
-          // when newTrip node is created we want to add a relationship between the user and trip
-          let cypher = `match (u:User), (t:Trip) where id(u)=${userId} and id(t)=${newTrip.id} create (u)-[r:POSTED]->(t) return r;`
-          db.queryAsync(cypher)
-            .then((userTripRelationship) => {
-              // once our relationship between the user and the trip is created, we want another 
-              // relationship between the destination and the trip
-              if (userTripRelationship.length) {
-                let cypher = `match (t:Trip), (d:Destination) where id(t)=${newTrip.id} and d.name =` + '"' + `${newTrip.destination}` + '"' + `create unique (t)-[r:LOCATED_IN]->(d) return r;`
-                db.queryAsync(cypher)
-                  .then((tripDestinationRelationship) => {
-                    if (tripDestinationRelationship.length) {
-                      // after the relationship between the destination and the trip is created we want to resolve the promise with all 3 parameters
-                      resolve(newTrip, userTripRelationship, tripDestinationRelationship)
-                    } else {
-                      reject(new Error('destination does not exist'))
-                    }
-                  })
-              } else {
-                reject(new Error('user does not exist'))
-              }
+      // we need to first check if the destination exists, then 
+      // we can create the trip and connect
+      Destination.getDestinationByName(details.destination)
+        .then(destination => {
+          if (destination) {
+            db.saveAsync(details, 'Trip')
+            .then((newTrip) => {
+              // when newTrip node is created we want to add a relationship between the user and trip
+              let cypher = `match (u:User), (t:Trip) where id(u)=${userId} and id(t)=${newTrip.id} create (u)-[r:POSTED]->(t) return r;`
+              db.queryAsync(cypher)
+                .then((userTripRelationship) => {
+                  // once our relationship between the user and the trip is created, we want another 
+                  // relationship between the destination and the trip
+                  if (userTripRelationship.length) {
+                    let cypher = `match (t:Trip), (d:Destination) where id(t)=${newTrip.id} and d.name =` + '"' + `${newTrip.destination}` + '"' + `create unique (t)-[r:LOCATED_IN]->(d) return r;`
+                    db.queryAsync(cypher)
+                      .then((tripDestinationRelationship) => {
+                        if (tripDestinationRelationship.length) {
+                          // after the relationship between the destination and the trip is created we want to resolve the promise with all 3 parameters
+                          newTrip.userId = parseInt(userId)
+                          resolve(newTrip)
+                        } else {
+                          reject(new Error('destination does not exist'))
+                        }
+                      })
+                  } else {
+                    reject(new Error('user does not exist'))
+                  }
+                })
             })
+            .catch((error) => {
+              console.error(error)
+            })
+          } else {
+            reject(new Error('entered wrong destination'))
+          }
         })
-        .catch((error) => {
+        .catch(error => {
           console.error(error)
         })
+
     })
   },
   // get all trip information by ID for get request nah
