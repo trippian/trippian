@@ -28,7 +28,7 @@ export default function (app, passport) {
               console.log('user exists as ', user)
             } else {
               console.log(user)
-              User.createUser(profile)
+              User.createFacebookUser(profile)
               .then(function(newUser) {
                 console.log('newUser has been created', newUser)
               })
