@@ -23,7 +23,8 @@ export default {
                   .then((tripDestinationRelationship) => {
                     if (tripDestinationRelationship.length) {
                       // after the relationship between the destination and the trip is created we want to resolve the promise with all 3 parameters
-                      resolve(newTrip, userTripRelationship, tripDestinationRelationship)
+                      newTrip.userId = parseInt(userId)
+                      resolve(newTrip)
                     } else {
                       reject(new Error('destination does not exist'))
                     }
