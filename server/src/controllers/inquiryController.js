@@ -24,7 +24,7 @@ export default {
   },
   inquiryPost: (req, res, next) => {
     let postDetails = req.body
-    let trippianId = req.params.trippianId 
+    let trippianId = parseInt(req.params.trippianId)
     let userId = req.body.userId 
     if (postDetails) {
       Inquiry.createInquiry(userId, trippianId, postDetails)
