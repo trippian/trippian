@@ -26,7 +26,10 @@ import {
 
 }
 from '../../redux/apiAdminIndex'
-
+import {
+  postTrippian
+}
+from '../../redux/apiIndex'
 
 function mapStateToProps(state) {
   return {
@@ -60,8 +63,8 @@ export default class AdminTrippianList extends Component {
   }
   handleSubmit(data) {
     console.log('posting data from form', data)
-      // store.dispatch(postDestination(data))
-    this.setAlert('success', 'Successfully submitted data', `${data.name} ${data.description}`)
+    store.dispatch(postTrippian(data))
+    this.setAlert('success', 'Successfully submitted data', data)
   }
   handleAlertDismiss() {
     this.setAlert()
@@ -91,7 +94,7 @@ export default class AdminTrippianList extends Component {
         }
 
         <div className="pull-right">
-          <button onClick={()=> this.setState({showForm: !this.state.showForm})} className="btn btn-primary">Create a Trip</button>
+          <button onClick={()=> this.setState({showForm: !this.state.showForm})} className="btn btn-primary">Create a Trippian</button>
         </div>
           {this.state.showForm && 
             <TrippianPostFormWidget onSubmit={this.handleSubmit.bind(this)} /> 

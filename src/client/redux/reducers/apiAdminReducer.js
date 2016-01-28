@@ -40,20 +40,30 @@ const initialState = new Map({
   currentUser: {
     name: '',
     email: '',
+    facebookId: null,
     picture: 'http://lorempixel.com/200/200/people/'
   },
   currentTrippian: {
     name: '',
+    email: '',
+    location: '',
+    mobile: '',
+    slogan: '',
+    website: '',
+    bio: '',
+    introduction: '',
+
+    availabileTime: '',
     numberOfReviews: 0,
     avarageRating: 0,
-    facebookId: 0,
-    email: '',
+    facebookId: null,
     picture: 'http://lorempixel.com/200/200/people/',
     reviews: [{
       rating: 0,
       title: '',
       content: ''
     }]
+
   },
   currentInquiry: {
     type: 'INQUIRY',

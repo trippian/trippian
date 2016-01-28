@@ -113,19 +113,20 @@ export const fetchGetTrippians = () => {
 }
 
 export const fetchGetTrippianById = (id) => {
-  const url = `${API_HOST}${routeConfig.trippian}/${id}`
+  const url = `${API_HOST}${routeConfig.user}/${id}`
   console.log('fetchGetTrippianById', url, id)
   return api.get(url)
 }
 
 export const fetchDeleteTrippianById = (id) => {
-  const url = `${API_HOST}${routeConfig.trippian}/${id}`
+  const url = `${API_HOST}${routeConfig.user}/${id}`
   console.log('fetchDeleteTrippianById', url, id)
   return api.deleteApi(url)
 }
 
 export const fetchPostTrippian = (data) => {
-  const url = `${API_HOST}${routeConfig.trippian}/${data.userId}`
+  data.trippian = true
+  const url = `${API_HOST}${routeConfig.user}`
   console.log('fetchPostTrippian', url, data)
   return api.post(url, data)
 }
