@@ -69,11 +69,11 @@ const initialState = new Map({
         displayName: ''
       },
       personCount: 5,
-      startDate: '',
+      startDate: '2015-02-14',
+      endDate: '2015-02-28',
       email: '',
       mobile: '',
-      endDate: '',
-      title: 'hi',
+      subject: 'hi',
       content: '',
       accepted: false
     }

@@ -12,7 +12,7 @@ class InquiryPostFormWidget extends Component {
   render() {
     const {
       fields: {
-        personCount, startDate, endDate, email, mobile, title, content
+        personCount, startDate, endDate, email, mobile, subject, content
       },
       handleSubmit
     } = this.props
@@ -41,8 +41,8 @@ class InquiryPostFormWidget extends Component {
         </div>
 
         <div className="form-group">
-          <label>Title</label>
-          <input type="text" className="form-control" placeholder="" value="title here..." {...title}/>
+          <label>Subject</label>
+          <input type="text" className="form-control" placeholder="" value="subject here..." {...subject}/>
         </div>
         <div className="form-group">
           <label>Content</label>
@@ -56,7 +56,7 @@ class InquiryPostFormWidget extends Component {
 
 InquiryPostFormWidget = reduxForm({
   form: 'inquiryPostForm', // a unique name for this form
-  fields: ['personCount', 'startDate', 'endDate', 'email', 'mobile', 'title', 'content']
+  fields: ['personCount', 'startDate', 'endDate', 'email', 'mobile', 'subject', 'content']
 })(InquiryPostFormWidget)
 
 
