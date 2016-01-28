@@ -40,3 +40,9 @@ export const SET_ADMIN_TRIPS = 'apiAdmin.SET_ADMIN_TRIPS'
 export const REMOVE_ADMIN_TRIP = 'apiAdmin.REMOVE_ADMIN_TRIP'
 export const ADD_ADMIN_TRIP = 'apiAdmin.ADD_ADMIN_TRIP'
 export const SET_ADMIN_CURRENT_TRIP = 'apiAdmin.SET_ADMIN_CURRENT_TRIP'
+
+// inquiries
+export const SET_ADMIN_INQUIRIES = 'apiAdmin.SET_ADMIN_INQUIRIES'
+export const REMOVE_ADMIN_INQUIRY = 'apiAdmin.REMOVE_ADMIN_INQUIRY'
+export const ADD_ADMIN_INQUIRY = 'apiAdmin.ADD_ADMIN_INQUIRY'
+export const SET_ADMIN_CURRENT_INQUIRY = 'apiAdmin.SET_ADMIN_CURRENT_INQUIRY'

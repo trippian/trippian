@@ -70,8 +70,9 @@ export default class AdminUserList extends Component {
       }
     })
   }
+
   render() {
-    console.log('rendering admint', this.props.users)
+    console.log('rendering admin user', this.props.users)
     const {
       type, title, message
     } = this.state.alert

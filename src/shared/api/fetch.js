@@ -11,7 +11,7 @@ const get = (url) => {
       if (res.status >= 400) {
         throw new Error('Bad response from server')
       }
-      console.log('*** got data from fetch', res)
+      // console.log('*** got data from fetch', res)
       return res.json()
     })
     .catch(function (error) {
