@@ -4,14 +4,14 @@ import React, {
 from 'react'
 
 import {
-  JumbotronDestinationWidget, CarouselWidget, SectionHeaderWidget, TrippianListWidget
+  JumbotronDestinationWidget, CarouselWidget, SectionHeaderWidget, DestinationListWidget
 }
 
 from '../../components/index'
 
 
-const popTrippianTitle = 'Popular Trippians'
-const popTrippianSubTitle = 'Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur.'
+const popTrippianTitle = 'Popular Destinations'
+const popTrippianSubTitle = 'Find something past Trippees loved!'
 
 export default class DestinationDetail extends Component {
   constructor(props) {
@@ -38,7 +38,7 @@ export default class DestinationDetail extends Component {
               <div className="row section">
                 <SectionHeaderWidget title={popTrippianTitle} subTitle={popTrippianSubTitle} />
                 <div className="section-body">
-                  <TrippianListWidget />
+                  <DestinationListWidget />
                 </div>
               </div>
           </div>
