@@ -4,7 +4,7 @@ import React, {
 from 'react'
 
 import {
-  JumbotronDestinationWidget, CarouselWidget, SectionHeaderWidget, DestinationListWidget
+  JumbotronDestinationWidget, CarouselWidget, SectionHeaderWidget, TripListWidget
 }
 
 from '../../components/index'
@@ -38,7 +38,7 @@ export default class DestinationDetail extends Component {
               <div className="row section">
                 <SectionHeaderWidget title={popTrippianTitle} subTitle={popTrippianSubTitle} />
                 <div className="section-body">
-                  <DestinationListWidget />
+                  <TripListWidget />
                 </div>
               </div>
           </div>
