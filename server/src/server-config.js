@@ -1,9 +1,13 @@
-import express from 'express';
-import db from './db/db';
-import middleware from './middleware/middleware';
+import express from 'express'
+import db from './db/db'
+import middleware from './middleware/middleware'
+import http from 'http'
+// import socket from './socket/socket'
 
-let app = express();
+let app = express()
+let server = http.Server(app)
 
-middleware(app, express);
+// socket(server)
+middleware(app)
 
-export default app;
+export default server

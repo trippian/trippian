@@ -1,15 +1,18 @@
 import {
-  SET_DESTINATIONS, ADD_DESTINATION,
-  SET_TRIPPIANS, GET_DESTINATIONS_FAIL, GET_DESTINATION_BY_ID, GET_TRIPPIAN_BY_ID, GET_DESTINATIONS, GET_TRIPPIANS,
   SET_LOCALE, SET_LOCALE_MESSAGES, SET_USERNAME, SET_DISPLAYNAME,
-  SET_ADMIN_DESTINATIONS, SET_ADMIN_TRIPPIANS, ADD_ADMIN_DESTINATION,
-  REMOVE_ADMIN_DESTINATION, REMOVE_DESTINATION,
-  SET_ADMIN_CURRENT_DESTINATION,
-  ADD_ADMIN_TRIPPIAN, REMOVE_ADMIN_TRIPPIAN, SET_ADMIN_CURRENT_TRIPPIAN,
+
+  SET_DESTINATIONS, SET_DESTINATION
+, ADD_DESTINATION, GET_DESTINATIONS_FAIL, REMOVE_DESTINATION,
+
+  SET_TRIPPIANS, GET_TRIPPIANS, GET_TRIPPIAN_BY_ID, REMOVE_TRIPPIAN, SET_TRIPPIAN,
+
+  SET_ADMIN_DESTINATIONS, ADD_ADMIN_DESTINATION, REMOVE_ADMIN_DESTINATION, SET_ADMIN_CURRENT_DESTINATION,
+  SET_ADMIN_TRIPPIANS, ADD_ADMIN_TRIPPIAN, REMOVE_ADMIN_TRIPPIAN, SET_ADMIN_CURRENT_TRIPPIAN,
   SET_ADMIN_USERS, ADD_ADMIN_USER, REMOVE_ADMIN_USER, SET_ADMIN_CURRENT_USER,
   SET_ADMIN_TRIPS, ADD_ADMIN_TRIP, REMOVE_ADMIN_TRIP, SET_ADMIN_CURRENT_TRIP,
   SET_ADMIN_INQUIRIES, ADD_ADMIN_INQUIRY, REMOVE_ADMIN_INQUIRY, SET_ADMIN_CURRENT_INQUIRY
 }
+
 from './actionTypes'
 
 // appState related
@@ -88,6 +91,15 @@ export function setDestinations(destinations) {
     }
   }
 }
+export function setDestination(destination) {
+  return {
+    type: SET_DESTINATION,
+    payload: {
+      destination
+    }
+  }
+}
+
 export function removeDestination(id) {
   return {
     type: REMOVE_DESTINATION,
@@ -102,6 +114,16 @@ export function addDestination(destination) {
     type: ADD_DESTINATION,
     payload: {
       destination
+    }
+  }
+}
+// Trippian
+
+export function setTrippian(trippian) {
+  return {
+    type: SET_TRIPPIAN,
+    payload: {
+      trippian
     }
   }
 }
@@ -216,11 +238,11 @@ export function setAdminCurrentUser(user) {
 }
 
 // trip 
-export function setAdminTrips(trip) {
+export function setAdminTrips(trips) {
   return {
     type: SET_ADMIN_TRIPS,
     payload: {
-      trip
+      trips
     }
   }
 }
@@ -251,11 +273,11 @@ export function setAdminCurrentTrip(trip) {
 }
 
 // inquiry
-export function setAdminInquirys(inquiry) {
+export function setAdminInquiries(inquiries) {
   return {
     type: SET_ADMIN_INQUIRIES,
     payload: {
-      inquiry
+      inquiries
     }
   }
 }

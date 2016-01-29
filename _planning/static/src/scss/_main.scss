@@ -68,6 +68,9 @@ main {
         width: 100%;
         position: absolute;
         bottom: 0;
+        a {
+            color: #fff;
+        }
     }
     .main-content-container {
         margin-top: 60px;
@@ -173,5 +176,29 @@ footer {
                 .star-rating {}
             }
         }
+    }
+}
+
+// widgets
+.login-button-widget {
+    a {
+        color: white;
+        margin-bottom: 8px;
+        min-width: 200px;
+        text-align: left;
+        i {
+            padding-right: 8px;
+            margin-right: 8px;
+            // border-right: 1px solid $gray-lighter;
+        }
+    }
+    &:hover {
+        color: $primary-color-light;
+    }
+    .facebook {
+        background-color: #2d4373;
+    }
+    .google {
+        background: #c23321;
     }
 }

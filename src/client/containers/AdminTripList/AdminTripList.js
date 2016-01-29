@@ -4,7 +4,7 @@ import React, {
 from 'react'
 
 import {
-  JumbotronWidget
+  JumbotronWidget, TripPostFormWidget
 }
 from '../../components/index'
 import {
@@ -26,7 +26,10 @@ import {
 
 }
 from '../../redux/apiAdminIndex'
-
+import {
+  postTrip
+}
+from '../../redux/apiIndex'
 
 function mapStateToProps(state) {
   return {
@@ -40,6 +43,7 @@ export default class AdminTripList extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      showForm: false,
       alert: {
         type: 'success',
         title: '',
@@ -61,6 +65,12 @@ export default class AdminTripList extends Component {
   handleAlertDismiss() {
     this.setAlert()
   }
+  handleSubmit(data) {
+    console.log('posting data from form', data)
+    store.dispatch(postTrip(data))
+    this.setAlert('success', 'Successfully submitted data', `${data.title} ${data.destination}`)
+  }
+
   setAlert(type = 'success', title = '', message = '') {
     this.setState({
       alert: {
@@ -85,20 +95,42 @@ export default class AdminTripList extends Component {
         }
 
         <div className="pull-right">
-          <Link className="btn btn-primary" to='/'>Create a User(disabled)</Link>
+          <button onClick={()=> this.setState({showForm: !this.state.showForm})} className="btn btn-primary">Create a Trip</button>
         </div>
+          {this.state.showForm && 
+            <TripPostFormWidget onSubmit={this.handleSubmit.bind(this)} /> 
+          }
+
           <br/>
         <h3>Trip List</h3>
         <Table striped bordered condensed hover>
             <thead>
               <tr>
                 <th>#</th>
+                <th>Id</th>
                 <th>Name & Link</th>
+                <th>Destination</th>
                <th>Description</th>
                <th>Action</th>
               </tr>
             </thead>
             <tbody> 
+              {this.props.trips.map((trip, key) => {
+                return  (
+                 <tr key={key}>
+                  <td>{key+1}</td>
+                  <td><Link to={`admin/trip/${trip.id}`}>{trip.id}</Link></td>
+                  <td>{trip.destination}</td>
+                  <td>{trip.title}</td>
+                  <td>{trip.summary}</td>
+                  <td>  
+                    <a onClick={this.handleDelete.bind(this, trip.id)}><span aria-hidden="true" className="glyphicon glyphicon-remove" ></span></a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <Link to={`admin/trip/${trip.id}/edit`}><span aria-hidden="true" className="glyphicon glyphicon-pencil" ></span></Link>
+                  </td>
+                </tr>
+                )
+              })} 
             </tbody>
           </Table>
 

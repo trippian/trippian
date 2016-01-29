@@ -1,9 +1,9 @@
 import React from 'react'
 
-let getStars = function(starNum){
-  let starsHTML = [];
-  for (var i = 0; i < starNum; i++) {
-    starsHTML.push(<i className="fa fa-star" key={i}></i>);
+let getStars = function (starNum) {
+  let starsHTML = []
+  for (let i = 0; i < starNum; i++) {
+    starsHTML.push(<i className="fa fa-star" key={i}></i>)
   }
   return starsHTML
 }
@@ -11,9 +11,11 @@ let getStars = function(starNum){
 const StarRatingWidget = ({
   stars = 2
 }) => {
+  const noStars = stars === 0
+
   return (
     <span className="star-rating">
-      {getStars(stars)}
+      {noStars ? <span>This is no rating yet</span> : getStars(stars)}
     </span>
   )
 }

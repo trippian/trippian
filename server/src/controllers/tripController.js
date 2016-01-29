@@ -6,6 +6,7 @@ export default {
       Trip.createNewTrip(req.params.userId, req.body)
         .then((newTrip) => {
           if (newTrip) {
+            // newTrip.userId
             console.log(newTrip)
             res.json(newTrip)
           }

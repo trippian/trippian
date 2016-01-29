@@ -57,8 +57,15 @@ export default {
         })
     }
   },
+  userPost: (req, res, next) => {
+    if(req.body) {
+      User.createUser(req.body)
+        .then(createdUser => {
+          res.json(createdUser)
+        })
+    }
+  },
   userPut: (req, res, next) => {
-    console.log(req.body)
     if (req.params.userId && req.body) {
       User.updateUser(req.params.userId, req.body)
         .then((updatedUser) => {

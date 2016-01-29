@@ -1,7 +1,8 @@
 import React from 'react'
 
 import {
-  StarRatingWidget
+  StarRatingWidget, JumbotronTitleWidget
+
 }
 
 from '../../components/index'

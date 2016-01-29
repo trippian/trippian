@@ -5,8 +5,10 @@ import {
 from 'react-router'
 
 import {
-  App, Home, About, DestinationDetail, DestinationPost, InquiryAdd, InquiryList,
-  InquiryDetail, JoinUs, Login, NotFound, Press,
+  App, Home, About, JoinUs, Login, NotFound, Press,
+  Destination, DestinationDetail, DestinationPost, Contact,
+  InquiryAdd, InquiryDetail, InquiryList,
+  Trippian,
   Terms, TrippianDetail, TrippianSignUp, TrippianList, TrippianEdit, IntlDemo,
   Admin, AdminDestinationList, AdminDestinationListItem, AdminDestinationListItemEdit,
   AdminTrippianList, AdminTrippianListItem, AdminTrippianListItemEdit, AdminInquiryList, AdminTripList,
@@ -21,10 +23,8 @@ export default (
   <Router history={browserHistory}>
         <Route component={App} path="/">
             <Route component={About}  path="about" />
-            <Route component={DestinationDetail} path="destination/:id" />
             <Route component={DestinationPost} path="destination-post" />
             <Route component={JoinUs} path="join-us"  />
-            <Route component={InquiryAdd} path="contact"  />
             <Route component={InquiryDetail} path="inquiry/:id"  />
             <Route component={InquiryList} path="my-inquiries"  />
             <Route component={IntlDemo} path="intl"  />
@@ -32,7 +32,17 @@ export default (
             <Route component={NotFound} path="not-found"  />
             <Route component={Press} path="press"  />
             <Route component={Terms} path="terms"  />
-            <Route component={TrippianDetail} path="trippian/:id" />
+
+            <Route component={Destination} path="destination/:id" >
+              <Route component={Contact} path="contact"  />
+              <IndexRoute component={DestinationDetail}/>
+            </Route>
+
+            <Route component={Trippian} path="trippian/:id" >
+              <Route component={Contact} path="contact"  />
+              <IndexRoute component={TrippianDetail}/>
+            </Route>
+
             <Route component={TrippianSignUp} path="become-a-trippian" />
             <Route component={TrippianList} path="trippian" />
             <Route component={TrippianEdit} path="trippian-edit"  />
@@ -42,21 +52,22 @@ export default (
                 <Route component={AdminTrippianListItem} path="trippian/:id" />
                 <Route component={AdminTrippianListItemEdit} path="trippian/:id/edit" />
                 
+
+                <Route component={AdminTripList} path="trip"  />
+                <Route component={AdminTripListItem} path="trip/:id"  />
+                <Route component={AdminTripListItemEdit} path="trip/:id/edit"  />
+
+
                 <Route component={AdminDestinationList} path="destination" />
                 <Route component={AdminDestinationListItem} path="destination/:id" />
                 <Route component={AdminDestinationListItemEdit} path="destination/:id/edit" />
 
                 <Route component={AdminInquiryList} path="inquiry"  />
-                <Route component={AdminInquiryListItem} path="inquiry:/id"  />
-                <Route component={AdminInquiryListItemEdit} path="inquiry/:id/edit"  />
-
-                <Route component={AdminTripList} path="trip"  />
-                <Route component={AdminTripListItem} path="trip:/id"  />
-                <Route component={AdminTripListItemEdit} path="trip/:id/edit"  />
-
+                // <Route component={AdminInquiryListItem} path="inquiry/:id"  />
+                // <Route component={AdminInquiryListItemEdit} path="inquiry/:id/edit"  />
 
                 <Route component={AdminUserList} path="user"  />
-                <Route component={AdminUserListItem} path="user:/id"  />
+                <Route component={AdminUserListItem} path="user/:id"  />
                 <Route component={AdminUserListItemEdit} path="user/:id/edit"  />
 
                 <IndexRoute component={AdminDestinationList}/>

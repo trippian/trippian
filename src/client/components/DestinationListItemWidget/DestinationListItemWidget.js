@@ -11,15 +11,14 @@ const styles = {
 }
 
 const DestinationListItemWidget = ({
-  destinationName, destinationImage, id
+  destinationName, id
 }) => {
   return (
-    <div className="col-xs-12 col-sm-6 col-md-4 popular-destinations-item
-    ">  
+    <div className="col-xs-12 col-sm-6 col-md-4 popular-destinations-item">  
         <Link to={`destination/${id}`} className="thumbnail text-center" style = {
             styles.backgroundImage
             }>
-            <span>{destinationName}</span>
+            {destinationName}
         </Link>
       </div>
   )

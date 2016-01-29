@@ -9,11 +9,11 @@ export default {
 
   API_HOST: 'http://localhost:4000/api/',
   routeConfig: {
-    trippian: 'trippian/',
-    destination: 'destination/',
-    user: 'user/',
-    trip: 'trip/',
-    inquiry: 'inquiry/'
+    trippian: 'trippian',
+    destination: 'destination',
+    user: 'user',
+    trip: 'trip',
+    inquiry: 'inquiry'
   },
 
   // general page titles 

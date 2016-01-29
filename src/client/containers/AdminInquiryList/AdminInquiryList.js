@@ -4,7 +4,7 @@ import React, {
 from 'react'
 
 import {
-  JumbotronWidget
+  InquiryPostFormWidget, AdminInquiryDetailWidget
 }
 from '../../components/index'
 import {
@@ -15,7 +15,10 @@ import {
   Link
 }
 from 'react-router'
-
+import {
+  bindActionCreators
+}
+from 'redux'
 import {
   connect
 }
@@ -25,7 +28,14 @@ import {
   getAdminInquiries, deleteAdminInquiryById
 }
 from '../../redux/apiAdminIndex'
-
+import {
+  postInquiry
+}
+from '../../redux/apiIndex'
+import {
+  setAdminCurrentInquiry
+}
+from '../../redux/actionCreators'
 
 function mapStateToProps(state) {
   return {
@@ -39,16 +49,40 @@ export default class AdminInquiryList extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      showForm: false,
       alert: {
         type: 'success',
         title: '',
         message: ''
+      },
+      currentInquiry: {
+        start: 0,
+        end: 1,
+        properties: {
+          createdAt: '',
+          senderId: 0,
+          receiverId: 0,
+          personCount: 5,
+          startDate: '2015-02-14',
+          endDate: '2015-02-28',
+          mobile: '',
+          email: '',
+          subject: 'hi',
+          content: '',
+          accepted: false
+        }
       }
+
     }
   }
 
   componentDidMount() {
     store.dispatch(getAdminInquiries())
+  }
+
+  componentWillReceiveProps(newProps) {
+    console.log('inside  will receive props', newProps)
+
   }
   handleDelete(id) {
     console.log('deleting inquiry called', id)
@@ -56,9 +90,23 @@ export default class AdminInquiryList extends Component {
     this.setAlert('success', 'Successfully deleted data', id)
 
   }
+  handleShow(index) {
+    this.setState({
+      currentInquiry: this.props.inquiries[index]
+    })
+    console.log('show current inquiry called', index, 'before', this.props.inquiries[index])
+  }
+
   handleAlertDismiss() {
     this.setAlert()
   }
+
+  handleSubmit(data) {
+    console.log('posting data from form', data)
+    store.dispatch(postInquiry(data))
+    this.setAlert('success', 'Successfully submitted data')
+  }
+
   setAlert(type = 'success', title = '', message = '') {
     this.setState({
       alert: {
@@ -69,6 +117,7 @@ export default class AdminInquiryList extends Component {
     })
   }
   render() {
+    console.log('inside render', this.props.inquiries)
     const {
       type, title, message
     } = this.state.alert
@@ -82,16 +131,22 @@ export default class AdminInquiryList extends Component {
         }
 
         <div className="pull-right">
-          <Link className="btn btn-primary" to='destination-post'>Create an Inquiry </Link>
+          <button onClick={()=> this.setState({showForm: !this.state.showForm})} className="btn btn-primary">Create a Inquiry</button>
         </div>
+
+          {this.state.showForm && 
+            <InquiryPostFormWidget onSubmit={this.handleSubmit.bind(this)} /> 
+          }
           <br/>
         <h3>Inquiry List</h3>
         <Table striped bordered condensed hover>
             <thead>
               <tr>
                 <th>#</th>
-                <th>Name & Link</th>
-               <th>Description</th>
+                <th>Id</th>
+                <th>Sender -> Receiver</th>
+               <th>Subject</th>
+               <th>Content</th>
                <th>Action</th>
               </tr>
             </thead>
@@ -100,25 +155,49 @@ export default class AdminInquiryList extends Component {
               return  (
                <tr key={key}>
                 <td>{key+1}</td>
-                <td><Link to={`admin/inquiry/${inquiry.id}`}>{inquiry.inquiryName}</Link></td>
-                <td>{inquiry.inquiryDescription}</td>
+                <td>{inquiry.id}</td>
+                <td>{inquiry.start} -> {inquiry.end}</td>
+                <td>{inquiry.properties.subject}</td>
+                <td>{inquiry.properties.content}</td>
                 <td>  
+                   <button onClick={this.handleShow.bind(this, key)}>show</button>
+
                   <a onClick={this.handleDelete.bind(this, inquiry.id)}><span aria-hidden="true" className="glyphicon glyphicon-remove" ></span></a>
                   &nbsp;&nbsp;&nbsp;&nbsp;
                   <Link to="admin/inquiry/58/edit"><span aria-hidden="true" className="glyphicon glyphicon-pencil" ></span></Link>
                 </td>
               </tr>
               )
+              // return  (
+              //  <tr key={key}>
+              //   <td>{key+1}</td>
+              //   <td>{inquiry.id}</td>
+              //   <td>{inquiry.start}</td>
+              //   <td><Link to={`admin/inquiry/${inquiry.properties.trippianId}`}>{inquiry.properties.trippianId}</Link></td>
+              //   <td>{inquiry.properties.subject}</td>
+              //   <td>{inquiry.properties.content}</td>
+              //   <td>  
+              //     <a onClick={this.handleDelete.bind(this, inquiry.id)}><span aria-hidden="true" className="glyphicon glyphicon-remove" ></span></a>
+              //     &nbsp;&nbsp;&nbsp;&nbsp;
+              //     <Link to="admin/inquiry/58/edit"><span aria-hidden="true" className="glyphicon glyphicon-pencil" ></span></Link>
+              //   </td>
+              // </tr>
+              // )
             })} 
             </tbody>
           </Table>
-
+          <AdminInquiryDetailWidget {...this.state.currentInquiry.properties} />
       </div>
     )
   }
 }
+
+
+
 AdminInquiryList.propTypes = {
+  currentInquiry: PropTypes.object,
   inquiries: PropTypes.object
+    // setAdminCurrentInquiry: PropTypes.func.isRequired
 }
 
 AdminInquiryList.displayName = 'AdminInquiryList Page'

@@ -41,6 +41,7 @@ export default function (router) {
   router.get('/api/user/:userId', userController.userGet)
   router.get('/api/user', userController.allUserGet)
   router.get('/api/trippian', userController.trippianGet)
+  router.post('/api/user', userController.userPost)
   router.put('/api/user/:userId', userController.userPut)
   router.delete('/api/user/:userId', userController.userDelete)
 

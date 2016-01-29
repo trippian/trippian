@@ -43,6 +43,7 @@ const NavWidget = ({
             <LocaleMenuWidget className="nav navbar-nav navbar-right list-inline"/>
             <ul className="nav navbar-nav navbar-right">
                 <li>{currentPath === '/'  ? null : renderSearchForm() }</li>
+                <li><Link to="login">Login </Link></li>
                 <li>
                     <Link to='become-a-trippian' className="btn btn-bordered">
                         <FormattedMessage 

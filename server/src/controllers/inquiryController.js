@@ -24,10 +24,10 @@ export default {
   },
   inquiryPost: (req, res, next) => {
     let postDetails = req.body
-    let trippianId = req.params.trippianId 
-    let userId = req.body.userId 
+    let trippianId = parseInt(req.params.trippianId)
+    let sender = req.body.senderId 
     if (postDetails) {
-      Inquiry.createInquiry(userId, trippianId, postDetails)
+      Inquiry.createInquiry(sender, trippianId, postDetails)
         .then((createdInquiry) => {
           console.log(createdInquiry)
           res.json(createdInquiry)

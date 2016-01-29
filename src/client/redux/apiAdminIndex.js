@@ -9,17 +9,19 @@ import {
 
   getAdminUsers,
   getAdminUserById,
-  deleteAdminUsersById,
+  deleteAdminUserById,
 
-  // getAdminTrips,
-  // getAdminTripById,
-  // deleteAdminTripsById,
+  getAdminTrips,
+  getAdminTripById,
+  deleteAdminTripById,
 
   getAdminInquiries,
   getAdminInquiryById,
-  deleteAdminInquirysById
+  deleteAdminInquiryById
 }
 from './reducers/apiAdminReducer'
+
+// will move the functions inside apiAdminReducer into different files
 
 export default {
   getAdminDestinations,
@@ -32,14 +34,14 @@ export default {
 
   getAdminUsers,
   getAdminUserById,
-  deleteAdminUsersById,
+  deleteAdminUserById,
 
-  // getAdminTrips,
-  // getAdminTripById,
-  // deleteAdminTripsById,
+  getAdminTrips,
+  getAdminTripById,
+  deleteAdminTripById,
 
   getAdminInquiries,
   getAdminInquiryById,
-  deleteAdminInquirysById
+  deleteAdminInquiryById
 
 }

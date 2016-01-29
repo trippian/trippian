@@ -4,17 +4,22 @@ import { updateStringObject } from '../../middleware/utils'
 
 export default {
   // function for a user to create an inquiry
-  createInquiry: (trippeeId, trippianId, inquiryProps) => {
-    inquiryProps.createdAt = Date();
+  createInquiry: (senderId, receiverId, inquiryProps) => {
+    inquiryProps.createdAt = Date()
+    inquiryProps.receiverId = receiverId
     return new Promise((resolve, reject) => {
-      db.relateAsync(trippeeId, 'INQUIRY', trippianId, inquiryProps)
-        .then((inquiry) => {
-          if (inquiry) {
-            resolve(inquiry)
-          } else {
-            reject(new Error('inquiry could not be sent'))
-          }
-        })
+      if (senderId === receiverId) {
+        reject(new Error('user cannot make inquiry to self'))
+      } else {
+        db.relateAsync(senderId, 'INQUIRY', receiverId, inquiryProps)
+          .then((inquiry) => {
+            if (inquiry) {
+              resolve(inquiry)
+            } else {
+              reject(new Error('inquiry could not be sent'))
+            }
+          })
+      }
     })
   },
   // function that gets back all the inquiries given a trippian id
