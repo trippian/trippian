@@ -16,7 +16,6 @@ export default function (app) {
   let router = express.Router()
   let authRouter = express.Router()
 
-  PassportConnection(app, passport)
   app.use(morgan('dev'))
   app.use(json())
   app.use(urlencoded({extended:true}))
@@ -30,6 +29,8 @@ export default function (app) {
     resave: true,
     saveUninitialized: true
   }))
+
+  PassportConnection(app, passport)
   // not sure if i need this yet
   // app.use(flash())
   app.use(express.static(join(__dirname, '../../../deploy')))

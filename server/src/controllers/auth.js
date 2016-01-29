@@ -1,18 +1,18 @@
-const passport = require('passport');
-const User = require('../db/models/user');
-
-module.exports = {
-  facebook: passport.authenticate('facebook'),
-  facebookCallback: passport.authenticate('facebook', {failureRedirect: '/'}),
+export default {
 
   logout: function(req, res) {
     req.logout()
-    res.clearCookie('trippian cookie')
+    res.clearCookie('trippian')
     res.redirect('/')
   },
   // function that validates whether the user is logged in
   
-  validate: function(req, res, next) {
-    
+  validate: (req, res, next) => {
+    console.log('hi')
+
+    res.cookie('trippian', {
+      id: req.user.id,
+      name: req.user.name
+    })
   }
 }

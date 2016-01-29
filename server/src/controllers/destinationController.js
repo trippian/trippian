@@ -127,7 +127,7 @@ export default {
         .catch((error) => {
           next(error)
         })
-    } else {
+    } else if (req.query === undefined) {
       Destination.getAllDestinations()
         .then((destinations) => {
           if (destinations) {
