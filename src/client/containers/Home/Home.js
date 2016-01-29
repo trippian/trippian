@@ -103,7 +103,6 @@ class Home extends Component {
     // demo how to use 
     this.props.setUsername('James')
     this.props.setDisplayName('James Zhang')
-
   }
 
   render() {
