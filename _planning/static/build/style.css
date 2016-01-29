@@ -8034,6 +8034,24 @@ footer {
           width: 100%;
           margin-left: 16px; }
 
+.login-button-widget a {
+  color: white;
+  margin-bottom: 8px;
+  min-width: 200px;
+  text-align: left; }
+  .login-button-widget a i {
+    padding-right: 8px;
+    margin-right: 8px; }
+
+.login-button-widget:hover {
+  color: #FFCCBC; }
+
+.login-button-widget .facebook {
+  background-color: #2d4373; }
+
+.login-button-widget .google {
+  background: #c23321; }
+
 .navbar {
   position: absolute;
   top: 0;

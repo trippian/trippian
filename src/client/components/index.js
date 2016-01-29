@@ -5,6 +5,7 @@
  *
  */
 
+export AdminInquiryDetailWidget from './AdminInquiryDetailWidget/AdminInquiryDetailWidget'
 export AvatarWidget from './AvatarWidget/AvatarWidget'
 export AlertAutoDismissableWidget from './AlertAutoDismissableWidget/AlertAutoDismissableWidget'
 export CarouselWidget from './CarouselWidget/CarouselWidget'
@@ -36,8 +37,8 @@ export JumbotronInquiryWidget from './JumbotronInquiryWidget/JumbotronInquiryWid
 export JumbotronDestinationWidget from './JumbotronDestinationWidget/JumbotronDestinationWidget'
 export JumbotronTrippianWidget from './JumbotronTrippianWidget/JumbotronTrippianWidget'
 export LikeCounterWidget from './LikeCounterWidget/LikeCounterWidget'
-export LocaleMenuWidget
-from './LocaleMenuWidget/LocaleMenuWidget'
+export LocaleMenuWidget from './LocaleMenuWidget/LocaleMenuWidget'
+export LoginButtonsWidget from './LoginButtonsWidget/LoginButtonsWidget'
 export LoginFormWidget from './LoginFormWidget/LoginFormWidget'
 export NavUserMenuWidget from './NavUserMenuWidget/NavUserMenuWidget'
 export NavWidget from './NavWidget/NavWidget'
@@ -52,8 +53,6 @@ export StarRatingWidget from './StarRatingWidget/StarRatingWidget'
 export SendButtonIntl from './SendButtonIntl/SendButtonIntl'
 export TextIntroPlainWidget from './TextIntroPlainWidget/TextIntroPlainWidget'
 export TextIntroRichWidget from './TextIntroRichWidget/TextIntroRichWidget'
-export TripListWidget from './TripListWidget/TripListWidget'
-export TripListItemWidget from './TripListItemWidget/TripListItemWidget'
 export TrippianListWidget from './TrippianListWidget/TrippianListWidget'
 export TrippianListItemWidget from './TrippianListItemWidget/TrippianListItemWidget'
 export TrippianListRoundWidget from './TrippianListRoundWidget/TrippianListRoundWidget'

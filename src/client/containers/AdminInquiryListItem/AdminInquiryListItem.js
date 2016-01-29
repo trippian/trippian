@@ -1,3 +1,5 @@
+// not using this file now
+
 import React, {
   Component, PropTypes
 }
@@ -38,12 +40,12 @@ export default class AdminInquiryListItem extends Component {
   render() {
     console.log('***insider render', this.props.inquiry)
     const {
-      createdAt, senderId, receiverId, endDate, sender, subject, mobile, content, trippianId, startDate, email, personCount
-    } = this.props.inquiry.properties
+      senderId, receiverId, endDate, sender, subject, mobile, content, trippianId, startDate, email, personCount
+    } = this.props.inquiry[0].properties
     return (
       <div id="admin-destination-list-item-page">
         <h3> {name}</h3>
-        <p><b>createdAt:</b> {createdAt}</p>
+        
         <p><b>personCount:</b> {personCount}</p>
         <p><b>senderId:</b> {senderId}</p>
         <p><b>receiverId:</b> {receiverId}</p>

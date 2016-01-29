@@ -53,8 +53,8 @@ export default (
                 <Route component={AdminDestinationListItemEdit} path="destination/:id/edit" />
 
                 <Route component={AdminInquiryList} path="inquiry"  />
-                <Route component={AdminInquiryListItem} path="inquiry/:id"  />
-                <Route component={AdminInquiryListItemEdit} path="inquiry/:id/edit"  />
+                // <Route component={AdminInquiryListItem} path="inquiry/:id"  />
+                // <Route component={AdminInquiryListItemEdit} path="inquiry/:id/edit"  />
 
                 <Route component={AdminUserList} path="user"  />
                 <Route component={AdminUserListItem} path="user/:id"  />
