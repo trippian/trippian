@@ -1,7 +1,9 @@
 export default {
 
   logout: function(req, res) {
-    req.logout()
+    console.log(req.session)
+    // req.logout()
+    req.session.destroy()
     res.clearCookie('trippian')
     res.redirect('/')
   },

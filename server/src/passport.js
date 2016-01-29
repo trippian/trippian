@@ -1,22 +1,18 @@
 import facebook from 'passport-facebook'
 import google from 'passport-google-oauth'
 import User from './db/models/user'
-import passport from 'passport'
+// import passport from 'passport'
 const FacebookStrategy = facebook.Strategy
 const GoogleStrategy = google.OAuth2Strategy
 require('dotenv').config()
 
-export default function (app) {
+export default function (app, passport) {
   passport.serializeUser(function(user, done) {
     done(null, user)
   })
 
   passport.deserializeUser((user, done) => {
     // after we write user model, we will search for that user node
-    // User.getUserById(id)
-    //   .then(user => {
-    //     done(null, user)
-    //   })
     done(null, user)
   })
 
@@ -32,7 +28,7 @@ export default function (app) {
         User.getUserByParameter('facebookId', profile.id)
           .then(function(user) {
             if(user.length) {
-              console.log('user already exists as ', user)
+              console.log('user already exists as ', user[0])
             } else {
               User.createUser({
                 name: profile.displayName,
@@ -62,7 +58,7 @@ export default function (app) {
         User.getUserByParameter('googleId', idString)
           .then(user => {
             if (user.length) {
-              console.log('user exists as: ', user)
+              console.log('user exists as: ', user[0])
             } else {
               User.createUser({
                 googleId: idString,
@@ -80,6 +76,6 @@ export default function (app) {
     }
   ))
 
-  app.use(passport.initialize())
-  app.use(passport.session())
+  // app.use(passport.initialize())
+  // app.use(passport.session())
 }
