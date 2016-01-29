@@ -4,7 +4,8 @@ import { updateStringObject } from '../../middleware/utils'
 import nodemailer from 'nodemailer'
 require('dotenv').config()
 
-
+// using node mailer to send email notifications when a user
+// first signs up
 const transporter = nodemailer.createTransport({
   service: 'Gmail',
   auth: {
@@ -65,6 +66,7 @@ export default {
     return new Promise((resolve, reject) => {
       db.saveAsync(details, 'User')
         .then(createdUser => {
+          // creating our mail options
           let mailOptions = {
             from: 'Trippian <trippianApp@gmail.com',
             to: details.email,
@@ -72,6 +74,7 @@ export default {
             text: `Welcome ${details.name}`,
             html: `<h2>Welcome ${details.name}</h2> <p>You can now plan your trips all over the world!</p>`
           }
+          // sending the email using nodemailer
           transporter.sendMail(mailOptions, function(err, info) {
             if (err) {
               console.error(err)
@@ -200,6 +203,7 @@ export default {
         })
     })
   },
+  // gets back all users so the admin user can see all the users
   getAllUsers: () => {
     return new Promise((resolve, reject) => {
       let cypher = `match (u:User) return u`
@@ -214,6 +218,7 @@ export default {
         })
     })
   },
+  // function for deleting users given the userId
   deleteUser: (userId) => {
     return new Promise((resolve, reject) => {
       let cypher = `match (u:User) where id(u)=${userId} detach delete u;`
