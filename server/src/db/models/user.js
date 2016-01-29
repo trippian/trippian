@@ -1,6 +1,17 @@
 import Promise from 'bluebird'
 import db from '../db'
 import { updateStringObject } from '../../middleware/utils'
+import nodemailer from 'nodemailer'
+require('dotenv').config()
+
+
+const transporter = nodemailer.createTransport({
+  service: 'Gmail',
+  auth: {
+    user: process.env.GMAIL_ACCOUNT,
+    pass: process.env.GMAIL_PWD
+  }
+})
 
 export default {
   // this function is used in passport to create a user in our db when they signup with fb
@@ -54,7 +65,20 @@ export default {
     return new Promise((resolve, reject) => {
       db.saveAsync(details, 'User')
         .then(createdUser => {
-          resolve(createdUser)
+          let mailOptions = {
+            from: 'Trippian <trippianApp@gmail.com',
+            to: details.email,
+            subject: 'Welcome to Trippian',
+            text: `Welcome ${details.name}`,
+            html: `<h2>Welcome ${details.name}</h2> <p>You can now plan your trips all over the world!</p>`
+          }
+          transporter.sendMail(mailOptions, function(err, info) {
+            if (err) {
+              console.error(err)
+            } else {
+              resolve(createdUser)
+            }
+          })
         })
     })
     .catch(error => {
