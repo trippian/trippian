@@ -5,7 +5,7 @@ import {
 from 'react-router'
 
 import {
-  ContactButtonWidget, StarRatingWidget
+  ContactButtonWidget, StarRatingWidget, JumbotronMetaAreaWidget
 }
 from '../index'
 
@@ -56,20 +56,34 @@ isMetad: will show/hide the meta area (full-length-container)
  */
 
 const JumbotronTrippianWidget = ({
-  isMetad = false, isNoContact = false, isTitled = false,
-    title = 'Contact', subTitle = 'Lorem ipsum dolor sit amet, consectetur adipisicing.'
+  isTitled = false, title = 'Contact', subTitle = 'Lorem ipsum dolor sit amet, consectetur adipisicing.',
+    isMetad = false, isNoContact = false, name = 'name', picture = 'http://lorempixel.com/200/200/animals/', averageRating = '3', slogan = 'slogan', id = 0
 }) => {
 
-  return ( < div className = "jumbotron"
+  const meta = {
+    isNoContact: isNoContact,
+    title: name,
+    picture: picture,
+    rating: averageRating,
+    subTitle: slogan,
+    titleLink: `trippian/${id}`,
+    contact: `trippian/${id}/contact`
+  }
+
+  return (
+
+    < div className = "jumbotron"
     style = {
       styles.backgroundImage
     } > {
       isTitled ? renderTitles(title, subTitle) : null
-    } {
-      isMetad ? renderMetaArea(isNoContact) : null
     }
 
-    < /div>
+    {
+      isMetad && < JumbotronMetaAreaWidget {...meta
+      }
+      />
+    } < /div>
   )
 }
 

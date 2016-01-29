@@ -13,8 +13,8 @@ export const REMOVE_DESTINATION = 'apiTrippian.REMOVE_DESTINATION'
 //Trippian
 export const SET_TRIPPIANS = 'apiTrippian.SET_TRIPPIANS'
 export const GET_TRIPPIANS = 'apiTrippian.GET_TRIPPIANS'
-
-//User 
+export const SET_TRIPPIAN = 'apiTrippian.SET_TRIPPIAN'
+  //User 
 
 //******admin 
 //destination
