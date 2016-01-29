@@ -7930,6 +7930,12 @@ a {
     color: #832a0e;
     text-decoration: none; }
 
+.btn-link {
+  color: #E64A19;
+  background-color: transparent;
+  border: none;
+  font-style: italic; }
+
 .active {
   color: #E64A19 !important; }
 
@@ -8033,8 +8039,7 @@ footer {
             margin: 8px;
             margin-top: 26px; }
         .jumbotron .full-length-container .container .meta-info .text-intro {
-          width: 100%;
-          margin-left: 16px; }
+          width: 100%; }
 
 .login-button-widget a {
   color: white;
@@ -8053,6 +8058,26 @@ footer {
 
 .login-button-widget .google {
   background: #c23321; }
+
+.vote {
+  text-align: center;
+  color: #E64A19; }
+  .vote .total-votes {
+    font-size: 24px;
+    font-weight: bold;
+    display: block;
+    margin-top: 16px;
+    margin-bottom: 8px; }
+
+.trip-list-item {
+  border-bottom: 1px dotted #B6B6B6;
+  padding: 16px 0; }
+  .trip-list-item .sub-title {
+    font-size: 14px;
+    color: #727272; }
+  .trip-list-item .feature-image {
+    margin-top: 10%;
+    width: 100%; }
 
 .navbar {
   position: absolute;
