@@ -47,28 +47,33 @@ export default class TrippianDetail extends Component {
     } = this.props.trippian
 
     return (
-      <div>
-              <div className="section">
-                <div className="section-header">
-                    <h3>Bio</h3>
-                    <TextIntroPlainWidget text={bio} />
+      <div id="trippian-profile-page">
+        <JumbotronTrippianWidget isMetad {...this.props.trippian} />
+        <div className="container main-content-container">
+            <div className="col-sm-12 col-md-8 col-md-offset-2 content-container">
+                <div className="section">
+                    <div className="section-header">
+                        <h3>Bio</h3>
+                        <TextIntroPlainWidget text={bio} />
+                    </div>
                 </div>
-            </div>
-            <div className="section">
-                <div className="section-header">
-                    <h3>My Trips</h3>
+                <div className="section">
+                    <div className="section-header">
+                        <h3>My Trips</h3>
+                    </div>
+                    <div className="section-body">
+                      <DummyRichTextWidget />
+                    </div>
                 </div>
-                <div className="section-body">
-                  <DummyRichTextWidget />
+                <div className="section review">
+                    <div className="section-header">
+                        <h3>Reviews</h3>
+                    </div>
+                    <ReviewListWidget />
                 </div>
-            </div>
-            <div className="section review">
-                <div className="section-header">
-                    <h3>Reviews</h3>
-                </div>
-                <ReviewListWidget />
             </div>
         </div>
+      </div>
     )
   }
 }

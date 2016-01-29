@@ -1,6 +1,7 @@
 import {
   SET_DESTINATIONS, SET_TRIPPIANS, GET_DESTINATIONS_FAIL, GET_DESTINATION_BY_ID, GET_TRIPPIAN_BY_ID, GET_DESTINATIONS, GET_TRIPPIANS,
-  ADD_DESTINATION, ADD_ADMIN_DESTINATION, REMOVE_DESTINATION
+  ADD_DESTINATION, ADD_ADMIN_DESTINATION, REMOVE_DESTINATION,
+  SET_TRIPPIAN
 }
 from '../actionTypes'
 import {
@@ -9,7 +10,8 @@ import {
   setTrippians, addTrippian, addAdminTrippian,
   setUsers, addUser, addAdminUser,
   setInquirys, addInquiry, addAdminInquiry,
-  setTrips, addTrip, addAdminTrip
+  setTrips, addTrip, addAdminTrip,
+  setTrip, setUser, setTrippian, setInquiry
 }
 from '../actionCreators'
 
@@ -17,9 +19,15 @@ import {
   Map
 }
 from 'immutable'
+
 import {
-  fetchGetTrippiansByCategory, fetchGetDestinationsByCategory, fetchDeleteDestinationById,
-  fetchPostDestination, fetchPostTrip, fetchPostUser, fetchPostInquiry, fetchPostTrippian
+  fetchGetDestinationsByCategory, fetchGetTrippiansByCategory,
+  fetchGetDestinations, fetchDeleteDestinationById, fetchGetDestinationById,
+  fetchGetTrippians, fetchDeleteTrippianById, fetchGetTrippianById,
+  fetchGetUsers, fetchDeleteUserById, fetchGetUserById,
+  fetchGetInquiries, fetchDeleteInquiryById, fetchGetInquiryByReceiverId,
+  fetchGetTrips, fetchDeleteTripById, fetchGetTripById
+
 }
 from '../../utils/apiTrippian'
 
@@ -28,7 +36,29 @@ const initialState = new Map({
   destinations: [],
   newDestinations: [],
   loaded: false,
-  error: ''
+  error: '',
+
+  trippian: {
+    name: '',
+    email: '',
+    location: '',
+    mobile: '',
+    slogan: '',
+    website: '',
+    bio: '',
+    introduction: '',
+
+    availabileTime: '',
+    numberOfReviews: 0,
+    avarageRating: 0,
+    facebookId: null,
+    picture: 'http://lorempixel.com/200/200/people/',
+    reviews: [{
+      rating: 0,
+      title: '',
+      content: ''
+    }]
+  }
 })
 
 export default function apiTrippianReducer(state = initialState, action) {
@@ -61,6 +91,12 @@ export default function apiTrippianReducer(state = initialState, action) {
       return state.merge(new Map({
         destinations
       }))
+
+    case SET_TRIPPIAN:
+      return state.merge(new Map({
+        trippian: action.payload.trippian
+      }))
+
     default:
       return state
   }
@@ -76,11 +112,71 @@ export function getPopularDestinations() {
       .catch(error => dispatch(apologize(error)))
   }
 }
-
 export function getPopularTrippians() {
   return (dispatch) => {
     return fetchGetTrippiansByCategory('popular')
       .then(trippians => dispatch(setTrippians(trippians)))
+      .catch(error => dispatch(apologize(error)))
+  }
+}
+
+// get One 
+export function getDestinationById(id) {
+  console.log('-- get a destination now', id)
+  return (dispatch) => {
+    return fetchGetDestinationById(id)
+      .then((destination) => {
+        console.log('--got it', destination)
+        dispatch(setDestination(destination))
+      })
+      .catch(error => dispatch(apologize(error)))
+  }
+}
+
+export function getTripById(id) {
+  console.log('-- get a Trip now', id)
+  return (dispatch) => {
+    return fetchGetTripById(id)
+      .then((trip) => {
+        console.log('--got it', trip)
+          // TODO: update once server is updated 
+        dispatch(setTrip(trip))
+      })
+      .catch(error => dispatch(apologize(error)))
+  }
+}
+
+export function getUserById(id) {
+  console.log('-- get a User now', id)
+  return (dispatch) => {
+    return fetchGetUserById(id)
+      .then((user) => {
+        console.log('--got user', user)
+        dispatch(setUser(user))
+      })
+      .catch(error => dispatch(apologize(error)))
+  }
+}
+export function getTrippianById(id) {
+  console.log('-- get a Trippian now', id)
+  return (dispatch) => {
+    return fetchGetTrippianById(id)
+      .then((trippian) => {
+        console.log('--got trippian', trippian)
+        dispatch(setTrippian(trippian))
+      })
+      .catch(error => dispatch(apologize(error)))
+  }
+}
+
+export function getInquiryById(id) {
+  console.log('-- get a Inquiry now', id)
+  return (dispatch) => {
+    return fetchGetInquiryByReceiverId(id)
+      .then((inquiry) => {
+        console.log('--got inquiry', inquiry)
+        dispatch(setInquiry(inquiry))
+      })
       .catch(error => dispatch(apologize(error)))
   }
 }
