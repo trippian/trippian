@@ -1,12 +1,12 @@
 import {
   SET_DESTINATIONS, SET_TRIPPIANS, GET_DESTINATIONS_FAIL, GET_DESTINATION_BY_ID, GET_TRIPPIAN_BY_ID, GET_DESTINATIONS, GET_TRIPPIANS,
   ADD_DESTINATION, ADD_ADMIN_DESTINATION, REMOVE_DESTINATION,
-  SET_TRIPPIAN
+  SET_TRIPPIAN, SET_DESTINATION
 }
 from '../actionTypes'
 import {
   apologize,
-  setDestinations, addDestination, addAdminDestination,
+  setDestinations, addDestination, addAdminDestination, setDestination,
   setTrippians, addTrippian, addAdminTrippian,
   setUsers, addUser, addAdminUser,
   setInquirys, addInquiry, addAdminInquiry,
@@ -22,11 +22,11 @@ from 'immutable'
 
 import {
   fetchGetDestinationsByCategory, fetchGetTrippiansByCategory,
-  fetchGetDestinations, fetchDeleteDestinationById, fetchGetDestinationById,
-  fetchGetTrippians, fetchDeleteTrippianById, fetchGetTrippianById,
-  fetchGetUsers, fetchDeleteUserById, fetchGetUserById,
-  fetchGetInquiries, fetchDeleteInquiryById, fetchGetInquiryByReceiverId,
-  fetchGetTrips, fetchDeleteTripById, fetchGetTripById
+  fetchGetDestinations, fetchDeleteDestinationById, fetchGetDestinationById, fetchPostDestination,
+  fetchGetTrippians, fetchDeleteTrippianById, fetchGetTrippianById, fetchPostTrippian,
+  fetchGetUsers, fetchDeleteUserById, fetchGetUserById, fetchPostUser,
+  fetchGetInquiries, fetchDeleteInquiryById, fetchGetInquiryByReceiverId, fetchPostInquiry,
+  fetchGetTrips, fetchDeleteTripById, fetchGetTripById, fetchPostTrip
 
 }
 from '../../utils/apiTrippian'
@@ -37,7 +37,12 @@ const initialState = new Map({
   newDestinations: [],
   loaded: false,
   error: '',
-
+  destination: {
+    feature: 'http://lorempixel.com/200/200/people/',
+    name: '',
+    whyVisit: '',
+    description: ''
+  },
   trippian: {
     name: '',
     email: '',
@@ -59,6 +64,7 @@ const initialState = new Map({
       content: ''
     }]
   }
+
 })
 
 export default function apiTrippianReducer(state = initialState, action) {
@@ -95,6 +101,10 @@ export default function apiTrippianReducer(state = initialState, action) {
     case SET_TRIPPIAN:
       return state.merge(new Map({
         trippian: action.payload.trippian
+      }))
+    case SET_DESTINATION:
+      return state.merge(new Map({
+        destination: action.payload.destination
       }))
 
     default:
@@ -241,7 +251,7 @@ export function postInquiry(data) {
   //TODO, update userId to global 
   data.senderId = 32
   data.trippianId = 31
-  console.log('-- posting a trip now', data)
+  console.log('-- posting a inquiry now', data)
   return (dispatch) => {
     return fetchPostInquiry(data)
       .then(inquiry => {

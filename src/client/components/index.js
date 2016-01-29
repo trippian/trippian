@@ -36,6 +36,8 @@ export JumbotronHomeWidget from './JumbotronHomeWidget/JumbotronHomeWidget'
 export JumbotronInquiryWidget from './JumbotronInquiryWidget/JumbotronInquiryWidget'
 export JumbotronDestinationWidget from './JumbotronDestinationWidget/JumbotronDestinationWidget'
 export JumbotronTrippianWidget from './JumbotronTrippianWidget/JumbotronTrippianWidget'
+export JumbotronTitleWidget
+ from './JumbotronTitleWidget/JumbotronTitleWidget'
 export JumbotronMetaAreaWidget from './JumbotronMetaAreaWidget/JumbotronMetaAreaWidget'
 export LikeCounterWidget from './LikeCounterWidget/LikeCounterWidget'
 export LocaleMenuWidget from './LocaleMenuWidget/LocaleMenuWidget'

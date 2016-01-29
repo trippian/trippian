@@ -2,21 +2,64 @@ import React, {
   Component, PropTypes
 }
 from 'react'
-
+import store from '../../redux/store'
 import {
-  InquiryAddFormWidget
+  postInquiry
+}
+from '../../redux/apiIndex'
+import {
+  Alert
+}
+from 'react-bootstrap'
+import {
+  InquiryPostFormWidget
 }
 from '../../components/index'
 
 export default class Contact extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      alert: {
+        type: 'success',
+        title: '',
+        message: ''
+      }
+    }
   }
 
+  handleAlertDismiss() {
+    this.setAlert()
+  }
+
+  handleSubmit(data) {
+    console.log('posting data from form', data)
+    store.dispatch(postInquiry(data))
+    this.setAlert('success', 'Successfully submitted inquiry')
+  }
+  setAlert(type = 'success', title = '', message = '') {
+    this.setState({
+      alert: {
+        type: type,
+        title: title,
+        message: message
+      }
+    })
+  }
   render() {
+    const {
+      type, title, message
+    } = this.state.alert
+
     return (
       <div>
-      <InquiryAddFormWidget />
+        {title !== '' && 
+          <Alert bsStyle={type} dismissAfter={5000} onDismiss={this.handleAlertDismiss.bind(this)}>
+            <h4>{title}</h4>
+            <p>{message}</p>
+          </Alert>
+        }
+        <InquiryPostFormWidget onSubmit={this.handleSubmit.bind(this)} /> 
       </div>
     )
   }
