@@ -67,6 +67,7 @@
     "lodash": "4.0.0",
     "lru-memoize": "1.0.0",
     "morgan": "^1.6.1",
+    "nodemailer": "^2.0.0",
     "passport": "^0.3.2",
     "passport-facebook": "^2.0.0",
     "passport-google-oauth": "^0.2.0",
