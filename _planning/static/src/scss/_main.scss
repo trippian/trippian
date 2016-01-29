@@ -32,6 +32,13 @@ a {
     }
 }
 
+.btn-link {
+    color: $primary-color-dark;
+    background-color: transparent;
+    border: none;
+    font-style: italic;
+}
+
 .active {
     color: $primary-color-dark !important;
 }
@@ -171,7 +178,7 @@ footer {
                 }
                 .text-intro {
                     width: 100%;
-                    margin-left: 16px;
+                    // margin-left: 16px;
                 }
                 .star-rating {}
             }
@@ -200,5 +207,40 @@ footer {
     }
     .google {
         background: #c23321;
+    }
+}
+
+.vote {
+    text-align: center;
+    color: $primary-color-dark;
+    .total-votes {
+        font-size: 24px;
+        font-weight: bold;
+        display: block;
+        margin-top: 16px;
+        margin-bottom: 8px;
+    }
+    .vote-buttons {
+        button {
+            // border: none;
+            // background-color: white;
+            span {
+                // background-color: white;
+            }
+        }
+    }
+}
+
+.trip-list-item {
+    border-bottom: 1px dotted $divider-color;
+    padding: 16px 0;
+    .sub-title {
+        font-size: 14px;
+        color: $secondary-text-color;
+    }
+    .feature-image {
+        margin-top: 10%;
+        width: 100%;
+        // min-height: 200px;
     }
 }

@@ -41,8 +41,23 @@ const initialState = new Map({
     feature: 'http://lorempixel.com/200/200/people/',
     name: '',
     whyVisit: '',
-    description: ''
+    description: '',
+    slogan: 'awesome city',
+    averageRating: 5,
+    popularTrips: [],
+    album: []
   },
+  // trip data 
+  // summary: "meet at 5 pm and go to sightglass",
+  // netVote: 0,
+  // totalVotes: 0,
+  // destination: "San Francisco, CA",
+  // details: "we are going to drink coffee",
+  // title: "Go to sightglass",
+  // feature: 'http://lorempixel.com/200/200/city/'
+  // album: []
+  // id: 159
+
   trippian: {
     name: '',
     email: '',

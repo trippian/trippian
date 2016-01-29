@@ -32,12 +32,12 @@ export default class TrippianDetail extends Component {
     super(props)
   }
 
-  componentDidMount() {
-    const id = this.props.params.id
-    console.log('will get trippian by id', id)
-    store.dispatch(getTrippianById(id))
-  }
-
+  // note because we are sharing data in the main container and jumbotron area, we just have to make one 'getTrippianById' at the store at higher level ('Trippian.js'), then we can ask the store for the data 
+  // componentDidMount() {
+  //   const id = this.props.params.id
+  //   console.log('will get trippian by id', id)
+  //   store.dispatch(getTrippianById(id))
+  // }
 
   render() {
     console.log('***insider trippian detail render', this.props.trippian)

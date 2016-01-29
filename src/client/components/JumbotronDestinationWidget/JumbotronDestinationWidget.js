@@ -1,7 +1,7 @@
 import React from 'react'
 
 import {
-  StarRatingWidget, JumbotronTitleWidget
+  StarRatingWidget
 
 }
 
@@ -12,7 +12,9 @@ const styles = {
     backgroundImage: 'url(http://lorempixel.com/800/400/city/)'
   }
 }
-const JumbotronDestinationWidget = () => {
+const JumbotronDestinationWidget = ({
+  name, slogan = 'Awesome City', feature = '', averageRating = 5
+}) => {
   return ( < div className = "jumbotron"
     style = {
       styles.backgroundImage
@@ -21,17 +23,15 @@ const JumbotronDestinationWidget = () => {
       <div className="container">
         <div className="col-sm-12 col-md-8 col-md-offset-2">
           <div className="meta-info">
-            <h2>San Francisco</h2>
+            <h2>{name}</h2>
             <div className="text-intro">
-              <a href="#" title=""> 349 trips </a>
-              <a href="#" title=""> 109 locations</a>
-              <StarRatingWidget />
+              <span>{slogan} &nbsp;&nbsp;&nbsp; </span>
+              <StarRatingWidget stars={averageRating} />
             </div>
           </div>
         </div>  
       </div>
-    </div> 
-  </div>
+    </div> < /div>
   )
 }
 
