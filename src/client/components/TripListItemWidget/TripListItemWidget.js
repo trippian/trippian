@@ -10,20 +10,20 @@ const styles = {
   }
 }
 
-const DestinationListItemWidget = ({
-  destinationName, id
+const TripListItemWidget = ({
+  tripSummary
 }) => {
   return (
     <div className="col-xs-12 col-sm-6 col-md-4 popular-destinations-item">  
-        <Link to={`destination/${id}`} className="thumbnail text-center" style = {
+        <Link to={`trip/${id}`} className="thumbnail text-center" style = {
             styles.backgroundImage
             }>
-            {destinationName}
+            {tripSummary}
         </Link>
       </div>
   )
 }
 
-DestinationListItemWidget.displayName = 'DestinationListItemWidget'
+TripListItemWidget.displayName = 'TripListItemWidget'
 
-export default DestinationListItemWidget
+export default TripListItemWidget
