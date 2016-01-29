@@ -3,7 +3,11 @@ import {
   postTrip,
   postUser,
   postTrippian,
-  postInquiry
+  postInquiry,
+  getTrippianById,
+  getUserById,
+  getDestinationById,
+  getInquiryById
 }
 from './reducers/apiTrippianReducer'
 
@@ -13,5 +17,9 @@ export default {
   postTrip,
   postUser,
   postTrippian,
-  postInquiry
+  postInquiry,
+  getTrippianById,
+  getUserById,
+  getDestinationById,
+  getInquiryById
 }

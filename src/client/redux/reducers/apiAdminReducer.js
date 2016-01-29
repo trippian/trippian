@@ -237,6 +237,7 @@ export function getAdminDestinations() {
   return (dispatch) => {
     return fetchGetDestinations()
       .then((destinations) => {
+        console.log('got destinations', destinations)
         dispatch(setAdminDestinations(destinations))
       })
       .catch(error => dispatch(apologize(error)))
@@ -402,7 +403,7 @@ export function getAdminTripById(id) {
       .then((trip) => {
         console.log('--got it', trip)
           // TODO: update once server is updated 
-        dispatch(setAdminCurrentTrip(trip['0']))
+        dispatch(setAdminCurrentTrip(trip))
       })
       .catch(error => dispatch(apologize(error)))
   }

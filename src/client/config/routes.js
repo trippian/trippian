@@ -5,8 +5,9 @@ import {
 from 'react-router'
 
 import {
-  App, Home, About, DestinationDetail, DestinationPost, InquiryAdd, InquiryList,
+  App, Home, About, DestinationDetail, DestinationPost, InquiryAdd, Contact, InquiryList,
   InquiryDetail, JoinUs, Login, NotFound, Press,
+  Trippian,
   Terms, TrippianDetail, TrippianSignUp, TrippianList, TrippianEdit, IntlDemo,
   Admin, AdminDestinationList, AdminDestinationListItem, AdminDestinationListItemEdit,
   AdminTrippianList, AdminTrippianListItem, AdminTrippianListItemEdit, AdminInquiryList, AdminTripList,
@@ -24,7 +25,6 @@ export default (
             <Route component={DestinationDetail} path="destination/:id" />
             <Route component={DestinationPost} path="destination-post" />
             <Route component={JoinUs} path="join-us"  />
-            <Route component={InquiryAdd} path="contact"  />
             <Route component={InquiryDetail} path="inquiry/:id"  />
             <Route component={InquiryList} path="my-inquiries"  />
             <Route component={IntlDemo} path="intl"  />
@@ -32,7 +32,12 @@ export default (
             <Route component={NotFound} path="not-found"  />
             <Route component={Press} path="press"  />
             <Route component={Terms} path="terms"  />
-            <Route component={TrippianDetail} path="trippian/:id" />
+            
+            <Route component={Trippian} path="trippian/:id" >
+              <Route component={Contact} path="contact"  />
+              <IndexRoute component={TrippianDetail}/>
+            </Route>
+
             <Route component={TrippianSignUp} path="become-a-trippian" />
             <Route component={TrippianList} path="trippian" />
             <Route component={TrippianEdit} path="trippian-edit"  />
