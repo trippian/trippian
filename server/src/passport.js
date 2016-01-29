@@ -7,16 +7,17 @@ const GoogleStrategy = google.OAuth2Strategy
 require('dotenv').config()
 
 export default function (app) {
-  passport.serializeUser(function (user, done) {
-    done(null, user.id)
+  passport.serializeUser(function(user, done) {
+    done(null, user)
   })
 
-  passport.deserializeUser((id, done) => {
+  passport.deserializeUser((user, done) => {
     // after we write user model, we will search for that user node
-    User.getUserById(id)
-      .then(user => {
-        done(null, user)
-      })
+    // User.getUserById(id)
+    //   .then(user => {
+    //     done(null, user)
+    //   })
+    done(null, user)
   })
 
   passport.use(new FacebookStrategy({
@@ -74,7 +75,7 @@ export default function (app) {
               })
             }
           })
-          return done(null, profile)
+        return done(null, profile)
       })
     }
   ))
