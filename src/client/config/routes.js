@@ -5,8 +5,9 @@ import {
 from 'react-router'
 
 import {
-  App, Home, About, DestinationDetail, DestinationPost, InquiryAdd, Contact, InquiryList,
-  InquiryDetail, JoinUs, Login, NotFound, Press,
+  App, Home, About, JoinUs, Login, NotFound, Press,
+  Destination, DestinationDetail, DestinationPost, Contact,
+  InquiryAdd, InquiryDetail, InquiryList,
   Trippian,
   Terms, TrippianDetail, TrippianSignUp, TrippianList, TrippianEdit, IntlDemo,
   Admin, AdminDestinationList, AdminDestinationListItem, AdminDestinationListItemEdit,
@@ -22,7 +23,6 @@ export default (
   <Router history={browserHistory}>
         <Route component={App} path="/">
             <Route component={About}  path="about" />
-            <Route component={DestinationDetail} path="destination/:id" />
             <Route component={DestinationPost} path="destination-post" />
             <Route component={JoinUs} path="join-us"  />
             <Route component={InquiryDetail} path="inquiry/:id"  />
@@ -32,7 +32,12 @@ export default (
             <Route component={NotFound} path="not-found"  />
             <Route component={Press} path="press"  />
             <Route component={Terms} path="terms"  />
-            
+
+            <Route component={Destination} path="destination/:id" >
+              <Route component={Contact} path="contact"  />
+              <IndexRoute component={DestinationDetail}/>
+            </Route>
+
             <Route component={Trippian} path="trippian/:id" >
               <Route component={Contact} path="contact"  />
               <IndexRoute component={TrippianDetail}/>

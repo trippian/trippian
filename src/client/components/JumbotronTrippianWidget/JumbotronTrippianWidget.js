@@ -5,7 +5,7 @@ import {
 from 'react-router'
 
 import {
-  ContactButtonWidget, StarRatingWidget, JumbotronMetaAreaWidget
+  JumbotronTitleWidget, ContactButtonWidget, StarRatingWidget, JumbotronMetaAreaWidget
 }
 from '../index'
 
@@ -13,40 +13,6 @@ const styles = {
   backgroundImage: {
     backgroundImage: 'url(http://lorempixel.com/800/400/city/)'
   }
-}
-const renderTitles = (title, subTitle) => {
-  return (
-    <div className = "container" >
-      <div className="col-sm-12 col-md-8 col-md-offset-2 text-center">
-        <h1>{title}</h1> 
-        <p>{subTitle}</p>
-      </div>
-    </div>
-  )
-}
-
-const renderMetaArea = (isNoContact) => {
-  return (
-    <div className="full-length-container">
-        <div className="container">
-            <div className="col-sm-12 col-md-8 col-md-offset-2">
-                <div className="circle-image avatar">
-                    <img src="http://lorempixel.com/200/200/people/" alt="" />
-                </div>
-                <div className="meta-info">
-                    <div className="left">
-                        <h2>John Smith</h2>
-                        <StarRatingWidget rating="2" />
-                        <span className="text-intro">
-                            Paris, Sydney. Lorem ipsum
-                        </span>
-                    </div>
-                    {isNoContact ?  null : (<div className="right"><ContactButtonWidget /></div>) }
-                </div>
-            </div>
-        </div>
-    </div>
-  )
 }
 
 /*
@@ -76,7 +42,7 @@ const JumbotronTrippianWidget = ({
     style = {
       styles.backgroundImage
     } > {
-      isTitled ? renderTitles(title, subTitle) : null
+      isTitled && <JumbotronTitleWidget title={title} subTitle={subTitle} />
     }
 
     {
