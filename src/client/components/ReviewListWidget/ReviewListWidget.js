@@ -10,11 +10,10 @@ const ReviewListWidget = ({
 }) => {
   return (
     <div className="section-body review-list">
+        <ReviewListItemWidget /> < ReviewListItemWidget / >
+        <ReviewListItemWidget /> < ReviewListItemWidget / >
         <ReviewListItemWidget />
-        <ReviewListItemWidget />
-        <ReviewListItemWidget />
-        <ReviewListItemWidget />
-        <ReviewListItemWidget />
+
     </div>
   )
 }
