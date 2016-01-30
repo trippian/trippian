@@ -4,7 +4,7 @@ import React, {
 from 'react'
 
 import {
-  JumbotronTrippianWidget, TextIntroPlainWidget, TextIntroRichWidget, ReviewListWidget, DummyRichTextWidget
+  TextIntroPlainWidget, TextIntroRichWidget, ReviewListWidget, DummyRichTextWidget, ReviewAddFormWidget
 }
 from '../../components/index'
 
@@ -66,8 +66,17 @@ export default class TrippianDetail extends Component {
                 <div className="section-header">
                     <h3>Reviews</h3>
                 </div>
-                <ReviewListWidget />
+                <div className="section-body">
+                  <ReviewListWidget />
+                </div>
             </div>
+            <div className="section add-review">
+                <div className="section-header">
+                    <h3>Add a Review</h3>
+                </div>
+                <ReviewAddFormWidget />
+            </div>
+
         </div>
     )
   }

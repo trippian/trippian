@@ -74,12 +74,20 @@ const initialState = new Map({
     facebookId: null,
     picture: 'http://lorempixel.com/200/200/people/',
     reviews: [{
-      rating: 0,
-      title: '',
-      content: ''
+      start: 0,
+      end: 0,
+      properties: {
+        createdAt: '',
+        userName: '',
+        facebookId: '',
+        picture: '',
+        userId: '',
+        rating: 0,
+        title: '',
+        content: ''
+      }
     }]
   }
-
 })
 
 export default function apiTrippianReducer(state = initialState, action) {
