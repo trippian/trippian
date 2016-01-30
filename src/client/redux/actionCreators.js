@@ -5,7 +5,7 @@ import {
 
   SET_TRIPPIANS, GET_TRIPPIANS, GET_TRIPPIAN_BY_ID, REMOVE_TRIPPIAN, SET_TRIPPIAN,
 
-  ADD_REVIEW,
+  ADD_REVIEW, SET_INQUIRY, SET_TRIP,
 
   SET_ADMIN_DESTINATIONS, ADD_ADMIN_DESTINATION, REMOVE_ADMIN_DESTINATION, SET_ADMIN_CURRENT_DESTINATION,
   SET_ADMIN_TRIPPIANS, ADD_ADMIN_TRIPPIAN, REMOVE_ADMIN_TRIPPIAN, SET_ADMIN_CURRENT_TRIPPIAN,
@@ -145,6 +145,15 @@ export function setInquiry(inquiry) {
     type: SET_INQUIRY,
     payload: {
       inquiry
+    }
+  }
+}
+//trip
+export function setTrip(trip) {
+  return {
+    type: SET_TRIP,
+    payload: {
+      trip
     }
   }
 }

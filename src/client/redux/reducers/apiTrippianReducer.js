@@ -1,7 +1,7 @@
 import {
   SET_DESTINATIONS, SET_TRIPPIANS, GET_DESTINATIONS_FAIL, GET_DESTINATION_BY_ID, GET_TRIPPIAN_BY_ID, GET_DESTINATIONS, GET_TRIPPIANS,
   ADD_DESTINATION, ADD_ADMIN_DESTINATION, REMOVE_DESTINATION,
-  SET_TRIPPIAN, SET_DESTINATION, ADD_REVIEW, SET_INQUIRY
+  SET_TRIPPIAN, SET_DESTINATION, ADD_REVIEW, SET_INQUIRY, SET_TRIP
 }
 from '../actionTypes'
 import {
@@ -10,8 +10,8 @@ import {
   setTrippians, addTrippian, addAdminTrippian,
   setUsers, addUser, addAdminUser,
   setInquirys, addInquiry, addAdminInquiry,
-  setTrips, addTrip, addAdminTrip,
-  setTrip, setUser, setTrippian, setInquiry,
+  setTrips, addTrip, addAdminTrip, setTrip,
+  setUser, setTrippian, setInquiry,
   addReview
 }
 from '../actionCreators'
@@ -45,6 +45,11 @@ const initialState = new Map({
     facebookId: 0,
     picture: 'http://lorempixel.com/200/200/people/',
     trippian: false
+  },
+  alert: {
+    type: 'success',
+    title: 'Operation Performed',
+    message: 'Some action has performed....'
   },
   currentReview: {
     createdAt: '',
@@ -129,6 +134,18 @@ const initialState = new Map({
       content: '',
       accepted: false
     }
+  },
+
+  // curl -X PUT -d "userId=32" http://localhost:4000/api/trip/51/?voteType=UPVOTE
+  trip: {
+    netVote: 0,
+    totalVotes: 0,
+    destination: '',
+    title: '',
+    summary: '',
+    details: '',
+    feature: 'http://lorempixel.com/400/200/city/',
+    album: []
   }
 })
 
@@ -172,6 +189,10 @@ export default function apiTrippianReducer(state = initialState, action) {
         destination: action.payload.destination
       }))
 
+    case SET_TRIP:
+      return state.merge(new Map({
+        trip: action.payload.trip
+      }))
     case ADD_REVIEW:
       const trippianR = state.get('trippian')
       trippianR.reviews.push(action.payload.review)
@@ -284,14 +305,13 @@ export function postDestination(data) {
 
 export function postTrip(data) {
   //TODO, update userId to global 
-  data.userId = 32
+  data.userId = store.getState().apiTrippian.get('currentUser').id
   console.log('-- posting a trip now', data)
   return (dispatch) => {
     return fetchPostTrip(data)
       .then(trip => {
         console.log('---posted', trip)
-          //TODO 
-          // dispatch(addTrip(trip))
+        dispatch(setTrip(trip))
         dispatch(addAdminTrip(trip))
       })
       .catch(error => dispatch(apologize(error)))

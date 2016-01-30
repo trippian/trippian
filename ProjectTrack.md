@@ -50,6 +50,7 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
   - Data 
     - [ ] Add real destination photo 
   
+  - [ ] Create Trip 
   - Inquiry 
     - [ ] Hide form and show data upon submission 
   - [ ] File Uploads
