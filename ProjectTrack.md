@@ -6,11 +6,11 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
 
 ### Server & Client Feature Track 
 - Server 
+  - [X] Add 'http://' in front of picture field. Currently it is stored as "graph.facebook.com/955195534516978/picture?height=500"
+  - [X] Add 'location' and 'rating' to trippian data 
+  - [X] Review routes 
   - [ ] Add more destination data 
   - [ ] Add destination photos to database 
-  - [ ] Add 'http://' in front of picture field. Currently it is stored as "graph.facebook.com/955195534516978/picture?height=500"
-  - [ ] Add 'location' and 'rating' to trippian data 
-  - [ ] Review routes 
 
 - Client 
   - [ ] Add AlertComponent
@@ -20,37 +20,74 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
   - [ ] Improve Redux Store 
 
 - Admin 
-
   - [X] Delete Trip By Id
-  - [ ] Trip Detail 
-
-  - [ ] Inquiry Detail 
-  - [ ] Add Inquiry Form 
-  - [ ] Delete Inquiry By Id
-  
-  - [ ] User Detail 
-  - [ ] Add User Form 
-  - [ ] Delete User By Id 
-
-  - [ ] Trippian Detail 
-  - [ ] Delete Trippian By ID
-  - [ ] Add Trippian Form 
+  - [X] Trip Detail 
+  - [X] Inquiry Detail 
+  - [X] Add Inquiry Form 
+  - [X] Delete Inquiry By Id
+  - [X] User Detail 
+  - [X] Add User Form 
+  - [X] Delete User By Id 
+  - [X] Trippian Detail 
+  - [X] Delete Trippian By ID
+  - [X] Add Trippian Form 
 
 - Front-end 
+  - [X] DestinationDetailPage
+  - [X] ReviewList 
+  - [X] Add Review Form 
+  - [X] PopularTrippiansList
+  - Fixes 
+    - [ ] Add destination name to home page popular destinations  
+    - [ ] Review display after submit 
+    - [ ] Add trip to review
+  - Data 
+    - [ ] Add real destination photo 
+      
+  - [ ] File Uploads
+  - [ ] Save trips, close trips, review trips (link)
+  - [ ] Update data (Redux form prefill)
+    - [ ] Destination 
+    - [ ] Trippian  
   - [ ] Login with Facebook 
-  - [ ] DestinationDetailPage
-    - [ ]  PopularTrippiansList 
-  - [ ] Contact (Inquiry) Page 
+  - [ ] Login with Google
+  - [ ] Search and Search Result page 
   - [ ] User 
     - [ ] InquiryList 
     - [ ] User Profile 
     - [ ] Logout  
-  - [ ] ReviewList 
-  - [ ] Add Review Form 
   - [ ] Vote 
+  - Widgets & Misc.
+    - [ ] Rating 
+    - [ ] Carousal 
+  - [ ] SearchBox (auto suggest)
+  - [ ] S3 image upload 
+  - [ ] Rich Text Editing for Trippian 
+  - [ ] Inline Editing 
+    - [ ] Profile 
+    - [ ] Destination 
+  - [ ] Albulm for Destination 
+  - [ ] Albulm for Trip  
+  - [ ] Background photos for all pages 
+  - [ ] Edit front-end text 
+  - [ ] Extract front-end page text 
+  - [ ] Press Page 
   - [ ] Add popular trips to home page 
   - [ ] TripsListPage 
   - [ ] TripsListDetailPage
+  - [ ] Contact (Inquiry) Page 
+  - [ ] PopularTrippians at Destination
+  - [ ] Update access control  
+  - [ ] Save (heart) destinations / trips 
+  - [ ] Map Search (add position first)
+  - [ ]
+
+- https://medium.com/@kevinwu/client-side-file-upload-to-s3-using-axios-c9363ec7b530#.ui789fbh4
+- https://github.com/odysseyscience/react-s3-uploader
+- https://github.com/okonet/react-dropzone
+
+- https://github.com/tgecho/react-prosemirror  (inline editing, support image)
+ https://github.com/jstejada/react-typist
 
 - Joe
  - [ ] update destination page 

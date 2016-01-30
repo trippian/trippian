@@ -7,14 +7,16 @@ import {
 
 from '../../components/index'
 
-const styles = {
-  backgroundImage: {
-    backgroundImage: 'url(http://lorempixel.com/800/400/city/)'
-  }
-}
+
 const JumbotronDestinationWidget = ({
-  name, slogan = 'Awesome City', feature = '', averageRating = 5
+  name, slogan = 'Awesome City', feature = 'http://lorempixel.com/800/600/city/', averageRating = 5
 }) => {
+  const styles = {
+    backgroundImage: {
+      backgroundImage: `url(${feature})`
+    }
+  }
+
   return ( < div className = "jumbotron"
     style = {
       styles.backgroundImage
