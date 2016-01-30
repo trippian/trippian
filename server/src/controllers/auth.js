@@ -22,11 +22,12 @@ export default {
     // making google id into a string because neo4j can't have 
     // very large integers
     let googleId = `"${req.user.id}"`
+    console.log(googleId)
     req.session.googleId = googleId
     req.session.picture = req.user._json.image.url
     req.session.email = req.user.emails[0].value
 
-    User.getUserByParameter('googleId', googleId)
+    User.getUserByParameter('googleId', `str(${googleId})`)
       .then(user => {
         if (!user.length) {
           User.createUser({
@@ -55,16 +56,18 @@ export default {
   },
 
   validateFacebook: (req, res, next) => {
+    console.log('hi', req.user.id, typeof parseInt(req.user.id))
     req.session.name = req.user.displayName
     req.session.facebookId = req.user.id
     req.session.picture = `https://graph.facebook.com/${req.user.id}/picture?height=500`
     req.session.email = req.user.emails[0].value
 
-    User.getUserByParameter('facbookId', req.user.id)
+    User.getUserByParameter('facebookId', req.user.id)
       .then(user => {
+        console.log(user)
         if (!user.length) {
           User.createUser({
-            facebookId: req.user.id,
+            facebookId: parseInt(req.user.id),
             name: req.user.displayName,
             email: req.user.emails[0].value,
             picture: `https://graph.facebook.com/${req.user.id}/picture?height=500`
