@@ -11,6 +11,9 @@ export default {
           console.log(rating)
           res.json(rating)
         })
+        .catch(error => {
+          next(error)
+        })
     }
   },
   ratingGet: (req, res, next) => {
@@ -19,6 +22,20 @@ export default {
         .then((ratings) => {
           console.log(ratings)
           res.json(ratings)
+        })
+        .catch(error => {
+          next(error)
+        })
+    }
+  },
+  ratingDelete: (req, res, next) => {
+    if (req.params.ratingId) {
+      Rating.deleteRating(req.params.ratingId)
+        .then(deleted => {
+          res.json(deleted)
+        })
+        .catch(error => {
+          next(error)
         })
     }
   }

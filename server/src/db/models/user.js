@@ -2,6 +2,7 @@ import Promise from 'bluebird'
 import db from '../db'
 import { updateStringObject } from '../../middleware/utils'
 import nodemailer from 'nodemailer'
+import { isEmpty } from 'lodash'
 require('dotenv').config()
 
 // using node mailer to send email notifications when a user
@@ -227,6 +228,46 @@ export default {
           resolve(deleted)
         })
         .catch((error) => {
+          console.error(error)
+        })
+    })
+  },
+  getUserSavedTrips: (userId) => {
+    return new Promise((resolve, reject) => {
+      let cypher = `match (u:User)-[s:SAVED]->(t:Trip) where id(u)=${userId} return t;`
+      db.queryAsync(cypher)
+        .then(savedTrips => {
+          resolve(savedTrips)
+        })
+        .catch(error => {
+          console.error(error)
+        })
+    })
+  },
+  userSaveTrip: (userId, tripId) => {
+    return new Promise((resolve, reject) => {
+      db.relationshipsAsync(userId, 'out', 'SAVED')
+        .then(saved => {
+          if (!saved.length) {
+            db.relateAsync(userId, 'SAVED', tripId, {
+              savedAt: new Date()
+            })
+              .then(savedRelationship => {
+                console.log(savedRelationship)
+                if (!isEmpty(savedRelationship)) {
+                  resolve(savedRelationship)
+                } else {
+                  reject(new Error ('could not save this trip to that user'))
+                }
+              })
+              .catch(error => {
+                console.error(error)
+              })
+          } else {
+            reject(new Error('user has already saved this trip'))
+          }
+        })
+        .catch(error => {
           console.error(error)
         })
     })

@@ -8,7 +8,7 @@ export default {
       User.getUserById(userId)
         .then((user) => {
           if (user) {
-            Inquiry.getAllInquiriesForTrippian(userId)
+            Inquiry.getAllInquiriesForUser(userId)
               .then((inquiries) => {
                 console.log(inquiries)
                 if(inquiries.length) {

@@ -58,5 +58,17 @@ export default {
           }
         })
     })
+  },
+  deleteRating: (ratingId) => {
+    return new Promise((resolve, reject) => {
+      let cypher = `match ()-[r:RATED]->() where id(r)=${ratingId} delete r;`
+      db.queryAsync(cypher)
+        .then(deleted => {
+          resolve(deleted)
+        })
+        .catch(error => {
+          console.error(error)
+        })
+    })
   }
 }
