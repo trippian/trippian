@@ -141,6 +141,17 @@ export default {
           next(error)
         })
     } 
+  },
+  deleteSavedTrip: (req, res, next) => {
+    if (req.params.savedId) {
+      User.deleteSavedTrip(req.params.savedId)
+        .then(deleted => {
+          res.json(deleted)
+        })
+        .catch(error => {
+          next(error)
+        })
+    }
   }
 }
 
