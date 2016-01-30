@@ -139,6 +139,16 @@ export function addReview(review) {
   }
 }
 
+//Inquiry
+export function setInquiry(inquiry) {
+  return {
+    type: SET_INQUIRY,
+    payload: {
+      inquiry
+    }
+  }
+}
+
 //*********************************
 //**** admin related  *************
 //*********************************

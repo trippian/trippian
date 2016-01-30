@@ -8,7 +8,7 @@ import {
   App, Home, About, JoinUs, Login, NotFound, Press,
   Destination, DestinationDetail, DestinationPost, Contact,
   InquiryAdd, InquiryDetail, InquiryList,
-  Trippian,
+  DestinationWrapper, PopularDestinations, DestinationSearchResults, Trippian,
   Terms, TrippianDetail, TrippianSignUp, TrippianList, TrippianEdit, IntlDemo,
   Admin, AdminDestinationList, AdminDestinationListItem, AdminDestinationListItemEdit,
   AdminTrippianList, AdminTrippianListItem, AdminTrippianListItemEdit, AdminInquiryList, AdminTripList,
@@ -33,9 +33,13 @@ export default (
             <Route component={Press} path="press"  />
             <Route component={Terms} path="terms"  />
 
-            <Route component={Destination} path="destination/:id" >
-              <Route component={Contact} path="contact"  />
-              <IndexRoute component={DestinationDetail}/>
+            <Route component={DestinationWrapper} path="destination" >
+              <Route component={Destination} path=":id" >
+                <IndexRoute component={DestinationDetail}/>
+                // may add some route later 
+              </Route>
+              <Route component={DestinationSearchResults} path="search/:q"  />
+              <IndexRoute component={PopularDestinations}/>
             </Route>
 
             <Route component={Trippian} path="trippian/:id" >

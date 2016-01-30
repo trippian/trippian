@@ -40,6 +40,7 @@ export default class TrippianDetail extends Component {
         title: '',
         message: ''
       }
+
     }
   }
 
