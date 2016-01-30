@@ -43,15 +43,15 @@ export default {
           if (destination) {
             Trip.getAllTripsAtDestination(destinationId)
               .then((trips) => {
-                if (trips) {
+                if (trips.length) {
                   // append an array with all popular trips to destinations
                   destination.popularTrips = trips
                   // want to send back the destination object in the object
                   console.log(destination)
                   res.json(destination)
+                } else {
+                  res.json(destination)
                 }
-                console.log(destination)
-                res.json(destination)
               })
           }
         })
@@ -89,7 +89,7 @@ export default {
         // })
       Destination.getPopularDestinations()
         .then((popularDestinations) => {
-          if (popularDestinations) {
+          if (popularDestinations.length) {
             console.log(popularDestinations)
             // need to return just the destinations and not the count(r)
             res.json(_.map(popularDestinations, (val) => {
@@ -108,12 +108,13 @@ export default {
           if (destination) {
             Trip.getAllTripsAtDestination(destination.id)
               .then((trips) => {
-                if (trips) {
+                if (trips.length) {
                   destination.popularTrips = trips
                   console.log(destination)
                   res.json(destination)
+                } else {
+                  res.json(destination)                  
                 }
-                res.json(destination)
               })
           } else {
             Destination.createDestination({

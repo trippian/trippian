@@ -50,7 +50,7 @@ export default {
       db.queryAsync(cypher)
         .then((ratings) => {
           if (ratings.length) {
-            resolve(ratings)
+            resolve(ratings[0])
           } else {
             // reject(new Error('User has no ratings'))
             resolve(ratings)
