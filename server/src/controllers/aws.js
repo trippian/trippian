@@ -1,4 +1,5 @@
 import AWS from 'aws-sdk'
+import uuid from 'node-uuid'
 require('dotenv').config()
 
 export const getSignedRequest = function (req, res) {
@@ -11,9 +12,11 @@ export const getSignedRequest = function (req, res) {
 
   let s3 = new AWS.S3()
 
+  let hashedFileName = uuid.v1()
+
   let s3_params = {
     Bucket: process.env.S3_BUCKET,
-    Key: req.query.name,
+    Key: hashedFileName,
     Expires: 60,
     ContentType: req.query.type,
     ACL: 'public-read'
@@ -25,7 +28,8 @@ export const getSignedRequest = function (req, res) {
     } else {
       let return_data = {
         signed_request: data,
-        url: 'https://' + process.env.S3_BUCKET + '.s3.amazonaws.com/' + req.query.name
+        url: 'https://' + process.env.S3_BUCKET + '.s3.amazonaws.com/' + hashedFileName,
+        fileName: hashedFileName
       }
       res.write(JSON.stringify(return_data))
       res.end()
