@@ -2,7 +2,7 @@ export const SET_LOCALE = 'appState.SET_LOCALE'
 export const SET_LOCALE_MESSAGES = 'appState.SET_LOCALE_MESSAGES'
 export const SET_USERNAME = 'appState.SET_USERNAME'
 export const SET_DISPLAYNAME = 'appState.SET_DISPLAYNAME'
-
+  //destination
 export const SET_DESTINATIONS = 'apiTrippian.SET_DESTINATIONS'
 export const SET_DESTINATION = 'apiTrippian.SET_DESTINATION'
 export const GET_DESTINATIONS_FAIL = 'apiTrippian.GET_DESTINATIONS_FAIL'
@@ -17,6 +17,12 @@ export const SET_TRIPPIAN = 'apiTrippian.SET_TRIPPIAN'
 
 //Review
 export const ADD_REVIEW = 'apiTrippian.ADD_REVIEW'
+
+//Trip
+export const SET_TRIP = 'apiTrippian.SET_TRIP'
+
+//Trip
+export const SET_INQUIRY = 'apiTrippian.SET_INQUIRY'
 
 //User 
 

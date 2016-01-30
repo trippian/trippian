@@ -41,8 +41,8 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
   - [ ] Enhance AlertComponent with reset 
   
   - Fixes 
-    - [ ] Add destination name to home page popular destinations  
-    - [ ] Review display after submit 
+    - [X] Add destination name to home page popular destinations  
+    - [X] Review display after submit 
     - [ ] Add trip to review
   - Refactor 
     - [ ] Action Creator 
@@ -50,6 +50,7 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
   - Data 
     - [ ] Add real destination photo 
   
+  - [ ] Create Trip 
   - Inquiry 
     - [ ] Hide form and show data upon submission 
   - [ ] File Uploads

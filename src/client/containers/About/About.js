@@ -23,7 +23,7 @@ export default class About extends Component {
         <div id="about-page">
         <JumbotronWidget title="About" subTitle="Lorem ipsum dolor sit."/>
           <div className="container main-content-container">
-            <div className="col-sm-12 col-md-8 col-md-offset-2 content-container">
+            <div className="col-sm-12 col-md-10 col-md-offset-1 content-container">
               <div className="section">
                   <div className="section-header text-center">
                       <h3>About Us</h3>
