@@ -59,9 +59,9 @@ export default {
     })
   },
   // function that gets back all the inquiries given a trippian id
-  getAllInquiriesForTrippian: (trippianId) => {
+  getAllInquiriesForUser: (userId) => {
     return new Promise((resolve, reject) => {
-      db.relationshipsAsync(trippianId, 'in', 'INQUIRY')
+      db.relationshipsAsync(userId, 'all', 'INQUIRY')
         .then((inquiries) => {
           if (inquiries) {
             resolve(inquiries)

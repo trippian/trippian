@@ -46,7 +46,6 @@ export default {
                 Rating.getAllUserRatings(req.params.userId)
                   .then((ratings) => {
                     user.reviews = ratings
-                    console.log(user)
                     res.json(user)
                   })
               })
@@ -131,6 +130,17 @@ export default {
       .catch(error => {
         next(error)
       })
+  },
+  userSaveTrip: (req, res, next) => {
+    if (req.params.userId && req.query.tripId) {
+      User.userSaveTrip(req.params.userId, req.query.tripId)
+        .then(tripSaved => {
+          res.json(tripSaved)
+        })
+        .catch(error => {
+          next(error)
+        })
+    } 
   }
 }
 
