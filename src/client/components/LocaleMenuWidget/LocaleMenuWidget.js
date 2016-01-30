@@ -99,65 +99,7 @@ class LocalesMenu extends Component {
             title={formatMessage(messages.zhDescription)} >
                 🇨🇳
             </a>
-        </li>
-        <li>
-            <a fackehref="#" onClick={() =>{
-              store.dispatch({
-                  type: 'appState.SET_LOCALE_MESSAGES',
-                  payload: {
-                   messages: getMessagesByLocale('fr')
-                  } 
-              })
-              store.dispatch({
-                  type: 'appState.SET_LOCALE',
-                  payload: {
-                   locale: 'fr'
-                  } 
-              })
-            }}
-            title={formatMessage(messages.frDescription)} >
-               🇫🇷 
-            </a>
-        </li>
-        <li>
-            <a fackehref="#" onClick={() =>{
-              store.dispatch({
-                  type: 'appState.SET_LOCALE_MESSAGES',
-                  payload: {
-                   messages: getMessagesByLocale('fr')
-                  } 
-              })
-              store.dispatch({
-                  type: 'appState.SET_LOCALE',
-                  payload: {
-                   locale: 'fr'
-                  } 
-              })
-            }}
-            title={formatMessage(messages.frDescription)} >
-               🇩🇪 
-            </a>
-        </li> 
-        <li>
-            <a fackehref="#" onClick={() =>{
-              store.dispatch({
-                  type: 'appState.SET_LOCALE_MESSAGES',
-                  payload: {
-                   messages: getMessagesByLocale('fr')
-                  } 
-              })
-              store.dispatch({
-                  type: 'appState.SET_LOCALE',
-                  payload: {
-                   locale: 'fr'
-                  } 
-              })
-            }}
-            title={formatMessage(messages.frDescription)} >
-               🇪🇸 
-            </a>
-        </li>
-              
+        </li>      
     </ul>
     )
   }
@@ -169,3 +111,120 @@ LocalesMenu.propTypes = {
 LocalesMenu.displayName = 'LocalesMenu'
 
 export default injectIntl(LocalesMenu)
+
+// class LocalesMenu extends Component {
+//   render() {
+//     const {
+//       formatMessage
+//     } = this.props.intl
+
+//     return (
+//       <ul className={this.props.className}>
+//         <li>
+//             <a fackehref="#" onClick={()=>{
+//               store.dispatch({
+//                   type: 'appState.SET_LOCALE_MESSAGES',
+//                   payload: {
+//                    messages: getMessagesByLocale('en-US')
+//                   } 
+//               })
+//                  store.dispatch({
+//                      type: 'appState.SET_LOCALE',
+//                     payload: {
+//                       locale: 'en-US'  
+//                    }
+//               })
+
+//             }}
+//                 title={formatMessage(messages.enUSDescription)} >
+//                🇺🇸
+//             </a>
+//         </li>
+//         <li>
+//             <a fackehref="#" onClick={() =>{
+//               store.dispatch({
+//                   type: 'appState.SET_LOCALE_MESSAGES',
+//                   payload: {
+//                    messages: getMessagesByLocale('zh')
+//                   } 
+//               })
+//               store.dispatch({
+//                   type: 'appState.SET_LOCALE',
+//                   payload: {
+//                    locale: 'zh'
+//                   } 
+//               })
+//             }}
+//             title={formatMessage(messages.zhDescription)} >
+//                 🇨🇳
+//             </a>
+//         </li>
+//         <li>
+//             <a fackehref="#" onClick={() =>{
+//               store.dispatch({
+//                   type: 'appState.SET_LOCALE_MESSAGES',
+//                   payload: {
+//                    messages: getMessagesByLocale('fr')
+//                   } 
+//               })
+//               store.dispatch({
+//                   type: 'appState.SET_LOCALE',
+//                   payload: {
+//                    locale: 'fr'
+//                   } 
+//               })
+//             }}
+//             title={formatMessage(messages.frDescription)} >
+//                🇫🇷 
+//             </a>
+//         </li>
+//         <li>
+//             <a fackehref="#" onClick={() =>{
+//               store.dispatch({
+//                   type: 'appState.SET_LOCALE_MESSAGES',
+//                   payload: {
+//                    messages: getMessagesByLocale('fr')
+//                   } 
+//               })
+//               store.dispatch({
+//                   type: 'appState.SET_LOCALE',
+//                   payload: {
+//                    locale: 'fr'
+//                   } 
+//               })
+//             }}
+//             title={formatMessage(messages.frDescription)} >
+//                🇩🇪 
+//             </a>
+//         </li> 
+//         <li>
+//             <a fackehref="#" onClick={() =>{
+//               store.dispatch({
+//                   type: 'appState.SET_LOCALE_MESSAGES',
+//                   payload: {
+//                    messages: getMessagesByLocale('fr')
+//                   } 
+//               })
+//               store.dispatch({
+//                   type: 'appState.SET_LOCALE',
+//                   payload: {
+//                    locale: 'fr'
+//                   } 
+//               })
+//             }}
+//             title={formatMessage(messages.frDescription)} >
+//                🇪🇸 
+//             </a>
+//         </li>
+
+//     </ul>
+//     )
+//   }
+// }
+
+// LocalesMenu.propTypes = {
+//   intl: intlShape.isRequired
+// }
+// LocalesMenu.displayName = 'LocalesMenu'
+
+// export default injectIntl(LocalesMenu)

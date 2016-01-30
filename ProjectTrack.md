@@ -10,14 +10,15 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
   - [X] Add 'location' and 'rating' to trippian data 
   - [X] Review routes 
   - [ ] Add more destination data 
-  - [ ] Add destination photos to database 
-
+  - [ ] Add destination photos to database
 - Client 
-  - [ ] Add AlertComponent
   - [ ] Localize the whole front-end 
   - [ ] Handle form submit with redux-form
-  - [ ] Move Common API logic to redux store from the Container Component
+  - [ ] Move Common API logic to redux store from the Container 
   - [ ] Improve Redux Store 
+- General 
+  - [ ] Add meaningful data 
+  - [ ] Clean up front-end messages 
 
 - Admin 
   - [X] Delete Trip By Id
@@ -37,13 +38,20 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
   - [X] ReviewList 
   - [X] Add Review Form 
   - [X] PopularTrippiansList
+  - [ ] Enhance AlertComponent with reset 
+  
   - Fixes 
     - [ ] Add destination name to home page popular destinations  
     - [ ] Review display after submit 
     - [ ] Add trip to review
+  - Refactor 
+    - [ ] Action Creator 
+    - [ ] Reducer (todo later)
   - Data 
     - [ ] Add real destination photo 
-      
+  
+  - Inquiry 
+    - [ ] Hide form and show data upon submission 
   - [ ] File Uploads
   - [ ] Save trips, close trips, review trips (link)
   - [ ] Update data (Redux form prefill)
@@ -66,8 +74,8 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
   - [ ] Inline Editing 
     - [ ] Profile 
     - [ ] Destination 
-  - [ ] Albulm for Destination 
-  - [ ] Albulm for Trip  
+  - [ ] Album for Destination 
+  - [ ] Album for Trip  
   - [ ] Background photos for all pages 
   - [ ] Edit front-end text 
   - [ ] Extract front-end page text 
@@ -80,19 +88,18 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
   - [ ] Update access control  
   - [ ] Save (heart) destinations / trips 
   - [ ] Map Search (add position first)
-  - [ ]
+  
+  - Clean up 
+    - [ ] Clean field default data 
+    - [ ] Clean documentation
 
 - https://medium.com/@kevinwu/client-side-file-upload-to-s3-using-axios-c9363ec7b530#.ui789fbh4
 - https://github.com/odysseyscience/react-s3-uploader
 - https://github.com/okonet/react-dropzone
 
 - https://github.com/tgecho/react-prosemirror  (inline editing, support image)
- https://github.com/jstejada/react-typist
+- https://github.com/jstejada/react-typist
 
-- Joe
- - [ ] update destination page 
- - [ ] update trippian page 
- - [ ] review widget update (wait for server team to get the data ready )
 
 ### Important Info and Notice 
 - Info 

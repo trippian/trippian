@@ -1,7 +1,7 @@
 import {
   SET_DESTINATIONS, SET_TRIPPIANS, GET_DESTINATIONS_FAIL, GET_DESTINATION_BY_ID, GET_TRIPPIAN_BY_ID, GET_DESTINATIONS, GET_TRIPPIANS,
   ADD_DESTINATION, ADD_ADMIN_DESTINATION, REMOVE_DESTINATION,
-  SET_TRIPPIAN, SET_DESTINATION, ADD_REVIEW
+  SET_TRIPPIAN, SET_DESTINATION, ADD_REVIEW, SET_INQUIRY
 }
 from '../actionTypes'
 import {
@@ -81,7 +81,6 @@ const initialState = new Map({
   // feature: 'http://lorempixel.com/200/200/city/'
   // album: []
   // id: 159
-
   trippian: {
     name: '',
     email: '',
@@ -112,6 +111,24 @@ const initialState = new Map({
         trippian: false
       }
     }]
+  },
+  inquiry: {
+    type: 'INQUIRY',
+    start: 0,
+    end: 1,
+    properties: {
+      createdAt: '',
+      senderId: 0,
+      receiverId: 0,
+      personCount: 5,
+      startDate: '2015-02-14',
+      endDate: '2015-02-28',
+      email: '',
+      mobile: '',
+      subject: 'hi',
+      content: '',
+      accepted: false
+    }
   }
 })
 
@@ -157,10 +174,15 @@ export default function apiTrippianReducer(state = initialState, action) {
 
     case ADD_REVIEW:
       const trippianR = state.get('trippian')
-      trippianR.reviews.push(action.payload.review) // review is nested in trippian
+      trippianR.reviews.push(action.payload.review)
       return state.merge(new Map({
         trippian: trippianR
       }))
+    case SET_INQUIRY:
+      return state.merge(new Map({
+        inquiry: action.payload.inquiry
+      }))
+
     default:
       return state
   }
@@ -301,29 +323,25 @@ export function postTrippian(data) {
       .catch(error => dispatch(apologize(error)))
   }
 }
+
+
+
 export function postInquiry(data) {
-  //TODO, update userId to global 
-  data.senderId = 32
-  data.trippianId = 31
+
+  data.senderId = store.getState().apiTrippian.get('currentUser').id
+  data.trippianId = store.getState().apiTrippian.get('trippian').id
   console.log('-- posting a inquiry now', data)
   return (dispatch) => {
     return fetchPostInquiry(data)
       .then(inquiry => {
         console.log('---posted', inquiry)
+        dispatch(setInquiry(inquiry))
         dispatch(addAdminInquiry(inquiry))
       })
       .catch(error => dispatch(apologize(error)))
   }
 }
 
-// createdAt: '',
-// username: '',
-// facebookId: '',
-// picture: '',
-// userId: '',
-// rating: 0,
-// title: '',
-// content: ''
 export function postReview(data) {
   const user = store.getState().apiTrippian.get('currentUser')
   data.userId = user.id
