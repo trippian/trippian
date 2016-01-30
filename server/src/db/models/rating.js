@@ -4,6 +4,7 @@ import { updateStringObject } from '../../middleware/utils'
 
 export default {
   createRating: (raterId, userId, details) => {
+    details.createdAt = Date()
     return new Promise((resolve, reject) => {
       db.relationshipsAsync(raterId, 'all', 'TOURED')
         .then((toured) => {
