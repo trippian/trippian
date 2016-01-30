@@ -37,4 +37,5 @@ dist/bootstrap-sass
 dist/font-awesome
 
 wiki
-
+git rebase --continue
+_planning/static/build/**/*.*
