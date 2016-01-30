@@ -31,11 +31,10 @@ const ReviewListWidget = ({
 }) => {
   return (
     <div className="section-body review-list">
-        {
-          reviews.map((review,key) => 
-            <ReviewListItemWidget key={key} {...review} />
-          )
-        }
+        <ReviewListItemWidget /> < ReviewListItemWidget / >
+        <ReviewListItemWidget /> < ReviewListItemWidget / >
+        <ReviewListItemWidget />
+
     </div>
   )
 }

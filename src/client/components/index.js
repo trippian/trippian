@@ -65,3 +65,5 @@ export TrippianSignupFormWidget from './TrippianSignupFormWidget/TrippianSignupF
 export TripsTableWidget from './TripsTableWidget/TripsTableWidget'
 export TripListWidget from './TripListWidget/TripListWidget'
 export TripListItemWidget from './TripListItemWidget/TripListItemWidget'
+export TeamCardWidget from './TeamCardWidget/TeamCardWidget'
+export TeamCardsWidget from './TeamCardsWidget/TeamCardsWidget'

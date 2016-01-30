@@ -244,3 +244,21 @@ footer {
         // min-height: 200px;
     }
 }
+
+.team {
+    overflow: hidden;
+    .photo {
+        margin-left: 0px;
+        width: 60%;
+    }
+    .row {
+        min-height: 280px;
+        h4 {
+            font-style: italic;
+            font-size: 16px;
+        }
+        p {
+            padding: 0 32px;
+        }
+    }
+}
