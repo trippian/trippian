@@ -143,8 +143,8 @@ export default {
     } 
   },
   deleteSavedTrip: (req, res, next) => {
-    if (req.params.savedId) {
-      User.deleteSavedTrip(req.params.savedId)
+    if (req.query.userId && req.query.tripId) {
+      User.deleteSavedTrip(req.query.userId, req.query.tripId)
         .then(deleted => {
           res.json(deleted)
         })

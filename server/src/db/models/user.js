@@ -272,9 +272,9 @@ export default {
         })
     })
   },
-  deleteSavedTrip: (relationshipId) => {
+  deleteSavedTrip: (userId, tripId) => {
     return new Promise ((resolve, reject) => {
-      let cypher = `match ()-[s:SAVED]->() where id(s)=${relationshipId} delete s;`
+      let cypher = `match (u:User)-[s:SAVED]->(t:Trip) where id(u)=${userId} and id(t)=${tripId} delete s;`
       db.queryAsync(cypher)
         .then(deleted => {
           resolve(deleted)
