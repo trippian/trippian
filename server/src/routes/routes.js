@@ -74,7 +74,7 @@ export default function (router) {
 
   //routes for users to save trips
   router.post('/api/saveTrip/:userId', userController.userSaveTrip)
-  router.delete('/api/saveTrip/:savedId', userController.deleteSavedTrip)
+  router.delete('/api/saveTrip', userController.deleteSavedTrip)
 
   //route for getting all information needed on a user dashboard
   router.get('/api/dashboard/:userId', dashboardController.dashboardGet)
