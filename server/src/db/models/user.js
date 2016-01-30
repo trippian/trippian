@@ -271,5 +271,17 @@ export default {
           console.error(error)
         })
     })
+  },
+  deleteSavedTrip: (relationshipId) => {
+    return new Promise ((resolve, reject) => {
+      let cypher = `match ()-[s:SAVED]->() where id(s)=${relationshipId} delete s;`
+      db.queryAsync(cypher)
+        .then(deleted => {
+          resolve(deleted)
+        })
+        .catch(error => {
+          console.error(error)
+        })
+    })
   }
 }
