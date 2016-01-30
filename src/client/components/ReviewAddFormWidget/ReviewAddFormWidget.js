@@ -5,8 +5,6 @@ const ReviewAddFormWidget = ({
 }) => {
   return (
     <div> 
-    <h3>Widget</h3>
-    {name}
     </div>
   )
 }

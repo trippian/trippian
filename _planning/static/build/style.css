@@ -8079,6 +8079,19 @@ footer {
     margin-top: 10%;
     width: 100%; }
 
+.team {
+  overflow: hidden; }
+  .team .photo {
+    margin-left: 0px;
+    width: 60%; }
+  .team .row {
+    min-height: 280px; }
+    .team .row h4 {
+      font-style: italic;
+      font-size: 16px; }
+    .team .row p {
+      padding: 0 32px; }
+
 .navbar {
   position: absolute;
   top: 0;
