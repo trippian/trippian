@@ -24,11 +24,9 @@ const TripListItemWidget = ({
               </div>
               <div className="col-xs-12 col-sm-2 col-md-2 col-lg-2 vote">
                   <span className="total-votes"> {netVote} </span>
-                  <div className="vote-buttons">
+                  <div className="vote-buttons vote-widget">
                       <button> <span className="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></button>
                       <button> <span className="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></button>
-                      <div>
-                      </div>
                   </div>
               </div>
           </div>

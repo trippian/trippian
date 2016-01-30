@@ -169,6 +169,13 @@ export const fetchUpdateUserById = (id) => {
 }
 
 
+//Rating & Review 
+export const fetchPostReview = (data) => {
+  const url = `${API_HOST}${routeConfig.review}/${data.trippianId}?rater=${data.userId}`
+  console.log('fetchPostTrippian', url, data)
+  return api.post(url, data)
+}
+
 
 
 // POST /api/destination

@@ -13,7 +13,9 @@ export default {
     destination: 'destination',
     user: 'user',
     trip: 'trip',
-    inquiry: 'inquiry'
+    inquiry: 'inquiry',
+    review: 'rating',
+    vote: 'vote'
   },
 
   // general page titles 

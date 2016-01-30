@@ -15,6 +15,8 @@ export const SET_TRIPPIANS = 'apiTrippian.SET_TRIPPIANS'
 export const GET_TRIPPIAN_BY_ID = 'apiTrippian.GET_TRIPPIAN_BY_ID'
 export const SET_TRIPPIAN = 'apiTrippian.SET_TRIPPIAN'
 
+//Review
+export const ADD_REVIEW = 'apiTrippian.ADD_REVIEW'
 
 //User 
 
