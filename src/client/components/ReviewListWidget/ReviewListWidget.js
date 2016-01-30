@@ -32,7 +32,7 @@ const ReviewListWidget = ({
   return (
     <div className="review-list clearfix">
         {dataList.map((review, key) =>  
-          <ReviewListItemWidget key={key} {...review} />
+          <ReviewListItemWidget key={key} {...review.properties} />
         )}
     </div>
   )

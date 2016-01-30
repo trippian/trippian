@@ -115,23 +115,23 @@ export default class AdminTrippianList extends Component {
             </thead>
             <tbody>
             {
-  this.props.trippians.map((trippian, key) => {
-    return (
-      <tr key={key}>
-                <td>{key+1}</td>
-                <td>{trippian.id}</td>
-                <td>{trippian.trippian ? 'Yes' : null}</td>
-                <td><Link to={`admin/trippian/${trippian.id}`}>{trippian.name}</Link></td>
-                <td>{trippian.facebookId}</td>
-                <td>  
-                  <a onClick={this.handleDelete.bind(this, trippian.id)}><span aria-hidden="true" className="glyphicon glyphicon-remove" ></span></a>
-                  &nbsp;&nbsp;&nbsp;&nbsp;
-                  <Link to="admin/trippian/58/edit"><span aria-hidden="true" className="glyphicon glyphicon-pencil" ></span></Link>
-                </td>
-              </tr>
-    )
-  })
-}
+              this.props.trippians.map((trippian, key) => {
+                return (
+                  <tr key={key}>
+                            <td>{key+1}</td>
+                            <td>{trippian.id}</td>
+                            <td>{trippian.trippian ? 'Yes' : null}</td>
+                            <td><Link to={`admin/trippian/${trippian.id}`}>{trippian.name}</Link></td>
+                            <td>{trippian.facebookId}</td>
+                            <td>  
+                              <a onClick={this.handleDelete.bind(this, trippian.id)}><span aria-hidden="true" className="glyphicon glyphicon-remove" ></span></a>
+                              &nbsp;&nbsp;&nbsp;&nbsp;
+                              <Link to="admin/trippian/58/edit"><span aria-hidden="true" className="glyphicon glyphicon-pencil" ></span></Link>
+                            </td>
+                          </tr>
+                )
+              })
+            }
 
             </tbody>
           </Table>

@@ -1,7 +1,7 @@
 import {
   SET_DESTINATIONS, SET_TRIPPIANS, GET_DESTINATIONS_FAIL, GET_DESTINATION_BY_ID, GET_TRIPPIAN_BY_ID, GET_DESTINATIONS, GET_TRIPPIANS,
   ADD_DESTINATION, ADD_ADMIN_DESTINATION, REMOVE_DESTINATION,
-  SET_TRIPPIAN, SET_DESTINATION
+  SET_TRIPPIAN, SET_DESTINATION, ADD_REVIEW
 }
 from '../actionTypes'
 import {
@@ -11,9 +11,12 @@ import {
   setUsers, addUser, addAdminUser,
   setInquirys, addInquiry, addAdminInquiry,
   setTrips, addTrip, addAdminTrip,
-  setTrip, setUser, setTrippian, setInquiry
+  setTrip, setUser, setTrippian, setInquiry,
+  addReview
 }
 from '../actionCreators'
+
+
 
 import {
   Map
@@ -26,12 +29,33 @@ import {
   fetchGetTrippians, fetchDeleteTrippianById, fetchGetTrippianById, fetchPostTrippian,
   fetchGetUsers, fetchDeleteUserById, fetchGetUserById, fetchPostUser,
   fetchGetInquiries, fetchDeleteInquiryById, fetchGetInquiryByReceiverId, fetchPostInquiry,
-  fetchGetTrips, fetchDeleteTripById, fetchGetTripById, fetchPostTrip
+  fetchGetTrips, fetchDeleteTripById, fetchGetTripById, fetchPostTrip,
+  fetchPostReview
 
 }
 from '../../utils/apiTrippian'
+import store from '../store'
 
 const initialState = new Map({
+  currentUser: {
+    username: '',
+    displayName: '',
+    email: '',
+    id: 32, //TODO
+    facebookId: 0,
+    picture: 'http://lorempixel.com/200/200/people/',
+    trippian: false
+  },
+  currentReview: {
+    createdAt: '',
+    username: '',
+    facebookId: '',
+    userAvatar: '',
+    userId: '',
+    rating: 0,
+    title: '',
+    content: ''
+  },
   trippians: [],
   destinations: [],
   newDestinations: [],
@@ -78,13 +102,14 @@ const initialState = new Map({
       end: 0,
       properties: {
         createdAt: '',
-        userName: '',
+        username: '',
         facebookId: '',
-        picture: '',
+        userAvatar: 'http://lorempixel.com/200/200/people/',
         userId: '',
         rating: 0,
         title: '',
-        content: ''
+        content: '',
+        trippian: false
       }
     }]
   }
@@ -130,6 +155,12 @@ export default function apiTrippianReducer(state = initialState, action) {
         destination: action.payload.destination
       }))
 
+    case ADD_REVIEW:
+      const trippianR = state.get('trippian')
+      trippianR.reviews.push(action.payload.review) // review is nested in trippian
+      return state.merge(new Map({
+        trippian: trippianR
+      }))
     default:
       return state
   }
@@ -280,6 +311,33 @@ export function postInquiry(data) {
       .then(inquiry => {
         console.log('---posted', inquiry)
         dispatch(addAdminInquiry(inquiry))
+      })
+      .catch(error => dispatch(apologize(error)))
+  }
+}
+
+// createdAt: '',
+// username: '',
+// facebookId: '',
+// picture: '',
+// userId: '',
+// rating: 0,
+// title: '',
+// content: ''
+export function postReview(data) {
+  const user = store.getState().apiTrippian.get('currentUser')
+  data.userId = user.id
+  data.username = user.username
+  data.userAvatar = user.picture
+  data.facebookId = user.facebookId
+  data.createdAt = new Date()
+  data.trippian = user.trippian
+  console.log('-- posting a review now', data)
+  return (dispatch) => {
+    return fetchPostReview(data)
+      .then(review => {
+        console.log('---posted', review)
+        dispatch(addReview(review)) // add review to current trippian on the front-end
       })
       .catch(error => dispatch(apologize(error)))
   }
