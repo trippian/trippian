@@ -1,5 +1,4 @@
 import AWS from 'aws-sdk'
-import uuid from 'node-uuid'
 require('dotenv').config()
 
 export const getSignedRequest = function (req, res) {
