@@ -45,12 +45,16 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
     - [X] Review display after submit 
     - [ ] Add trip to review
   - Refactor 
+    - [ ] Handle error / alert 
+    - [ ] 
     - [ ] Action Creator 
     - [ ] Reducer (todo later)
   - Data 
     - [ ] Add real destination photo 
   
-  - [ ] Create Trip 
+  - [X] Create Trip 
+  - [ ] Destination Edit 
+  - [ ] Search URL transition 
   - Inquiry 
     - [ ] Hide form and show data upon submission 
   - [ ] File Uploads
