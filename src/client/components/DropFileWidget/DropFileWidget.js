@@ -22,7 +22,7 @@ export default class DropFileWidget extends Component {
         totalNumberOfFiles: 0,
         file: {},
         uploadedFiles: [],
-        s3Path: this.props.s3Path || '/destination/'
+        s3Path: this.props.s3Path || 'destination/'
       }
 
     }
@@ -34,12 +34,13 @@ export default class DropFileWidget extends Component {
       totalNumberOfFiles: files.length
     })
 
-    const filePath = this.state.s3Path + store.getState().apiTrippian.get('currentUser').id
+    const filePath = this.state.s3Path + store.getState().apiTrippian.get('currentUser').id + '/'
     files.forEach((file, index) => {
       // give a file path to reduce file name collision 
       file.path = filePath
-      console.log('file path', file.path)
+      console.log('----file path & name', filePath, file.name)
       apiS3.getS3SignedURL(file).then(data => {
+
           console.log('got signed url', file.name, data.signed_request, data)
           return axios.put(data.signed_request, file, {
             headers: {
@@ -50,10 +51,10 @@ export default class DropFileWidget extends Component {
         .then(result => {
           // update the state, so we can observe the progress and change the preview 
           let uploadedFiles = this.state.uploadedFiles
-          uploadedFiles.push(`${S3Config.baseUrl}/${result.config.data.name}`)
-          console.log('uploadedFile path', `${S3Config.baseUrl}/${result.config.data.name}`)
-            // uploadedFiles.push(`${S3Config.baseUrl}${filePath}/${result.config.data.name}`)
-            // console.log('uploadedFile path', `${S3Config.baseUrl}${filePath}/${result.config.data.name}`)
+            // uploadedFiles.push(`${S3Config.baseUrl}/${result.config.data.name}`)
+            // console.log('uploadedFile path', `${S3Config.baseUrl}/${result.config.data.name}`)
+          uploadedFiles.push(`${S3Config.baseUrl}${filePath}${result.config.data.name}`)
+          console.log('uploadedFile path', `${S3Config.baseUrl}${filePath}${result.config.data.name}`)
           let files = this.state.files
           files.splice(index, 1)
           this.setState({

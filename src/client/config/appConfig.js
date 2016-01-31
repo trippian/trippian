@@ -20,7 +20,7 @@ export default {
     s3: 'signS3'
   },
   S3: {
-    baseUrl: 'https://trippian.s3.amazonaws.com',
+    baseUrl: 'https://s3-us-west-1.amazonaws.com/trippian/',
     userPath: 'user/',
     tripPath: 'trip/',
     destinationPath: 'destination/',
