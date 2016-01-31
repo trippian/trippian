@@ -22,7 +22,7 @@ export default class DropFileWidget extends Component {
         totalNumberOfFiles: 0,
         file: {},
         uploadedFiles: [],
-        s3Path: this.props.s3Path || '/destination/'
+        s3Path: this.props.s3Path || 'destination/'
       }
 
     }
