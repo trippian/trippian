@@ -1,8 +1,7 @@
 require('es6-promise').polyfill()
 require('isomorphic-fetch')
-
-// a test remote url to make sure the get api is working
-// const mURL = 'http://api.themoviedb.org/3/movie/popular?api_key=87380c54ae472259aade42db22a24d89'
+  // a test remote url to make sure the get api is working
+  // const mURL = 'http://api.themoviedb.org/3/movie/popular?api_key=87380c54ae472259aade42db22a24d89'
 
 // in order to use ismorphic fetch, the server must support cors;
 const get = (url) => {
@@ -55,6 +54,8 @@ const deleteApi = (url) => {
       console.log('deleting failed at fetch', error, url)
     })
 }
+
+
 
 const putFile = (url, file) => {
   return fetch(url, {

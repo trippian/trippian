@@ -229,7 +229,7 @@ export function getPopularTrippians() {
 
 // get One 
 export function getDestinationById(id) {
-  console.log('-- get a destination now', id)
+  console.log('-- getting a destination now in reducer', id)
   return (dispatch) => {
     return fetchGetDestinationById(id)
       .then((destination) => {
@@ -241,7 +241,7 @@ export function getDestinationById(id) {
 }
 
 export function getTripById(id) {
-  console.log('-- get a Trip now', id)
+  console.log('-- getting a Trip now in reducer', id)
   return (dispatch) => {
     return fetchGetTripById(id)
       .then((trip) => {
@@ -254,7 +254,7 @@ export function getTripById(id) {
 }
 
 export function getUserById(id) {
-  console.log('-- get a User now', id)
+  console.log('-- getting a User now in reducer', id)
   return (dispatch) => {
     return fetchGetUserById(id)
       .then((user) => {
@@ -265,7 +265,7 @@ export function getUserById(id) {
   }
 }
 export function getTrippianById(id) {
-  console.log('-- get a Trippian now', id)
+  console.log('-- getting a Trippian now in reducer', id)
   return (dispatch) => {
     return fetchGetTrippianById(id)
       .then((trippian) => {
@@ -277,7 +277,7 @@ export function getTrippianById(id) {
 }
 
 export function getInquiryById(id) {
-  console.log('-- get a Inquiry now', id)
+  console.log('-- getting a Inquiry now in reducer', id)
   return (dispatch) => {
     return fetchGetInquiryByReceiverId(id)
       .then((inquiry) => {
@@ -290,7 +290,7 @@ export function getInquiryById(id) {
 
 // posting 
 export function postDestination(data) {
-  console.log('-- posting a destination now', data)
+  console.log('-- posting a destination now in reducer', data)
     // after posting the destination, add the response data to the store on adminDestinations, aslo add to newDestinations on apiTrippians
   return (dispatch) => {
     return fetchPostDestination(data)
@@ -306,7 +306,7 @@ export function postDestination(data) {
 export function postTrip(data) {
   //TODO, update userId to global 
   data.userId = store.getState().apiTrippian.get('currentUser').id
-  console.log('-- posting a trip now', data)
+  console.log('-- posting a trip now in reducer', data)
   return (dispatch) => {
     return fetchPostTrip(data)
       .then(trip => {
@@ -322,7 +322,7 @@ export function postUser(data) {
   //TODO, update userId to global 
   data.senderId = 32
   data.trippianId = 31
-  console.log('-- posting a trip now', data)
+  console.log('-- posting a trip now in reducer', data)
   return (dispatch) => {
     return fetchPostUser(data)
       .then(user => {
@@ -333,7 +333,7 @@ export function postUser(data) {
   }
 }
 export function postTrippian(data) {
-  console.log('-- posting a trippian now', data)
+  console.log('-- posting a trippian now in reducer', data)
   return (dispatch) => {
     return fetchPostTrippian(data)
       .then(trippian => {
@@ -350,7 +350,7 @@ export function postInquiry(data) {
 
   data.senderId = store.getState().apiTrippian.get('currentUser').id
   data.trippianId = store.getState().apiTrippian.get('trippian').id
-  console.log('-- posting a inquiry now', data)
+  console.log('-- posting a inquiry now in reducer', data)
   return (dispatch) => {
     return fetchPostInquiry(data)
       .then(inquiry => {
@@ -370,7 +370,7 @@ export function postReview(data) {
   data.facebookId = user.facebookId
   data.createdAt = new Date()
   data.trippian = user.trippian
-  console.log('-- posting a review now', data)
+  console.log('-- posting a review now in reducer', data)
   return (dispatch) => {
     return fetchPostReview(data)
       .then(review => {

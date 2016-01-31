@@ -6,8 +6,22 @@ import {
   reduxForm
 }
 from 'redux-form'
+import {
+  fileEnhance
+}
+from '../../hocs/fileEnhance'
 
 class DestinationPostFormWidget extends Component {
+  constructor(props) {
+    super(props)
+    this.state = ({
+      isHOC: false
+    })
+  }
+  handleSubmit(data) {
+    console.log('******submitting in the form', this.props.files, this.props.isFileUploading)
+    this.props.handleSubmit(data)
+  }
   render() {
     const {
       fields: {
@@ -34,9 +48,7 @@ class DestinationPostFormWidget extends Component {
           <label>Why Visit</label>
           <textarea name="whyVisit" className="form-control" className="form-control" rows="3" required="required" {...whyVisit}></textarea>
         </div>
-
-        
-        <button onClick={handleSubmit}>Submit</button>
+        <button  disabled={this.props.isFileUploading} className={'btn ' + (this.props.isFileUploading ? 'disabled' : 'btn-success') } onClick={this.handleSubmit.bind(this)}>Submit</button> 
       </form>
     )
   }
@@ -50,4 +62,4 @@ DestinationPostFormWidget = reduxForm({
 
 DestinationPostFormWidget.displayName = 'DestinationPostFormWidget'
 
-export default DestinationPostFormWidget
+export default fileEnhance(DestinationPostFormWidget)
