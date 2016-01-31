@@ -5,7 +5,7 @@ import {
 from '../config/appConfig'
 
 export const getS3SignedURL = (file) => {
-  const url = `${Server_HOST}${routeConfig.s3}?file_name=${file.name}&file_type=${file.type}`
+  const url = `${Server_HOST}${routeConfig.s3}?name=${file.name}&type=${file.type}`
   console.log('getS3SignedURL', url)
   return api.get(url)
 }
