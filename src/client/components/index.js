@@ -18,6 +18,8 @@ export DestinationListItemWidget from './DestinationListItemWidget/DestinationLi
 export DestinationListWidget from './DestinationListWidget/DestinationListWidget'
 export DestinationPostFormWidget from './DestinationPostFormWidget/DestinationPostFormWidget'
 
+export DropFileWidget from './DropFileWidget/DropFileWidget'
+
 export DummyRichTextWidget from './DummyRichTextWidget/DummyRichTextWidget'
 
 export UserPostFormWidget from './UserPostFormWidget/UserPostFormWidget'
@@ -52,6 +54,7 @@ export RelativeTimeWidget from './RelativeTimeWidget/RelativeTimeWidget'
 export ReviewAddFormWidget from './ReviewAddFormWidget/ReviewAddFormWidget'
 export ReviewListItemWidget from './ReviewListItemWidget/ReviewListItemWidget'
 export ReviewListWidget from './ReviewListWidget/ReviewListWidget'
+export PreviewImageWidget from './PreviewImageWidget/PreviewImageWidget'
 export SearchBoxWidget from './SearchBoxWidget/SearchBoxWidget'
 export StarRatingWidget from './StarRatingWidget/StarRatingWidget'
 export SendButtonIntl from './SendButtonIntl/SendButtonIntl'

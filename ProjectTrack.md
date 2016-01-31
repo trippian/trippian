@@ -67,8 +67,9 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
     - [ ] Logout  
   - [ ] Vote 
   - Widgets & Misc.
-    - [ ] Rating 
+    - [X] Rating 
     - [ ] Carousal 
+    - [ ]
   - [ ] SearchBox (auto suggest)
   - [ ] S3 image upload 
   - [ ] Rich Text Editing for Trippian 

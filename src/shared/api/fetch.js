@@ -50,15 +50,35 @@ const deleteApi = (url) => {
         throw new Error('Bad response from server')
       }
       return res.json()
-
     })
-    .catch(function (error) {
+    .catch((error) => {
       console.log('deleting failed at fetch', error, url)
     })
 }
 
+const putFile = (url, file) => {
+  return fetch(url, {
+      method: 'put',
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': file.type
+      }
+    })
+    .then((res) => {
+      if (res.status >= 400) {
+        throw new Error('Bad response from server')
+      }
+      return res.json()
+    })
+    .catch((error) => {
+      console.log('updating failed at fetch', error, url)
+    })
+}
+
+
 export default {
   get,
   post,
-  deleteApi
+  deleteApi,
+  putFile
 }

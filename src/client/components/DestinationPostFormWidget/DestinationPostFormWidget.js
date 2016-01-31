@@ -34,6 +34,8 @@ class DestinationPostFormWidget extends Component {
           <label>Why Visit</label>
           <textarea name="whyVisit" className="form-control" className="form-control" rows="3" required="required" {...whyVisit}></textarea>
         </div>
+
+        
         <button onClick={handleSubmit}>Submit</button>
       </form>
     )

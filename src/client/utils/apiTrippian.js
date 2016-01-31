@@ -1,6 +1,6 @@
 import api from '../../shared/api/fetch'
 import {
-  API_HOST, routeConfig
+  API_HOST, Server_HOST, routeConfig
 }
 from '../config/appConfig'
   // import config from '../../shared/config/config'
@@ -176,7 +176,11 @@ export const fetchPostReview = (data) => {
   return api.post(url, data)
 }
 
-
+export const getS3SignedURL = (file) => {
+  const url = `${Server_HOST}${routeConfig.s3}?file_name=${file.name}&file_type=${file.type}`
+  console.log('getS3SignedURL', url)
+  return api.get(url)
+}
 
 // POST /api/destination
 // URL encoded POST request

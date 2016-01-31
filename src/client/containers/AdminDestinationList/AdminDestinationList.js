@@ -4,7 +4,7 @@ import React, {
 from 'react'
 
 import {
-  JumbotronWidget, DestinationPostFormWidget
+  JumbotronWidget, DestinationPostFormWidget, DropFileWidget
 }
 from '../../components/index'
 import {
@@ -96,6 +96,7 @@ export default class AdminDestinationList extends Component {
     } = this.state.alert
     return (
       <div id="admin-destination-page">
+        <DropFileWidget />
         {title !== '' && 
           <Alert bsStyle={type} dismissAfter={3000} onDismiss={this.handleAlertDismiss.bind(this)}>
             <h4>{title}</h4>
