@@ -12,11 +12,9 @@ export const getSignedRequest = function (req, res) {
 
   let s3 = new AWS.S3()
 
-  let hashedFileName = uuid.v1()
-
   let s3_params = {
-    Bucket: process.env.S3_BUCKET,
-    Key: hashedFileName,
+    Bucket: `${process.env.S3_BUCKET}${req.query.filePath}`,
+    Key: req.query.name,
     Expires: 60,
     ContentType: req.query.type,
     ACL: 'public-read'
@@ -24,12 +22,12 @@ export const getSignedRequest = function (req, res) {
 
   s3.getSignedUrl('putObject', s3_params, function (err, data) {
     if (err) {
-      console.log(err)
+      console.error(err)
     } else {
       let return_data = {
         signed_request: data,
-        url: 'https://' + process.env.S3_BUCKET + '.s3.amazonaws.com/' + hashedFileName,
-        fileName: hashedFileName
+        url: `https://${process.env.S3_REGION}.s3.amazonaws.com/${process.env.S3_BUCKET}${req.query.filePath}/${req.query.name}`,
+        fileName: req.query.name
       }
       res.write(JSON.stringify(return_data))
       res.end()
