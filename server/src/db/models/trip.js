@@ -125,7 +125,7 @@ export default {
             db.queryAsync(cypher)
               .then((updatedTrip) => {
                 if (updatedTrip.length) {
-                  resolve(updatedTrip)
+                  resolve(updatedTrip[0])
                 } else {
                   reject(new Error('User could not vote for this trip'))
                 }
