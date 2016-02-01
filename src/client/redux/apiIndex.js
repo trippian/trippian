@@ -8,7 +8,8 @@ import {
   getTrippianById,
   getUserById,
   getDestinationById,
-  getInquiryById
+  getInquiryById,
+  login, logout
 }
 from './reducers/apiTrippianReducer'
 
@@ -23,5 +24,6 @@ export default {
   getTrippianById,
   getUserById,
   getDestinationById,
-  getInquiryById
+  getInquiryById,
+  login, logout
 }

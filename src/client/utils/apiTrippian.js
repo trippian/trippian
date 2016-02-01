@@ -194,6 +194,20 @@ export const fetchUpdateVote = ({
   })
 }
 
+export const fetchLogin = (type = 'facebook') => {
+  let url = routeConfig.facebookAuth
+  if (type === 'google') {
+    url = routeConfig.googleAuth
+  }
+  console.log('fetchLogin', url)
+  return api.get(url)
+}
+
+export const fetchLogout = () => {
+  var url = routeConfig.logout
+  console.log('fetchLogout', url)
+  return api.get(url)
+}
 
 // POST /api/destination
 // URL encoded POST request

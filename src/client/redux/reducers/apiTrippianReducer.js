@@ -33,7 +33,7 @@ import {
   fetchGetUsers, fetchDeleteUserById, fetchGetUserById, fetchPostUser,
   fetchGetInquiries, fetchDeleteInquiryById, fetchGetInquiryByReceiverId, fetchPostInquiry,
   fetchGetTrips, fetchDeleteTripById, fetchGetTripById, fetchPostTrip,
-  fetchPostReview, fetchUpdateVote
+  fetchPostReview, fetchUpdateVote, fetchLogin, fetchLogout
 
 }
 from '../../utils/apiTrippian'
@@ -424,6 +424,37 @@ export function voteTrip(vote = 1, tripId) {
         console.log('---voted', trip)
         dispatch(updateVote(vote, tripId))
         alertSuccess('Successfully voted for trip', tripId)
+      })
+      .catch(error => apologize(error))
+  }
+}
+
+// Login related 
+export function login(type = 'facebook') {
+  alertInfo('Login with facebook now...')
+  console.log('-- login now in reducer', type)
+  return (dispatch) => {
+    return fetchLogin(type)
+      .then(() => {
+        console.log('---logged in')
+          // dispatch(updateVote(vote, tripId))
+          // TODO: update state 
+        alertSuccess('Successfully logged in', window.document.cookie)
+      })
+      .catch(error => apologize(error))
+  }
+}
+
+export function logout() {
+  alertInfo('Logout now...')
+  console.log('-- logout now in reducer')
+  return (dispatch) => {
+    return fetchLogout()
+      .then(() => {
+        console.log('---logged out')
+          // dispatch(updateVote(vote, tripId))
+          // TODO: update state 
+        alertSuccess('Successfully logged out', window.document.cookie)
       })
       .catch(error => apologize(error))
   }

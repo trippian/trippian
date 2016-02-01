@@ -19,7 +19,8 @@ export default {
     vote: 'vote',
     s3: 'signS3',
     googleAuth: 'http://localhost:4000/auth/google',
-    facebookAuth: 'http://localhost:4000/auth/facebook'
+    facebookAuth: 'http://localhost:4000/auth/facebook',
+    logout: 'http://localhost:4000/auth/logout'
   },
   S3: {
     baseUrl: 'https://s3-us-west-1.amazonaws.com/trippian/',
