@@ -15,7 +15,15 @@ export default {
                   User.getUserPostedTrips(req.params.userId)
                     .then(postedTrips => {
                       user.postedTrips = postedTrips
-                      res.json(user)
+                      // res.json(user)
+                      User.getUserVotedTrips(req.params.userId)
+                        .then(votedTrips => {
+                          user.votedTrips = votedTrips
+                          res.json(user)
+                        })
+                        .catch(error => {
+                          next(error)
+                        })
                     })
                     .catch(error => {
                       next(error)

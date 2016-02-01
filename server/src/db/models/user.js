@@ -283,5 +283,17 @@ export default {
           console.error(error)
         })
     })
+  },
+  getUserVotedTrips: (userId) => {
+    return new Promise ((resolve, reject) => {
+      let cypher = `match (t:Trip), (t)<-[u:UPVOTE]-(n:User),(t)<-[d:DOWNVOTE]-(n:User) where id(n)=${userId} return u,d;`
+      db.queryAsync(cypher)
+        .then(voted => {
+          resolve(voted)
+        })
+        .catch(error => {
+          console.error(error)
+        })
+    })
   }
 }
