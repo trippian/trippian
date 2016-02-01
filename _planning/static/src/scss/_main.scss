@@ -193,6 +193,7 @@ footer {
 
 // widgets
 .login-button-widget {
+    button,
     a {
         color: white;
         margin-bottom: 8px;
@@ -203,9 +204,12 @@ footer {
             margin-right: 8px;
             // border-right: 1px solid $gray-lighter;
         }
-    }
-    &:hover {
-        color: $primary-color-light;
+        span {
+            font-size: 18px;
+        }
+        &:hover {
+            color: $primary-color-light;
+        }
     }
     .facebook {
         background-color: #2d4373;

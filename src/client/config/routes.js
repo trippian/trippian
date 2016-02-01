@@ -5,9 +5,10 @@ import {
 from 'react-router'
 
 import {
-  App, Home, About, JoinUs, Login, NotFound, Press,
+  App, Home, About, JoinUs, NotFound, Press,
   Destination, DestinationDetail, DestinationPost, Contact,
   InquiryAdd, InquiryDetail, InquiryList,
+  Login, LoginWrapper, LoginSuccess,
   DestinationWrapper, PopularDestinations, DestinationSearchResults, Trippian,
   Terms, TrippianDetail, TrippianSignUp, TrippianList, TrippianEdit, IntlDemo,
   Admin, AdminDestinationList, AdminDestinationListItem, AdminDestinationListItemEdit,
@@ -29,7 +30,14 @@ export default (
             <Route component={InquiryDetail} path="inquiry/:id"  />
             <Route component={InquiryList} path="my-inquiries"  />
             <Route component={IntlDemo} path="intl"  />
-            <Route component={Login} path="login"  />
+
+            //login
+            <Route component={LoginWrapper} path="login" >
+              <Route component={Login} path="login" />
+              <Route component={LoginSuccess} path="success" />
+              <IndexRoute component={Login} />
+            </Route>
+            
             <Route component={NotFound} path="not-found"  />
             <Route component={Press} path="press"  />
             <Route component={Terms} path="terms"  />
