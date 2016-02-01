@@ -42,9 +42,9 @@ export default {
               id: newUser.id,
               name: req.user.displayName,
               email: req.user.emails[0].value,
-              picture: req.user._json.image.url,
+              picture: req.user._json.image.url
             })
-            res.redirect('/login/success')
+            res.redirect('/#/login/success')
           })
         } else {
           res.cookie('trippianPass', {
@@ -54,7 +54,7 @@ export default {
             email: req.user.emails[0].value,
             picture: req.user._json.image.url
           })
-          res.redirect('/login/success')
+          res.redirect('/#/login/success')
         }
       })
   },
@@ -84,7 +84,7 @@ export default {
               email: req.user.emails[0].value,
               picture: `https://graph.facebook.com/${req.user.id}/picture?height=500`
             })
-            res.redirect('/login/success')
+            res.redirect('/#/login/success')
           })
         } else {
           res.cookie('trippianPass', {
@@ -94,7 +94,7 @@ export default {
             email: req.user.emails[0].value,
             picture: `https://graph.facebook.com/${req.user.id}/picture?height=500`
           })
-          res.redirect('/login/success')
+          res.redirect('/#/login/success')
         }
       })
   },
