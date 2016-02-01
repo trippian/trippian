@@ -31,3 +31,10 @@ export function getParamFromQueryStringByName(search, name) {
 export function getMessagesByLocale(locale = 'en-US') {
   return require(`../../../translate/lang/${locale}.json`)
 }
+
+export function getCanVote(currentNetVote, vote) {
+  // options: (-1, 1) = > 0, (1, -1) => 0,  (0, -1) => -1, (0, 1) => 1
+  if (currentNetVote === 0) return true
+  if ((currentNetVote === 1 && vote === -1) || (currentNetVote === -1 && vote === 1)) return true
+  return false
+}

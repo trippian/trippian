@@ -162,6 +162,7 @@ export const fetchDeleteUserById = (id) => {
   return api.deleteApi(url)
 }
 
+//TODO
 export const fetchUpdateUserById = (id) => {
   const url = `${API_HOST}${routeConfig.user}/${id}`
   console.log('fetchUpdateUserById', url, id)
@@ -176,11 +177,23 @@ export const fetchPostReview = (data) => {
   return api.post(url, data)
 }
 
-export const getS3SignedURL = (file) => {
-  const url = `${Server_HOST}${routeConfig.s3}?file_name=${file.name}&file_type=${file.type}`
-  console.log('getS3SignedURL', url)
-  return api.get(url)
+//curl -X PUT -d "userId=8" http://localhost:4000/api/trip/51/?voteType=UPVOTE
+export const fetchUpdateVote = ({
+  userId, tripId, vote = 1
+}) => {
+  console.log('in fetch', userId, tripId, vote)
+  if (vote !== -1 && vote !== 1) {
+    console.log('unexpected vote, should be 1 or -1')
+    return
+  }
+  const voteType = vote === -1 ? 'DOWNVOTE' : 'UPVOTE'
+  const url = `${API_HOST}${routeConfig.trip}/${tripId}?voteType=${voteType}`
+  console.log('fetchPostTrippian', url, userId, tripId, voteType)
+  return api.put(url, {
+    userId: userId
+  })
 }
+
 
 // POST /api/destination
 // URL encoded POST request

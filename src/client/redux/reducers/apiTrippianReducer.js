@@ -2,7 +2,7 @@ import {
   FETCH_REMOTE_RESOURCE_FAIL,
   SET_DESTINATIONS, SET_TRIPPIANS, GET_DESTINATIONS_FAIL, GET_DESTINATION_BY_ID, GET_TRIPPIAN_BY_ID, GET_DESTINATIONS, GET_TRIPPIANS,
   ADD_DESTINATION, ADD_ADMIN_DESTINATION, REMOVE_DESTINATION,
-  SET_TRIPPIAN, SET_DESTINATION, ADD_REVIEW, SET_INQUIRY, SET_TRIP
+  SET_TRIPPIAN, SET_DESTINATION, ADD_REVIEW, SET_INQUIRY, SET_TRIP, UPDATE_VOTE
 }
 from '../actionTypes'
 import {
@@ -12,7 +12,7 @@ import {
   setInquirys, addInquiry, addAdminInquiry,
   setTrips, addTrip, addAdminTrip, setTrip,
   setUser, setTrippian, setInquiry,
-  addReview
+  addReview, updateVote
 }
 from '../actionCreators'
 import {
@@ -33,7 +33,7 @@ import {
   fetchGetUsers, fetchDeleteUserById, fetchGetUserById, fetchPostUser,
   fetchGetInquiries, fetchDeleteInquiryById, fetchGetInquiryByReceiverId, fetchPostInquiry,
   fetchGetTrips, fetchDeleteTripById, fetchGetTripById, fetchPostTrip,
-  fetchPostReview
+  fetchPostReview, fetchUpdateVote
 
 }
 from '../../utils/apiTrippian'
@@ -49,11 +49,7 @@ const initialState = new Map({
     picture: 'http://lorempixel.com/200/200/people/',
     trippian: false
   },
-  alert: {
-    type: 'success',
-    title: 'Operation Performed',
-    message: 'Some action has performed....'
-  },
+
   currentReview: {
     createdAt: '',
     username: '',
@@ -205,6 +201,19 @@ export default function apiTrippianReducer(state = initialState, action) {
     case SET_INQUIRY:
       return state.merge(new Map({
         inquiry: action.payload.inquiry
+      }))
+
+    case UPDATE_VOTE:
+      let destP = state.get('destination')
+        // let popTrips = destP.popularTrips 
+      destP.popularTrips.forEach(trip => {
+        if (trip.id === action.payload.tripId) {
+          trip.netVote += +action.payload.vote
+          console.log('------ updating vote', action.payload.tripId, trip.netVote)
+        }
+      })
+      return state.merge(new Map({
+        destination: destP
       }))
 
     default:
@@ -395,6 +404,26 @@ export function postReview(data) {
         console.log('---posted', review)
         dispatch(addReview(review)) // add review to current trippian on the front-end
         alertSuccess('Successfully added review')
+      })
+      .catch(error => apologize(error))
+  }
+}
+
+
+//Put requests 
+// vote can be 1 or -1 
+export function voteTrip(vote = 1, tripId) {
+  alertInfo('Voting for trip now...')
+  const userId = store.getState().apiTrippian.get('currentUser').id
+  console.log('-- voting a trip now in reducer', vote, tripId)
+  return (dispatch) => {
+    return fetchUpdateVote({
+        userId, tripId, vote
+      })
+      .then(trip => {
+        console.log('---voted', trip)
+        dispatch(updateVote(vote, tripId))
+        alertSuccess('Successfully voted for trip', tripId)
       })
       .catch(error => apologize(error))
   }

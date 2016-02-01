@@ -7939,6 +7939,10 @@ a {
 .active {
   color: #E64A19 !important; }
 
+button[disabled],
+html input[disabled] {
+  color: #777777; }
+
 .flex-row-wrap {
   display: flex;
   flex-flow: row wrap; }
