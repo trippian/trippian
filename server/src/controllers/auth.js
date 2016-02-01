@@ -44,7 +44,7 @@ export default {
               email: req.user.emails[0].value,
               picutre: req.user._json.image.url,
             })
-            res.redirect('/')
+            res.redirect('/login/success')
           })
         } else {
           res.cookie('trippianPass', {
@@ -54,7 +54,7 @@ export default {
             email: req.user.emails[0].value,
             picutre: req.user._json.image.url
           })
-          res.redirect('/')
+          res.redirect('/login/success')
         }
       })
   },
@@ -84,7 +84,7 @@ export default {
               email: req.user.emails[0].value,
               picture: `https://graph.facebook.com/${req.user.id}/picture?height=500`
             })
-            res.redirect('/')
+            res.redirect('/login/success')
           })
         } else {
           res.cookie('trippianPass', {
@@ -94,7 +94,7 @@ export default {
             email: req.user.emails[0].value,
             picture: `https://graph.facebook.com/${req.user.id}/picture?height=500`
           })
-          res.redirect('/')
+          res.redirect('/login/success')
         }
       })
   },
@@ -106,7 +106,7 @@ export default {
     scope: ['profile', 'email']
   }),
   googleCallback: passport.authenticate('google', {
-    failureRedirect: '/'
+    failureRedirect: '/login'
   })
 
 }
