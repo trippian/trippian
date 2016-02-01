@@ -43,6 +43,11 @@ a {
     color: $primary-color-dark !important;
 }
 
+button[disabled],
+html input[disabled] {
+    color: $gray-light;
+}
+
 .flex-row-wrap {
     display: flex;
     flex-flow: row wrap;
