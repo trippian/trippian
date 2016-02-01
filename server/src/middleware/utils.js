@@ -1,7 +1,7 @@
 import _ from 'lodash'
 
 export const errorHandler = function(err, req, res) {
-  // res.status(500).send({error: err.message});
+  res.status(500).send({error: err.message})
 }
 
 export const errorLogger = function(err, req, res, next) {
