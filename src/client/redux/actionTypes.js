@@ -29,8 +29,10 @@ export const SET_TRIP = 'apiTrippian.SET_TRIP'
 
 //Trip
 export const SET_INQUIRY = 'apiTrippian.SET_INQUIRY'
+export const UPDATE_VOTE = 'apiTrippian.UPDATE_VOTE'
 
 //User 
+
 
 //******admin 
 //destination

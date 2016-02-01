@@ -5,7 +5,7 @@ import {
 
   SET_TRIPPIANS, GET_TRIPPIANS, GET_TRIPPIAN_BY_ID, REMOVE_TRIPPIAN, SET_TRIPPIAN,
 
-  ADD_REVIEW, SET_INQUIRY, SET_TRIP,
+  ADD_REVIEW, SET_INQUIRY, SET_TRIP, UPDATE_VOTE,
 
   SET_ADMIN_DESTINATIONS, ADD_ADMIN_DESTINATION, REMOVE_ADMIN_DESTINATION, SET_ADMIN_CURRENT_DESTINATION,
   SET_ADMIN_TRIPPIANS, ADD_ADMIN_TRIPPIAN, REMOVE_ADMIN_TRIPPIAN, SET_ADMIN_CURRENT_TRIPPIAN,
@@ -50,11 +50,11 @@ export function setDisplayName(displayName) {
     }
   }
 }
-export function setAlert(alert={
-    type: 'success',
-    title: '',
-    message: ''
-  }) {
+export function setAlert(alert = {
+  type: 'success',
+  title: '',
+  message: ''
+}) {
   return {
     type: SET_ALERT,
     payload: {
@@ -167,6 +167,15 @@ export function setTrip(trip) {
     type: SET_TRIP,
     payload: {
       trip
+    }
+  }
+}
+export function updateVote(vote = 1, tripId) {
+  return {
+    type: UPDATE_VOTE,
+    payload: {
+      vote: vote,
+      tripId: tripId
     }
   }
 }

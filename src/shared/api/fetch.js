@@ -40,6 +40,27 @@ const post = (url, data) => {
     })
 }
 
+const put = (url, data) => {
+  return fetch(url, {
+      method: 'put',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then((res) => {
+      if (res.status >= 400) {
+        throw new Error('Bad response from server')
+      }
+      return res.json()
+
+    })
+    .catch(function (error) {
+      console.log('putting failed at fetch', error)
+    })
+}
+
 const deleteApi = (url) => {
   return fetch(url, {
       method: 'delete'
@@ -80,6 +101,7 @@ const putFile = (url, file) => {
 export default {
   get,
   post,
+  put,
   deleteApi,
   putFile
 }
