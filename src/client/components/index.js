@@ -14,6 +14,7 @@ export CircleImageLinkWidget from './CircleImageLinkWidget/CircleImageLinkWidget
 export ContactButtonWidget from './ContactButtonWidget/ContactButtonWidget'
 export CrumbWidget from './CrumbWidget/CrumbWidget'
 export SectionHeaderWidget from './SectionHeaderWidget/SectionHeaderWidget'
+export DashboardMenuWidget from './DashboardMenuWidget/DashboardMenuWidget'
 export DestinationListItemWidget from './DestinationListItemWidget/DestinationListItemWidget'
 export DestinationListWidget from './DestinationListWidget/DestinationListWidget'
 export DestinationPostFormWidget from './DestinationPostFormWidget/DestinationPostFormWidget'
