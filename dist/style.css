@@ -8045,17 +8045,22 @@ footer {
         .jumbotron .full-length-container .container .meta-info .text-intro {
           width: 100%; }
 
+.login-button-widget button,
 .login-button-widget a {
   color: white;
   margin-bottom: 8px;
   min-width: 200px;
   text-align: left; }
+  .login-button-widget button i,
   .login-button-widget a i {
     padding-right: 8px;
     margin-right: 8px; }
-
-.login-button-widget:hover {
-  color: #FFCCBC; }
+  .login-button-widget button span,
+  .login-button-widget a span {
+    font-size: 18px; }
+  .login-button-widget button:hover,
+  .login-button-widget a:hover {
+    color: #FFCCBC; }
 
 .login-button-widget .facebook {
   background-color: #2d4373; }

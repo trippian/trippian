@@ -14,9 +14,7 @@ export const fileEnhance = ComposedComponent => class extends Component {
     super(props)
     this.state = ({
       isFileUploading: false,
-      files: {
-        destination: ''
-      }
+      files: []
     })
   }
   onUploadStart(files) {
@@ -31,7 +29,8 @@ export const fileEnhance = ComposedComponent => class extends Component {
   onUploaded(uploadedFiles) {
     console.log('-----fileEnhance*****, uploaded file', uploadedFiles)
     this.setState({
-      isFileUploading: false
+      isFileUploading: false,
+      files: uploadedFiles // now the composedComponent will have access to the uploaded files
     })
   }
   onUploadError(error) {

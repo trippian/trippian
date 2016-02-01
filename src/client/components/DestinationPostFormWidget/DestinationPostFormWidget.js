@@ -20,7 +20,12 @@ class DestinationPostFormWidget extends Component {
   }
   handleSubmit(data) {
     console.log('******submitting in the form', this.props.files, this.props.isFileUploading)
-    this.props.handleSubmit(data)
+    if (this.props.isFileUploading) {
+      // TODO: set alert here 
+    } else {
+
+      this.props.handleSubmit(data)
+    }
   }
   render() {
     const {
