@@ -3,9 +3,13 @@ import {
   Link
 }
 from 'react-router'
+import {
+  routeConfig as appConfig
+}
+from '../../config/appConfig'
 
 const LoginButtonsWidget = ({
-  isHorizontal = false, googleAuth = 'http://localhost:4000/auth/google', facebookAuth = 'http://localhost:4000/auth/facebook'
+  isHorizontal = false, googleAuth = appConfig.googleAuth, facebookAuth = appConfig.facebookAuth
 }) => {
   return (
     <div className="login-button-widget">

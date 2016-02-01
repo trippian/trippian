@@ -17,7 +17,9 @@ export default {
     inquiry: 'inquiry',
     review: 'rating',
     vote: 'vote',
-    s3: 'signS3'
+    s3: 'signS3',
+    googleAuth: 'http://localhost:4000/auth/google',
+    facebookAuth: 'http://localhost:4000/auth/facebook'
   },
   S3: {
     baseUrl: 'https://s3-us-west-1.amazonaws.com/trippian/',
