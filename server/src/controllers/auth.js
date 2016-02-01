@@ -42,7 +42,7 @@ export default {
               id: newUser.id,
               name: req.user.displayName,
               email: req.user.emails[0].value,
-              picutre: req.user._json.image.url,
+              picture: req.user._json.image.url,
             })
             res.redirect('/login/success')
           })
@@ -52,7 +52,7 @@ export default {
             id: user.id,
             name: req.user.displayName,
             email: req.user.emails[0].value,
-            picutre: req.user._json.image.url
+            picture: req.user._json.image.url
           })
           res.redirect('/login/success')
         }
