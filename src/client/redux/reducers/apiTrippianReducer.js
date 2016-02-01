@@ -1,11 +1,11 @@
 import {
+  FETCH_REMOTE_RESOURCE_FAIL,
   SET_DESTINATIONS, SET_TRIPPIANS, GET_DESTINATIONS_FAIL, GET_DESTINATION_BY_ID, GET_TRIPPIAN_BY_ID, GET_DESTINATIONS, GET_TRIPPIANS,
   ADD_DESTINATION, ADD_ADMIN_DESTINATION, REMOVE_DESTINATION,
   SET_TRIPPIAN, SET_DESTINATION, ADD_REVIEW, SET_INQUIRY, SET_TRIP
 }
 from '../actionTypes'
 import {
-  apologize,
   setDestinations, addDestination, addAdminDestination, setDestination,
   setTrippians, addTrippian, addAdminTrippian,
   setUsers, addUser, addAdminUser,
@@ -15,7 +15,10 @@ import {
   addReview
 }
 from '../actionCreators'
-
+import {
+  apologize, alertSuccess, alertInfo
+}
+from '../../utils/storeUtils'
 
 
 import {
@@ -208,6 +211,9 @@ export default function apiTrippianReducer(state = initialState, action) {
       return state
   }
 }
+
+
+
 export function getPopularDestinations() {
   return (dispatch) => {
     return fetchGetDestinationsByCategory('popular')
@@ -216,14 +222,14 @@ export function getPopularDestinations() {
         dispatch(setDestinations(destinations))
       })
       // catch any error and set the store state 
-      .catch(error => dispatch(apologize(error)))
+      .catch(error => apologize(error))
   }
 }
 export function getPopularTrippians() {
   return (dispatch) => {
     return fetchGetTrippiansByCategory('popular')
       .then(trippians => dispatch(setTrippians(trippians)))
-      .catch(error => dispatch(apologize(error)))
+      .catch(error => apologize(error))
   }
 }
 
@@ -236,7 +242,7 @@ export function getDestinationById(id) {
         console.log('--got it', destination)
         dispatch(setDestination(destination))
       })
-      .catch(error => dispatch(apologize(error)))
+      .catch(error => apologize(error))
   }
 }
 
@@ -249,7 +255,7 @@ export function getTripById(id) {
           // TODO: update once server is updated 
         dispatch(setTrip(trip))
       })
-      .catch(error => dispatch(apologize(error)))
+      .catch(error => apologize(error))
   }
 }
 
@@ -261,7 +267,7 @@ export function getUserById(id) {
         console.log('--got user', user)
         dispatch(setUser(user))
       })
-      .catch(error => dispatch(apologize(error)))
+      .catch(error => apologize(error))
   }
 }
 export function getTrippianById(id) {
@@ -272,7 +278,7 @@ export function getTrippianById(id) {
         console.log('--got trippian', trippian)
         dispatch(setTrippian(trippian))
       })
-      .catch(error => dispatch(apologize(error)))
+      .catch(error => apologize(error))
   }
 }
 
@@ -284,12 +290,14 @@ export function getInquiryById(id) {
         console.log('--got inquiry', inquiry)
         dispatch(setInquiry(inquiry))
       })
-      .catch(error => dispatch(apologize(error)))
+      .catch(error => apologize(error))
   }
 }
 
 // posting 
 export function postDestination(data) {
+  alertInfo('Submitting the destination information now...')
+
   console.log('-- posting a destination now in reducer', data)
     // after posting the destination, add the response data to the store on adminDestinations, aslo add to newDestinations on apiTrippians
   return (dispatch) => {
@@ -298,8 +306,9 @@ export function postDestination(data) {
         console.log('---posted', destination)
         dispatch(addDestination(destination))
         dispatch(addAdminDestination(destination))
+        alertSuccess('Successfully added destination')
       })
-      .catch(error => dispatch(apologize(error)))
+      .catch(error => apologize(error))
   }
 }
 
@@ -307,17 +316,19 @@ export function postTrip(data) {
   //TODO, update userId to global 
   data.userId = store.getState().apiTrippian.get('currentUser').id
   console.log('-- posting a trip now in reducer', data)
+  alertInfo('Submitting the trip information now...')
   return (dispatch) => {
     return fetchPostTrip(data)
       .then(trip => {
         console.log('---posted', trip)
         dispatch(setTrip(trip))
         dispatch(addAdminTrip(trip))
+        alertSuccess('Succeed', `${trip.id}: ${trip.title}`)
       })
-      .catch(error => dispatch(apologize(error)))
+      //TODO: customize this to give friendly error message 
+      .catch(error => apologize(error))
   }
 }
-
 export function postUser(data) {
   //TODO, update userId to global 
   data.senderId = 32
@@ -329,24 +340,28 @@ export function postUser(data) {
         console.log('---posted', user)
         dispatch(addAdminUser(user))
       })
-      .catch(error => dispatch(apologize(error)))
+      .catch(error => apologize(error))
   }
 }
 export function postTrippian(data) {
+  alertInfo('Submitting now...')
   console.log('-- posting a trippian now in reducer', data)
   return (dispatch) => {
     return fetchPostTrippian(data)
       .then(trippian => {
         console.log('---posted', trippian)
         dispatch(addAdminTrippian(trippian))
+        alertSuccess('Successfully added trippian')
+
       })
-      .catch(error => dispatch(apologize(error)))
+      .catch(error => apologize(error))
   }
 }
 
 
 
 export function postInquiry(data) {
+  alertInfo('Submitting inquiry now...')
 
   data.senderId = store.getState().apiTrippian.get('currentUser').id
   data.trippianId = store.getState().apiTrippian.get('trippian').id
@@ -357,12 +372,15 @@ export function postInquiry(data) {
         console.log('---posted', inquiry)
         dispatch(setInquiry(inquiry))
         dispatch(addAdminInquiry(inquiry))
+        alertSuccess('Successfully submitted inquiry')
       })
-      .catch(error => dispatch(apologize(error)))
+      .catch(error => apologize(error))
   }
 }
 
 export function postReview(data) {
+  alertInfo('Submitting review now...')
+
   const user = store.getState().apiTrippian.get('currentUser')
   data.userId = user.id
   data.username = user.username
@@ -376,7 +394,8 @@ export function postReview(data) {
       .then(review => {
         console.log('---posted', review)
         dispatch(addReview(review)) // add review to current trippian on the front-end
+        alertSuccess('Successfully added review')
       })
-      .catch(error => dispatch(apologize(error)))
+      .catch(error => apologize(error))
   }
 }

@@ -1,5 +1,5 @@
 import {
-  SET_LOCALE, SET_LOCALE_MESSAGES, SET_USERNAME, SET_DISPLAYNAME,
+  SET_LOCALE, SET_LOCALE_MESSAGES, SET_USERNAME, SET_DISPLAYNAME, SET_ALERT,
 
   SET_DESTINATIONS, SET_DESTINATION, ADD_DESTINATION, GET_DESTINATIONS_FAIL, REMOVE_DESTINATION,
 
@@ -50,6 +50,19 @@ export function setDisplayName(displayName) {
     }
   }
 }
+export function setAlert(alert={
+    type: 'success',
+    title: '',
+    message: ''
+  }) {
+  return {
+    type: SET_ALERT,
+    payload: {
+      alert
+    }
+  }
+}
+
 //***************************************
 //**** apiTrippian related  *************
 //***************************************

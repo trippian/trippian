@@ -66,11 +66,11 @@ const NavWidget = ({
                     <ul className="dropdown-menu">
                         {isUserAdmin && <li><Link to='admin'>Admin Dashboard</Link></li>}
                         <li>
-                            <Link to='trippian-edit'>
+                            <Link to='dashboard'>
                                 <FormattedMessage 
-                                    id="app-pages.trippian-edit-profile" 
-                                    description="trippian edit page title"
-                                    defaultMessage="Edit My Profile"
+                                    id="app-pages.user-dashboard" 
+                                    description="the link for user dashboard"
+                                    defaultMessage="User Dashboard"
                                 />
                             </Link>
                         </li>

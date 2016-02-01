@@ -262,3 +262,16 @@ footer {
         }
     }
 }
+
+.jumbotron-dashboard-widget {
+    min-height: 300px;
+    padding-top: 160px;
+    background-color: $light-bg-color;
+    text-align: center;
+    .user-menu-widget {
+        li {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    }
+}

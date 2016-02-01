@@ -1,8 +1,14 @@
+// app state
 export const SET_LOCALE = 'appState.SET_LOCALE'
 export const SET_LOCALE_MESSAGES = 'appState.SET_LOCALE_MESSAGES'
 export const SET_USERNAME = 'appState.SET_USERNAME'
 export const SET_DISPLAYNAME = 'appState.SET_DISPLAYNAME'
-  //destination
+export const SET_ALERT = 'appState.SET_ALERT'
+
+
+export const FETCH_REMOTE_RESOURCE_FAIL = 'appState.FETCH_REMOTE_RESOURCE_FAIL'
+
+//destination
 export const SET_DESTINATIONS = 'apiTrippian.SET_DESTINATIONS'
 export const SET_DESTINATION = 'apiTrippian.SET_DESTINATION'
 export const GET_DESTINATIONS_FAIL = 'apiTrippian.GET_DESTINATIONS_FAIL'

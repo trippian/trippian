@@ -8092,6 +8092,15 @@ footer {
     .team .row p {
       padding: 0 32px; }
 
+.jumbotron-dashboard-widget {
+  min-height: 300px;
+  padding-top: 160px;
+  background-color: rgba(123, 173, 177, 0.21);
+  text-align: center; }
+  .jumbotron-dashboard-widget .user-menu-widget li {
+    padding-left: 10px;
+    padding-right: 10px; }
+
 .navbar {
   position: absolute;
   top: 0;
