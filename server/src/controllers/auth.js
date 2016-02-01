@@ -40,17 +40,21 @@ export default {
             res.cookie('trippianPass', {
               googleId,
               id: newUser.id,
-              name: req.user.displayName
+              name: req.user.displayName,
+              email: req.user.emails[0].value,
+              picture: req.user._json.image.url,
             })
-            res.redirect('/')
+            res.redirect('/login/success')
           })
         } else {
           res.cookie('trippianPass', {
             googleId,
             id: user.id,
-            name: req.user.displayName
+            name: req.user.displayName,
+            email: req.user.emails[0].value,
+            picture: req.user._json.image.url
           })
-          res.redirect('/')
+          res.redirect('/login/success')
         }
       })
   },
@@ -76,17 +80,21 @@ export default {
             res.cookie('trippianPass', {
               facebookId: req.user.id,
               id: newUser.id,
-              name: req.user.displayName
+              name: req.user.displayName,
+              email: req.user.emails[0].value,
+              picture: `https://graph.facebook.com/${req.user.id}/picture?height=500`
             })
-            res.redirect('/')
+            res.redirect('/login/success')
           })
         } else {
           res.cookie('trippianPass', {
             facebookId: req.user.id,
             id: user.id,
-            name: req.user.displayName
+            name: req.user.displayName,
+            email: req.user.emails[0].value,
+            picture: `https://graph.facebook.com/${req.user.id}/picture?height=500`
           })
-          res.redirect('/')
+          res.redirect('/login/success')
         }
       })
   },
@@ -98,7 +106,7 @@ export default {
     scope: ['profile', 'email']
   }),
   googleCallback: passport.authenticate('google', {
-    failureRedirect: '/'
+    failureRedirect: '/login'
   })
 
 }
