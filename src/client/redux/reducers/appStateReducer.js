@@ -4,7 +4,7 @@
 // but for now, we'll store some commonly used app state variables here 
 
 import {
-  SET_LOCALE, SET_LOCALE_MESSAGES, SET_USERNAME, SET_DISPLAYNAME
+  SET_LOCALE, SET_LOCALE_MESSAGES, SET_USERNAME, SET_DISPLAYNAME, SET_ALERT
 }
 from '../actionTypes'
 
@@ -19,8 +19,14 @@ const initialState = new Map({
   isUserAdmin: true,
   locale: 'en-US',
   availableLocales: ['en-US', 'zh', 'es'],
-  messages: defaultMessages
+  messages: defaultMessages,
+  alert: {
+    type: 'success',
+    title: '',
+    message: ''
+  }
 })
+
 
 export default function appStateReducer(state = initialState, action) {
   switch (action.type) {
@@ -32,6 +38,8 @@ export default function appStateReducer(state = initialState, action) {
       return state.set('username', action.payload.username)
     case SET_DISPLAYNAME:
       return state.set('displayName', action.payload.displayName)
+    case SET_ALERT:
+      return state.set('alert', action.payload.alert)
     default:
       return state
   }

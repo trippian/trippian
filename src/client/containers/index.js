@@ -53,5 +53,10 @@ export TrippianDetail from './TrippianDetail/TrippianDetail'
 export TrippianSignUp from './TrippianSignUp/TrippianSignUp'
 export TrippianList from './TrippianList/TrippianList'
 export TrippianEdit from './TrippianEdit/TrippianEdit'
-export UserWrapper from './UserWrapper/UserWrapper'
+
+export Dashboard from './Dashboard/Dashboard'
+export MyProfile from './Dashboard/MyProfile'
+export MyInquiries from './Dashboard/MyInquiries'
+export MyTripBox from './Dashboard/MyTripBox'
+
 export Trips from './Trips/Trips'

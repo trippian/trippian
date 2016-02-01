@@ -25,6 +25,8 @@ const UserMenuWidget = ({
         </li>
         <li><a href="#">Friends</a></li>
         <li><Link to='destination-post'>Post a Destination</Link></li>
+        <li><Link to='my-inquiries'>My Inquiries</Link></li>
+        <li><Link to='my-trip-box'>My Trip Box</Link></li>
         <li><Link to='login'>Login</Link></li>
         <li><Link to='loginout'>Logout</Link></li>
     </ul>
