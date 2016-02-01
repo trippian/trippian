@@ -14,7 +14,8 @@ import {
   AdminTrippianList, AdminTrippianListItem, AdminTrippianListItemEdit, AdminInquiryList, AdminTripList,
   AdminInquiryListItem, AdminInquiryListItemEdit,
   AdminTripListItem, AdminTripListItemEdit,
-  AdminUserList, AdminUserListItem, AdminUserListItemEdit
+  AdminUserList, AdminUserListItem, AdminUserListItemEdit,
+  UserWrapper
 }
 from '../containers/index'
 
@@ -32,7 +33,7 @@ export default (
             <Route component={NotFound} path="not-found"  />
             <Route component={Press} path="press"  />
             <Route component={Terms} path="terms"  />
-
+            
             <Route component={DestinationWrapper} path="destination" >
               <Route component={Destination} path=":id" >
                 <IndexRoute component={DestinationDetail}/>
@@ -49,9 +50,16 @@ export default (
 
             <Route component={TrippianSignUp} path="become-a-trippian" />
             <Route component={TrippianList} path="trippian" />
-            <Route component={TrippianEdit} path="trippian-edit"  />
-            <Route component={Admin} path="admin">
 
+            // user routes
+            <Route component={UserWrapper} path="dashboard">
+              <Route component={TrippianEdit} path="trippian-edit"  />
+              <IndexRoute component={TrippianEdit}/>
+            </Route>
+            
+
+            //admin routes
+            <Route component={Admin} path="admin">
                 <Route component={AdminTrippianList} path="trippian" />
                 <Route component={AdminTrippianListItem} path="trippian/:id" />
                 <Route component={AdminTrippianListItemEdit} path="trippian/:id/edit" />
