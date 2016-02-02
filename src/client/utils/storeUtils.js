@@ -1,8 +1,12 @@
 import store from '../redux/store'
 import {
-  setAlert
+  setAlert, setUser
 }
 from '../redux/actionCreators'
+import {
+  getCookieByName, parseCookieStringToUser, clearTrippianCookieByName
+}
+from '../../shared/utils/clientUtils'
 
 export function apologize(title = 'Operation failed', message = '') {
   store.dispatch(setAlert({
@@ -31,6 +35,7 @@ export function setAppStateUser(isLogin = true) {
   if (isLogin) {
     const cookieString = getCookieByName('trippianPass')
     const user = parseCookieStringToUser(cookieString)
+    user.isAuthed = true
     store.dispatch(setUser(user))
   } else {
     // handle log out, reset the state and clean the cookie for safety 

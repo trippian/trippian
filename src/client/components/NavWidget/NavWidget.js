@@ -27,7 +27,7 @@ function renderSearchForm() {
 
 
 const NavWidget = ({
-  name = 'NavWidget', currentPath, username = '', displayName = '', isUserAdmin = false
+  currentPath, username = '', displayName = '', isUserAdmin = false
 }) => {
   const {
     isAuthed
@@ -57,8 +57,7 @@ const NavWidget = ({
                         <FormattedMessage 
                             id="app-pages.become-a-trippian" 
                             description="become a trippian page title"
-                            defaultMessage="Become a Trippian"
-                        />
+                            defaultMessage="Become a Trippian"/>
                     </Link>
                 </li>
                 {isAuthed && <UserMenuWidget />}
