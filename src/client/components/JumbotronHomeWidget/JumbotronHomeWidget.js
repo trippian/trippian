@@ -1,7 +1,7 @@
 import React from 'react'
 
 import {
-  SearchBoxWidget
+  GooglePlacesWidget
 }
 from '../index'
 
@@ -22,7 +22,7 @@ const JumbotronHomeWidget = ({
         <div className = "container">
         <h1>{title}</h1> 
         <p>{subTitle}</p> 
-        <SearchBoxWidget />
+        <GooglePlacesWidget />
     < /div >  < /div >
   )
 }
