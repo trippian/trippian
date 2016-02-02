@@ -7,7 +7,7 @@ import {
 }
 from 'react-redux'
 import {
-  JumbotronDestinationWidget, CarouselWidget, SectionHeaderWidget, DestinationListWidget, TripListWidget
+  JumbotronDestinationWidget, CarouselWidget, SectionHeaderWidget, TrippianListWidget, TripListWidget
 }
 
 from '../../components/index'
@@ -34,8 +34,9 @@ export default class DestinationDetail extends Component {
     })
   }
   render() {
+    console.log('inside destination detail render', this.props.destination)
     const {
-      whyVisit, description, popularTrips
+      whyVisit, description, popularTrips, album
     } = this.props.destination
     return (
       <div>
@@ -49,11 +50,18 @@ export default class DestinationDetail extends Component {
               {this.state.isShowReadMore && <p>{description}</p> }
             </div>
           </div>
-          <div className="row">
-            <CarouselWidget />
-          </div>
         </div>
       </div>
+      
+      {album && 
+        <div className="row section">
+          <SectionHeaderWidget title="Photos" subTitle="Lorem ipsum dolor." />
+          <div className="section-body">
+              <CarouselWidget dataList={album}/>
+          </div>
+        </div>
+      }
+
       <div className="row section">
         <SectionHeaderWidget title="Popular Trips" subTitle="Lorem ipsum dolor." />
         <div className="section-body">
@@ -63,7 +71,7 @@ export default class DestinationDetail extends Component {
       <div className="row section">
         <SectionHeaderWidget title="Popular Trippians" subTitle="Lorem ipsum dolor." />
         <div className="section-body">
-          <DestinationListWidget  />
+          <TrippianListWidget  />
         </div>
       </div>
     </div>
