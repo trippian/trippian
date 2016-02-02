@@ -7,8 +7,8 @@ export default {
   appDescription: 'your local travel companion',
 
 
-  API_HOST: 'http://localhost:4000/api/',
-  Server_HOST: 'http://localhost:4000/',
+  API_HOST: `${window.location.origin}/api/`,
+  Server_HOST: `${window.location.origin}`,
   routeConfig: {
     trippian: 'trippian',
     destination: 'destination',
@@ -18,9 +18,9 @@ export default {
     review: 'rating',
     vote: 'vote',
     s3: 'signS3',
-    googleAuth: 'http://localhost:4000/auth/google',
-    facebookAuth: 'http://localhost:4000/auth/facebook',
-    logout: 'http://localhost:4000/auth/logout'
+    googleAuth: `${window.location.origin}/auth/google`,
+    facebookAuth: `${window.location.origin}/auth/facebook`,
+    logout: `${window.location.origin}/auth/logout`
   },
   S3: {
     baseUrl: 'https://s3-us-west-1.amazonaws.com/trippian/',
