@@ -40,113 +40,21 @@ import {
 }
 from '../../utils/apiTrippian'
 import store from '../store'
+import * as initialStateData from '../initalState'
 
 const initialState = new Map({
-  currentUser: {
-    username: '',
-    displayName: '',
-    email: '',
-    id: 32, //TODO
-    facebookId: 0,
-    picture: 'http: //lorempixel.com/200/200/people/',
-    trippian: false
-  },
-  currentReview: {
-    createdAt: '',
-    username: '',
-    facebookId: '',
-    userAvatar: '',
-    userId: '',
-    rating: 0,
-    title: '',
-    content: ''
-  },
+  currentUser: initialStateData.user,
+  currentReview: initialStateData.review,
   trippians: [],
   destinations: [],
   newDestinations: [],
   loaded: false,
   error: '',
-  destination: {
-    feature: 'http://lorempixel.com/200/200/people/',
-    name: '',
-    whyVisit: '',
-    description: '',
-    slogan: 'awesome city',
-    averageRating: 5,
-    popularTrips: [],
-    album: []
-  },
-  // trip data 
-  // summary: "meet at 5 pm and go to sightglass",
-  // netVote: 0,
-  // totalVotes: 0,
-  // destination: "San Francisco, CA",
-  // details: "we are going to drink coffee",
-  // title: "Go to sightglass",
-  // feature: 'http://lorempixel.com/200/200/city/'
-  // album: []
-  // id: 159
-  trippian: {
-    name: '',
-    email: '',
-    location: '',
-    mobile: '',
-    slogan: '',
-    website: '',
-    bio: '',
-    introduction: '',
-
-    availabileTime: '',
-    numberOfReviews: 0,
-    avarageRating: 0,
-    facebookId: null,
-    picture: 'http://lorempixel.com/200/200/people/',
-    reviews: [{
-      start: 0,
-      end: 0,
-      properties: {
-        createdAt: '',
-        username: '',
-        facebookId: '',
-        userAvatar: 'http://lorempixel.com/200/200/people/',
-        userId: '',
-        rating: 0,
-        title: '',
-        content: '',
-        trippian: false
-      }
-    }]
-  },
-  inquiry: {
-    type: 'INQUIRY',
-    start: 0,
-    end: 1,
-    properties: {
-      createdAt: '',
-      senderId: 0,
-      receiverId: 0,
-      personCount: 5,
-      startDate: '2015-02-14',
-      endDate: '2015-02-28',
-      email: '',
-      mobile: '',
-      subject: 'hi',
-      content: '',
-      accepted: false
-    }
-  },
-
+  destination: initialStateData.destination,
+  trippian: initialStateData.trippian,
+  inquiry: initialStateData.inquiry,
   // curl -X PUT -d "userId=32" http://localhost:4000/api/trip/51/?voteType=UPVOTE
-  trip: {
-    netVote: 0,
-    totalVotes: 0,
-    destination: '',
-    title: '',
-    summary: '',
-    details: '',
-    feature: 'http://lorempixel.com/400/200/city/',
-    album: []
-  }
+  trip: initialStateData.trip
 })
 
 export default function apiTrippianReducer(state = initialState, action) {
@@ -247,7 +155,8 @@ export function getPopularTrippians() {
 }
 
 // get One 
-export function getDashboardById(id) {
+export function getDashboardById(id1) {
+  let id = id1 || store.getState().appState.get('user').id
   console.log('-- getting a dashboard now in reducer', id)
   return (dispatch) => {
     return fetchGetDashboardById(id)
@@ -345,7 +254,7 @@ export function postDestination(data) {
 export function postTrip(data) {
   store.dispatch(setFormSubmitting())
     //TODO, update userId to global 
-  data.userId = store.getState().apiTrippian.get('currentUser').id
+  data.userId = store.getState().appState.get('user').id
   console.log('-- posting a trip now in reducer', data)
   alertInfo('Submitting the trip information now...')
   return (dispatch) => {
@@ -417,7 +326,7 @@ export function postInquiry(data) {
 export function postReview(data) {
   store.dispatch(setFormSubmitting())
   alertInfo('Submitting review now...')
-  const user = store.getState().apiTrippian.get('currentUser')
+  const user = store.getState().appState.get('user')
   data.userId = user.id
   data.username = user.username
   data.userAvatar = user.picture
@@ -441,7 +350,7 @@ export function postReview(data) {
 // vote can be 1 or -1 
 export function voteTrip(vote = 1, tripId) {
   alertInfo('Voting for trip now...')
-  const userId = store.getState().apiTrippian.get('currentUser').id
+  const userId = store.getState().appState.get('user').id
   console.log('-- voting a trip now in reducer', vote, tripId)
   return (dispatch) => {
     return fetchUpdateVote({

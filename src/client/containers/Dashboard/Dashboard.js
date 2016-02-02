@@ -21,7 +21,7 @@ import {
 from 'react-redux'
 
 import {
-  postTrip
+  postTrip, getDashboardById
 }
 from '../../redux/apiIndex'
 import {
@@ -38,8 +38,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    setAlert: bindActionCreators(setAlert, dispatch)
-    getDashboard: bindActionCreators(getDashboardById)
+    setAlert: bindActionCreators(setAlert, dispatch),
+    getDashboardById: bindActionCreators(getDashboardById, dispatch)
   }
 }@
 connect(mapStateToProps, mapDispatchToProps)

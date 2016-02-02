@@ -1,5 +1,9 @@
+ // store big state object (multiple config) here
  //App State 
-
+ export const appState = {
+   locale: 'en-US',
+   availableLocales: ['en-US', 'zh', 'es']
+ }
  export const alert = {
    type: 'success',
    title: '',
@@ -15,8 +19,8 @@
    email: '',
    id: 32, //TODO, Update once auth is in place 
    facebookId: 0,
-   googleId: 0
-     // picture: 'http://lorempixel.com/200/200/people/'
+   googleId: 0,
+   picture: 'http://lorempixel.com/200/200/people/'
  }
 
  // API
@@ -96,5 +100,8 @@
    email: '',
    picture: 'http://lorempixel.com/200/200/people/',
    id: 0,
-   inquiries: [inquiry]
+   inquiries: [inquiry],
+   postedTrips: [trip],
+   votedTrips: [trip],
+   savedTrips: []
  }
