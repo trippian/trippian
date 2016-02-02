@@ -12,7 +12,6 @@ export default {
   // function that validates whether the user is logged in
 
   validateGoogle: (req, res, next) => {
-    console.log(req.user)
     // console.log('this is image: ', req.user._json.image.url)
     // console.log('this is display name: ', req.user.displayName)
     // console.log('this is google id: ', req.user.id)
