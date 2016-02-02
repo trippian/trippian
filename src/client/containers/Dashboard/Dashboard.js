@@ -11,23 +11,38 @@ import {
   Alert
 }
 from 'react-bootstrap'
-import {bindActionCreators} from 'redux'
-import { connect } from 'react-redux'
+import {
+  bindActionCreators
+}
+from 'redux'
+import {
+  connect
+}
+from 'react-redux'
 
 import {
   postTrip
 }
 from '../../redux/apiIndex'
-import {setAlert} from '../../redux/actionCreators'
-
-
-function mapStateToProps(state){
-  return {alert: state.appState.get('alert') }
+import {
+  setAlert
 }
+from '../../redux/actionCreators'
+
+
+function mapStateToProps(state) {
+  return {
+    alert: state.appState.get('alert')
+  }
+}
+
 function mapDispatchToProps(dispatch) {
-  return {setAlert: bindActionCreators(setAlert, dispatch)}
-}
-@connect(mapStateToProps, mapDispatchToProps)
+  return {
+    setAlert: bindActionCreators(setAlert, dispatch)
+    getDashboard: bindActionCreators(getDashboardById)
+  }
+}@
+connect(mapStateToProps, mapDispatchToProps)
 export default class Dashboard extends Component {
   constructor(props) {
     super(props)
@@ -35,11 +50,13 @@ export default class Dashboard extends Component {
       isShowTripForm: true
     }
   }
-  
- handleAlertDismiss() {
-   this.props.setAlert() // empty parameter will reset the alert to original state}
-   //store.dispatch(setAlert())  // empty parameter will reset the alert to original state
- }
+  componentDidMount() {
+    this.props.getDashboardById()
+  }
+
+  handleAlertDismiss() {
+    this.props.setAlert() // empty parameter will reset the alert to original state}
+  }
 
   render() {
     const {

@@ -2,7 +2,7 @@ import {
   FETCH_REMOTE_RESOURCE_FAIL,
   SET_DESTINATIONS, SET_TRIPPIANS, GET_DESTINATIONS_FAIL, GET_DESTINATION_BY_ID, GET_TRIPPIAN_BY_ID, GET_DESTINATIONS, GET_TRIPPIANS,
   ADD_DESTINATION, ADD_ADMIN_DESTINATION, REMOVE_DESTINATION,
-  SET_TRIPPIAN, SET_DESTINATION, ADD_REVIEW, SET_INQUIRY, SET_TRIP, UPDATE_VOTE
+  SET_TRIPPIAN, SET_DESTINATION, ADD_REVIEW, SET_INQUIRY, SET_TRIP, UPDATE_VOTE, SET_DASHBOARD
 }
 from '../actionTypes'
 import {
@@ -12,9 +12,11 @@ import {
   setInquirys, addInquiry, addAdminInquiry,
   setTrips, addTrip, addAdminTrip, setTrip,
   setUser, setTrippian, setInquiry,
-  addReview, updateVote, setFormSubmitted, setFormSubmitting
+  addReview, updateVote, setFormSubmitted, setFormSubmitting, setDashboard
 }
 from '../actionCreators'
+
+
 import {
   apologize, alertSuccess, alertInfo
 }
@@ -33,7 +35,7 @@ import {
   fetchGetUsers, fetchDeleteUserById, fetchGetUserById, fetchPostUser,
   fetchGetInquiries, fetchDeleteInquiryById, fetchGetInquiryByReceiverId, fetchPostInquiry,
   fetchGetTrips, fetchDeleteTripById, fetchGetTripById, fetchPostTrip,
-  fetchPostReview, fetchUpdateVote, fetchLogin, fetchLogout
+  fetchPostReview, fetchUpdateVote, fetchLogin, fetchLogout, fetchGetDashboardById
 
 }
 from '../../utils/apiTrippian'
@@ -46,7 +48,7 @@ const initialState = new Map({
     email: '',
     id: 32, //TODO
     facebookId: 0,
-    picture: 'http://lorempixel.com/200/200/people/',
+    picture: 'http: //lorempixel.com/200/200/people/',
     trippian: false
   },
   currentReview: {
@@ -191,6 +193,9 @@ export default function apiTrippianReducer(state = initialState, action) {
       return state.merge(new Map({
         trip: action.payload.trip
       }))
+    case SET_DASHBOARD:
+      return state.set('dashboard', action.payload.dashboard)
+
     case ADD_REVIEW:
       const trippianR = state.get('trippian')
       trippianR.reviews.push(action.payload.review)
@@ -242,6 +247,18 @@ export function getPopularTrippians() {
 }
 
 // get One 
+export function getDashboardById(id) {
+  console.log('-- getting a dashboard now in reducer', id)
+  return (dispatch) => {
+    return fetchGetDashboardById(id)
+      .then((dashboard) => {
+        console.log('--got it', dashboard)
+        dispatch(setDashboard(dashboard))
+      })
+      .catch(error => apologize(error))
+  }
+}
+
 export function getDestinationById(id) {
   console.log('-- getting a destination now in reducer', id)
   return (dispatch) => {
