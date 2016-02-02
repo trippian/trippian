@@ -12,7 +12,7 @@ import {
   setInquirys, addInquiry, addAdminInquiry,
   setTrips, addTrip, addAdminTrip, setTrip,
   setUser, setTrippian, setInquiry,
-  addReview, updateVote
+  addReview, updateVote, setFormSubmitted, setFormSubmitting
 }
 from '../actionCreators'
 import {
@@ -304,6 +304,7 @@ export function getInquiryById(id) {
 
 // posting 
 export function postDestination(data) {
+  store.dispatch(setFormSubmitting())
   alertInfo('Submitting the destination information now...')
   data.album = store.getState().appState.get('files')
   if (data.feature === '') {
@@ -317,6 +318,7 @@ export function postDestination(data) {
         console.log('---posted', destination)
         dispatch(addDestination(destination))
         dispatch(addAdminDestination(destination))
+        dispatch(setFormSubmitted(true))
         alertSuccess('Successfully added destination')
       })
       .catch(error => apologize(error))
@@ -324,7 +326,8 @@ export function postDestination(data) {
 }
 
 export function postTrip(data) {
-  //TODO, update userId to global 
+  store.dispatch(setFormSubmitting())
+    //TODO, update userId to global 
   data.userId = store.getState().apiTrippian.get('currentUser').id
   console.log('-- posting a trip now in reducer', data)
   alertInfo('Submitting the trip information now...')
@@ -333,6 +336,7 @@ export function postTrip(data) {
       .then(trip => {
         console.log('---posted', trip)
         dispatch(setTrip(trip))
+        dispatch(setFormSubmitted(true))
         dispatch(addAdminTrip(trip))
         alertSuccess('Succeed', `${trip.id}: ${trip.title}`)
       })
@@ -341,6 +345,8 @@ export function postTrip(data) {
   }
 }
 export function postUser(data) {
+  store.dispatch(setFormSubmitting())
+
   //TODO, update userId to global 
   data.senderId = 32
   data.trippianId = 31
@@ -349,12 +355,14 @@ export function postUser(data) {
     return fetchPostUser(data)
       .then(user => {
         console.log('---posted', user)
+        dispatch(setFormSubmitted(true))
         dispatch(addAdminUser(user))
       })
       .catch(error => apologize(error))
   }
 }
 export function postTrippian(data) {
+  store.dispatch(setFormSubmitting())
   alertInfo('Submitting now...')
   console.log('-- posting a trippian now in reducer', data)
   return (dispatch) => {
@@ -362,8 +370,8 @@ export function postTrippian(data) {
       .then(trippian => {
         console.log('---posted', trippian)
         dispatch(addAdminTrippian(trippian))
+        dispatch(setFormSubmitted(true))
         alertSuccess('Successfully added trippian')
-
       })
       .catch(error => apologize(error))
   }
@@ -372,8 +380,8 @@ export function postTrippian(data) {
 
 
 export function postInquiry(data) {
+  store.dispatch(setFormSubmitting())
   alertInfo('Submitting inquiry now...')
-
   data.senderId = store.getState().apiTrippian.get('currentUser').id
   data.trippianId = store.getState().apiTrippian.get('trippian').id
   console.log('-- posting a inquiry now in reducer', data)
@@ -390,8 +398,8 @@ export function postInquiry(data) {
 }
 
 export function postReview(data) {
+  store.dispatch(setFormSubmitting())
   alertInfo('Submitting review now...')
-
   const user = store.getState().apiTrippian.get('currentUser')
   data.userId = user.id
   data.username = user.username

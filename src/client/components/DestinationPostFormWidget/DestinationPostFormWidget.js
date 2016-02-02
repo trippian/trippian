@@ -12,7 +12,7 @@ import {
 from '../../hocs/fileEnhance'
 import store from '../../redux/store'
 import {
-  setFiles
+  setFiles, setDestination
 }
 from '../../redux/actionCreators'
 
@@ -20,11 +20,14 @@ class DestinationPostFormWidget extends Component {
   constructor(props) {
     super(props)
     this.state = ({
-      isHOC: false
+      isHOC: false,
+      isFormSubmitted: store.getState().appState.get('isFormSubmitted')
     })
   }
 
-
+  componentDidReceiveProps(newProps) {
+    console.log('******* inside post form, recieving new props')
+  }
   handleSubmit(data) {
     console.log('******submitting in the form', this.props.files, this.props.isFileUploading)
     if (this.props.isFileUploading) {
@@ -33,7 +36,8 @@ class DestinationPostFormWidget extends Component {
       // set files in the store so the store action can read it before fetching 
       store.dispatch(setFiles(this.props.files))
       this.props.handleSubmit(data)
-        //TODO clear out the form and picture 
+
+      //TODO: clear out the form and picture in callee 
     }
   }
   render() {
@@ -43,9 +47,31 @@ class DestinationPostFormWidget extends Component {
       },
       handleSubmit,
       submitting,
-      resetForm
+      resetForm,
+      load
     } = this.props
 
+    // the load is for fast data entry purpose, paste any data here, and click 'Load Account', the form will be automatically filled
+    let data = {
+      feature: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Montagem_RJ.jpg/800px-Montagem_RJ.jpg',
+      name: 'Rio de Janeiro',
+      whyVisit: 'Rio de Janeiro (/ˈriːoʊ di ʒəˈnɛəroʊ, -deɪ ʒə-, -də dʒə-/; Portuguese pronunciation: [ˈʁi.u dʒi ʒɐˈnejɾu];[2] River of January), or simply Rio,[3] is the second-largest city in Brazil, the sixth-largest city in the Americas, and the world\'s thirty-ninth largest city by population. The metropolis is anchor to the Rio de Janeiro metropolitan area, the second most populous metropolitan area in Brazil, the seventh-most populous in the Americas, and the twenty-third largest in the world. Rio de Janeiro is the capital of the state of Rio de Janeiro, Brazil\'s third-most populous state. Part of the city has been designated as a World Heritage Site, named "Rio de Janeiro: Carioca Landscapes between the Mountain and the Sea", by UNESCO on 1 July 2012 as a Cultural Landscape.',
+      description: 'Rio de Janeiro (/ˈriːoʊ di ʒəˈnɛəroʊ, -deɪ ʒə-, -də dʒə-/; Portuguese pronunciation: [ˈʁi.u dʒi ʒɐˈnejɾu];[2] River of January), or simply Rio,[3] is the second-largest city in Brazil, the sixth-largest city in the Americas, and the world\'s thirty-ninth largest city by population. The metropolis is anchor to the Rio de Janeiro metropolitan area, the second most populous metropolitan area in Brazil, the seventh-most populous in the Americas, and the twenty-third largest in the world. Rio de Janeiro is the capital of the state of Rio de Janeiro, Brazil\'s third-most populous state. Part of the city has been designated as a World Heritage Site, named "Rio de Janeiro: Carioca Landscapes between the Mountain and the Sea", by UNESCO on 1 July 2012 as a Cultural Landscape.',
+      slogan: 'A passinate city',
+      averageRating: 5,
+      popularTrips: []
+        // album: []
+    }
+    let emptyData = {
+      feature: 'http://lorempixel.com/200/200/people/',
+      name: '',
+      whyVisit: '',
+      description: '',
+      slogan: 'awesome city',
+      averageRating: 5,
+      popularTrips: [],
+      album: []
+    }
     return (
       <form onSubmit={handleSubmit} role="form">
         <div className="form-group">
@@ -66,24 +92,33 @@ class DestinationPostFormWidget extends Component {
         </div>
         <div className="pull-right">
           <button  disabled={this.props.isFileUploading || submitting} className={'btn ' + (this.props.isFileUploading ? 'disabled' : 'btn-success') } onClick={this.handleSubmit.bind(this)}>Submit</button> 
-          <button type="button" className="btn btn-default" disabled={submitting} onClick={resetForm}> Clear Values</button>
+          <button type="button" className="btn btn-default" disabled={submitting} onClick={()=> load(emptyData)} > Clear Values</button>
+          <button type="button" className="btn btn-default" onClick={() => load(data)}>Load Dummy Data</button>
         </div>
       </form>
     )
   }
 }
 
+
 DestinationPostFormWidget = reduxForm({
-  form: 'destinationPostForm', // a unique name for this form
-  fields: ['name', 'description', 'feature', 'whyVisit'] // all the fields in the form
-})(DestinationPostFormWidget)
+    form: 'destinationPostForm', // a unique name for this form
+    fields: ['name', 'description', 'feature', 'whyVisit'] // all the fields in the form
+  },
+  state => ({ // mapStateToProps
+    initialValues: state.apiTrippian.get('destination') // will pull state into form's initialValues
+  }), {
+    load: setDestination
+  } // mapDispatchToProps (will bind action creator to dispatch)
+)(DestinationPostFormWidget)
+
 
 DestinationPostFormWidget.propTypes = {
-  fields: PropTypes.object.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
   resetForm: PropTypes.func.isRequired,
   submitting: PropTypes.bool.isRequired
 }
+
 DestinationPostFormWidget.displayName = 'DestinationPostFormWidget'
 
 export default fileEnhance(DestinationPostFormWidget)

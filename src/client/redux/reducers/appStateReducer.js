@@ -4,7 +4,7 @@
 // but for now, we'll store some commonly used app state variables here 
 
 import {
-  SET_LOCALE, SET_LOCALE_MESSAGES, SET_USERNAME, SET_DISPLAYNAME, SET_ALERT, SET_FILES, SET_USER
+  SET_LOCALE, SET_LOCALE_MESSAGES, SET_USERNAME, SET_DISPLAYNAME, SET_ALERT, SET_FILES, SET_USER, SET_FORM_SUBMITTED, SET_FORM_SUBMITTING
 }
 from '../actionTypes'
 
@@ -14,6 +14,11 @@ import {
 }
 from 'immutable'
 const initialState = new Map({
+  // keep track of all form submitting state so we can give meaningful feedback to user and clean up data 
+  // once the remote call suceed, set isFormSubmitted to be true
+  // once finishing cleaning up the data, set isFormSubmitted to false again 
+  isFormSubmitted: false,
+  isFormSubmitting: false,
   username: 'vidaaudrey', // update later 
   displayName: 'Audrey Li', // update later 
   locale: 'en-US',
@@ -59,6 +64,15 @@ export default function appStateReducer(state = initialState, action) {
         user: action.payload.user,
         isAuthed: true
       }))
+    case SET_FORM_SUBMITTED:
+      return state.set('isFormSubmitted', action.payload.isFormSubmitted)
+
+    case SET_FORM_SUBMITTING:
+      return state.set('isFormSubmitting', action.payload.isFormSubmitting)
+
+      // case LOAD_DESTINATION:
+      //   return state.set('destination', action.payload.destination)
+
     default:
       return state
   }
