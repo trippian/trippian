@@ -14,6 +14,10 @@ import {
 }
 from 'react-intl'
 import store from '../../redux/store'
+import {
+  UserMenuWidget
+}
+from '../index'
 
 function renderSearchForm() {
   return (
@@ -53,42 +57,7 @@ const NavWidget = ({
                         />
                     </Link>
                 </li>
-                <li className="dropdown">
-                    <a href="#" className="dropdown-toggle" data-toggle="dropdown"> 
-                     <FormattedMessage 
-                        id="nav-widget.welcome-message"
-                        description="a short welcome message for use at nav menu"
-                        defaultMessage="Hello "
-                     /> 
-                     {` ${displayName}`}  
-                    <b className="caret"></b>
-                    </a>
-                    <ul className="dropdown-menu">
-                        {isUserAdmin && <li><Link to='admin'>Admin Dashboard</Link></li>}
-                        <li>
-                            <Link to='dashboard'>
-                                <FormattedMessage 
-                                    id="app-pages.user-dashboard" 
-                                    description="the link for user dashboard"
-                                    defaultMessage="User Dashboard"
-                                />
-                            </Link>
-                        </li>
-                        <li><a href="#">Friends</a></li>
-                        <li>
-                            <a href="#">
-                                <FormattedMessage 
-                                    id="app-shared.logout" 
-                                    description="logout link text"
-                                    defaultMessage="Logout"
-                                />
-                            </a>
-                        </li>
-                        <li><Link to='destination-post'>Post a Destination</Link></li>
-                        <li><Link to='login'>Login</Link></li>
-                        <li><Link to='intl' className="btn btn-bordered">Intl Demo</Link></li>
-                    </ul>
-                </li>
+                <UserMenuWidget />
             </ul>
         </div>
     </nav>

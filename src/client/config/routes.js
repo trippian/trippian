@@ -8,7 +8,7 @@ import {
   App, Home, About, JoinUs, NotFound, Press,
   Destination, DestinationDetail, DestinationPost, Contact,
   InquiryAdd, InquiryDetail, InquiryList,
-  Login, LoginWrapper, LoginSuccess,
+  Login, LoginWrapper, LoginSuccess, Logout,
   DestinationWrapper, PopularDestinations, DestinationSearchResults, Trippian,
   Terms, TrippianDetail, TrippianSignUp, TrippianList, TrippianEdit, IntlDemo,
   Admin, AdminDestinationList, AdminDestinationListItem, AdminDestinationListItemEdit,
@@ -35,6 +35,7 @@ export default (
             <Route component={LoginWrapper} path="login" >
               <Route component={Login} path="login" />
               <Route component={LoginSuccess} path="success" />
+              <Route component={Logout} path="logout" />
               <IndexRoute component={Login} />
             </Route>
             

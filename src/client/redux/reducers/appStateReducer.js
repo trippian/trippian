@@ -4,7 +4,7 @@
 // but for now, we'll store some commonly used app state variables here 
 
 import {
-  SET_LOCALE, SET_LOCALE_MESSAGES, SET_USERNAME, SET_DISPLAYNAME, SET_ALERT, SET_FILES
+  SET_LOCALE, SET_LOCALE_MESSAGES, SET_USERNAME, SET_DISPLAYNAME, SET_ALERT, SET_FILES, SET_USER
 }
 from '../actionTypes'
 
@@ -25,6 +25,17 @@ const initialState = new Map({
     type: 'success',
     title: '',
     message: ''
+  },
+  user: {
+    isAuthed: false,
+    isAdmin: false,
+    username: '',
+    displayName: '',
+    email: '',
+    id: 32, //TODO
+    facebookId: 0,
+    picture: 'http://lorempixel.com/200/200/people/',
+    trippian: false
   }
 })
 
@@ -43,6 +54,11 @@ export default function appStateReducer(state = initialState, action) {
       return state.set('alert', action.payload.alert)
     case SET_FILES:
       return state.set('files', action.payload.files)
+    case SET_USER:
+      return state.merge(new Map({
+        user: action.payload.user,
+        isAuthed: true
+      }))
     default:
       return state
   }

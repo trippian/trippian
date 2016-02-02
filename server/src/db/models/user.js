@@ -1,8 +1,14 @@
 import Promise from 'bluebird'
 import db from '../db'
-import { updateStringObject } from '../../middleware/utils'
+import {
+  updateStringObject
+}
+from '../../middleware/utils'
 import nodemailer from 'nodemailer'
-import { isEmpty } from 'lodash'
+import {
+  isEmpty
+}
+from 'lodash'
 require('dotenv').config()
 
 // using node mailer to send email notifications when a user
@@ -65,29 +71,29 @@ export default {
     details.averageRating = 0
     details.trippian = false
     return new Promise((resolve, reject) => {
-      db.saveAsync(details, 'User')
-        .then(createdUser => {
-          // creating our mail options
-          let mailOptions = {
-            from: 'Trippian <trippianApp@gmail.com',
-            to: details.email,
-            subject: 'Welcome to Trippian',
-            text: `Welcome ${details.name}`,
-            html: `<h2>Welcome ${details.name}</h2> <p>You can now plan your trips all over the world!</p>`
-          }
-          // sending the email using nodemailer
-          transporter.sendMail(mailOptions, function(err, info) {
-            if (err) {
-              console.error(err)
-            } else {
-              resolve(createdUser)
-            }
+        db.saveAsync(details, 'User')
+          .then(createdUser => {
+            // creating our mail options
+            let mailOptions = {
+                from: 'Trippian <trippianApp@gmail.com',
+                to: details.email,
+                subject: 'Welcome to Trippian',
+                text: `Welcome ${details.name}`,
+                html: `<h2>Welcome ${details.name}</h2> <p>You can now plan your trips all over the world!</p>`
+              }
+              // sending the email using nodemailer
+            transporter.sendMail(mailOptions, function (err, info) {
+              if (err) {
+                console.error(err)
+              } else {
+                resolve(createdUser)
+              }
+            })
           })
-        })
-    })
-    .catch(error => {
-      console.error(error)
-    })
+      })
+      .catch(error => {
+        console.error(error)
+      })
   },
   // need to work on this function to change all fields that are sent
   becomeTrippian: (userId) => {
@@ -250,14 +256,14 @@ export default {
         .then(saved => {
           if (!saved.length) {
             db.relateAsync(userId, 'SAVED', tripId, {
-              savedAt: new Date()
-            })
+                savedAt: new Date()
+              })
               .then(savedRelationship => {
                 console.log(savedRelationship)
                 if (!isEmpty(savedRelationship)) {
                   resolve(savedRelationship)
                 } else {
-                  reject(new Error ('could not save this trip to that user'))
+                  reject(new Error('could not save this trip to that user'))
                 }
               })
               .catch(error => {
@@ -273,7 +279,7 @@ export default {
     })
   },
   deleteSavedTrip: (userId, tripId) => {
-    return new Promise ((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       let cypher = `match (u:User)-[s:SAVED]->(t:Trip) where id(u)=${userId} and id(t)=${tripId} delete s;`
       db.queryAsync(cypher)
         .then(deleted => {
@@ -285,7 +291,7 @@ export default {
     })
   },
   getUserVotedTrips: (userId) => {
-    return new Promise ((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       let cypher = `match (t:Trip), (t)<-[u:UPVOTE]-(n:User),(t)<-[d:DOWNVOTE]-(n:User) where id(n)=${userId} return u,d;`
       db.queryAsync(cypher)
         .then(voted => {
