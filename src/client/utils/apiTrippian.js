@@ -137,6 +137,31 @@ export const fetchPostTrippian = (data) => {
   return api.post(url, data)
 }
 
+
+//Rating & Review 
+export const fetchPostReview = (data) => {
+  const url = `${API_HOST}${routeConfig.review}/${data.trippianId}?rater=${data.userId}`
+  console.log('fetchPostTrippian', url, data)
+  return api.post(url, data)
+}
+
+//curl -X PUT -d "userId=8" http://localhost:4000/api/trip/51/?voteType=UPVOTE
+export const fetchUpdateVote = ({
+  userId, tripId, vote = 1
+}) => {
+  console.log('in fetch', userId, tripId, vote)
+  if (vote !== -1 && vote !== 1) {
+    console.log('unexpected vote, should be 1 or -1')
+    return
+  }
+  const voteType = vote === -1 ? 'DOWNVOTE' : 'UPVOTE'
+  const url = `${API_HOST}${routeConfig.trip}/${tripId}?voteType=${voteType}`
+  console.log('fetchPostTrippian', url, userId, tripId, voteType)
+  return api.put(url, {
+    userId: userId
+  })
+}
+
 //USER
 export const fetchGetTrippiansByCategory = (category = 'popular') => {
   const url = `${API_HOST}${routeConfig.trippian}?cat=${category}`
@@ -169,31 +194,6 @@ export const fetchUpdateUserById = (id) => {
   return api.put(url, id)
 }
 
-
-//Rating & Review 
-export const fetchPostReview = (data) => {
-  const url = `${API_HOST}${routeConfig.review}/${data.trippianId}?rater=${data.userId}`
-  console.log('fetchPostTrippian', url, data)
-  return api.post(url, data)
-}
-
-//curl -X PUT -d "userId=8" http://localhost:4000/api/trip/51/?voteType=UPVOTE
-export const fetchUpdateVote = ({
-  userId, tripId, vote = 1
-}) => {
-  console.log('in fetch', userId, tripId, vote)
-  if (vote !== -1 && vote !== 1) {
-    console.log('unexpected vote, should be 1 or -1')
-    return
-  }
-  const voteType = vote === -1 ? 'DOWNVOTE' : 'UPVOTE'
-  const url = `${API_HOST}${routeConfig.trip}/${tripId}?voteType=${voteType}`
-  console.log('fetchPostTrippian', url, userId, tripId, voteType)
-  return api.put(url, {
-    userId: userId
-  })
-}
-
 export const fetchLogin = (type = 'facebook') => {
   let url = routeConfig.facebookAuth
   if (type === 'google') {
@@ -209,6 +209,13 @@ export const fetchLogout = () => {
   return api.get(url)
 }
 
+
+// Dashboard 
+export const fetchGetDashboardById = (id) => {
+  const url = `${API_HOST}${routeConfig.dashboard}/${id}`
+  console.log('fetchGetDashboardById', url, id)
+  return api.get(url)
+}
 
 // POST /api/destination
 // URL encoded POST request

@@ -115,8 +115,8 @@ DestinationPostFormWidget = reduxForm({
 
 DestinationPostFormWidget.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  resetForm: PropTypes.func.isRequired,
-  submitting: PropTypes.bool.isRequired
+  resetForm: PropTypes.func.isRequired
+    // submitting: PropTypes.bool.isRequired
 }
 
 DestinationPostFormWidget.displayName = 'DestinationPostFormWidget'

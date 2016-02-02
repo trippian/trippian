@@ -7,6 +7,7 @@ import {
   SET_LOCALE, SET_LOCALE_MESSAGES, SET_USERNAME, SET_DISPLAYNAME, SET_ALERT, SET_FILES, SET_USER, SET_FORM_SUBMITTED, SET_FORM_SUBMITTING
 }
 from '../actionTypes'
+import * as initialStateData from '../initalState'
 
 const defaultMessages = require('../../../../translate/lang/en-US.json')
 import {
@@ -19,29 +20,12 @@ const initialState = new Map({
   // once finishing cleaning up the data, set isFormSubmitted to false again 
   isFormSubmitted: false,
   isFormSubmitting: false,
-  username: 'vidaaudrey', // update later 
-  displayName: 'Audrey Li', // update later 
-  locale: 'en-US',
-  availableLocales: ['en-US', 'zh', 'es'],
-  messages: defaultMessages,
   files: [],
-  alert: {
-    type: 'success',
-    title: '',
-    message: ''
-  },
-  user: {
-    isAuthed: true,
-    isAdmin: true,
-    isTrippian: false,
-    username: '',
-    displayName: '',
-    email: '',
-    id: 32, //TODO
-    facebookId: 0,
-    googleId: 0,
-    picture: 'http://lorempixel.com/200/200/people/'
-  }
+  locale: initialStateData.locale,
+  availableLocales: initialStateData.availableLocales,
+  messages: defaultMessages,
+  alert: initialStateData.alert,
+  user: initialStateData.user
 })
 
 
