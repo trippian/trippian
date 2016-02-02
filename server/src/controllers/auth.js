@@ -27,7 +27,7 @@ export default {
     req.session.picture = req.user._json.image.url
     req.session.email = req.user.emails[0].value
 
-    User.getUserByParameter('googleId', `"${googleId}"`)
+    User.getUserByParameter('googleId', `str("${googleId}")`)
       .then(user => {
         if (!user.length) {
           User.createUser({
