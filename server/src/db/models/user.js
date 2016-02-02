@@ -69,28 +69,29 @@ export default {
     details.totalRating = 0
     details.numberOfReviews = 0
     details.averageRating = 0
-    details.trippian = false
+    details.isTrippian = false
+    details.isAdmin = false
     return new Promise((resolve, reject) => {
-        db.saveAsync(details, 'User')
-          .then(createdUser => {
-            // creating our mail options
-            let mailOptions = {
-                from: 'Trippian <trippianApp@gmail.com',
-                to: details.email,
-                subject: 'Welcome to Trippian',
-                text: `Welcome ${details.name}`,
-                html: `<h2>Welcome ${details.name}</h2> <p>You can now plan your trips all over the world!</p>`
-              }
-              // sending the email using nodemailer
-            transporter.sendMail(mailOptions, function (err, info) {
-              if (err) {
-                console.error(err)
-              } else {
-                resolve(createdUser)
-              }
-            })
+      db.saveAsync(details, 'User')
+        .then(createdUser => {
+          // creating our mail options
+          let mailOptions = {
+            from: 'Trippian <trippianApp@gmail.com',
+            to: details.email,
+            subject: 'Welcome to Trippian',
+            text: `Welcome ${details.name}`,
+            html: `<h2>Welcome ${details.name}</h2> <p>You can now plan your trips all over the world!</p>`
+          }
+            // sending the email using nodemailer
+          transporter.sendMail(mailOptions, function (err, info) {
+            if (err) {
+              console.error(err)
+            } else {
+              resolve(createdUser)
+            }
           })
-      })
+        })
+    })
       .catch(error => {
         console.error(error)
       })
@@ -256,8 +257,8 @@ export default {
         .then(saved => {
           if (!saved.length) {
             db.relateAsync(userId, 'SAVED', tripId, {
-                savedAt: new Date()
-              })
+              savedAt: new Date()
+            })
               .then(savedRelationship => {
                 console.log(savedRelationship)
                 if (!isEmpty(savedRelationship)) {
