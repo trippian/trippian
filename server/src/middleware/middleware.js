@@ -49,7 +49,9 @@ export default function (app) {
   AuthRouter(authRouter)
 
   app.use('*', function(req, res) {
-    res.status(404).send('404: Page not found')
+    res.status(404)
+    // respond with html page
+    res.sendFile(join(__dirname, '../assets/404.html'))
   })
   
   app.use(errorHandler)
