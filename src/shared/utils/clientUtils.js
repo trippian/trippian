@@ -53,8 +53,7 @@ export function getCookieByName(name) {
 // picture: 'http://lorempixel.com/200/200/people/',
 // trippian: false
 export function parseCookieStringToUser(string) {
-  let userObj = JSON.parse(string)
-  return userObj
+  return JSON.parse(string.substr(2))
 }
 
 export function clearTrippianCookieByName(name = 'trippianPass') {

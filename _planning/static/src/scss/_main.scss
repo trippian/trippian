@@ -284,3 +284,17 @@ footer {
         }
     }
 }
+
+.nav-user-avatar {
+    width: 36px !important;
+    height: 36px !important;
+    margin: -6px 10px !important;
+    img {
+        width: 100%;
+    }
+    &:hover {
+        width: 40px !important;
+        height: 40px !important;
+        margin: -10px 10px !important;
+    }
+}

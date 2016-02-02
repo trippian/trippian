@@ -27,8 +27,12 @@ function renderSearchForm() {
 
 
 const NavWidget = ({
-  name = 'NavWidget', currentPath, username = '', displayName = '', isUserAdmin = false
+  currentPath, username = '', displayName = '', isUserAdmin = false
 }) => {
+  const {
+    isAuthed
+  } = store.getState().appState.get('user')
+
   return (
     <nav className="navbar navbar-default" role="navigation">
         <div className="navbar-header">
@@ -47,17 +51,17 @@ const NavWidget = ({
             <LocaleMenuWidget className="nav navbar-nav navbar-right list-inline"/>
             <ul className="nav navbar-nav navbar-right">
                 <li>{currentPath === '/'  ? null : renderSearchForm() }</li>
-                <li><Link to="login">Login </Link></li>
+                
                 <li>
                     <Link to='become-a-trippian' className="btn btn-bordered">
                         <FormattedMessage 
                             id="app-pages.become-a-trippian" 
                             description="become a trippian page title"
-                            defaultMessage="Become a Trippian"
-                        />
+                            defaultMessage="Become a Trippian"/>
                     </Link>
                 </li>
-                <UserMenuWidget />
+                {isAuthed && <UserMenuWidget />}
+                {!isAuthed && <li><Link to="login">Login </Link></li>}
             </ul>
         </div>
     </nav>

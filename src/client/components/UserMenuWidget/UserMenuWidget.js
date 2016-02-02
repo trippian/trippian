@@ -9,11 +9,9 @@ import {
 }
 from 'react-intl'
 
-const UserMenuWidget = ({
-  to = 'contact', text = 'Contact'
-}) => {
+const UserMenuWidget = () => {
   const {
-    displayName, isAdmin = false
+    displayName, isAdmin = true, picture = ''
   } = store.getState().appState.get('user')
 
   return (
@@ -22,9 +20,11 @@ const UserMenuWidget = ({
          <FormattedMessage 
             id="nav-widget.welcome-message"
             description="a short welcome message for use at nav menu"
-            defaultMessage="Hello "
-         /> 
-         {` ${displayName}`}  
+            defaultMessage="Hello "/> 
+            
+            <span className="circle-image nav-user-avatar">
+              <img src={picture} alt={displayName} />
+            </span>  
         <b className="caret"></b>
         </a>
         <ul className="dropdown-menu">
@@ -34,8 +34,7 @@ const UserMenuWidget = ({
                     <FormattedMessage 
                         id="app-pages.user-dashboard" 
                         description="the link for user dashboard"
-                        defaultMessage="User Dashboard"
-                    />
+                        defaultMessage="User Dashboard"/>
                 </Link>
             </li>
             <li><a href="#">Friends</a></li>
