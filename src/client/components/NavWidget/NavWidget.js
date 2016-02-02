@@ -29,6 +29,10 @@ function renderSearchForm() {
 const NavWidget = ({
   name = 'NavWidget', currentPath, username = '', displayName = '', isUserAdmin = false
 }) => {
+  const {
+    isAuthed
+  } = store.getState().appState.get('user')
+
   return (
     <nav className="navbar navbar-default" role="navigation">
         <div className="navbar-header">
@@ -47,7 +51,7 @@ const NavWidget = ({
             <LocaleMenuWidget className="nav navbar-nav navbar-right list-inline"/>
             <ul className="nav navbar-nav navbar-right">
                 <li>{currentPath === '/'  ? null : renderSearchForm() }</li>
-                <li><Link to="login">Login </Link></li>
+                
                 <li>
                     <Link to='become-a-trippian' className="btn btn-bordered">
                         <FormattedMessage 
@@ -57,7 +61,8 @@ const NavWidget = ({
                         />
                     </Link>
                 </li>
-                <UserMenuWidget />
+                {isAuthed && <UserMenuWidget />}
+                {!isAuthed && <li><Link to="login">Login </Link></li>}
             </ul>
         </div>
     </nav>
