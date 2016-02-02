@@ -4,6 +4,7 @@ import { updateStringObject } from '../../middleware/utils'
 
 export default {
   createRating: (raterId, userId, details) => {
+    details.createdAt = Date()
     return new Promise((resolve, reject) => {
       db.relationshipsAsync(raterId, 'all', 'TOURED')
         .then((toured) => {
@@ -50,11 +51,23 @@ export default {
       db.queryAsync(cypher)
         .then((ratings) => {
           if (ratings.length) {
-            resolve(ratings)
+            resolve(ratings[0])
           } else {
             // reject(new Error('User has no ratings'))
             resolve(ratings)
           }
+        })
+    })
+  },
+  deleteRating: (ratingId) => {
+    return new Promise((resolve, reject) => {
+      let cypher = `match ()-[r:RATED]->() where id(r)=${ratingId} delete r;`
+      db.queryAsync(cypher)
+        .then(deleted => {
+          resolve(deleted)
+        })
+        .catch(error => {
+          console.error(error)
         })
     })
   }

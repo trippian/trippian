@@ -22,8 +22,14 @@ class SearchBoxWidget extends React.Component {
     super(props)
   }
 
+  componentDidMount() {
+    // Elliot is going to do something 
+  }
+
   handleClick() {
     console.log('clicked', this.refs.searchText.value)
+      // Elliot is going to do something 
+      //TODO use router to redirect the page to DestinationSearchResults
   }
 
   render() {
@@ -39,6 +45,7 @@ class SearchBoxWidget extends React.Component {
           <button type = "submit" onClick={this.handleClick.bind(this)} className = "btn btn-primary" >
             {formatMessage(messages.searchButtonText)}
           </button> 
+          <a href="/#/destination/search/abc">link</a>
         </form >
     )
   }

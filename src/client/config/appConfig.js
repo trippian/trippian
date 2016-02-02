@@ -8,12 +8,30 @@ export default {
 
 
   API_HOST: 'http://localhost:4000/api/',
+  Server_HOST: 'http://localhost:4000/',
   routeConfig: {
     trippian: 'trippian',
     destination: 'destination',
     user: 'user',
     trip: 'trip',
-    inquiry: 'inquiry'
+    inquiry: 'inquiry',
+    review: 'rating',
+    vote: 'vote',
+    s3: 'signS3',
+    googleAuth: 'http://localhost:4000/auth/google',
+    facebookAuth: 'http://localhost:4000/auth/facebook',
+    logout: 'http://localhost:4000/auth/logout'
+  },
+  S3: {
+    baseUrl: 'https://s3-us-west-1.amazonaws.com/trippian/',
+    userPath: 'user/',
+    tripPath: 'trip/',
+    destinationPath: 'destination/',
+    assets: 'assets/'
+  },
+  // all the page background photos stored in S3 
+  assetsURL: {
+    homePage: ''
   },
 
   // general page titles 

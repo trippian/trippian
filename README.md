@@ -54,6 +54,15 @@ npm run commit
 git push origin develop -f # force push to your remote branch 
 ```
 
+- To solve merge conflict (other approach)
+```
+git checkout -b working # create a working branch copy 
+git checkout develop # go back to the branch you were working on 
+git reset --hard upstream/develop # set develop as a copy of remote branch 
+git merge -X theirs working # merge the working branch to develop using working branch as priority 
+git push -f 
+```
+
 We used the dotenv npm package to configure our development variables. To run locally, you must store a few variables in a .env file.
 - HOST
 - FACEBOOK_APP_ID

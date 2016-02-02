@@ -12,10 +12,22 @@ import {
 }
 from 'react-bootstrap'
 import {
+  connect
+}
+from 'react-redux'
+import {
   InquiryPostFormWidget
 }
 from '../../components/index'
 
+function mapStateToProps(state) {
+  return {
+    inquiry: state.apiTrippian.get('inquiry')
+  }
+}
+
+@
+connect(mapStateToProps)
 export default class Contact extends Component {
   constructor(props) {
     super(props)
@@ -39,6 +51,7 @@ export default class Contact extends Component {
   }
   setAlert(type = 'success', title = '', message = '') {
     this.setState({
+      isInquirySubmitted: false,
       alert: {
         type: type,
         title: title,
@@ -59,7 +72,7 @@ export default class Contact extends Component {
             <p>{message}</p>
           </Alert>
         }
-        <InquiryPostFormWidget onSubmit={this.handleSubmit.bind(this)} /> 
+        {! this.state.isInquirySubmitted && <InquiryPostFormWidget onSubmit={this.handleSubmit.bind(this)} /> }
       </div>
     )
   }

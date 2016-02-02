@@ -10,22 +10,23 @@ export const getSignedRequest = function (req, res) {
   })
 
   let s3 = new AWS.S3()
-  console.log(req.query)
+
   let s3_params = {
-    Bucket: process.env.S3_BUCKET,
-    Key: req.query.file_name,
+    Bucket: `${process.env.S3_BUCKET}`,
+    Key: `${req.query.path}${req.query.name}`,
     Expires: 60,
-    ContentType: req.query.file_type,
+    ContentType: req.query.type,
     ACL: 'public-read'
   }
 
   s3.getSignedUrl('putObject', s3_params, function (err, data) {
     if (err) {
-      console.log(err)
+      console.error(err)
     } else {
       let return_data = {
         signed_request: data,
-        url: 'https://' + process.env.S3_BUCKET + '.s3.amazonaws.com/' + req.query.file_name
+        url: `https://${process.env.S3_REGION}.s3.amazonaws.com/${process.env.S3_BUCKET}${req.query.path}${req.query.name}`,
+        fileName: req.query.name
       }
       res.write(JSON.stringify(return_data))
       res.end()

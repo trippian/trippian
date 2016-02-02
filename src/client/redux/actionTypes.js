@@ -1,8 +1,17 @@
+// app state
 export const SET_LOCALE = 'appState.SET_LOCALE'
 export const SET_LOCALE_MESSAGES = 'appState.SET_LOCALE_MESSAGES'
 export const SET_USERNAME = 'appState.SET_USERNAME'
 export const SET_DISPLAYNAME = 'appState.SET_DISPLAYNAME'
+export const SET_ALERT = 'appState.SET_ALERT'
+export const SET_USER = 'appState.SET_USER'
+export const SET_FILES = 'appState.SET_FILES'
+export const SET_FORM_SUBMITTED = 'appState.SET_FORM_SUBMITTED'
+export const SET_FORM_SUBMITTING = 'appState.SET_FORM_SUBMITTING'
 
+export const FETCH_REMOTE_RESOURCE_FAIL = 'appState.FETCH_REMOTE_RESOURCE_FAIL'
+
+//destination
 export const SET_DESTINATIONS = 'apiTrippian.SET_DESTINATIONS'
 export const SET_DESTINATION = 'apiTrippian.SET_DESTINATION'
 export const GET_DESTINATIONS_FAIL = 'apiTrippian.GET_DESTINATIONS_FAIL'
@@ -15,8 +24,18 @@ export const SET_TRIPPIANS = 'apiTrippian.SET_TRIPPIANS'
 export const GET_TRIPPIAN_BY_ID = 'apiTrippian.GET_TRIPPIAN_BY_ID'
 export const SET_TRIPPIAN = 'apiTrippian.SET_TRIPPIAN'
 
+//Review
+export const ADD_REVIEW = 'apiTrippian.ADD_REVIEW'
+
+//Trip
+export const SET_TRIP = 'apiTrippian.SET_TRIP'
+
+//Trip
+export const SET_INQUIRY = 'apiTrippian.SET_INQUIRY'
+export const UPDATE_VOTE = 'apiTrippian.UPDATE_VOTE'
 
 //User 
+
 
 //******admin 
 //destination

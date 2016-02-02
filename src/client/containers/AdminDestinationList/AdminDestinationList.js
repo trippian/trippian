@@ -4,7 +4,7 @@ import React, {
 from 'react'
 
 import {
-  JumbotronWidget, DestinationPostFormWidget
+  JumbotronWidget, DestinationPostFormWidget, DropFileWidget
 }
 from '../../components/index'
 import {
@@ -34,7 +34,10 @@ from '../../redux/apiIndex'
 function mapStateToProps(state) {
   return {
     destinations: state.apiAdmin.get('adminDestinations'),
-    trippians: state.apiAdmin.get('adminTrippians')
+    destination: state.apiTrippian.get('destination'),
+    trippians: state.apiAdmin.get('adminTrippians'),
+    isFormSubmitting: state.appState.get('isFormSubmitting'),
+    isFormSubmitted: state.appState.get('isFormSubmitted')
   }
 }
 
@@ -69,9 +72,12 @@ export default class AdminDestinationList extends Component {
 
 
   handleSubmit(data) {
-    console.log('posting data from form', data)
+    console.log('posting data from form, submitting?', data, this.props.isFormSubmitted, this.props.isFormSubmitting)
     store.dispatch(postDestination(data))
     this.setAlert('success', 'Successfully submitted data', `${data.name} ${data.description}`)
+  }
+  handleResetForm() {
+
   }
 
   setAlert(type = 'success', title = '', message = '') {
@@ -96,6 +102,7 @@ export default class AdminDestinationList extends Component {
     } = this.state.alert
     return (
       <div id="admin-destination-page">
+        
         {title !== '' && 
           <Alert bsStyle={type} dismissAfter={3000} onDismiss={this.handleAlertDismiss.bind(this)}>
             <h4>{title}</h4>
@@ -108,7 +115,11 @@ export default class AdminDestinationList extends Component {
           <button onClick={()=> this.setState({showForm: !this.state.showForm})} className="btn btn-primary">Create a Destination</button>
         </div>
           {this.state.showForm && 
-            <DestinationPostFormWidget onSubmit={this.handleSubmit.bind(this)} /> 
+            <DestinationPostFormWidget 
+              onSubmit={this.handleSubmit.bind(this)} 
+              resetForm={this.handleResetForm.bind(this)} 
+              submitting={this.props.isFormSubmitting}
+              data={this.props.destination} /> 
           }
 
           <br/>

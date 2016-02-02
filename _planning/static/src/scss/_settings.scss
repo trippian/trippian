@@ -20,6 +20,7 @@ $divider-color: #B6B6B6;
 //## Gray and brand colors for use across Bootstrap.
 $gray-base: #000 !default;
 $white-base: #fff !default;
+$light-bg-color: rgba(123, 173, 177, 0.21);
 $gray-darker: lighten($gray-base, 13.5%) !default; // #222
 $gray-dark: lighten($gray-base, 20%) !default; // #333
 $gray: lighten($gray-base, 33.5%) !default; // #555

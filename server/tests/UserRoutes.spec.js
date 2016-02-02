@@ -48,3 +48,14 @@ describe('get request to /api/trippian', () => {
       }, done())
   })
 })
+
+describe('get request to /api/dashboard/:userId', () => {
+  it('should return a user dashboard', done => {
+    request
+      .get('/api/dashboard/8')
+      .expect(200)
+      .end((err, res) => {
+        expect(res.body).to.be.an('object')
+      }, done())
+  })
+})

@@ -5,13 +5,13 @@ import {
 from '../index'
 
 const TripListWidget = ({
-  tripList = []
+  dataList = []
 }) => {
-  console.log('inside Destination list', tripList, tripList.length)
+  console.log('inside Trip list', dataList, dataList.length)
   return (
-    <div className="popular-destinations section-body clearfix">
+    <div className="popular-Trips section-body clearfix">
     { 
-        tripList.map((trip, key) => (
+       dataList.map((trip, key) => (
          <TripListItemWidget key={key} {...trip} />
       ))
    }

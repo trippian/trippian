@@ -7930,8 +7930,21 @@ a {
     color: #832a0e;
     text-decoration: none; }
 
+img {
+  max-width: 100%; }
+
+.btn-link {
+  color: #E64A19;
+  background-color: transparent;
+  border: none;
+  font-style: italic; }
+
 .active {
   color: #E64A19 !important; }
+
+button[disabled],
+html input[disabled] {
+  color: #777777; }
 
 .flex-row-wrap {
   display: flex;
@@ -8033,26 +8046,83 @@ footer {
             margin: 8px;
             margin-top: 26px; }
         .jumbotron .full-length-container .container .meta-info .text-intro {
-          width: 100%;
-          margin-left: 16px; }
+          width: 100%; }
 
+.login-button-widget button,
 .login-button-widget a {
   color: white;
   margin-bottom: 8px;
   min-width: 200px;
   text-align: left; }
+  .login-button-widget button i,
   .login-button-widget a i {
     padding-right: 8px;
     margin-right: 8px; }
-
-.login-button-widget:hover {
-  color: #FFCCBC; }
+  .login-button-widget button span,
+  .login-button-widget a span {
+    font-size: 18px; }
+  .login-button-widget button:hover,
+  .login-button-widget a:hover {
+    color: #FFCCBC; }
 
 .login-button-widget .facebook {
   background-color: #2d4373; }
 
 .login-button-widget .google {
   background: #c23321; }
+
+.vote {
+  text-align: center;
+  color: #E64A19; }
+  .vote .total-votes {
+    font-size: 24px;
+    font-weight: bold;
+    display: block;
+    margin-top: 16px;
+    margin-bottom: 8px; }
+
+.trip-list-item {
+  border-bottom: 1px dotted #B6B6B6;
+  padding: 16px 0; }
+  .trip-list-item .sub-title {
+    font-size: 14px;
+    color: #727272; }
+  .trip-list-item .feature-image {
+    margin-top: 10%;
+    width: 100%; }
+
+.team {
+  overflow: hidden; }
+  .team .photo {
+    margin-left: 0px;
+    width: 60%; }
+  .team .row {
+    min-height: 280px; }
+    .team .row h4 {
+      font-style: italic;
+      font-size: 16px; }
+    .team .row p {
+      padding: 0 32px; }
+
+.jumbotron-dashboard-widget {
+  min-height: 300px;
+  padding-top: 160px;
+  background-color: rgba(123, 173, 177, 0.21);
+  text-align: center; }
+  .jumbotron-dashboard-widget .user-menu-widget li {
+    padding-left: 10px;
+    padding-right: 10px; }
+
+.nav-user-avatar {
+  width: 36px !important;
+  height: 36px !important;
+  margin: -6px 10px !important; }
+  .nav-user-avatar img {
+    width: 100%; }
+  .nav-user-avatar:hover {
+    width: 40px !important;
+    height: 40px !important;
+    margin: -10px 10px !important; }
 
 .navbar {
   position: absolute;

@@ -5,16 +5,18 @@ import {
 from 'react-router'
 
 import {
-  App, Home, About, JoinUs, Login, NotFound, Press,
+  App, Home, About, JoinUs, NotFound, Press,
   Destination, DestinationDetail, DestinationPost, Contact,
   InquiryAdd, InquiryDetail, InquiryList,
-  Trippian,
+  Login, LoginWrapper, LoginSuccess, Logout,
+  DestinationWrapper, PopularDestinations, DestinationSearchResults, Trippian,
   Terms, TrippianDetail, TrippianSignUp, TrippianList, TrippianEdit, IntlDemo,
   Admin, AdminDestinationList, AdminDestinationListItem, AdminDestinationListItemEdit,
   AdminTrippianList, AdminTrippianListItem, AdminTrippianListItemEdit, AdminInquiryList, AdminTripList,
   AdminInquiryListItem, AdminInquiryListItemEdit,
   AdminTripListItem, AdminTripListItemEdit,
-  AdminUserList, AdminUserListItem, AdminUserListItemEdit
+  AdminUserList, AdminUserListItem, AdminUserListItemEdit,
+  Dashboard, MyProfile, MyInquiries, MyTripBox
 }
 from '../containers/index'
 
@@ -28,14 +30,26 @@ export default (
             <Route component={InquiryDetail} path="inquiry/:id"  />
             <Route component={InquiryList} path="my-inquiries"  />
             <Route component={IntlDemo} path="intl"  />
-            <Route component={Login} path="login"  />
+
+            //login
+            <Route component={LoginWrapper} path="login" >
+              <Route component={Login} path="login" />
+              <Route component={LoginSuccess} path="success" />
+              <Route component={Logout} path="logout" />
+              <IndexRoute component={Login} />
+            </Route>
+            
             <Route component={NotFound} path="not-found"  />
             <Route component={Press} path="press"  />
             <Route component={Terms} path="terms"  />
-
-            <Route component={Destination} path="destination/:id" >
-              <Route component={Contact} path="contact"  />
-              <IndexRoute component={DestinationDetail}/>
+            
+            <Route component={DestinationWrapper} path="destination" >
+              <Route component={Destination} path=":id" >
+                <IndexRoute component={DestinationDetail}/>
+                // may add some route later 
+              </Route>
+              <Route component={DestinationSearchResults} path="search/:q"  />
+              <IndexRoute component={PopularDestinations}/>
             </Route>
 
             <Route component={Trippian} path="trippian/:id" >
@@ -45,9 +59,20 @@ export default (
 
             <Route component={TrippianSignUp} path="become-a-trippian" />
             <Route component={TrippianList} path="trippian" />
-            <Route component={TrippianEdit} path="trippian-edit"  />
-            <Route component={Admin} path="admin">
 
+            // user routes
+            <Route component={Dashboard} path="dashboard">
+              <Route component={TrippianEdit} path="trippian-edit"  />
+              <Route component={MyProfile} path="my-profile"  />
+              <Route component={MyInquiries} path="my-inquiries"  />
+              // create trip, vote, favs, saves 
+              <Route component={MyTripBox} path="my-trip-box"  />  
+              <IndexRoute component={MyProfile}/>
+            </Route>
+            
+
+            //admin routes
+            <Route component={Admin} path="admin">
                 <Route component={AdminTrippianList} path="trippian" />
                 <Route component={AdminTrippianListItem} path="trippian/:id" />
                 <Route component={AdminTrippianListItemEdit} path="trippian/:id/edit" />

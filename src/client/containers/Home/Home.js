@@ -84,19 +84,9 @@ class Home extends Component {
   }
 
   componentDidMount() {
-
     // ask redux store to get remote data, if needed, can do something after then 
-    store.dispatch(getPopularDestinations()).then(() => {
-      console.log('****got destination data', this.props.popularDestinations)
-    })
+    store.dispatch(getPopularDestinations())
     store.dispatch(getPopularTrippians())
-      // this is an older version of the implementation without redux store
-      // getTrippians('popular').then((data) => {
-      //   console.log('got trippian data', data)
-      //   this.setState({
-      //     popularTrippians: data
-      //   })
-      // })
   }
 
   handleClick() {
@@ -125,8 +115,6 @@ class Home extends Component {
                   <SectionHeaderWidget title={formatMessage(messages.popularTrippiansTitle)} subTitle={formatMessage(messages.popularTrippiansSubTitle)} />
                   <TrippianListRoundWidget dataList={this.props.popularTrippians} />
                  </div>
-                 <h3>How to use Redux Store Action Map</h3>
-                 <button type="button" onClick={this.handleClick.bind(this)} className="btn btn-default">change displayName</button>
              </div>
 
           </div>

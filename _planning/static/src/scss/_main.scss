@@ -32,8 +32,24 @@ a {
     }
 }
 
+img {
+    max-width: 100%;
+}
+
+.btn-link {
+    color: $primary-color-dark;
+    background-color: transparent;
+    border: none;
+    font-style: italic;
+}
+
 .active {
     color: $primary-color-dark !important;
+}
+
+button[disabled],
+html input[disabled] {
+    color: $gray-light;
 }
 
 .flex-row-wrap {
@@ -171,7 +187,7 @@ footer {
                 }
                 .text-intro {
                     width: 100%;
-                    margin-left: 16px;
+                    // margin-left: 16px;
                 }
                 .star-rating {}
             }
@@ -181,6 +197,7 @@ footer {
 
 // widgets
 .login-button-widget {
+    button,
     a {
         color: white;
         margin-bottom: 8px;
@@ -191,14 +208,97 @@ footer {
             margin-right: 8px;
             // border-right: 1px solid $gray-lighter;
         }
-    }
-    &:hover {
-        color: $primary-color-light;
+        span {
+            font-size: 18px;
+        }
+        &:hover {
+            color: $primary-color-light;
+        }
     }
     .facebook {
         background-color: #2d4373;
     }
     .google {
         background: #c23321;
+    }
+}
+
+.vote {
+    text-align: center;
+    color: $primary-color-dark;
+    .total-votes {
+        font-size: 24px;
+        font-weight: bold;
+        display: block;
+        margin-top: 16px;
+        margin-bottom: 8px;
+    }
+    .vote-buttons {
+        button {
+            // border: none;
+            // background-color: white;
+            span {
+                // background-color: white;
+            }
+        }
+    }
+}
+
+.trip-list-item {
+    border-bottom: 1px dotted $divider-color;
+    padding: 16px 0;
+    .sub-title {
+        font-size: 14px;
+        color: $secondary-text-color;
+    }
+    .feature-image {
+        margin-top: 10%;
+        width: 100%;
+        // min-height: 200px;
+    }
+}
+
+.team {
+    overflow: hidden;
+    .photo {
+        margin-left: 0px;
+        width: 60%;
+    }
+    .row {
+        min-height: 280px;
+        h4 {
+            font-style: italic;
+            font-size: 16px;
+        }
+        p {
+            padding: 0 32px;
+        }
+    }
+}
+
+.jumbotron-dashboard-widget {
+    min-height: 300px;
+    padding-top: 160px;
+    background-color: $light-bg-color;
+    text-align: center;
+    .user-menu-widget {
+        li {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    }
+}
+
+.nav-user-avatar {
+    width: 36px !important;
+    height: 36px !important;
+    margin: -6px 10px !important;
+    img {
+        width: 100%;
+    }
+    &:hover {
+        width: 40px !important;
+        height: 40px !important;
+        margin: -10px 10px !important;
     }
 }

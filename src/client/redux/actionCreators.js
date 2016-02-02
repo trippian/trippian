@@ -1,10 +1,11 @@
 import {
-  SET_LOCALE, SET_LOCALE_MESSAGES, SET_USERNAME, SET_DISPLAYNAME,
+  SET_LOCALE, SET_LOCALE_MESSAGES, SET_USERNAME, SET_DISPLAYNAME, SET_ALERT, SET_FILES, SET_FORM_SUBMITTED, SET_FORM_SUBMITTING,
 
-  SET_DESTINATIONS, SET_DESTINATION
-, ADD_DESTINATION, GET_DESTINATIONS_FAIL, REMOVE_DESTINATION,
+  SET_DESTINATIONS, SET_DESTINATION, ADD_DESTINATION, GET_DESTINATIONS_FAIL, REMOVE_DESTINATION,
 
   SET_TRIPPIANS, GET_TRIPPIANS, GET_TRIPPIAN_BY_ID, REMOVE_TRIPPIAN, SET_TRIPPIAN,
+
+  ADD_REVIEW, SET_INQUIRY, SET_TRIP, UPDATE_VOTE, SET_USER,
 
   SET_ADMIN_DESTINATIONS, ADD_ADMIN_DESTINATION, REMOVE_ADMIN_DESTINATION, SET_ADMIN_CURRENT_DESTINATION,
   SET_ADMIN_TRIPPIANS, ADD_ADMIN_TRIPPIAN, REMOVE_ADMIN_TRIPPIAN, SET_ADMIN_CURRENT_TRIPPIAN,
@@ -49,6 +50,44 @@ export function setDisplayName(displayName) {
     }
   }
 }
+export function setAlert(alert = {
+  type: 'success',
+  title: '',
+  message: ''
+}) {
+  return {
+    type: SET_ALERT,
+    payload: {
+      alert
+    }
+  }
+}
+export function setFiles(files) {
+  return {
+    type: SET_FILES,
+    payload: {
+      files
+    }
+  }
+}
+
+export function setFormSubmitted(isFormSubmitted) {
+  return {
+    type: SET_FORM_SUBMITTED,
+    payload: {
+      isFormSubmitted
+    }
+  }
+}
+
+export function setFormSubmitting(isFormSubmitting) {
+  return {
+    type: SET_FORM_SUBMITTING,
+    payload: {
+      isFormSubmitting
+    }
+  }
+}
 //***************************************
 //**** apiTrippian related  *************
 //***************************************
@@ -80,7 +119,14 @@ export function removeTrippian(id) {
   }
 }
 // Users
-
+export function setUser(user) {
+  return {
+    type: SET_USER,
+    payload: {
+      user
+    }
+  }
+}
 
 // destination 
 export function setDestinations(destinations) {
@@ -124,6 +170,44 @@ export function setTrippian(trippian) {
     type: SET_TRIPPIAN,
     payload: {
       trippian
+    }
+  }
+}
+
+//review 
+export function addReview(review) {
+  return {
+    type: ADD_REVIEW,
+    payload: {
+      review
+    }
+  }
+}
+
+//Inquiry
+export function setInquiry(inquiry) {
+  return {
+    type: SET_INQUIRY,
+    payload: {
+      inquiry
+    }
+  }
+}
+//trip
+export function setTrip(trip) {
+  return {
+    type: SET_TRIP,
+    payload: {
+      trip
+    }
+  }
+}
+export function updateVote(vote = 1, tripId) {
+  return {
+    type: UPDATE_VOTE,
+    payload: {
+      vote: vote,
+      tripId: tripId
     }
   }
 }

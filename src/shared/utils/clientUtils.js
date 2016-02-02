@@ -31,3 +31,31 @@ export function getParamFromQueryStringByName(search, name) {
 export function getMessagesByLocale(locale = 'en-US') {
   return require(`../../../translate/lang/${locale}.json`)
 }
+
+export function getCanVote(currentNetVote, vote) {
+  // options: (-1, 1) = > 0, (1, -1) => 0,  (0, -1) => -1, (0, 1) => 1
+  if (currentNetVote === 0) return true
+  if ((currentNetVote === 1 && vote === -1) || (currentNetVote === -1 && vote === 1)) return true
+  return false
+}
+
+export function getCookieByName(name) {
+  const re = new RegExp(name + "=([^;]+)")
+  const value = re.exec(document.cookie)
+  return (value != null) ? unescape(value[1]) : null
+}
+//TODO: check if the returned data is consistent and map to 
+//username: '',
+// displayName: '',
+// email: '',
+// id: 32, //TODO
+// facebookId: 0,
+// picture: 'http://lorempixel.com/200/200/people/',
+// trippian: false
+export function parseCookieStringToUser(string) {
+  return JSON.parse(string.substr(2))
+}
+
+export function clearTrippianCookieByName(name = 'trippianPass') {
+  document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;'
+}

@@ -1,6 +1,6 @@
 import api from '../../shared/api/fetch'
 import {
-  API_HOST, routeConfig
+  API_HOST, Server_HOST, routeConfig
 }
 from '../config/appConfig'
   // import config from '../../shared/config/config'
@@ -162,6 +162,7 @@ export const fetchDeleteUserById = (id) => {
   return api.deleteApi(url)
 }
 
+//TODO
 export const fetchUpdateUserById = (id) => {
   const url = `${API_HOST}${routeConfig.user}/${id}`
   console.log('fetchUpdateUserById', url, id)
@@ -169,6 +170,44 @@ export const fetchUpdateUserById = (id) => {
 }
 
 
+//Rating & Review 
+export const fetchPostReview = (data) => {
+  const url = `${API_HOST}${routeConfig.review}/${data.trippianId}?rater=${data.userId}`
+  console.log('fetchPostTrippian', url, data)
+  return api.post(url, data)
+}
+
+//curl -X PUT -d "userId=8" http://localhost:4000/api/trip/51/?voteType=UPVOTE
+export const fetchUpdateVote = ({
+  userId, tripId, vote = 1
+}) => {
+  console.log('in fetch', userId, tripId, vote)
+  if (vote !== -1 && vote !== 1) {
+    console.log('unexpected vote, should be 1 or -1')
+    return
+  }
+  const voteType = vote === -1 ? 'DOWNVOTE' : 'UPVOTE'
+  const url = `${API_HOST}${routeConfig.trip}/${tripId}?voteType=${voteType}`
+  console.log('fetchPostTrippian', url, userId, tripId, voteType)
+  return api.put(url, {
+    userId: userId
+  })
+}
+
+export const fetchLogin = (type = 'facebook') => {
+  let url = routeConfig.facebookAuth
+  if (type === 'google') {
+    url = routeConfig.googleAuth
+  }
+  console.log('fetchLogin', url)
+  return api.get(url)
+}
+
+export const fetchLogout = () => {
+  var url = routeConfig.logout
+  console.log('fetchLogout', url)
+  return api.get(url)
+}
 
 
 // POST /api/destination

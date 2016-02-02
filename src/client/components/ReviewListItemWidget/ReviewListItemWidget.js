@@ -1,27 +1,34 @@
 import React from 'react'
+import {
+  Link
+}
+from 'react-router'
+import {
+  CircleImageWidget, ContactButtonWidget, StarRatingWidget, RelativeTimeWidget
+}
+from '../index'
 
 const ReviewListItemWidget = ({
-  name = 'ReviewListItemWidget'
+  createdAt, username, facebookId, userAvatar, userId, rating, title, content, trippian
 }) => {
   return (
-    <div className="review-list-item">
+    <div className="review-list-item clearfix">
         <div className="col-xs-12 col-sm-2 col-md-2">
-            <div className="circle-image">
-                <img src="http://lorempixel.com/200/200/people/" alt="" />
-            </div>
+            <CircleImageWidget imgSrc={userAvatar} />
         </div>
         <div className="col-xs-12 col-sm-10 col-md-10 text-expandable">
-            <h4><a href="#" title="">James Chang</a></h4>
-            <div className="meta-info">
-                <span className="star-rating">
-            <i className="fa fa-star"></i>
-            <i className="fa fa-star"></i>
-            <i className="fa fa-star"></i>
-            <i className="fa fa-star"></i>                                    
-        </span> 5d ago
+            <h4>{title}</h4>
+            <div className="meta"> 
+             <a href="#" title="">{username}</a>
+             <i>
+              <RelativeTimeWidget date={new Date('2016-01-30T04:13:28.003')} intl='en-US' />
+              </i>
+              <StarRatingWidget stars={rating}/>  
             </div>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus odio eveniet sit consequuntur minus labore, error fugiat expedita praesentium recusandae perspiciatis odit sunt voluptatem porro
-        </div>
+            
+            
+            {content}                                  
+        </div>            
     </div>
   )
 }

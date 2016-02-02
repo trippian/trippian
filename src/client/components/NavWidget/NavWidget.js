@@ -14,6 +14,10 @@ import {
 }
 from 'react-intl'
 import store from '../../redux/store'
+import {
+  UserMenuWidget
+}
+from '../index'
 
 function renderSearchForm() {
   return (
@@ -23,8 +27,12 @@ function renderSearchForm() {
 
 
 const NavWidget = ({
-  name = 'NavWidget', currentPath, username = '', displayName = '', isUserAdmin = false
+  currentPath, username = '', displayName = '', isUserAdmin = false
 }) => {
+  const {
+    isAuthed
+  } = store.getState().appState.get('user')
+
   return (
     <nav className="navbar navbar-default" role="navigation">
         <div className="navbar-header">
@@ -43,52 +51,17 @@ const NavWidget = ({
             <LocaleMenuWidget className="nav navbar-nav navbar-right list-inline"/>
             <ul className="nav navbar-nav navbar-right">
                 <li>{currentPath === '/'  ? null : renderSearchForm() }</li>
-                <li><Link to="login">Login </Link></li>
+                
                 <li>
                     <Link to='become-a-trippian' className="btn btn-bordered">
                         <FormattedMessage 
                             id="app-pages.become-a-trippian" 
                             description="become a trippian page title"
-                            defaultMessage="Become a Trippian"
-                        />
+                            defaultMessage="Become a Trippian"/>
                     </Link>
                 </li>
-                <li className="dropdown">
-                    <a href="#" className="dropdown-toggle" data-toggle="dropdown"> 
-                     <FormattedMessage 
-                        id="nav-widget.welcome-message"
-                        description="a short welcome message for use at nav menu"
-                        defaultMessage="Hello "
-                     /> 
-                     {` ${displayName}`}  
-                    <b className="caret"></b>
-                    </a>
-                    <ul className="dropdown-menu">
-                        {isUserAdmin && <li><Link to='admin'>Admin Dashboard</Link></li>}
-                        <li>
-                            <Link to='trippian-edit'>
-                                <FormattedMessage 
-                                    id="app-pages.trippian-edit-profile" 
-                                    description="trippian edit page title"
-                                    defaultMessage="Edit My Profile"
-                                />
-                            </Link>
-                        </li>
-                        <li><a href="#">Friends</a></li>
-                        <li>
-                            <a href="#">
-                                <FormattedMessage 
-                                    id="app-shared.logout" 
-                                    description="logout link text"
-                                    defaultMessage="Logout"
-                                />
-                            </a>
-                        </li>
-                        <li><Link to='destination-post'>Post a Destination</Link></li>
-                        <li><Link to='login'>Login</Link></li>
-                        <li><Link to='intl' className="btn btn-bordered">Intl Demo</Link></li>
-                    </ul>
-                </li>
+                {isAuthed && <UserMenuWidget />}
+                {!isAuthed && <li><Link to="login">Login </Link></li>}
             </ul>
         </div>
     </nav>

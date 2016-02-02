@@ -1,10 +1,18 @@
 import Promise from 'bluebird'
 import db from '../db'
-import { updateStringObject } from '../../middleware/utils'
+import {
+  updateStringObject
+}
+from '../../middleware/utils'
 import nodemailer from 'nodemailer'
+import {
+  isEmpty
+}
+from 'lodash'
 require('dotenv').config()
 
-
+// using node mailer to send email notifications when a user
+// first signs up
 const transporter = nodemailer.createTransport({
   service: 'Gmail',
   auth: {
@@ -61,10 +69,12 @@ export default {
     details.totalRating = 0
     details.numberOfReviews = 0
     details.averageRating = 0
-    details.trippian = false
+    details.isTrippian = false
+    details.isAdmin = false
     return new Promise((resolve, reject) => {
       db.saveAsync(details, 'User')
         .then(createdUser => {
+          // creating our mail options
           let mailOptions = {
             from: 'Trippian <trippianApp@gmail.com',
             to: details.email,
@@ -72,7 +82,8 @@ export default {
             text: `Welcome ${details.name}`,
             html: `<h2>Welcome ${details.name}</h2> <p>You can now plan your trips all over the world!</p>`
           }
-          transporter.sendMail(mailOptions, function(err, info) {
+            // sending the email using nodemailer
+          transporter.sendMail(mailOptions, function (err, info) {
             if (err) {
               console.error(err)
             } else {
@@ -81,9 +92,9 @@ export default {
           })
         })
     })
-    .catch(error => {
-      console.error(error)
-    })
+      .catch(error => {
+        console.error(error)
+      })
   },
   // need to work on this function to change all fields that are sent
   becomeTrippian: (userId) => {
@@ -200,6 +211,7 @@ export default {
         })
     })
   },
+  // gets back all users so the admin user can see all the users
   getAllUsers: () => {
     return new Promise((resolve, reject) => {
       let cypher = `match (u:User) return u`
@@ -214,6 +226,7 @@ export default {
         })
     })
   },
+  // function for deleting users given the userId
   deleteUser: (userId) => {
     return new Promise((resolve, reject) => {
       let cypher = `match (u:User) where id(u)=${userId} detach delete u;`
@@ -222,6 +235,70 @@ export default {
           resolve(deleted)
         })
         .catch((error) => {
+          console.error(error)
+        })
+    })
+  },
+  getUserSavedTrips: (userId) => {
+    return new Promise((resolve, reject) => {
+      let cypher = `match (u:User)-[s:SAVED]->(t:Trip) where id(u)=${userId} return t;`
+      db.queryAsync(cypher)
+        .then(savedTrips => {
+          resolve(savedTrips)
+        })
+        .catch(error => {
+          console.error(error)
+        })
+    })
+  },
+  userSaveTrip: (userId, tripId) => {
+    return new Promise((resolve, reject) => {
+      db.relationshipsAsync(userId, 'out', 'SAVED')
+        .then(saved => {
+          if (!saved.length) {
+            db.relateAsync(userId, 'SAVED', tripId, {
+              savedAt: new Date()
+            })
+              .then(savedRelationship => {
+                console.log(savedRelationship)
+                if (!isEmpty(savedRelationship)) {
+                  resolve(savedRelationship)
+                } else {
+                  reject(new Error('could not save this trip to that user'))
+                }
+              })
+              .catch(error => {
+                console.error(error)
+              })
+          } else {
+            reject(new Error('user has already saved this trip'))
+          }
+        })
+        .catch(error => {
+          console.error(error)
+        })
+    })
+  },
+  deleteSavedTrip: (userId, tripId) => {
+    return new Promise((resolve, reject) => {
+      let cypher = `match (u:User)-[s:SAVED]->(t:Trip) where id(u)=${userId} and id(t)=${tripId} delete s;`
+      db.queryAsync(cypher)
+        .then(deleted => {
+          resolve(deleted)
+        })
+        .catch(error => {
+          console.error(error)
+        })
+    })
+  },
+  getUserVotedTrips: (userId) => {
+    return new Promise((resolve, reject) => {
+      let cypher = `match (t:Trip), (t)<-[u:UPVOTE]-(n:User),(t)<-[d:DOWNVOTE]-(n:User) where id(n)=${userId} return u,d;`
+      db.queryAsync(cypher)
+        .then(voted => {
+          resolve(voted)
+        })
+        .catch(error => {
           console.error(error)
         })
     })

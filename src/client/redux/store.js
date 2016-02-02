@@ -12,7 +12,8 @@ import appState from './reducers/appStateReducer'
 
 import apiTrippian, {
   getPopularDestinations,
-  getPopularTrippians
+  getPopularTrippians,
+  getDestinationById
 }
 from './reducers/apiTrippianReducer'
 import apiAdmin from './reducers/apiAdminReducer'
@@ -38,5 +39,6 @@ export default createStoreWithMiddleware(reducer)
 // add all reducer functions to the store export 
 export {
   getPopularDestinations,
-  getPopularTrippians
+  getPopularTrippians,
+  getDestinationById
 }

@@ -4,21 +4,22 @@ import {
 }
 from 'react-router'
 
-const styles = {
-  backgroundImage: {
-    backgroundImage: 'url(http://lorempixel.com/800/400/city/)'
-  }
-}
+
 
 const DestinationListItemWidget = ({
-  destinationName, id
+  name, id, feature
 }) => {
+  const styles = {
+    backgroundImage: {
+      backgroundImage: `url(${feature})`
+    }
+  }
   return (
     <div className="col-xs-12 col-sm-6 col-md-4 popular-destinations-item">  
         <Link to={`destination/${id}`} className="thumbnail text-center" style = {
             styles.backgroundImage
             }>
-            {destinationName}
+           <span>{name}</span> 
         </Link>
       </div>
   )
