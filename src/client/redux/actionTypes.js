@@ -4,7 +4,7 @@ export const SET_LOCALE_MESSAGES = 'appState.SET_LOCALE_MESSAGES'
 export const SET_USERNAME = 'appState.SET_USERNAME'
 export const SET_DISPLAYNAME = 'appState.SET_DISPLAYNAME'
 export const SET_ALERT = 'appState.SET_ALERT'
-
+export const SET_USER = 'appState.SET_USER'
 
 export const FETCH_REMOTE_RESOURCE_FAIL = 'appState.FETCH_REMOTE_RESOURCE_FAIL'
 

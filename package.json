@@ -154,9 +154,6 @@
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
-    },
-    "ghooks": {
-      "pre-commit": "npm run test:single && npm run test:server && npm run check-coverage"
     }
   },
   "engines": {
