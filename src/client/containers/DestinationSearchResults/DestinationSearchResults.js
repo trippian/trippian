@@ -40,10 +40,6 @@ export default class DestinationSearchResults extends Component {
 
   componentDidMount() {
     store.dispatch(getDestinationById(20))
-      // Audrey: this was my early code, but now, the getDestinationById doesn't really a promise, once it get the data, it will set the state in the store 
-      // so in this case, you can not use then, but you can log it in render function as whenever some new data comes in, this component will get re-rendered
-
-    //.then(() => {console.log('****got destination data?!?!?', this.props.destinationById)})
   }
 
   render() {
