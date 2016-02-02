@@ -8,6 +8,7 @@
 export AdminInquiryDetailWidget from './AdminInquiryDetailWidget/AdminInquiryDetailWidget'
 export AvatarWidget from './AvatarWidget/AvatarWidget'
 export AlertAutoDismissableWidget from './AlertAutoDismissableWidget/AlertAutoDismissableWidget'
+export AutoSuggestBoxWidget from './AutoSuggestBoxWidget/AutoSuggestBoxWidget'
 export CarouselWidget from './CarouselWidget/CarouselWidget'
 export CircleImageWidget from './CircleImageWidget/CircleImageWidget'
 export CircleImageLinkWidget from './CircleImageLinkWidget/CircleImageLinkWidget'
