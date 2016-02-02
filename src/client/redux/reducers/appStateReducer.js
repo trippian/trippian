@@ -26,8 +26,8 @@ const initialState = new Map({
     message: ''
   },
   user: {
-    isAuthed: false,
-    isAdmin: false,
+    isAuthed: true,
+    isAdmin: true,
     isTrippian: false,
     username: '',
     displayName: '',

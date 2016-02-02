@@ -19,17 +19,17 @@ export default class Admin extends Component {
   }
 
   render() {
-    const isUserAdmin = store.getState().appState.get('isUserAdmin')
-    console.log('is user admin?', isUserAdmin)
+    const isAdmin = store.getState().appState.get('user').isAdmin
+    console.log('is user admin?', isAdmin)
     return (
       <div id="admin-page">
         <JumbotronWidget title="Admin Dashboard" subTitle="Lorem ipsum dolor sit amet."/>
       <div className="container main-content-container">
         <div className="col-sm-12 col-md-12 content-container">
-        {!isUserAdmin && 
+        {!isAdmin && 
            <h3>You donot have access to this page. Login as admin first</h3>
         }
-        {isUserAdmin &&
+        {isAdmin &&
             <div>
               <ul className="list-inline">
                 <li><Link to='admin/destination'>Destination </Link></li>

@@ -32,6 +32,10 @@ a {
     }
 }
 
+img {
+    max-width: 100%;
+}
+
 .btn-link {
     color: $primary-color-dark;
     background-color: transparent;
