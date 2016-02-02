@@ -4,6 +4,8 @@ export default function(router) {
   // router.get('/facebook', passport.authenticate('facebook', {
   //   scope: ['email']
   // }))
+  router.get('/login', auth.local)
+  router.get('/login/callback', auth.localCallback, auth.validateLocal)
   
   router.get('/facebook', auth.facebook)
 

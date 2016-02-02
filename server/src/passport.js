@@ -1,9 +1,11 @@
 import facebook from 'passport-facebook'
 import google from 'passport-google-oauth'
+import local from 'passport-local'
 // import User from './db/models/user'
 // import passport from 'passport'
 const FacebookStrategy = facebook.Strategy
 const GoogleStrategy = google.OAuth2Strategy
+const LocalStrategy = local.Strategy
 require('dotenv').config()
 
 export default function (app, passport) {
@@ -16,14 +18,25 @@ export default function (app, passport) {
     done(null, obj)
   })
 
+  passport.use(new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password'
+  }, 
+    (email, password, done) => {
+      process.nextTick(() => {
+        done(null, email, password)
+      })
+    }
+  ))
+  
   passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_APP_ID,
     clientSecret: process.env.FACEBOOK_APP_SECRET,
     callbackURL: process.env.FACEBOOK_CALLBACK_URL,
     profileFields: ['id', 'displayName', 'email', 'photos', 'timezone', 'gender']
   },
-    function (token, refreshToken, profile, done) {
-      process.nextTick(function () {
+    (token, refreshToken, profile, done) => {
+      process.nextTick(() => {
         // find user node in database based on their facebookID
         // User.getUserByParameter('facebookId', profile.id)
         //   .then(function(user) {

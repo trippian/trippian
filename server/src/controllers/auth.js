@@ -11,6 +11,9 @@ export default {
   },
   // function that validates whether the user is logged in
 
+  validateLocal: (req, res, next) => {
+
+  },
   validateGoogle: (req, res, next) => {
     // console.log('this is image: ', req.user._json.image.url)
     // console.log('this is display name: ', req.user.displayName)
@@ -107,7 +110,10 @@ export default {
         }
       })
   },
+  local: passport.authenticate('local'),
+  localCallback: passport.authenticate('local', {
 
+  }),
   facebook: passport.authenticate('facebook', {
     scope: ['email']
   }),
