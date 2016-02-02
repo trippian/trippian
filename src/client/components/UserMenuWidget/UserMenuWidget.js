@@ -22,9 +22,11 @@ const UserMenuWidget = ({
          <FormattedMessage 
             id="nav-widget.welcome-message"
             description="a short welcome message for use at nav menu"
-            defaultMessage="Hello "
-         /> 
-         {` ${displayName}`}  
+            defaultMessage="Hello "/> 
+            
+            <span className="circle-image nav-user-avatar">
+              <img src="http://lorempixel.com/100/100/animals/" alt={displayName} />
+            </span>  
         <b className="caret"></b>
         </a>
         <ul className="dropdown-menu">
