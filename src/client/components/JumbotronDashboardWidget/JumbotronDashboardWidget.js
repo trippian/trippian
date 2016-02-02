@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-  UserMenuWidget
+  DashboardMenuWidget
 }
 from '../index'
 const JumbotronDashboardWidget = ({
@@ -10,7 +10,7 @@ const JumbotronDashboardWidget = ({
     <div className="jumbotron-dashboard-widget">
       <div className="container">
         <h1>User Dashboard</h1>
-       <UserMenuWidget />
+       <DashboardMenuWidget />
       </div>
     </div>
   )

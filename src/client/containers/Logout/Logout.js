@@ -11,7 +11,7 @@ import {
 }
 from '../../utils/storeUtils'
 
-export default class LoginSuccess extends Component {
+export default class Logout extends Component {
   constructor(props) {
     super(props)
   }
@@ -19,18 +19,18 @@ export default class LoginSuccess extends Component {
     const user = getCookieByName('trippianPass')
       // dipatch set user at appState 
     console.log('got user from coookie', user)
-    setAppStateUser()
+    setAppStateUser(false)
   }
 
   render() {
     return (
       <div className="login">
-          <h3>LoginSuccess</h3>
-          you logged in 
+          <h3>Logout</h3>
+          you logged out 
       </div>
     )
   }
 }
-LoginSuccess.propTypes = {
+Logout.propTypes = {
   name: PropTypes.string
 }

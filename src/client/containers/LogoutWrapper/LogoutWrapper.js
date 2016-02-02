@@ -3,28 +3,30 @@ import React, {
 }
 from 'react'
 import {
-  LoginButtonsWidget
+  LoginFormWidget, JumbotronWidget, LoginButtonsWidget
 }
 from '../../components/index'
+import store from '../../redux/store'
 
-
-export default class Login extends Component {
+export default class LoginWrapper extends Component {
   constructor(props) {
     super(props)
   }
-
   render() {
     return (
-      <div className="login">
-          <h3>Login</h3>
-          <a href="#/login/success">Login Success Page</a>
-          <LoginButtonsWidget />
-          
+      <div id="destination-post-page">
+        <JumbotronWidget title="Login" subTitle="Lorem ipsum dolor sit."/>
+        <div className="container main-content-container">
+          <div className="col-sm-12 col-md-8 col-md-offset-2 content-container">
+              <h3>Login</h3>
+              {this.props.chidren}
+          </div>
+        </div>
       </div>
     )
   }
 }
-Login.propTypes = {
+LoginWrapper.propTypes = {
   name: PropTypes.string
 }
 

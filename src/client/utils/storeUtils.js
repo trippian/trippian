@@ -26,3 +26,26 @@ export function alertInfo(title = 'In progress...', message = '') {
     message
   }))
 }
+
+export function setAppStateUser(isLogin = true) {
+  if (isLogin) {
+    const cookieString = getCookieByName('trippianPass')
+    const user = parseCookieStringToUser(cookieString)
+    store.dispatch(setUser(user))
+  } else {
+    // handle log out, reset the state and clean the cookie for safety 
+    const user = {
+      isAuthed: false,
+      username: '',
+      isAdmin: false,
+      displayName: '',
+      email: '',
+      id: 0,
+      facebookId: 0,
+      picture: 'http://lorempixel.com/200/200/people/',
+      trippian: false
+    }
+    store.dispatch(setUser(user))
+    clearTrippianCookieByName('trippianPass')
+  }
+}
