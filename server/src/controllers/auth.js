@@ -22,7 +22,7 @@ export default {
     // making google id into a string because neo4j can't have 
     // very large integers
     let googleId = req.user.id
-    console.log(parseInt(googleId))
+    console.log((googleId))
     req.session.googleId = googleId
     req.session.picture = req.user._json.image.url
     req.session.email = req.user.emails[0].value
@@ -31,11 +31,11 @@ export default {
       .then(user => {
         if (!user.length) {
           User.createUser({
-              googleId: `"${googleId}"`,
-              name: req.user.displayName,
-              email: req.user.emails[0].value,
-              picture: req.user._json.image.url
-            })
+            googleId: `"${googleId}"`,
+            name: req.user.displayName,
+            email: req.user.emails[0].value,
+            picture: req.user._json.image.url
+          })
             .then(newUser => {
               res.cookie('trippianPass', {
                 googleId: parseInt(googleId),
@@ -50,9 +50,9 @@ export default {
           res.cookie('trippianPass', {
             googleId,
             id: user.id,
-              name: req.user.displayName,
-              email: req.user.emails[0].value,
-              picture: req.user._json.image.url
+            name: req.user.displayName,
+            email: req.user.emails[0].value,
+            picture: req.user._json.image.url
           })
           res.redirect('/#/login/success')
         }
@@ -71,16 +71,16 @@ export default {
         console.log(user)
         if (!user.length) {
           User.createUser({
-              facebookId: parseInt(req.user.id),
-              name: req.user.displayName,
-              email: req.user.emails[0].value,
-              picture: `https://graph.facebook.com/${req.user.id}/picture?height=500`
-            })
+            facebookId: parseInt(req.user.id),
+            name: req.user.displayName,
+            email: req.user.emails[0].value,
+            picture: `https://graph.facebook.com/${req.user.id}/picture?height=500`
+          })
             .then(newUser => {
               res.cookie('trippianPass', {
                 facebookId: req.user.id,
                 id: newUser.id,
-                name: req.user.displayName,
+                displayName: req.user.displayName,
                 email: req.user.emails[0].value,
                 picture: `https://graph.facebook.com/${req.user.id}/picture?height=500`
               })
@@ -90,7 +90,7 @@ export default {
           res.cookie('trippianPass', {
             facebookId: req.user.id,
             id: user.id,
-            name: req.user.displayName,
+            displayName: req.user.displayName,
             email: req.user.emails[0].value,
             picture: `https://graph.facebook.com/${req.user.id}/picture?height=500`
           })
@@ -99,7 +99,9 @@ export default {
       })
   },
 
-  facebook: passport.authenticate('facebook'),
+  facebook: passport.authenticate('facebook', {
+    scope: ['email']
+  }),
   facebookCallback: passport.authenticate('facebook', {
     failureRedirect: '/'
   }),

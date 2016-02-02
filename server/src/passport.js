@@ -20,7 +20,7 @@ export default function (app, passport) {
     clientID: process.env.FACEBOOK_APP_ID,
     clientSecret: process.env.FACEBOOK_APP_SECRET,
     callbackURL: process.env.FACEBOOK_CALLBACK_URL,
-    profileFields: ['id', 'displayName', 'emails', 'photos']
+    profileFields: ['id', 'displayName', 'email', 'photos', 'timezone']
   },
     function (token, refreshToken, profile, done) {
       process.nextTick(function () {
