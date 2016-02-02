@@ -1,5 +1,5 @@
 import {
-  SET_LOCALE, SET_LOCALE_MESSAGES, SET_USERNAME, SET_DISPLAYNAME, SET_ALERT, SET_FILES,
+  SET_LOCALE, SET_LOCALE_MESSAGES, SET_USERNAME, SET_DISPLAYNAME, SET_ALERT, SET_FILES, SET_FORM_SUBMITTED, SET_FORM_SUBMITTING,
 
   SET_DESTINATIONS, SET_DESTINATION, ADD_DESTINATION, GET_DESTINATIONS_FAIL, REMOVE_DESTINATION,
 
@@ -67,6 +67,24 @@ export function setFiles(files) {
     type: SET_FILES,
     payload: {
       files
+    }
+  }
+}
+
+export function setFormSubmitted(isFormSubmitted) {
+  return {
+    type: SET_FORM_SUBMITTED,
+    payload: {
+      isFormSubmitted
+    }
+  }
+}
+
+export function setFormSubmitting(isFormSubmitting) {
+  return {
+    type: SET_FORM_SUBMITTING,
+    payload: {
+      isFormSubmitting
     }
   }
 }
