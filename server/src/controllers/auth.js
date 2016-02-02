@@ -21,17 +21,17 @@ export default {
 
     // making google id into a string because neo4j can't have 
     // very large integers
-    let googleId = `"${req.user.id}"`
+    let googleId = req.user.id
     console.log(googleId)
     req.session.googleId = googleId
     req.session.picture = req.user._json.image.url
     req.session.email = req.user.emails[0].value
 
-    User.getUserByParameter('googleId', `str(${googleId})`)
+    User.getUserByParameter('googleId', `"${googleId}"`)
       .then(user => {
         if (!user.length) {
           User.createUser({
-            googleId,
+            googleId: `"${googleId}"`,
             name: req.user.displayName,
             email: req.user.emails[0].value,
             picture: req.user._json.image.url
