@@ -49,7 +49,6 @@ const initialState = new Map({
     picture: 'http://lorempixel.com/200/200/people/',
     trippian: false
   },
-
   currentReview: {
     createdAt: '',
     username: '',
@@ -306,7 +305,10 @@ export function getInquiryById(id) {
 // posting 
 export function postDestination(data) {
   alertInfo('Submitting the destination information now...')
-
+  data.album = store.getState().appState.get('files')
+  if (data.feature === '') {
+    data.feature = data.album[0] || 'http://lorempixel.com/800/600/city/' //TODO: replace with placeholder image 
+  }
   console.log('-- posting a destination now in reducer', data)
     // after posting the destination, add the response data to the store on adminDestinations, aslo add to newDestinations on apiTrippians
   return (dispatch) => {

@@ -7930,6 +7930,9 @@ a {
     color: #832a0e;
     text-decoration: none; }
 
+img {
+  max-width: 100%; }
+
 .btn-link {
   color: #E64A19;
   background-color: transparent;

@@ -7,6 +7,10 @@ import {
   JumbotronWidget
 }
 from '../../components/index'
+import {
+  Col, Image
+}
+from 'react-bootstrap'
 import store from '../../redux/store'
 import {
   connect
@@ -44,19 +48,26 @@ export default class AdminDestinationListItem extends Component {
 
   render() {
     const {
-      name, description, feature, whyVisit
+      name, description, feature, whyVisit, album
     } = this.props.destination
     return (
       <div id="admin-destination-list-item-page">
         <img src={feature} alt=""/>
-        <h3> <b>Name:</b> {name}</h3>
+        <h3>{name}</h3>
         <p><b>Description:</b> {description}</p>
         <p><b>Why Visit:</b>{whyVisit}</p>
-        <b>A</b>
+        <h3>Album</h3>
+
+        {album && album.map((photo, key) => 
+          <Col xs={6} md={4} key={key}>
+            <Image  src={photo}  />
+          </Col>
+        )}
       </div>
     )
   }
 }
+
 AdminDestinationListItem.propTypes = {
   // name: PropTypes.string
 }

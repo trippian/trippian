@@ -5,6 +5,7 @@ export const SET_USERNAME = 'appState.SET_USERNAME'
 export const SET_DISPLAYNAME = 'appState.SET_DISPLAYNAME'
 export const SET_ALERT = 'appState.SET_ALERT'
 export const SET_USER = 'appState.SET_USER'
+export const SET_FILES = 'appState.SET_FILES'
 
 export const FETCH_REMOTE_RESOURCE_FAIL = 'appState.FETCH_REMOTE_RESOURCE_FAIL'
 

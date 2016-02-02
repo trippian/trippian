@@ -79,7 +79,7 @@ export default class DropFileWidget extends Component {
               files: [],
               totalNumberOfFiles: 0
             })
-            this.props.onUploaded(files)
+            this.props.onUploaded(uploadedFiles)
           }
           console.log('****uploadedFiles', this.state.uploadedFiles)
             //TODO, update Store 

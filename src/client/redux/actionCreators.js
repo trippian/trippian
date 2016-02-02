@@ -1,5 +1,5 @@
 import {
-  SET_LOCALE, SET_LOCALE_MESSAGES, SET_USERNAME, SET_DISPLAYNAME, SET_ALERT,
+  SET_LOCALE, SET_LOCALE_MESSAGES, SET_USERNAME, SET_DISPLAYNAME, SET_ALERT, SET_FILES,
 
   SET_DESTINATIONS, SET_DESTINATION, ADD_DESTINATION, GET_DESTINATIONS_FAIL, REMOVE_DESTINATION,
 
@@ -62,7 +62,14 @@ export function setAlert(alert = {
     }
   }
 }
-
+export function setFiles(files) {
+  return {
+    type: SET_FILES,
+    payload: {
+      files
+    }
+  }
+}
 //***************************************
 //**** apiTrippian related  *************
 //***************************************
