@@ -1,7 +1,7 @@
 import React from 'react'
 
 import {
-  GooglePlacesWidget
+  SearchBoxWidget, AutoSuggestBoxWidget
 }
 from '../index'
 
@@ -13,7 +13,7 @@ const styles = {
   }
 }
 const JumbotronHomeWidget = ({
-    title, subTitle
+    title, subTitle, history
   }) => {
     return ( < div className = "jumbotron text-center"
         style = {
@@ -22,7 +22,7 @@ const JumbotronHomeWidget = ({
         <div className = "container">
         <h1>{title}</h1> 
         <p>{subTitle}</p> 
-        <GooglePlacesWidget />
+        <SearchBoxWidget history={history}/>
     < /div >  < /div >
   )
 }

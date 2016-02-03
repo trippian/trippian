@@ -6,13 +6,20 @@ import {
   reduxForm
 }
 from 'redux-form'
+import {
+  FileEnhance
+}
+from '../../hocs/FileEnhance'
+import store from '../../redux/store'
+import {
+  setFiles, setTrip
+}
+from '../../redux/actionCreators'
 
-// summary: "Beijin summary goes here",
-// netVote: 0,
-// totalVotes: 0,
-// destination: "Beijing",
-// details: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-// title: "Beijing Trip",
+import {
+  AutoSuggestBoxWidget
+}
+from '../index'
 
 class TripPostFormWidget extends Component {
   constructor(props) {
@@ -36,7 +43,6 @@ class TripPostFormWidget extends Component {
     }
   }
 
-class TripPostFormWidget extends Component {
   render() {
     const {
       fields: {
@@ -80,11 +86,16 @@ class TripPostFormWidget extends Component {
 
 
 TripPostFormWidget = reduxForm({
-  form: 'tripPostForm', // a unique name for this form
-  fields: ['destination', 'title', 'summary', 'details', 'feature', 'album']
-})(TripPostFormWidget)
+    form: 'tripPostForm', // a unique name for this form
+    fields: ['destination', 'title', 'summary', 'details', 'feature', 'album']
+  },
+  state => ({ // mapStateToProps
+    initialValues: state.apiTrippian.get('trip') // will pull state into form's initialValues
+  })
+)(TripPostFormWidget)
+
 
 
 TripPostFormWidget.displayName = 'TripPostFormWidget'
 
-export default TripPostFormWidget
+export default FileEnhance(TripPostFormWidget)
