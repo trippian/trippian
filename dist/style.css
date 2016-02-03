@@ -7931,7 +7931,8 @@ a {
     text-decoration: none; }
 
 img {
-  max-width: 100%; }
+  max-width: 100%;
+  width: 100%; }
 
 .btn-link {
   color: #E64A19;
@@ -7945,6 +7946,9 @@ img {
 button[disabled],
 html input[disabled] {
   color: #777777; }
+
+.padding-row {
+  padding: 16px; }
 
 .flex-row-wrap {
   display: flex;
@@ -8112,6 +8116,12 @@ footer {
   .jumbotron-dashboard-widget .user-menu-widget li {
     padding-left: 10px;
     padding-right: 10px; }
+
+.jumbotron-plain-bg-widget {
+  min-height: 300px;
+  padding-top: 160px;
+  background-color: rgba(123, 173, 177, 0.21);
+  text-align: center; }
 
 .nav-user-avatar {
   width: 36px !important;

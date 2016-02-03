@@ -20,6 +20,12 @@ export const fetchGetDestinationById = (id) => {
   return api.get(url)
 }
 
+export const fetchGetDestinationByName = (name) => {
+  const url = `${API_HOST}${routeConfig.destination}?q=${name}`
+  console.log('fetchGetDestinationById', url, name)
+  return api.get(url)
+}
+
 export const fetchGetDestinationsByCategory = (category = 'popular') => {
   const url = `${API_HOST}${routeConfig.destination}?cat=${category}`
   console.log('fetchGetDestinationsByCategory', url, category)

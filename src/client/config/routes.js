@@ -60,7 +60,7 @@ export default (
             <Route component={TrippianSignUp} path="become-a-trippian" />
             <Route component={TrippianList} path="trippian" />
 
-            // user routes
+            // Dashboard
             <Route component={Dashboard} path="dashboard">
               <Route component={TrippianEdit} path="trippian-edit"  />
               <Route component={MyProfile} path="my-profile"  />

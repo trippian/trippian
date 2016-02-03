@@ -7,7 +7,7 @@ import {
   postReview,
   getTrippianById,
   getUserById,
-  getDestinationById,
+  getDestinationById, getDestinationByName,
   getInquiryById,
   login, logout, getDashboardById
 }
@@ -23,7 +23,7 @@ export default {
   postReview,
   getTrippianById,
   getUserById,
-  getDestinationById,
+  getDestinationById, getDestinationByName,
   getInquiryById,
   login, logout, getDashboardById
 }

@@ -6,7 +6,7 @@ import {
 from '../index'
 
 const InquiryListWidget = ({
-  name = 'InquiryListWidget'
+  name = 'InquiryListWidget', dataList = []
 }) => {
   return (
     <div className="section-body inquiry-list">

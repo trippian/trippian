@@ -14,6 +14,27 @@ from 'redux-form'
 // details: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
 // title: "Beijing Trip",
 
+class TripPostFormWidget extends Component {
+  constructor(props) {
+    super(props)
+    this.state = ({
+      isHOC: false,
+      isFormSubmitted: store.getState().appState.get('isFormSubmitted')
+    })
+  }
+
+  componentDidReceiveProps(newProps) {
+    console.log('******* inside post form, recieving new props')
+  }
+  handleSubmit(data) {
+    console.log('******submitting in the form', this.props.files, this.props.isFileUploading)
+    if (this.props.isFileUploading) {
+      // TODO: set alert here 
+    } else {
+      this.props.handleSubmit(data)
+        //TODO: clear out the form and picture in callee 
+    }
+  }
 
 class TripPostFormWidget extends Component {
   render() {
@@ -26,9 +47,11 @@ class TripPostFormWidget extends Component {
 
     return (
       <form onSubmit={handleSubmit} role="form">
-        <div className="form-group">
-          <label>Destination</label>
-          <input type="text" className="form-control" placeholder="Paris..." value="Beijing, China" {...destination}/>
+        <div className="row padding-row">
+            <div className="pull-left">
+              <label>Destination</label>
+              <AutoSuggestBoxWidget />
+            </div>
         </div>
         <div className="form-group">
           <label>Title</label>
