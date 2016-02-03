@@ -38,6 +38,7 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
   - [X] ReviewList 
   - [X] Add Review Form 
   - [X] PopularTrippiansList
+  - [ ] Add user link to trips
   - [ ] Enhance AlertComponent with reset 
   
   - Fixes 
@@ -52,9 +53,15 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
   - Data 
     - [ ] Add real destination photo 
   
-  - [X] Create Trip 
+  - [X] Create Trip
+  - [ ] Add popular Trippians to destination ????? 
+  - [ ] LoadingWidget 
+  - [ ] React Animation ???? 
+  - [ ] User Dashboard 
+  - [ ] Add Map Location  
   - [ ] Destination Edit 
-  - [ ] Search URL transition 
+  - [ ] Fix Search URL transition 
+  
   - Inquiry 
     - [ ] Hide form and show data upon submission 
   - [ ] File Uploads

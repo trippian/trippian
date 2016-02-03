@@ -4,9 +4,14 @@ import React, {
 from 'react'
 
 import {
-  JumbotronWidget, TripListWidget
+  JumbotronWidget, TripListWidget, JumbotronPlainBgWidget
 }
 from '../../components/index'
+
+import {
+  DestinationDetail
+}
+from '../index'
 
 import {
   connect
@@ -49,15 +54,11 @@ export default class DestinationSearchResults extends Component {
     } = this.props.destination
     return (
       <div id="destination-search-results-page">
-       <JumbotronWidget title="Search Result" subTitle={this.props.params.q}/>
+       <JumbotronPlainBgWidget title="Search Result" subTitle={this.props.params.q}/>
        <div className="container main-content-container">
          <div className="col-sm-12 col-md-10 col-md-offset-1 content-container">
-             <h2>Destination Search Results</h2>
-              <img src={feature} alt=""/>
-              <h3> <b>Name:</b> {name}</h3>
-              <p><b>Description:</b> {description}</p>
-              <p><b>Why Visit:</b>{whyVisit}</p>
-              <TripListWidget dataList={popularTrips} />
+             <img src={feature} alt={feature}/>
+             <DestinationDetail />
          </div>
        </div>
      </div>

@@ -34,6 +34,7 @@ a {
 
 img {
     max-width: 100%;
+    width: 100%;
 }
 
 .btn-link {
@@ -290,6 +291,16 @@ footer {
             padding-left: 10px;
             padding-right: 10px;
         }
+    }
+}
+
+.jumbotron-plain-bg-widget {
+    min-height: 300px;
+    padding-top: 160px;
+    background-color: $light-bg-color;
+    text-align: center;
+    .title {
+        p {}
     }
 }
 

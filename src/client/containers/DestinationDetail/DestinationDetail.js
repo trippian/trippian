@@ -68,12 +68,6 @@ export default class DestinationDetail extends Component {
           <TripListWidget dataList={popularTrips} />
         </div>
       </div>
-      <div className="row section">
-        <SectionHeaderWidget title="Popular Trippians" subTitle="Lorem ipsum dolor." />
-        <div className="section-body">
-          <TrippianListWidget  />
-        </div>
-      </div>
 
       <div className="row section">
         <div className="section-body">

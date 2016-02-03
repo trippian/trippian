@@ -45,6 +45,7 @@ import * as initialStateData from '../initalState'
 const initialState = new Map({
   currentUser: initialStateData.user,
   currentReview: initialStateData.review,
+  dashboard: initialStateData.dashboard,
   trippians: [],
   destinations: [],
   newDestinations: [],
