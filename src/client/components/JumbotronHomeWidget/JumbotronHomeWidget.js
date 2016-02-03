@@ -1,7 +1,7 @@
 import React from 'react'
 
 import {
-  SearchBoxWidget
+  SearchBoxWidget, AutoSuggestBoxWidget
 }
 from '../index'
 
