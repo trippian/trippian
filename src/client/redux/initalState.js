@@ -2,7 +2,17 @@
  //App State 
  export const appState = {
    locale: 'en-US',
-   availableLocales: ['en-US', 'zh', 'es']
+   availableLocales: ['en-US', 'zh', 'es'],
+   isFormSubmitted: false,
+   isFormSubmitting: false,
+   files: [],
+   searchText: {
+     label: 'San Francisco, CA, United States',
+     location: {
+       lat: 37.7749295,
+       lng: -122.41941550000001
+     }
+   }
  }
  export const alert = {
    type: 'success',
@@ -10,14 +20,16 @@
    message: ''
  }
 
+ //TODO, Update once auth is in place 
  export const user = {
    isAuthed: true,
    isAdmin: true,
-   isTrippian: false,
+   isTrippian: false, // currently is named trippian
+   trippian: false, // TODO: remove 
    username: '',
    displayName: '',
    email: '',
-   id: 32, //TODO, Update once auth is in place 
+   id: 32,
    facebookId: 0,
    googleId: 0,
    picture: 'http://lorempixel.com/200/200/people/'

@@ -18,7 +18,7 @@ from '../actionCreators'
 
 
 import {
-  apologize, alertSuccess, alertInfo
+  apologize, alertSuccess, alertInfo, attachInfoToData, resetState
 }
 from '../../utils/storeUtils'
 
@@ -30,7 +30,7 @@ from 'immutable'
 
 import {
   fetchGetDestinationsByCategory, fetchGetTrippiansByCategory,
-  fetchGetDestinations, fetchDeleteDestinationById, fetchGetDestinationById, fetchPostDestination,
+  fetchGetDestinations, fetchDeleteDestinationById, fetchGetDestinationById, fetchGetDestinationByName, fetchPostDestination,
   fetchGetTrippians, fetchDeleteTrippianById, fetchGetTrippianById, fetchPostTrippian,
   fetchGetUsers, fetchDeleteUserById, fetchGetUserById, fetchPostUser,
   fetchGetInquiries, fetchDeleteInquiryById, fetchGetInquiryByReceiverId, fetchPostInquiry,
@@ -45,6 +45,7 @@ import * as initialStateData from '../initalState'
 const initialState = new Map({
   currentUser: initialStateData.user,
   currentReview: initialStateData.review,
+  dashboard: initialStateData.dashboard,
   trippians: [],
   destinations: [],
   newDestinations: [],
@@ -180,6 +181,18 @@ export function getDestinationById(id) {
   }
 }
 
+export function getDestinationByName(name) {
+  console.log('-- getting a destination now in reducer', name)
+  return (dispatch) => {
+    return fetchGetDestinationByName(name)
+      .then((destination) => {
+        console.log('--got it', destination)
+        dispatch(setDestination(destination))
+      })
+      .catch(error => apologize(error))
+  }
+}
+
 export function getTripById(id) {
   console.log('-- getting a Trip now in reducer', id)
   return (dispatch) => {
@@ -232,10 +245,11 @@ export function getInquiryById(id) {
 export function postDestination(data) {
   store.dispatch(setFormSubmitting())
   alertInfo('Submitting the destination information now...')
-  data.album = store.getState().appState.get('files')
-  if (data.feature === '') {
-    data.feature = data.album[0] || 'http://lorempixel.com/800/600/city/' //TODO: replace with placeholder image 
-  }
+  attachInfoToData(data, {
+    searchAsName: true,
+    album: true,
+    feature: true
+  })
   console.log('-- posting a destination now in reducer', data)
     // after posting the destination, add the response data to the store on adminDestinations, aslo add to newDestinations on apiTrippians
   return (dispatch) => {
@@ -252,9 +266,16 @@ export function postDestination(data) {
 }
 
 export function postTrip(data) {
+
   store.dispatch(setFormSubmitting())
     //TODO, update userId to global 
-  data.userId = store.getState().appState.get('user').id
+  attachInfoToData(data, {
+    searchAsDestination: true,
+    album: true,
+    feature: true,
+    userId: true
+  })
+
   console.log('-- posting a trip now in reducer', data)
   alertInfo('Submitting the trip information now...')
   return (dispatch) => {
@@ -276,7 +297,7 @@ export function postUser(data) {
   //TODO, update userId to global 
   data.senderId = 32
   data.trippianId = 31
-  console.log('-- posting a trip now in reducer', data)
+  console.log('-- posting a user now in reducer', data)
   return (dispatch) => {
     return fetchPostUser(data)
       .then(user => {

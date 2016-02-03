@@ -27,9 +27,13 @@ class SearchBoxWidget extends React.Component {
   }
 
   handleClick() {
-    console.log('clicked', this.refs.searchText.value)
-      // Elliot is going to do something 
-      //TODO use router to redirect the page to DestinationSearchResults
+    const search = store.getState().appState.get('searchText')
+    const searchText = search.label
+    console.log('search clicked', search, searchText)
+
+    this.props.history.pushState({
+      searchText: searchText
+    }, `destination/search/${searchText}`)
   }
 
   render() {
