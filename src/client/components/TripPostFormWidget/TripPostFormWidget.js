@@ -38,11 +38,8 @@ class TripPostFormWidget extends Component {
     if (this.props.isFileUploading) {
       // TODO: set alert here 
     } else {
-      // set files in the store so the store action can read it before fetching 
-      store.dispatch(setFiles(this.props.files))
       this.props.handleSubmit(data)
-
-      //TODO: clear out the form and picture in callee 
+        //TODO: clear out the form and picture in callee 
     }
   }
 
@@ -56,11 +53,11 @@ class TripPostFormWidget extends Component {
 
     return (
       <form onSubmit={handleSubmit} role="form">
-        <div className="form-group row">
-          <div className="pull-left">
-            <label>Destination</label>
-            <AutoSuggestBoxWidget />
-          </div>
+        <div className="row padding-row">
+            <div className="pull-left">
+              <label>Destination</label>
+              <AutoSuggestBoxWidget />
+            </div>
         </div>
         <div className="form-group">
           <label>Title</label>

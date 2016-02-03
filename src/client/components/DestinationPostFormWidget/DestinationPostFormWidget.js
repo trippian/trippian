@@ -78,11 +78,11 @@ class DestinationPostFormWidget extends Component {
     return (
 
       <form onSubmit={handleSubmit} role="form">
-          <div className="form-group row">
-            <div className="pull-left">
-              <label>Name</label>
-              <AutoSuggestBoxWidget />
-            </div>
+          <div className="row padding-row">
+              <div className="pull-left">
+                <label>Destination</label>
+                <AutoSuggestBoxWidget />
+              </div>
           </div>
           <div className="form-group">
             <label>Description</label>

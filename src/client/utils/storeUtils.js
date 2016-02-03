@@ -1,6 +1,6 @@
 import store from '../redux/store'
 import {
-  setAlert, setLocale, setUser, setTrip, setDestination, setInquiry, setReview, setTrippian, setDashboard, setAvailabLeLocales, setIsFormSubmitted, setIsFormSubmitting, setFiles
+  setAlert, setLocale, setUser, setTrip, setDestination, setInquiry, setReview, setTrippian, setDashboard, setAvailabLeLocales, setIsFormSubmitted, setIsFormSubmitting, setFiles, setSearchText
 }
 from '../redux/actionCreators'
 import {
@@ -62,7 +62,7 @@ export function resetState({
   alert = false, user = false, trip = false, review = false, destination = false,
     trippian = false, inquiry = false, dashboard = false,
     isFormSubmitted = false, isFormSubmitting = false, files = false,
-    locale = false, availableLocales = false
+    locale = false, availableLocales = false, searchText = false
 }) {
   if (alert) store.dispatch(setAlert(initialStateData.alert))
   if (user) store.dispatch(setUser(initialStateData.user))
@@ -79,6 +79,7 @@ export function resetState({
   if (isFormSubmitted) store.dispatch(setIsFormSubmitted(initialStateData.appState.isFormSubmitted))
   if (isFormSubmitting) store.dispatch(setIsFormSubmitting(initialStateData.appState.isFormSubmitting))
   if (files) store.dispatch(setFiles(initialStateData.appState.files))
+  if (searchText) store.dispatch(setSearchText(initialStateData.appState.searchText))
 
 }
 export function setFetchingState({}) {

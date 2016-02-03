@@ -35,7 +35,7 @@ class SearchBoxWidget extends React.Component {
   handleClick() {
     const search = store.getState().appState.get('searchText')
     const searchText = search.label
-    console.log('clicked', searchText)
+    console.log('search clicked', search, searchText)
 
     this.props.history.pushState({
       searchText: searchText

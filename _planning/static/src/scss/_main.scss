@@ -52,6 +52,10 @@ html input[disabled] {
     color: $gray-light;
 }
 
+.padding-row {
+    padding: 16px;
+}
+
 .flex-row-wrap {
     display: flex;
     flex-flow: row wrap;

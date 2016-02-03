@@ -21,12 +21,12 @@ const initialState = new Map({
   isFormSubmitted: false,
   isFormSubmitting: false,
   files: [],
-  searchText: 'San Francisco, CA, United States',
+  alert: initialStateData.alert,
+  user: initialStateData.user,
+  searchText: initialStateData.searchText,
   locale: initialStateData.locale,
   availableLocales: initialStateData.availableLocales,
-  messages: defaultMessages,
-  alert: initialStateData.alert,
-  user: initialStateData.user
+  messages: defaultMessages
 })
 
 
@@ -36,30 +36,20 @@ export default function appStateReducer(state = initialState, action) {
       return state.set('locale', action.payload.locale)
     case SET_LOCALE_MESSAGES:
       return state.set('messages', action.payload.messages)
-    case SET_USERNAME:
-      return state.set('username', action.payload.username)
-    case SET_DISPLAYNAME:
-      return state.set('displayName', action.payload.displayName)
     case SET_ALERT:
       return state.set('alert', action.payload.alert)
     case SET_FILES:
       return state.set('files', action.payload.files)
     case SET_USER:
-      return state.merge(new Map({
-        user: action.payload.user,
-        isAuthed: true
-      }))
+      return state.set('user', action.payload.user)
+
     case SET_FORM_SUBMITTED:
       return state.set('isFormSubmitted', action.payload.isFormSubmitted)
-
     case SET_FORM_SUBMITTING:
       return state.set('isFormSubmitting', action.payload.isFormSubmitting)
 
     case SET_SEARCH_TEXT:
       return state.set('searchText', action.payload.searchText)
-
-      // case LOAD_DESTINATION:
-      //   return state.set('destination', action.payload.destination)
 
     default:
       return state

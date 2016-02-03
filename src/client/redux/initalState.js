@@ -5,7 +5,14 @@
    availableLocales: ['en-US', 'zh', 'es'],
    isFormSubmitted: false,
    isFormSubmitting: false,
-   files: []
+   files: [],
+   searchText: {
+     label: 'San Francisco, CA, United States',
+     location: {
+       lat: 37.7749295,
+       lng: -122.41941550000001
+     }
+   }
  }
  export const alert = {
    type: 'success',

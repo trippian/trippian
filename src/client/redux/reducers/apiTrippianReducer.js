@@ -236,7 +236,10 @@ export function postDestination(data) {
   data.name = search.label
   data.lat = search.location.lat
   data.lng = search.location.lng
-  data.album = store.getState().appState.get('files')
+  const files = store.getState().appState.get('files')
+  if (files.length > 0) {
+    data.album = files
+  }
   if (data.feature === '') {
     data.feature = data.album[0] || 'http://lorempixel.com/800/600/city/' //TODO: replace with placeholder image 
   }
@@ -256,12 +259,16 @@ export function postDestination(data) {
 }
 
 export function postTrip(data) {
+
   store.dispatch(setFormSubmitting())
     //TODO, update userId to global 
   data.userId = store.getState().appState.get('user').id
   const search = store.getState().appState.get('searchText')
   data.destination = search.label
   data.album = store.getState().appState.get('files')
+  if (data.album.length === 0) {
+    delete data.album
+  }
   if (data.feature === '') {
     data.feature = data.album[0] || 'http://lorempixel.com/800/600/city/' //TODO: replace with placeholder image 
   }
