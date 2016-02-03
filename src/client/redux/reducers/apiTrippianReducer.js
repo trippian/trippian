@@ -18,7 +18,7 @@ from '../actionCreators'
 
 
 import {
-  apologize, alertSuccess, alertInfo
+  apologize, alertSuccess, alertInfo, attachInfoToData, resetState
 }
 from '../../utils/storeUtils'
 
@@ -232,17 +232,11 @@ export function getInquiryById(id) {
 export function postDestination(data) {
   store.dispatch(setFormSubmitting())
   alertInfo('Submitting the destination information now...')
-  const search = store.getState().appState.get('searchText')
-  data.name = search.label
-  data.lat = search.location.lat
-  data.lng = search.location.lng
-  const files = store.getState().appState.get('files')
-  if (files.length > 0) {
-    data.album = files
-  }
-  if (data.feature === '') {
-    data.feature = data.album[0] || 'http://lorempixel.com/800/600/city/' //TODO: replace with placeholder image 
-  }
+  attachInfoToData(data, {
+    searchAsName: true,
+    album: true,
+    feature: true
+  })
   console.log('-- posting a destination now in reducer', data)
     // after posting the destination, add the response data to the store on adminDestinations, aslo add to newDestinations on apiTrippians
   return (dispatch) => {
@@ -262,16 +256,13 @@ export function postTrip(data) {
 
   store.dispatch(setFormSubmitting())
     //TODO, update userId to global 
-  data.userId = store.getState().appState.get('user').id
-  const search = store.getState().appState.get('searchText')
-  data.destination = search.label
-  data.album = store.getState().appState.get('files')
-  if (data.album.length === 0) {
-    delete data.album
-  }
-  if (data.feature === '') {
-    data.feature = data.album[0] || 'http://lorempixel.com/800/600/city/' //TODO: replace with placeholder image 
-  }
+  attachInfoToData(data, {
+    searchAsDestination: true,
+    album: true,
+    feature: true,
+    userId: true
+  })
+
   console.log('-- posting a trip now in reducer', data)
   alertInfo('Submitting the trip information now...')
   return (dispatch) => {
@@ -293,7 +284,7 @@ export function postUser(data) {
   //TODO, update userId to global 
   data.senderId = 32
   data.trippianId = 31
-  console.log('-- posting a trip now in reducer', data)
+  console.log('-- posting a user now in reducer', data)
   return (dispatch) => {
     return fetchPostUser(data)
       .then(user => {

@@ -57,6 +57,39 @@ export function setAppStateUser(isLogin = true) {
   }
 }
 
+// searchAsDestination => postTrip
+// searchAsName => postDestination
+export function attachInfoToData(data, {
+  userId = true, userIdAsSenderId = true, userIdAsTrippianId = true, album = true, feature = true, searchAsDestination = true, searchAsName = true
+}) {
+  if (userId) data.userId = store.getState().appState.get('user').id
+  if (userIdAsSenderId) data.senderId = store.getState().appState.get('user').id
+  if (userId) data.userId = store.getState().appState.get('user').id
+  if (album) {
+    data.album = store.getState().appState.get('files')
+    if (data.album.length === 0) {
+      delete data.album
+    }
+  }
+
+  if (feature) {
+    if (data.album && data.album.length > 0) {
+      data.feature = data.album[0]
+    } else {
+      //TODO: replace with placeholder image 
+      data.feature = 'http://lorempixel.com/800/600/city/'
+    }
+  }
+
+  if (searchAsDestination) data.destination = store.getState().appState.get('searchText').label
+  if (searchAsName) {
+    const search = store.getState().appState.get('searchText')
+    data.name = search.label
+    data.lat = search.location.lat
+    data.lng = search.location.lng
+  }
+  return data
+}
 
 export function resetState({
   alert = false, user = false, trip = false, review = false, destination = false,
