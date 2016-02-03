@@ -24,7 +24,7 @@ const DashboardMenuWidget = ({
         {trippian && <li><Link to='dashboard/manage-trips'>Manage Trips</Link></li>  }
         {isAdmin || trippian && <li><Link to='dashboard/destination-post'>Post a Destination</Link></li> }
         {isAdmin && <li><Link to='admin'>Admin</Link></li>  }
-        <li><Link to='logout'>Logout</Link></li>
+        <li><Link to='login/logout'>Logout</Link></li>
     </ul>
   )
 }
