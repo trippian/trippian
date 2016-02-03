@@ -38,7 +38,7 @@ export default {
                     subject: 'You have received a new inquiry!',
                     text: `You have received a new inquiry from ${inquiry.properties.email}. Go check your
                     inquiries!`,
-                    html: `<p>${inquiry.properties.email} has sent you an inquiry for ${inquiry.properties.personCount} people. Go check it out!`
+                    html: `<p>${inquiry.properties.email} has sent you an inquiry for ${inquiry.properties.personCount} people. Go check it out <a href="www.trippian.com">here</a>!`
                   }
                   // sending the email using nodemailer
                   transporter.sendMail(mailOptions, function(err, info) {
