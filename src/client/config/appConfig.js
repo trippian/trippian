@@ -6,8 +6,8 @@ Make sure the page and components are in alphabetic order
 export default {
   appName: '',
   appDescription: 'your local travel companion',
-  API_HOST: 'http://localhost:4000/api/',
-  Server_HOST: 'http://localhost:4000/',
+  API_HOST: `${window.location.origin}/api/`,
+  Server_HOST: `${window.location.origin}`,
   routeConfig: {
     trippian: 'trippian',
     destination: 'destination',
