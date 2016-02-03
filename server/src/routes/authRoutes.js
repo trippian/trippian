@@ -5,6 +5,10 @@ export default function(router) {
   //   scope: ['email']
   // }))
   
+  router.post('/signup', auth.signup, auth.createCookie)
+
+  router.post('/login', auth.login, auth.createCookie)
+  
   router.get('/facebook', auth.facebook)
 
   // router.get('/facebook/callback', passport.authenticate('facebook', {
