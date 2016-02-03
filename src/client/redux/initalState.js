@@ -49,6 +49,8 @@
    name: '',
    whyVisit: '',
    description: '',
+   lat: '',
+   lng: '',
    slogan: 'awesome city',
    averageRating: 5,
    popularTrips: [trip],

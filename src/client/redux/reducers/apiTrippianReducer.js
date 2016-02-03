@@ -232,6 +232,10 @@ export function getInquiryById(id) {
 export function postDestination(data) {
   store.dispatch(setFormSubmitting())
   alertInfo('Submitting the destination information now...')
+  const search = store.getState().appState.get('searchText')
+  data.name = search.label
+  data.lat = search.location.lat
+  data.lng = search.location.lng
   data.album = store.getState().appState.get('files')
   if (data.feature === '') {
     data.feature = data.album[0] || 'http://lorempixel.com/800/600/city/' //TODO: replace with placeholder image 

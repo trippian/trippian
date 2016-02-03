@@ -26,6 +26,15 @@ import {
 }
 from './Enhance'
 
+function initialize() {
+
+  var options = {
+    types: ['(cities)']
+  }
+
+  var input = document.getElementById('searchTextField')
+  var autocomplete = new google.maps.places.Autocomplete(input, options)
+}
 
 class App extends Component {
 
@@ -38,6 +47,7 @@ class App extends Component {
     }
   }
   componentDidMount() {
+
     // temp solution: listen to the store for any locale change and update the App state
     // ideally, we shoul use store connect and map to automatically update the App Component's state
     // store.subscribe(() => {
