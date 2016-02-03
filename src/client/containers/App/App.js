@@ -63,15 +63,15 @@ class App extends Component {
   render() {
     return (
       <IntlProvider locale={this.state.locale} messages={this.props.messages}>
-      <div>
-        <header>
-          <NavWidget currentPath={this.state.currentPath} username={this.props.username} displayName={this.props.displayName} isUserAdmin={this.props.isUserAdmin}/>
-        </header>
-        <main className="row">
-          {this.props.children}
-        </main>
-        <FooterWidget />
-      </div>
+        <div >
+          <header>
+            <NavWidget history={this.props.history} currentPath={this.state.currentPath} username={this.props.username} displayName={this.props.displayName} isUserAdmin={this.props.isUserAdmin}/>
+          </header>
+          <main className="row">
+            {this.props.children}
+          </main>
+          <FooterWidget />
+        </div>
       </IntlProvider>
     )
   }
@@ -85,9 +85,8 @@ App.displayName = 'App'
 
 function mapStateToProps(state) {
   return {
-    username: state.appState.get('username'),
-    displayName: state.appState.get('displayName'),
-    isUserAdmin: state.appState.get('isUserAdmin'),
+    username: state.appState.get('user').username,
+    displayName: state.appState.get('user').displayName,
     messages: state.appState.get('messages')
   }
 }

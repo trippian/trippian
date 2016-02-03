@@ -91,8 +91,8 @@ class Home extends Component {
 
   handleClick() {
     // demo how to use 
-    this.props.setUsername('James')
-    this.props.setDisplayName('James Zhang')
+    // this.props.setUsername('James')
+    // this.props.setDisplayName('James Zhang')
   }
 
   render() {
@@ -102,7 +102,7 @@ class Home extends Component {
 
     return (
       <div id="home-page">
-       <JumbotronHomeWidget title={formatMessage(messages.jumbotronTitle)} subTitle={formatMessage(messages.jumbotronSubTitle)}/> 
+       <JumbotronHomeWidget history={this.props.history} title={formatMessage(messages.jumbotronTitle)} subTitle={formatMessage(messages.jumbotronSubTitle)}/> 
          <div className="container">
             <div className="main-content-container">
              <div className="col-sm-12 col-md-12 content-container">
@@ -126,11 +126,8 @@ class Home extends Component {
 
 Home.displayName = 'Home'
 Home.propTypes = {
-  intl: intlShape.isRequired,
-  setUsername: PropTypes.func.isRequired,
-  setDisplayName: PropTypes.func.isRequired,
-  username: PropTypes.string.isRequired,
-  displayName: PropTypes.string.isRequired
+  intl: intlShape.isRequired
+    // setUsername: PropTypes.func.isRequired
 }
 
 // added a lot of store data here for testing purpose, will remove later

@@ -28,8 +28,11 @@ class SearchBoxWidget extends React.Component {
 
   handleClick() {
     console.log('clicked', this.refs.searchText.value)
-      // Elliot is going to do something 
-      //TODO use router to redirect the page to DestinationSearchResults
+    const query = this.refs.searchText.value
+    this.refs.searchText = ''
+    this.props.history.pushState({
+      query: query
+    }, `destination/search/${query}`)
   }
 
   render() {
@@ -37,23 +40,24 @@ class SearchBoxWidget extends React.Component {
       formatMessage
     } = this.props.intl
     return (
-      <form className = {`form-inline ${this.props.className}`} role = "form" >
+      <form className = {`form-inline ${this.props.className}`} role = "form" onSubmit={this.handleClick.bind(this)}>
           <div className = "form-group" >
           <label className = "sr-only" > search for destinations < /label> 
-          <input type="text" ref="searchText" className="form-control"  placeholder={formatMessage(messages.searchInputPlaceHolder)} / >
+          <input id="searchTextField" ref="searchText" className="searchTextField form-control" font="black" type="text" size="25" placeholder="Enter a location" autoComplete="on" />
+
           </div> 
           <button type = "submit" onClick={this.handleClick.bind(this)} className = "btn btn-primary" >
             {formatMessage(messages.searchButtonText)}
           </button> 
-          <a href="/#/destination/search/abc">link</a>
-        </form >
+      </form >
     )
   }
 }
 
 SearchBoxWidget.propTypes = {
   intl: intlShape.isRequired,
-  name: React.PropTypes.string
+  name: React.PropTypes.string,
+  history: React.PropTypes.object.isRequired
 }
 
 SearchBoxWidget.displayName = 'SearchBoxWidget'

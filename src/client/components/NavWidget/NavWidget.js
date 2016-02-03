@@ -27,7 +27,7 @@ function renderSearchForm() {
 
 
 const NavWidget = ({
-  currentPath, username = '', displayName = '', isUserAdmin = false
+  currentPath, username = '', displayName = '', isUserAdmin = false, history
 }) => {
   const {
     isAuthed
@@ -50,7 +50,7 @@ const NavWidget = ({
             
             <LocaleMenuWidget className="nav navbar-nav navbar-right list-inline"/>
             <ul className="nav navbar-nav navbar-right">
-                <li>{currentPath === '/'  ? null : renderSearchForm() }</li>
+                <li>{currentPath !== '/' && <SearchBoxWidget history={history} className="navbar-form navbar-left" role="search" /> }</li>
                 
                 <li>
                     <Link to='become-a-trippian' className="btn btn-bordered">
