@@ -15,7 +15,10 @@ import {
   setFiles, setDestination
 }
 from '../../redux/actionCreators'
-
+import {
+  AutoSuggestBoxWidget
+}
+from '../index'
 class DestinationPostFormWidget extends Component {
   constructor(props) {
     super(props)
@@ -73,29 +76,31 @@ class DestinationPostFormWidget extends Component {
       album: []
     }
     return (
+
       <form onSubmit={handleSubmit} role="form">
-        <div className="form-group">
-          <label>Name</label>
-          <input type="text" className="form-control" value="Beijing, China" placeholder="Paris..." {...name}/>
-        </div>
-        <div className="form-group">
-          <label>Description</label>
-          <textarea name="Description" className="form-control" className="form-control" rows="2" required="required" value="a great place" {...description}></textarea>
-        </div>
-        <div className="form-group">
-          <label>Why Visit</label>
-          <textarea name="whyVisit" className="form-control" className="form-control" rows="3" required="required" value="Beijing is the capital of the People's Republic of China and one of the most populous cities in the world." {...whyVisit}></textarea>
-        </div>
-        <div className="form-group">
-          <label>Feature Image</label> <i className="text-muted">If this is empty, the first uploaded photo will be used as feature</i>
-          <input type="url" className="form-control" value='' placeholder="http://..." {...feature}/>
-        </div>
-        <div className="pull-right">
-          <button  disabled={this.props.isFileUploading || submitting} className={'btn ' + (this.props.isFileUploading ? 'disabled' : 'btn-success') } onClick={this.handleSubmit.bind(this)}>Submit</button> 
-          <button type="button" className="btn btn-default" disabled={submitting} onClick={()=> load(emptyData)} > Clear Values</button>
-          <button type="button" className="btn btn-default" onClick={() => load(data)}>Load Dummy Data</button>
-        </div>
-      </form>
+          <div className="form-group">
+            <label>Name</label>
+            <input type="text" className="form-control" placeholder="Paris..." value="San Francisco, CA, United States" {...name}/>
+          </div>
+          <div className="form-group">
+            <label>Description</label>
+            <textarea name="Description" className="form-control" className="form-control" rows="2" required="required" value="a great place" {...description}></textarea>
+          </div>
+          <div className="form-group">
+            <label>Why Visit</label>
+            <textarea name="whyVisit" className="form-control" className="form-control" rows="3" required="required" value="Beijing is the capital of the People's Republic of China and one of the most populous cities in the world." {...whyVisit}></textarea>
+          </div>
+          <div className="form-group">
+            <label>Feature Image</label> <i className="text-muted">If this is empty, the first uploaded photo will be used as feature</i>
+            <input type="url" className="form-control" value='' placeholder="http://..." {...feature}/>
+          </div>
+          <div className="pull-right">
+            <button  disabled={this.props.isFileUploading || submitting} className={'btn ' + (this.props.isFileUploading ? 'disabled' : 'btn-success') } onClick={this.handleSubmit.bind(this)}>Submit</button> 
+            <button type="button" className="btn btn-default" disabled={submitting} onClick={()=> load(emptyData)} > Clear Values</button>
+            <button type="button" className="btn btn-default" onClick={() => load(data)}>Load Dummy Data</button>
+          </div>
+        </form>
+
     )
   }
 }
