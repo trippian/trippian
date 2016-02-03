@@ -1,12 +1,14 @@
 import store from '../redux/store'
 import {
-  setAlert, setUser
+  setAlert, setLocale, setUser, setTrip, setDestination, setInquiry, setReview, setTrippian, setDashboard, setAvailabLeLocales, setIsFormSubmitted, setIsFormSubmitting, setFiles
 }
 from '../redux/actionCreators'
 import {
   getCookieByName, parseCookieStringToUser, clearTrippianCookieByName
 }
 from '../../shared/utils/clientUtils'
+
+import * as initialStateData from '../redux/initalState'
 
 export function apologize(title = 'Operation failed', message = '') {
   store.dispatch(setAlert({
@@ -53,4 +55,35 @@ export function setAppStateUser(isLogin = true) {
     store.dispatch(setUser(user))
     clearTrippianCookieByName('trippianPass')
   }
+}
+
+
+export function resetState({
+  alert = false, user = false, trip = false, review = false, destination = false,
+    trippian = false, inquiry = false, dashboard = false,
+    isFormSubmitted = false, isFormSubmitting = false, files = false,
+    locale = false, availableLocales = false
+}) {
+  if (alert) store.dispatch(setAlert(initialStateData.alert))
+  if (user) store.dispatch(setUser(initialStateData.user))
+  if (trip) store.dispatch(setTrip(initialStateData.trip))
+  if (review) store.dispatch(setReview(initialStateData.review))
+  if (destination) store.dispatch(setDestination(initialStateData.destination))
+  if (trippian) store.dispatch(setTrippian(initialStateData.trippian))
+  if (inquiry) store.dispatch(setInquiry(initialStateData.inquiry))
+  if (dashboard) store.dispatch(setDashboard(initialStateData.dashboard))
+
+  if (locale) store.dispatch(setLocale(initialStateData.locale))
+  if (availableLocales) store.dispatch(setAvailabLeLocales(initialStateData.availableLocales))
+
+  if (isFormSubmitted) store.dispatch(setIsFormSubmitted(initialStateData.appState.isFormSubmitted))
+  if (isFormSubmitting) store.dispatch(setIsFormSubmitting(initialStateData.appState.isFormSubmitting))
+  if (files) store.dispatch(setFiles(initialStateData.appState.files))
+
+}
+export function setFetchingState({}) {
+
+}
+export function setPostFetchingState({}) {
+
 }
