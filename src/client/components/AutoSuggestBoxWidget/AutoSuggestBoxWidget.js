@@ -6,6 +6,12 @@ import {
 from '../../redux/actionCreators'
 import store from '../../redux/store'
 const fixtures = [{
+  label: 'Hong Kong',
+  location: {
+    lat: 22.396428,
+    lng: 114.10949700000003
+  }
+}, {
   label: 'New York, NY, United States',
   location: {
     lat: 40.7033127,
