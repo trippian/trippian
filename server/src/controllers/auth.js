@@ -9,11 +9,26 @@ export default {
     res.clearCookie('trippianPass')
     res.redirect('/')
   },
+
   // function that validates whether the user is logged in
-
-  validateLocal: (req, res, next) => {
-
+  isLoggedIn: function(req, res, next) {
+    if (req.isAuthenticated()) {
+      return next()
+    } res.sendStatus(401)
   },
+
+  createCookie: (req, res) => {
+    req.session.email = req.user.email
+
+    res.cookie('trippianPass', {
+      id: req.user.id,
+      email: req.user.email,
+      isAdmin: req.user.isAdmin,
+      isTrippian: req.user.isTrippian
+    })
+    res.redirect('/#/login/success')
+  },
+
   validateGoogle: (req, res, next) => {
     // console.log('this is image: ', req.user._json.image.url)
     // console.log('this is display name: ', req.user.displayName)
@@ -25,7 +40,6 @@ export default {
     // making google id into a string because neo4j can't have 
     // very large integers
     let googleId = req.user.id
-    console.log((googleId))
     req.session.googleId = googleId
     req.session.picture = req.user._json.image.url
     req.session.email = req.user.emails[0].value
@@ -74,7 +88,6 @@ export default {
 
     User.getUserByParameter('facebookId', req.user.id)
       .then(user => {
-        console.log(user)
         if (!user.length) {
           User.createUser({
             facebookId: parseInt(req.user.id),
@@ -110,13 +123,25 @@ export default {
         }
       })
   },
-  local: passport.authenticate('local'),
-  localCallback: passport.authenticate('local', {
-
+  // local: passport.authenticate('local'),
+  // localCallback: passport.authenticate('local', {
+  // }),
+  signup: passport.authenticate('local-signup', {
+    // successRedirect: '/#/login/success',
+    failureRedirect: '/#/login',
+    failureFlash: true
   }),
+
+  login: passport.authenticate('local-login', {
+    // successRedirect: '/#/login/success',
+    failureRedirect: '/#/login',
+    failureFlash: true
+  }),
+
   facebook: passport.authenticate('facebook', {
     scope: ['email']
   }),
+
   facebookCallback: passport.authenticate('facebook', {
     failureRedirect: '/'
   }),
@@ -124,6 +149,7 @@ export default {
   google: passport.authenticate('google', {
     scope: ['profile', 'email']
   }),
+
   googleCallback: passport.authenticate('google', {
     failureRedirect: '/login'
   })
