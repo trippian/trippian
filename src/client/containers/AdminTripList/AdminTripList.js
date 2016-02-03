@@ -33,7 +33,9 @@ from '../../redux/apiIndex'
 
 function mapStateToProps(state) {
   return {
-    trips: state.apiAdmin.get('adminTrips')
+    trips: state.apiAdmin.get('adminTrips'),
+    isFormSubmitting: state.appState.get('isFormSubmitting'),
+    isFormSubmitted: state.appState.get('isFormSubmitted')
   }
 }
 
@@ -68,7 +70,7 @@ export default class AdminTripList extends Component {
   handleSubmit(data) {
     console.log('posting data from form', data)
     store.dispatch(postTrip(data))
-    this.setAlert('success', 'Successfully submitted data', `${data.title} ${data.destination}`)
+    this.setAlert('success', 'Successfully submitted data', `${data.title}`)
   }
 
   setAlert(type = 'success', title = '', message = '') {

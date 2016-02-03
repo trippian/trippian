@@ -36,7 +36,7 @@ export default class DestinationDetail extends Component {
   render() {
     console.log('inside destination detail render', this.props.destination)
     const {
-      whyVisit, description, popularTrips, album
+      whyVisit, description, popularTrips, album, lat, lng
     } = this.props.destination
     return (
       <div>
