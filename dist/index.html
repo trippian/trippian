@@ -28,10 +28,20 @@
 
 <body>
     <div id="app"></div>
-    <script src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
     <script src="http://localhost:8080/dist/bundle.js"></script>
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places" type="text/javascript"></script>
+    <script type="text/javascript">
+    function initialize() {
+
+        var options = {
+            types: ['(cities)']
+        };
+        var input = document.getElementById('searchTextField');
+        var autocomplete = new google.maps.places.Autocomplete(input, options);
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
     </script>
 </body>
 

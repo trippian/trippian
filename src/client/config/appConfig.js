@@ -2,7 +2,6 @@
 Config the app's front-end
 Make sure the page and components are in alphabetic order
 */
-
 export default {
   appName: '',
   appDescription: 'your local travel companion',

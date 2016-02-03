@@ -48,7 +48,7 @@ export default class AdminDestinationListItem extends Component {
 
   render() {
     const {
-      name, description, feature, whyVisit, album, lat, lng
+      name, description, feature, whyVisit, album
     } = this.props.destination
     return (
       <div id="admin-destination-list-item-page">
@@ -56,9 +56,8 @@ export default class AdminDestinationListItem extends Component {
         <h3>{name}</h3>
         <p><b>Description:</b> {description}</p>
         <p><b>Why Visit:</b>{whyVisit}</p>
-        <h3>Position</h3>
-        {lat} {lng}
         <h3>Album</h3>
+
         {album && album.map((photo, key) => 
           <Col xs={6} md={4} key={key}>
             <Image  src={photo}  />

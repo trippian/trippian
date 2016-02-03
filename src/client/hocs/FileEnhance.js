@@ -6,14 +6,9 @@ import {
   DropFileWidget
 }
 from '../components/index'
-import store from '../redux/store'
-import {
-  setFiles
-}
-from '../redux/actionCreators'
 
 // go to the store and get the file uploading state and file state, pass down to the ComposedComponent (form widgets) 
-export const FileEnhance = ComposedComponent => class extends Component {
+export const fileEnhance = ComposedComponent => class extends Component {
 
   constructor(props) {
     super(props)
@@ -37,7 +32,6 @@ export const FileEnhance = ComposedComponent => class extends Component {
       isFileUploading: false,
       files: uploadedFiles // now the composedComponent will have access to the uploaded files
     })
-    store.dispatch(setFiles(uploadedFiles))
   }
   onUploadError(error) {
     console.log('-----fileEnhance*****, upload error', error)

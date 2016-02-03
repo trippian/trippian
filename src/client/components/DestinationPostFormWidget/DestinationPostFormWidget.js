@@ -7,9 +7,9 @@ import {
 }
 from 'redux-form'
 import {
-  FileEnhance
+  fileEnhance
 }
-from '../../hocs/FileEnhance'
+from '../../hocs/fileEnhance'
 import store from '../../redux/store'
 import {
   setFiles, setDestination
@@ -37,7 +37,7 @@ class DestinationPostFormWidget extends Component {
       // TODO: set alert here 
     } else {
       // set files in the store so the store action can read it before fetching 
-      // store.dispatch(setFiles(this.props.files)) // FileEnhance handle it at the store
+      store.dispatch(setFiles(this.props.files))
       this.props.handleSubmit(data)
 
       //TODO: clear out the form and picture in callee 
@@ -78,11 +78,9 @@ class DestinationPostFormWidget extends Component {
     return (
 
       <form onSubmit={handleSubmit} role="form">
-          <div className="form-group row">
-            <div className="pull-left">
-              <label>Name</label>
-              <AutoSuggestBoxWidget />
-            </div>
+          <div className="form-group">
+            <label>Name</label>
+            <input type="text" className="form-control" placeholder="Paris..." value="San Francisco, CA, United States" {...name}/>
           </div>
           <div className="form-group">
             <label>Description</label>
@@ -128,4 +126,4 @@ DestinationPostFormWidget.propTypes = {
 
 DestinationPostFormWidget.displayName = 'DestinationPostFormWidget'
 
-export default FileEnhance(DestinationPostFormWidget)
+export default fileEnhance(DestinationPostFormWidget)

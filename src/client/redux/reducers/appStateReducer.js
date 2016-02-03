@@ -4,7 +4,7 @@
 // but for now, we'll store some commonly used app state variables here 
 
 import {
-  SET_LOCALE, SET_LOCALE_MESSAGES, SET_USERNAME, SET_DISPLAYNAME, SET_ALERT, SET_FILES, SET_USER, SET_FORM_SUBMITTED, SET_FORM_SUBMITTING, SET_SEARCH_TEXT
+  SET_LOCALE, SET_LOCALE_MESSAGES, SET_USERNAME, SET_DISPLAYNAME, SET_ALERT, SET_FILES, SET_USER, SET_FORM_SUBMITTED, SET_FORM_SUBMITTING
 }
 from '../actionTypes'
 import * as initialStateData from '../initalState'
@@ -21,7 +21,6 @@ const initialState = new Map({
   isFormSubmitted: false,
   isFormSubmitting: false,
   files: [],
-  searchText: 'San Francisco, CA, United States',
   locale: initialStateData.locale,
   availableLocales: initialStateData.availableLocales,
   messages: defaultMessages,
@@ -54,9 +53,6 @@ export default function appStateReducer(state = initialState, action) {
 
     case SET_FORM_SUBMITTING:
       return state.set('isFormSubmitting', action.payload.isFormSubmitting)
-
-    case SET_SEARCH_TEXT:
-      return state.set('searchText', action.payload.searchText)
 
       // case LOAD_DESTINATION:
       //   return state.set('destination', action.payload.destination)
