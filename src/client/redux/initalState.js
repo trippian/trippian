@@ -2,7 +2,10 @@
  //App State 
  export const appState = {
    locale: 'en-US',
-   availableLocales: ['en-US', 'zh', 'es']
+   availableLocales: ['en-US', 'zh', 'es'],
+   isFormSubmitted: false,
+   isFormSubmitting: false,
+   files: []
  }
  export const alert = {
    type: 'success',
@@ -10,6 +13,7 @@
    message: ''
  }
 
+ //TODO, Update once auth is in place 
  export const user = {
    isAuthed: true,
    isAdmin: true,
@@ -17,7 +21,7 @@
    username: '',
    displayName: '',
    email: '',
-   id: 32, //TODO, Update once auth is in place 
+   id: 32,
    facebookId: 0,
    googleId: 0,
    picture: 'http://lorempixel.com/200/200/people/'
@@ -49,8 +53,6 @@
    name: '',
    whyVisit: '',
    description: '',
-   lat: '',
-   lng: '',
    slogan: 'awesome city',
    averageRating: 5,
    popularTrips: [trip],
