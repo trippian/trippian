@@ -1,6 +1,6 @@
 import {
   SET_LOCALE, SET_LOCALE_MESSAGES, SET_USERNAME, SET_DISPLAYNAME, SET_ALERT, SET_FILES, SET_FORM_SUBMITTED, SET_FORM_SUBMITTING,
-  SET_DASHBOARD, SET_SEARCH_TEXT,
+  SET_DASHBOARD,
 
   SET_DESTINATIONS, SET_DESTINATION, ADD_DESTINATION, GET_DESTINATIONS_FAIL, REMOVE_DESTINATION,
 
@@ -86,14 +86,6 @@ export function setFormSubmitting(isFormSubmitting) {
     type: SET_FORM_SUBMITTING,
     payload: {
       isFormSubmitting
-    }
-  }
-}
-export function setSearchText(searchText) {
-  return {
-    type: SET_SEARCH_TEXT,
-    payload: {
-      searchText
     }
   }
 }

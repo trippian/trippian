@@ -26,15 +26,6 @@ import {
 }
 from './Enhance'
 
-function initialize() {
-
-  var options = {
-    types: ['(cities)']
-  }
-
-  var input = document.getElementById('searchTextField')
-  var autocomplete = new google.maps.places.Autocomplete(input, options)
-}
 
 class App extends Component {
 
@@ -47,7 +38,6 @@ class App extends Component {
     }
   }
   componentDidMount() {
-
     // temp solution: listen to the store for any locale change and update the App state
     // ideally, we shoul use store connect and map to automatically update the App Component's state
     // store.subscribe(() => {
@@ -73,15 +63,15 @@ class App extends Component {
   render() {
     return (
       <IntlProvider locale={this.state.locale} messages={this.props.messages}>
-        <div >
-          <header>
-            <NavWidget history={this.props.history} currentPath={this.state.currentPath} username={this.props.username} displayName={this.props.displayName} isUserAdmin={this.props.isUserAdmin}/>
-          </header>
-          <main className="row">
-            {this.props.children}
-          </main>
-          <FooterWidget />
-        </div>
+      <div>
+        <header>
+          <NavWidget currentPath={this.state.currentPath} username={this.props.username} displayName={this.props.displayName} isUserAdmin={this.props.isUserAdmin}/>
+        </header>
+        <main className="row">
+          {this.props.children}
+        </main>
+        <FooterWidget />
+      </div>
       </IntlProvider>
     )
   }
@@ -95,8 +85,9 @@ App.displayName = 'App'
 
 function mapStateToProps(state) {
   return {
-    username: state.appState.get('user').username,
-    displayName: state.appState.get('user').displayName,
+    username: state.appState.get('username'),
+    displayName: state.appState.get('displayName'),
+    isUserAdmin: state.appState.get('isUserAdmin'),
     messages: state.appState.get('messages')
   }
 }
