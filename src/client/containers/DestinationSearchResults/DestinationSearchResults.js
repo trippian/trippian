@@ -18,7 +18,7 @@ from 'react-redux'
 //Audrey: this one goes to apiIndex, I've moved all trippianAPI related calls to that file, as in the future, we'll need to refactor those into different files for modularity
 import store from '../../redux/store'
 import {
-  getDestinationById
+  getDestinationByName
 }
 from '../../redux/apiIndex'
 
@@ -39,20 +39,20 @@ export default class DestinationSearchResults extends Component {
   }
 
   componentDidMount() {
-    store.dispatch(getDestinationById(20))
+
+    store.dispatch(getDestinationByName(this.props.params.q))
   }
 
   render() {
-    console.log('-- inside render, got destination data now?', this.props.destination, "this your data joe")
     const {
       name, description, feature, whyVisit, popularTrips
     } = this.props.destination
     return (
       <div id="destination-search-results-page">
-       <JumbotronWidget title="Search Result" subTitle="There are 30 results in 'Paris'"/>
+       <JumbotronWidget title="Search Result" subTitle={this.props.params.q}/>
        <div className="container main-content-container">
          <div className="col-sm-12 col-md-10 col-md-offset-1 content-container">
-             <h2>DestinationSearchResults</h2>
+             <h2>Destination Search Results</h2>
               <img src={feature} alt=""/>
               <h3> <b>Name:</b> {name}</h3>
               <p><b>Description:</b> {description}</p>

@@ -30,7 +30,7 @@ from 'immutable'
 
 import {
   fetchGetDestinationsByCategory, fetchGetTrippiansByCategory,
-  fetchGetDestinations, fetchDeleteDestinationById, fetchGetDestinationById, fetchPostDestination,
+  fetchGetDestinations, fetchDeleteDestinationById, fetchGetDestinationById, fetchGetDestinationByName, fetchPostDestination,
   fetchGetTrippians, fetchDeleteTrippianById, fetchGetTrippianById, fetchPostTrippian,
   fetchGetUsers, fetchDeleteUserById, fetchGetUserById, fetchPostUser,
   fetchGetInquiries, fetchDeleteInquiryById, fetchGetInquiryByReceiverId, fetchPostInquiry,
@@ -172,6 +172,18 @@ export function getDestinationById(id) {
   console.log('-- getting a destination now in reducer', id)
   return (dispatch) => {
     return fetchGetDestinationById(id)
+      .then((destination) => {
+        console.log('--got it', destination)
+        dispatch(setDestination(destination))
+      })
+      .catch(error => apologize(error))
+  }
+}
+
+export function getDestinationByName(name) {
+  console.log('-- getting a destination now in reducer', name)
+  return (dispatch) => {
+    return fetchGetDestinationByName(name)
       .then((destination) => {
         console.log('--got it', destination)
         dispatch(setDestination(destination))
