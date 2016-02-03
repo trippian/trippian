@@ -2,17 +2,17 @@
 Config the app's front-end
 Make sure the page and components are in alphabetic order
 */
+
 export default {
   appName: '',
   appDescription: 'your local travel companion',
-
-
-  API_HOST: `${window.location.origin}/api/`,
-  Server_HOST: `${window.location.origin}`,
+  API_HOST: 'http://localhost:4000/api/',
+  Server_HOST: 'http://localhost:4000/',
   routeConfig: {
     trippian: 'trippian',
     destination: 'destination',
     user: 'user',
+    dashboard: 'dashboard',
     trip: 'trip',
     inquiry: 'inquiry',
     review: 'rating',

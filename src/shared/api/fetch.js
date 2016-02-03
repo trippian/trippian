@@ -14,7 +14,7 @@ const get = (url) => {
       return res.json()
     })
     .catch(function (error) {
-      console.log('posting failed at fetch', error)
+      console.log('getting failed at fetch', error)
     })
 }
 

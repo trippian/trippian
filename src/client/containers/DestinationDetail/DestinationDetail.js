@@ -7,7 +7,7 @@ import {
 }
 from 'react-redux'
 import {
-  JumbotronDestinationWidget, CarouselWidget, SectionHeaderWidget, DestinationListWidget, TripListWidget
+  JumbotronDestinationWidget, CarouselWidget, SectionHeaderWidget, TrippianListWidget, TripListWidget
 }
 
 from '../../components/index'
@@ -34,8 +34,9 @@ export default class DestinationDetail extends Component {
     })
   }
   render() {
+    console.log('inside destination detail render', this.props.destination)
     const {
-      whyVisit, description, popularTrips
+      whyVisit, description, popularTrips, album, lat = '', lng = ''
     } = this.props.destination
     return (
       <div>
@@ -49,23 +50,40 @@ export default class DestinationDetail extends Component {
               {this.state.isShowReadMore && <p>{description}</p> }
             </div>
           </div>
-          <div className="row">
-            <CarouselWidget />
-          </div>
         </div>
       </div>
+      
+      {album && 
+        <div className="row section">
+          <SectionHeaderWidget title="Photos" subTitle="Lorem ipsum dolor." />
+          <div className="section-body">
+              <CarouselWidget dataList={album}/>
+          </div>
+        </div>
+      }
+
       <div className="row section">
         <SectionHeaderWidget title="Popular Trips" subTitle="Lorem ipsum dolor." />
         <div className="section-body">
           <TripListWidget dataList={popularTrips} />
         </div>
       </div>
+
       <div className="row section">
-        <SectionHeaderWidget title="Popular Trippians" subTitle="Lorem ipsum dolor." />
+        <div className="row">
+        Position: {lat} {lng}
+        </div>
         <div className="section-body">
-          <DestinationListWidget  />
+         
+        < iframe src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.9971829383094!2d2.2923237802887466!3d48.85826410877076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66fe1f3bfb4ad%3A0x7bd31375becf28cd!2sEiffel+Tower%2C+5+Avenue+Anatole+France%2C+75007+Paris%2C+France!5e0!3m2!1sen!2sus!4v1452992121001"
+        width = "100%"
+        height = "450"
+        frameBorder = "0"
+        allowFullScreen > < /iframe>
         </div>
       </div>
+
+     
     </div>
     )
   }

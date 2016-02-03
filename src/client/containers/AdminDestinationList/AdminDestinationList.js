@@ -4,7 +4,7 @@ import React, {
 from 'react'
 
 import {
-  JumbotronWidget, DestinationPostFormWidget, DropFileWidget
+  JumbotronWidget, DestinationPostFormWidget, DropFileWidget, AutoSuggestBoxWidget
 }
 from '../../components/index'
 import {
@@ -111,15 +111,16 @@ export default class AdminDestinationList extends Component {
         }
 
         <div className="pull-right">
-
           <button onClick={()=> this.setState({showForm: !this.state.showForm})} className="btn btn-primary">Create a Destination</button>
         </div>
           {this.state.showForm && 
-            <DestinationPostFormWidget 
-              onSubmit={this.handleSubmit.bind(this)} 
-              resetForm={this.handleResetForm.bind(this)} 
-              submitting={this.props.isFormSubmitting}
-              data={this.props.destination} /> 
+            <div>
+              <DestinationPostFormWidget 
+                onSubmit={this.handleSubmit.bind(this)} 
+                resetForm={this.handleResetForm.bind(this)} 
+                submitting={this.props.isFormSubmitting}
+                data={this.props.destination} /> 
+              </div>
           }
 
           <br/>

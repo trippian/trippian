@@ -7,9 +7,10 @@ import {
   postReview,
   getTrippianById,
   getUserById,
-  getDestinationById,
+  getDestinationById, getDestinationByName,
   getInquiryById,
-  login, logout
+  login, logout, getDashboardById,
+  setSearchText
 }
 from './reducers/apiTrippianReducer'
 
@@ -23,7 +24,9 @@ export default {
   postReview,
   getTrippianById,
   getUserById,
-  getDestinationById,
+  getDestinationById, getDestinationByName,
   getInquiryById,
-  login, logout
+  login, logout, getDashboardById,
+  setSearchText
+
 }
