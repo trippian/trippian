@@ -7,14 +7,13 @@ class SaveTripWidget extends React.Component {
 
   handleClick(){
     console.log('click')
-    //should push to the user's array of favorite trips
   }
 
   //require this file in TripListItemWidget
 
   render() {
     return (
-      <i className="fa fa-heart" ref="searchText"></i>
+      <i className="fa fa-heart" ref="searchText" onClick={handleSave.bind(null, true)}></i>
     )
   }
 }
