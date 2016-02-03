@@ -8134,19 +8134,21 @@ footer {
     height: 40px !important;
     margin: -10px 10px !important; }
 
+/**
+ * The geosuggest module
+ */
 .geosuggest {
-  min-width: 260px;
   font-size: 18px;
   font-size: 1rem;
+  min-width: 250px;
   position: relative;
   width: 50%;
   margin: 1em auto;
   text-align: left; }
 
 .geosuggest__input {
-  color: black;
-  min-width: 250px;
   width: 100%;
+  color: black;
   border: 2px solid transparent;
   box-shadow: 0 0 1px #3d464d;
   padding: .5em 1em;
@@ -8159,6 +8161,7 @@ footer {
 
 .geosuggest__suggests {
   position: absolute;
+  color: black;
   top: 100%;
   left: 0;
   right: 0;
@@ -8187,8 +8190,7 @@ footer {
   font-size: 18px;
   font-size: 1rem;
   padding: .5em .65em;
-  cursor: pointer;
-  color: black; }
+  cursor: pointer; }
 
 .geosuggest-item:hover,
 .geosuggest-item:focus {
