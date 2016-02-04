@@ -49,21 +49,21 @@ export default class MyInquiries extends Component {
     console.log('inside MyInquiries render', inquiries)
     return (
       <div className="my-inquiries-page">
-        <h2>Inquiries</h2>
-        <InquiryListWidget dataList={inquiries
-} />
+        <h2>A list of recent inquiries</h2>
+        {inquiries.length > 0  && 
+          <InquiryListWidget dataList={inquiries} /> }
+        {
+          inquiries.length === 0 &&  <h2>There is no inquiry</h2>
+        }
+
       </div >
 
     )
   }
 }
 
-// {inquiries.length > 0  && 
-//   <InquiryListWidget dataList=inquiries/>
-// }
-// {
-//   inquiries.length === 0 &&  <h2>There is no inquiry</h2>
-// }
+
+
 MyInquiries.propTypes = {
   name: PropTypes.string
 }

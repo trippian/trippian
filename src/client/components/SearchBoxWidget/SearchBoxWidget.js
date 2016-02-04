@@ -61,8 +61,8 @@ class SearchBoxWidget extends React.Component {
 
 SearchBoxWidget.propTypes = {
   intl: intlShape.isRequired,
-  name: React.PropTypes.string,
-  history: React.PropTypes.object.isRequired
+  name: React.PropTypes.string
+    // history: React.PropTypes.object.isRequired
 }
 
 SearchBoxWidget.displayName = 'SearchBoxWidget'

@@ -7,7 +7,7 @@ import {
   SET_TRIPPIANS, GET_TRIPPIANS, GET_TRIPPIAN_BY_ID, REMOVE_TRIPPIAN, SET_TRIPPIAN,
 
   ADD_REVIEW, SET_INQUIRY, SET_TRIP, UPDATE_VOTE, SET_USER,
-
+  REMOVE_INQUIRY, REMOVE_TRIP,
   SET_ADMIN_DESTINATIONS, ADD_ADMIN_DESTINATION, REMOVE_ADMIN_DESTINATION, SET_ADMIN_CURRENT_DESTINATION,
   SET_ADMIN_TRIPPIANS, ADD_ADMIN_TRIPPIAN, REMOVE_ADMIN_TRIPPIAN, SET_ADMIN_CURRENT_TRIPPIAN,
   SET_ADMIN_USERS, ADD_ADMIN_USER, REMOVE_ADMIN_USER, SET_ADMIN_CURRENT_USER,
@@ -116,6 +116,22 @@ export function setDashboard(dashboard) {
     type: SET_DASHBOARD,
     payload: {
       dashboard
+    }
+  }
+}
+export function removeInquiry(id) {
+  return {
+    type: REMOVE_INQUIRY,
+    payload: {
+      id
+    }
+  }
+}
+export function removeTrip(id) {
+  return {
+    type: REMOVE_TRIP,
+    payload: {
+      id
     }
   }
 }

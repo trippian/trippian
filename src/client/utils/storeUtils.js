@@ -60,11 +60,14 @@ export function setAppStateUser(isLogin = true) {
 // searchAsDestination => postTrip
 // searchAsName => postDestination
 export function attachInfoToData(data, {
-  userId = true, userIdAsSenderId = true, userIdAsTrippianId = true, album = true, feature = true, searchAsDestination = true, searchAsName = true
+  userId = true, userIdAsSenderId = true, userIdAsTrippianId = true, album = true, feature = true, searchAsDestination = true, searchAsName = true,
+    displayName = true, username = true
 }) {
   if (userId) data.userId = store.getState().appState.get('user').id
   if (userIdAsSenderId) data.senderId = store.getState().appState.get('user').id
   if (userId) data.userId = store.getState().appState.get('user').id
+  if (displayName) data.displayName = store.getState().appState.get('user').displayName
+  if (username) data.username = store.getState().appState.get('user').username
   if (album) {
     data.album = store.getState().appState.get('files')
     if (data.album.length === 0) {
@@ -88,6 +91,7 @@ export function attachInfoToData(data, {
     data.lat = search.location.lat
     data.lng = search.location.lng
   }
+
   return data
 }
 

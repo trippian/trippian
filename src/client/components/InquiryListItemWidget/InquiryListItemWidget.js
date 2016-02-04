@@ -29,13 +29,20 @@ export default class InquiryListItemWidget extends Component {
     console.log('deleting inquiry called', this.props.id)
     store.dispatch(deleteInquiryById(this.props.id))
   }
+  handleAccept() {
+    console.log('accept inquiry called', this.props.id)
+  }
+  handleReject() {
+    console.log('reject inquiry called', this.props.id)
+  }
+
   render() {
     const {
       createdAt, senderId, receiverId, personCount, startDate, endDate, email, mobile, subject, content, accepted
     } = this.props.properties
     return (
       <div className="inquiry-list-item-widget">
-          <h2>{subject}</h2>
+          <h4>{subject}{this.props.id}</h4>
           <div className="row cleafix">
             <Col xs={12} md={8} >
               <p><span>
@@ -52,9 +59,9 @@ export default class InquiryListItemWidget extends Component {
               <p>accepted {accepted}</p>
             </Col>
             <Col xs={12} md={4} >
-              <button onClick={this.handleDelete.bind(this)} className="icon-right pull-right" title="accept"> <i className="fa fa-check"></i></button> 
-              <button onClick={this.handleAccept.bind(this)} className = "icon-right pull-right" title = "refuse" > <i className="fa fa-close"></i> < /button> 
-              <button onClick={this.handleReject.bind(this)} className = "icon-right pull-right" title = "delete" > <i className="fa fa-trash"></i> < /button>
+              <button onClick={this.handleDelete.bind(this)} className="icon-right pull-right" title="accept"> <i className="fa fa-trash"></i></button> 
+              <button onClick={this.handleAccept.bind(this)} className = "icon-right pull-right" title = "refuse" > <i className="fa fa-check"></i> < /button> 
+              <button onClick={this.handleReject.bind(this)} className = "icon-right pull-right" title = "delete" > <i className="fa fa-close"></i> < /button>
             </Col>
           </div>
         

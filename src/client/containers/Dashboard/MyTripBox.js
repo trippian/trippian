@@ -51,51 +51,37 @@ export default class MyTripBox extends Component {
       type, title, message
     } = this.state.alert
     return (
-      <div className="my-profile-page">
-          <div className="col-sm-12 col-md-8 col-md-offset-2 content-container">
-              {title !== '' && 
-                <Alert bsStyle={type} dismissAfter={3000} onDismiss={this.handleAlertDismiss.bind(this)}>
-                  <h4>{title}</h4>
-                  <p>{message}</p>
-                </Alert>
-              }
+      <div className="my-trip-box-page">    
+        <div className="section inquiries">
+            <div className="section-header">
+                <h3>My Inquiries</h3>
+            </div>
+            <div className="section-body">
+              <InquiryListWidget />
+            </div>
+        </div>
 
-              <button type="button" onClick={()=> this.setState({isShowTripForm: !this.state.isShowTripForm})} className="btn btn-primary btn-lg pull-right">Create a Trip</button>
-              {
-                this.state.isShowTripForm && <TripPostFormWidget onSubmit={this.handleSubmit.bind(this)} />
-              }
-              <div className="section inquiries">
-                  <div className="section-header">
-                      <h3>My Inquiries</h3>
-                  </div>
-                  <div className="section-body">
-                    <InquiryListWidget />
-                  </div>
-              </div>
-
-              <div className="section">
-                  <div className="section-header">
-                      <h3>Bio</h3>
-                      <TextIntroPlainWidget />
-                  </div>
-              </div>
-              <div className="section">
-                  <div className="section-header">
-                      <h3>My Trips</h3>
-                  </div>
-                  <div className="section-body">
-                    <DummyRichTextWidget />
-                  </div>
-              </div>
-              <div className="section review">
-                  <div className="section-header">
-                      <h3>Reviews</h3>
-                  </div>
-                  <ReviewListWidget />
-              </div>
-          </div>
-      </div>
-
+        <div className="section">
+            <div className="section-header">
+                <h3>Bio</h3>
+                <TextIntroPlainWidget />
+            </div>
+        </div>
+        <div className="section">
+            <div className="section-header">
+                <h3>My Trips</h3>
+            </div>
+            <div className="section-body">
+              <DummyRichTextWidget />
+            </div>
+        </div>
+        <div className="section review">
+            <div className="section-header">
+                <h3>Reviews</h3>
+            </div>
+            <ReviewListWidget />
+        </div>
+    </div>
     )
   }
 }

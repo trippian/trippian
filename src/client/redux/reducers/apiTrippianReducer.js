@@ -1,5 +1,5 @@
 import {
-  FETCH_REMOTE_RESOURCE_FAIL,
+  FETCH_REMOTE_RESOURCE_FAIL, REMOVE_INQUIRY, REMOVE_TRIP,
   SET_DESTINATIONS, SET_TRIPPIANS, GET_DESTINATIONS_FAIL, GET_DESTINATION_BY_ID, GET_TRIPPIAN_BY_ID, GET_DESTINATIONS, GET_TRIPPIANS,
   ADD_DESTINATION, ADD_ADMIN_DESTINATION, REMOVE_DESTINATION,
   SET_TRIPPIAN, SET_DESTINATION, ADD_REVIEW, SET_INQUIRY, SET_TRIP, UPDATE_VOTE, SET_DASHBOARD
@@ -9,13 +9,12 @@ import {
   setDestinations, addDestination, addAdminDestination, setDestination,
   setTrippians, addTrippian, addAdminTrippian,
   setUsers, addUser, addAdminUser,
-  setInquirys, addInquiry, addAdminInquiry,
+  setInquirys, addInquiry, addAdminInquiry, removeInquiry,
   setTrips, addTrip, addAdminTrip, setTrip,
-  setUser, setTrippian, setInquiry,
+  setUser, setTrippian, setInquiry, removeTrip,
   addReview, updateVote, setFormSubmitted, setFormSubmitting, setDashboard
 }
 from '../actionCreators'
-
 
 import {
   apologize, alertSuccess, alertInfo, attachInfoToData, resetState
@@ -127,6 +126,29 @@ export default function apiTrippianReducer(state = initialState, action) {
       })
       return state.merge(new Map({
         destination: destP
+      }))
+
+      //delete
+    case REMOVE_INQUIRY:
+      let oldDashboard = state.get('dashboard')
+      let oldInquiries1 = oldDashboard.inquiries
+      oldInquiries1 = oldInquiries1.filter(x => x.id !== action.payload.id)
+        // TODO (fix): since inquiry is a nested object, the data change will not trigger a view render. Try to user other update or different storage for dashboard object
+      oldDashboard.inquiries = oldInquiries1
+      return state.merge(new Map({
+          dashboard: oldDashboard
+        }))
+        // doesn't work: state.updateIn(['dashboard', 'inquiries'], val => val.filter(x => x.id !== action.payload.id))
+
+      // TODO: same as above 
+    case REMOVE_TRIP:
+      let oldDashboard2 = state.get('dashboard')
+      let oldPostedTrips = oldDashboard2.postedTrips
+      oldPostedTrips = oldPostedTrips.filter(x => x.id !== action.payload.id)
+
+      oldDashboard2.postedTrips = oldPostedTrips
+      return state.merge(new Map({
+        dashboard: oldDashboard2
       }))
 
     default:
@@ -273,7 +295,10 @@ export function postTrip(data) {
     searchAsDestination: true,
     album: true,
     feature: true,
-    userId: true
+    userId: true,
+    displayName: true,
+    username: true
+
   })
 
   console.log('-- posting a trip now in reducer', data)
@@ -363,6 +388,36 @@ export function postReview(data) {
         alertSuccess('Successfully added review')
       })
       .catch(error => apologize(error))
+  }
+}
+
+
+
+// deleting
+export function deleteInquiryById(id) {
+  alertInfo('Deleting a Inquiry now..')
+  console.log('-- deleting a Inquiry now', id)
+  return (dispatch) => {
+    return fetchDeleteInquiryById(id)
+      .then(() => {
+        console.log('--deleted Inquiry', id)
+        dispatch(removeInquiry(id))
+        REMOVE_INQUIRY
+      })
+      .catch(error => dispatch(apologize(error)))
+  }
+}
+
+export function deleteTripById(id) {
+  console.log('-- deleting a trip now', id)
+  return (dispatch) => {
+    return fetchDeleteTripById(id)
+      .then(() => {
+        console.log('--deleted Trip', id)
+          // dispatch(removeTrip(id))
+        dispatch(removeTrip(id))
+      })
+      .catch(error => dispatch(apologize(error)))
   }
 }
 

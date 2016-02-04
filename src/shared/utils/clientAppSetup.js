@@ -24,8 +24,7 @@ from '../../client/redux/actionCreators'
 
 export function initializeAppStateWithLocale(locale = 'en-US') {
   //set the local 
-  // store.dispatch(setLocale('en-US'))
-  store.dispatch(setLocale('en'))
+  store.dispatch(setLocale('en-US'))
 
   addLocaleData(en)
   addLocaleData(zh)

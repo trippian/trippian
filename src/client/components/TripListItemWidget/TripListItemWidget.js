@@ -11,7 +11,7 @@ import {
 }
 from '../index'
 import {
-  voteTrip
+  voteTrip, deleteTripById
 }
 from '../../redux/apiIndex'
 import store from '../../redux/store'
@@ -21,7 +21,6 @@ import {
 from '../../../shared/utils/clientUtils'
 
 export default class TripListItemWidget extends Component {
-
   constructor(props) {
     super(props)
       // to simplify the vote logic and display, we'll just take the vote as state 
@@ -51,30 +50,48 @@ export default class TripListItemWidget extends Component {
       netVote: this.props.netVote
     })
   }
+
+  handleDelete() {
+      console.log('deleting trip called', this.props.id)
+      store.dispatch(deleteTripById(this.props.id))
+    }
+    //TODO:
+  handleEdit() {
+    console.log('editing trip called', this.props.id)
+  }
+
+  //TODO: add edit and delete to trips
   render() {
     console.log('inside TripListItemWidget render')
     const {
-      id, handleVote, title, destination, summary, details, feature = 'http://lorempixel.com/200/200/city/'
+      id, handleVote, title, destination, summary, details, feature, lat, lng, displayName = 'Trippian'
     } = this.props
     return (
       <div className="trip-list-item row">
-                <div className="col-xs-6 col-sm-3 col-md-3 col-xs-offset-3 col-sm-offset-0">
-                    <img className="feature-image" src="http://lorempixel.com/200/200/nature/" alt="" />
-                </div>
-                <div className="col-xs-12 col-sm-7 col-md-7 col-lg-7">
-                    <div className="title-section">
-                        <h4>{title}</h4>
-                        <div className="sub-title">i
-                            <span>Mission street</span>. By <a href="" title="">Sarah Johns</a> <span>{id}</span>
-                        </div>
-                        <p>{summary}</p>
-                    </div>
-                </div>
-                <div className="col-xs-12 col-sm-2 col-md-2 col-lg-2 vote">
-                    <span className="total-votes"> {this.state.netVote} </span>
-                    <VoteWidget disableLeft={this.state.currentNetVote === 1} disableRight={this.state.currentNetVote === -1} handleClick={this.handleVote.bind(this)} />
-                </div>
-            </div>
+          <div className="col-xs-6 col-sm-3 col-md-3 col-xs-offset-3 col-sm-offset-0">
+              <img className="feature-image" src={feature} alt="" />
+              <div className="operation">
+                <button onClick={this.handleDelete.bind(this)} title="Delete"> <i className="fa fa-close"></i></button> 
+                <button onClick={this.handleEdit.bind(this)}  title = "Edit" > <i className="fa fa-edit"></i> < /button> 
+              </div>
+          </div>
+          <div className="col-xs-12 col-sm-7 col-md-7 col-lg-7">
+              <div className="title-section">
+                  <h4>{title}</h4>
+                  <div className="sub-title">
+                      <i className="fa fa-map-marker"></i>
+                      Mission street . By  
+                        <Link to={`trippian/${id}`}>{' '+ displayName + ' '}</Link>
+                      
+                  </div>
+                  <p>{summary}</p>
+              </div>
+          </div>
+          <div className="col-xs-12 col-sm-2 col-md-2 col-lg-2 vote">
+              <span className="total-votes"> {this.state.netVote} </span>
+              <VoteWidget disableLeft={this.state.currentNetVote === 1} disableRight={this.state.currentNetVote === -1} handleClick={this.handleVote.bind(this)} />
+          </div>
+      </div>
     )
   }
 }
