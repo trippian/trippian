@@ -9,6 +9,7 @@ import {
   Destination, DestinationDetail, DestinationPost, Contact,
   InquiryAdd, InquiryDetail, InquiryList,
   Login, LoginWrapper, LoginSuccess, Logout,
+  PopularTrips, TripWrapper, Trip, TripDetail,
   DestinationWrapper, PopularDestinations, DestinationSearchResults, Trippian,
   Terms, TrippianDetail, TrippianSignUp, TrippianList, TrippianEdit, IntlDemo,
   Admin, AdminDestinationList, AdminDestinationListItem, AdminDestinationListItemEdit,
@@ -51,6 +52,7 @@ export default (
             <Route component={Press} path="press"  />
             <Route component={Terms} path="terms"  />
             
+            //Destination 
             <Route component={DestinationWrapper} path="destination" >
               <Route component={Destination} path=":id" >
                 <IndexRoute component={DestinationDetail}/>
@@ -59,7 +61,16 @@ export default (
               <Route component={DestinationSearchResults} path="search/:q"  />
               <IndexRoute component={PopularDestinations}/>
             </Route>
+            
+            // Trip 
+            <Route component={TripWrapper} path="trip" >
+              <Route component={Trip} path=":id" >
+                <IndexRoute component={TripDetail}/>
+              </Route>
+              <IndexRoute component={PopularTrips}/>
+            </Route>
 
+            //Trippian 
             <Route component={Trippian} path="trippian/:id" >
               <Route component={Contact} path="contact"  />
               <IndexRoute component={TrippianDetail}/>

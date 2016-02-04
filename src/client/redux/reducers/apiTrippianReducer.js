@@ -229,10 +229,10 @@ export function getDestinationByName(name) {
   }
 }
 
-export function getTripById(id) {
+export function getTripById(id, includeUserInfo = false) {
   console.log('-- getting a Trip now in reducer', id)
   return (dispatch) => {
-    return fetchGetTripById(id)
+    return fetchGetTripById(id, includeUserInfo)
       .then((trip) => {
         console.log('--got it', trip)
           // TODO: update once server is updated 
