@@ -8,8 +8,8 @@ export default {
       // let cypher = 'match (destination:Destination';
       db.saveAsync(details, 'Destination')
         .then((destination) => {
-          if (destination) {
-            resolve(destination)
+          if (destination.length) {
+            resolve(destination[0])
           } else {
             reject(new Error('destination could not be created'))
           }
@@ -61,11 +61,11 @@ export default {
       let cypher = `match (d:Destination {name:` + '"' + `${destinationName}` + '"' + `}) return d;`
       db.queryAsync(cypher)
         .then((destination) => {
-          if (destination.length) {
-            resolve(destination[0])
-          } else {
-            reject(new Error('could not find destination'))
-          }
+          resolve(destination[0])
+          
+          // else {
+          //   reject(new Error('could not find destination'))
+          // }
         })
         .catch((error) => {
           console.error(error)

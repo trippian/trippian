@@ -118,7 +118,7 @@ export default {
               })
           } else {
             Destination.createDestination({
-              destinationName: req.query.q
+              name: req.query.q
             })
               .then((createdDestination) => {
                 res.json(createdDestination)
