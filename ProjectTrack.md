@@ -40,20 +40,37 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
   - [X] ReviewList 
   - [X] Add Review Form 
   - [X] PopularTrippiansList
+  - [ ] Signup Form 
+  - [ ] Signin Form 
+  - [ ] Add Trip Detail Page 
+  - [ ] Dashboard: Saved/Voted Trip 
+  - [ ] OperationMenuWidget (hold edit, delete... buttons)
+  - [ ] Form Edit 
+  - [ ] MyProfile Display (beautify view)
+  - [ ] Intl Messages
+  - [ ] Optimize HomePage background (video/gif) loading
+  - [ ] Data Faker 
+  
   - [ ] Add user link to trips
   - [ ] Enhance AlertComponent with reset 
   
   - Fixes 
     - [X] Add destination name to home page popular destinations  
     - [X] Review display after submit 
+    - [ ] Add isAdmin to user 
+    - [ ] NestedObject not updating (dashboard -> PostedTrips)
     - [ ] SearchBoxWidget and History (state change is not smooth)
-    - [ ] Add trip to review
+    - [ ] Add trip link to review
 
+  - Perf 
+    - [ ] Unify Alert display
+    - [ ] Improve state transition, animation ??
+  
   - Refactor 
     - [ ] Handle error / alert 
-    - [ ] 
     - [ ] Action Creator 
     - [ ] Reducer (todo later)
+
   - Data 
     - [ ] Add real destination photo 
   

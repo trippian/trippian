@@ -60,10 +60,11 @@ export function setAppStateUser(isLogin = true) {
 // searchAsDestination => postTrip
 // searchAsName => postDestination
 export function attachInfoToData(data, {
-  userId = true, userIdAsSenderId = true, userIdAsTrippianId = true, album = true, feature = true, searchAsDestination = true, searchAsName = true,
+  userId = true, isAdmin = true, userIdAsSenderId = true, userIdAsTrippianId = true, album = true, feature = true, searchAsDestination = true, searchAsName = true,
     displayName = true, username = true
 }) {
   if (userId) data.userId = store.getState().appState.get('user').id
+  if (isAdmin) data.isAdmin = true //TODO: will need to coordinate with the form
   if (userIdAsSenderId) data.senderId = store.getState().appState.get('user').id
   if (userId) data.userId = store.getState().appState.get('user').id
   if (displayName) data.displayName = store.getState().appState.get('user').displayName
