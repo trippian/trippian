@@ -9,7 +9,7 @@ import {
 from '../index'
 
 const ReviewListItemWidget = ({
-  createdAt, username, facebookId, userAvatar, userId, rating, title, content, trippian
+  createdAt, username, facebookId, userAvatar, userId, rating, title, content = '', trippian
 }) => {
   return (
     <div className="review-list-item clearfix">
@@ -24,10 +24,8 @@ const ReviewListItemWidget = ({
               <RelativeTimeWidget date={new Date('2016-01-30T04:13:28.003')} intl='en-US' />
               </i>
               <StarRatingWidget stars={rating}/>  
-            </div>
-            
-            
             {content}                                  
+            </div>      
         </div>            
     </div>
   )

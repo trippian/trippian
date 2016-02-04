@@ -4,13 +4,16 @@ import {
 }
 from 'react-router'
 
-const ContactButtonWidget = ({
+const OperationMenuWidget = ({
   to = 'contact', text = 'Contact'
 }) => {
   return (
-    <Link to={to} className="btn btn-primary">{text}</Link>
+    <div className="operation-menu-widget">
+      <button onClick={this.handleDelete.bind(this)} title="Delete"> <i className="fa fa-close"></i></button> 
+      <button onClick={this.handleEdit.bind(this)}  title = "Edit" > <i className="fa fa-edit"></i> < /button> 
+    </div>
   )
 }
-ContactButtonWidget.displayName = 'ContactButtonWidget'
+OperationMenuWidget.displayName = 'OperationMenuWidget'
 
-export default ContactButtonWidget
+export default OperationMenuWidget

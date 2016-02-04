@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-  ReviewListItemWidget
+  ReviewListItemWidget, NoContentWidget
 }
 from '../index'
 
@@ -27,10 +27,13 @@ var reviewList = [{
 ]
 
 const ReviewListWidget = ({
-  dataList = reviewList
+  dataList = []
 }) => {
   return (
     <div className="review-list clearfix">
+        {dataList.length === 0 && 
+          <NoContentWidget message="There is no review" />
+        }
         {dataList.map((review, key) =>  
           <ReviewListItemWidget key={key} {...review.properties} />
         )}

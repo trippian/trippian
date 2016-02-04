@@ -99,7 +99,9 @@ export default function apiTrippianReducer(state = initialState, action) {
       }))
     case ADD_REVIEW:
       const trippianR = state.get('trippian')
-      trippianR.reviews.push(action.payload.review)
+      const reviews = trippianR.reviews || []
+      reviews.push(action.payload.review)
+      trippianR.reviews = reviews
       return state.merge(new Map({
         trippian: trippianR
       }))
@@ -454,13 +456,13 @@ export function toggleSaveTrip(saveState, tripId) {
   console.log('***inside toggleSaveTrip', saveState, tripId, userId)
   return (dispatch) => {
     return fetchUpdateSave({
-      userId, tripId, saveState
-    })
-    .then(trip =>{
-      console.log('vote on this:', trip)
-      dispatch(updateToggleVote(saveState, tripId))
-    })
-    .catch(error => apologize(error))
+        userId, tripId, saveState
+      })
+      .then(trip => {
+        console.log('vote on this:', trip)
+        dispatch(updateToggleVote(saveState, tripId))
+      })
+      .catch(error => apologize(error))
   }
 }
 

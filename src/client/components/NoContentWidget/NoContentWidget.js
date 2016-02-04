@@ -1,12 +1,11 @@
 import React from 'react'
 
 const NoContentWidget = ({
-  name = 'NoContentWidget'
+  name = 'NoContentWidget', message = 'There is no content'
 }) => {
   return (
     <div> 
-    <h3>Widget</h3>
-    {name}
+        <h3>{message}</h3>
     </div>
   )
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-  TripListItemWidget
+  TripListItemWidget, NoContentWidget
 }
 from '../index'
 
@@ -11,8 +11,7 @@ const TripListWidget = ({
   return (
     <div className="popular-Trips section-body clearfix">
       {dataList.length === 0 && 
-        <h3 className="no - list - message
-">{emptyMessage}</h3>
+        <NoContentWidget message={emptyMessage} />
       }
       { 
          dataList.map((trip, key) => (
