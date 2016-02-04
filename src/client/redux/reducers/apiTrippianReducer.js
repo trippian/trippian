@@ -11,7 +11,7 @@ import {
   setUsers, addUser, addAdminUser,
   setInquirys, addInquiry, addAdminInquiry, removeInquiry,
   setTrips, addTrip, addAdminTrip, setTrip,
-  setUser, setTrippian, setInquiry, removeTrip,
+  setUser, setTrippian, setInquiry, removeTrip, updateToggleVote,
   addReview, updateVote, setFormSubmitted, setFormSubmitting, setDashboard
 }
 from '../actionCreators'
@@ -33,9 +33,8 @@ import {
   fetchGetTrippians, fetchDeleteTrippianById, fetchGetTrippianById, fetchPostTrippian,
   fetchGetUsers, fetchDeleteUserById, fetchGetUserById, fetchPostUser,
   fetchGetInquiries, fetchDeleteInquiryById, fetchGetInquiryByReceiverId, fetchPostInquiry,
-  fetchGetTrips, fetchDeleteTripById, fetchGetTripById, fetchPostTrip,
+  fetchGetTrips, fetchDeleteTripById, fetchGetTripById, fetchPostTrip, fetchUpdateSave,
   fetchPostReview, fetchUpdateVote, fetchLogin, fetchLogout, fetchGetDashboardById, fetchPostLogin, fetchPostSignup
-
 }
 from '../../utils/apiTrippian'
 import store from '../store'
@@ -447,6 +446,21 @@ export function voteTrip(vote = 1, tripId) {
         alertSuccess('Successfully voted for trip', tripId)
       })
       .catch(error => apologize(error))
+  }
+}
+
+export function toggleSaveTrip(saveState, tripId) {
+  const userId = store.getState().appState.get('user').id
+  console.log('***inside toggleSaveTrip', saveState, tripId, userId)
+  return (dispatch) => {
+    return fetchUpdateSave({
+      userId, tripId, saveState
+    })
+    .then(trip =>{
+      console.log('vote on this:', trip)
+      dispatch(updateToggleVote(saveState, tripId))
+    })
+    .catch(error => apologize(error))
   }
 }
 

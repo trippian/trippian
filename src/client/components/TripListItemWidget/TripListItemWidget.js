@@ -7,16 +7,20 @@ import {
 }
 from 'react-router'
 import {
-  VoteWidget
+  VoteWidget, SaveTripButton
 }
 from '../index'
 import {
+<<<<<<< HEAD
   voteTrip, deleteTripById
+=======
+  voteTrip, toggleSaveTrip
+>>>>>>> client(feat): add SaveTripButton (like trip)
 }
 from '../../redux/apiIndex'
 import store from '../../redux/store'
 import {
-  getCanVote
+  getCanVote //, getCanSave
 }
 from '../../../shared/utils/clientUtils'
 
@@ -25,10 +29,25 @@ export default class TripListItemWidget extends Component {
     super(props)
       // to simplify the vote logic and display, we'll just take the vote as state 
     this.state = {
+      isSaved: false,
       netVote: 0,
       lastVote: 0,
       currentNetVote: 0 // TODO: read from the store whether the user already voted, now, just assume not. value: -1, 0, 1
     }
+  }
+
+  handleSave(saveState) {
+    console.log('*** handling save', saveState, this.props.id)
+    // const canSave = getCanSave(this.state.isSaved)
+    console.log('before', this.setState.isSaved)
+    if(!this.state.isSaved) {
+      store.dispatch(toggleSaveTrip(saveState, this.props.id))
+      this.setState({
+        isSaved: this.state.stateState
+      })
+      console.log('after', this.setState.isSaved)
+    }
+
   }
 
   // TODO: fix the voting logic here by getting original currentNetVote from network
@@ -37,6 +56,7 @@ export default class TripListItemWidget extends Component {
     const canVote = getCanVote(this.state.currentNetVote, vote)
     if (canVote) {
       store.dispatch(voteTrip(vote, this.props.id))
+
       this.setState({
         netVote: this.state.netVote + vote,
         currentNetVote: this.state.currentNetVote + vote
@@ -47,7 +67,8 @@ export default class TripListItemWidget extends Component {
   }
   componentDidMount() {
     this.setState({
-      netVote: this.props.netVote
+      netVote: this.props.netVote,
+      isSaved: this.props.setState
     })
   }
 
@@ -90,6 +111,7 @@ export default class TripListItemWidget extends Component {
           <div className="col-xs-12 col-sm-2 col-md-2 col-lg-2 vote">
               <span className="total-votes"> {this.state.netVote} </span>
               <VoteWidget disableLeft={this.state.currentNetVote === 1} disableRight={this.state.currentNetVote === -1} handleClick={this.handleVote.bind(this)} />
+              <SaveTripButton handleSave={this.handleSave.bind(this)} />
           </div>
       </div>
     )

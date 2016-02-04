@@ -7,7 +7,8 @@ import {
   SET_TRIPPIANS, GET_TRIPPIANS, GET_TRIPPIAN_BY_ID, REMOVE_TRIPPIAN, SET_TRIPPIAN,
 
   ADD_REVIEW, SET_INQUIRY, SET_TRIP, UPDATE_VOTE, SET_USER,
-  REMOVE_INQUIRY, REMOVE_TRIP, ADD_TRIP,
+  REMOVE_INQUIRY, REMOVE_TRIP, ADD_TRIP, TOGGLE_SAVE,
+  
   SET_ADMIN_DESTINATIONS, ADD_ADMIN_DESTINATION, REMOVE_ADMIN_DESTINATION, SET_ADMIN_CURRENT_DESTINATION,
   SET_ADMIN_TRIPPIANS, ADD_ADMIN_TRIPPIAN, REMOVE_ADMIN_TRIPPIAN, SET_ADMIN_CURRENT_TRIPPIAN,
   SET_ADMIN_USERS, ADD_ADMIN_USER, REMOVE_ADMIN_USER, SET_ADMIN_CURRENT_USER,
@@ -250,6 +251,16 @@ export function updateVote(vote = 1, tripId) {
     type: UPDATE_VOTE,
     payload: {
       vote: vote,
+      tripId: tripId
+    }
+  }
+}
+
+export function updateToggleVote(saveState, tripId) {
+  return {
+    type: TOGGLE_SAVE,
+    payload: {
+      saveState: saveState,
       tripId: tripId
     }
   }
