@@ -28,6 +28,7 @@ const submit = (values, dispatch) => {
         }
       }, 1000) // simulate server latency
   })
+  
 }
 
 class LoginFormWidget extends Component {
