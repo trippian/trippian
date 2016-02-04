@@ -46,7 +46,9 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
   - Fixes 
     - [X] Add destination name to home page popular destinations  
     - [X] Review display after submit 
+    - [ ] SearchBoxWidget and History (state change is not smooth)
     - [ ] Add trip to review
+
   - Refactor 
     - [ ] Handle error / alert 
     - [ ] 

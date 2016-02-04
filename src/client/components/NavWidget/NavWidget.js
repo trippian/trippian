@@ -27,14 +27,14 @@ function renderSearchForm() {
 
 
 const NavWidget = ({
-    currentPath, username = '', displayName = '', isUserAdmin = false, history
-  }) => {
-    const {
-      isAuthed
-    } = store.getState().appState.get('user')
+  currentPath, username = '', displayName = '', isUserAdmin = false, history
+}) => {
+  const {
+    isAuthed
+  } = store.getState().appState.get('user')
 
-    return (
-      <nav className="navbar navbar-default" role="navigation">
+  return (
+    <nav className="navbar navbar-default" role="navigation">
         <div className="navbar-header">
             <button type="button" className="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                 <span className="sr-only">Toggle navigation</span>
@@ -47,7 +47,6 @@ const NavWidget = ({
             </Link>
         </div>
         <div className="collapse navbar-collapse navbar-ex1-collapse">
-            
             <LocaleMenuWidget className="nav navbar-nav navbar-right list-inline"/>
             <ul className="nav navbar-nav navbar-right">
                 <li>
@@ -63,9 +62,9 @@ const NavWidget = ({
             </ul>
         </div>
     </nav>
-    )
-  }
-  // <li>{currentPath !== '/' && <SearchBoxWidget history={history} className="navbar-form navbar-left" role="search" /> }</li>
+  )
+}
 NavWidget.displayName = 'NavWidget'
-
 export default NavWidget
+
+//<li>{currentPath !== '/' && <SearchBoxWidget history={history} className="navbar-form navbar-left" role="search" /> }</li>

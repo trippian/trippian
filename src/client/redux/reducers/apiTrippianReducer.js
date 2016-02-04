@@ -1,5 +1,5 @@
 import {
-  FETCH_REMOTE_RESOURCE_FAIL,
+  FETCH_REMOTE_RESOURCE_FAIL, REMOVE_INQUIRY,
   SET_DESTINATIONS, SET_TRIPPIANS, GET_DESTINATIONS_FAIL, GET_DESTINATION_BY_ID, GET_TRIPPIAN_BY_ID, GET_DESTINATIONS, GET_TRIPPIANS,
   ADD_DESTINATION, ADD_ADMIN_DESTINATION, REMOVE_DESTINATION,
   SET_TRIPPIAN, SET_DESTINATION, ADD_REVIEW, SET_INQUIRY, SET_TRIP, UPDATE_VOTE, SET_DASHBOARD
@@ -9,7 +9,7 @@ import {
   setDestinations, addDestination, addAdminDestination, setDestination,
   setTrippians, addTrippian, addAdminTrippian,
   setUsers, addUser, addAdminUser,
-  setInquirys, addInquiry, addAdminInquiry,
+  setInquirys, addInquiry, addAdminInquiry, removeInquiry,
   setTrips, addTrip, addAdminTrip, setTrip,
   setUser, setTrippian, setInquiry,
   addReview, updateVote, setFormSubmitted, setFormSubmitting, setDashboard
@@ -129,6 +129,17 @@ export default function apiTrippianReducer(state = initialState, action) {
         destination: destP
       }))
 
+      //delete
+    case REMOVE_INQUIRY:
+      let oldDashboard = state.get('dashboard')
+      let oldInquiries = oldDashboard.inquiries
+      oldInquiries = oldInquiries.filter(x => x.id !== action.payload.id)
+        // TODO (fix): since inquiry is a nested object, the data change will not trigger a view render. Try to user other update or different storage for dashboard object
+      oldDashboard.inquiries = oldInquiries
+      return state.merge(new Map({
+          dashboard: oldDashboard
+        }))
+        // state.updateIn(['dashboard', 'inquiries'], val => val.filter(x => x.id !== action.payload.id))
     default:
       return state
   }
@@ -363,6 +374,23 @@ export function postReview(data) {
         alertSuccess('Successfully added review')
       })
       .catch(error => apologize(error))
+  }
+}
+
+
+
+// deleting
+export function deleteInquiryById(id) {
+  alertInfo('Deleting a Inquiry now..')
+  console.log('-- deleting a Inquiry now', id)
+  return (dispatch) => {
+    return fetchDeleteInquiryById(id)
+      .then(() => {
+        console.log('--deleted Inquiry', id)
+        dispatch(removeInquiry(id))
+        REMOVE_INQUIRY
+      })
+      .catch(error => dispatch(apologize(error)))
   }
 }
 

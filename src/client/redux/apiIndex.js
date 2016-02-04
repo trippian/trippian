@@ -1,4 +1,5 @@
 import {
+  deleteInquiryById,
   postDestination,
   postTrip, voteTrip,
   postUser,
@@ -16,6 +17,7 @@ from './reducers/apiTrippianReducer'
 
 // will move the functions inside apiTrippianReducer into different files
 export default {
+  deleteInquiryById,
   postDestination,
   postTrip, voteTrip,
   postUser,
