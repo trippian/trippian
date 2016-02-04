@@ -1,10 +1,12 @@
 import React from 'react'
 
 const SaveTripButton = ({
-  name = '', handleSave
+  handleSave, disableButton
 }) => {
   return (
-    <i className="fa fa-heart" onClick={handleSave.bind(null, true)}></i>
+    <button className={disableButton} disable={disableButton}>
+      <i className="fa fa-heart" onClick={handleSave.bind(null, true)}></i>
+    </button>
   )
 }
 SaveTripButton.displayName = 'SaveTripButton'

@@ -11,11 +11,7 @@ import {
 }
 from '../index'
 import {
-<<<<<<< HEAD
-  voteTrip, deleteTripById
-=======
-  voteTrip, toggleSaveTrip
->>>>>>> client(feat): add SaveTripButton (like trip)
+  voteTrip, deleteTripById, toggleSaveTrip
 }
 from '../../redux/apiIndex'
 import store from '../../redux/store'
@@ -111,7 +107,7 @@ export default class TripListItemWidget extends Component {
           <div className="col-xs-12 col-sm-2 col-md-2 col-lg-2 vote">
               <span className="total-votes"> {this.state.netVote} </span>
               <VoteWidget disableLeft={this.state.currentNetVote === 1} disableRight={this.state.currentNetVote === -1} handleClick={this.handleVote.bind(this)} />
-              <SaveTripButton handleSave={this.handleSave.bind(this)} />
+              <SaveTripButton disabledButton={this.state.isSaved} handleSave={this.handleSave.bind(this)} />
           </div>
       </div>
     )
