@@ -1,5 +1,5 @@
 import {
-  FETCH_REMOTE_RESOURCE_FAIL, REMOVE_INQUIRY, REMOVE_TRIP,
+  FETCH_REMOTE_RESOURCE_FAIL, REMOVE_INQUIRY, REMOVE_TRIP, ADD_TRIP,
   SET_DESTINATIONS, SET_TRIPPIANS, GET_DESTINATIONS_FAIL, GET_DESTINATION_BY_ID, GET_TRIPPIAN_BY_ID, GET_DESTINATIONS, GET_TRIPPIANS,
   ADD_DESTINATION, ADD_ADMIN_DESTINATION, REMOVE_DESTINATION,
   SET_TRIPPIAN, SET_DESTINATION, ADD_REVIEW, SET_INQUIRY, SET_TRIP, UPDATE_VOTE, SET_DASHBOARD
@@ -48,6 +48,7 @@ const initialState = new Map({
   trippians: [],
   destinations: [],
   newDestinations: [],
+  newTrips: [], // since many places may need to update trips, better to keep it in a separate place. If needed, view can merge this data into exisiting data
   loaded: false,
   error: '',
   destination: initialStateData.destination,
@@ -60,6 +61,7 @@ const initialState = new Map({
 export default function apiTrippianReducer(state = initialState, action) {
   console.log('dispatching', action.type, action.payload)
   switch (action.type) {
+    // setting 
     case SET_DESTINATIONS:
       return state.merge(new Map({
         destinations: action.payload.destinations
@@ -68,26 +70,6 @@ export default function apiTrippianReducer(state = initialState, action) {
       return state.merge(new Map({
         trippians: action.payload.trippians
       }))
-    case GET_DESTINATIONS_FAIL:
-      return state.merge(new Map({
-        loaded: false,
-        loading: false,
-        error: action.payload.errorMessage
-      }))
-    case ADD_DESTINATION:
-      const newDestinations = state.get('newDestinations')
-      newDestinations.push(action.payload.destination)
-      return state.merge(new Map({
-        newDestinations: newDestinations
-      }))
-    case REMOVE_DESTINATION:
-      const id = action.payload.id
-      let destinations = state.get('destinations')
-      destinations = destinations.filter(x => x.id !== id)
-      return state.merge(new Map({
-        destinations
-      }))
-
     case SET_TRIPPIAN:
       return state.merge(new Map({
         trippian: action.payload.trippian
@@ -96,25 +78,49 @@ export default function apiTrippianReducer(state = initialState, action) {
       return state.merge(new Map({
         destination: action.payload.destination
       }))
-
     case SET_TRIP:
+      console.log('***inside reducer, SET_TRIP', action.payload.trip)
       return state.merge(new Map({
         trip: action.payload.trip
       }))
     case SET_DASHBOARD:
       return state.set('dashboard', action.payload.dashboard)
 
+    case SET_INQUIRY:
+      return state.merge(new Map({
+        inquiry: action.payload.inquiry
+      }))
+
+      // add
+    case ADD_DESTINATION:
+      const newDestinations = state.get('newDestinations')
+      newDestinations.push(action.payload.destination)
+      return state.merge(new Map({
+        newDestinations: newDestinations
+      }))
     case ADD_REVIEW:
       const trippianR = state.get('trippian')
       trippianR.reviews.push(action.payload.review)
       return state.merge(new Map({
         trippian: trippianR
       }))
-    case SET_INQUIRY:
+    case ADD_TRIP:
+      const newTrips = state.get('newTrips')
+      newTrips.push(action.payload.destination)
       return state.merge(new Map({
-        inquiry: action.payload.inquiry
+        newTrips: newTrips
       }))
 
+      // remove 
+    case REMOVE_DESTINATION:
+      const id = action.payload.id
+      let destinations = state.get('destinations')
+      destinations = destinations.filter(x => x.id !== id)
+      return state.merge(new Map({
+        destinations
+      }))
+
+      // misc.
     case UPDATE_VOTE:
       let destP = state.get('destination')
         // let popTrips = destP.popularTrips 
@@ -151,13 +157,20 @@ export default function apiTrippianReducer(state = initialState, action) {
         dashboard: oldDashboard2
       }))
 
+      //TODO: add more and move this to appState
+    case GET_DESTINATIONS_FAIL:
+      return state.merge(new Map({
+        loaded: false,
+        loading: false,
+        error: action.payload.errorMessage
+      }))
     default:
       return state
   }
 }
 
 
-
+// get lists
 export function getPopularDestinations() {
   return (dispatch) => {
     return fetchGetDestinationsByCategory('popular')
@@ -288,7 +301,6 @@ export function postDestination(data) {
 }
 
 export function postTrip(data) {
-
   store.dispatch(setFormSubmitting())
     //TODO, update userId to global 
   attachInfoToData(data, {
@@ -300,15 +312,14 @@ export function postTrip(data) {
     username: true
 
   })
-
   console.log('-- posting a trip now in reducer', data)
   alertInfo('Submitting the trip information now...')
   return (dispatch) => {
     return fetchPostTrip(data)
       .then(trip => {
         console.log('---posted', trip)
-        dispatch(setTrip(trip))
         dispatch(setFormSubmitted(true))
+        dispatch(addTrip(trip))
         dispatch(addAdminTrip(trip))
         alertSuccess('Succeed', `${trip.id}: ${trip.title}`)
       })
@@ -316,10 +327,10 @@ export function postTrip(data) {
       .catch(error => apologize(error))
   }
 }
+
 export function postUser(data) {
   store.dispatch(setFormSubmitting())
-
-  //TODO, update userId to global 
+    //TODO, update userId to global 
   data.senderId = 32
   data.trippianId = 31
   console.log('-- posting a user now in reducer', data)
@@ -333,6 +344,7 @@ export function postUser(data) {
       .catch(error => apologize(error))
   }
 }
+
 export function postTrippian(data) {
   store.dispatch(setFormSubmitting())
   alertInfo('Submitting now...')
@@ -348,8 +360,6 @@ export function postTrippian(data) {
       .catch(error => apologize(error))
   }
 }
-
-
 
 export function postInquiry(data) {
   store.dispatch(setFormSubmitting())
@@ -420,7 +430,6 @@ export function deleteTripById(id) {
       .catch(error => dispatch(apologize(error)))
   }
 }
-
 
 //Put requests 
 // vote can be 1 or -1 

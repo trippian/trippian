@@ -12,7 +12,7 @@ import {
 from '../../hocs/FileEnhance'
 import store from '../../redux/store'
 import {
-  setFiles, setDestination
+  setDestination
 }
 from '../../redux/actionCreators'
 import {

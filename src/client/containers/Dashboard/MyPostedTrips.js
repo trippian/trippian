@@ -21,7 +21,8 @@ from '../../redux/apiIndex'
 function mapStateToProps(state) {
   return {
     // get the data directly from store as we already fetched in the Dashboard container
-    dashboard: state.apiTrippian.get('dashboard')
+    dashboard: state.apiTrippian.get('dashboard'),
+    newTrips: state.apiTrippian.get('newTrips')
   }
 }
 
@@ -45,6 +46,9 @@ export default class MyPostedTrips extends Component {
     const {
       postedTrips
     } = this.props.dashboard
+    const {
+      newTrips
+    } = this.props
     console.log('inside MyPostedTrips render', postedTrips)
     return (
       <div className="my-posted-trips-page">
@@ -62,7 +66,7 @@ export default class MyPostedTrips extends Component {
         {postedTrips.length > 0 && 
           <div>
             <h2>A list of posted trips</h2>
-          <TripListWidget dataList={postedTrips} /> 
+          <TripListWidget dataList={postedTrips.concat(newTrips)} /> 
           </div>
         }
       </div >
