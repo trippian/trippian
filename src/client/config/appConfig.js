@@ -3,11 +3,15 @@ Config the app's front-end
 Make sure the page and components are in alphabetic order
 */
 
+//TODO: read HOST from a get request or send it by cookie 
+// const HOST = window.location.origin 
+// const HOST = 'http://trippian.com'
+const HOST = 'http://localhost:4000'
 export default {
   appName: '',
   appDescription: 'your local travel companion',
-  API_HOST: `${window.location.origin}/api/`,
-  Server_HOST: `${window.location.origin}`,
+  API_HOST: `${HOST}/api/`,
+  Server_HOST: `${HOST}`,
   routeConfig: {
     trippian: 'trippian',
     destination: 'destination',
@@ -18,9 +22,9 @@ export default {
     review: 'rating',
     vote: 'vote',
     s3: 'signS3',
-    googleAuth: `${window.location.origin}/auth/google`,
-    facebookAuth: `${window.location.origin}/auth/facebook`,
-    logout: `${window.location.origin}/auth/logout`
+    googleAuth: `${HOST}/auth/google`,
+    facebookAuth: `${HOST}/auth/facebook`,
+    logout: `${HOST}/auth/logout`
   },
   S3: {
     baseUrl: 'https://s3-us-west-1.amazonaws.com/trippian/',
