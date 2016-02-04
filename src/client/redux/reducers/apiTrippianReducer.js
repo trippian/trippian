@@ -34,7 +34,7 @@ import {
   fetchGetUsers, fetchDeleteUserById, fetchGetUserById, fetchPostUser,
   fetchGetInquiries, fetchDeleteInquiryById, fetchGetInquiryByReceiverId, fetchPostInquiry,
   fetchGetTrips, fetchDeleteTripById, fetchGetTripById, fetchPostTrip,
-  fetchPostReview, fetchUpdateVote, fetchLogin, fetchLogout, fetchGetDashboardById
+  fetchPostReview, fetchUpdateVote, fetchLogin, fetchLogout, fetchGetDashboardById, fetchPostLogin, fetchPostSignup
 
 }
 from '../../utils/apiTrippian'
@@ -454,6 +454,25 @@ export function login(type = 'facebook') {
         alertSuccess('Successfully logged in', window.document.cookie)
       })
       .catch(error => apologize(error))
+  }
+}
+
+export function localLogin(data) {
+  return (dispatch) => {
+    return fetchPostLogin(data)
+      .then(() => {
+        alertSuccess('Successfully logged in', window.document.cookie)
+      })
+      .catch(error => apologize(error))
+  }
+}
+
+export function localSignup(data) {
+  return (dispatch) => {
+    return fetchPostSignup(data)
+      .then(() => {
+        alertSuccess('Successfully signed up', window.document.cookie)
+      })
   }
 }
 

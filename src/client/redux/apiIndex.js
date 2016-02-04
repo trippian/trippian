@@ -10,7 +10,8 @@ import {
   getUserById,
   getDestinationById, getDestinationByName,
   getInquiryById,
-  login, logout, getDashboardById,
+  login, logout, localLogin, localSignup,
+  getDashboardById,
   setSearchText
 }
 from './reducers/apiTrippianReducer'
@@ -28,7 +29,8 @@ export default {
   getUserById,
   getDestinationById, getDestinationByName,
   getInquiryById,
-  login, logout, getDashboardById,
+  login, logout, localLogin, localSignup,
+  getDashboardById,
   setSearchText
 
 }

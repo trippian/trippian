@@ -7,27 +7,34 @@ import {
 }
 from 'redux-form'
   // import {show as showResults} from '../redux/modules/submission'
-
+import store from '../../redux/store'
+import {
+  localLogin
+}
+from '../../redux/apiIndex'
 
 const submit = (values, dispatch) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-        if (!['john', 'paul', 'george', 'ringo'].includes(values.username)) {
-          reject({
-            username: 'User does not exist',
-            _error: 'Login failed!'
-          })
-        } else if (values.password !== 'redux-form') {
-          reject({
-            password: 'Wrong password',
-            _error: 'Login failed!'
-          })
-        } else {
-          // dispatch(showResults(values))
-          resolve()
-        }
-      }, 1000) // simulate server latency
-  })
+  // return new Promise((resolve, reject) => {
+  //   setTimeout(() => {
+  //       if (!['john', 'paul', 'george', 'ringo'].includes(values.username)) {
+  //         reject({
+  //           username: 'User does not exist',
+  //           _error: 'Login failed!'
+  //         })
+  //       } else if (values.password !== 'redux-form') {
+  //         reject({
+  //           password: 'Wrong password',
+  //           _error: 'Login failed!'
+  //         })
+  //       } else {
+  //         // dispatch(showResults(values))
+  //         resolve()
+  //       }
+  //     }, 1000) // simulate server latency
+  store.dispatch(localLogin(values))
+
+  // })
+  
 }
 
 class LoginFormWidget extends Component {
@@ -42,7 +49,7 @@ class LoginFormWidget extends Component {
   render() {
     const {
       fields: {
-        username, password
+        email, password
       },
       error,
       resetForm,
@@ -53,11 +60,11 @@ class LoginFormWidget extends Component {
     return (
       <form onSubmit={handleSubmit(submit)}>
             <div>
-              <label>Username</label>
+              <label>Email</label>
               <div>
-                <input type="text" placeholder="Username" {...username}/>
+                <input type="text" placeholder="Email" {...email}/>
               </div>
-              {username.touched && username.error && <div>{username.error}</div>}
+              {email.touched && email.error && <div>{email.error}</div>}
             </div>
             <div>
               <label>Password</label>
@@ -85,7 +92,7 @@ class LoginFormWidget extends Component {
 
 LoginFormWidget = reduxForm({
   form: 'loginForm',
-  fields: ['username', 'password']
+  fields: ['email', 'password']
 })(LoginFormWidget)
 
 LoginFormWidget.displayName = 'LoginFormWidget'
