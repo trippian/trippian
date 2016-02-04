@@ -115,7 +115,7 @@ export default {
     if (vote === 'DOWNVOTE') { incrementor = -1 }
     userId = parseInt(userId)
     return new Promise((resolve, reject) => {
-      let cypher = `match (t:Trip), (t)<-[r:${vote}]-(u:User) where id(t)=${tripId} and id(u)=${userId} return r;`
+      let cypher = `match (t:Trip), (t)<-[up:UPVOTE]-(u:User), (t)<-[down:DOWNVOTE]-(u:User) where id(t)=${tripId} and id(u)=${userId} return up, down;`
       db.queryAsync(cypher)
         .then((nodes) => {
           if (nodes.length) {
