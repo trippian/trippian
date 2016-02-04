@@ -19,6 +19,7 @@ export default {
 
   createCookie: (req, res) => {
     req.session.email = req.user.email
+    console.log(req.user)
 
     res.cookie('trippianPass', {
       id: req.user.id,

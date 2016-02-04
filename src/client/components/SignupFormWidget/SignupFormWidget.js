@@ -7,14 +7,16 @@ import {
   reduxForm 
 }
 from 'redux-form'
+import store from '../../redux/store'
+import {
+  localSignup
+}
+from '../../redux/apiIndex'
 
-// const submit = (values, dispatch) => {
-//   return new Promise((resolve, reject) => {
-//     setTimeout(() => {
+const submit = (values, dispatch) => {
+  store.dispatch(localSignup(values))
+}
 
-//     })
-//   })
-// }
 export default class SignupFormWidget extends Component {
   // static PropTypes = {
   //   error: PropTypes.string,
@@ -23,32 +25,54 @@ export default class SignupFormWidget extends Component {
   //   resetForm: PropTypes.func.isRequired,
   //   submitting: PropTypes.bool.isRequired
   // }
-  constructor(props) {
-    super(props)
-  }
 
   render() {
-    // const {
-    //   fields: {
-    //     name, email, password
-    //   },
-    //   error,
-    //   resetForm,
-    //   handleSubmit,
-    //   submitting
-    // } = this.props
+    const {
+      fields: {
+        name, email, password
+      },
+      error,
+      resetForm,
+      handleSubmit,
+      submitting
+    } = this.props
 
     return (
-      <div>
-        <h2>Sign Up</h2>
-      </div>
+      <form onSubmit={handleSubmit(submit)}>
+          <div>
+            <label>Full Name</label>
+            <div>
+              <input type="text" placeholder="Full Name" {...name}/>
+            </div>
+            {name.touched && name.error && <div> {name.error}</div>}
+          </div>
+          <div>
+            <label>Email</label>
+            <div>
+              <input type="text" placeholder="Email" {...email}/>
+            </div>
+            {email.touched && email.error && <div>{email.error}</div>}
+          </div>
+          <div>
+            <label>Password</label>
+            <div>
+              <input type="text" placeholder="Password" {...password}/>
+            </div>
+            {password.touched && password.error && <div>{email.error}</div>}
+          </div>
+          <div>
+            <button disabled={submitting} onClick={handleSubmit(submit)}>
+            {submitting ? <i/> : <i/>} Sign Up
+            </button>
+          </div>
+      </form>
     )
   }
 }
 
 SignupFormWidget = reduxForm({
   form: 'signupForm',
-  fields: ['username', 'password']
+  fields: ['name', 'email', 'password']
 })(SignupFormWidget)
 
 SignupFormWidget.displayName = 'SignupFormWidget'

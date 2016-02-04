@@ -291,16 +291,28 @@ export default {
         })
     })
   },
-  getUserVotedTrips: (userId) => {
+  getUserDownvotedTrips: (userId) => {
     return new Promise((resolve, reject) => {
-      let cypher = `match (t:Trip), (t)<-[u:UPVOTE]-(n:User),(t)<-[d:DOWNVOTE]-(n:User) where id(n)=${userId} return u,d;`
+      let cypher = `match (t:Trip), (t)<-[d:DOWNVOTE]-(n:User) where id(n)=${userId} return t;`
       db.queryAsync(cypher)
-        .then(voted => {
-          resolve(voted)
+        .then(downvoted => {
+          resolve(downvoted)
         })
         .catch(error => {
           console.error(error)
         })
+    })
+  },
+  getUserUpvotedTrips: (userId) => {
+  return new Promise((resolve, reject) => {
+    let cypher = `match (t:Trip), (t)<-[u:UPVOTE]-(n:User) where id(n)=${userId} return t;`
+    db.queryAsync(cypher)
+      .then(upvoted => {
+        resolve(upvoted)
+      })
+      .catch(error => {
+        console.error(error)
+      })
     })
   }
 }
