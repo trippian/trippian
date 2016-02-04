@@ -155,8 +155,8 @@ export const fetchPostTrippian = (data) => {
 
 //Rating & Review 
 export const fetchPostReview = (data) => {
-  const url = `${API_HOST}${routeConfig.review}/${data.trippianId}?rater=${data.userId}`
-  console.log('fetchPostTrippian', url, data)
+  const url = `${API_HOST}${routeConfig.review}/${data.trippianId}?rater=${data.id}`
+  console.log('fetchPostReview', url, data)
   return api.post(url, data)
 }
 

@@ -26,12 +26,12 @@
    isAdmin: true,
    isTrippian: true, // currently is named trippian
    trippian: true, // TODO: remove 
-   username: '',
-   displayName: '',
-   email: '',
+   username: 'elliot',
+   displayName: 'Elliot',
+   email: 'elliot@trippian.com',
    id: 32,
-   facebookId: 0,
-   googleId: 0,
+   facebookId: 955195534516978, //TODO: remove
+   googleId: 1,
    picture: 'http://lorempixel.com/200/200/people/'
  }
 

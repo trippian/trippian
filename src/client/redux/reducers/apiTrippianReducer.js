@@ -383,13 +383,10 @@ export function postInquiry(data) {
 export function postReview(data) {
   store.dispatch(setFormSubmitting())
   alertInfo('Submitting review now...')
-  const user = store.getState().appState.get('user')
-  data.userId = user.id
-  data.username = user.username
-  data.userAvatar = user.picture
-  data.facebookId = user.facebookId
-  data.createdAt = new Date()
-  data.trippian = user.trippian
+  attachInfoToData(data, {
+    user: true,
+    createdAt: true
+  })
   console.log('-- posting a review now in reducer', data)
   return (dispatch) => {
     return fetchPostReview(data)
