@@ -5,19 +5,16 @@ import {
 }
 from '../index'
 
+
 const InquiryListWidget = ({
   name = 'InquiryListWidget', dataList = []
 }) => {
   return (
     <div className="section-body inquiry-list">
-        <ul className="list-group">
-
-          <InquiryListItemWidget />
-          <InquiryListItemWidget isExpanded />
-          <InquiryListItemWidget />
-          <InquiryListItemWidget />
-          <InquiryListItemWidget />
-        </ul>
+      { dataList.map((inquiry, key) => (
+               <InquiryListItemWidget key={key} {...inquiry} />
+            ))
+      }
     </div>
   )
 }
