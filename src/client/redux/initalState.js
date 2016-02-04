@@ -114,6 +114,7 @@
    id: 0,
    inquiries: [inquiry],
    postedTrips: [trip],
-   votedTrips: [trip],
+   upVotedTrips: [trip],
+   downVotedTrips: [trip],
    savedTrips: []
  }
