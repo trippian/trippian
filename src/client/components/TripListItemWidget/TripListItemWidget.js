@@ -11,7 +11,7 @@ import {
 }
 from '../index'
 import {
-  voteTrip
+  voteTrip, deleteTripById
 }
 from '../../redux/apiIndex'
 import store from '../../redux/store'
@@ -46,11 +46,21 @@ export default class TripListItemWidget extends Component {
     }
   }
   componentDidMount() {
-      this.setState({
-        netVote: this.props.netVote
-      })
+    this.setState({
+      netVote: this.props.netVote
+    })
+  }
+
+  handleDelete() {
+      console.log('deleting trip called', this.props.id)
+      store.dispatch(deleteTripById(this.props.id))
     }
-    //TODO: add edit and delete to trips, limit
+    //TODO:
+  handleEdit() {
+    console.log('editing trip called', this.props.id)
+  }
+
+  //TODO: add edit and delete to trips
   render() {
     console.log('inside TripListItemWidget render')
     const {
@@ -59,7 +69,11 @@ export default class TripListItemWidget extends Component {
     return (
       <div className="trip-list-item row">
           <div className="col-xs-6 col-sm-3 col-md-3 col-xs-offset-3 col-sm-offset-0">
-              <img className="feature-image" src="http://lorempixel.com/200/200/nature/" alt="" />
+              <img className="feature-image" src={feature} alt="" />
+              <div className="operation">
+                <button onClick={this.handleDelete.bind(this)} title="Delete"> <i className="fa fa-close"></i></button> 
+                <button onClick={this.handleEdit.bind(this)}  title = "Edit" > <i className="fa fa-edit"></i> < /button> 
+              </div>
           </div>
           <div className="col-xs-12 col-sm-7 col-md-7 col-lg-7">
               <div className="title-section">
