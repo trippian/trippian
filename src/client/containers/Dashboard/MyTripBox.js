@@ -70,7 +70,7 @@ export default class MyTripBox extends Component {
       savedTrips, upVotedTrips, downVotedTrips
     } = this.props.dashboard
 
-    console.log('inside MyTripBox render', postedTrips)
+    console.log('inside MyTripBox render')
     return (
       <div className="my-posted-trips-page">
         <div className='menu-row text-right'>
