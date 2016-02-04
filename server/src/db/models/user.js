@@ -253,7 +253,8 @@ export default {
   },
   userSaveTrip: (userId, tripId) => {
     return new Promise((resolve, reject) => {
-      db.relationshipsAsync(userId, 'out', 'SAVED')
+      let cypher = `match (u:User)-[s:SAVED]->(t:Trip) where id(u)=${userId} and id(t)=${tripId} return s;`
+      db.queryAsync(cypher)
         .then(saved => {
           if (!saved.length) {
             db.relateAsync(userId, 'SAVED', tripId, {
