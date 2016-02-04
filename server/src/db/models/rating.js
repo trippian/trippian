@@ -20,7 +20,7 @@ export default {
                   db.queryAsync(cypher)
                     .then(updatedUser => {
                       if (updatedUser.length) {
-                        resolve(rating)
+                        resolve(rating[0])
                       } else {
                         reject(new Error('User could not be updated'))
                       }
