@@ -40,13 +40,14 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
   - [X] ReviewList 
   - [X] Add Review Form 
   - [X] PopularTrippiansList
+  - [X] Dashboard: Saved/Voted Trip 
   - [ ] Signup Form 
   - [ ] Signin Form 
   - [ ] Add Trip Detail Page 
-  - [ ] Dashboard: Saved/Voted Trip 
-  - [ ] OperationMenuWidget (hold edit, delete... buttons)
-  - [ ] Form Edit 
-  - [ ] MyProfile Display (beautify view)
+  - [ ] OperationMenuWidget (hold edit, delete... buttons) - Audrey 
+  - [ ] Form Edit - Audrey 
+  - [ ] MyProfile Display (beautify view) - Joe
+  - [ ] MyInquiries Display (beautify view)
   - [ ] Intl Messages
   - [ ] Optimize HomePage background (video/gif) loading
   - [ ] Data Faker 
