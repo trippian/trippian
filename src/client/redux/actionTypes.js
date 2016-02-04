@@ -36,6 +36,7 @@ export const ADD_TRIP = 'apiTrippian.ADD_TRIP'
 //Trip
 export const SET_INQUIRY = 'apiTrippian.SET_INQUIRY'
 export const UPDATE_VOTE = 'apiTrippian.UPDATE_VOTE'
+export const TOGGLE_SAVE = 'apiTrippian.TOGGLE_SAVE'
 
 //User 
 

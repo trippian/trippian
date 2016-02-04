@@ -1,7 +1,7 @@
 import {
   deleteInquiryById,
   postDestination,
-  postTrip, voteTrip, deleteTripById,
+  postTrip, voteTrip, deleteTripById, toggleSaveTrip,
   postUser,
   postTrippian,
   postInquiry,
@@ -20,7 +20,7 @@ from './reducers/apiTrippianReducer'
 export default {
   deleteInquiryById,
   postDestination,
-  postTrip, voteTrip, deleteTripById,
+  postTrip, voteTrip, deleteTripById, toggleSaveTrip,
   postUser,
   postTrippian,
   postInquiry,
@@ -32,5 +32,4 @@ export default {
   login, logout, localLogin, localSignup,
   getDashboardById,
   setSearchText
-
 }
