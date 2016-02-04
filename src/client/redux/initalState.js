@@ -32,7 +32,7 @@
    id: 32,
    facebookId: 955195534516978, //TODO: remove
    googleId: 1,
-   picture: 'http://lorempixel.com/200/200/people/'
+   picture: 'https://graph.facebook.com/955195534516978/picture?height=500&type=square'
  }
 
  // API
@@ -49,7 +49,7 @@
    numberOfReviews: 0,
    avarageRating: 0,
    facebookId: null,
-   picture: 'http://lorempixel.com/200/200/people/'
+   picture: 'https://graph.facebook.com/955195534516978/picture?height=500&type=square'
  }
  export const trip = {
    netVote: 0,
@@ -113,7 +113,7 @@
    id: 32,
    facebookId: 955195534516978, //TODO: remove
    googleId: 1,
-   picture: 'http://lorempixel.com/200/200/people/',
+   picture: 'https://graph.facebook.com/955195534516978/picture?height=500&type=square',
 
    //trippian
    name: '',

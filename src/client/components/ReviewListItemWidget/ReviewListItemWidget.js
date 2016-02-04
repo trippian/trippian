@@ -15,18 +15,18 @@ const ReviewListItemWidget = ({
     createdAt, username, displayName, facebookId, googleId, picture, id, website, rating, title, content = '', trippian
   } = review.properties
   const userLinkData = {
-    id: id,
-    facebookId: facebookId,
-    googleId: googleId,
-    username: username,
-    displayName: displayName,
-    picture: picture,
-    website: website,
+    id,
+    facebookId,
+    googleId,
+    username,
+    displayName,
+    picture,
+    website,
     showFacebookLink: true,
-    showGoogleLink: true,
-    showTrippianLink: true,
-    showWebSiteLink: true,
-    showMobile: true
+      showGoogleLink: true,
+      showTrippianLink: true,
+      showWebSiteLink: true,
+      showMobile: true
   }
   return (
     <div className="review-list-item clearfix">
