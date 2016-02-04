@@ -117,6 +117,15 @@ export const fetchPostTrip = (data) => {
   return api.post(url, data)
 }
 
+//save trip 
+export const fetchUpdateSave = ({
+  userId, tripId, saveState
+}) => {
+  const url = `${API_HOST}${routeConfig.saveTrip}/${userId}?tripId=${tripId}`
+  console.log('inside fetchUpdateSave', url, tripId, saveState)
+  return api.post(url)
+}
+
 // Trippian
 export const fetchGetTrippians = () => {
   const url = `${API_HOST}${routeConfig.trippian}`
@@ -168,18 +177,6 @@ export const fetchUpdateVote = ({
   })
 }
 
-export const fetchUpdateSave = ({
-  userId, tripId, saveSate
-}) => {
-
-  const updateSave = saveSate === !saveSate
-  const url = `${API_HOST}${routeConfig.trip}/${tripId}?updateSave=${updateSave}`
-  console.log('inside toggleSaveFetch', url, tripId, updateSave)
-  return api.put(url, {
-    userId: userId
-  })
-}
-
 //USER
 export const fetchGetTrippiansByCategory = (category = 'popular') => {
   const url = `${API_HOST}${routeConfig.trippian}?cat=${category}`
@@ -207,11 +204,11 @@ export const fetchDeleteUserById = (id) => {
 
 //TODO
 export const fetchUpdateUserById = (id) => {
-  const url = `${API_HOST}${routeConfig.user}/${id}`
-  console.log('fetchUpdateUserById', url, id)
-  return api.put(url, id)
-}
-//LOGIN/SIGNUP
+    const url = `${API_HOST}${routeConfig.user}/${id}`
+    console.log('fetchUpdateUserById', url, id)
+    return api.put(url, id)
+  }
+  //LOGIN/SIGNUP
 export const fetchPostLogin = (data) => {
   const url = `${Server_HOST}/auth/login`
   console.log('fetchPostLogin', url, data)
