@@ -199,6 +199,18 @@ export const fetchUpdateUserById = (id) => {
   console.log('fetchUpdateUserById', url, id)
   return api.put(url, id)
 }
+//LOGIN/SIGNUP
+export const fetchPostLogin = (data) => {
+  const url = `${Server_HOST}/auth/login`
+  console.log('fetchPostLogin', url, data)
+  return api.post(url, data)
+}
+
+export const fetchPostSignup = (data) => {
+  const url = `${Server_HOST}/auth/signup`
+  console.log('fetchPostSignup', url, data)
+  return api.post(url, data)
+}
 
 export const fetchLogin = (type = 'facebook') => {
   let url = routeConfig.facebookAuth
@@ -214,7 +226,6 @@ export const fetchLogout = () => {
   console.log('fetchLogout', url)
   return api.get(url)
 }
-
 
 // Dashboard 
 export const fetchGetDashboardById = (id) => {
