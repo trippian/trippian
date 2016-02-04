@@ -18,6 +18,7 @@ export default {
     user: 'user',
     dashboard: 'dashboard',
     trip: 'trip',
+    saveTrip: 'saveTrip',
     inquiry: 'inquiry',
     review: 'rating',
     vote: 'vote',

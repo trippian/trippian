@@ -26,16 +26,31 @@
    isAdmin: true,
    isTrippian: true, // currently is named trippian
    trippian: true, // TODO: remove 
-   username: '',
-   displayName: '',
-   email: '',
+   username: 'elliot',
+   displayName: 'Elliot',
+   email: 'elliot@trippian.com',
    id: 32,
-   facebookId: 0,
-   googleId: 0,
+   facebookId: 955195534516978, //TODO: remove
+   googleId: 1,
    picture: 'http://lorempixel.com/200/200/people/'
  }
 
  // API
+ export const trippian = {
+   name: '',
+   location: '',
+   mobile: '',
+   slogan: '',
+   website: '',
+   bio: '',
+   introduction: '',
+
+   availabileTime: '',
+   numberOfReviews: 0,
+   avarageRating: 0,
+   facebookId: null,
+   picture: 'http://lorempixel.com/200/200/people/'
+ }
  export const trip = {
    netVote: 0,
    totalVotes: 0,
@@ -66,22 +81,7 @@
    popularTrips: [trip],
    album: []
  }
- export const trippian = {
-   name: '',
-   email: '',
-   location: '',
-   mobile: '',
-   slogan: '',
-   website: '',
-   bio: '',
-   introduction: '',
 
-   availabileTime: '',
-   numberOfReviews: 0,
-   avarageRating: 0,
-   facebookId: null,
-   picture: 'http://lorempixel.com/200/200/people/'
- }
 
  export const inquiry = {
    type: 'INQUIRY',
@@ -103,15 +103,31 @@
  }
 
  export const dashboard = {
-   trippian: false,
+   // user
+   isAdmin: true,
+   isTrippian: true, // currently is named trippian
+   trippian: true, // TODO: remove 
+   username: 'elliot',
+   displayName: 'Elliot',
+   email: 'elliot@trippian.com',
+   id: 32,
+   facebookId: 955195534516978, //TODO: remove
+   googleId: 1,
+   picture: 'http://lorempixel.com/200/200/people/',
+
+   //trippian
+   name: '',
+   location: '',
+   mobile: '',
+   slogan: '',
+   website: '',
+   bio: '',
+   introduction: '',
+
+   // additional info 
    numberOfReviews: 0,
    averageRating: 0,
-   facebookId: 0,
-   name: '',
    totalRating: 0,
-   email: '',
-   picture: 'http://lorempixel.com/200/200/people/',
-   id: 0,
    inquiries: [inquiry],
    postedTrips: [trip],
    upVotedTrips: [trip],

@@ -99,7 +99,9 @@ export default function apiTrippianReducer(state = initialState, action) {
       }))
     case ADD_REVIEW:
       const trippianR = state.get('trippian')
-      trippianR.reviews.push(action.payload.review)
+      const reviews = trippianR.reviews || []
+      reviews.push(action.payload.review)
+      trippianR.reviews = reviews
       return state.merge(new Map({
         trippian: trippianR
       }))
@@ -381,13 +383,10 @@ export function postInquiry(data) {
 export function postReview(data) {
   store.dispatch(setFormSubmitting())
   alertInfo('Submitting review now...')
-  const user = store.getState().appState.get('user')
-  data.userId = user.id
-  data.username = user.username
-  data.userAvatar = user.picture
-  data.facebookId = user.facebookId
-  data.createdAt = new Date()
-  data.trippian = user.trippian
+  attachInfoToData(data, {
+    user: true,
+    createdAt: true
+  })
   console.log('-- posting a review now in reducer', data)
   return (dispatch) => {
     return fetchPostReview(data)
@@ -454,13 +453,13 @@ export function toggleSaveTrip(saveState, tripId) {
   console.log('***inside toggleSaveTrip', saveState, tripId, userId)
   return (dispatch) => {
     return fetchUpdateSave({
-      userId, tripId, saveState
-    })
-    .then(trip =>{
-      console.log('vote on this:', trip)
-      dispatch(updateToggleVote(saveState, tripId))
-    })
-    .catch(error => apologize(error))
+        userId, tripId, saveState
+      })
+      .then(trip => {
+        console.log('vote on this:', trip)
+        dispatch(updateToggleVote(saveState, tripId))
+      })
+      .catch(error => apologize(error))
   }
 }
 
