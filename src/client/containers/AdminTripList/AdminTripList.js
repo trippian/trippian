@@ -70,7 +70,6 @@ export default class AdminTripList extends Component {
   handleSubmit(data) {
     console.log('posting data from form', data)
     store.dispatch(postTrip(data))
-    this.setAlert('success', 'Successfully submitted data', `${data.title}`)
   }
 
   setAlert(type = 'success', title = '', message = '') {

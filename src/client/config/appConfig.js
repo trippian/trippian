@@ -21,7 +21,7 @@ export default {
     inquiry: 'inquiry',
     review: 'rating',
     vote: 'vote',
-    s3: 'signS3',
+    s3: '/signS3',
     googleAuth: `${HOST}/auth/google`,
     facebookAuth: `${HOST}/auth/facebook`,
     logout: `${HOST}/auth/logout`

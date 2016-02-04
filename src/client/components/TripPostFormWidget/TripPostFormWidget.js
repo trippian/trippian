@@ -12,7 +12,7 @@ import {
 from '../../hocs/FileEnhance'
 import store from '../../redux/store'
 import {
-  setFiles, setTrip
+  setTrip
 }
 from '../../redux/actionCreators'
 
@@ -20,7 +20,10 @@ import {
   AutoSuggestBoxWidget
 }
 from '../index'
-
+import {
+  trip as initalTripData
+}
+from '../../redux/initalState'
 class TripPostFormWidget extends Component {
   constructor(props) {
     super(props)
@@ -48,9 +51,23 @@ class TripPostFormWidget extends Component {
       fields: {
         destination, title, summary, details, feature, album
       },
-      handleSubmit
-    } = this.props
+      handleSubmit,
+      submitting,
+      resetForm,
+      load
 
+    } = this.props
+      // TODO: dummy data here, remove later 
+    let data = {
+      netVote: 0,
+      totalVotes: 0,
+      destination: 'New York, NY, United States',
+      title: 'Awesome trip to New York',
+      summary: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, architecto.',
+      details: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa a dolor, sunt odio consectetur quis animi sequi inventore commodi unde!',
+      feature: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/NYC_Montage_2014_4_-_Jleon.jpg/295px-NYC_Montage_2014_4_-_Jleon.jpg',
+      album: ['https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Lower_Manhattan_from_Jersey_City_November_2014_panorama_3.jpg/1100px-Lower_Manhattan_from_Jersey_City_November_2014_panorama_3.jpg']
+    }
     return (
       <form onSubmit={handleSubmit} role="form">
         <div className="row padding-row">
@@ -78,7 +95,11 @@ class TripPostFormWidget extends Component {
         <div className="form-group">
           <label>Upload photos</label>
         </div>
-        <button onClick={handleSubmit}>Submit</button>
+        <div className="pull-right">
+          <button type="button" className="btn btn-default" onClick={() => load(data)}>Load Dummy Data</button>
+          <button type="button" className="btn btn-default" disabled={submitting} onClick={()=> load(initalTripData)} > Clear Values</button>
+          <button  disabled={this.props.isFileUploading || submitting} className={'btn ' + (this.props.isFileUploading ? 'disabled' : 'btn-success') } onClick={this.handleSubmit.bind(this)}>Submit</button> 
+        </div>
       </form>
     )
   }
@@ -91,8 +112,9 @@ TripPostFormWidget = reduxForm({
   },
   state => ({ // mapStateToProps
     initialValues: state.apiTrippian.get('trip') // will pull state into form's initialValues
-  })
-)(TripPostFormWidget)
+  }), {
+    load: setTrip
+  })(TripPostFormWidget)
 
 
 

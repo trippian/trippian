@@ -31,6 +31,7 @@ export const ADD_REVIEW = 'apiTrippian.ADD_REVIEW'
 //Trip
 export const SET_TRIP = 'apiTrippian.SET_TRIP'
 export const REMOVE_TRIP = 'apiTrippian.REMOVE_TRIP'
+export const ADD_TRIP = 'apiTrippian.ADD_TRIP'
 
 //Trip
 export const SET_INQUIRY = 'apiTrippian.SET_INQUIRY'
