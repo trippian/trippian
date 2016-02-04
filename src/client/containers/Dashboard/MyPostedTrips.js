@@ -52,7 +52,9 @@ export default class MyPostedTrips extends Component {
     console.log('inside MyPostedTrips render', postedTrips)
     return (
       <div className="my-posted-trips-page">
-        <button onClick={()=> this.setState({showForm: !this.state.showForm})} className="btn btn-primary pull-right">Create a Trip</button>
+        <button onClick={()=> this.setState({showForm: !this.state.showForm})} className="btn btn-primary pull-right">
+          {this.state.showForm ? 'Hide Form' : 'Create a Trip '}
+        </button>
         {postedTrips.length === 0 && 
             <div>
               <h2>You have not created any trips yet. </h2>
