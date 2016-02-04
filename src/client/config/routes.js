@@ -16,7 +16,8 @@ import {
   AdminInquiryListItem, AdminInquiryListItemEdit,
   AdminTripListItem, AdminTripListItemEdit,
   AdminUserList, AdminUserListItem, AdminUserListItemEdit,
-  Dashboard, MyProfile, MyInquiries, MyTripBox, MyPostedTrips
+  Dashboard, MyProfile, MyInquiries, MyTripBox, MyPostedTrips,
+  SignupWrapper, Signup, SignupSuccess
 }
 from '../containers/index'
 
@@ -37,6 +38,13 @@ export default (
               <Route component={LoginSuccess} path="success" />
               <Route component={Logout} path="logout" />
               <IndexRoute component={Login} />
+            </Route>
+
+            <Route component={SignupWrapper} patth="signup" >
+              <Route component={Signup} path="signup" />
+              <Route component={SignupSuccess} path="success" />
+              <Route component={Logout} path="logout" />
+              <IndexRoute component={Signup} />
             </Route>
             
             <Route component={NotFound} path="not-found"  />
