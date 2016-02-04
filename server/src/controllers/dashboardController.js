@@ -20,12 +20,12 @@ export default {
                         // res.json(user)
                       User.getUserUpvotedTrips(req.params.userId)
                         .then(upvotedTrips => {
-                          user.upvotedTrips = upvotedTrips
+                          user.upVotedTrips = upvotedTrips
                           // user.upvotedTrips = upvotedTrips
                           // res.json(user)
                           User.getUserDownvotedTrips(req.params.userId)
                             .then(downvotedTrips => {
-                              user.downvotedTrips = downvotedTrips
+                              user.downVotedTrips = downvotedTrips
                               res.json(user)
                             })
                         })
