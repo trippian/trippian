@@ -33,6 +33,9 @@ const submit = (values, dispatch) => {
   //     }, 1000) // simulate server latency
   store.dispatch(localLogin(values))
 
+  // this.props.history.pushState({
+  //   }, `/#/login/success`)
+
   // })
   
 }

@@ -37,9 +37,9 @@ const UserMenuWidget = () => {
                         defaultMessage="User Dashboard"/>
                 </Link>
             </li>       
+            <li><Link to='signup'>Sign Up</Link></li>
             <li><Link to='login'>Login</Link></li>
             <li><a href="/auth/logout">Logout</a></li>
-            <li><Link to='intl' className="btn btn-bordered">Intl Demo</Link></li>
         </ul>
     </li>
   )
