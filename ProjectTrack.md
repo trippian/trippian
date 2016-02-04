@@ -3,6 +3,8 @@ We created this file to track the whole project, including important info, notic
 
 After our daily meeting, we'll move the tasks under meeting memo to Github issues so that we can better track our progress.
 
+### Group Check-in 
+
 
 ### Server & Client Feature Track 
 - Server 

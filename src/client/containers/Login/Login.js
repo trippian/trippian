@@ -3,7 +3,7 @@ import React, {
 }
 from 'react'
 import {
-  LoginButtonsWidget
+  LoginButtonsWidget, LoginFormWidget, SignupFormWidget
 }
 from '../../components/index'
 
@@ -19,7 +19,8 @@ export default class Login extends Component {
           <h3>Login</h3>
           <a href="#/login/success">Login Success Page</a>
           <LoginButtonsWidget />
-          
+          <LoginFormWidget />
+          <SignupFormWidget />
       </div>
     )
   }

@@ -50,7 +50,8 @@ export default class MyInquiries extends Component {
     return (
       <div className="my-inquiries-page">
         <h2>Inquiries</h2>
-
+        <InquiryListWidget dataList={inquiries
+} />
       </div >
 
     )
