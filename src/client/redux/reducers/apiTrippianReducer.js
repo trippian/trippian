@@ -139,7 +139,7 @@ export default function apiTrippianReducer(state = initialState, action) {
       return state.merge(new Map({
           dashboard: oldDashboard
         }))
-        // state.updateIn(['dashboard', 'inquiries'], val => val.filter(x => x.id !== action.payload.id))
+        // doesn't work: state.updateIn(['dashboard', 'inquiries'], val => val.filter(x => x.id !== action.payload.id))
     default:
       return state
   }
@@ -284,7 +284,10 @@ export function postTrip(data) {
     searchAsDestination: true,
     album: true,
     feature: true,
-    userId: true
+    userId: true,
+    displayName: true,
+  username: true
+
   })
 
   console.log('-- posting a trip now in reducer', data)

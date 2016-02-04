@@ -58,6 +58,7 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
     - [ ] Add real destination photo 
   
   - [X] Create Trip
+  - [X] Add trip detail page 
   - [ ] Add popular Trippians to destination ????? 
   - [ ] LoadingWidget 
   - [ ] React Animation ???? 

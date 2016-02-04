@@ -60,6 +60,7 @@ export TrippianEdit from './TrippianEdit/TrippianEdit'
 export Dashboard from './Dashboard/Dashboard'
 export MyProfile from './Dashboard/MyProfile'
 export MyInquiries from './Dashboard/MyInquiries'
+export MyPostedTrips from './Dashboard/MyPostedTrips'
 export MyTripBox from './Dashboard/MyTripBox'
 
 export Trips from './Trips/Trips'

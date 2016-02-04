@@ -24,8 +24,8 @@
  export const user = {
    isAuthed: true,
    isAdmin: true,
-   isTrippian: false, // currently is named trippian
-   trippian: false, // TODO: remove 
+   isTrippian: true, // currently is named trippian
+   trippian: true, // TODO: remove 
    username: '',
    displayName: '',
    email: '',

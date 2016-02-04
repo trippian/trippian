@@ -16,7 +16,7 @@ import {
   AdminInquiryListItem, AdminInquiryListItemEdit,
   AdminTripListItem, AdminTripListItemEdit,
   AdminUserList, AdminUserListItem, AdminUserListItemEdit,
-  Dashboard, MyProfile, MyInquiries, MyTripBox
+  Dashboard, MyProfile, MyInquiries, MyTripBox, MyPostedTrips
 }
 from '../containers/index'
 
@@ -65,6 +65,7 @@ export default (
               <Route component={TrippianEdit} path="trippian-edit"  />
               <Route component={MyProfile} path="my-profile"  />
               <Route component={MyInquiries} path="my-inquiries"  />
+              <Route component={MyPostedTrips} path="my-posted-trips"  />
               // create trip, vote, favs, saves 
               <Route component={MyTripBox} path="my-trip-box"  />  
               <IndexRoute component={MyProfile}/>
