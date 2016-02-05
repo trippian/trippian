@@ -7970,6 +7970,12 @@ html input[disabled] {
   .menu-row button {
     margin: 0 8px; }
 
+.operation-menu-widget {
+  width: 100%;
+  min-height: 20px; }
+  .operation-menu-widget button {
+    margin: 0 8px; }
+
 /*
 * Main styling
 * ========================================================================== */
@@ -8018,10 +8024,19 @@ footer {
 .btn-bordered {
   border: 2px solid white; }
 
+.jumbotron-video {
+  position: absolute;
+  top: 0;
+  left: 0; }
+
 .jumbotron {
   max-height: 400px;
   position: relative;
   z-index: 99; }
+  .jumbotron .react-drive-in-video {
+    z-index: 0; }
+  .jumbotron .container {
+    z-index: 99; }
   .jumbotron .full-length-container {
     background-color: rgba(0, 0, 0, 0.2);
     height: 100px;
@@ -8080,30 +8095,6 @@ footer {
 
 .login-button-widget .google {
   background: #c23321; }
-
-.signup-button-widget button,
-.signup-button-widget a {
-  color: white;
-  margin-bottom: 8px;
-  min-width: 200px;
-  text-align: left; }
-  .signup-button-widget button i,
-  .singup-button-widget a i {
-    padding-right: 8px;
-    margin-right: 8px; }
-  .signup-button-widget button span,
-  .signup-button-widget a span {
-    font-size: 18px; }
-  .signup-button-widget button:hover,
-  .signup-button-widget a:hover {
-    color: #FFCCBC; }
-
-.signup-button-widget .facebook {
-  background-color: #2d4373; }
-
-.signup-button-widget .google {
-  background: #c23321; }
-
 
 .vote {
   text-align: center;

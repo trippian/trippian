@@ -1,12 +1,16 @@
-import {
+import React, {
   Component
 }
-from 'React'
+from 'react'
 import store from '../../redux/store'
-
-// a demo higher order component 
+import {
+  Provider
+}
+from 'react-redux'
+  // a demo higher order component 
 export const Enhance = ComposedComponent => class extends Component {
-  constructor() {
+  constructor(props) {
+    super(props)
     this.state = {
       data: null
     }
@@ -17,6 +21,9 @@ export const Enhance = ComposedComponent => class extends Component {
     })
   }
   render() {
+    // add redux store to the root component here. Normally you'd do it in entry.js, but it didn't  work with IntlProvider
+    // so we are using higher order component for this
+    // https://gist.github.com/sebmarkbage/ef0bf1f338a7182b6775
     return (
       <Provider store={store}>
         <ComposedComponent {...this.props} data={this.state.data} />
