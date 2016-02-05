@@ -36,21 +36,9 @@ const UserMenuWidget = () => {
                         description="the link for user dashboard"
                         defaultMessage="User Dashboard"/>
                 </Link>
-            </li>
-            <li><a href="#">Friends</a></li>
-            <li>
-                <a href="#">
-                    <FormattedMessage 
-                        id="app-shared.logout" 
-                        description="logout link text"
-                        defaultMessage="Logout"
-                    />
-                </a>
-            </li>
-            <li><Link to='destination-post'>Post a Destination</Link></li>
+            </li>       
+            <li><Link to='signup'>Sign Up</Link></li>
             <li><Link to='login'>Login</Link></li>
-            <li><Link to='login/logout'>Logout</Link></li>
-            <li><Link to='intl' className="btn btn-bordered">Intl Demo</Link></li>
         </ul>
     </li>
   )

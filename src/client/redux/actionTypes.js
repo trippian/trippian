@@ -30,10 +30,13 @@ export const ADD_REVIEW = 'apiTrippian.ADD_REVIEW'
 
 //Trip
 export const SET_TRIP = 'apiTrippian.SET_TRIP'
+export const REMOVE_TRIP = 'apiTrippian.REMOVE_TRIP'
+export const ADD_TRIP = 'apiTrippian.ADD_TRIP'
 
 //Trip
 export const SET_INQUIRY = 'apiTrippian.SET_INQUIRY'
 export const UPDATE_VOTE = 'apiTrippian.UPDATE_VOTE'
+export const TOGGLE_SAVE = 'apiTrippian.TOGGLE_SAVE'
 
 //User 
 
@@ -66,5 +69,6 @@ export const SET_ADMIN_CURRENT_TRIP = 'apiAdmin.SET_ADMIN_CURRENT_TRIP'
 // inquiries
 export const SET_ADMIN_INQUIRIES = 'apiAdmin.SET_ADMIN_INQUIRIES'
 export const REMOVE_ADMIN_INQUIRY = 'apiAdmin.REMOVE_ADMIN_INQUIRY'
+export const REMOVE_INQUIRY = 'apiAdmin.REMOVE_INQUIRY'
 export const ADD_ADMIN_INQUIRY = 'apiAdmin.ADD_ADMIN_INQUIRY'
 export const SET_ADMIN_CURRENT_INQUIRY = 'apiAdmin.SET_ADMIN_CURRENT_INQUIRY'

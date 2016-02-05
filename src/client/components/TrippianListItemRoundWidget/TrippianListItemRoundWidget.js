@@ -12,9 +12,7 @@ const TrippianListItemRoundWidget = ({
         <Link to={`trippian/${id}`}>
             <div className="circle-image">
                 <img src={picture} alt="" />
-            </div> < h4 > {
-  name
-} < /h4>
+            </div> <h4> {name} </h4>
 
         </Link>
     </div>

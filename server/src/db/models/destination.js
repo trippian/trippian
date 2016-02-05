@@ -61,11 +61,11 @@ export default {
       let cypher = `match (d:Destination {name:` + '"' + `${destinationName}` + '"' + `}) return d;`
       db.queryAsync(cypher)
         .then((destination) => {
-          if (destination.length) {
-            resolve(destination[0])
-          } else {
-            reject(new Error('could not find destination'))
-          }
+          resolve(destination[0])
+          
+          // else {
+          //   reject(new Error('could not find destination'))
+          // }
         })
         .catch((error) => {
           console.error(error)
@@ -106,7 +106,7 @@ export default {
   },
   getPopularDestinations: () => {
     return new Promise((resolve, reject) => {
-      let cypher = `match (d:Destination)<-[r:LOCATED_IN]-(t:Trip) return d, count(r) order by count(r) DESC`
+      let cypher = `match (d:Destination)<-[r:LOCATED_IN]-(t:Trip) return d, count(r) order by count(r) DESC LIMIT 9`
 
       db.queryAsync(cypher)
         .then((popularDestinations) => {

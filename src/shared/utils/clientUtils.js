@@ -39,6 +39,11 @@ export function getCanVote(currentNetVote, vote) {
   return false
 }
 
+// export function getCanSave(isSaved) {
+//   if (isSaved) return false
+//   return true
+// }
+
 export function getCookieByName(name) {
   const re = new RegExp(name + "=([^;]+)")
   const value = re.exec(document.cookie)

@@ -3,7 +3,7 @@ import React, {
 }
 from 'react'
 import {
-  LoginButtonsWidget
+  LoginButtonsWidget, LoginFormWidget
 }
 from '../../components/index'
 
@@ -17,9 +17,9 @@ export default class Login extends Component {
     return (
       <div className="login">
           <h3>Login</h3>
-          <a href="#/login/success">Login Success Page</a>
           <LoginButtonsWidget />
-          
+          <LoginFormWidget />
+          <p>New to Trippian?</p><a href="#/signup">Sign Up Now</a>
       </div>
     )
   }

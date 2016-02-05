@@ -1,7 +1,7 @@
 import React from 'react'
 
 const VoteWidget = ({
-  name = '', handleClick, disableLeft, disableRight
+  handleClick, disableLeft, disableRight
 }) => {
   return (
     <div className="vote-buttons vote-widget">

@@ -44,7 +44,33 @@ export default {
               console.error(error)
             })
           } else {
-            reject(new Error('entered wrong destination'))
+            Destination.createDestination({
+              name: details.destination
+              })
+              .then(destination => {
+                db.saveAsync(details, 'Trip')
+                  .then((newTrip) => {
+                    console.log(newTrip.id, "This is id", newTrip.destination, "this is destination name")
+                    let cypher = `match (u:User), (t:Trip) where id(u)=${userId} and id(t)=${newTrip.id} create (u)-[r:POSTED]->(t) return r;`
+                    db.queryAsync(cypher)
+                      .then((userTripRelationship) => {
+                        if (userTripRelationship.length) {
+                          let cypher = `match (t:Trip), (d:Destination) where id(t)=${newTrip.id} and d.name =` + '"' + `${newTrip.destination}` + '"' + `create unique (t)-[r:LOCATED_IN]->(d) return r;`
+                          db.queryAsync(cypher)
+                            .then((tripDestinationRelationship) => {
+                              if(tripDestinationRelationship.length) {
+                                newTrip.userId = parseInt(userId)
+                                resolve(newTrip)
+                              } else {
+                                reject(new Error('Error saving trip to destination'))
+                              }
+                            })
+                        } else {
+                          reject(new Error('user does not exist'))
+                        }
+                      })
+                  })
+              })
           }
         })
         .catch(error => {
@@ -115,7 +141,7 @@ export default {
     if (vote === 'DOWNVOTE') { incrementor = -1 }
     userId = parseInt(userId)
     return new Promise((resolve, reject) => {
-      let cypher = `match (t:Trip), (t)<-[r:${vote}]-(u:User) where id(t)=${tripId} and id(u)=${userId} return r;`
+      let cypher = `match (t:Trip), (t)<-[up:UPVOTE]-(u:User), (t)<-[down:DOWNVOTE]-(u:User) where id(t)=${tripId} and id(u)=${userId} return up, down;`
       db.queryAsync(cypher)
         .then((nodes) => {
           if (nodes.length) {

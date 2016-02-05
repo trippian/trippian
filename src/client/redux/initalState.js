@@ -24,18 +24,33 @@
  export const user = {
    isAuthed: true,
    isAdmin: true,
-   isTrippian: false, // currently is named trippian
-   trippian: false, // TODO: remove 
-   username: '',
-   displayName: '',
-   email: '',
+   isTrippian: true, // currently is named trippian
+   trippian: true, // TODO: remove 
+   username: 'elliot',
+   displayName: 'Elliot',
+   email: 'elliot@trippian.com',
    id: 32,
-   facebookId: 0,
-   googleId: 0,
-   picture: 'http://lorempixel.com/200/200/people/'
+   facebookId: 955195534516978, //TODO: remove
+   googleId: 1,
+   picture: 'https://graph.facebook.com/955195534516978/picture?height=500&type=square'
  }
 
  // API
+ export const trippian = {
+   name: '',
+   location: '',
+   mobile: '',
+   slogan: '',
+   website: '',
+   bio: '',
+   introduction: '',
+
+   availabileTime: '',
+   numberOfReviews: 0,
+   avarageRating: 0,
+   facebookId: null,
+   picture: 'https://graph.facebook.com/955195534516978/picture?height=500&type=square'
+ }
  export const trip = {
    netVote: 0,
    totalVotes: 0,
@@ -44,7 +59,8 @@
    summary: '',
    details: '',
    feature: 'http://lorempixel.com/400/200/city/',
-   album: []
+   album: [],
+   user: trippian
  }
  export const review = {
    createdAt: '',
@@ -66,22 +82,7 @@
    popularTrips: [trip],
    album: []
  }
- export const trippian = {
-   name: '',
-   email: '',
-   location: '',
-   mobile: '',
-   slogan: '',
-   website: '',
-   bio: '',
-   introduction: '',
 
-   availabileTime: '',
-   numberOfReviews: 0,
-   avarageRating: 0,
-   facebookId: null,
-   picture: 'http://lorempixel.com/200/200/people/'
- }
 
  export const inquiry = {
    type: 'INQUIRY',
@@ -103,17 +104,34 @@
  }
 
  export const dashboard = {
-   trippian: false,
+   // user
+   isAdmin: true,
+   isTrippian: true, // currently is named trippian
+   trippian: true, // TODO: remove 
+   username: 'elliot',
+   displayName: 'Elliot',
+   email: 'elliot@trippian.com',
+   id: 32,
+   facebookId: 955195534516978, //TODO: remove
+   googleId: 1,
+   picture: 'https://graph.facebook.com/955195534516978/picture?height=500&type=square',
+
+   //trippian
+   name: '',
+   location: '',
+   mobile: '',
+   slogan: '',
+   website: '',
+   bio: '',
+   introduction: '',
+
+   // additional info 
    numberOfReviews: 0,
    averageRating: 0,
-   facebookId: 0,
-   name: '',
    totalRating: 0,
-   email: '',
-   picture: 'http://lorempixel.com/200/200/people/',
-   id: 0,
    inquiries: [inquiry],
    postedTrips: [trip],
-   votedTrips: [trip],
+   upVotedTrips: [trip],
+   downVotedTrips: [trip],
    savedTrips: []
  }

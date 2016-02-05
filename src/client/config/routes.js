@@ -9,6 +9,7 @@ import {
   Destination, DestinationDetail, DestinationPost, Contact,
   InquiryAdd, InquiryDetail, InquiryList,
   Login, LoginWrapper, LoginSuccess, Logout,
+  PopularTrips, TripWrapper, Trip, TripDetail,
   DestinationWrapper, PopularDestinations, DestinationSearchResults, Trippian,
   Terms, TrippianDetail, TrippianSignUp, TrippianList, TrippianEdit, IntlDemo,
   Admin, AdminDestinationList, AdminDestinationListItem, AdminDestinationListItemEdit,
@@ -16,7 +17,8 @@ import {
   AdminInquiryListItem, AdminInquiryListItemEdit,
   AdminTripListItem, AdminTripListItemEdit,
   AdminUserList, AdminUserListItem, AdminUserListItemEdit,
-  Dashboard, MyProfile, MyInquiries, MyTripBox
+  Dashboard, MyProfile, MyInquiries, MyTripBox, MyPostedTrips,
+  SignupWrapper, Signup, SignupSuccess
 }
 from '../containers/index'
 
@@ -38,11 +40,19 @@ export default (
               <Route component={Logout} path="logout" />
               <IndexRoute component={Login} />
             </Route>
+
+            <Route component={SignupWrapper} path="signup" >
+              <Route component={Signup} path="signup" />
+              <Route component={SignupSuccess} path="success" />
+              <Route component={Logout} path="logout" />
+              <IndexRoute component={Signup} />
+            </Route>
             
             <Route component={NotFound} path="not-found"  />
             <Route component={Press} path="press"  />
             <Route component={Terms} path="terms"  />
             
+            //Destination 
             <Route component={DestinationWrapper} path="destination" >
               <Route component={Destination} path=":id" >
                 <IndexRoute component={DestinationDetail}/>
@@ -51,7 +61,16 @@ export default (
               <Route component={DestinationSearchResults} path="search/:q"  />
               <IndexRoute component={PopularDestinations}/>
             </Route>
+            
+            // Trip 
+            <Route component={TripWrapper} path="trip" >
+              <Route component={Trip} path=":id" >
+                <IndexRoute component={TripDetail}/>
+              </Route>
+              <IndexRoute component={PopularTrips}/>
+            </Route>
 
+            //Trippian 
             <Route component={Trippian} path="trippian/:id" >
               <Route component={Contact} path="contact"  />
               <IndexRoute component={TrippianDetail}/>
@@ -65,6 +84,7 @@ export default (
               <Route component={TrippianEdit} path="trippian-edit"  />
               <Route component={MyProfile} path="my-profile"  />
               <Route component={MyInquiries} path="my-inquiries"  />
+              <Route component={MyPostedTrips} path="my-posted-trips"  />
               // create trip, vote, favs, saves 
               <Route component={MyTripBox} path="my-trip-box"  />  
               <IndexRoute component={MyProfile}/>

@@ -9,6 +9,7 @@ from '../index'
 
 const styles = {
   backgroundImage: {
+    // https://s3-us-west-1.amazonaws.com/trippian/test2.gif change this when ready for deploying
     backgroundImage: 'url(http://lorempixel.com/800/400/city/)'
   }
 }

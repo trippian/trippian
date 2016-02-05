@@ -45,9 +45,6 @@ export const fetchDeleteDestinationById = (id) => {
 }
 
 
-
-
-
 //INQUIRY
 
 export const fetchGetInquiries = () => {
@@ -93,8 +90,9 @@ export const fetchGetTrips = () => {
   return api.get(url)
 }
 
-export const fetchGetTripById = (id) => {
-  const url = `${API_HOST}${routeConfig.trip}/${id}`
+export const fetchGetTripById = (id, includeUserInfo) => {
+  const query = includeUserInfo ? '?includeUserInfo=true' : ''
+  const url = `${API_HOST}${routeConfig.trip}/${id}${query}`
   console.log('fetchGetTripById', url, id)
   return api.get(url, id)
 }
@@ -115,6 +113,15 @@ export const fetchPostTrip = (data) => {
   const url = `${API_HOST}${routeConfig.trip}/${data.userId}`
   console.log('fetchPostTrip', url, data)
   return api.post(url, data)
+}
+
+//save trip 
+export const fetchUpdateSave = ({
+  userId, tripId, saveState
+}) => {
+  const url = `${API_HOST}${routeConfig.saveTrip}/${userId}?tripId=${tripId}`
+  console.log('inside fetchUpdateSave', url, tripId, saveState)
+  return api.post(url)
 }
 
 // Trippian
@@ -146,8 +153,8 @@ export const fetchPostTrippian = (data) => {
 
 //Rating & Review 
 export const fetchPostReview = (data) => {
-  const url = `${API_HOST}${routeConfig.review}/${data.trippianId}?rater=${data.userId}`
-  console.log('fetchPostTrippian', url, data)
+  const url = `${API_HOST}${routeConfig.review}/${data.trippianId}?rater=${data.id}`
+  console.log('fetchPostReview', url, data)
   return api.post(url, data)
 }
 
@@ -195,9 +202,21 @@ export const fetchDeleteUserById = (id) => {
 
 //TODO
 export const fetchUpdateUserById = (id) => {
-  const url = `${API_HOST}${routeConfig.user}/${id}`
-  console.log('fetchUpdateUserById', url, id)
-  return api.put(url, id)
+    const url = `${API_HOST}${routeConfig.user}/${id}`
+    console.log('fetchUpdateUserById', url, id)
+    return api.put(url, id)
+  }
+  //LOGIN/SIGNUP
+export const fetchPostLogin = (data) => {
+  const url = `${Server_HOST}/auth/login`
+  console.log('fetchPostLogin', url, data)
+  return api.post(url, data)
+}
+
+export const fetchPostSignup = (data) => {
+  const url = `${Server_HOST}/auth/signup`
+  console.log('fetchPostSignup', url, data)
+  return api.post(url, data)
 }
 
 export const fetchLogin = (type = 'facebook') => {
@@ -214,7 +233,6 @@ export const fetchLogout = () => {
   console.log('fetchLogout', url)
   return api.get(url)
 }
-
 
 // Dashboard 
 export const fetchGetDashboardById = (id) => {

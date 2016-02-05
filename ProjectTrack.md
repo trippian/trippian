@@ -3,6 +3,8 @@ We created this file to track the whole project, including important info, notic
 
 After our daily meeting, we'll move the tasks under meeting memo to Github issues so that we can better track our progress.
 
+### Group Check-in 
+
 
 ### Server & Client Feature Track 
 - Server 
@@ -38,22 +40,44 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
   - [X] ReviewList 
   - [X] Add Review Form 
   - [X] PopularTrippiansList
+  - [X] Dashboard: Saved/Voted Trip 
+  - [ ] Signup Form 
+  - [ ] Signin Form 
+  - [ ] Add Trip Detail Page 
+  - [ ] Add Map Display 
+  - [ ] OperationMenuWidget (hold edit, delete... buttons) - Audrey 
+  - [ ] Form Edit - Audrey 
+  - [ ] MyProfile Display (beautify view) - Joe
+  - [ ] MyInquiries Display (beautify view)
+  - [ ] Intl Messages
+  - [ ] Optimize HomePage background (video/gif) loading
+  - [ ] Data Faker 
+  
   - [ ] Add user link to trips
   - [ ] Enhance AlertComponent with reset 
   
   - Fixes 
     - [X] Add destination name to home page popular destinations  
     - [X] Review display after submit 
-    - [ ] Add trip to review
+    - [ ] Add isAdmin to user 
+    - [ ] NestedObject not updating (dashboard -> PostedTrips)
+    - [ ] SearchBoxWidget and History (state change is not smooth)
+    - [ ] Add trip link to review
+
+  - Perf 
+    - [ ] Unify Alert display
+    - [ ] Improve state transition, animation ??
+  
   - Refactor 
     - [ ] Handle error / alert 
-    - [ ] 
     - [ ] Action Creator 
     - [ ] Reducer (todo later)
+
   - Data 
     - [ ] Add real destination photo 
   
   - [X] Create Trip
+  - [X] Add trip detail page 
   - [ ] Add popular Trippians to destination ????? 
   - [ ] LoadingWidget 
   - [ ] React Animation ???? 

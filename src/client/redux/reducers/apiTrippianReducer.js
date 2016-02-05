@@ -1,5 +1,5 @@
 import {
-  FETCH_REMOTE_RESOURCE_FAIL,
+  FETCH_REMOTE_RESOURCE_FAIL, REMOVE_INQUIRY, REMOVE_TRIP, ADD_TRIP,
   SET_DESTINATIONS, SET_TRIPPIANS, GET_DESTINATIONS_FAIL, GET_DESTINATION_BY_ID, GET_TRIPPIAN_BY_ID, GET_DESTINATIONS, GET_TRIPPIANS,
   ADD_DESTINATION, ADD_ADMIN_DESTINATION, REMOVE_DESTINATION,
   SET_TRIPPIAN, SET_DESTINATION, ADD_REVIEW, SET_INQUIRY, SET_TRIP, UPDATE_VOTE, SET_DASHBOARD
@@ -9,13 +9,12 @@ import {
   setDestinations, addDestination, addAdminDestination, setDestination,
   setTrippians, addTrippian, addAdminTrippian,
   setUsers, addUser, addAdminUser,
-  setInquirys, addInquiry, addAdminInquiry,
+  setInquirys, addInquiry, addAdminInquiry, removeInquiry,
   setTrips, addTrip, addAdminTrip, setTrip,
-  setUser, setTrippian, setInquiry,
+  setUser, setTrippian, setInquiry, removeTrip, updateToggleVote,
   addReview, updateVote, setFormSubmitted, setFormSubmitting, setDashboard
 }
 from '../actionCreators'
-
 
 import {
   apologize, alertSuccess, alertInfo, attachInfoToData, resetState
@@ -34,9 +33,8 @@ import {
   fetchGetTrippians, fetchDeleteTrippianById, fetchGetTrippianById, fetchPostTrippian,
   fetchGetUsers, fetchDeleteUserById, fetchGetUserById, fetchPostUser,
   fetchGetInquiries, fetchDeleteInquiryById, fetchGetInquiryByReceiverId, fetchPostInquiry,
-  fetchGetTrips, fetchDeleteTripById, fetchGetTripById, fetchPostTrip,
-  fetchPostReview, fetchUpdateVote, fetchLogin, fetchLogout, fetchGetDashboardById
-
+  fetchGetTrips, fetchDeleteTripById, fetchGetTripById, fetchPostTrip, fetchUpdateSave,
+  fetchPostReview, fetchUpdateVote, fetchLogin, fetchLogout, fetchGetDashboardById, fetchPostLogin, fetchPostSignup
 }
 from '../../utils/apiTrippian'
 import store from '../store'
@@ -49,6 +47,7 @@ const initialState = new Map({
   trippians: [],
   destinations: [],
   newDestinations: [],
+  newTrips: [], // since many places may need to update trips, better to keep it in a separate place. If needed, view can merge this data into exisiting data
   loaded: false,
   error: '',
   destination: initialStateData.destination,
@@ -61,6 +60,7 @@ const initialState = new Map({
 export default function apiTrippianReducer(state = initialState, action) {
   console.log('dispatching', action.type, action.payload)
   switch (action.type) {
+    // setting 
     case SET_DESTINATIONS:
       return state.merge(new Map({
         destinations: action.payload.destinations
@@ -69,26 +69,6 @@ export default function apiTrippianReducer(state = initialState, action) {
       return state.merge(new Map({
         trippians: action.payload.trippians
       }))
-    case GET_DESTINATIONS_FAIL:
-      return state.merge(new Map({
-        loaded: false,
-        loading: false,
-        error: action.payload.errorMessage
-      }))
-    case ADD_DESTINATION:
-      const newDestinations = state.get('newDestinations')
-      newDestinations.push(action.payload.destination)
-      return state.merge(new Map({
-        newDestinations: newDestinations
-      }))
-    case REMOVE_DESTINATION:
-      const id = action.payload.id
-      let destinations = state.get('destinations')
-      destinations = destinations.filter(x => x.id !== id)
-      return state.merge(new Map({
-        destinations
-      }))
-
     case SET_TRIPPIAN:
       return state.merge(new Map({
         trippian: action.payload.trippian
@@ -97,25 +77,51 @@ export default function apiTrippianReducer(state = initialState, action) {
       return state.merge(new Map({
         destination: action.payload.destination
       }))
-
     case SET_TRIP:
+      console.log('***inside reducer, SET_TRIP', action.payload.trip)
       return state.merge(new Map({
         trip: action.payload.trip
       }))
     case SET_DASHBOARD:
       return state.set('dashboard', action.payload.dashboard)
 
-    case ADD_REVIEW:
-      const trippianR = state.get('trippian')
-      trippianR.reviews.push(action.payload.review)
-      return state.merge(new Map({
-        trippian: trippianR
-      }))
     case SET_INQUIRY:
       return state.merge(new Map({
         inquiry: action.payload.inquiry
       }))
 
+      // add
+    case ADD_DESTINATION:
+      const newDestinations = state.get('newDestinations')
+      newDestinations.push(action.payload.destination)
+      return state.merge(new Map({
+        newDestinations: newDestinations
+      }))
+    case ADD_REVIEW:
+      const trippianR = state.get('trippian')
+      const reviews = trippianR.reviews || []
+      reviews.push(action.payload.review)
+      trippianR.reviews = reviews
+      return state.merge(new Map({
+        trippian: trippianR
+      }))
+    case ADD_TRIP:
+      const newTrips = state.get('newTrips')
+      newTrips.push(action.payload.destination)
+      return state.merge(new Map({
+        newTrips: newTrips
+      }))
+
+      // remove 
+    case REMOVE_DESTINATION:
+      const id = action.payload.id
+      let destinations = state.get('destinations')
+      destinations = destinations.filter(x => x.id !== id)
+      return state.merge(new Map({
+        destinations
+      }))
+
+      // misc.
     case UPDATE_VOTE:
       let destP = state.get('destination')
         // let popTrips = destP.popularTrips 
@@ -129,13 +135,43 @@ export default function apiTrippianReducer(state = initialState, action) {
         destination: destP
       }))
 
+      //delete
+    case REMOVE_INQUIRY:
+      let oldDashboard = state.get('dashboard')
+      let oldInquiries1 = oldDashboard.inquiries
+      oldInquiries1 = oldInquiries1.filter(x => x.id !== action.payload.id)
+        // TODO (fix): since inquiry is a nested object, the data change will not trigger a view render. Try to user other update or different storage for dashboard object
+      oldDashboard.inquiries = oldInquiries1
+      return state.merge(new Map({
+          dashboard: oldDashboard
+        }))
+        // doesn't work: state.updateIn(['dashboard', 'inquiries'], val => val.filter(x => x.id !== action.payload.id))
+
+      // TODO: same as above 
+    case REMOVE_TRIP:
+      let oldDashboard2 = state.get('dashboard')
+      let oldPostedTrips = oldDashboard2.postedTrips
+      oldPostedTrips = oldPostedTrips.filter(x => x.id !== action.payload.id)
+
+      oldDashboard2.postedTrips = oldPostedTrips
+      return state.merge(new Map({
+        dashboard: oldDashboard2
+      }))
+
+      //TODO: add more and move this to appState
+    case GET_DESTINATIONS_FAIL:
+      return state.merge(new Map({
+        loaded: false,
+        loading: false,
+        error: action.payload.errorMessage
+      }))
     default:
       return state
   }
 }
 
 
-
+// get lists
 export function getPopularDestinations() {
   return (dispatch) => {
     return fetchGetDestinationsByCategory('popular')
@@ -193,10 +229,10 @@ export function getDestinationByName(name) {
   }
 }
 
-export function getTripById(id) {
+export function getTripById(id, includeUserInfo = false) {
   console.log('-- getting a Trip now in reducer', id)
   return (dispatch) => {
-    return fetchGetTripById(id)
+    return fetchGetTripById(id, includeUserInfo)
       .then((trip) => {
         console.log('--got it', trip)
           // TODO: update once server is updated 
@@ -266,24 +302,25 @@ export function postDestination(data) {
 }
 
 export function postTrip(data) {
-
   store.dispatch(setFormSubmitting())
     //TODO, update userId to global 
   attachInfoToData(data, {
     searchAsDestination: true,
     album: true,
     feature: true,
-    userId: true
-  })
+    userId: true,
+    displayName: true,
+    username: true
 
+  })
   console.log('-- posting a trip now in reducer', data)
   alertInfo('Submitting the trip information now...')
   return (dispatch) => {
     return fetchPostTrip(data)
       .then(trip => {
         console.log('---posted', trip)
-        dispatch(setTrip(trip))
         dispatch(setFormSubmitted(true))
+        dispatch(addTrip(trip))
         dispatch(addAdminTrip(trip))
         alertSuccess('Succeed', `${trip.id}: ${trip.title}`)
       })
@@ -291,10 +328,10 @@ export function postTrip(data) {
       .catch(error => apologize(error))
   }
 }
+
 export function postUser(data) {
   store.dispatch(setFormSubmitting())
-
-  //TODO, update userId to global 
+    //TODO, update userId to global 
   data.senderId = 32
   data.trippianId = 31
   console.log('-- posting a user now in reducer', data)
@@ -308,6 +345,7 @@ export function postUser(data) {
       .catch(error => apologize(error))
   }
 }
+
 export function postTrippian(data) {
   store.dispatch(setFormSubmitting())
   alertInfo('Submitting now...')
@@ -323,8 +361,6 @@ export function postTrippian(data) {
       .catch(error => apologize(error))
   }
 }
-
-
 
 export function postInquiry(data) {
   store.dispatch(setFormSubmitting())
@@ -347,13 +383,10 @@ export function postInquiry(data) {
 export function postReview(data) {
   store.dispatch(setFormSubmitting())
   alertInfo('Submitting review now...')
-  const user = store.getState().appState.get('user')
-  data.userId = user.id
-  data.username = user.username
-  data.userAvatar = user.picture
-  data.facebookId = user.facebookId
-  data.createdAt = new Date()
-  data.trippian = user.trippian
+  attachInfoToData(data, {
+    user: true,
+    createdAt: true
+  })
   console.log('-- posting a review now in reducer', data)
   return (dispatch) => {
     return fetchPostReview(data)
@@ -366,6 +399,35 @@ export function postReview(data) {
   }
 }
 
+
+
+// deleting
+export function deleteInquiryById(id) {
+  alertInfo('Deleting a Inquiry now..')
+  console.log('-- deleting a Inquiry now', id)
+  return (dispatch) => {
+    return fetchDeleteInquiryById(id)
+      .then(() => {
+        console.log('--deleted Inquiry', id)
+        dispatch(removeInquiry(id))
+        REMOVE_INQUIRY
+      })
+      .catch(error => dispatch(apologize(error)))
+  }
+}
+
+export function deleteTripById(id) {
+  console.log('-- deleting a trip now', id)
+  return (dispatch) => {
+    return fetchDeleteTripById(id)
+      .then(() => {
+        console.log('--deleted Trip', id)
+          // dispatch(removeTrip(id))
+        dispatch(removeTrip(id))
+      })
+      .catch(error => dispatch(apologize(error)))
+  }
+}
 
 //Put requests 
 // vote can be 1 or -1 
@@ -386,6 +448,21 @@ export function voteTrip(vote = 1, tripId) {
   }
 }
 
+export function toggleSaveTrip(saveState, tripId) {
+  const userId = store.getState().appState.get('user').id
+  console.log('***inside toggleSaveTrip', saveState, tripId, userId)
+  return (dispatch) => {
+    return fetchUpdateSave({
+        userId, tripId, saveState
+      })
+      .then(trip => {
+        console.log('vote on this:', trip)
+        dispatch(updateToggleVote(saveState, tripId))
+      })
+      .catch(error => apologize(error))
+  }
+}
+
 // Login related 
 export function login(type = 'facebook') {
   alertInfo('Login with facebook now...')
@@ -399,6 +476,25 @@ export function login(type = 'facebook') {
         alertSuccess('Successfully logged in', window.document.cookie)
       })
       .catch(error => apologize(error))
+  }
+}
+
+export function localLogin(data) {
+  return (dispatch) => {
+    return fetchPostLogin(data)
+      .then(() => {
+        alertSuccess('Successfully logged in', window.document.cookie)
+      })
+      .catch(error => apologize(error))
+  }
+}
+
+export function localSignup(data) {
+  return (dispatch) => {
+    return fetchPostSignup(data)
+      .then(() => {
+        alertSuccess('Successfully signed up', window.document.cookie)
+      })
   }
 }
 

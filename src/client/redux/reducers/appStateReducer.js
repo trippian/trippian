@@ -37,7 +37,9 @@ export default function appStateReducer(state = initialState, action) {
     case SET_LOCALE_MESSAGES:
       return state.set('messages', action.payload.messages)
     case SET_ALERT:
-      return state.set('alert', action.payload.alert)
+      if (action.payload.alert && typeof (action.payload.alert.title) === 'string') {
+        return state.set('alert', action.payload.alert)
+      }
     case SET_FILES:
       return state.set('files', action.payload.files)
     case SET_USER:

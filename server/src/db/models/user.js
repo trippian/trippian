@@ -202,7 +202,7 @@ export default {
       // denominator inside the exp function is 10, but if we 
       // want to give more weight to quantity of votes, then
       // we should increase that value
-      let cypher = `match (u:User) where u.trippian=true return u order by  ((u.averageRating/2) + 5*(1 - exp(-(u.totalRating/10)))) DESC LIMIT 10`
+      let cypher = `match (u:User) where u.isTrippian=true return u order by  ((u.averageRating/2) + 5*(1 - exp(-(u.totalRating/10)))) DESC LIMIT 9`
       db.queryAsync(cypher)
         .then(trippians => {
           if (trippians.length) {
@@ -253,7 +253,8 @@ export default {
   },
   userSaveTrip: (userId, tripId) => {
     return new Promise((resolve, reject) => {
-      db.relationshipsAsync(userId, 'out', 'SAVED')
+      let cypher = `match (u:User)-[s:SAVED]->(t:Trip) where id(u)=${userId} and id(t)=${tripId} return s;`
+      db.queryAsync(cypher)
         .then(saved => {
           if (!saved.length) {
             db.relateAsync(userId, 'SAVED', tripId, {
@@ -291,16 +292,28 @@ export default {
         })
     })
   },
-  getUserVotedTrips: (userId) => {
+  getUserDownvotedTrips: (userId) => {
     return new Promise((resolve, reject) => {
-      let cypher = `match (t:Trip), (t)<-[u:UPVOTE]-(n:User),(t)<-[d:DOWNVOTE]-(n:User) where id(n)=${userId} return u,d;`
+      let cypher = `match (t:Trip), (t)<-[d:DOWNVOTE]-(n:User) where id(n)=${userId} return t;`
       db.queryAsync(cypher)
-        .then(voted => {
-          resolve(voted)
+        .then(downvoted => {
+          resolve(downvoted)
         })
         .catch(error => {
           console.error(error)
         })
+    })
+  },
+  getUserUpvotedTrips: (userId) => {
+  return new Promise((resolve, reject) => {
+    let cypher = `match (t:Trip), (t)<-[u:UPVOTE]-(n:User) where id(n)=${userId} return t;`
+    db.queryAsync(cypher)
+      .then(upvoted => {
+        resolve(upvoted)
+      })
+      .catch(error => {
+        console.error(error)
+      })
     })
   }
 }

@@ -4,29 +4,42 @@ import {
 }
 from 'react-router'
 import {
-  CircleImageWidget, ContactButtonWidget, StarRatingWidget, RelativeTimeWidget
+  CircleImageWidget, ContactButtonWidget, StarRatingWidget, RelativeTimeWidget, UserLinkWidget
 }
 from '../index'
 
 const ReviewListItemWidget = ({
-  createdAt, username, facebookId, userAvatar, userId, rating, title, content, trippian
+  review
 }) => {
+  const {
+    createdAt, username, displayName, facebookId, googleId, picture, id, website, rating, title, content = '', trippian
+  } = review.properties
+  const userLinkData = {
+    id,
+    facebookId,
+    googleId,
+    username,
+    displayName,
+    picture,
+    website,
+    showFacebookLink: true,
+      showGoogleLink: true,
+      showTrippianLink: true,
+      showWebSiteLink: true,
+      showMobile: true
+  }
   return (
     <div className="review-list-item clearfix">
         <div className="col-xs-12 col-sm-2 col-md-2">
-            <CircleImageWidget imgSrc={userAvatar} />
+            <CircleImageWidget imgSrc={picture} />
         </div>
         <div className="col-xs-12 col-sm-10 col-md-10 text-expandable">
             <h4>{title}</h4>
             <div className="meta"> 
-             <a href="#" title="">{username}</a>
-             <i>
-              <RelativeTimeWidget date={new Date('2016-01-30T04:13:28.003')} intl='en-US' />
-              </i>
-              <StarRatingWidget stars={rating}/>  
-            </div>
-            
-            
+              <StarRatingWidget stars={rating}/> 
+              <UserLinkWidget {...userLinkData} />
+              <RelativeTimeWidget date={new Date(createdAt)} intl='en-US' />
+            </div>      
             {content}                                  
         </div>            
     </div>

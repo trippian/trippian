@@ -84,6 +84,7 @@ class Home extends Component {
   }
 
   componentDidMount() {
+
     // ask redux store to get remote data, if needed, can do something after then 
     store.dispatch(getPopularDestinations())
     store.dispatch(getPopularTrippians())

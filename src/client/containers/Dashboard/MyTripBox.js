@@ -4,101 +4,114 @@ import React, {
 from 'react'
 
 import {
-  JumbotronTrippianWidget, InquiryListWidget, ReviewListWidget, TextIntroPlainWidget, TextIntroRichWidget, TripPostFormWidget, DummyRichTextWidget
+  TripListWidget, TripPostFormWidget
 }
 from '../../components/index'
+
 import {
-  Alert
+  connect
 }
-from 'react-bootstrap'
-import {
-  postTrip
+from 'react-redux'
+  // import store from '../../redux/store'
+  // import {
+  //   postTrip
+  // }
+  // from '../../redux/apiIndex'
+
+function mapStateToProps(state) {
+  return {
+    // get the data directly from store as we already fetched in the Dashboard container
+    dashboard: state.apiTrippian.get('dashboard')
+  }
 }
-from '../../redux/apiIndex'
-import store from '../../redux/store'
+
+@
+connect(mapStateToProps)
 export default class MyTripBox extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      isShowTripForm: true,
-      alert: {
-        type: 'success',
-        title: 'Operation Performed',
-        message: 'Some action has performed....'
-      }
+      showUpVotedTrips: false,
+      showDownVotedTrips: false,
+      showSavedTrips: true
     }
   }
-  handleAlertDismiss() {
-    this.setAlert()
-  }
-  setAlert(type = 'success', title = '', message = '') {
-    this.setState({
-      alert: {
-        type: type,
-        title: title,
-        message: message
-      }
-    })
-  }
 
-  handleSubmit(data) {
-    console.log('--- submitting the inquiry now', data)
-    store.dispatch(postTrip(data))
-    this.setAlert('success', 'Successfully deleted trip. Id:', id)
+  toggleState({
+    showUpVotedTrips = false, showDownVotedTrips = false, showSavedTrips = false
+  }) {
+    console.log('set the state', this.state)
+
+    if (showUpVotedTrips) {
+      this.setState({
+        showUpVotedTrips: true,
+        showDownVotedTrips: false,
+        showSavedTrips: false
+      })
+    }
+    if (showDownVotedTrips) {
+      this.setState({
+        showUpVotedTrips: false,
+        showDownVotedTrips: true,
+        showSavedTrips: false
+      })
+    }
+    if (showSavedTrips) {
+      this.setState({
+        showUpVotedTrips: false,
+        showDownVotedTrips: false,
+        showSavedTrips: true
+      })
+    }
+    console.log('set the state', this.state)
   }
   render() {
     const {
-      type, title, message
-    } = this.state.alert
+      savedTrips, upVotedTrips, downVotedTrips
+    } = this.props.dashboard
+
+    console.log('inside MyTripBox render')
     return (
-      <div className="my-profile-page">
-          <div className="col-sm-12 col-md-8 col-md-offset-2 content-container">
-              {title !== '' && 
-                <Alert bsStyle={type} dismissAfter={3000} onDismiss={this.handleAlertDismiss.bind(this)}>
-                  <h4>{title}</h4>
-                  <p>{message}</p>
-                </Alert>
-              }
-
-              <button type="button" onClick={()=> this.setState({isShowTripForm: !this.state.isShowTripForm})} className="btn btn-primary btn-lg pull-right">Create a Trip</button>
-              {
-                this.state.isShowTripForm && <TripPostFormWidget onSubmit={this.handleSubmit.bind(this)} />
-              }
-              <div className="section inquiries">
-                  <div className="section-header">
-                      <h3>My Inquiries</h3>
-                  </div>
-                  <div className="section-body">
-                    <InquiryListWidget />
-                  </div>
-              </div>
-
-              <div className="section">
-                  <div className="section-header">
-                      <h3>Bio</h3>
-                      <TextIntroPlainWidget />
-                  </div>
-              </div>
-              <div className="section">
-                  <div className="section-header">
-                      <h3>My Trips</h3>
-                  </div>
-                  <div className="section-body">
-                    <DummyRichTextWidget />
-                  </div>
-              </div>
-              <div className="section review">
-                  <div className="section-header">
-                      <h3>Reviews</h3>
-                  </div>
-                  <ReviewListWidget />
-              </div>
+      <div className="my-posted-trips-page">
+        <div className='menu-row text-right'>
+          <button onClick={this.toggleState.bind(this, {showUpVotedTrips: true})} className="btn btn-primary">
+           <i className="fa fa-thumbs-up"></i> {this.state.showUpVotedTrips ? 'Hide UpVoted' : 'UpVoted'}
+          </button>
+          <button onClick={this.toggleState.bind(this, {showDownVotedTrips: true})} className="btn btn-primary">
+            <i className="fa fa-thumbs-down"></i>{this.state.showDownVotedTrips ? 'Hide DownVoted' : 'DownVoted'}
+          </button>
+          <button onClick={this.toggleState.bind(this, {showSavedTrips: true})} className="btn btn-primary">
+            <i className="fa fa-inbox"></i>{this.state.showSavedTrips ? 'Hide Saved' : 'Saved'}
+          </button> 
+        </div>
+       
+        {this.state.showSavedTrips && 
+          <div>
+            <h2>A list of saved trips</h2>
+            <TripListWidget dataList={savedTrips} emptyMessage="You haven't saved any trip yet" /> 
           </div>
-      </div>
+        }
+        {this.state.showUpVotedTrips && 
+          <div>
+            <h2>A list of upVotedTrips</h2>
+            <TripListWidget dataList={upVotedTrips}  emptyMessage="There is no up voted trip yet" /> 
+          </div>
+        }
+        {this.state.showDownVotedTrips && 
+          <div>
+            <h2>A list of downVotedTrips </h2>
+            <TripListWidget dataList={downVotedTrips} emptyMessage="There is no down voted trip yet" /> 
+          </div>
+        }
+       
+      </div >
 
     )
   }
 }
+
+
+
 MyTripBox.propTypes = {
   name: PropTypes.string
 }

@@ -1,23 +1,23 @@
 import React from 'react'
 
 import {
-  InquiryListItemWidget
+  InquiryListItemWidget, NoContentWidget
 }
 from '../index'
 
+
 const InquiryListWidget = ({
-  name = 'InquiryListWidget', dataList = []
+  name = 'InquiryListWidget', dataList = [], emptyMessage = 'There is no inquiry'
 }) => {
   return (
     <div className="section-body inquiry-list">
-        <ul className="list-group">
-
-          <InquiryListItemWidget />
-          <InquiryListItemWidget isExpanded />
-          <InquiryListItemWidget />
-          <InquiryListItemWidget />
-          <InquiryListItemWidget />
-        </ul>
+      {dataList.length === 0 && 
+        <NoContentWidget message={emptyMessage} />
+      }
+      { dataList.map((inquiry, key) => (
+               <InquiryListItemWidget key={key} {...inquiry} />
+            ))
+      }
     </div>
   )
 }

@@ -1,15 +1,18 @@
 import React from 'react'
 import {
-  DestinationListItemWidget
+  DestinationListItemWidget, NoContentWidget
 }
 from '../index'
 
 const DestinationListWidget = ({
-  dataList = []
+  dataList = [], emptyMessage = 'There is no destination'
 }) => {
   console.log('inside Destination list', dataList, dataList.length)
   return (
     <div className="popular-destinations section-body clearfix">
+    {dataList.length === 0 && 
+      <NoContentWidget message={emptyMessage} />
+    }
     { 
        dataList.map((destination, key) => (
          <DestinationListItemWidget key={key} {...destination} />

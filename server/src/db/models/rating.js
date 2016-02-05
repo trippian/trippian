@@ -20,7 +20,7 @@ export default {
                   db.queryAsync(cypher)
                     .then(updatedUser => {
                       if (updatedUser.length) {
-                        resolve(rating)
+                        resolve(rating[0])
                       } else {
                         reject(new Error('User could not be updated'))
                       }
@@ -50,12 +50,7 @@ export default {
       let cypher = `match (u:User)<-[r:RATED]-() where id(u)=${userId} return r;`
       db.queryAsync(cypher)
         .then((ratings) => {
-          if (ratings.length) {
-            resolve(ratings[0])
-          } else {
-            // reject(new Error('User has no ratings'))
-            resolve(ratings)
-          }
+          resolve(ratings)
         })
     })
   },
