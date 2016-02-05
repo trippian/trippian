@@ -106,7 +106,7 @@ export default {
   },
   getPopularDestinations: () => {
     return new Promise((resolve, reject) => {
-      let cypher = `match (d:Destination)<-[r:LOCATED_IN]-(t:Trip) return d, count(r) order by count(r) DESC`
+      let cypher = `match (d:Destination)<-[r:LOCATED_IN]-(t:Trip) return d, count(r) order by count(r) DESC LIMIT 9`
 
       db.queryAsync(cypher)
         .then((popularDestinations) => {
