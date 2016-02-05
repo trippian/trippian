@@ -41,7 +41,7 @@ export function setAppStateUser(isLogin = true) {
     user.isAuthed = true
 
     //TODO: remove below later when we have real data 
-    user.isAmdin = true
+    user.isAdmin = true
     user.trippian = true
     user.isTrippian = true
     user.bio = 'I am an avid traveller'

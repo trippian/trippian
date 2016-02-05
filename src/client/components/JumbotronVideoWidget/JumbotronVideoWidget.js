@@ -1,12 +1,16 @@
 import React from 'react'
 import ReactDriveIn from 'react-drive-in'
+import {
+  assetsURL as appConfig
+}
+from '../../config/appConfig'
 
 
 const JumbotronVideoWidget = () => {
   return (
     <div className="jumbotron jumbotron-video">
         <div>
-          <ReactDriveIn className="react-drive-in-video" show="http://raw.githubusercontent.com/ronik-design/react-drive-in/master/example/glacier.mp4" poster="http://raw.githubusercontent.com/ronik-design/react-drive-in/master/example/glacier.jpg"/>
+          <ReactDriveIn className="react-drive-in-video" show={appConfig.landingVideo} poster={appConfig.poster}/>
         </div>
         <h2>Hello</h2>
     </div>

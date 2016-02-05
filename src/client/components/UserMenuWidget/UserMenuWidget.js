@@ -11,7 +11,7 @@ from 'react-intl'
 
 const UserMenuWidget = () => {
   const {
-    displayName, isAdmin = true, picture = '', isAuthed
+    displayName, isAdmin = true, picture = '', isAuthed = true
   } = store.getState().appState.get('user')
 
   return (
