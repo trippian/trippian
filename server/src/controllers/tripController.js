@@ -1,5 +1,5 @@
 import Trip from '../db/models/trip'
-import { getUserById } from '../db/models/user'
+import User from '../db/models/user'
 
 export default {
   tripPost: (req, res, next) => {
@@ -23,7 +23,7 @@ export default {
         .then((trip) => {
           console.log(trip)
           if (req.query.includeUserInfo) {
-            getUserById(trip.userId)
+            User.getUserById(trip.userId)
               .then(user => {
                 trip.user = user
                 res.json(trip)
