@@ -3,7 +3,7 @@ import React, {
 }
 from 'react'
 import {
-  JumbotronTrippianWidget
+  JumbotronTripWidget
 }
 from '../../components/index'
 import store from '../../redux/store'
@@ -36,14 +36,17 @@ export default class Trip extends Component {
   componentDidMount() {
     const id = this.props.params.id
     console.log('will get trip by id', id)
-    store.dispatch(getTripById(id))
+    store.dispatch(getTripById(id, true))
   }
 
   render() {
-    console.log('..inside trip render', this.props.trip)
+    console.log('..inside trip render', this.props.trip, this.props.trip.user)
+    const {
+      title, user, feature
+    } = this.props.trip
     return (
       <div id="destination-page">
-        <JumbotronTrippianWidget isMetad backgroundFeature={this.props.trip.feature} {...this.props.trip.user} />
+        <JumbotronTripWidget metaTitle={title} user={user} backgroundFeature={feature} />
         <div className="container main-content-container">
           <div className="col-sm-12 col-md-8 col-md-offset-2 content-container">
               {this.props.children}

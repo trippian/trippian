@@ -91,7 +91,7 @@ export const fetchGetTrips = () => {
 }
 
 export const fetchGetTripById = (id, includeUserInfo) => {
-  const query = includeUserInfo ? 'includeUserInfo=true' : ''
+  const query = includeUserInfo ? '?includeUserInfo=true' : ''
   const url = `${API_HOST}${routeConfig.trip}/${id}${query}`
   console.log('fetchGetTripById', url, id)
   return api.get(url, id)

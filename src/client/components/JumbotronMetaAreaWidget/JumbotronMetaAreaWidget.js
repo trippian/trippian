@@ -7,27 +7,42 @@ import {
   ContactButtonWidget, StarRatingWidget
 }
 from '../index'
-
-
+import {
+  photos as appConfig
+}
+from '../../config/appConfig'
+import {
+  UserLinkWidget
+}
+from '../index'
+  // use for trip page, pass below: isTripPage = true, title(trip's title)
+  //for user and trip 
 const JumbotronMetaAreaWidget = ({
-  isNoContact, title, titleLink, picture, rating, subTitle, contact
+  isTripPage = false, isContact = true, title = '', user
 }) => {
+  console.log('inside JumbotronMetaAreaWidget', user)
+  const {
+    trippian, name, email, id, facebookId, googleId, picture = appConfig.defaultAvatar,
+      location, mobile, slogan, website = '', averageRating
+  } = user
   return (
     <div className="full-length-container">
         <div className="container">
             <div className="col-sm-12 col-md-8 col-md-offset-2">
                 <div className="circle-image avatar">
-                    <Link to={titleLink}> <img src={picture} alt="" /></Link>
+                    <Link to={`trippian/${id}`}> <img src={picture} alt="" /></Link>
                 </div>
                 <div className="meta-info">
                     <div className="left">
-                        <h2><Link to={titleLink}> {title} </Link></h2>
-                        <StarRatingWidget stars={rating} />
+                        {isTripPage && <h3>{title}</h3>}
+                        {!isTripPage && <h3>{name}</h3>}
+                        <StarRatingWidget stars={averageRating} />
+                        <UserLinkWidget {...user}/>
                         <span className="text-intro">
-                            {subTitle}
+                            {slogan}
                         </span>
                     </div>
-                    {isNoContact ?  null : (<div className="right"><ContactButtonWidget to={contact} /></div>) }
+                    {isContact && <div className="right"><ContactButtonWidget to={`trippian/${id}/contact`} /></div> }
                 </div>
             </div>
         </div>

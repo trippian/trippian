@@ -18,8 +18,9 @@ isNoContact will show/hide contact button
 isMetad: will show/hide the meta area (full-length-container)
  */
 
-const JumbotronTrippianWidget = ({
-  isTitled = true, user, title = '', subTitle = '', metaTitle = '', isTripPage = true, backgroundFeature = appConfig.defaultTripFeature
+const JumbotronTripWidget = ({
+  isTitled = true, user, title = '', subTitle = '', metaTitle = '', backgroundFeature
+ = appConfig.defaultTripFeature
 }) => {
 
   const styles = {
@@ -27,7 +28,7 @@ const JumbotronTrippianWidget = ({
       backgroundImage: 'url(' + backgroundFeature + ')'
     }
   }
-  console.log('--inside JumbotronTrippianWidget', user, metaTitle)
+  console.log('--inside JumbotronTripWidget', user, metaTitle)
   return (
     <div className = "jumbotron jumbotron-trip-widget" style={styles.backgroundImage} > 
       {isTitled && <JumbotronTitleWidget title={title} subTitle={subTitle} />}
@@ -38,6 +39,6 @@ const JumbotronTrippianWidget = ({
 }
 
 
-JumbotronTrippianWidget.displayName = 'JumbotronTrippianWidget'
+JumbotronTripWidget.displayName = 'JumbotronTripWidget'
 
-export default JumbotronTrippianWidget
+export default JumbotronTripWidget

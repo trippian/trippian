@@ -44,6 +44,7 @@ export JumbotronInquiryWidget from './JumbotronInquiryWidget/JumbotronInquiryWid
 export JumbotronDestinationWidget from './JumbotronDestinationWidget/JumbotronDestinationWidget'
 export JumbotronDashboardWidget from './JumbotronDashboardWidget/JumbotronDashboardWidget'
 export JumbotronTrippianWidget from './JumbotronTrippianWidget/JumbotronTrippianWidget'
+export JumbotronTripWidget from './JumbotronTripWidget/JumbotronTripWidget'
 export JumbotronTitleWidget from './JumbotronTitleWidget/JumbotronTitleWidget'
 export JumbotronMetaAreaWidget from './JumbotronMetaAreaWidget/JumbotronMetaAreaWidget'
 export JumbotronPlainBgWidget from './JumbotronPlainBgWidget/JumbotronPlainBgWidget'
