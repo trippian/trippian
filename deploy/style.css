@@ -7964,6 +7964,12 @@ html input[disabled] {
   align-items: center;
   justify-content: center; }
 
+.menu-row {
+  width: 100%;
+  min-height: 20px; }
+  .menu-row button {
+    margin: 0 8px; }
+
 /*
 * Main styling
 * ========================================================================== */
@@ -8097,6 +8103,7 @@ footer {
 
 .signup-button-widget .google {
   background: #c23321; }
+
 
 .vote {
   text-align: center;
