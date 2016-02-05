@@ -3,17 +3,14 @@ import {
   Link
 }
 from 'react-router'
-
+import {
+  photos as appConfig
+}
+from '../../config/appConfig'
 import {
   JumbotronTitleWidget, ContactButtonWidget, StarRatingWidget, JumbotronMetaAreaWidget
 }
 from '../index'
-
-const styles = {
-  backgroundImage: {
-    backgroundImage: 'url(http://lorempixel.com/800/400/city/)'
-  }
-}
 
 /*
 isTitled will show/hide the title area 
@@ -23,22 +20,25 @@ isMetad: will show/hide the meta area (full-length-container)
 
 const JumbotronTrippianWidget = ({
   isTitled = false, title = 'Contact', subTitle = 'Lorem ipsum dolor sit amet, consectetur adipisicing.',
-    isMetad = false, isNoContact = false, name = 'name', picture = 'http://lorempixel.com/200/200/animals/', averageRating = '3', slogan = 'slogan', id = 0
+    isMetad = false, isNoContact = false, metaTitle = 'metaTitle', backgroundFeature = appConfig.defaultTripFeature, picture = appConfig.defaultAvatar,
+    averageRating = '3', slogan = 'slogan', id = 0
 }) => {
 
   const meta = {
     isNoContact: isNoContact,
-    title: name,
+    title: metaTitle,
     picture: picture,
     rating: averageRating,
     subTitle: slogan,
     titleLink: `trippian/${id}`,
     contact: `trippian/${id}/contact`
   }
-
-  return (
-
-    < div className = "jumbotron"
+  const styles = {
+    backgroundImage: {
+      backgroundImage: 'url(' + backgroundFeature + ')'
+    }
+  }
+  return ( < div className = "jumbotron"
     style = {
       styles.backgroundImage
     } > {

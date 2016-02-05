@@ -45,9 +45,6 @@ export const fetchDeleteDestinationById = (id) => {
 }
 
 
-
-
-
 //INQUIRY
 
 export const fetchGetInquiries = () => {
@@ -93,8 +90,9 @@ export const fetchGetTrips = () => {
   return api.get(url)
 }
 
-export const fetchGetTripById = (id) => {
-  const url = `${API_HOST}${routeConfig.trip}/${id}`
+export const fetchGetTripById = (id, includeUserInfo) => {
+  const query = includeUserInfo ? 'includeUserInfo=true' : ''
+  const url = `${API_HOST}${routeConfig.trip}/${id}${query}`
   console.log('fetchGetTripById', url, id)
   return api.get(url, id)
 }

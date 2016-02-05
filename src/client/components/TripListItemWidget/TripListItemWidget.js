@@ -34,9 +34,9 @@ export default class TripListItemWidget extends Component {
 
   handleSave(saveState) {
     console.log('*** handling save', saveState, this.props.id)
-    // const canSave = getCanSave(this.state.isSaved)
+      // const canSave = getCanSave(this.state.isSaved)
     console.log('before', this.setState.isSaved)
-    if(!this.state.isSaved) {
+    if (!this.state.isSaved) {
       store.dispatch(toggleSaveTrip(saveState, this.props.id))
       this.setState({
         isSaved: this.state.stateState
@@ -86,7 +86,9 @@ export default class TripListItemWidget extends Component {
     return (
       <div className="trip-list-item row">
           <div className="col-xs-6 col-sm-3 col-md-3 col-xs-offset-3 col-sm-offset-0">
-              <img className="feature-image" src={feature} alt="" />
+              <Link to={`trip/${id}`}>
+                <img className="feature-image" src={feature} alt="" />
+              </Link>
               <div className="operation">
                 <button onClick={this.handleDelete.bind(this)} title="Delete"> <i className="fa fa-close"></i></button> 
                 <button onClick={this.handleEdit.bind(this)}  title = "Edit" > <i className="fa fa-edit"></i> < /button> 
@@ -94,12 +96,14 @@ export default class TripListItemWidget extends Component {
           </div>
           <div className="col-xs-12 col-sm-7 col-md-7 col-lg-7">
               <div className="title-section">
-                  <h4>{title}</h4>
+                  <Link to={`trip/${id}`}>
+                    <h4>{title}</h4>
+                  </Link>
                   <div className="sub-title">
                       <i className="fa fa-map-marker"></i>
                       Mission street . By  
                         <Link to={`trippian/${id}`}>{' '+ displayName + ' '}</Link>
-                      
+                      {id}
                   </div>
                   <p>{summary}</p>
               </div>
