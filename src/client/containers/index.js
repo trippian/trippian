@@ -56,7 +56,6 @@ export NotFound from './NotFound/NotFound'
 export Signup from './Signup/Signup'
 export SignupSuccess from './SignupSuccess/SignupSuccess'
 export SignupWrapper from './SignupWrapper/SignupWrapper'
-export TeamCards from './About/TeamCards'
 export Terms from './Terms/Terms'
 
 export PopularTrips from './PopularTrips/PopularTrips'
