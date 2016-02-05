@@ -154,7 +154,7 @@ export default {
       db.queryAsync(cypher)
         .then((user) => {
           if (user) {
-            resolve(user)
+            resolve(user[0])
           }
         })
         .catch((error) => {
