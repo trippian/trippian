@@ -61,7 +61,6 @@ export Terms from './Terms/Terms'
 
 export PopularTrips from './PopularTrips/PopularTrips'
 export TripWrapper from './TripWrapper/TripWrapper'
-export Trip from './Trip/Trip'
 export TripDetail from './TripDetail/TripDetail'
 
 export Trippian from './Trippian/Trippian'
