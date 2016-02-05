@@ -27,6 +27,13 @@ export default {
     facebookAuth: `${HOST}/auth/facebook`,
     logout: `${HOST}/auth/logout`
   },
+  map: {
+    initialZoom: 6,
+    initalLat: 37.761260,
+    initalLng: -122.415903,
+    markerTitle: 'Trippian.com',
+    shouldLoadInitialMap: false
+  },
   photos: {
     defaultFeature: 'http://media-cdn.tripadvisor.com/media/photo-s/06/04/b0/fb/how-about-a-trip-to-paradise.jpg',
     defaultTripFeature: 'http://recwell.umd.edu/portals/0/Photos/MAP-trips.jpg',

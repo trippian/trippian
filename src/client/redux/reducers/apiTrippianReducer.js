@@ -367,6 +367,9 @@ export function postInquiry(data) {
   alertInfo('Submitting inquiry now...')
   data.senderId = store.getState().apiTrippian.get('currentUser').id
   data.trippianId = store.getState().apiTrippian.get('trippian').id
+  attachInfoToData(data, {
+    createdAt: true
+  })
   console.log('-- posting a inquiry now in reducer', data)
   return (dispatch) => {
     return fetchPostInquiry(data)

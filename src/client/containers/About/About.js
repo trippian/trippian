@@ -4,7 +4,7 @@ import React, {
 from 'react'
 
 import {
-  JumbotronWidget, CircleImageWidget, TeamCardsWidget
+  JumbotronWidget, CircleImageWidget, TeamCardsWidget, JumbotronVideoWidget
 }
 from '../../components/index'
 import {
@@ -17,11 +17,12 @@ export default class About extends Component {
     super(props)
   }
 
+  // <JumbotronWidget title="About" subTitle="Lorem ipsum dolor sit."/>
   render() {
     return (
       <div>
         <div id="about-page">
-        <JumbotronWidget title="About" subTitle="Lorem ipsum dolor sit."/>
+        <JumbotronVideoWidget></JumbotronVideoWidget>
           <div className="container main-content-container">
             <div className="col-sm-12 col-md-10 col-md-offset-1 content-container">
               <div className="section">

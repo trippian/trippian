@@ -41,10 +41,10 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
   - [X] Add Review Form 
   - [X] PopularTrippiansList
   - [X] Dashboard: Saved/Voted Trip 
+  - [X] Add Trip Detail Page 
+  - [ ] Add Map Display 
   - [ ] Signup Form 
   - [ ] Signin Form 
-  - [ ] Add Trip Detail Page 
-  - [ ] Add Map Display 
   - [ ] OperationMenuWidget (hold edit, delete... buttons) - Audrey 
   - [ ] Form Edit - Audrey 
   - [ ] MyProfile Display (beautify view) - Joe

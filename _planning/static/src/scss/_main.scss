@@ -165,10 +165,22 @@ footer {
     border: 2px solid white;
 }
 
+.jumbotron-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
 .jumbotron {
     max-height: 400px;
     position: relative;
     z-index: 99;
+    .react-drive-in-video {
+        z-index: 0;
+    }
+    .container {
+        z-index: 99;
+    }
     .full-length-container {
         background-color: rgba(0, 0, 0, 0.2);
         height: 100px;
@@ -220,6 +232,33 @@ footer {
 
 // widgets
 .login-button-widget {
+    button,
+    a {
+        color: white;
+        margin-bottom: 8px;
+        min-width: 200px;
+        text-align: left;
+        i {
+            padding-right: 8px;
+            margin-right: 8px;
+            // border-right: 1px solid $gray-lighter;
+        }
+        span {
+            font-size: 18px;
+        }
+        &:hover {
+            color: $primary-color-light;
+        }
+    }
+    .facebook {
+        background-color: #2d4373;
+    }
+    .google {
+        background: #c23321;
+    }
+}
+
+.signup-button-widget {
     button,
     a {
         color: white;
@@ -358,9 +397,10 @@ footer {
     color: black;
     border: 2px solid transparent;
     box-shadow: 0 0 1px #3d464d;
-    padding: .5em 1em;
+    padding: .4em 1em;
     -webkit-transition: border 0.2s, box-shadow 0.2s;
     transition: border 0.2s, box-shadow 0.2s;
+    border-radius: 5px; 
 }
 
 .geosuggest__input:focus {
