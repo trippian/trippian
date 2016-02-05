@@ -21,18 +21,32 @@
  }
 
  //TODO, Update once auth is in place 
+ // export const user = {
+ //   isAuthed: true,
+ //   isAdmin: true,
+ //   isTrippian: true, // currently is named trippian
+ //   trippian: true, // TODO: remove 
+ //   username: 'elliot',
+ //   displayName: 'Elliot',
+ //   email: 'elliot@trippian.com',
+ //   id: 32,
+ //   facebookId: 955195534516978, //TODO: remove
+ //   googleId: 1,
+ //   picture: 'https://graph.facebook.com/955195534516978/picture?height=500&type=square'
+ // }
+
  export const user = {
-   isAuthed: true,
+   isAuthed: false,
    isAdmin: true,
    isTrippian: true, // currently is named trippian
    trippian: true, // TODO: remove 
-   username: 'elliot',
-   displayName: 'Elliot',
-   email: 'elliot@trippian.com',
-   id: 32,
+   username: 'joe',
+   displayName: 'Joe Lagasse',
+   email: 'jlag2351@yahoo.com',
+   id: 94,
    facebookId: 955195534516978, //TODO: remove
    googleId: 1,
-   picture: 'https://graph.facebook.com/955195534516978/picture?height=500&type=square'
+   picture: 'https://graph.facebook.com/10208554949175940/picture?height=500'
  }
 
  // API
