@@ -6,6 +6,10 @@ import {
   Col
 }
 from 'react-bootstrap'
+import {
+  RelativeTimeWidget
+}
+from '../index'
 import * as data from '../../redux/initalState'
 import {
   Link
@@ -40,12 +44,15 @@ export default class InquiryListItemWidget extends Component {
     const {
       createdAt, senderId, receiverId, personCount, startDate, endDate, email, mobile, subject, content, accepted
     } = this.props.properties
+
     return (
       <div className="inquiry-list-item-widget">
           <h4>{subject}{this.props.id}</h4>
           <div className="row cleafix">
             <Col xs={12} md={8} >
               <p><span>
+                 Submited: 
+                  {createdAt !== '' && <RelativeTimeWidget date={new Date(createdAt)} intl='en-US' />}
                   Start:  {startDate} End: {endDate}  &nbsp;
                   <i className="fa fa-user"></i>: {personCount}  Person
                 </span>
@@ -55,8 +62,8 @@ export default class InquiryListItemWidget extends Component {
                 <i className="fa fa-phone"></i>: {mobile}
                 <i className="fa fa-external-link"></i> <Link to={`trippian/${receiverId}`}>Trippian</Link>
               </p>
-              <p>content {content}</p>
-              <p>accepted {accepted}</p>
+              <p>content: {content}</p>
+              <p>accepted: {accepted ? 'Yes' : 'No'}</p>
             </Col>
             <Col xs={12} md={4} >
               <button onClick={this.handleDelete.bind(this)} className="icon-right pull-right" title="accept"> <i className="fa fa-trash"></i></button> 
