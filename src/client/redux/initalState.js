@@ -59,7 +59,8 @@
    summary: '',
    details: '',
    feature: 'http://lorempixel.com/400/200/city/',
-   album: []
+   album: [],
+   user: trippian
  }
  export const review = {
    createdAt: '',

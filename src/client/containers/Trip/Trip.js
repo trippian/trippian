@@ -3,7 +3,7 @@ import React, {
 }
 from 'react'
 import {
-  JumbotronDestinationWidget
+  JumbotronTrippianWidget
 }
 from '../../components/index'
 import store from '../../redux/store'
@@ -15,6 +15,10 @@ import {
   getTripById
 }
 from '../../redux/apiIndex'
+import {
+  photos as appConfig
+}
+from '../../config/appConfig'
 
 function mapStateToProps(state) {
   return {
@@ -39,7 +43,7 @@ export default class Trip extends Component {
     console.log('..inside trip render', this.props.trip)
     return (
       <div id="destination-page">
-        <JumbotronDestinationWidget isMetad {...this.props.trip}/>
+        <JumbotronTrippianWidget isMetad backgroundFeature={this.props.trip.feature} {...this.props.trip.user} />
         <div className="container main-content-container">
           <div className="col-sm-12 col-md-8 col-md-offset-2 content-container">
               {this.props.children}

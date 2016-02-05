@@ -42,45 +42,34 @@ export default class TripDetail extends Component {
     } = this.props.trip
     return (
       <div>
-      <div className="row section">
-        <div className="section-body col-sm-12 col-md-12">
+        <div className="row section">
+          <SectionHeaderWidget title="Summary"/>
+          <div className="section-body">
+            {summary}
+          </div>
+        </div>
+
+        {album && 
           <div className="row section">
-            <SectionHeaderWidget title="Why Visit" subTitle="" />
+            <SectionHeaderWidget title="Photos"/>
             <div className="section-body">
-              {title}
-              <button type="button" className='btn-link' onClick={this.showReadMore.bind(this)} ria-label="Read More">more</button>
-              {this.state.isShowReadMore && <p>{title}</p> }
+                <CarouselWidget dataList={album}/>
             </div>
           </div>
-        </div>
-      </div>
-      
-      {album && 
+        }
+        
         <div className="row section">
-          <SectionHeaderWidget title="Photos" subTitle="Lorem ipsum dolor." />
+          <SectionHeaderWidget title="Detail"/>
           <div className="section-body">
-              <CarouselWidget dataList={album}/>
+            {summary}
           </div>
         </div>
-      }
 
-      <div className="row section">
-        <SectionHeaderWidget title="Popular Trips" subTitle="Lorem ipsum dolor." />
-        <div className="section-body">
-          summary: {summary}
-          detail: {details}
+        <div className="row section">
+          <div className="section-body">
+            Map 
+          </div>
         </div>
-      </div>
-
-      <div className="row section">
-        <div className="row">
-        </div>
-        <div className="section-body">
-      
-        </div>
-      </div>
-
-     
     </div>
     )
   }
