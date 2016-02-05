@@ -36,8 +36,20 @@ export function alertInfo(title = 'In progress...', message = '') {
 export function setAppStateUser(isLogin = true) {
   if (isLogin) {
     const cookieString = getCookieByName('trippianPass')
+    console.log('---cookie string', cookieString)
     const user = parseCookieStringToUser(cookieString)
     user.isAuthed = true
+
+    //TODO: remove below later when we have real data 
+    user.isAmdin = true
+    user.trippian = true
+    user.isTrippian = true
+    user.bio = 'I am an avid traveller'
+    user.introduction = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto pariatur doloribus reiciendis, neque fugit laudantium, laboriosam odio eveniet, inventore reprehenderit illo. Commodi blanditiis adipisci fugit ipsum non omnis assumenda rerum.'
+    user.website = 'http://audreyli.me'
+    user.numberOfReview = 4
+    user.averageRating = 5
+
     store.dispatch(setUser(user))
   } else {
     // handle log out, reset the state and clean the cookie for safety 
