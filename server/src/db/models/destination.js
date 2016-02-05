@@ -8,8 +8,8 @@ export default {
       // let cypher = 'match (destination:Destination';
       db.saveAsync(details, 'Destination')
         .then((destination) => {
-          if (destination.length) {
-            resolve(destination[0])
+          if (destination) {
+            resolve(destination)
           } else {
             reject(new Error('destination could not be created'))
           }
