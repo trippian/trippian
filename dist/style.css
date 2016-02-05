@@ -8081,6 +8081,30 @@ footer {
 .login-button-widget .google {
   background: #c23321; }
 
+.signup-button-widget button,
+.signup-button-widget a {
+  color: white;
+  margin-bottom: 8px;
+  min-width: 200px;
+  text-align: left; }
+  .signup-button-widget button i,
+  .singup-button-widget a i {
+    padding-right: 8px;
+    margin-right: 8px; }
+  .signup-button-widget button span,
+  .signup-button-widget a span {
+    font-size: 18px; }
+  .signup-button-widget button:hover,
+  .signup-button-widget a:hover {
+    color: #FFCCBC; }
+
+.signup-button-widget .facebook {
+  background-color: #2d4373; }
+
+.signup-button-widget .google {
+  background: #c23321; }
+
+
 .vote {
   text-align: center;
   color: #E64A19; }
