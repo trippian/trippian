@@ -39,7 +39,6 @@ const UserMenuWidget = () => {
             </li>       
             <li><Link to='signup'>Sign Up</Link></li>
             <li><Link to='login'>Login</Link></li>
-            <li><a href="/auth/logout">Logout</a></li>
         </ul>
     </li>
   )
