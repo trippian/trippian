@@ -44,11 +44,18 @@ export function getCanVote(currentNetVote, vote) {
 //   return true
 // }
 
-export function getCookieByName(name) {
-  const re = new RegExp(name + "=([^;]+)")
-  const value = re.exec(document.cookie)
-  return (value != null) ? unescape(value[1]) : null
+// export function getCookieByName(name) {
+//   const re = new RegExp(name + "=([^;]+)")
+//   const value = re.exec(document.cookie)
+//   return (value != null) ? unescape(value[1]) : null
+// }
+export function getCookieByName(sKey) {
+  if (!sKey) {
+    return null
+  }
+  return decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" + encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1")) || null;
 }
+
 //TODO: check if the returned data is consistent and map to 
 //username: '',
 // displayName: '',
