@@ -358,9 +358,10 @@ footer {
     color: black;
     border: 2px solid transparent;
     box-shadow: 0 0 1px #3d464d;
-    padding: .5em 1em;
+    padding: .4em 1em;
     -webkit-transition: border 0.2s, box-shadow 0.2s;
     transition: border 0.2s, box-shadow 0.2s;
+    border-radius: 5px; 
 }
 
 .geosuggest__input:focus {
