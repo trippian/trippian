@@ -8096,6 +8096,29 @@ footer {
 .login-button-widget .google {
   background: #c23321; }
 
+.signup-button-widget button,
+.signup-button-widget a {
+  color: white;
+  margin-bottom: 8px;
+  min-width: 200px;
+  text-align: left; }
+  .signup-button-widget button i,
+  .signup-button-widget a i {
+    padding-right: 8px;
+    margin-right: 8px; }
+  .signup-button-widget button span,
+  .signup-button-widget a span {
+    font-size: 18px; }
+  .signup-button-widget button:hover,
+  .signup-button-widget a:hover {
+    color: #DCEDC8; }
+
+.signup-button-widget .facebook {
+  background-color: #2d4373; }
+
+.signup-button-widget .google {
+  background: #c23321; }
+
 .vote {
   text-align: center;
   color: #689F38; }
@@ -8172,9 +8195,10 @@ footer {
   color: black;
   border: 2px solid transparent;
   box-shadow: 0 0 1px #3d464d;
-  padding: .5em 1em;
+  padding: .4em 1em;
   -webkit-transition: border 0.2s, box-shadow 0.2s;
-  transition: border 0.2s, box-shadow 0.2s; }
+  transition: border 0.2s, box-shadow 0.2s;
+  border-radius: 5px; }
 
 .geosuggest__input:focus {
   border-color: #267dc0;
@@ -8238,9 +8262,8 @@ footer {
   .navbar .navbar-header .navbar-brand {
     font-size: 60px; }
     .navbar .navbar-header .navbar-brand img {
-      padding: 20px;
       max-width: 200px;
-      margin-top: -60px; }
+      margin-top: -20px; }
   .navbar .navbar-nav li .navbar-form {
     margin: 0; }
   .navbar .navbar-nav li a {
