@@ -47,7 +47,7 @@ export default {
 
     User.getUserByParameter('googleId', `str("${googleId}")`)
       .then(user => {
-        if (!user.length) {
+        if (!user) {
           User.createUser({
             googleId: `"${googleId}"`,
             name: req.user.displayName,
@@ -89,7 +89,7 @@ export default {
 
     User.getUserByParameter('facebookId', req.user.id)
       .then(user => {
-        if (!user.length) {
+        if (!user) {
           User.createUser({
             facebookId: parseInt(req.user.id),
             name: req.user.displayName,
