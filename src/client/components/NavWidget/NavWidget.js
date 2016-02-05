@@ -43,7 +43,7 @@ const NavWidget = ({
                 <span className="icon-bar"></span>
             </button>
             <Link className="navbar-brand" to="/">
-                <img src="logo1.png" alt="Trippian"/>
+                <img src="https://s3-us-west-1.amazonaws.com/trippian/logo-trans-white.png" alt="Trippian"/>
             </Link>
         </div>
         <div className="collapse navbar-collapse navbar-ex1-collapse">
