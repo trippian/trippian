@@ -4,7 +4,7 @@ import React, {
 from 'react'
 
 import {
-  JumbotronHomeWidget, DestinationListWidget, SectionHeaderWidget, TrippianListRoundWidget
+  JumbotronHomeWidget, DestinationListWidget, SectionHeaderWidget, TrippianListRoundWidget, JumbotronVideoWidget
 }
 from '../../components/index'
 
@@ -103,6 +103,7 @@ class Home extends Component {
 
     return (
       <div id="home-page">
+      <JumbotronVideoWidget />
        <JumbotronHomeWidget history={this.props.history} title={formatMessage(messages.jumbotronTitle)} subTitle={formatMessage(messages.jumbotronSubTitle)}/> 
          <div className="container">
             <div className="main-content-container">

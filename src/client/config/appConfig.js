@@ -35,6 +35,7 @@ export default {
     markerTitle: 'Trippian.com',
     shouldLoadInitialMap: false
   },
+
   photos: {
     defaultFeature: 'http://media-cdn.tripadvisor.com/media/photo-s/06/04/b0/fb/how-about-a-trip-to-paradise.jpg',
     defaultTripFeature: 'http://recwell.umd.edu/portals/0/Photos/MAP-trips.jpg',
@@ -52,7 +53,12 @@ export default {
   },
   // all the page background photos stored in S3 
   assetsURL: {
-    homePage: ''
+    homePage: '',
+    landingVideo: 'https://s3-us-west-1.amazonaws.com/trippian/backgroundVideo.mp4',
+    poster: 'http://media-cdn.tripadvisor.com/media/photo-s/06/04/b0/fb/how-about-a-trip-to-paradise.jpg',
+    backupVideo: 'http://raw.githubusercontent.com/ronik-design/react-drive-in/master/example/glacier.mp4',
+    backupPoster: 'http://raw.githubusercontent.com/ronik-design/react-drive-in/master/example/glacier.jpg'
+
   },
 
   // general page titles 

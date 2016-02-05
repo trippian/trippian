@@ -18,7 +18,6 @@ export default class Login extends Component {
       <div className="login">
           <h3>Login</h3>
           <LoginButtonsWidget />
-          <LoginFormWidget />
           <p>New to Trippian?</p><a href="#/signup">Sign Up Now</a>
       </div>
     )

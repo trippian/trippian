@@ -8024,19 +8024,14 @@ footer {
 .btn-bordered {
   border: 2px solid white; }
 
-.jumbotron-video {
-  position: absolute;
-  top: 0;
-  left: 0; }
-
 .jumbotron {
   max-height: 400px;
   position: relative;
-  z-index: 99; }
+  z-index: 1; }
   .jumbotron .react-drive-in-video {
     z-index: 0; }
   .jumbotron .container {
-    z-index: 99; }
+    z-index: 2; }
   .jumbotron .full-length-container {
     background-color: rgba(0, 0, 0, 0.2);
     height: 100px;
@@ -8072,6 +8067,19 @@ footer {
             margin-top: 26px; }
         .jumbotron .full-length-container .container .meta-info .text-intro {
           width: 100%; }
+
+.jumbotron-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  overflow: hidden; }
+
+.jumbotron-fixed {
+  min-height: 820px;
+  z-index: 2;
+  width: 100%; }
 
 .login-button-widget button,
 .login-button-widget a {
