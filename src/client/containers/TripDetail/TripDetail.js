@@ -35,7 +35,7 @@ export default class TripDetail extends Component {
   }
 
   render() {
-    console.log('inside destination detail render', this.props.destination)
+    console.log('inside trip detail render', this.props.trip)
     const {
       netVote, totalVotes, destination, title, summary, details, feature, album
 
