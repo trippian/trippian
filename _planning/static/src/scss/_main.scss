@@ -165,10 +165,22 @@ footer {
     border: 2px solid white;
 }
 
+.jumbotron-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
 .jumbotron {
     max-height: 400px;
     position: relative;
     z-index: 99;
+    .react-drive-in-video {
+        z-index: 0;
+    }
+    .container {
+        z-index: 99;
+    }
     .full-length-container {
         background-color: rgba(0, 0, 0, 0.2);
         height: 100px;
