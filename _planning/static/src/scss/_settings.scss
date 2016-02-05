@@ -8,12 +8,16 @@ $jumbotron-min-height: 600px;
 // --------------------------------------------------
 //== Colors
 //##Material Design Colors
-$primary-color-dark: #E64A19;
-$primary-color: #FF5722;
-$primary-color-light: #FFCCBC;
+// $primary-color-dark: #388E3C;
+// $primary-color: #4CAF50;
+// $primary-color-light: #C8E6C9;
+// lighter version 
+$primary-color-dark: #689F38;
+$primary-color: #8BC34A;
+$primary-color-light: #DCEDC8;
 $primary-color-lighter: rgba(255, 204, 188, 0.15);
 $primary-color-text: #FFFFFF;
-$accent-color: #9E9E9E;
+$accent-color: #FF5252;
 $primary-text-color: #212121;
 $secondary-text-color: #727272;
 $divider-color: #B6B6B6;
@@ -26,7 +30,7 @@ $gray-dark: lighten($gray-base, 20%) !default; // #333
 $gray: lighten($gray-base, 33.5%) !default; // #555
 $gray-light: lighten($gray-base, 46.7%) !default; // #777
 $gray-lighter: lighten($gray-base, 93.5%) !default; // #eee
-$brand-primary: darken(#E64A19, 6.5%) !default; // #337ab7
+$brand-primary: darken($primary-color, 6.5%) !default; // #337ab7
 $brand-success: #5cb85c !default;
 $brand-info: #5bc0de !default;
 $brand-warning: #f0ad4e !default;
