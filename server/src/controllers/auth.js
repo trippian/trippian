@@ -11,10 +11,11 @@ export default {
   },
 
   // function that validates whether the user is logged in
-  isLoggedIn: function(req, res, next) {
+  isLoggedIn: function (req, res, next) {
     if (req.isAuthenticated()) {
       return next()
-    } res.sendStatus(401)
+    }
+    res.sendStatus(401)
   },
 
   createCookie: (req, res) => {
@@ -47,13 +48,13 @@ export default {
 
     User.getUserByParameter('googleId', `str("${googleId}")`)
       .then(user => {
-        if (!user.length) {
+        if (!user) {
           User.createUser({
-            googleId: `"${googleId}"`,
-            name: req.user.displayName,
-            email: req.user.emails[0].value,
-            picture: req.user._json.image.url
-          })
+              googleId: `"${googleId}"`,
+              name: req.user.displayName,
+              email: req.user.emails[0].value,
+              picture: req.user._json.image.url
+            })
             .then(newUser => {
               res.cookie('trippianPass', {
                 googleId: parseInt(googleId),
@@ -70,11 +71,11 @@ export default {
           res.cookie('trippianPass', {
             googleId,
             id: user.id,
-            displayName: req.user.displayName,
-            email: req.user.emails[0].value,
-            picture: req.user._json.image.url,
-            isAdmin: user.isAdmin,
-            isTrippian: user.isTrippian
+              displayName: req.user.displayName,
+              email: req.user.emails[0].value,
+              picture: req.user._json.image.url,
+              isAdmin: user.isAdmin,
+              isTrippian: user.isTrippian
           })
           res.redirect('/#/login/success')
         }
@@ -89,15 +90,15 @@ export default {
 
     User.getUserByParameter('facebookId', req.user.id)
       .then(user => {
-        if (!user.length) {
+        if (!user) {
           User.createUser({
-            facebookId: parseInt(req.user.id),
-            name: req.user.displayName,
-            email: req.user.emails[0].value,
-            picture: `https://graph.facebook.com/${req.user.id}/picture?height=500`,
-            gender: req.user.gender,
-            timezone: req.user._json.timezone
-          })
+              facebookId: parseInt(req.user.id),
+              name: req.user.displayName,
+              email: req.user.emails[0].value,
+              picture: `https://graph.facebook.com/${req.user.id}/picture?height=500`,
+              gender: req.user.gender,
+              timezone: req.user._json.timezone
+            })
             .then(newUser => {
               res.cookie('trippianPass', {
                 facebookId: req.user.id,
@@ -111,6 +112,7 @@ export default {
               res.redirect('/#/login/success')
             })
         } else {
+          console.log('google', user);
           res.cookie('trippianPass', {
             facebookId: req.user.id,
             id: user.id,

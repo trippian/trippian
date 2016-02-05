@@ -14,23 +14,28 @@ const TrippianProfileWidget = ({
 }) => {
   return (
     <div className="user-profile-widget">
-        <div className="row">
-           <div className="col-sm-6 col-md-6 col-lg-3 col-sm-offset-4 col-md-offset-3 col-lg-offset-4">
-            <CircleImageWidget imageSrc={picture} />
-           </div>
-         </div>
-         <div className="row">
-            <h2>Trippian</h2>
-           <p><b>username: </b>{username}</p>
-           <p><b>displayName: </b>{displayName}</p>
-           <p><b>email: </b>{email}</p>
-           <p><b>facebookId: </b>{facebookId}</p>
-           <p><b>googleId: </b>{googleId}</p>
-           <p><b>slogan: </b>{slogan}</p>
-           <p><b>website: </b>{website}</p>
-           <p><b>bio: </b>{bio}</p>
-           <p><b>introduction: </b>{introduction}</p>
-         </div>
+      <div className="row">
+        <div className="col-sm-3 col-md-4 col-lg-4 col-sm-offset-4 col-md-offset-3 col-lg-offset-1">
+          <CircleImageWidget imageSrc={picture} />
+        </div>
+        <div className="col-sm-3 col-md-3 col-lg-4 col-sm-offset-5 col-md-offset-3 col-lg-offset-2">
+          <h1>Audrey</h1>
+          <p>"Traveling is fun. Everyone should travel."</p>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-sm-3 col-md-4 col-lg-6">
+          <h1>Bio</h1>
+          <p>Hey everyone. My name is Audrey and I really like to travel. I have been all over the world but my favorite place is Somalia. I always wanted to be a pirate. Arg!</p>
+        </div>
+        <div className="col-sm-3 col-md-4 col-lg-4 col-sm-offset-4 col-md-offset-3 col-lg-offset-1">
+          <h1>Personal</h1>
+          <p>{displayName}</p>
+          <p><i className="fa fa-envelope-o"></i> audreyinbeijing@gmail.com</p>
+          <p><i className="fa fa-facebook"></i> facebook.com/vidaaudrey</p>
+          <p><i className="fa fa-google-plus"></i> google.com/vidaaudrey</p>
+        </div>
+      </div>
     </div>
   )
 }

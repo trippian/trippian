@@ -11,7 +11,7 @@ from 'react-intl'
 
 const UserMenuWidget = () => {
   const {
-    displayName, isAdmin = true, picture = ''
+    displayName, isAdmin = true, picture = '', isAuthed
   } = store.getState().appState.get('user')
 
   return (
@@ -37,8 +37,8 @@ const UserMenuWidget = () => {
                         defaultMessage="User Dashboard"/>
                 </Link>
             </li>       
-            <li><Link to='signup'>Sign Up</Link></li>
-            <li><Link to='login'>Login</Link></li>
+            {isAuthed && <li><Link to="login/logout">Logout </Link></li>}
+
         </ul>
     </li>
   )

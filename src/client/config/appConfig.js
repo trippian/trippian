@@ -7,6 +7,7 @@ Make sure the page and components are in alphabetic order
 const HOST = window.location.origin 
 // const HOST = 'http://trippian.com'
 // const HOST = 'http://localhost:4000'
+
 export default {
   appName: '',
   appDescription: 'your local travel companion',
