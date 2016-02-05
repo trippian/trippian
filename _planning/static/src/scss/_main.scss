@@ -165,21 +165,15 @@ footer {
     border: 2px solid white;
 }
 
-.jumbotron-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
 .jumbotron {
     max-height: 400px;
     position: relative;
-    z-index: 99;
+    z-index: 1;
     .react-drive-in-video {
         z-index: 0;
     }
     .container {
-        z-index: 99;
+        z-index: 2;
     }
     .full-length-container {
         background-color: rgba(0, 0, 0, 0.2);
@@ -228,6 +222,24 @@ footer {
             }
         }
     }
+}
+
+.jumbotron-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+.jumbotron-fixed {
+    // position: absolute;
+    min-height: 820px;
+    z-index: 2;
+    // left: 0;
+    // top: 0;
+    width: 100%;
 }
 
 // widgets
@@ -400,7 +412,7 @@ footer {
     padding: .4em 1em;
     -webkit-transition: border 0.2s, box-shadow 0.2s;
     transition: border 0.2s, box-shadow 0.2s;
-    border-radius: 5px; 
+    border-radius: 5px;
 }
 
 .geosuggest__input:focus {
