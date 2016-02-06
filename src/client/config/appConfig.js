@@ -89,7 +89,8 @@ export default {
   },
   // specfic pages 
   homePage: {
-    jumbotron: {
+    jumbotron
+: {
       title: 'Start Now...',
       subTitle: 'Find your local travel companion around the world'
     },
