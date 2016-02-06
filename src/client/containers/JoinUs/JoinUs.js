@@ -14,7 +14,11 @@ import {
   FormattedTime, FormattedHTMLMessage, FormattedPlural
 }
 from 'react-intl'
+import {
+  joinUsPage as appConfig
+}
 
+from '../../config/appConfig'
 export default class JoinUs extends Component {
   constructor(props) {
     super(props)
@@ -23,17 +27,20 @@ export default class JoinUs extends Component {
   render() {
     return (
       <div>
-        <div id="joinus-page">
-          <JumbotronWidget title="JoinUs" subTitle="This is the join us subtitle" />
-            <div className="container main-content-container">
-              <div className="col-sm-12 col-md-8 col-md-offset-2 content-container">
-                Join us page text. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta natus quidem, expedita ipsam, veritatis quo excepturi. Beatae enim, eius doloribus esse aperiam animi aliquam ducimus. In eos corporis voluptate harum.
-                <FormattedMessage id="joinUs.title" description="this is a formatted title message in press page" defaultMessage="Press Page" />
-                <ReactDriveIn
-                      show="http://raw.githubusercontent.com/ronik-design/react-drive-in/master/example/glacier.mp4"
-                      poster="http://raw.githubusercontent.com/ronik-design/react-drive-in/master/example/glacier.jpg"/>
+        <div id="join-us-page">
+          <JumbotronWidget title={appConfig.title} subTitle={appConfig.subTitle} backgroundImage={appConfig.jumbotronBackground} />
+          <div className="container main-content-container">
+            <div className="col-sm-12 col-md-8 col-md-offset-2 content-container">
+              <div className="section">
+                  <div className="section-header text-center">
+                      <h3>{appConfig.sectionOneTitle}</h3>
+                  </div>
+                  <div className="section-body">
+                      <p>{appConfig.sectionOneContent}</p>
+                  </div>
               </div>
             </div>
+          </div>
         </div>
       </div>
     )

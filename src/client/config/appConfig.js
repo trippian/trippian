@@ -4,10 +4,10 @@ Make sure the page and components are in alphabetic order
 */
 
 //TODO: read HOST from a get request or send it by cookie 
-// const HOST = window.location.origin // enable this for deploy 
+const HOST = window.location.origin // enable this for deploy 
 
 // const HOST = 'http://trippian.com'
-const HOST = 'http://localhost:4000' // enable this for react dev
+// const HOST = 'http://localhost:4000' // enable this for react dev
 
 export default {
   appName: '',
@@ -39,7 +39,9 @@ export default {
     markerTitle: 'Trippian.com',
     shouldLoadInitialMap: false
   },
-
+  defaults: {
+    defaultJumbotronBackground: 'http://media-cdn.tripadvisor.com/media/photo-s/06/04/b0/fb/how-about-a-trip-to-paradise.jpg'
+  },
   photos: {
     defaultFeature: 'http://media-cdn.tripadvisor.com/media/photo-s/06/04/b0/fb/how-about-a-trip-to-paradise.jpg',
     defaultTripFeature: 'http://recwell.umd.edu/portals/0/Photos/MAP-trips.jpg',
@@ -64,7 +66,7 @@ export default {
     backupPoster: 'http://raw.githubusercontent.com/ronik-design/react-drive-in/master/example/glacier.jpg',
 
     aboutPage: 'http://recwell.umd.edu/portals/0/Photos/MAP-trips.jpg',
-    joinUsPage: 'http://recwell.umd.edu/portals/0/Photos/MAP-trips.jpg',
+    pressPage: 'http://recwell.umd.edu/portals/0/Photos/MAP-trips.jpg',
     pressPage: 'http://recwell.umd.edu/portals/0/Photos/MAP-trips.jpg',
     destinationPage: 'http://recwell.umd.edu/portals/0/Photos/MAP-trips.jpg',
     inquiryDetailPage: 'http://recwell.umd.edu/portals/0/Photos/MAP-trips.jpg',
@@ -100,7 +102,7 @@ export default {
   aboutPage: {
     title: 'About',
     subTitle: 'Lorem ipsum dolor sit.',
-    jumbotronBacgroud: 'http://recwell.umd.edu/portals/0/Photos/MAP-trips.jpg',
+    jumbotronBackgroud: 'http://recwell.umd.edu/portals/0/Photos/MAP-trips.jpg',
     sectionOneTitle: 'About Us',
     sectionOneContent: ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam fuga ab, asperiores quidem suscipit quia quos exercitationem, totam ipsum odit molestias, beatae porro possimus consectetur expedita sequi excepturi adipisci reiciendis?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum dolorem quam, perferendis ipsum modi iusto fugiat, iste quia asperiores magnam!',
     teamSectionTitle: 'The Team',
@@ -129,6 +131,20 @@ export default {
       'image': 'https://s3-us-west-1.amazonaws.com/trippian/about/Yale.jpg ',
       'about': 'I am basically married. Elliot is my side piece.I am basically married. Elliot is my side piece.I am basically married. Elliot is my side piece.'
     }]
+  },
+  joinUsPage: {
+    title: 'Join Us',
+    subTitle: 'Lorem ipsum dolor sit.',
+    jumbotronBackgroud: 'http://recwell.umd.edu/portals/0/Photos/MAP-trips.jpg',
+    sectionOneTitle: 'Join Us',
+    sectionOneContent: ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam fuga ab, asperiores quidem suscipit quia quos exercitationem, totam ipsum odit molestias, beatae porro possimus consectetur expedita sequi excepturi adipisci reiciendis?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum dolorem quam, perferendis ipsum modi iusto fugiat, iste quia asperiores magnam!',
+  },
+  pressPage: {
+    title: 'Press',
+    subTitle: 'Lorem ipsum dolor sit.',
+    jumbotronBackgroud: 'http://recwell.umd.edu/portals/0/Photos/MAP-trips.jpg',
+    sectionOneTitle: 'Press',
+    sectionOneContent: ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam fuga ab, asperiores quidem suscipit quia quos exercitationem, totam ipsum odit molestias, beatae porro possimus consectetur expedita sequi excepturi adipisci reiciendis?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum dolorem quam, perferendis ipsum modi iusto fugiat, iste quia asperiores magnam!',
   },
   becomeATrippianPage: {
     title: 'Become a Trippian',
