@@ -5,12 +5,12 @@ import {
 from 'react-router'
 
 const OperationMenuWidget = ({
-  to = 'contact', text = 'Contact'
+  handleDelete = null, handleEdit = null, isDelete = false, isEdit = false
 }) => {
   return (
     <div className="operation-menu-widget">
-      <button onClick={this.handleDelete.bind(this)} title="Delete"> <i className="fa fa-close"></i></button> 
-      <button onClick={this.handleEdit.bind(this)}  title = "Edit" > <i className="fa fa-edit"></i> < /button> 
+      {isDelete && <button onClick={handleDelete} title="Delete"> <i className="fa fa-close"></i></button> }
+      {isEdit && <button onClick={handleEdit}  title = "Edit" > <i className="fa fa-edit"></i> < /button> }
     </div>
   )
 }
