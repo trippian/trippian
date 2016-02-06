@@ -49,6 +49,13 @@ export default class TripDetail extends Component {
           </div>
         </div>
 
+        <div className="row section">
+          <SectionHeaderWidget title="Details"/>
+          <div className="section-body">
+            {details}
+          </div>
+        </div>
+
         {album && 
           <div className="row section">
             <SectionHeaderWidget title="Photos"/>
@@ -57,13 +64,6 @@ export default class TripDetail extends Component {
             </div>
           </div>
         }
-        
-        <div className="row section">
-          <SectionHeaderWidget title="Detail"/>
-          <div className="section-body">
-            {summary}
-          </div>
-        </div>
 
         <div className="row section">
           <div className="section-body">
