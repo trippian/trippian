@@ -1,4 +1,6 @@
-#Trippian 
+<img src="https://s3-us-west-1.amazonaws.com/trippian/logo-white.png" width=250>
+
+
 [![Travis](https://img.shields.io/travis/rust-lang/rust.svg?style=flat-square)](https://travis-ci.org/vidaaudrey/trippian)
 [![codecov coverage](https://img.shields.io/codecov/c/github/vidaaudrey/trippian/develop.svg?style=flat-square)](https://codecov.io/github/vidaaudrey/trippian?branch=develop)
 [![npm version](https://badge.fury.io/js/trippian.svg)](https://badge.fury.io/js/trippian)
@@ -11,6 +13,7 @@
 Your local trip companion! Trippian is a web application that allows tourists (Trippees) to connect with a Trippian, a local who wants to show people around and show them what it would be like to live in a different city/country.
 
 ###Architecture
+<img src="https://s3-us-west-1.amazonaws.com/trippian/trippian-architecture.png" width="800">
 
 ####Database Design
 <img src="https://s3-us-west-1.amazonaws.com/trippian/Trippian+Database+Schema.png" width="500">

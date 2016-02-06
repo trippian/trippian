@@ -37,18 +37,10 @@ const submit = (values, dispatch) => {
   //   }, `/#/login/success`)
 
   // })
-  
+
 }
 
 class LoginFormWidget extends Component {
-  static propTypes = {
-    error: PropTypes.string,
-    fields: PropTypes.object.isRequired,
-    handleSubmit: PropTypes.func.isRequired,
-    resetForm: PropTypes.func.isRequired,
-    submitting: PropTypes.bool.isRequired
-  }
-
   render() {
     const {
       fields: {
@@ -97,6 +89,14 @@ LoginFormWidget = reduxForm({
   form: 'loginForm',
   fields: ['email', 'password']
 })(LoginFormWidget)
+
+LoginFormWidget.propTypes = {
+  error: PropTypes.string,
+  fields: PropTypes.object.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  resetForm: PropTypes.func.isRequired,
+  submitting: PropTypes.bool.isRequired
+};
 
 LoginFormWidget.displayName = 'LoginFormWidget'
 
