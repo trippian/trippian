@@ -4,15 +4,19 @@ Make sure the page and components are in alphabetic order
 */
 
 //TODO: read HOST from a get request or send it by cookie 
-const HOST = window.location.origin
-  // const HOST = 'http://trippian.com'
-  // const HOST = 'http://localhost:4000'
+const HOST = window.location.origin // enable this for deploy 
+
+// const HOST = 'http://trippian.com'
+// const HOST = 'http://localhost:4000' // enable this for react dev
 
 export default {
   appName: '',
   appDescription: 'your local travel companion',
   API_HOST: `${HOST}/api/`,
   Server_HOST: `${HOST}`,
+  admin: {
+    defaultTrippianIDForInquiry: 471
+  },
   routeConfig: {
     trippian: 'trippian',
     destination: 'destination',

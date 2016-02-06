@@ -1,4 +1,7 @@
-import React from 'react'
+import React, {
+  Component
+}
+from 'react'
 import {
   Link
 }
@@ -15,6 +18,10 @@ import {
 from 'react-intl'
 import store from '../../redux/store'
 import {
+  connect
+}
+from 'react-redux'
+import {
   UserMenuWidget
 }
 from '../index'
@@ -25,16 +32,27 @@ function renderSearchForm() {
   )
 }
 
+function mapStateToProps(state) {
+  return {
+    user: state.appState.get('user')
+  }
+}
 
-const NavWidget = ({
-  currentPath, username = '', displayName = '', isUserAdmin = false, history
-}) => {
-  const {
-    isAuthed, isTripian
-  } = store.getState().appState.get('user')
+@
+connect(mapStateToProps)
+export default class NavWidget extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {}
+  }
 
-  return (
-    <nav className="navbar navbar-default" role="navigation">
+  render() {
+    const {
+      isAuthed, isTrippian
+    } = this.props.user
+      // currentPath, username = '', displayName = '', isUserAdmin = false, history
+    return (
+      <nav className="navbar navbar-default" role="navigation">
         <div className="navbar-header">
             <button type="button" className="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                 <span className="sr-only">Toggle navigation</span>
@@ -49,7 +67,7 @@ const NavWidget = ({
         <div className="collapse navbar-collapse navbar-ex1-collapse">
             <LocaleMenuWidget className="nav navbar-nav navbar-right list-inline"/>
             <ul className="nav navbar-nav navbar-right">
-                {!isTripian && <li>
+                {!isTrippian && <li>
                     <Link to='become-a-trippian' className="btn btn-bordered">
                         <FormattedMessage 
                             id="app-pages.become-a-trippian" 
@@ -62,9 +80,9 @@ const NavWidget = ({
             </ul>
         </div>
     </nav>
-  )
+    )
+  }
 }
 NavWidget.displayName = 'NavWidget'
-export default NavWidget
 
 //<li>{currentPath !== '/' && <SearchBoxWidget history={history} className="navbar-form navbar-left" role="search" /> }</li>

@@ -21,7 +21,10 @@ import {
 }
 from '../../utils/storeUtils'
 
-
+import {
+  admin as appConfig
+}
+from '../../config/appConfig'
 import {
   Map
 }
@@ -366,7 +369,7 @@ export function postInquiry(data) {
   store.dispatch(setFormSubmitting())
   alertInfo('Submitting inquiry now...')
   data.senderId = store.getState().apiTrippian.get('currentUser').id
-  data.trippianId = store.getState().apiTrippian.get('trippian').id
+  data.trippianId = store.getState().apiTrippian.get('trippian').id || appConfig.defaultTrippianIDForInquiry //Normally you'd read
   attachInfoToData(data, {
     createdAt: true
   })
