@@ -67,7 +67,7 @@ export default class NavWidget extends Component {
         <div className="collapse navbar-collapse navbar-ex1-collapse">
             <LocaleMenuWidget className="nav navbar-nav navbar-right list-inline"/>
             <ul className="nav navbar-nav navbar-right">
-                {!isTrippian && <li>
+                {!isTrippian || !isAuthed && <li>
                     <Link to='become-a-trippian' className="btn btn-bordered">
                         <FormattedMessage 
                             id="app-pages.become-a-trippian" 
