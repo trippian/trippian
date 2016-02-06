@@ -20,6 +20,7 @@ import {
 }
 from 'react-redux'
 
+
 import {
   postTrip, getDashboardById
 }
@@ -41,7 +42,8 @@ function mapDispatchToProps(dispatch) {
     setAlert: bindActionCreators(setAlert, dispatch),
     getDashboardById: bindActionCreators(getDashboardById, dispatch)
   }
-}@
+}
+@
 connect(mapStateToProps, mapDispatchToProps)
 export default class Dashboard extends Component {
   constructor(props) {

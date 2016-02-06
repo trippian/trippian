@@ -14,6 +14,7 @@ class InquiryPostFormWidget extends Component {
       fields: {
         personCount, startDate, endDate, email, mobile, subject, content
       },
+      submitting,
       handleSubmit
     } = this.props
 
@@ -48,7 +49,9 @@ class InquiryPostFormWidget extends Component {
           <label>Content</label>
           <textarea name="content" className="form-control" className="form-control" rows="3" required="required" value="Lorem ipsum dolor." {...content}></textarea>
         </div>
-        <button onClick={handleSubmit}>Submit</button>
+        <div className="pull-right">
+          <button  disabled={submitting} className={'btn ' + (submitting ? 'disabled' : 'btn-success') } onClick={handleSubmit}>Submit</button> 
+        </div>
       </form>
     )
   }
