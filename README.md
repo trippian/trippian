@@ -61,3 +61,9 @@ Check out our [contributing guide](https://github.com/trippian/trippian/blob/mas
 
 ###API Documentation
 For any information on any of the REST endpoints, check out our API specifications doc [here](https://github.com/trippian/trippian/wiki/APISpec)
+
+###Team
+- Audrey Li: [github](https://github.com/vidaaudrey)
+- Joe Lagasse: [github](https://github.com/jlag34)
+- Yale Yuen: [github](https://github.com/ycube)
+- Elliot Chi: [github](https://github.com/elliotschi)
