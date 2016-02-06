@@ -22,7 +22,7 @@ const JumbotronHomeWidget = ({
         <div className="container">
         <h1>{title}</h1> 
         <p>{subTitle}</p> 
-        <SearchBoxWidget history={history}/>
+        <SearchBoxWidget/>
         </div>  
       </div>
   )

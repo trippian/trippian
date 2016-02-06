@@ -11,6 +11,7 @@ export const SET_FORM_SUBMITTING = 'appState.SET_FORM_SUBMITTING'
 export const SET_DASHBOARD = 'appState.SET_DASHBOARD'
 export const FETCH_REMOTE_RESOURCE_FAIL = 'appState.FETCH_REMOTE_RESOURCE_FAIL'
 export const SET_SEARCH_TEXT = 'appState.SET_SEARCH_TEXT'
+export const SET_HISTORY = 'appState.SET_HISTORY'
 
 //destination
 export const SET_DESTINATIONS = 'apiTrippian.SET_DESTINATIONS'
