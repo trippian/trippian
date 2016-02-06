@@ -69,14 +69,22 @@ export function setAppStateUser(isLogin = true) {
 // searchAsDestination => postTrip
 // searchAsName => postDestination
 export function attachInfoToData(data, {
-  user = false, userId = false, isAdmin = false, isTripian = false,
+  user = false, userId = false, isAdmin = false, isTripian = false, isNoUserId = false,
     userIdAsSenderId = false, userIdAsTrippianId = false, album = false, feature = false, searchAsDestination = false, searchAsName = false,
     displayName = false, username = false, createdAt = true
 }) {
   // neo4j can't store object, have to add all fields as properties
   if (user) {
-    data = Object.assign(data, store.getState().appState.get('user'))
+    const user = store.getState().appState.get('user')
+
+    // isAdmin is handled by server side and is top secret, we have to persist the state just in case the user data got overwritten 
+    data = Object.assign(data, user)
     console.log('in store util', data)
+  }
+  if (isNoUserId) {
+    // 
+    data.tempId = data.id
+    delete data.id
   }
   data.createdAt = new Date()
   console.log('store util', data)
