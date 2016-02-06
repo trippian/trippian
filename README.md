@@ -18,6 +18,21 @@ Your local trip companion! Trippian is a web application that allows tourists (T
 ####Database Design
 <img src="https://s3-us-west-1.amazonaws.com/trippian/Trippian+Database+Schema.png" width="500">
 
+In a typical graph database, there are two different data types: nodes and relationships between those nodes. An unlimited amount of properties can be stored in both of these data constructs. In Neo4j, there are nodes with different labels, which are similar to subclasses and can be filtered by the label. We have 3 different labels for these nodes: User, Trip, and Destination. In addition to these labels, we have two different kinds of users, a Trippian and a Trippee. We differentiate between these two user by storing a property called isTrippian as a boolean value. We also have 8 different types of relationships between nodes that are represented in the diagram above. The arrows represent the direction of the relationship from one node to another. 
+
+### Technology Stack
+- React
+- Node/Express
+- Neo4j
+- Babel/ES6
+- Travis CI
+- Mocha
+- Chai
+- AWS S3
+- webpack
+- Sass
+- Gulp
+
 ###Setup
 For this project, we develop using webpack to bundle our react code and gulp to watch and compile all our styling files. Thus, during development, we have the server running on localhost port 4000 and our webpack server on localhost port 3000.
 
@@ -48,19 +63,6 @@ When you are done making changes to the styling, run `gulp copy` and then all th
 
 ###Contributing
 Check out our [contributing guide](https://github.com/trippian/trippian/blob/master/CONTRIBUTING.md) to see how to get started in contributing to our project!
-
-### Technology Stack
-- React
-- Node/Express
-- Neo4j
-- Babel/ES6
-- Travis CI
-- Mocha
-- Chai
-- AWS S3
-- webpack
-- Sass
-- Gulp
 
 ###API Documentation
 For any information on any of the REST endpoints, check out our API specifications doc [here](https://github.com/trippian/trippian/wiki/APISpec)
