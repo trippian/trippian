@@ -99,7 +99,7 @@ export default {
   // need to work on this function to change all fields that are sent
   becomeTrippian: (userId) => {
     return new Promise((resolve, reject) => {
-      let cypher = `match (u:User) where id(u)=${userId} SET u.trippian = true return u`
+      let cypher = `match (u:User) where id(u)=${userId} SET u.isTrippian = true return u`
       db.queryAsync(cypher)
         .then((updatedUser) => {
           if (updatedUser) {
