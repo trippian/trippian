@@ -4,10 +4,10 @@ Make sure the page and components are in alphabetic order
 */
 
 //TODO: read HOST from a get request or send it by cookie 
-const HOST = window.location.origin // enable this for deploy 
+// const HOST = window.location.origin // enable this for deploy 
 
 // const HOST = 'http://trippian.com'
-// const HOST = 'http://localhost:4000' // enable this for react dev
+const HOST = 'http://localhost:4000' // enable this for react dev
 
 export default {
   appName: '',
@@ -67,7 +67,6 @@ export default {
 
     aboutPage: 'http://recwell.umd.edu/portals/0/Photos/MAP-trips.jpg',
     pressPage: 'http://recwell.umd.edu/portals/0/Photos/MAP-trips.jpg',
-    pressPage: 'http://recwell.umd.edu/portals/0/Photos/MAP-trips.jpg',
     destinationPage: 'http://recwell.umd.edu/portals/0/Photos/MAP-trips.jpg',
     inquiryDetailPage: 'http://recwell.umd.edu/portals/0/Photos/MAP-trips.jpg',
     loginPage: 'http://recwell.umd.edu/portals/0/Photos/MAP-trips.jpg',
@@ -90,6 +89,10 @@ export default {
   },
   // specfic pages 
   homePage: {
+    jumbotron: {
+      title: 'Start Now...',
+      subTitle: 'Find your local travel companion around the world'
+    },
     popularDestinations: {
       title: 'Popular Destinations',
       subTitle: 'Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet.'

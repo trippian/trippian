@@ -44,32 +44,32 @@ const messages = defineMessages({
   jumbotronTitle: {
     id: 'home.jumbotron-title',
     description: 'title for jumbotron',
-    defaultMessage: 'Start Now'
+    defaultMessage: appConfig.jumbotron.title
   },
   jumbotronSubTitle: {
     id: 'home.jumbotron-sub-title',
     description: 'sub title for jumbotron',
-    defaultMessage: 'Find your local travel companion around the world'
+    defaultMessage: appConfig.jumbotron.subTitle
   },
   popularDestinationsTitle: {
     id: 'home.popular-destinations-title',
     description: 'title for popular destinations',
-    defaultMessage: 'Popular Destinations'
+    defaultMessage: appConfig.popularDestinations.title
   },
   popularDestinationsSubTitle: {
     id: 'home.popular-destinations-sub-title',
     description: 'sub title for popular destinations',
-    defaultMessage: 'Explore popular destinations around the world'
+    defaultMessage: appConfig.popularDestinations.subTitle
   },
   popularTrippiansTitle: {
     id: 'home.popular-trippians-title',
     description: 'title for popular Trippians',
-    defaultMessage: 'Popular Trippians'
+    defaultMessage: appConfig.popularTrippians.subTitle
   },
   popularTrippiansSubTitle: {
     id: 'home.popular-trippians-sub-title',
     description: 'sub title for popular Trippians',
-    defaultMessage: 'Connect with popular Trippians, find interesting trips and more...'
+    defaultMessage: appConfig.popularTrippians.subTitle
   }
 
 })
@@ -110,7 +110,7 @@ class Home extends Component {
              <div className="col-sm-12 col-md-12 content-container">
                  <div className="section">
                     <SectionHeaderWidget title={formatMessage(messages.popularDestinationsTitle)} subTitle={formatMessage(messages.popularDestinationsSubTitle)} />
-                    <DestinationListWidget dataList={this.props.popularDestinations} name="hello world" />
+                    <DestinationListWidget dataList={this.props.popularDestinations} />
                   </div>
   
                  <div className="section">
