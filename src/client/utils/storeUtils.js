@@ -75,7 +75,12 @@ export function attachInfoToData(data, {
 }) {
   // neo4j can't store object, have to add all fields as properties
   if (user) {
-    data = Object.assign(data, store.getState().appState.get('user'))
+    const user = store.getState().appState.get('user')
+
+    // isAdmin is handled by server side and is top secret, we have to persist the state just in case the user data got overwritten 
+    const isAdmin = user.isAdmin
+    data = Object.assign(data, user)
+    data.isAdmin = isAdmin
     console.log('in store util', data)
   }
   data.createdAt = new Date()

@@ -29,7 +29,7 @@ export default class Admin extends Component {
         {!isAdmin && 
            <h3>You donot have access to this page. Login as admin first</h3>
         }
-        {isAdmin &&
+        {!isAdmin &&
             <div>
               <ul className="list-inline">
                 <li><Link to='admin/destination'>Destination </Link></li>
