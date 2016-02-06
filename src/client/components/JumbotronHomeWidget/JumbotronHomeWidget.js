@@ -14,17 +14,17 @@ const styles = {
   }
 }
 const JumbotronHomeWidget = ({
-    title, subTitle, history
-  }) => {
-    return ( < div className = "jumbotron text-center"
-        style = {
-          styles.backgroundImage
-        } >
-        <div className = "container">
+  title, subTitle, history
+}) => {
+
+  return (
+    <div className="jumbotron text-center jumbotron-fixed">
+        <div className="container">
         <h1>{title}</h1> 
         <p>{subTitle}</p> 
         <SearchBoxWidget history={history}/>
-    < /div >  < /div >
+        </div>  
+      </div>
   )
 }
 
