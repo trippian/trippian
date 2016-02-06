@@ -1,5 +1,6 @@
 // this will help initialize the app state with the locale and messages
 
+rredrredd
 import store from '../../client/redux/store'
 import {
   addLocaleData
@@ -12,12 +13,12 @@ import de from '../../client/locale-data/de'
 import fr from '../../client/locale-data/fr'
 
 import {
-  getMessagesByLocale
+  getMessagesByLocale, readerUserFromCookie
 }
-from './clientUtils.js'
+from './clientUtils'
 
 import {
-  setLocale, setLocaleMessages
+  setLocale, setLocaleMessages, setUser
 }
 from '../../client/redux/actionCreators'
 
@@ -25,7 +26,6 @@ from '../../client/redux/actionCreators'
 export function initializeAppStateWithLocale(locale = 'en-US') {
   //set the local 
   store.dispatch(setLocale('en-US'))
-
   addLocaleData(en)
   addLocaleData(zh)
   addLocaleData(es)
@@ -42,4 +42,13 @@ export function initializeAppStateWithLocale(locale = 'en-US') {
     //   }
     // })
 
+}
+
+export function initAppStateUserWithCookie() {
+  const user = readerUserFromCookie()
+  if (user) {
+    user.isAuthed = true
+    console.log('----got user from cookie', user)
+    store.dispatch(setUser(user))
+  }
 }

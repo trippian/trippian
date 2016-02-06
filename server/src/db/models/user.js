@@ -22,49 +22,6 @@ const transporter = nodemailer.createTransport({
 })
 
 export default {
-  // this function is used in passport to create a user in our db when they signup with fb
-  // createFacebookUser: (profile) => {
-  //   return new Promise((resolve, reject) => {
-  //     db.saveAsync({
-  //       name: profile.displayName,
-  //       facebookId: parseInt(profile.id),
-  //       trippian: false,
-  //       email: profile.emails[0].value,
-  //       picture: `https://graph.facebook.com/${profile.id}/picture?height=500`,
-  //       totalRating: 0,
-  //       numberOfReviews: 0,
-  //       averageRating: 0
-  //     }, 'User')
-  //       .then((createdUser) => {
-  //         if (createdUser) {
-  //           resolve(createdUser)
-  //         } else {
-  //           reject(new Error('user could not be created'))
-  //         }
-  //       })
-  //       .catch((error) => {
-  //         console.error(error)
-  //       })
-  //   })
-  // },
-  // createGoogleUser: profile => {
-  //   console.log(profile)
-  //   return new Promise((resolve, reject) => {
-  //     db.saveAsync({
-
-  //     }, 'User')
-  //       .then(createdUser => {
-  //         if (createdUser.length) {
-  //           resolve(createdUser)
-  //         } else {
-  //           reject(new Error('google user could not be created'))
-  //         }
-  //       })
-  //       .catch(error => {
-  //         console.error(error)
-  //       })
-  //   })
-  // },
   createUser: (details) => {
     details.totalRating = 0
     details.numberOfReviews = 0
@@ -167,12 +124,7 @@ export default {
       let cypher = `match (u:User)-[r:POSTED]->(t:Trip) where id(u)=${userId} return t;`
       db.queryAsync(cypher)
         .then((trips) => {
-          if (trips.length) {
-            resolve(trips)
-          } else {
-            // reject(new Error('could not find trips for that user'))
-            resolve(trips)
-          }
+          resolve(trips)
         })
         .catch((error) => {
           console.error(error)
@@ -305,15 +257,15 @@ export default {
     })
   },
   getUserUpvotedTrips: (userId) => {
-  return new Promise((resolve, reject) => {
-    let cypher = `match (t:Trip), (t)<-[u:UPVOTE]-(n:User) where id(n)=${userId} return t;`
-    db.queryAsync(cypher)
-      .then(upvoted => {
-        resolve(upvoted)
-      })
-      .catch(error => {
-        console.error(error)
-      })
+    return new Promise((resolve, reject) => {
+      let cypher = `match (t:Trip), (t)<-[u:UPVOTE]-(n:User) where id(n)=${userId} return t;`
+      db.queryAsync(cypher)
+        .then(upvoted => {
+          resolve(upvoted)
+        })
+        .catch(error => {
+          console.error(error)
+        })
     })
   }
 }

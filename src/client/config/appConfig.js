@@ -89,8 +89,7 @@ export default {
   },
   // specfic pages 
   homePage: {
-    jumbotron
-: {
+    jumbotron: {
       title: 'Start Now...',
       subTitle: 'Find your local travel companion around the world'
     },
@@ -163,9 +162,9 @@ export default {
   },
   destinationDetailPage: {
     whyVisitTitle: 'Why Visit',
-    whyVisitSubtitle: 'Why Visit',
+    whyVisitSubtitle: '',
     popularTripsTitle: 'Popular Trips',
-    popularTripsSubtitle: 'Popular Trips',
+    popularTripsSubtitle: '',
     map: {
       initialZoom: 6,
       initalLat: 37.761260,
@@ -177,7 +176,7 @@ export default {
   destinationListPage: {
     title: 'Destination List'
   },
-  destinationSearchResults: {
+  destinationSearchResultsPage: {
     title: 'Destination Search Result',
     subTitle: ''
   },
@@ -192,6 +191,10 @@ export default {
     reviewsSectionSubtitle: '',
     addReviewSectionTitle: 'Add a Review',
     addReviewSectionSubtitle: ''
+  },
+  loginPage: {
+    title: 'Destination Search Result',
+    subTitle: ''
   },
   // Components 
   AvatarWidget: {

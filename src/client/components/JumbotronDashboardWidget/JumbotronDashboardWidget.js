@@ -4,13 +4,13 @@ import {
 }
 from '../index'
 const JumbotronDashboardWidget = ({
-  title = '', subTitle = ''
+  title = '', subTitle = '', user
 }) => {
   return (
     <div className="jumbotron-dashboard-widget">
       <div className="container">
         <h1>User Dashboard</h1>
-       <DashboardMenuWidget />
+       <DashboardMenuWidget {...user} />
       </div>
     </div>
   )

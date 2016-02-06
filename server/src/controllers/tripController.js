@@ -7,8 +7,6 @@ export default {
       Trip.createNewTrip(req.params.userId, req.body)
         .then((newTrip) => {
           if (newTrip) {
-            // newTrip.userId
-            console.log(newTrip)
             res.json(newTrip)
           }
         })
@@ -21,7 +19,6 @@ export default {
     if (req.params.tripId) {
       Trip.getTripById(req.params.tripId)
         .then((trip) => {
-          console.log(trip)
           if (req.query.includeUserInfo) {
             User.getUserById(trip.userId)
               .then(user => {
@@ -42,7 +39,6 @@ export default {
     if (req.query.voteType && parseInt(req.body.userId) && req.params.tripId) {
       Trip.upOrDownvoteTrip(req.params.tripId, req.body.userId, req.query.voteType)
         .then((voted) => {
-          console.log(voted)
           res.json(voted)
         })
         .catch((error) => {
@@ -52,7 +48,6 @@ export default {
     else if (req.params.tripId && req.body) {
       Trip.updateTrip(req.params.tripId, req.body)
         .then((updatedTrip) => {
-          console.log(updatedTrip)
           res.json(updatedTrip)
         })
         .catch((error) => {
@@ -61,15 +56,11 @@ export default {
     }
 
   },
-  // tripPutVote: (req, res, next) => {
-
-  // },
   tripDelete: (req, res, next) => {
     if (req.params.tripId) {
       Trip.deleteTrip(req.params.tripId)
         .then((deleted) => {
           if (deleted) {
-            console.log(deleted)
             res.json(deleted)
           }
         })
@@ -82,7 +73,6 @@ export default {
     Trip.getAllTrips()
       .then(allTrips => {
         if (allTrips.length) {
-          console.log(allTrips)
           res.json(allTrips)
         }
       })
