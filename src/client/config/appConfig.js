@@ -4,10 +4,10 @@ Make sure the page and components are in alphabetic order
 */
 
 //TODO: read HOST from a get request or send it by cookie 
-const HOST = window.location.origin // enable this for deploy 
+// const HOST = window.location.origin // enable this for deploy 
 
 // const HOST = 'http://trippian.com'
-// const HOST = 'http://localhost:4000' // enable this for react dev
+const HOST = 'http://localhost:4000' // enable this for react dev
 
 export default {
   appName: '',
@@ -89,8 +89,7 @@ export default {
   },
   // specfic pages 
   homePage: {
-    jumbotron
-: {
+    jumbotron: {
       title: 'Start Now...',
       subTitle: 'Find your local travel companion around the world'
     },
@@ -177,7 +176,7 @@ export default {
   destinationListPage: {
     title: 'Destination List'
   },
-  destinationSearchResults: {
+  destinationSearchResultsPage: {
     title: 'Destination Search Result',
     subTitle: ''
   },
@@ -192,6 +191,10 @@ export default {
     reviewsSectionSubtitle: '',
     addReviewSectionTitle: 'Add a Review',
     addReviewSectionSubtitle: ''
+  },
+  loginPage: {
+    title: 'Destination Search Result',
+    subTitle: ''
   },
   // Components 
   AvatarWidget: {

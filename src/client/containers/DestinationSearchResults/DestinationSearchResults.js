@@ -18,7 +18,7 @@ import {
 }
 from 'react-redux'
 import {
-  destinationSearchResults as appConfig
+  destinationSearchResultsPage as appConfig
 }
 from '../../config/appConfig'
 

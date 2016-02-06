@@ -18,7 +18,7 @@ import {
 from '../shared/utils/clientUtils'
 
 import {
-  initializeAppStateWithLocale
+  initializeAppStateWithLocale, initAppStateUserWithCookie
 }
 from '../shared/utils/clientAppSetup'
 
@@ -33,12 +33,7 @@ let locale = store.getState().appState.get('locale') || getLocaleFromQueryString
 
 initializeAppStateWithLocale(locale)
 let messages = store.getState().appState.get('messages')
-
-export function initAppStateUserWithCookie() {
-  const user = getCookieByName('trippianPass')
-  console.log('got user from cookie', user)
-  setAppStateUser()
-}
+initAppStateUserWithCookie()
 
 // IntlProvider is not necessary since we are managing the locale and messages in App component 
 // but keep it here just in case 

@@ -71,3 +71,10 @@ export function parseCookieStringToUser(string) {
 export function clearTrippianCookieByName(name = 'trippianPass') {
   document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;'
 }
+
+export function readerUserFromCookie(string) {
+  const cookieString = getCookieByName('trippianPass')
+  if (!cookieString) return null
+  console.log('reading user from cookie', cookieString)
+  return parseCookieStringToUser(cookieString)
+}
