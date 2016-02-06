@@ -46,11 +46,10 @@ export default {
           } else {
             Destination.createDestination({
               name: details.destination
-              })
+            })
               .then(destination => {
                 db.saveAsync(details, 'Trip')
                   .then((newTrip) => {
-                    console.log(newTrip.id, "This is id", newTrip.destination, "this is destination name")
                     let cypher = `match (u:User), (t:Trip) where id(u)=${userId} and id(t)=${newTrip.id} create (u)-[r:POSTED]->(t) return r;`
                     db.queryAsync(cypher)
                       .then((userTripRelationship) => {

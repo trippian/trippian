@@ -20,9 +20,6 @@ export default {
     })
   },
   updateDestination: (details, destinationId) => {
-    // _.forEach(details, function(val, key) {
-    //   updateString += `${key}` + ': "' + `${val}` + '"'
-    // })
     let updateString = updateStringObject(details, '')
 
     return new Promise((resolve, reject) => {
@@ -62,10 +59,6 @@ export default {
       db.queryAsync(cypher)
         .then((destination) => {
           resolve(destination[0])
-          
-          // else {
-          //   reject(new Error('could not find destination'))
-          // }
         })
         .catch((error) => {
           console.error(error)
