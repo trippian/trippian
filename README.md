@@ -13,7 +13,7 @@ Your local trip companion! Trippian is a web application that allows tourists (T
 ###Architecture
 
 ####Database Design
-![Image of Database Design](https://s3-us-west-1.amazonaws.com/trippian/Trippian+Database+Schema.png)
+<img src="https://s3-us-west-1.amazonaws.com/trippian/Trippian+Database+Schema.png" width="500">
 
 ###Setup
 For this project, we develop using webpack to bundle our react code and gulp to watch and compile all our styling files. Thus, during development, we have the server running on localhost port 4000 and our webpack server on localhost port 3000.
