@@ -47,7 +47,7 @@ export default class Contact extends Component {
   handleSubmit(data) {
     console.log('posting data from form', data)
     store.dispatch(postInquiry(data))
-    this.setAlert('success', 'Successfully submitted inquiry')
+      // this.setAlert('success', 'Successfully submitted inquiry')
   }
   setAlert(type = 'success', title = '', message = '') {
     this.setState({
