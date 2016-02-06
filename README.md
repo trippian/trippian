@@ -8,95 +8,51 @@
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=flat-square)](https://github.com/semantic-release/semantic-release)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square)](http://commitizen.github.io/cz-cli/)
 
-Your local trip companion 
+Your local trip companion! Trippian is a web application that allows tourists (Trippees) to connect with a Trippian, a local who wants to show people around and show them what it would be like to live in a different city/country.
 
 ###Setup
-`npm install`
+For this project, we develop using webpack to bundle our react code and gulp to watch and compile all our styling files. Thus, during development, we have the server running on localhost port 4000 and our webpack server on localhost port 3000.
 
-Config the node environment (not complete yet):
-- S3AccessKey
-- S3Secret
-- FACEBOOK_ID
-- FACEBOOK_SECRET
-....
+- `npm install` to install our dependencies
+- `npm run dev` will start the dev server and run/watch all test files ending with '*.spec.js'.
+- `npm run start:server` will start our main server on localhost:4000
+- `npm run build`, will build the bundle.js file in the dist folder and copy all asset files from dist to deploy folder. 
+- NOTE: our main server will serve up the deploy folder, so if you would like to see updates on localhost:4000, you must run `npm run build`
+- `npm run commit` follows commitizen guidelines and will help you figure out which commit message to use.
 
-###Test 
+We used the dotenv npm package to configure our development variables. To run locally, you must create a .env file in the root directory and add in these variables. Here is a template file: [dotenvTemplate](https://github.com/trippian/trippian/blob/master/dotenvTemplate)
+
+- HOST, FACEBOOK_APP_ID, FACEBOOK_APP_SECRET, FACEBOOK_CALLBACK_URL, GRAPHSTORY_URL, S3_BUCKET, AWS_ACCESS_KEY_ID, AWS_SECRET_KEY, GOOGLE_APP_ID, GOOGLE_APP_SECRET, GMAIL_ACCOUNT, GMAIL_PWD, GOOGLE_MAPS_API_KEY
+
+###Testing
+For Client-side testing, we used mocha and chai and for server-side testing, we user mocha and chai with supertest. Supertest is a great library for testing routes on your server. It creates an instance of your server that you can test. For more information click this [link](https://github.com/visionmedia/supertest)
+
 `npm run test`
+`npm run test:server`
 This will watch *.spec.js and run the test (update this part later)
 
+### Styling
+All our styling files, including static assets and scss files are inside the `_planning/static/` directory
 
-### UI Design 
-All design files are under `_planning/static/` directory
+When making changes to the styling, run `gulp`. This will watch any changes in the `_planning/static/src/` folder and auto-reload the files after any changes.
 
-When designing, run `gulp` and change the files under `_planning/static/src/` folder, the browser will auto-reload the files whenever any file changes.
+When you are done making changes to the styling, run `gulp copy` and then all the files in `_planning/static/build/` except any html files will be copies to the `dist` folder.
 
-When you finsihed the design, run `gulp copy`, and all your files except html under `_planning/static/build/` will be copied to `dist/` directory. 
+###Contributing
+Check out our [contributing guide](https://github.com/trippian/trippian/blob/master/CONTRIBUTING.md) to see how to get started in contributing to our project!
 
+### Technology Stack
+- React
+- Node/Express
+- Neo4j
+- Babel/ES6
+- Travis CI
+- Mocha
+- Chai
+- AWS S3
+- webpack
+- Sass
+- Gulp
 
-###Develop 
-- `npm run dev` will start the dev server and run/watch all test files ending with '*.spec.js'. In general this is enough. 
-- Write the tests first, and add related features
-- Once you finished writing the feature and ready to commit, check if the tests still pass
-- Add staged files 
-- Run `npm run commit` and follow the commitizen flow to add related messages following [Angular Commiting Guideline](https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md#commit)
-
-- To prevent conflict at a particular file, e.g. package.json, do the following before commit: 
-```
-git add -u
-git reset -- package.json 
-```
-If you already pushed, try to run reset:
-```
-git reset HEAD~1   
-git add -u
-git reset -- package.json # or any other fiels 
-npm run commit 
-git push origin develop -f # force push to your remote branch 
-```
-
-- To solve merge conflict (other approach)
-```
-git checkout -b working # create a working branch copy 
-git checkout develop # go back to the branch you were working on 
-git reset --hard upstream/develop # set develop as a copy of remote branch 
-git merge -X theirs working # merge the working branch to develop using working branch as priority 
-git push -f 
-```
-
-We used the dotenv npm package to configure our development variables. To run locally, you must store a few variables in a .env file.
-- HOST
-- FACEBOOK_APP_ID
-- FACEBOOK_APP_SECRET
-- FACEBOOK_CALLBACK_URL
-- GRAPHSTORY_URL
-- S3_BUCKET
-- AWS_ACCESS_KEY_ID
-- AWS_SECRET_KEY
-
-### Serve API:
-```
-babel-node server/src/server.js --presets es2015
-```
-visit: [http://localhost:4000/api/destination/123](http://localhost:4000/api/destination/123)
-or [http://localhost:4000/api/trippian/123](http://localhost:4000/api/trippian/123)
-
-### Deploy 
-Run `npm run build`, will build the bundle.js file in dist folder and copy all asset files from dist to deploy folder. 
-
-
-### Internationalization  
-Copy the content from .babelrc1 to .babelrc, and run:
-`
-babel-node --plugins react-intl --presets es2015,stage-1,react src/client/entry.js
-`
-Replace entry.js with any file you wish to translate. 
-Remember to change the .babelrc back for webpack to work properly. (We don't have a solution to make babel work with both webpack and react-intl yet)
-
-To extract all formatted messages into the language files, run 
-`
-npm run translate
-`
-This will create the `/translation/lang/en-US.json` and other related translation files
-
-Diable redux-logger before running `npm run translate`
-
+###API Documentation
+For any information on any of the REST endpoints, check out our API specifications doc [here](https://github.com/trippian/trippian/wiki/APISpec)

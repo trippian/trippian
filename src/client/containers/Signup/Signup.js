@@ -18,7 +18,6 @@ export default class Signup extends Component {
         <h3>Signup</h3>
         <a href="#/login/success">Login Success Page</a>
         <SignupButtonsWidget />
-        <SignupFormWidget />
       </div>
       )
   }

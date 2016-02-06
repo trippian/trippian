@@ -75,7 +75,6 @@ export default (
               <Route component={Contact} path="contact"  />
               <IndexRoute component={TrippianDetail}/>
             </Route>
-
             <Route component={TrippianSignUp} path="become-a-trippian" />
             <Route component={TrippianList} path="trippian" />
 
