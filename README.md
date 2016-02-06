@@ -70,7 +70,7 @@ For any information on any of the REST endpoints, check out our API specificatio
 ###Team
 We are a team of 4 full-stack software engineers that are passionate about all facets of software development. If you have any questions or comments feel free to email us by clicking the mail icons next to our names or checkout our github profiles!
 
-- Audrey Li [<img src="http://cdn.flaticon.com/png/256/25231.png" width=20>](https://github.com/vidaaudrey) [<img src="https://cdn2.iconfinder.com/data/icons/freecns-cumulus/16/519948-008_Mail-128.png" width=20>](mailto:me@audreyli.me)
-- Joe Lagasse [<img src="http://cdn.flaticon.com/png/256/25231.png" width=20>](https://github.com/jlag34)
-- Yale Yuen [<img src="http://cdn.flaticon.com/png/256/25231.png" width=20>](https://github.com/ycube)
-- Elliot Chi [<img src="http://cdn.flaticon.com/png/256/25231.png" width=20>](https://github.com/elliotschi) [<img src="https://cdn2.iconfinder.com/data/icons/freecns-cumulus/16/519948-008_Mail-128.png" width=20>](mailto:elliotschi@gmail.com)
+- Audrey Li [<img src="http://cdn.flaticon.com/png/256/25231.png" width=20>](https://github.com/vidaaudrey) [<img src="https://cdn2.iconfinder.com/data/icons/freecns-cumulus/16/519948-008_Mail-128.png" width=20>](mailto:me@audreyli.me?Subject=trippian)
+- Joe Lagasse [<img src="http://cdn.flaticon.com/png/256/25231.png" width=20>](https://github.com/jlag34) [<img src="https://cdn2.iconfinder.com/data/icons/freecns-cumulus/16/519948-008_Mail-128.png" width=20>](mailto:jlag2351@gmail.com?Subject=trippian)
+- Yale Yuen [<img src="http://cdn.flaticon.com/png/256/25231.png" width=20>](https://github.com/ycube) [<img src="https://cdn2.iconfinder.com/data/icons/freecns-cumulus/16/519948-008_Mail-128.png" width=20>](mailto:yaleyyuen@gmail.com?Subject=trippian)
+- Elliot Chi [<img src="http://cdn.flaticon.com/png/256/25231.png" width=20>](https://github.com/elliotschi) [<img src="https://cdn2.iconfinder.com/data/icons/freecns-cumulus/16/519948-008_Mail-128.png" width=20>](mailto:elliotschi@gmail.com?Subject=trippian)
