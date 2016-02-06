@@ -16,6 +16,10 @@ import {
 }
 from '../../redux/apiIndex'
 import store from '../../redux/store'
+import {
+  Login
+}
+from '../index'
 
 export default class TrippianSignup extends Component {
   constructor(props) {
@@ -28,13 +32,16 @@ export default class TrippianSignup extends Component {
   handleReset() {
     console.log('will handle form reset')
   }
-
   render() {
+    const isAuthed = store.getState().appState.get('user').isAuthed
+    console.log('--inside TrippianSignup render', isAuthed)
     return (
-      <div id="trippian-edit-page">
+      <div id="trippian-sign-up-page">
         <JumbotronWidget title={appConfig.title} subTitle={appConfig.subTitle} isNoContact isTitled />
         <div className="container main-content-container">
             <div className="col-sm-12 col-md-8 col-md-offset-2 content-container">
+                hello world 
+              {isAuthed && 
                 <div className="section">
                     <div className="section-header">
                         <h3>{appConfig.formTitle}</h3>
@@ -43,6 +50,9 @@ export default class TrippianSignup extends Component {
                       <TrippianPostFormWidget onSubmit={this.handleSubmit.bind(this)} resetForm={this.handleReset.bind(this)} />
                     </div>
                 </div>
+                }
+                {!isAuthed && <Login />}
+
             </div>
         </div>
       </div>

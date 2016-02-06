@@ -22,10 +22,13 @@ import {
 }
 from 'react-intl'
 import {
+  setHistory
+}
+from '../../redux/actionCreators'
+import {
   Enhance
 }
 from './Enhance'
-
 
 class App extends Component {
 
@@ -53,6 +56,9 @@ class App extends Component {
     //   }
     // })
     this.props.history.listen(() => {
+      // to easily access and operate on history from any containers or widget, we'll store it in the redux store 
+      store.dispatch(setHistory(this.props.history))
+
       const currentPath = getPathNameFromHash(window.location.hash)
       const query = window.location.search
       console.log('currentPath', currentPath, query)
@@ -61,12 +67,13 @@ class App extends Component {
     })
   }
 
+
   render() {
     return (
       <IntlProvider locale={this.state.locale} messages={this.props.messages}>
         <div >
           <header>
-            <NavWidget history={this.props.history} currentPath={this.state.currentPath} username={this.props.username} displayName={this.props.displayName} isUserAdmin={this.props.isUserAdmin}/>
+            <NavWidget user={this.props.user} currentPath={this.state.currentPath} />
           </header>
           <main className="row">
             {this.props.children}
@@ -86,8 +93,7 @@ App.displayName = 'App'
 
 function mapStateToProps(state) {
   return {
-    username: state.appState.get('user').username,
-    displayName: state.appState.get('user').displayName,
+    user: state.appState.get('user'),
     messages: state.appState.get('messages')
   }
 }
