@@ -1,3 +1,5 @@
+// just to demo intl, currently not in use
+
 import React, {
   Component, PropTypes
 }
