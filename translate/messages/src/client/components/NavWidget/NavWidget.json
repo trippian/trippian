@@ -3,20 +3,5 @@
     "id": "app-pages.become-a-trippian",
     "description": "become a trippian page title",
     "defaultMessage": "Become a Trippian"
-  },
-  {
-    "id": "nav-widget.welcome-message",
-    "description": "a short welcome message for use at nav menu",
-    "defaultMessage": "Hello"
-  },
-  {
-    "id": "app-pages.trippian-edit-profile",
-    "description": "trippian edit page title",
-    "defaultMessage": "Edit My Profile"
-  },
-  {
-    "id": "app-shared.logout",
-    "description": "logout link text",
-    "defaultMessage": "Logout"
   }
 ]

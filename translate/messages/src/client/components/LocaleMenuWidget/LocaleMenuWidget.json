@@ -18,5 +18,15 @@
     "id": "locale-menu-widget.item-es-description",
     "description": "local menu Spanish text",
     "defaultMessage": "Espanol"
+  },
+  {
+    "id": "locale-menu-widget.item-de-description",
+    "description": "local menu German text",
+    "defaultMessage": "Deutsche"
+  },
+  {
+    "id": "locale-menu-widget.item-fr-description",
+    "description": "local menu German text",
+    "defaultMessage": "Français"
   }
 ]

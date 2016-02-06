@@ -7,8 +7,9 @@ import {
   reducer as form
 }
 from 'redux-form'
-import createLogger from 'redux-logger'
 import appState from './reducers/appStateReducer'
+
+import createLogger from 'redux-logger' // comment all logger related logic for translation or deployment
 
 import apiTrippian, {
   getPopularDestinations,
