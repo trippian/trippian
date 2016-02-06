@@ -30,7 +30,7 @@ const NavWidget = ({
   currentPath, username = '', displayName = '', isUserAdmin = false, history
 }) => {
   const {
-    isAuthed
+    isAuthed, isTripian
   } = store.getState().appState.get('user')
 
   return (
@@ -49,14 +49,14 @@ const NavWidget = ({
         <div className="collapse navbar-collapse navbar-ex1-collapse">
             <LocaleMenuWidget className="nav navbar-nav navbar-right list-inline"/>
             <ul className="nav navbar-nav navbar-right">
-                <li>
+                {!isTripian && <li>
                     <Link to='become-a-trippian' className="btn btn-bordered">
                         <FormattedMessage 
                             id="app-pages.become-a-trippian" 
                             description="become a trippian page title"
                             defaultMessage="Become a Trippian"/>
                     </Link>
-                </li>
+                </li>}
                 {isAuthed && <UserMenuWidget />}
                 {!isAuthed && <li><Link to="login">Login </Link></li>}
             </ul>
