@@ -12,7 +12,6 @@ const JumbotronVideoWidget = () => {
         <div>
           <ReactDriveIn className="react-drive-in-video" show={appConfig.landingVideo} poster={appConfig.poster}/>
         </div>
-        <h2>Hello</h2>
     </div>
   )
 }
