@@ -470,7 +470,9 @@ export function putTrippian(data, isNewTrippian = true) {
   store.dispatch(setFormSubmitting())
   alertInfo('Submitting now...')
   attachInfoToData(data, {
-    user: true
+    user: true,
+    isTripian: true,
+    isAdmin: true //TODO: delete this later 
   })
   console.log('-- posting a trippian now in reducer', data)
   return (dispatch) => {
@@ -479,6 +481,7 @@ export function putTrippian(data, isNewTrippian = true) {
         console.log('---finish putting', trippian)
           // dispatch(addAdminTrippian(trippian))
         dispatch(setFormSubmitted(true))
+        dispatch(setUser(trippian))
         alertSuccess('Successfully added trippian')
       })
       .catch(error => apologize(error))
