@@ -26,7 +26,6 @@ import {
 }
 from './Enhance'
 
-
 class App extends Component {
 
   constructor(props) {
@@ -66,7 +65,7 @@ class App extends Component {
       <IntlProvider locale={this.state.locale} messages={this.props.messages}>
         <div >
           <header>
-            <NavWidget history={this.props.history} currentPath={this.state.currentPath} username={this.props.username} displayName={this.props.displayName} isUserAdmin={this.props.isUserAdmin}/>
+            <NavWidget user={this.props.user} history={this.props.history} currentPath={this.state.currentPath} />
           </header>
           <main className="row">
             {this.props.children}
@@ -86,8 +85,7 @@ App.displayName = 'App'
 
 function mapStateToProps(state) {
   return {
-    username: state.appState.get('user').username,
-    displayName: state.appState.get('user').displayName,
+    user: state.appState.get('user'),
     messages: state.appState.get('messages')
   }
 }
