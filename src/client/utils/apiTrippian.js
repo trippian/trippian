@@ -150,9 +150,16 @@ export const fetchPostTrippian = (data) => {
   return api.post(url, data)
 }
 
+export const fetchPutTrippian
+ = (data) => {
+  const url = `${API_HOST}${routeConfig.user}/${data.id}?cat=trippian`
+  console.log('fetchPutTrippian', url, data, data.id)
+  return api.put(url, data)
+}
 
 //Rating & Review 
 export const fetchPostReview = (data) => {
+  
   const url = `${API_HOST}${routeConfig.review}/${data.trippianId}?rater=${data.id}`
   console.log('fetchPostReview', url, data)
   return api.post(url, data)

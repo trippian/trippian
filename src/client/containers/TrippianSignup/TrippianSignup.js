@@ -8,13 +8,25 @@ import {
 }
 from '../../config/appConfig'
 import {
-  JumbotronWidget, TrippianSignupFormWidget
+  JumbotronWidget, TrippianPostFormWidget
 }
 from '../../components/index'
+import {
+  putTrippian
+}
+from '../../redux/apiIndex'
+import store from '../../redux/store'
 
 export default class TrippianSignup extends Component {
   constructor(props) {
     super(props)
+  }
+  handleSubmit(data) {
+    console.log('posting data from form, submitting?', data, this.props.isFormSubmitted, this.props.isFormSubmitting)
+    store.dispatch(putTrippian(data))
+  }
+  handleReset() {
+    console.log('will handle form reset')
   }
 
   render() {
@@ -28,7 +40,7 @@ export default class TrippianSignup extends Component {
                         <h3>{appConfig.formTitle}</h3>
                     </div>
                     <div className="section-body">
-                      <TrippianSignupFormWidget />
+                      <TrippianPostFormWidget onSubmit={this.handleSubmit.bind(this)} resetForm={this.handleReset.bind(this)} />
                     </div>
                 </div>
             </div>

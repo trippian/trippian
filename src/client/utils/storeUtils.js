@@ -76,7 +76,6 @@ export function attachInfoToData(data, {
   if (user) {
     data = Object.assign(data, store.getState().appState.get('user'))
     console.log('in store util', data)
-
   }
   data.createdAt = new Date()
   console.log('store util', data)
