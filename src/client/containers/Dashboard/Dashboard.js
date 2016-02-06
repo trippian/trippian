@@ -33,6 +33,7 @@ from '../../redux/actionCreators'
 
 function mapStateToProps(state) {
   return {
+    user: state.appState.get('user'),
     alert: state.appState.get('alert')
   }
 }
@@ -42,8 +43,7 @@ function mapDispatchToProps(dispatch) {
     setAlert: bindActionCreators(setAlert, dispatch),
     getDashboardById: bindActionCreators(getDashboardById, dispatch)
   }
-}
-@
+}@
 connect(mapStateToProps, mapDispatchToProps)
 export default class Dashboard extends Component {
   constructor(props) {
@@ -66,7 +66,7 @@ export default class Dashboard extends Component {
     } = this.props.alert
     return (
       <div id="user-wrapper-page">
-        <JumbotronDashboardWidget />
+        <JumbotronDashboardWidget user={this.props.user} />
         <div className="container main-content-container">
             <div className="col-sm-12 col-md-10 col-md-offset-1 content-container">
                 {title !== '' && 
