@@ -180,6 +180,18 @@ export default {
     title: 'Destination Search Result',
     subTitle: ''
   },
+  trippianDetailPage: {
+    bioSectionTitle: 'Bio',
+    bioSectionSubtitle: '',
+    introductionSectionTitle: 'Introduction',
+    introductionSectionSubtitl: '',
+    myTripsSectionTitle: 'My Trips',
+    myTripsSectionSubtitle: '',
+    reviewsSectionTitle: 'Reviews',
+    reviewsSectionSubtitle: '',
+    addReviewSectionTitle: 'Add a Review',
+    addReviewSectionSubtitle: ''
+  },
   // Components 
   AvatarWidget: {
 

@@ -4,7 +4,7 @@ import React, {
 from 'react'
 
 import {
-  TextIntroPlainWidget, TextIntroRichWidget, ReviewListWidget, DummyRichTextWidget, ReviewAddFormWidget
+  TextIntroPlainWidget, TextIntroRichWidget, ReviewListWidget, DummyRichTextWidget, ReviewAddFormWidget, TripListWidget, SectionHeaderWidget
 }
 from '../../components/index'
 
@@ -21,7 +21,10 @@ import {
   postReview
 }
 from '../../redux/apiIndex'
-
+import {
+  trippianDetailPage as appConfig
+}
+from '../../config/appConfig'
 
 function mapStateToProps(state) {
   return {
@@ -74,7 +77,7 @@ export default class TrippianDetail extends Component {
     console.log('***insider trippian detail render', this.props.trippian)
 
     const {
-      name, bio, picture, slogan, reviews
+      name, bio, picture, slogan, reviews, introduction, location, averageRating, trips
     } = this.props.trippian
     const {
       type, title, message
@@ -82,41 +85,47 @@ export default class TrippianDetail extends Component {
 
     return (
       <div>
-              <div className="section">
-                <div className="section-header">
-                    <h3>Bio</h3>
+            <div className="section">
+                <SectionHeaderWidget title={appConfig.bioSectionTitle} subTitle={appConfig.bioSectionSubtitle} />
+                <div className="section-body">
                     <TextIntroPlainWidget text={bio} />
                 </div>
             </div>
+
             <div className="section">
-                <div className="section-header">
-                    <h3>My Trips</h3>
-                </div>
+                <SectionHeaderWidget title={appConfig.introductionSectionTitle} subTitle={appConfig.introductionSectionSubtitle} />
                 <div className="section-body">
-                  <DummyRichTextWidget />
+                    <TextIntroPlainWidget text={introduction} />
                 </div>
             </div>
-            <div className="section review">
-                <div className="section-header">
-                    <h3>Reviews</h3>
-                </div>
+
+            <div className="section">
+                <SectionHeaderWidget title={appConfig.myTripsSectionTitle} subTitle={appConfig.myTripsSectionSubtitle} />
                 <div className="section-body">
-                  <ReviewListWidget dataList={this.props.trippian.reviews} />
+                    <TripListWidget dataList={trips} />
+                    <DummyRichTextWidget />
                 </div>
             </div>
+
+            <div className="section">
+                <SectionHeaderWidget title={appConfig.reviewsSectionTitle} subTitle={appConfig.reviewsSectionSubtitle} />
+                <div className="section-body">
+                  <ReviewListWidget dataList={reviews} />
+                </div>
+            </div>
+
             <div className="section add-review">
-                <div className="section-header">
-                    <h3>Add a Review</h3>
-                </div>
+                <SectionHeaderWidget title={appConfig.addReviewSectionTitle} subTitle={appConfig.addReviewSectionSubtitle} />
+                <div className="section-body">
                 {title !== '' && 
                   <Alert bsStyle={type} dismissAfter={3000} onDismiss={this.handleAlertDismiss.bind(this)}>
                     <h4>{title}</h4>
                     <p>{message}</p>
                   </Alert>
                 }
-                <ReviewAddFormWidget dataList={reviews} onSubmit={this.handleReviewSubmit.bind(this)} />
+                <ReviewAddFormWidget onSubmit={this.handleReviewSubmit.bind(this)} />
+                </div>
             </div>
-
         </div>
     )
   }
