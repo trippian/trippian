@@ -1,22 +1,25 @@
 import React from 'react'
-
-const styles = {
-  backgroundImage: {
-    backgroundImage: 'url(http://lorempixel.com/800/400/city/)'
-  }
+import {
+  defaults as appConfig
 }
+from '../../config/appConfig'
+
 const JumbotronWidget = ({
-    title = '', subTitle = ''
-  }) => {
-    return ( < div className = "jumbotron text-center"
-        style = {
-          styles.backgroundImage
-        } >
-        <div className = "container" >
+  title = '', subTitle = '', backgroundImage = appConfig.defaultJumbotronBackground
+}) => {
+  const styles = {
+    backgroundImage: {
+      backgroundImage: `url(${backgroundImage})`
+    }
+  }
+  return ( < div className = "jumbotron text-center"
+    style = {
+      styles.backgroundImage
+    } >
+    <div className="container" >
           <h1>{title}</h1> 
           <p>{subTitle}</p>
-        < /div> 
-    < /div >
+        </div> < /div>
   )
 }
 

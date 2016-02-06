@@ -41,7 +41,7 @@ export default {
     let putDetails = req.body
     let inquiryId = req.params.inquiryId
     let accept = req.query.cat
-    if (putDetails && inquiryId) { //update inquiry
+    if (putDetails && inquiryId && !accept) { //update inquiry
       Inquiry.updateInquiry(putDetails, inquiryId)
         .then((updatedInquiry) => {
           console.log(updatedInquiry)
@@ -50,8 +50,7 @@ export default {
         .catch((error) => {
           next (error)
         })
-    } 
-    if (inquiryId && accept) { //trippian accepts
+    } else if (inquiryId && accept) { //trippian accepts
       Inquiry.acceptInquiry(inquiryId)
         .then((accepted) => {
           if (accepted) {

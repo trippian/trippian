@@ -1,4 +1,4 @@
-##Trippian 
+#Trippian 
 [![Travis](https://img.shields.io/travis/rust-lang/rust.svg?style=flat-square)](https://travis-ci.org/vidaaudrey/trippian)
 [![codecov coverage](https://img.shields.io/codecov/c/github/vidaaudrey/trippian/develop.svg?style=flat-square)](https://codecov.io/github/vidaaudrey/trippian?branch=develop)
 [![npm version](https://badge.fury.io/js/trippian.svg)](https://badge.fury.io/js/trippian)
@@ -61,3 +61,9 @@ Check out our [contributing guide](https://github.com/trippian/trippian/blob/mas
 
 ###API Documentation
 For any information on any of the REST endpoints, check out our API specifications doc [here](https://github.com/trippian/trippian/wiki/APISpec)
+
+###Team
+- Audrey Li [<img src="http://cdn.flaticon.com/png/256/25231.png" width=20>](https://github.com/vidaaudrey)
+- Joe Lagasse [<img src="http://cdn.flaticon.com/png/256/25231.png" width=20>](https://github.com/jlag34)
+- Yale Yuen [<img src="http://cdn.flaticon.com/png/256/25231.png" width=20>](https://github.com/ycube)
+- Elliot Chi [<img src="http://cdn.flaticon.com/png/256/25231.png" width=20>](https://github.com/elliotschi)

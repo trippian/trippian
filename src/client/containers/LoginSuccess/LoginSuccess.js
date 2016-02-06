@@ -10,6 +10,7 @@ import {
   setAppStateUser
 }
 from '../../utils/storeUtils'
+import store from '../../redux/store'
 
 export default class LoginSuccess extends Component {
   constructor(props) {
@@ -20,6 +21,12 @@ export default class LoginSuccess extends Component {
       // dipatch set user at appState 
     console.log('got user from coookie', user)
     setAppStateUser()
+
+    //TODO: read history data and redirect user to previous page 
+    // const history = store.getState().appState.get('history')
+    // console.log('----history', history)
+    // history.goBack()
+
   }
 
   render() {

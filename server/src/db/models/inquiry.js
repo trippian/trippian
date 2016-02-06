@@ -105,8 +105,8 @@ export default {
       let cypher = `match (u1:User)-[r:INQUIRY]->(u2:User) where id(r)=${inquiryId} create (u2)-[t:TOURED]->(u1) set t = r return t`
       db.queryAsync(cypher) 
         .then((touredRelationship) => {
-          if (touredRelationship) {
-            resolve(touredRelationship)
+          if (touredRelationship.length) {
+            resolve(touredRelationship[0])
           } else {
             reject(new Error('inquiry could not be accepted or does not exist'))
           }
