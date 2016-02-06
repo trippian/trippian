@@ -106,7 +106,7 @@ class Home extends Component {
     return (
       <div id="home-page">
       <JumbotronVideoWidget />
-       <JumbotronHomeWidget title='' subTitle='' /> 
+       <JumbotronHomeWidget title={appConfig.jumbotron.title} subTitle={appConfig.jumbotron.subTitle} /> 
          <div className="container">
             <div className="main-content-container">
              <div className="col-sm-12 col-md-12 content-container">
