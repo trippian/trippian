@@ -55,7 +55,7 @@ const NavWidget = ({
                             defaultMessage="Become a Trippian"/>
                     </Link>
                 </li>}
-                {isAuthed && <UserMenuWidget user={user}/>}
+                {isAuthed && <UserMenuWidget {...user}/>}
                 {!isAuthed && <li><Link to="login">Login </Link></li>}
             </ul>
         </div>

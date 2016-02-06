@@ -9,10 +9,11 @@ import {
 }
 from 'react-intl'
 
-const UserMenuWidget = () => {
-  const {
-    displayName, isAdmin = true, picture = '', isAuthed = true
-  } = store.getState().appState.get('user')
+const UserMenuWidget = ({
+  displayName, isAdmin, picture, isAuthed}) => {
+  // const {
+    
+  // } = store.getState().appState.get('user')
 
   return (
     <li className="dropdown">
