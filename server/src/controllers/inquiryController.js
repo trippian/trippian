@@ -10,7 +10,6 @@ export default {
           if (user) {
             Inquiry.getAllInquiriesForUser(userId)
               .then((inquiries) => {
-                console.log(inquiries)
                 if(inquiries.length) {
                   res.json(inquiries)
                 }
@@ -29,7 +28,6 @@ export default {
     if (postDetails) {
       Inquiry.createInquiry(sender, trippianId, postDetails)
         .then((createdInquiry) => {
-          console.log(createdInquiry)
           res.json(createdInquiry)
         })
         .catch((error) => {
@@ -44,7 +42,6 @@ export default {
     if (putDetails && inquiryId && !accept) { //update inquiry
       Inquiry.updateInquiry(putDetails, inquiryId)
         .then((updatedInquiry) => {
-          console.log(updatedInquiry)
           res.json(updatedInquiry)
         })
         .catch((error) => {
@@ -56,7 +53,6 @@ export default {
           if (accepted) {
             Inquiry.deleteInquiry(inquiryId)
               .then((deleted) => {
-                console.log(accepted)
                 res.json(accepted)
               })
           }
@@ -71,7 +67,6 @@ export default {
     if (inquiryId) {
       Inquiry.deleteInquiry(inquiryId)
         .then((deleted) => {
-          console.log(deleted)
           res.json(deleted)
         })
         .catch((error) => {
@@ -82,7 +77,6 @@ export default {
   allInquiryGet: (req, res, next) => {
     Inquiry.getAllInquiries()
       .then(allInquiries => {
-        console.log(allInquiries)
         res.json(allInquiries)
       })
       .catch(error => {

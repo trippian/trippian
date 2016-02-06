@@ -88,27 +88,6 @@ export default function (app, passport) {
   },
     (token, refreshToken, profile, done) => {
       process.nextTick(() => {
-        // find user node in database based on their facebookID
-        // User.getUserByParameter('facebookId', profile.id)
-        //   .then(function(user) {
-        //     if(user.length) {
-        //       console.log('user already exists as ', user[0])
-        //       return done(null, user[0])
-        //     } else {
-        //       User.createUser({
-        //         name: profile.displayName,
-        //         facebookToken: token,
-        //         facebookId: parseInt(profile.id),
-        //         email: profile.emails[0].value,
-        //         picture: `https://graph.facebook.com/${profile.id}/picture?height=500`
-        //       }, 'User')
-        //       .then(function(newUser) {
-        //         console.log('newUser has been created', newUser)
-        //         return done(null, newUser)
-        //       })
-        //     }
-        //   })
-
         done(null, profile)
       })
     }
@@ -121,25 +100,6 @@ export default function (app, passport) {
   }, 
     (token, refreshToken, profile, done) => {
       process.nextTick(() => {
-        // let idString = `"${profile.id}"`
-        // User.getUserByParameter('googleId', idString)
-        //   .then(user => {
-        //     if (user.length) {
-        //       console.log('user exists as: ', user[0])
-        //       return done(null, user[0])
-        //     } else {
-        //       User.createUser({
-        //         googleId: idString,
-        //         googleToken: token,
-        //         name: profile.displayName,
-        //         email: profile.emails[0].value
-        //       })
-        //       .then(createdUser => {
-        //         console.log('a new user has been created: ', createdUser)
-        //         return done(null, createdUser)
-        //       })
-        //     }
-        //   })
         done(null, profile)
       })
     }
