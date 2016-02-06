@@ -64,12 +64,6 @@ export default class TripDetail extends Component {
             </div>
           </div>
         }
-
-        <div className="row section">
-          <div className="section-body">
-            Map 
-          </div>
-        </div>
     </div>
     )
   }

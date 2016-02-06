@@ -196,7 +196,14 @@ export default {
     title: 'Destination Search Result',
     subTitle: ''
   },
+
   // Components 
+  AlertAutoDismissableWidget: {
+
+  },
+  AutoSuggestBoxWidget: {
+    defaultLink:
+  }
   AvatarWidget: {
 
   },
