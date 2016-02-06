@@ -151,8 +151,9 @@ export const fetchPostTrippian = (data) => {
 }
 
 export const fetchPutTrippian = (data) => {
-  const url = `${API_HOST}${routeConfig.user}/${data.id}`
-  console.log('fetchPutTrippian', url, data, data.id)
+  const url = `${API_HOST}${routeConfig.user}/${data.userId}`
+  console.log('fetchPutTrippian', url, data, data.userId)
+  delete data.userId
   return api.put(url, data)
 }
 

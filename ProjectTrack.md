@@ -19,7 +19,6 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
   - [ ] Move Common API logic to redux store from the Container 
   - [ ] Improve Redux Store 
 - General 
-  - [ ] Add meaningful data 
   - [ ] Clean up front-end messages 
 
 - Admin 
@@ -42,8 +41,8 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
   - [X] PopularTrippiansList
   - [X] Dashboard: Saved/Voted Trip 
   - [X] Add Trip Detail Page 
-  - [ ] Add Map Display 
-  - [ ] Signup Form 
+  - [X] Add Map Display 
+  - [X] Signup Form 
   - [ ] Signin Form 
   - [ ] OperationMenuWidget (hold edit, delete... buttons) - Audrey 
   - [ ] Form Edit - Audrey 
