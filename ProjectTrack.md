@@ -44,7 +44,7 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
   - [X] Add Map Display 
   - [X] Signup Form 
   - [ ] Signin Form 
-  - [ ] OperationMenuWidget (hold edit, delete... buttons) - Audrey 
+  - [X] OperationMenuWidget (hold edit, delete... buttons) - Audrey 
   - [ ] Form Edit - Audrey 
   - [ ] MyProfile Display (beautify view) - Joe
   - [ ] MyInquiries Display (beautify view)

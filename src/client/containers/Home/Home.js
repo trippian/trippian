@@ -101,10 +101,12 @@ class Home extends Component {
       formatMessage
     } = this.props.intl
 
+    // <JumbotronHomeWidget title={formatMessage(messages.jumbotronTitle)} subTitle={formatMessage(messages.jumbotronSubTitle)}/> 
+
     return (
       <div id="home-page">
       <JumbotronVideoWidget />
-       <JumbotronHomeWidget title={formatMessage(messages.jumbotronTitle)} subTitle={formatMessage(messages.jumbotronSubTitle)}/> 
+       <JumbotronHomeWidget title='' subTitle='' /> 
          <div className="container">
             <div className="main-content-container">
              <div className="col-sm-12 col-md-12 content-container">

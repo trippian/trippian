@@ -47,7 +47,7 @@ export default class TrippianDetail extends Component {
     } = this.props.trippian
 
     return (
-      <div id="trippian-profile-page">
+      <div id="trippian-profile-page" className="flexible-photo">
         <JumbotronTrippianWidget  metaTitle={name} user={this.props.trippian} />
         <div className="container main-content-container">
             <div className="col-sm-12 col-md-8 col-md-offset-2 content-container">

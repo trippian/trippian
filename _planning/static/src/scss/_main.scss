@@ -195,7 +195,7 @@ footer {
             }
             .meta-info {
                 float: left;
-                @media screen and (max-width: 1200px) {
+                @media screen and (max-width: 1100px) {
                     width: 100%;
                     margin: 0;
                     color: black;
@@ -221,6 +221,22 @@ footer {
                 .star-rating {}
             }
         }
+    }
+}
+
+.flexible-photo {
+    .main-content-container {
+        margin-top: 80px;
+        @media screen and (max-width: 1200px) {
+            margin-top: 50px;
+        }
+        @media screen and (max-width: 1199px) {
+            margin-top: 150px;
+        }
+        @media screen and (max-width: 450px) {
+            margin-top: 230px;
+        }
+        .content-container {}
     }
 }
 
