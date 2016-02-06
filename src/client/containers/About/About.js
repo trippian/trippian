@@ -17,12 +17,11 @@ export default class About extends Component {
     super(props)
   }
 
-  // <JumbotronWidget title="About" subTitle="Lorem ipsum dolor sit."/>
   render() {
     return (
       <div>
         <div id="about-page">
-        <JumbotronVideoWidget></JumbotronVideoWidget>
+        <JumbotronWidget title="About" subTitle="Lorem ipsum dolor sit."/>
           <div className="container main-content-container">
             <div className="col-sm-12 col-md-10 col-md-offset-1 content-container">
               <div className="section">

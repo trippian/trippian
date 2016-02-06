@@ -31,6 +31,7 @@ const initialState = new Map({
 })
 
 
+
 export default function appStateReducer(state = initialState, action) {
   switch (action.type) {
     case SET_LOCALE:
@@ -61,3 +62,25 @@ export default function appStateReducer(state = initialState, action) {
       return state
   }
 }
+
+// ref: all history related operations
+// createHref: createHref(location, query)
+// createKey: createKey()
+// createLocation: createLocation()
+// createPath: createPath(location, query)
+// go: go(n)
+// goBack: goBack()
+// goForward: goForward()
+// isActive: isActive(pathname, query)
+// listen: listen(listener)
+// listenBefore: listenBefore(hook)
+// listenBeforeLeavingRoute: listenBeforeLeavingRoute(route, hook)
+// match: match(location, callback)
+// push: push(location)
+// pushState: pushState(state, path, query)
+// registerTransitionHook: registerTransitionHook(hook)
+// replace: replace(location)
+// replaceState: replaceState(state, path, query)
+// setState: setState(state)
+// transitionTo: transitionTo(nextLocation)
+// unregisterTransitionHook: unregisterTransitionHook(hook)

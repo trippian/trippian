@@ -44,7 +44,6 @@ export default class DestinationSearchResults extends Component {
   }
 
   componentDidMount() {
-
     store.dispatch(getDestinationByName(this.props.params.q))
   }
 
