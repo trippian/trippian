@@ -52,14 +52,6 @@ class TrippianSignupFormWidget extends React.Component {
             <input type="file" name="" className="form-control" value="" required="required" title="" placeholder="" />
         </div>
         <div className="form-group">
-            <label >My Calendar</label>
-            <input type="url" name="" className="form-control" value="" required="required" title="" placeholder="enter your google calendar url" />
-            
-            <br/>
-            <iframe src="https://calendar.google.com/calendar/embed?src=audreyli.me_019tevr02rfokhk2jnug0d3d94%40group.calendar.google.com&ctz=America/Los_Angeles"  width="100%" height="600" frameBorder="0" scrolling="no"></iframe>
-            
-        </div>
-        <div className="form-group">
             <p>
                 <button type="submit" type = "submit" onClick={this.handleClick.bind(this)} className="btn btn-primary pull-right">Submit</button>
             </p>
