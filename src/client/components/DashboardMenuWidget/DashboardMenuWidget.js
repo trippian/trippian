@@ -12,6 +12,7 @@ from 'react-intl'
 const DashboardMenuWidget = ({
   isTrippian, isAdmin, name = ''
 }) => {
+  gaa
 
   console.log('----inside DashboardMenuWidget render', isTrippian, isAdmin, name)
   return (
