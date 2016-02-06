@@ -1,5 +1,21 @@
-import React from 'react'
+import React, {
+  Component, PropTypes
+}
+from 'react'
+import {
+  reduxForm
+}
+from 'redux-form'
+import {
+  FileEnhance
+}
+from '../../hocs/FileEnhance'
+import store from '../../redux/store'
 
+import {
+  setTrippian
+}
+from '../../redux/actionCreators'
 
 class TrippianSignupFormWidget extends React.Component {
   constructor(props) {
@@ -11,10 +27,32 @@ class TrippianSignupFormWidget extends React.Component {
       this.refs.emailText.value, this.refs.sloganText.value, this.refs.websiteText.value, this.refs.bioText.value,
       this.refs.tripText.value)
   }
+  handleSubmit(data) {
+    console.log('******submitting in the form', this.props.files, this.props.isFileUploading)
+    if (this.props.isFileUploading) {
+      // TODO: set alert here 
+    } else {
+      // set files in the store so the store action can read it before fetching 
+      // store.dispatch(setFiles(this.props.files)) // FileEnhance handle it at the store
+      this.props.handleSubmit(data)
+
+      //TODO: clear out the form and picture in callee 
+    }
+  }
 
   render() {
+    const {
+      fields: {
+        name, location, mobile, slogan, website, bio, introduction
+      },
+      handleSubmit,
+      submitting,
+      resetForm,
+      load
+    } = this.props
+
     return (
-      <form action="" method="POST" role="form">
+      <form onSubmit={handleSubmit} role="form"> 
         <div className="form-group">
             <label >Name</label>
             <input type="text" ref="nameText" className="form-control" id="" placeholder="Name" />
@@ -60,6 +98,25 @@ class TrippianSignupFormWidget extends React.Component {
     )
   }
 }
+
+
+TrippianSignupFormWidget = reduxForm({
+    form: 'trippianPostForm', // a unique name for this form
+    fields: ['name', 'location', 'mobile', 'slogan', 'website', 'bio', 'introduction'] // all the fields in the form
+  },
+  state => ({ // mapStateToProps
+    initialValues: state.apiTrippian.get('trippian') // will pull state into form's initialValues
+  }), {
+    load: setTrippian
+  } // mapDispatchToProps (will bind action creator to dispatch)
+)(TrippianSignupFormWidget)
+
+TrippianSignupFormWidget.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  resetForm: PropTypes.func.isRequired
+    // submitting: PropTypes.bool.isRequired
+}
+
 TrippianSignupFormWidget.displayName = 'TrippianSignupFormWidget'
 
-export default TrippianSignupFormWidget
+export default FileEnhance(TrippianSignupFormWidget)

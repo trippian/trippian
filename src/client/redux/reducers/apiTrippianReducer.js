@@ -30,7 +30,7 @@ from 'immutable'
 import {
   fetchGetDestinationsByCategory, fetchGetTrippiansByCategory,
   fetchGetDestinations, fetchDeleteDestinationById, fetchGetDestinationById, fetchGetDestinationByName, fetchPostDestination,
-  fetchGetTrippians, fetchDeleteTrippianById, fetchGetTrippianById, fetchPostTrippian,
+  fetchGetTrippians, fetchDeleteTrippianById, fetchGetTrippianById, fetchPostTrippian, fetchPutTrippian,
   fetchGetUsers, fetchDeleteUserById, fetchGetUserById, fetchPostUser,
   fetchGetInquiries, fetchDeleteInquiryById, fetchGetInquiryByReceiverId, fetchPostInquiry,
   fetchGetTrips, fetchDeleteTripById, fetchGetTripById, fetchPostTrip, fetchUpdateSave,
@@ -461,6 +461,25 @@ export function toggleSaveTrip(saveState, tripId) {
       .then(trip => {
         console.log('vote on this:', trip)
         dispatch(updateToggleVote(saveState, tripId))
+      })
+      .catch(error => apologize(error))
+  }
+}
+//isNewTrippian will attach new trippian data, otherwise, it's just an update 
+export function putTrippian(data, isNewTrippian = true) {
+  store.dispatch(setFormSubmitting())
+  alertInfo('Submitting now...')
+  attachInfoToData(data, {
+    user: true
+  })
+  console.log('-- posting a trippian now in reducer', data)
+  return (dispatch) => {
+    return fetchPutTrippian(data)
+      .then(trippian => {
+        console.log('---finish putting', trippian)
+          // dispatch(addAdminTrippian(trippian))
+        dispatch(setFormSubmitted(true))
+        alertSuccess('Successfully added trippian')
       })
       .catch(error => apologize(error))
   }
