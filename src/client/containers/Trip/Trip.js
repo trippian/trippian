@@ -45,7 +45,7 @@ export default class Trip extends Component {
       title, user, feature
     } = this.props.trip
     return (
-      <div id="destination-page">
+      <div id="trip-page" className="flexible-photo">
         <JumbotronTripWidget metaTitle={title} user={user} backgroundFeature={feature} />
         <div className="container main-content-container">
           <div className="col-sm-12 col-md-8 col-md-offset-2 content-container">

@@ -9,11 +9,11 @@ from '../../components/index'
 
 
 const JumbotronDestinationWidget = ({
-  name, slogan = 'Awesome City', backgroundImage = 'http://lorempixel.com/800/600/city/', averageRating = 5
+  name, slogan = 'Awesome City', feature = 'http://lorempixel.com/800/600/city/', averageRating = 5
 }) => {
   const styles = {
     backgroundImage: {
-      backgroundImage: `url(${backgroundImage})`
+      backgroundImage: `url(${feature})`
     }
   }
 

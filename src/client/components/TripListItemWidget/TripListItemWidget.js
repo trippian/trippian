@@ -7,7 +7,7 @@ import {
 }
 from 'react-router'
 import {
-  VoteWidget, SaveTripButton
+  VoteWidget, SaveTripButton, OperationMenuWidget
 }
 from '../index'
 import {
@@ -80,6 +80,7 @@ export default class TripListItemWidget extends Component {
   //TODO: add edit and delete to trips
   render() {
     console.log('inside TripListItemWidget render')
+    const isAuthed = store.getState().appState.get('user').isAuthed || false
     const {
       id, handleVote, title, destination, summary, details, feature, lat, lng, displayName = 'Trippian'
     } = this.props
@@ -89,10 +90,11 @@ export default class TripListItemWidget extends Component {
           <Link to={`trip/${id}`}>
             <img className="feature-image" src={feature} alt="" />
           </Link>
-          <div className="operation">
-            <button onClick={this.handleDelete.bind(this)} title="Delete"> <i className="fa fa-close"></i></button> 
-            <button onClick={this.handleEdit.bind(this)}  title = "Edit" > <i className="fa fa-edit"></i> < /button> 
-          </div>
+          {isAuthed && <OperationMenuWidget 
+            isEdit={true} isDelete={true} 
+            handleDelete={this.handleDelete.bind(this)} 
+            handleEdit={this.handleEdit.bind(this)}/>
+          }
         </div>
         <div className="col-xs-12 col-sm-7 col-md-7 col-lg-7">
           <div className="title-section">
