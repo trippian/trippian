@@ -1,8 +1,12 @@
+//not used yet 
 import React, {
   Component, PropTypes
 }
 from 'react'
-
+import {
+  destinationListPage as appConfig
+}
+from '../../config/appConfig'
 export default class DestinationList extends Component {
   constructor(props) {
     super(props)
@@ -11,7 +15,7 @@ export default class DestinationList extends Component {
   render() {
     return (
       <div>
-        <h2>DestinationList</h2>
+        <h2>{appConfig.title}</h2>
         {name}
       </div>
     )

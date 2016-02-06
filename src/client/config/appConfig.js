@@ -32,15 +32,15 @@ export default {
     facebookAuth: `${HOST}/auth/facebook`,
     logout: `${HOST}/auth/logout`
   },
-  map: {
-    initialZoom: 6,
-    initalLat: 37.761260,
-    initalLng: -122.415903,
-    markerTitle: 'Trippian.com',
-    shouldLoadInitialMap: false
-  },
   defaults: {
-    defaultJumbotronBackground: 'http://media-cdn.tripadvisor.com/media/photo-s/06/04/b0/fb/how-about-a-trip-to-paradise.jpg'
+    defaultJumbotronBackground: 'http://media-cdn.tripadvisor.com/media/photo-s/06/04/b0/fb/how-about-a-trip-to-paradise.jpg',
+    map: {
+      initialZoom: 6,
+      initalLat: 37.761260,
+      initalLng: -122.415903,
+      markerTitle: 'Trippian.com',
+      shouldLoadInitialMap: false
+    }
   },
   photos: {
     defaultFeature: 'http://media-cdn.tripadvisor.com/media/photo-s/06/04/b0/fb/how-about-a-trip-to-paradise.jpg',
@@ -160,7 +160,26 @@ export default {
     subTitle: 'Lorem ipsum dolor sit.',
     formTitle: 'Add a Destination'
   },
-
+  destinationDetailPage: {
+    whyVisitTitle: 'Why Visit',
+    whyVisitSubtitle: 'Why Visit',
+    popularTripsTitle: 'Popular Trips',
+    popularTripsSubtitle: 'Popular Trips',
+    map: {
+      initialZoom: 6,
+      initalLat: 37.761260,
+      initalLng: -122.415903,
+      markerTitle: 'Trippian.com',
+      shouldLoadInitialMap: false
+    }
+  },
+  destinationListPage: {
+    title: 'Destination List'
+  },
+  destinationSearchResults: {
+    title: 'Destination Search Result',
+    subTitle: ''
+  },
   // Components 
   AvatarWidget: {
 

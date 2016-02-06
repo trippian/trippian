@@ -8049,7 +8049,7 @@ footer {
           border: 5px solid white; }
       .jumbotron .full-length-container .container .meta-info {
         float: left; }
-        @media screen and (max-width: 1200px) {
+        @media screen and (max-width: 1100px) {
           .jumbotron .full-length-container .container .meta-info {
             width: 100%;
             margin: 0;
@@ -8067,6 +8067,18 @@ footer {
             margin-top: 26px; }
         .jumbotron .full-length-container .container .meta-info .text-intro {
           width: 100%; }
+
+.flexible-photo .main-content-container {
+  margin-top: 80px; }
+  @media screen and (max-width: 1200px) {
+    .flexible-photo .main-content-container {
+      margin-top: 50px; } }
+  @media screen and (max-width: 1199px) {
+    .flexible-photo .main-content-container {
+      margin-top: 150px; } }
+  @media screen and (max-width: 450px) {
+    .flexible-photo .main-content-container {
+      margin-top: 230px; } }
 
 .jumbotron-video {
   position: absolute;
@@ -8371,34 +8383,28 @@ footer {
   #destination-page .main-content-container .content-container .trippian-list .trippian-list-item .avatar {
     width: 100%; }
 
-#trippian-profile-page .main-content-container {
-  margin-top: 80px; }
-  @media screen and (max-width: 1100px) {
-    #trippian-profile-page .main-content-container {
-      margin-top: 200px; } }
-  @media screen and (max-width: 450px) {
-    #trippian-profile-page .main-content-container {
-      margin-top: 250px; } }
-  #trippian-profile-page .main-content-container .content-container .youtube-video {
-    margin: 32px 0;
+#trippian-profile-page .main-content-container .content-container .youtube-video {
+  margin: 32px 0;
+  width: 100%;
+  min-height: 400px; }
+  #trippian-profile-page .main-content-container .content-container .youtube-video iframe {
     width: 100%;
+    height: 100%;
     min-height: 400px; }
-    #trippian-profile-page .main-content-container .content-container .youtube-video iframe {
-      width: 100%;
-      height: 100%;
-      min-height: 400px; }
-  #trippian-profile-page .main-content-container .content-container .google-map {
+
+#trippian-profile-page .main-content-container .content-container .google-map {
+  width: 100%;
+  min-height: 400px;
+  margin: 32px 0; }
+  #trippian-profile-page .main-content-container .content-container .google-map iframe {
     width: 100%;
-    min-height: 400px;
-    margin: 32px 0; }
-    #trippian-profile-page .main-content-container .content-container .google-map iframe {
-      width: 100%;
-      height: 100%;
-      min-height: 400px; }
-  #trippian-profile-page .main-content-container .content-container .review .section-body .meta-info {
-    font-size: 14px;
-    font-style: italic;
-    color: #727272; }
+    height: 100%;
+    min-height: 400px; }
+
+#trippian-profile-page .main-content-container .content-container .review .section-body .meta-info {
+  font-size: 14px;
+  font-style: italic;
+  color: #727272; }
 
 #trippian-profile-page .jumbotron {
   max-height: 400px;
