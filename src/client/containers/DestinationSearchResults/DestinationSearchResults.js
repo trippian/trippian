@@ -17,7 +17,10 @@ import {
   connect
 }
 from 'react-redux'
-
+import {
+  destinationSearchResults as appConfig
+}
+from '../../config/appConfig'
 
 //******** YOU NEED TO ADD TO STORE *************
 //Audrey: this one goes to apiIndex, I've moved all trippianAPI related calls to that file, as in the future, we'll need to refactor those into different files for modularity
@@ -53,7 +56,7 @@ export default class DestinationSearchResults extends Component {
     } = this.props.destination
     return (
       <div id="destination-search-results-page">
-        <JumbotronPlainBgWidget title="Search Result" subTitle={this.props.params.q}/>
+        <JumbotronPlainBgWidget title={appConfig.title} subTitle={`${appConfig.subTitle} ${this.props.params.q}`}/>
         <div className="container main-content-container">
           <div className="col-sm-12 col-md-10 col-md-offset-1 content-container">
             <img src={feature} alt={feature}/>

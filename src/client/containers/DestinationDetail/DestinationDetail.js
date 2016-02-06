@@ -11,7 +11,7 @@ import {
 }
 from '../../components/index'
 import {
-  map as appConfig
+  destinationDetailPage as appConfig
 }
 from '../../config/appConfig'
 
@@ -50,7 +50,7 @@ export default class DestinationDetail extends Component {
       <div className="row section">
         <div className="section-body col-sm-12 col-md-12">
           <div className="row section">
-            <SectionHeaderWidget title="Why Visit" subTitle="" />
+            <SectionHeaderWidget title={appConfig.whyVisitTitle} subTitle={appConfig.whyVisitSubtitle} />
             <div className="section-body">
               {whyVisit}
               {this.state.isShowReadMore && <p>{description}</p> }
@@ -59,12 +59,12 @@ export default class DestinationDetail extends Component {
         </div>
       </div>
       <div className="row section">
-        <SectionHeaderWidget title="Popular Trips" subTitle="Lorem ipsum dolor." />
+        <SectionHeaderWidget title={appConfig.popularTripsTitle} subTitle={appConfig.popularTripsSubtitle} />
         <div className="section-body">
-          <div className="map_canvas" style={styles.map}>
-            <GoogleMapWidget lat={+lat} lng={+lng} zoom={5}></GoogleMapWidget>
-          </div>
           <TripListWidget dataList={popularTrips} />
+          <div className="map_canvas" style={styles.map}>
+            <GoogleMapWidget lat={+lat} lng={+lng} zoom={5} />
+          </div>
         </div>
       </div>
 

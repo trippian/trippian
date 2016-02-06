@@ -10,7 +10,10 @@ import {
   JumbotronWidget, DestinationPostFormWidget
 }
 from '../../components/index'
-
+import {
+  destinationPostPage as appConfig
+}
+from '../../config/appConfig'
 
 import {
   postDestination
@@ -80,7 +83,7 @@ export default class DestinationPost extends Component {
 
     return (
       <div id="destination-post-page">
-        <JumbotronWidget title="Post A Destination" subTitle="Lorem ipsum dolor sit."/>
+        <JumbotronWidget title={appConfig.title} subTitle={appConfig.subTitle}/>
         <div className="container main-content-container">
           <div className="col-sm-12 col-md-8 col-md-offset-2 content-container">
             {title !== '' && 
@@ -92,7 +95,7 @@ export default class DestinationPost extends Component {
             <div className="pull-right">
               <Link className="btn btn-primary" to='admin/destination'>Manage Destinations</Link>
             </div>
-            <h3>Post</h3>
+            <h3>{appConfig.formTitle}</h3>
             <DestinationPostFormWidget onSubmit={this.handleSubmit.bind(this)} />
           </div>
         </div>

@@ -3,9 +3,10 @@ import React, {
 }
 from 'react'
 import {
-  map as appConfig
+  defaults as appConfigDefault
 }
 from '../../config/appConfig'
+const appConfig = appConfigDefault.map
 
 export default class GoogleMapWidget extends Component {
   constructor(props) {
