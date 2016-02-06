@@ -1,0 +1,12 @@
+[
+  {
+    "id": "nav-widget.welcome-message",
+    "description": "a short welcome message for use at nav menu",
+    "defaultMessage": "Hello"
+  },
+  {
+    "id": "app-pages.user-dashboard",
+    "description": "the link for user dashboard",
+    "defaultMessage": "User Dashboard"
+  }
+]

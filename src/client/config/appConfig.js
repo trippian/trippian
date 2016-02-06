@@ -67,7 +67,6 @@ export default {
 
     aboutPage: 'http://recwell.umd.edu/portals/0/Photos/MAP-trips.jpg',
     pressPage: 'http://recwell.umd.edu/portals/0/Photos/MAP-trips.jpg',
-    pressPage: 'http://recwell.umd.edu/portals/0/Photos/MAP-trips.jpg',
     destinationPage: 'http://recwell.umd.edu/portals/0/Photos/MAP-trips.jpg',
     inquiryDetailPage: 'http://recwell.umd.edu/portals/0/Photos/MAP-trips.jpg',
     loginPage: 'http://recwell.umd.edu/portals/0/Photos/MAP-trips.jpg',
@@ -90,6 +89,10 @@ export default {
   },
   // specfic pages 
   homePage: {
+    jumbotron: {
+      title: 'Start Now...',
+      subTitle: 'Find your local travel companion around the world'
+    },
     popularDestinations: {
       title: 'Popular Destinations',
       subTitle: 'Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet.'
