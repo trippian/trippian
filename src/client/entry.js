@@ -25,7 +25,7 @@ from '../shared/utils/clientAppSetup'
 import {
   setAppStateUser
 }
-from '../../utils/storeUtils'
+from './utils/storeUtils'
 
 // set the locale and intialize the store with the messages from that locale 
 // ideally, we'll read from db (user setting) or user's browser / OS settings
