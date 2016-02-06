@@ -19,7 +19,6 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
   - [ ] Move Common API logic to redux store from the Container 
   - [ ] Improve Redux Store 
 - General 
-  - [ ] Add meaningful data 
   - [ ] Clean up front-end messages 
 
 - Admin 
@@ -42,8 +41,8 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
   - [X] PopularTrippiansList
   - [X] Dashboard: Saved/Voted Trip 
   - [X] Add Trip Detail Page 
-  - [ ] Add Map Display 
-  - [ ] Signup Form 
+  - [X] Add Map Display 
+  - [X] Signup Form 
   - [ ] Signin Form 
   - [ ] OperationMenuWidget (hold edit, delete... buttons) - Audrey 
   - [ ] Form Edit - Audrey 
@@ -59,13 +58,19 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
   - Fixes 
     - [X] Add destination name to home page popular destinations  
     - [X] Review display after submit 
-    - [ ] Add isAdmin to user 
+    - [X] Add isAdmin to user 
+    - [ ] Update NavWidget display based on user state 
     - [ ] NestedObject not updating (dashboard -> PostedTrips)
     - [ ] SearchBoxWidget and History (state change is not smooth)
     - [ ] Add trip link to review
-
-  - Perf 
+    - [ ] disable review when trippian is at his own page 
+  - Perf
     - [ ] Unify Alert display
+    - [ ] Update appConfig 
+    - [ ] Add Inquiry success route 
+    - [ ] Add links to login/logout success page, CommonLinksWidget  
+    - [ ] Add loading state 
+    - [ ] Update error handling in fetch 
     - [ ] Improve state transition, animation ??
   
   - Refactor 

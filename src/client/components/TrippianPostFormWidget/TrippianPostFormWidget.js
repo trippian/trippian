@@ -45,7 +45,7 @@ class TrippianPostFormWidget extends Component {
   render() {
     const {
       fields: {
-        name, email, location, mobile, slogan, website, bio, introduction
+        name, location, mobile, slogan, website, bio, introduction
       },
       handleSubmit,
       submitting,
@@ -68,11 +68,6 @@ class TrippianPostFormWidget extends Component {
        <div className="form-group">
          <label>Name</label>
          <input type="text" className="form-control" placeholder=""  {...name}/>
-       </div>
-
-       <div className="form-group">
-         <label>Email</label>
-         <input type="email" className="form-control"  {...email}/>
        </div>
 
        <div className="form-group">
