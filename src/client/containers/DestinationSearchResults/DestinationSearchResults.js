@@ -54,14 +54,14 @@ export default class DestinationSearchResults extends Component {
     } = this.props.destination
     return (
       <div id="destination-search-results-page">
-       <JumbotronPlainBgWidget title="Search Result" subTitle={this.props.params.q}/>
-       <div className="container main-content-container">
-         <div className="col-sm-12 col-md-10 col-md-offset-1 content-container">
-             <img src={feature} alt={feature}/>
-             <DestinationDetail />
-         </div>
-       </div>
-     </div>
+        <JumbotronPlainBgWidget title="Search Result" subTitle={this.props.params.q}/>
+        <div className="container main-content-container">
+          <div className="col-sm-12 col-md-10 col-md-offset-1 content-container">
+            <img src={feature} alt={feature}/>
+            <DestinationDetail />
+          </div>
+        </div>
+      </div>
     )
   }
 }

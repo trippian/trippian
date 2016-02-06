@@ -1,4 +1,4 @@
-###Trippian 
+##Trippian 
 [![Travis](https://img.shields.io/travis/rust-lang/rust.svg?style=flat-square)](https://travis-ci.org/vidaaudrey/trippian)
 [![codecov coverage](https://img.shields.io/codecov/c/github/vidaaudrey/trippian/develop.svg?style=flat-square)](https://codecov.io/github/vidaaudrey/trippian?branch=develop)
 [![npm version](https://badge.fury.io/js/trippian.svg)](https://badge.fury.io/js/trippian)
@@ -9,6 +9,11 @@
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square)](http://commitizen.github.io/cz-cli/)
 
 Your local trip companion! Trippian is a web application that allows tourists (Trippees) to connect with a Trippian, a local who wants to show people around and show them what it would be like to live in a different city/country.
+
+###Architecture
+
+####Database Design
+![Image of Database Design](https://s3-us-west-1.amazonaws.com/trippian/Trippian+Database+Schema.png)
 
 ###Setup
 For this project, we develop using webpack to bundle our react code and gulp to watch and compile all our styling files. Thus, during development, we have the server running on localhost port 4000 and our webpack server on localhost port 3000.

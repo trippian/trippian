@@ -29,8 +29,8 @@ export default {
       let cypher = `match (d:Destination) where id(d)= ${destinationId} SET d += {${updateString}} return d;`
       db.queryAsync(cypher)
         .then((updatedDestination) => {
-          if (updatedDestination) {
-            resolve(updatedDestination)
+          if (updatedDestination.length) {
+            resolve(updatedDestination[0])
           } else {
             reject(new Error('could not updated destination'))
           }

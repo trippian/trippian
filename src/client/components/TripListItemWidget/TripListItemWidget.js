@@ -85,34 +85,32 @@ export default class TripListItemWidget extends Component {
     } = this.props
     return (
       <div className="trip-list-item row">
-          <div className="col-xs-6 col-sm-3 col-md-3 col-xs-offset-3 col-sm-offset-0">
-              <Link to={`trip/${id}`}>
-                <img className="feature-image" src={feature} alt="" />
-              </Link>
-              <div className="operation">
-                <button onClick={this.handleDelete.bind(this)} title="Delete"> <i className="fa fa-close"></i></button> 
-                <button onClick={this.handleEdit.bind(this)}  title = "Edit" > <i className="fa fa-edit"></i> < /button> 
-              </div>
+        <div className="col-xs-6 col-sm-3 col-md-3 col-xs-offset-3 col-sm-offset-0">
+          <Link to={`trip/${id}`}>
+            <img className="feature-image" src={feature} alt="" />
+          </Link>
+          <div className="operation">
+            <button onClick={this.handleDelete.bind(this)} title="Delete"> <i className="fa fa-close"></i></button> 
+            <button onClick={this.handleEdit.bind(this)}  title = "Edit" > <i className="fa fa-edit"></i> < /button> 
           </div>
-          <div className="col-xs-12 col-sm-7 col-md-7 col-lg-7">
-              <div className="title-section">
-                  <Link to={`trip/${id}`}>
-                    <h4>{title}</h4>
-                  </Link>
-                  <div className="sub-title">
-                      <i className="fa fa-map-marker"></i>
-                      Mission street . By  
-                        <Link to={`trippian/${id}`}>{' '+ displayName + ' '}</Link>
-                      {id}
-                  </div>
-                  <p>{summary}</p>
-              </div>
+        </div>
+        <div className="col-xs-12 col-sm-7 col-md-7 col-lg-7">
+          <div className="title-section">
+            <Link to={`trip/${id}`}>
+              <h4>{title}</h4>
+            </Link>
+            <div className="sub-title">
+              <i className="fa fa-map-marker"></i> By  
+              <Link to={`trippian/${id}`}>{' '+ displayName + ' '}</Link>
+            </div>
+            <p>{summary}</p>
           </div>
-          <div className="col-xs-12 col-sm-2 col-md-2 col-lg-2 vote">
-              <span className="total-votes"> {this.state.netVote} </span>
-              <VoteWidget disableLeft={this.state.currentNetVote === 1} disableRight={this.state.currentNetVote === -1} handleClick={this.handleVote.bind(this)} />
-              <SaveTripButton disabledButton={this.state.isSaved} handleSave={this.handleSave.bind(this)} />
-          </div>
+        </div>
+        <div className="col-xs-12 col-sm-2 col-md-2 col-lg-2 vote">
+          <span className="total-votes"> {this.state.netVote} </span>
+          <VoteWidget disableLeft={this.state.currentNetVote === 1} disableRight={this.state.currentNetVote === -1} handleClick={this.handleVote.bind(this)} />
+          <SaveTripButton disabledButton={this.state.isSaved} handleSave={this.handleSave.bind(this)} />
+        </div>
       </div>
     )
   }
