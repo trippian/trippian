@@ -1,4 +1,4 @@
-<img src="https://s3-us-west-1.amazonaws.com/trippian/logo-white.png" width=200>
+<img src="https://s3-us-west-1.amazonaws.com/trippian/logo-white.png" width=250>
 
 
 [![Travis](https://img.shields.io/travis/rust-lang/rust.svg?style=flat-square)](https://travis-ci.org/vidaaudrey/trippian)
