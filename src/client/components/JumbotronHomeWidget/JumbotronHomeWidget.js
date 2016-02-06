@@ -14,7 +14,7 @@ const styles = {
   }
 }
 const JumbotronHomeWidget = ({
-  title, subTitle, history
+  title = '', subTitle = '', history
 }) => {
 
   return (

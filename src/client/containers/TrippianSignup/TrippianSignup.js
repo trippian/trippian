@@ -40,7 +40,6 @@ export default class TrippianSignup extends Component {
         <JumbotronWidget title={appConfig.title} subTitle={appConfig.subTitle} isNoContact isTitled />
         <div className="container main-content-container">
             <div className="col-sm-12 col-md-8 col-md-offset-2 content-container">
-                hello world 
               {isAuthed && 
                 <div className="section">
                     <div className="section-header">
