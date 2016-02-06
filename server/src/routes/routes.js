@@ -3,38 +3,10 @@ import tripController from '../controllers/tripController'
 import userController from '../controllers/userController'
 import inquiryController from '../controllers/inquiryController'
 import ratingController from '../controllers/ratingController'
-import chatController from '../controllers/chatController'
 import { getSignedRequest } from '../controllers/aws'
 import dashboardController from '../controllers/dashboardController'
-  // import { authController } from '../controllers/auth';
-
-// import destination from '../../../_planning/json-data-format/destination.json'
-// import trippian from '../../../_planning/json-data-format/trippian.json'
-// import popular from '../../../_planning/json-data-format/popular'
 
 export default function (router) {
-  // LANDING PAGE - GET POPULAR TRIPPIANS AND DESTINATIONS
-  // router.get('/api/destination', getPopularDestinations)
-  // router.get('/api/trippian', getPopularTrippians)
-  // router.get('/api/trippian', function (req, res) {
-  //   res.sendst(popular.trippians)
-  // })
-  // router.get('/api/destination', function (req, res) {
-  //   res.send(popular.destinations)
-  // })
-  // router.post('/api/users/:facebookId', createUser)
-  // router.post('/api/inquiry/:')
-  // router.get('/api/destination/:destinationId', function (req, res) {
-  //   res.send(destination)
-  // })
-  // router.get('/api/trippian/:userId', function (req, res) {
-  //   res.send(trippian)
-  // })
-  
-  // routes for chats
-  router.get('/api/chats', chatController.chatGet)
-  router.post('/api/chats', chatController.chatPost)
-
   // routes for destination
   router.post('/api/destination', destinationController.destinationPost)
   // separate route to get popular destinations
