@@ -63,7 +63,7 @@ Check out our [contributing guide](https://github.com/trippian/trippian/blob/mas
 For any information on any of the REST endpoints, check out our API specifications doc [here](https://github.com/trippian/trippian/wiki/APISpec)
 
 ###Team
-- Audrey Li: [github](https://github.com/vidaaudrey)
-- Joe Lagasse: [github](https://github.com/jlag34)
-- Yale Yuen: [github](https://github.com/ycube)
-- Elliot Chi: [github](https://github.com/elliotschi)
+- Audrey Li [<img src="http://cdn.flaticon.com/png/256/25231.png" width=20>](https://github.com/vidaaudrey)
+- Joe Lagasse [<img src="http://cdn.flaticon.com/png/256/25231.png" width=20>](https://github.com/jlag34)
+- Yale Yuen [<img src="http://cdn.flaticon.com/png/256/25231.png" width=20>](https://github.com/ycube)
+- Elliot Chi [<img src="http://cdn.flaticon.com/png/256/25231.png" width=20>](https://github.com/elliotschi)
