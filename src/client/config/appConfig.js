@@ -162,9 +162,9 @@ export default {
   },
   destinationDetailPage: {
     whyVisitTitle: 'Why Visit',
-    whyVisitSubtitle: 'Why Visit',
+    whyVisitSubtitle: '',
     popularTripsTitle: 'Popular Trips',
-    popularTripsSubtitle: 'Popular Trips',
+    popularTripsSubtitle: '',
     map: {
       initialZoom: 6,
       initalLat: 37.761260,
