@@ -11,7 +11,7 @@ import {
 }
 from '../../components/index'
 import {
-  destinationDetailPage as appConfig
+  DestinationDetail as appConfig
 }
 from '../../config/appConfig'
 

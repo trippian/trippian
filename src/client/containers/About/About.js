@@ -12,7 +12,7 @@ import {
 }
 from 'react-intl'
 import {
-  aboutPage as appConfig
+  About as appConfig
 }
 from '../../config/appConfig'
 export default class About extends Component {

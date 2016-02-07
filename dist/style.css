@@ -8289,6 +8289,7 @@ footer {
   .navbar .navbar-nav li .navbar-form {
     margin: 0; }
   .navbar .navbar-nav li a {
+    cursor: pointer;
     color: #fff;
     padding: 8px !important; }
     .navbar .navbar-nav li a.btn-bordered {

@@ -7,7 +7,7 @@ import {
 }
 from '../../components/index'
 import {
-  loginWrapper as appConfig
+  LoginWrapper as appConfig
 }
 from '../../config/appConfig'
 export default class LoginWrapper extends Component {
