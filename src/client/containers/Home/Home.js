@@ -9,7 +9,7 @@ import {
 from '../../components/index'
 
 import {
-  homePage as appConfig
+  Home as appConfig
 }
 from '../../config/appConfig'
 

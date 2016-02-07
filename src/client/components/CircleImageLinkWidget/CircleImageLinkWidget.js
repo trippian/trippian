@@ -1,7 +1,10 @@
 import React from 'react'
-
+import {
+  defaults as appConfig
+}
+from '../../config/appConfig'
 export default ({
-  link = '#', src = 'http://lorempixel.com/150/150/people/', alt = 'image'
+  link = appConfig.link, src = appConfig.circleImageBackground, alt = appConfig.imageAlt
 }) => {
   return (
     <a href={link} className="circle">

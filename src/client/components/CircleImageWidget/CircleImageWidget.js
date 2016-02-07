@@ -4,6 +4,10 @@ import {
   Link
 }
 from 'react-router'
+import {
+  CircleImageWidget as appConfig
+}
+from '../../config/appConfig'
 
 const renderImage = (imageSrc, link, title) => {
   const imageHTML = <img src={imageSrc} alt={title} />
@@ -15,8 +19,9 @@ const renderImage = (imageSrc, link, title) => {
   return imageHTML
 }
 const CircleImageWidget = ({
-  link = 'http://www.trippian.com', imageSrc = 'http://lorempixel.com/200/200/people/', title = 'Circle Image'
+  link = appConfig.link, imageSrc = appConfig.imageSrc, title = appConfig.imageAlt
 }) => {
+  console.log('--inside CircleImageWidget', link, imageSrc, title)
   return (
     <div className="avatar circle-image">
         {renderImage(imageSrc, link, title)}
