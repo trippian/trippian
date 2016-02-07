@@ -90,8 +90,8 @@ export default {
   // specfic pages 
   homePage: {
     jumbotron: {
-      title: 'Start Now...',
-      subTitle: 'Find your local travel companion around the world'
+      title: 'Start Now',
+      subTitle: 'Find your local trip companion around the world'
     },
     popularDestinations: {
       title: 'Popular Destinations',
@@ -196,14 +196,18 @@ export default {
     title: 'Destination Search Result',
     subTitle: ''
   },
+  loginWrapper: {
+    jumbotronTitle: 'Login',
+    jumbotronSubtile: ''
+  },
 
   // Components 
   AlertAutoDismissableWidget: {
 
   },
   AutoSuggestBoxWidget: {
-    defaultLink:
-  }
+    defaultLink: 'http://www.trippian.com'
+  },
   AvatarWidget: {
 
   },

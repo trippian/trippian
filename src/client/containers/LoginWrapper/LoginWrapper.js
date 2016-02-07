@@ -3,10 +3,13 @@ import React, {
 }
 from 'react'
 import {
-  JumbotronWidget
+  JumbotronShortWidget
 }
 from '../../components/index'
-
+import {
+  loginWrapper as appConfig
+}
+from '../../config/appConfig'
 export default class LoginWrapper extends Component {
   constructor(props) {
     super(props)
@@ -14,7 +17,7 @@ export default class LoginWrapper extends Component {
   render() {
     return (
       <div id="destination-post-page">
-        <JumbotronWidget title="Login" subTitle="Lorem ipsum dolor sit."/>
+        <JumbotronShortWidget title={appConfig.title} subTitle={appConfig.subTitle} />
         <div className="container main-content-container">
           <div className="col-sm-12 col-md-8 col-md-offset-2 content-container">
               {this.props.children}

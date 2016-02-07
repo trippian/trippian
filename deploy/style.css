@@ -8284,9 +8284,12 @@ footer {
     .navbar .navbar-header .navbar-brand img {
       max-width: 200px;
       margin-top: -20px; }
+  .navbar .navbar-nav .dropdown-menu li a {
+    color: #8BC34A; }
   .navbar .navbar-nav li .navbar-form {
     margin: 0; }
   .navbar .navbar-nav li a {
+    color: #fff;
     padding: 8px !important; }
     .navbar .navbar-nav li a.btn-bordered {
       font-size: 18px; }
