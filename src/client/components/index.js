@@ -6,6 +6,8 @@
  */
 
 export AdminInquiryDetailWidget from './AdminInquiryDetailWidget/AdminInquiryDetailWidget'
+export AdminMenuWidget from './AdminMenuWidget/AdminMenuWidget'
+
 export AvatarWidget from './AvatarWidget/AvatarWidget'
 export AlertAutoDismissableWidget from './AlertAutoDismissableWidget/AlertAutoDismissableWidget'
 export AutoSuggestBoxWidget from './AutoSuggestBoxWidget/AutoSuggestBoxWidget'

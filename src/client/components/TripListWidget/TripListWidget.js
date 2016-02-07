@@ -5,13 +5,13 @@ import {
 from '../index'
 
 const TripListWidget = ({
-  dataList = [], emptyMessage = 'There is no trip yet. '
+  dataList = [], noContentMessage = 'There is no trip yet. '
 }) => {
   console.log('inside Trip list', dataList, dataList.length)
   return (
     <div className="popular-Trips section-body clearfix">
       {dataList.length === 0 && 
-        <NoContentWidget message={emptyMessage} />
+        <NoContentWidget message={noContentMessage} />
       }
       { 
          dataList.map((trip, key) => (

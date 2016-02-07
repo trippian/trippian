@@ -35,13 +35,13 @@ var trippians = [{
 }]
 
 const TrippianListWidget = ({
-  dataList = trippians, emptyMessage = 'There is no trippian'
+  dataList = trippians, noContentMessage = 'There is no trippian'
 }) => {
   console.log('inside', dataList)
   return (
     <div className="popular-trippians section-body clearfix">
         {dataList.length === 0 && 
-                <NoContentWidget message={emptyMessage} />
+                <NoContentWidget message={noContentMessage} />
         }
         {
           dataList.map((trippian, key) => (

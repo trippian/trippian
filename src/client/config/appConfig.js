@@ -4,10 +4,10 @@ Make sure the page and components are in alphabetic order
 */
 
 //TODO: read HOST from a get request or send it by cookie 
-const HOST = window.location.origin // enable this for deploy 
+// const HOST = window.location.origin // enable this for deploy 
 
 // const HOST = 'http://trippian.com'
-// const HOST = 'http://localhost:4000' // enable this for react dev
+const HOST = 'http://localhost:4000' // enable this for react dev
 
 // reusable configs 
 const defaults = {
@@ -208,8 +208,14 @@ export default {
   // },
 
   // containers
-  Admin: {},
-  AdminDestinationList: {},
+  Admin: {
+    title: 'Admin Dashboard',
+    subTitle: 'Lorem ipsum dolor sit. ',
+    noAccessMessage: 'You donot have access to this page. Login as admin first'
+  },
+  AdminDestinationList: {
+    containerTitle: 'Destination List'
+  },
   AdminDestinationListItem: {},
   AdminDestinationListItemEdit: {},
   AdminTrippianList: {},
@@ -264,9 +270,38 @@ export default {
 
   Dashboard: {},
   MyProfile: {},
-  MyInquiries: {},
-  MyPostedTrips: {},
-  MyTripBox: {},
+  MyInquiries: {
+    containerTitle: 'My Inquiry List',
+    noContentMessage: 'There is no inquiry yet'
+
+  },
+  MyPostedTrips: {
+    containerTitle: 'My Posted Trips',
+    noContentMessage: 'You have not posted any trips yet. Start now.',
+    postTripButtonHideText: 'Hide Form',
+    postTripButtonShowText: 'Create a Trip'
+
+  },
+  MyTripBox: {
+    voteUp: {
+      voteUpButtonShowText: 'Upvoted',
+      voteUpButtonHideText: 'Hide Upvoted',
+      containerTitle: 'A list of upvated trips',
+      noContentMessage: 'You have not upvoted any trips yet'
+    },
+    voteDown: {
+      voteDownButtonShowText: 'Downvoted',
+      voteDownButtonHideText: 'Hide Downvoted',
+      containerTitle: 'A list of Downvated trips',
+      noContentMessage: 'You have not downvoted any trips yet'
+    },
+    savedTrip: {
+      savedTripButtonShowText: 'Saved',
+      savedTripButtonHideText: 'Hide Saved',
+      containerTitle: 'A list of saved trips',
+      noContentMessage: 'You have not saved any trips yet'
+    }
+  },
 
   Destination: {},
   DestinationDetail: {
@@ -288,7 +323,10 @@ export default {
     title: 'Destination Search Result',
     subTitle: ''
   },
-  PopularDestinations: {},
+  PopularDestinations: {
+    title: 'Popular Destinations',
+    subTitle: 'Explore the top rated destinations around the world'
+  },
   DestinationWrapper: {},
 
   EmailNotification: {},
@@ -338,13 +376,23 @@ export default {
     sectionOneContent: ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam fuga ab, asperiores quidem suscipit quia quos exercitationem, totam ipsum odit molestias, beatae porro possimus consectetur expedita sequi excepturi adipisci reiciendis?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum dolorem quam, perferendis ipsum modi iusto fugiat, iste quia asperiores magnam!',
   },
   Signup: {},
-  SignupSuccess: {},
-  SignupWrapper: {},
+  SignupSuccess: {
+    title: 'Login Successs',
+    content: 'You logged in'
+  },
+  SignupWrapper: {
+    title: 'Sign Up',
+    subTitle: 'Sign up to explore trippian'
+  },
   Terms: {},
 
   TripWrapper: {},
   Trip: {},
-  TripDetail: {},
+  TripDetail: {
+    summarySectionTitle: 'Summary',
+    detailsSectionTitle: 'Details',
+    photosSectionTitle: 'Photos'
+  },
   PopularTrips: {},
 
   Trippian: {},
@@ -371,6 +419,32 @@ export default {
 
   // Components 
   AdminInquiryDetailWidget: {},
+  AdminMenuWidget: {
+    destination: {
+      text: 'Destination',
+      link: 'admin/destination'
+    },
+    user: {
+      text: 'User',
+      link: 'admin/user'
+    },
+    trippian: {
+      text: 'Trippian',
+      link: 'admin/trippian'
+    },
+    inquiry: {
+      text: 'Inquiry',
+      link: 'admin/inquiry'
+    },
+    trip: {
+      text: 'Trip',
+      link: 'admin/trip'
+    },
+    dashboard: {
+      text: 'Dashboard',
+      link: 'dashboard'
+    }
+  },
   AvatarWidget: {},
   AlertAutoDismissableWidget: {},
   AutoSuggestBoxWidget: {},

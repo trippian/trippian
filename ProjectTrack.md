@@ -46,6 +46,7 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
   - [ ] Signin Form 
   - [X] OperationMenuWidget (hold edit, delete... buttons) - Audrey
   - [ ] Fix save button position in trip list 
+  - [ ] Fix Signup / Signin form style 
   - [ ] Edit Form 
   - [ ] Refactor console.log with jsLogger
   - [ ] Save and recover redux store from localStorage

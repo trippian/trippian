@@ -21,8 +21,8 @@ const DashboardMenuWidget = ({
         <li><Link to='dashboard/my-trip-box'>My Trip Box</Link></li>
         {isTrippian && <li><Link to='dashboard/my-posted-trips'>Posted Trips</Link></li>  }
         {isAdmin || isTrippian && <li><Link to='dashboard/destination-post'>Post a Destination</Link></li> }
-        {isAdmin && <li><Link to='admin'>Admin</Link></li>  }
         <li><Link to='login/logout'>Logout</Link></li>
+        {isAdmin && <li><Link to='admin'>Admin</Link></li>  }
     </ul>
   )
 }
