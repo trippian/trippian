@@ -54,14 +54,14 @@ export default class TrippianEdit extends Component {
   }
   render() {
     const {
-      trippian
+      isTrippian
     } = this.props.dashboard
     console.log('inside my profile render', this.props.dashboard)
     return (
       <div className="my-profile-page">
        <h2>My Pofile</h2>
-       {!trippian &&  <UserProfileWidget {...this.props.dashboard} /> }
-       {trippian && <TrippianProfileWidget {...this.props.dashboard} /> }
+       {!isTrippian &&  <UserProfileWidget {...this.props.dashboard} /> }
+       {isTrippian && <TrippianProfileWidget {...this.props.dashboard} /> }
       </div >
 
     )
