@@ -7,6 +7,10 @@ import {
   FormattedMessage
 }
 from 'react-intl'
+import {
+  FooterWidget as appConfig
+}
+from '../../config/appConfig'
 const FooterWidget = () => {
   return (
     <footer>
@@ -15,8 +19,7 @@ const FooterWidget = () => {
                 <FormattedMessage 
                     id="app-pages.home" 
                     description="home page title"
-                    defaultMessage="Home"
-                />
+                    defaultMessage="Home" />
 
 
             </Link>
@@ -24,22 +27,19 @@ const FooterWidget = () => {
                 <FormattedMessage 
                     id="app-pages.about" 
                     description="about page title"
-                    defaultMessage="About"
-                />
+                    defaultMessage="About"/>
             </Link>
             <Link to='join-us'>
                 <FormattedMessage 
                     id="app-pages.join-us" 
                     description="join us page title"
-                    defaultMessage="Join Us"
-                />
+                    defaultMessage="Join Us"/>
             </Link>
             <Link to='press'>
                 <FormattedMessage 
                     id="app-pages.press" 
                     description="press page title"
-                    defaultMessage="Press"
-                />
+                    defaultMessage="Press" />
             </Link>
         </div>
         <a href="http://www.trippian.com">Trippian.com</a>

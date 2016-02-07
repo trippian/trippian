@@ -22,7 +22,7 @@ import {
 }
 from '../../redux/apiIndex'
 import {
-  trippianDetailPage as appConfig
+  TrippianDetail as appConfig
 }
 from '../../config/appConfig'
 

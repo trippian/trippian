@@ -3,9 +3,12 @@ import {
   Link
 }
 from 'react-router'
-
+import {
+  ContactButtonWidget as appConfig
+}
+from '../../config/appConfig'
 const ContactButtonWidget = ({
-  to = 'contact', text = 'Contact'
+  to = appConfig.to, text = appConfig.text
 }) => {
   return (
     <Link to={to} className="btn btn-primary">{text}</Link>

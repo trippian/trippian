@@ -15,7 +15,7 @@ import {
 }
 from 'react-intl'
 import {
-  pressPage as appConfig
+  Press as appConfig
 }
 from '../../config/appConfig'
 

@@ -15,7 +15,7 @@ import {
 }
 from 'react-intl'
 import {
-  joinUsPage as appConfig
+  JoinUs as appConfig
 }
 
 from '../../config/appConfig'
