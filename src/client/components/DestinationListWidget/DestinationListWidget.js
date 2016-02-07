@@ -5,7 +5,7 @@ import {
 from '../index'
 
 const DestinationListWidget = ({
-  dataList = [], noContentMessage = 'There is no destination'
+  dataList = [], noContentMessage = ''
 }) => {
   console.log('inside Destination list', dataList, dataList.length)
   return (

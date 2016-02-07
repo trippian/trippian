@@ -8,21 +8,25 @@ import {
   FormattedMessage
 }
 from 'react-intl'
+import {
+  DashboardMenuWidget as appConfig
+}
+from '../../config/appConfig'
+
 
 const DashboardMenuWidget = ({
-  isTrippian, isAdmin, name = ''
+  isTrippian, isAdmin
 }) => {
-
-  console.log('----inside DashboardMenuWidget render', isTrippian, isAdmin, name)
+  console.log('----inside DashboardMenuWidget render', isTrippian, isAdmin)
   return (
     <ul className="user-menu-widget list-inline">   
-        <li><Link to='dashboard/my-profile'>My Profile</Link></li>
-        <li><Link to='dashboard/my-inquiries'>My Inquiries</Link></li>
-        <li><Link to='dashboard/my-trip-box'>My Trip Box</Link></li>
-        {isTrippian && <li><Link to='dashboard/my-posted-trips'>Posted Trips</Link></li>  }
-        {isAdmin || isTrippian && <li><Link to='dashboard/destination-post'>Post a Destination</Link></li> }
-        <li><Link to='login/logout'>Logout</Link></li>
-        {isAdmin && <li><Link to='admin'>Admin</Link></li>  }
+        <li><Link to={appConfig.myProfile.link}>{appConfig.myProfile.text}</Link></li>
+        <li><Link to={appConfig.myInquiries.link}>{appConfig.myInquiries.text}</Link></li>
+        <li><Link to={appConfig.myTripBox.link}>{appConfig.myTripBox.text}</Link></li>
+        {isTrippian && <li><Link to={appConfig.myPostedTrips.link}>{appConfig.myPostedTrips.text}</Link></li> }
+        {(isAdmin || isTrippian) && <li><Link to={appConfig.createDestination.link}>{appConfig.createDestination.text}</Link></li>}
+        <li><Link to={appConfig.logout.link}>{appConfig.logout.text}</Link></li>
+        {isAdmin && <li><Link to={appConfig.admin.link}>{appConfig.admin.text}</Link></li>}
     </ul>
   )
 }

@@ -45,6 +45,7 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
   - [X] Signup Form 
   - [ ] Signin Form 
   - [X] OperationMenuWidget (hold edit, delete... buttons) - Audrey
+  - [ ] Hide 'Load Dummy Data' from non-admin users 
   - [ ] Fix save button position in trip list 
   - [ ] Fix Signup / Signin form style 
   - [ ] Edit Form 

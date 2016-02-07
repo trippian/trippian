@@ -15,6 +15,47 @@ const defaults = {
   circleImageBackground: 'https://pixabay.com/static/uploads/photo/2014/06/01/18/33/cat-359915_960_720.jpg',
   link: 'http://www.trippian.com',
   imageAlt: 'trippian image',
+  form: {
+    buttons: {
+      submit: 'Submit Now',
+      reset: 'Clear Values',
+      load: 'Load Dummy Data'
+    },
+    destination: {
+      labels: {
+        name: 'Destiantion',
+        description: 'Description',
+        whyVisit: 'Why Visit',
+        feature: 'Feature Image',
+        featureNote: 'If this is empty, the first uploaded photo will be used as feature'
+      }
+    },
+    trippian: {
+      labels: {
+        name: 'Name',
+        location: 'Location',
+        mobile: 'Mobile',
+        slogan: 'Slogan',
+        website: 'Website',
+        bio: 'Bio',
+        introduction: 'Introduction'
+      }
+    },
+    inquiry: {
+      labels: {
+        personCount: 'Number of People',
+        startDate: 'Start Date',
+        endDate: 'End Date',
+        email: 'Email',
+        mobile: 'Mobile',
+        subject: 'Subject',
+        content: 'Content'
+      }
+    },
+    trip: {
+
+    }
+  },
   map: {
     initialZoom: 6,
     initalLat: 37.761260,
@@ -393,7 +434,11 @@ export default {
     detailsSectionTitle: 'Details',
     photosSectionTitle: 'Photos'
   },
-  PopularTrips: {},
+  PopularTrips: {
+    title: 'Popular Trips',
+    subTitle: 'Explore the popular trips aroudn the world'
+
+  },
 
   Trippian: {},
   TrippianDetail: {
@@ -445,10 +490,47 @@ export default {
       link: 'dashboard'
     }
   },
-  AvatarWidget: {},
+  AvatarWidget: {
+    link: defaults.link,
+    imgSrc: defaults.circleImageBackground,
+    title: defaults.imageAlt
+  },
   AlertAutoDismissableWidget: {},
-  AutoSuggestBoxWidget: {},
-  CarouselWidget: {},
+  AutoSuggestBoxWidget: {
+    fixtures: [{
+      label: 'Hong Kong',
+      location: {
+        lat: 22.396428,
+        lng: 114.10949700000003
+      }
+    }, {
+      label: 'New York, NY, United States',
+      location: {
+        lat: 40.7033127,
+        lng: -73.979681
+      }
+    }, {
+      label: 'Rio de Janeiro - State of Rio de Janeiro, Brazil',
+      location: {
+        lat: -22.066452,
+        lng: -42.9232368
+      }
+    }, {
+      label: 'Tokyo, Japan',
+      location: {
+        lat: 35.673343,
+        lng: 139.710388
+      }
+    }]
+  },
+  CarouselWidget: {
+    images: [defaults.circleImageBackground, defaults.circleImageBackground],
+    imageWidth: 900,
+    imageHeight: 500,
+    imageAlt: defaults.imageAlt,
+    captionTitle: '',
+    cpationContent: ''
+  },
   CircleImageWidget: {
     link: defaults.link,
     imageSrc: defaults.circleImageBackground,
@@ -464,16 +546,77 @@ export default {
     to: 'trippian/32'
   },
   CrumbWidget: {},
-  SectionHeaderWidget: {},
-  DashboardMenuWidget: {},
+  SectionHeaderWidget: {
+    // defaults, better keep it clean 
+    title: '',
+    subTitle: ''
+  },
+  DashboardMenuWidget: {
+    myProfile: {
+      text: 'My Profile',
+      link: 'dashboard/my-profile'
+    },
+    myInquiries: {
+      text: 'My Inquiries',
+      link: 'dashboard/my-inquiries'
+    },
+    myTripBox: {
+      text: 'My Trip Box',
+      link: 'dashboard/my-trip-box'
+    },
+    myPostedTrips: {
+      text: 'Posted Trips',
+      link: 'dashboard/my-posted-trips'
+    },
+    createDestination: {
+      text: 'Create a Destination',
+      link: 'dashboard/destination-post'
+    },
+    logout: {
+      text: 'Logout',
+      link: 'login/logout'
+    },
+    admin: {
+      text: 'Admin',
+      link: 'admin'
+    }
+  },
   DestinationListItemWidget: {},
   DestinationListWidget: {},
-  DestinationPostFormWidget: {},
-  DropFileWidget: {},
+  DestinationPostFormWidget: {
+    labels: {
+      ...defaults.form.destination.labels
+        // name: 'new name description' // add any additional fields if necessary
+    },
+    buttons: {
+      ...defaults.form.buttons
+    }
+  },
+  DropFileWidget: {
+    maxNumberOfFilesAllowed: 5,
+    exceedMaxNumberOfFilesErrorMessage: 'Sorry, maximum 5 files are allowed',
+    dropMessage: 'Try drop some fiels here or click to select files to upload',
+    fileUploadingMessage: 'Total number of files to be uploaded:',
+    fileUploadedMessage: 'Total uploaded files:'
+  },
   DummyRichTextWidget: {},
   UserPostFormWidget: {},
-  TrippianPostFormWidget: {},
-  InquiryPostFormWidget: {},
+  TrippianPostFormWidget: {
+    labels: {
+      ...defaults.form.trippian.labels
+    },
+    buttons: {
+      ...defaults.form.buttons
+    }
+  },
+  InquiryPostFormWidget: {
+    labels: {
+      ...defaults.form.inquiry.labels
+    },
+    buttons: {
+      ...defaults.form.buttons
+    }
+  },
   TripPostFormWidget: {},
   FacebookAvatarWidget: {},
   FacebookLoginWidget: {},
