@@ -15,16 +15,23 @@
                 // background-color: rgba(7, 0, 0, 0.35);
                 max-width: 200px;
                 margin-top: -20px;
-
             }
         }
     }
     .navbar-nav {
+        .dropdown-menu {
+            li {
+                a {
+                    color: $primary-color
+                }
+            }
+        }
         li {
             .navbar-form {
                 margin: 0;
             }
             a {
+                color: $white-base;
                 padding: 8px !important;
                 &.btn-bordered {
                     font-size: 18px;

@@ -1,6 +1,5 @@
 // this will help initialize the app state with the locale and messages
 
-rredrredd
 import store from '../../client/redux/store'
 import {
   addLocaleData
