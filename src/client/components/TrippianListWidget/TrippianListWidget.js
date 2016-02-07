@@ -3,6 +3,10 @@ import {
   TrippianListItemWidget, NoContentWidget
 }
 from '../index'
+import {
+  TrippianListWidget as appConfig
+}
+from '../../config/appConfig'
 
 var trippians = [{
   "name": "Joe Lagasse",
@@ -35,7 +39,7 @@ var trippians = [{
 }]
 
 const TrippianListWidget = ({
-  dataList = trippians, noContentMessage = 'There is no trippian'
+  dataList = trippians, noContentMessage = appConfig.noContentMessage
 }) => {
   console.log('inside', dataList)
   return (

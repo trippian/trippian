@@ -4,7 +4,7 @@ import React, {
 from 'react'
 
 import {
-  reduxForm 
+  reduxForm
 }
 from 'redux-form'
 import store from '../../redux/store'
@@ -12,6 +12,10 @@ import {
   localSignup
 }
 from '../../redux/apiIndex'
+import {
+  SignupFormWidget as appConfig
+}
+from '../../config/appConfig'
 
 const submit = (values, dispatch) => {
   store.dispatch(localSignup(values))
@@ -40,21 +44,21 @@ export default class SignupFormWidget extends Component {
     return (
       <form onSubmit={handleSubmit(submit)}>
           <div>
-            <label>Full Name</label>
+            <label>{appConfig.labels.name}</label>
             <div>
               <input type="text" placeholder="Full Name" {...name}/>
             </div>
             {name.touched && name.error && <div> {name.error}</div>}
           </div>
           <div>
-            <label>Email</label>
+            <label>{appConfig.labels.email}</label>
             <div>
               <input type="text" placeholder="Email" {...email}/>
             </div>
             {email.touched && email.error && <div>{email.error}</div>}
           </div>
           <div>
-            <label>Password</label>
+            <label>{appConfig.labels.password}</label>
             <div>
               <input type="text" placeholder="Password" {...password}/>
             </div>
@@ -62,7 +66,7 @@ export default class SignupFormWidget extends Component {
           </div>
           <div>
             <button disabled={submitting} onClick={handleSubmit(submit)}>
-            {submitting ? <i/> : <i/>} Sign Up
+            {submitting ? <i/> : <i/>} {appConfig.buttons.submit}
             </button>
           </div>
       </form>

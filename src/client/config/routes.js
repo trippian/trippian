@@ -40,7 +40,8 @@ export default (
               <Route component={Logout} path="logout" />
               <IndexRoute component={Login} />
             </Route>
-
+            
+            // signup
             <Route component={SignupWrapper} path="signup" >
               <Route component={Signup} path="signup" />
               <Route component={SignupSuccess} path="success" />

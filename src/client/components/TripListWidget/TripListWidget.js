@@ -3,9 +3,13 @@ import {
   TripListItemWidget, NoContentWidget
 }
 from '../index'
+import {
+  TripListWidget as appConfig
+}
+from '../../config/appConfig'
 
 const TripListWidget = ({
-  dataList = [], noContentMessage = 'There is no trip yet. '
+  dataList = [], noContentMessage = appConfig.noContentMessage
 }) => {
   console.log('inside Trip list', dataList, dataList.length)
   return (

@@ -3,9 +3,13 @@ import {
   TrippianListItemRoundWidget, NoContentWidget
 }
 from '../index'
+import {
+  TrippianListRoundWidget as appConfig
+}
+from '../../config/appConfig'
 
 const TrippianListRoundWidget = ({
-  dataList = [], noContentMessage = 'There is no Trippian'
+  dataList = [], noContentMessage = appConfig.noContentMessage
 }) => {
   console.log('inside trippian list', dataList, dataList.length)
   return (

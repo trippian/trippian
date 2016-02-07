@@ -1,20 +1,21 @@
 /*
 Config the app's front-end
-Make sure the page and components are in alphabetic order
+Make sure the containers and components are in alphabetic / logic order
 */
 
 //TODO: read HOST from a get request or send it by cookie 
 // const HOST = window.location.origin // enable this for deploy 
 
-// const HOST = 'http://trippian.com'
 const HOST = 'http://localhost:4000' // enable this for react dev
 
 // reusable configs 
 const defaults = {
+  logo: 'https://s3-us-west-1.amazonaws.com/trippian/logo-trans-white.png',
   jumbotronBackground: 'http://media-cdn.tripadvisor.com/media/photo-s/06/04/b0/fb/how-about-a-trip-to-paradise.jpg',
   circleImageBackground: 'https://pixabay.com/static/uploads/photo/2014/06/01/18/33/cat-359915_960_720.jpg',
   link: 'http://www.trippian.com',
   imageAlt: 'trippian image',
+  noContentMessage: 'There is no content',
   form: {
     buttons: {
       submit: 'Submit Now',
@@ -53,8 +54,30 @@ const defaults = {
       }
     },
     trip: {
-
+      labels: {
+        destination: 'Destination',
+        title: 'Title',
+        summary: 'Summary',
+        details: 'Details',
+        feature: 'Feature',
+        album: 'Album'
+      }
+    },
+    review: {
+      labels: {
+        rating: 'Rating',
+        title: 'Title',
+        content: 'Content'
+      }
+    },
+    user: {
+      labels: {
+        name: 'Full Name',
+        email: 'Email',
+        password: 'Password'
+      }
     }
+
   },
   map: {
     initialZoom: 6,
@@ -65,10 +88,12 @@ const defaults = {
   }
 }
 
+// main config file 
 export default {
   defaults: defaults,
   appName: '',
   appDescription: 'your local travel companion',
+  logo: defaults.logo,
   API_HOST: `${HOST}/api/`,
   Server_HOST: `${HOST}`,
   admin: {
@@ -125,7 +150,7 @@ export default {
     adminPage: 'http://recwell.umd.edu/portals/0/Photos/MAP-trips.jpg'
   },
 
-  // general page titles 
+  // general page titles (ref FooterWidget mostly)
   appPages: {
     home: 'Home',
     about: 'About',
@@ -134,119 +159,6 @@ export default {
     becomeATrippian: 'Become a Trippian',
     myProfile: 'My Profile'
   },
-  // specfic pages 
-  // homePage: {
-  //   jumbotron: {
-  //     title: 'Start Now',
-  //     subTitle: 'Find your local trip companion around the world'
-  //   },
-  //   popularDestinations: {
-  //     title: 'Popular Destinations',
-  //     subTitle: 'Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet.'
-  //   },
-  //   popularTrippians: {
-  //     title: 'Popular Trippians',
-  //     subTitle: 'Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet.'
-  //   }
-  // },
-  // aboutPage: {
-  //   title: 'About',
-  //   subTitle: 'Lorem ipsum dolor sit.',
-  //   jumbotronBackgroud: 'http://recwell.umd.edu/portals/0/Photos/MAP-trips.jpg',
-  //   sectionOneTitle: 'About Us',
-  //   sectionOneContent: ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam fuga ab, asperiores quidem suscipit quia quos exercitationem, totam ipsum odit molestias, beatae porro possimus consectetur expedita sequi excepturi adipisci reiciendis?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum dolorem quam, perferendis ipsum modi iusto fugiat, iste quia asperiores magnam!',
-  //   teamSectionTitle: 'The Team',
-  //   team: [{
-  //     'name': 'Audrey Li',
-  //     'location': 'San Francisco',
-  //     'role': 'Project Owner & Software Engineeer',
-  //     'image': 'https://s3-us-west-1.amazonaws.com/trippian/about/Audrey.jpg ',
-  //     'about': 'I was raised in a small remote village in China, and had not been to a big city until I was 19. I am fascinated by different cultures and histories. I enjoy travelling and learning foreign languages, particularly Spanish, German, and French. '
-  //   }, {
-  //     'name': 'Elliot Chi',
-  //     'location': 'San Francisco',
-  //     'role': 'Software Engineer & Scrum Master',
-  //     'image': 'https://s3-us-west-1.amazonaws.com/trippian/about/Elliot-1.jpg ',
-  //     'about': 'I enjoy watching the Warriors and cheering for Steph Curry. I have a man crush on him. I enjoy watching the Warriors and cheering for Steph Curry. I have a man crush on him.'
-  //   }, {
-  //     'name': 'Joe Lagasse',
-  //     'location': 'San Francisco',
-  //     'role': 'Software Engineer',
-  //     'image': 'https://s3-us-west-1.amazonaws.com/trippian/about/Joe.jpg ',
-  //     'about': 'Leading the protests for more Qdobas in California, weekend security tester, lifter of all heavy things and living the vegetarian lifestyle since the days where your “friends” would put their lunch meat in your lunch box when you weren’t looking.'
-  //   }, {
-  //     'name': 'Yale Yuen',
-  //     'location': 'San Francisco',
-  //     'role': 'Software Engineer',
-  //     'image': 'https://s3-us-west-1.amazonaws.com/trippian/about/Yale.jpg ',
-  //     'about': 'I am basically married. Elliot is my side piece.I am basically married. Elliot is my side piece.I am basically married. Elliot is my side piece.'
-  //   }]
-  // },
-  // joinUsPage: {
-  //   title: 'Join Us',
-  //   subTitle: 'Lorem ipsum dolor sit.',
-  //   jumbotronBackgroud: 'http://recwell.umd.edu/portals/0/Photos/MAP-trips.jpg',
-  //   sectionOneTitle: 'Join Us',
-  //   sectionOneContent: ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam fuga ab, asperiores quidem suscipit quia quos exercitationem, totam ipsum odit molestias, beatae porro possimus consectetur expedita sequi excepturi adipisci reiciendis?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum dolorem quam, perferendis ipsum modi iusto fugiat, iste quia asperiores magnam!',
-  // },
-  // pressPage: {
-  //   title: 'Press',
-  //   subTitle: 'Lorem ipsum dolor sit.',
-  //   jumbotronBackgroud: 'http://recwell.umd.edu/portals/0/Photos/MAP-trips.jpg',
-  //   sectionOneTitle: 'Press',
-  //   sectionOneContent: ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam fuga ab, asperiores quidem suscipit quia quos exercitationem, totam ipsum odit molestias, beatae porro possimus consectetur expedita sequi excepturi adipisci reiciendis?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum dolorem quam, perferendis ipsum modi iusto fugiat, iste quia asperiores magnam!',
-  // },
-  // becomeATrippianPage: {
-  //   title: 'Become a Trippian',
-  //   subTitle: 'Lorem ipsum dolor sit.',
-  //   formTitle: 'Sign up to become a trippian'
-  // },
-
-  // destinationPostPage: {
-  //   title: 'Post a Destination',
-  //   subTitle: 'Lorem ipsum dolor sit.',
-  //   formTitle: 'Add a Destination'
-  // },
-  // destinationDetailPage: {
-  //   whyVisitTitle: 'Why Visit',
-  //   whyVisitSubtitle: '',
-  //   popularTripsTitle: 'Popular Trips',
-  //   popularTripsSubtitle: '',
-  //   map: {
-  //     initialZoom: 6,
-  //     initalLat: 37.761260,
-  //     initalLng: -122.415903,
-  //     markerTitle: 'Trippian.com',
-  //     shouldLoadInitialMap: false
-  //   }
-  // },
-  // destinationListPage: {
-  //   title: 'Destination List'
-  // },
-  // destinationSearchResultsPage: {
-  //   title: 'Destination Search Result',
-  //   subTitle: ''
-  // },
-  // trippianDetailPage: {
-  //   bioSectionTitle: 'Bio',
-  //   bioSectionSubtitle: '',
-  //   introductionSectionTitle: 'Introduction',
-  //   introductionSectionSubtitl: '',
-  //   myTripsSectionTitle: 'My Trips',
-  //   myTripsSectionSubtitle: '',
-  //   reviewsSectionTitle: 'Reviews',
-  //   reviewsSectionSubtitle: '',
-  //   addReviewSectionTitle: 'Add a Review',
-  //   addReviewSectionSubtitle: ''
-  // },
-  // loginPage: {
-  //   title: 'Destination Search Result',
-  //   subTitle: ''
-  // },
-  // loginWrapper: {
-  //   jumbotronTitle: 'Login',
-  //   jumbotronSubtile: ''
-  // },
 
   // containers
   Admin: {
@@ -405,8 +317,8 @@ export default {
   LoginSuccess: {},
   Logout: {},
   LoginWrapper: {
-    jumbotronTitle: 'Login',
-    jumbotronSubtile: ''
+    title: 'Login',
+    subTitle: 'Login to manage your trips and profile'
   },
   NotFound: {},
   pressPage: {
@@ -416,7 +328,9 @@ export default {
     sectionOneTitle: 'Press',
     sectionOneContent: ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam fuga ab, asperiores quidem suscipit quia quos exercitationem, totam ipsum odit molestias, beatae porro possimus consectetur expedita sequi excepturi adipisci reiciendis?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum dolorem quam, perferendis ipsum modi iusto fugiat, iste quia asperiores magnam!',
   },
-  Signup: {},
+  Signup: {
+    title: 'Signup'
+  },
   SignupSuccess: {
     title: 'Login Successs',
     content: 'You logged in'
@@ -452,6 +366,9 @@ export default {
     reviewsSectionSubtitle: '',
     addReviewSectionTitle: 'Add a Review',
     addReviewSectionSubtitle: ''
+  },
+  TrippianProfileWidget: {
+
   },
   TrippianSignUp: {
     title: 'Become a Trippian',
@@ -617,7 +534,14 @@ export default {
       ...defaults.form.buttons
     }
   },
-  TripPostFormWidget: {},
+  TripPostFormWidget: {
+    labels: {
+      ...defaults.form.trip.labels
+    },
+    buttons: {
+      ...defaults.form.buttons
+    }
+  },
   FacebookAvatarWidget: {},
   FacebookLoginWidget: {},
   FooterWidget: {
@@ -641,12 +565,8 @@ export default {
   GooglePlacesWidget: {},
   GoogleMapWidget: {},
   HelloWorldWidget: {},
-  IconWidget: {
-    formTitle: 'Submit Inquiry Now'
-  },
-
+  IconWidget: {},
   ImageLoaderWidget: {},
-  InquiryAddFormWidget: {},
   InquiryListWidget: {},
   InquiryListItemWidget: {},
   JumbotronWidget: {},
@@ -659,8 +579,14 @@ export default {
     subTitle: 'Lorem ipsum dolor sit amet, consectetur.'
   },
   JumbotronDestinationWidget: {},
-  JumbotronDashboardWidget: {},
-  JumbotronShortWidget: {},
+  JumbotronDashboardWidget: {
+    title: 'Dashboard',
+    subTitle: 'Manage all info in one place'
+  },
+  JumbotronShortWidget: {
+    title: '',
+    subTitle: ''
+  },
   JumbotronTrippianWidget: {},
   JumbotronTripWidget: {},
   JumbotronTitleWidget: {},
@@ -669,15 +595,33 @@ export default {
   JumbotronVideoWidget: {},
   LikeCounterWidget: {},
   LocaleMenuWidget: {},
-  LoginButtonsWidget: {},
+  LoginButtonsWidget: {
+    facebook: 'Login with Facebook',
+    google: 'Login with Google'
+  },
   LoginFormWidget: {},
   NavUserMenuWidget: {},
-  NavWidget: {},
-  NoContentWidget: {},
+  NavWidget: {
+    srToggleText: 'Toggle navigation',
+    logo: defaults.logo,
+    becomeATrippianButtonText: 'Become a Trippian',
+    loginButtonText: 'Login'
+  },
+  NoContentWidget: {
+    noContentMessage: defaults.noContentMessage
+  },
   OperationMenuWidget: {},
   PaginationWidget: {},
   RelativeTimeWidget: {},
-  ReviewAddFormWidget: {},
+  ReviewAddFormWidget: {
+    labels: {
+      ...defaults.form.review.labels
+    },
+    buttons: {
+      ...defaults.form.buttons,
+        submit: 'Add My Review'
+    }
+  },
   ReviewListItemWidget: {},
   ReviewListWidget: {},
   PreviewImageWidget: {},
@@ -688,17 +632,35 @@ export default {
   },
   StarRatingWidget: {},
   SendButtonIntl: {},
-  SignupButtonsWidget: {},
-  SignupFormWidget: {},
+  SignupButtonsWidget: {
+    facebook: 'Signup with Facebook',
+    google: 'Signup with Google'
+  },
+  SignupFormWidget: {
+    labels: {
+      ...defaults.form.user.labels
+    },
+    buttons: {
+      ...defaults.form.buttons,
+        submit: 'Sign Up'
+    }
+  },
   TextIntroPlainWidget: {},
   TextIntroRichWidget: {},
-  TrippianListWidget: {},
+  TrippianListWidget: {
+    noContentMessage: 'There is no trippian'
+  },
   TrippianListItemWidget: {},
-  TrippianListRoundWidget: {},
+  TrippianListRoundWidget: {
+    noContentMessage: 'There is no trippian'
+
+  },
   TrippianListItemRoundWidget: {},
   TrippianSignupFormWidget: {},
   TripsTableWidget: {},
-  TripListWidget: {},
+  TripListWidget: {
+    noContentMessage: 'There is no trip yet. '
+  },
   TripListItemWidget: {},
   TeamCardWidget: {},
   TeamCardsWidget: {},
@@ -706,6 +668,5 @@ export default {
   UserMenuWidget: {},
   UserProfileWidget: {},
   UserLinkWidget: {},
-  TrippianProfileWidget: {},
   VideoBackground: {}
 }

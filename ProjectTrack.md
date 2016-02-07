@@ -20,6 +20,7 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
   - [ ] Improve Redux Store 
 - General 
   - [ ] Clean up front-end messages 
+  - [ ] Can't make inquiry to self problem 
 
 - Admin 
   - [X] Delete Trip By Id
