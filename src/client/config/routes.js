@@ -17,7 +17,7 @@ import {
   AdminInquiryListItem, AdminInquiryListItemEdit,
   AdminTripListItem, AdminTripListItemEdit,
   AdminUserList, AdminUserListItem, AdminUserListItemEdit,
-  Dashboard, MyProfile, MyInquiries, MyTripBox, MyPostedTrips,
+  Dashboard, MyProfile, MyInquiries, MyTripBox, MyPostedTrips, MyDestinationPost,
   SignupWrapper, Signup, SignupSuccess
 }
 from '../containers/index'
@@ -85,6 +85,7 @@ export default (
               <Route component={MyProfile} path="my-profile"  />
               <Route component={MyInquiries} path="my-inquiries"  />
               <Route component={MyPostedTrips} path="my-posted-trips"  />
+              <Route component={MyDestinationPost} path="destination-post"  />
               // create trip, vote, favs, saves 
               <Route component={MyTripBox} path="my-trip-box"  />  
               <IndexRoute component={MyProfile}/>

@@ -5,7 +5,6 @@ Make sure the containers and components are in alphabetic / logic order
 
 //TODO: read HOST from a get request or send it by cookie 
 // const HOST = window.location.origin // enable this for deploy 
-
 const HOST = 'http://localhost:4000' // enable this for react dev
 
 // reusable configs 
@@ -254,6 +253,13 @@ export default {
       containerTitle: 'A list of saved trips',
       noContentMessage: 'You have not saved any trips yet'
     }
+  },
+  MyDestinationPost: {
+    containerTitle: 'My Posted Destinations',
+    noContentMessage: 'You have not posted any destinations yet. Start now.',
+    postDestinationButtonHideText: 'Hide Form',
+    postDestinationButtonShowText: 'Create a Destination'
+
   },
 
   Destination: {},
