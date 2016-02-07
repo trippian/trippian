@@ -8,7 +8,7 @@ import {
 }
 from '../../config/appConfig'
 import {
-  JumbotronWidget, TrippianPostFormWidget
+  JumbotronShortWidget, TrippianPostFormWidget
 }
 from '../../components/index'
 import {
@@ -37,7 +37,7 @@ export default class TrippianSignup extends Component {
     console.log('--inside TrippianSignup render', isAuthed)
     return (
       <div id="trippian-sign-up-page">
-        <JumbotronWidget title={appConfig.title} subTitle={appConfig.subTitle} isNoContact isTitled />
+        <JumbotronShortWidget title={appConfig.title} subTitle={appConfig.subTitle} />
         <div className="container main-content-container">
             <div className="col-sm-12 col-md-8 col-md-offset-2 content-container">
               {isAuthed && 
