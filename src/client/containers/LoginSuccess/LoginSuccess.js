@@ -22,6 +22,7 @@ export default class LoginSuccess extends Component {
     console.log('got user from coookie', user)
     setAppStateUser()
 
+    window.location.href = `${window.location.origin}/#/dashboard`
     //TODO: read history data and redirect user to previous page 
     // const history = store.getState().appState.get('history')
     // console.log('----history', history)
