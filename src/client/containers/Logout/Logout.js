@@ -20,6 +20,8 @@ export default class Logout extends Component {
       // dipatch set user at appState 
     console.log('got user from coookie', user)
     setAppStateUser(false)
+
+    window.location.href = `${window.location.origin}`
   }
 
   render() {
