@@ -3,10 +3,6 @@ import {
   Carousel, CarouselItem
 }
 from 'react-bootstrap'
-import {
-  CarouselItemWidget
-}
-from '../index'
 
 const imgs = ['http://lorempixel.com/400/200/animals/', 'http://lorempixel.com/400/200/animals/']
 

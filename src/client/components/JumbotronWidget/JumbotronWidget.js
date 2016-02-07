@@ -5,7 +5,7 @@ import {
 from '../../config/appConfig'
 
 const JumbotronWidget = ({
-  title = '', subTitle = '', backgroundImage = appConfig.defaultJumbotronBackground
+  title = '', subTitle = '', backgroundImage = appConfig.jumbotronBackground
 }) => {
   const styles = {
     backgroundImage: {

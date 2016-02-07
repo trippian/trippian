@@ -4,7 +4,7 @@ import React, {
 from 'react'
 
 import {
-  becomeATrippianPage as appConfig
+  TrippianSignup as appConfig
 }
 from '../../config/appConfig'
 import {
