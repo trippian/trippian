@@ -1,3 +1,4 @@
+import log from '../../log'
 import React from 'react'
 import {
   Link
@@ -19,8 +20,7 @@ isMetad: will show/hide the meta area (full-length-container)
  */
 
 const JumbotronTripWidget = ({
-  isTitled = true, user, title = '', subTitle = '', metaTitle = '', backgroundFeature
- = appConfig.defaultTripFeature
+  isTitled = true, user, title = '', subTitle = '', metaTitle = '', backgroundFeature = appConfig.defaultTripFeature
 }) => {
 
   const styles = {
@@ -28,7 +28,7 @@ const JumbotronTripWidget = ({
       backgroundImage: 'url(' + backgroundFeature + ')'
     }
   }
-  console.log('--inside JumbotronTripWidget', user, metaTitle)
+  log.info('--inside JumbotronTripWidget', user, metaTitle)
   return (
     <div className = "jumbotron jumbotron-trip-widget" style={styles.backgroundImage} > 
       {isTitled && <JumbotronTitleWidget title={title} subTitle={subTitle} />}

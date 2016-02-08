@@ -1,3 +1,4 @@
+import log from '../../log'
 import React from 'react'
 import {
   Link
@@ -20,7 +21,7 @@ from '../index'
 const JumbotronMetaAreaWidget = ({
   isTripPage = false, isContact = true, title = '', user
 }) => {
-  console.log('inside JumbotronMetaAreaWidget', user)
+  log.info('inside JumbotronMetaAreaWidget', user)
   const {
     trippian, name, email, id, facebookId, googleId, picture = appConfig.defaultAvatar,
       location, mobile, slogan, website = '', averageRating

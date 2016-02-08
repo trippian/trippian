@@ -1,3 +1,4 @@
+import log from '../../log'
 import React from 'react'
 import {
   Link
@@ -34,7 +35,7 @@ const NavWidget = ({
   const {
     isAuthed, isTrippian
   } = user
-  console.log('----logo', appConfig)
+  log.info('----logo', appConfig)
   return (
     <nav className="navbar navbar-default" role="navigation">
         <div className="navbar-header">

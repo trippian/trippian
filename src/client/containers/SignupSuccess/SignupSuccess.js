@@ -1,3 +1,4 @@
+import log from '../../log'
 import React, {
   Component, PropTypes
 }
@@ -26,7 +27,7 @@ export default class SignupSuccess extends Component {
         <h3>Sign Up Successful!</h3>
         You can now connect with trippians all over the world!
       </div>
-      )
+    )
   }
 }
 

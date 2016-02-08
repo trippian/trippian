@@ -1,4 +1,5 @@
 // not in use 
+import log from '../../log'
 import React from 'react'
 
 class GooglePlacesWidget extends React.Component {
@@ -7,7 +8,7 @@ class GooglePlacesWidget extends React.Component {
   }
 
   handleClick() {
-    console.log('clicked', this.refs.searchText.value)
+    log.info('clicked', this.refs.searchText.value)
       // Elliot is going to do something 
       //TODO use router to redirect the page to DestinationSearchResults
   }

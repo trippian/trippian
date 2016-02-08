@@ -1,3 +1,4 @@
+import log from '../../log'
 import React, {
   Component, PropTypes
 }
@@ -26,15 +27,15 @@ export default class TrippianSignup extends Component {
     super(props)
   }
   handleSubmit(data) {
-    console.log('posting data from form, submitting?', data, this.props.isFormSubmitted, this.props.isFormSubmitting)
+    log.info('posting data from form, submitting?', data, this.props.isFormSubmitted, this.props.isFormSubmitting)
     store.dispatch(putTrippian(data))
   }
   handleReset() {
-    console.log('will handle form reset')
+    log.info('will handle form reset')
   }
   render() {
     const isAuthed = store.getState().appState.get('user').isAuthed
-    console.log('--inside TrippianSignup render', isAuthed)
+    log.info('--inside TrippianSignup render', isAuthed)
     return (
       <div id="trippian-sign-up-page">
         <JumbotronShortWidget title={appConfig.title} subTitle={appConfig.subTitle} />

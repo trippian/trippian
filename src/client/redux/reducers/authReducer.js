@@ -2,7 +2,7 @@
 // things like username and isUserAdmin is bit ambiguous whether it should exist here as we can only get it from network call
 // later， we'll have to refactor it and make it clear and clean
 // but for now, we'll store some commonly used app state variables here 
-
+import log from '../../log'
 import {
   SET_LOCALE, SET_LOCALE_MESSAGES, SET_USERNAME, SET_DISPLAYNAME, SET_ALERT, SET_FILES
 }

@@ -1,3 +1,4 @@
+import log from '../../log'
 import React from 'react'
 import {
   Link
@@ -17,7 +18,7 @@ from '../../config/appConfig'
 const DashboardMenuWidget = ({
   isTrippian, isAdmin
 }) => {
-  console.log('----inside DashboardMenuWidget render', isTrippian, isAdmin)
+  log.info('----inside DashboardMenuWidget render', isTrippian, isAdmin)
   return (
     <ul className="user-menu-widget list-inline">   
         <li><Link to={appConfig.myProfile.link}>{appConfig.myProfile.text}</Link></li>

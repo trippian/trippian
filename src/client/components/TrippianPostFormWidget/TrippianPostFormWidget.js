@@ -1,3 +1,4 @@
+import log from '../../log'
 import React, {
   Component, PropTypes
 }
@@ -35,7 +36,7 @@ class TrippianPostFormWidget extends Component {
   }
 
   handleSubmit(data) {
-    console.log('******submitting in the form', this.props.files, this.props.isFileUploading)
+    log.info('******submitting in the form', this.props.files, this.props.isFileUploading)
     if (this.props.isFileUploading) {
       // TODO: set alert here 
     } else {

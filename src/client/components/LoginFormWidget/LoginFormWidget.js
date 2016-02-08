@@ -1,4 +1,5 @@
 //TODO: add to front-end
+import log from '../../log'
 import React, {
   Component, PropTypes
 }

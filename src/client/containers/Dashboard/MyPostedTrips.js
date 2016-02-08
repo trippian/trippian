@@ -1,3 +1,4 @@
+import log from '../../log'
 import React, {
   Component, PropTypes
 }
@@ -41,7 +42,7 @@ export default class MyPostedTrips extends Component {
   }
 
   handleSubmit(data) {
-    console.log('posting data from trip form', data)
+    log.info('posting data from trip form', data)
     store.dispatch(postTrip(data))
   }
 
@@ -53,7 +54,7 @@ export default class MyPostedTrips extends Component {
     const {
       newTrips
     } = this.props
-    console.log('inside MyPostedTrips render', postedTrips)
+    log.info('inside MyPostedTrips render', postedTrips)
     return (
       <div className="my-posted-trips-page">
         <button onClick={()=> this.setState({showForm: !this.state.showForm})} className="btn btn-primary pull-right">

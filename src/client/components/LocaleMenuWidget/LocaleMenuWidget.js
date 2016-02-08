@@ -1,3 +1,4 @@
+import log from '../../log'
 import React, {
   Component
 }
@@ -47,7 +48,7 @@ import {
 }
 from '../../../shared/utils/clientUtils'
 store.subscribe(() => {
-  // console.log(store.getState().appState.get('locale'), store.getState().appState.get('messages'))
+  // log.info(store.getState().appState.get('locale'), store.getState().appState.get('messages'))
   // initializeAppStateWithLocale(store.getState().appState.get('locale'))
 })
 

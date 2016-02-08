@@ -3,7 +3,7 @@ process the url, so we can get the exact route
 e.g. '#/become-a-trippian?_k=ys8iin' will return '/become-a-trippian'
 w
  */
-
+import log from '../../client/log'
 export function getPathNameFromHash(hash) {
   if (hash[0] !== '#' || hash.length < 2) return
   let pathName = ''
@@ -75,6 +75,6 @@ export function clearTrippianCookieByName(name = 'trippianPass') {
 export function readerUserFromCookie(string) {
   const cookieString = getCookieByName('trippianPass')
   if (!cookieString) return null
-  console.log('reading user from cookie', cookieString)
+  log.info('reading user from cookie', cookieString)
   return parseCookieStringToUser(cookieString)
 }

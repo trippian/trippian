@@ -1,3 +1,4 @@
+import log from '../../log'
 import React, {
   Component, PropTypes
 }
@@ -8,7 +9,7 @@ import {
 from '../../components/index'
 import {
   LoginWrapper
- as appConfig
+  as appConfig
 }
 from '../../config/appConfig'
 export default class LoginWrapper extends Component {

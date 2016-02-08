@@ -1,3 +1,4 @@
+import log from '../../log'
 import React from 'react'
 
 import {
@@ -21,7 +22,7 @@ const renderImage = (imageSrc, link, title) => {
 const CircleImageWidget = ({
   link = appConfig.link, imageSrc = appConfig.imageSrc, title = appConfig.imageAlt
 }) => {
-  console.log('--inside CircleImageWidget', link, imageSrc, title)
+  log.info('--inside CircleImageWidget', link, imageSrc, title)
   return (
     <div className="avatar circle-image">
         {renderImage(imageSrc, link, title)}

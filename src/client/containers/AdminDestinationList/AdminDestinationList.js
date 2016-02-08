@@ -1,3 +1,4 @@
+import log from '../../log'
 import React, {
   Component, PropTypes
 }
@@ -65,7 +66,7 @@ export default class AdminDestinationList extends Component {
     store.dispatch(getAdminDestinations())
   }
   handleDelete(id) {
-    console.log('deleting destination called', id)
+    log.info('deleting destination called', id)
     store.dispatch(deleteAdminDestinationById(id))
     this.setAlert('success', 'Successfully deleted data', id)
 
@@ -76,7 +77,7 @@ export default class AdminDestinationList extends Component {
 
 
   handleSubmit(data) {
-    console.log('posting data from form, submitting?', data, this.props.isFormSubmitted, this.props.isFormSubmitting)
+    log.info('posting data from form, submitting?', data, this.props.isFormSubmitted, this.props.isFormSubmitting)
     store.dispatch(postDestination(data))
     this.setAlert('success', 'Successfully submitted data', `${data.name} ${data.description}`)
   }

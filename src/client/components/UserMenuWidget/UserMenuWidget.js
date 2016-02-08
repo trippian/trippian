@@ -1,3 +1,4 @@
+import log from '../../log'
 import React from 'react'
 import {
   Link
@@ -10,9 +11,10 @@ import {
 from 'react-intl'
 
 const UserMenuWidget = ({
-  displayName, isAdmin, picture, isAuthed}) => {
+  displayName, isAdmin, picture, isAuthed
+}) => {
   // const {
-    
+
   // } = store.getState().appState.get('user')
 
   return (

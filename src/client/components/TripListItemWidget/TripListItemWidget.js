@@ -1,3 +1,4 @@
+import log from '../../log'
 import React, {
   Component
 }
@@ -33,22 +34,22 @@ export default class TripListItemWidget extends Component {
   }
 
   handleSave(saveState) {
-    console.log('*** handling save', saveState, this.props.id)
+    log.info('*** handling save', saveState, this.props.id)
       // const canSave = getCanSave(this.state.isSaved)
-    console.log('before', this.setState.isSaved)
+    log.info('before', this.setState.isSaved)
     if (!this.state.isSaved) {
       store.dispatch(toggleSaveTrip(saveState, this.props.id))
       this.setState({
         isSaved: this.state.stateState
       })
-      console.log('after', this.setState.isSaved)
+      log.info('after', this.setState.isSaved)
     }
 
   }
 
   // TODO: fix the voting logic here by getting original currentNetVote from network
   handleVote(vote) {
-    console.log('*** handling vote', vote, this.props.id)
+    log.info('*** handling vote', vote, this.props.id)
     const canVote = getCanVote(this.state.currentNetVote, vote)
     if (canVote) {
       store.dispatch(voteTrip(vote, this.props.id))
@@ -58,7 +59,7 @@ export default class TripListItemWidget extends Component {
         currentNetVote: this.state.currentNetVote + vote
       })
     } else {
-      console.log('sorry, you already voted') // just for debugging, can 
+      log.info('sorry, you already voted') // just for debugging, can 
     }
   }
   componentDidMount() {
@@ -69,17 +70,17 @@ export default class TripListItemWidget extends Component {
   }
 
   handleDelete() {
-      console.log('deleting trip called', this.props.id)
+      log.info('deleting trip called', this.props.id)
       store.dispatch(deleteTripById(this.props.id))
     }
     //TODO:
   handleEdit() {
-    console.log('editing trip called', this.props.id)
+    log.info('editing trip called', this.props.id)
   }
 
   //TODO: add edit and delete to trips
   render() {
-    console.log('inside TripListItemWidget render')
+    log.info('inside TripListItemWidget render')
     const isAuthed = store.getState().appState.get('user').isAuthed || false
     const {
       id, handleVote, title, destination, summary, details, feature, lat, lng, displayName = 'Trippian'

@@ -1,3 +1,4 @@
+import log from '../../log'
 import React, {
   Component, PropTypes
 }
@@ -35,12 +36,12 @@ export default class Trip extends Component {
 
   componentDidMount() {
     const id = this.props.params.id
-    console.log('will get trip by id', id)
+    log.info('will get trip by id', id)
     store.dispatch(getTripById(id, true))
   }
 
   render() {
-    console.log('..inside trip render', this.props.trip, this.props.trip.user)
+    log.info('..inside trip render', this.props.trip, this.props.trip.user)
     const {
       title, user, feature
     } = this.props.trip

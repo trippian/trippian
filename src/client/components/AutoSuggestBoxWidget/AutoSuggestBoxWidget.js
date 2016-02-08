@@ -1,3 +1,4 @@
+import log from '../../log'
 import React from 'react'
 import Geosuggest from 'react-geosuggest'
 import {
@@ -16,18 +17,18 @@ class AutoSuggestBoxWidget extends React.Component {
     super(props)
   }
   onFocus() {
-    // console.log('onFocus')
+    // log.info('onFocus')
   }
   onBlur() {
-    // console.log('onBlur')
+    // log.info('onBlur')
   }
 
   onChange(value) {
-    // console.log('input changes to :' + value);
+    // log.info('input changes to :' + value);
   }
 
   onSuggestSelect(suggest) {
-    console.log(suggest)
+    log.info(suggest)
     store.dispatch(setSearchText(suggest))
   }
   render() {

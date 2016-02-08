@@ -1,3 +1,4 @@
+import log from '../../log'
 import React, {
   Component, PropTypes
 }
@@ -40,7 +41,7 @@ export default class MyTripBox extends Component {
   toggleState({
     showUpVotedTrips = false, showDownVotedTrips = false, showSavedTrips = false
   }) {
-    console.log('set the state', this.state)
+    log.info('set the state', this.state)
 
     if (showUpVotedTrips) {
       this.setState({
@@ -63,14 +64,14 @@ export default class MyTripBox extends Component {
         showSavedTrips: true
       })
     }
-    console.log('set the state', this.state)
+    log.info('set the state', this.state)
   }
   render() {
     const {
       savedTrips, upVotedTrips, downVotedTrips
     } = this.props.dashboard
 
-    console.log('inside MyTripBox render')
+    log.info('inside MyTripBox render')
     return (
       <div className="my-posted-trips-page">
         <div className='menu-row text-right'>

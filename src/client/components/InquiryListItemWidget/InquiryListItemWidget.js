@@ -1,3 +1,4 @@
+import log from '../../log'
 import React, {
   Component
 }
@@ -30,14 +31,14 @@ export default class InquiryListItemWidget extends Component {
   }
 
   handleDelete() {
-    console.log('deleting inquiry called', this.props.id)
+    log.info('deleting inquiry called', this.props.id)
     store.dispatch(deleteInquiryById(this.props.id))
   }
   handleAccept() {
-    console.log('accept inquiry called', this.props.id)
+    log.info('accept inquiry called', this.props.id)
   }
   handleReject() {
-    console.log('reject inquiry called', this.props.id)
+    log.info('reject inquiry called', this.props.id)
   }
 
   render() {

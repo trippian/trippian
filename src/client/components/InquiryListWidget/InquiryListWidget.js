@@ -1,3 +1,4 @@
+import log from '../../log'
 import React from 'react'
 
 import {
@@ -7,8 +8,7 @@ from '../index'
 
 
 const InquiryListWidget = ({
-  name = 'InquiryListWidget', dataList = [], noContentMessage
- = 'There is no inquiry'
+  name = 'InquiryListWidget', dataList = [], noContentMessage = 'There is no inquiry'
 }) => {
   return (
     <div className="section-body inquiry-list">

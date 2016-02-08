@@ -1,3 +1,4 @@
+import log from '../../log'
 import React from 'react'
 import {
   NoContentWidget as appConfig

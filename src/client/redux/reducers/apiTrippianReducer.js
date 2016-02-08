@@ -1,3 +1,4 @@
+import log from '../../log'
 import {
   FETCH_REMOTE_RESOURCE_FAIL, REMOVE_INQUIRY, REMOVE_TRIP, ADD_TRIP,
   SET_DESTINATIONS, SET_TRIPPIANS, GET_DESTINATIONS_FAIL, GET_DESTINATION_BY_ID, GET_TRIPPIAN_BY_ID, GET_DESTINATIONS, GET_TRIPPIANS,
@@ -61,7 +62,7 @@ const initialState = new Map({
 })
 
 export default function apiTrippianReducer(state = initialState, action) {
-  console.log('dispatching', action.type, action.payload)
+  log.info('dispatching', action.type, action.payload)
   switch (action.type) {
     // setting 
     case SET_DESTINATIONS:
@@ -81,7 +82,7 @@ export default function apiTrippianReducer(state = initialState, action) {
         destination: action.payload.destination
       }))
     case SET_TRIP:
-      console.log('***inside reducer, SET_TRIP', action.payload.trip)
+      log.info('***inside reducer, SET_TRIP', action.payload.trip)
       return state.merge(new Map({
         trip: action.payload.trip
       }))
@@ -131,7 +132,7 @@ export default function apiTrippianReducer(state = initialState, action) {
       destP.popularTrips.forEach(trip => {
         if (trip.id === action.payload.tripId) {
           trip.netVote += +action.payload.vote
-          console.log('------ updating vote', action.payload.tripId, trip.netVote)
+          log.info('------ updating vote', action.payload.tripId, trip.netVote)
         }
       })
       return state.merge(new Map({
@@ -197,11 +198,11 @@ export function getPopularTrippians() {
 // get One 
 export function getDashboardById(id1) {
   let id = id1 || store.getState().appState.get('user').id
-  console.log('-- getting a dashboard now in reducer', id)
+  log.info('-- getting a dashboard now in reducer', id)
   return (dispatch) => {
     return fetchGetDashboardById(id)
       .then((dashboard) => {
-        console.log('--got it', dashboard)
+        log.info('--got it', dashboard)
         dispatch(setDashboard(dashboard))
       })
       .catch(error => apologize(error))
@@ -209,11 +210,11 @@ export function getDashboardById(id1) {
 }
 
 export function getDestinationById(id) {
-  console.log('-- getting a destination now in reducer', id)
+  log.info('-- getting a destination now in reducer', id)
   return (dispatch) => {
     return fetchGetDestinationById(id)
       .then((destination) => {
-        console.log('--got it', destination)
+        log.info('--got it', destination)
         dispatch(setDestination(destination))
       })
       .catch(error => apologize(error))
@@ -221,11 +222,11 @@ export function getDestinationById(id) {
 }
 
 export function getDestinationByName(name) {
-  console.log('-- getting a destination now in reducer', name)
+  log.info('-- getting a destination now in reducer', name)
   return (dispatch) => {
     return fetchGetDestinationByName(name)
       .then((destination) => {
-        console.log('--got it', destination)
+        log.info('--got it', destination)
         dispatch(setDestination(destination))
       })
       .catch(error => apologize(error))
@@ -233,11 +234,11 @@ export function getDestinationByName(name) {
 }
 
 export function getTripById(id, includeUserInfo = false) {
-  console.log('-- getting a Trip now in reducer', id)
+  log.info('-- getting a Trip now in reducer', id)
   return (dispatch) => {
     return fetchGetTripById(id, includeUserInfo)
       .then((trip) => {
-        console.log('--got it', trip)
+        log.info('--got it', trip)
           // TODO: update once server is updated 
         dispatch(setTrip(trip))
       })
@@ -246,22 +247,22 @@ export function getTripById(id, includeUserInfo = false) {
 }
 
 export function getUserById(id) {
-  console.log('-- getting a User now in reducer', id)
+  log.info('-- getting a User now in reducer', id)
   return (dispatch) => {
     return fetchGetUserById(id)
       .then((user) => {
-        console.log('--got user', user)
+        log.info('--got user', user)
         dispatch(setUser(user))
       })
       .catch(error => apologize(error))
   }
 }
 export function getTrippianById(id) {
-  console.log('-- getting a Trippian now in reducer', id)
+  log.info('-- getting a Trippian now in reducer', id)
   return (dispatch) => {
     return fetchGetTrippianById(id)
       .then((trippian) => {
-        console.log('--got trippian', trippian)
+        log.info('--got trippian', trippian)
         dispatch(setTrippian(trippian))
       })
       .catch(error => apologize(error))
@@ -269,11 +270,11 @@ export function getTrippianById(id) {
 }
 
 export function getInquiryById(id) {
-  console.log('-- getting a Inquiry now in reducer', id)
+  log.info('-- getting a Inquiry now in reducer', id)
   return (dispatch) => {
     return fetchGetInquiryByReceiverId(id)
       .then((inquiry) => {
-        console.log('--got inquiry', inquiry)
+        log.info('--got inquiry', inquiry)
         dispatch(setInquiry(inquiry))
       })
       .catch(error => apologize(error))
@@ -289,12 +290,12 @@ export function postDestination(data) {
     album: true,
     feature: true
   })
-  console.log('-- posting a destination now in reducer', data)
+  log.info('-- posting a destination now in reducer', data)
     // after posting the destination, add the response data to the store on adminDestinations, aslo add to newDestinations on apiTrippians
   return (dispatch) => {
     return fetchPostDestination(data)
       .then(destination => {
-        console.log('---posted', destination)
+        log.info('---posted', destination)
         dispatch(addDestination(destination))
         dispatch(addAdminDestination(destination))
         dispatch(setFormSubmitted(true))
@@ -316,12 +317,12 @@ export function postTrip(data) {
     username: true
 
   })
-  console.log('-- posting a trip now in reducer', data)
+  log.info('-- posting a trip now in reducer', data)
   alertInfo('Submitting the trip information now...')
   return (dispatch) => {
     return fetchPostTrip(data)
       .then(trip => {
-        console.log('---posted', trip)
+        log.info('---posted', trip)
         dispatch(setFormSubmitted(true))
         dispatch(addTrip(trip))
         dispatch(addAdminTrip(trip))
@@ -337,11 +338,11 @@ export function postUser(data) {
     //TODO, update userId to global 
   data.senderId = 32
   data.trippianId = 31
-  console.log('-- posting a user now in reducer', data)
+  log.info('-- posting a user now in reducer', data)
   return (dispatch) => {
     return fetchPostUser(data)
       .then(user => {
-        console.log('---posted', user)
+        log.info('---posted', user)
         dispatch(setFormSubmitted(true))
         dispatch(addAdminUser(user))
       })
@@ -352,11 +353,11 @@ export function postUser(data) {
 export function postTrippian(data) {
   store.dispatch(setFormSubmitting())
   alertInfo('Submitting now...')
-  console.log('-- posting a trippian now in reducer', data)
+  log.info('-- posting a trippian now in reducer', data)
   return (dispatch) => {
     return fetchPostTrippian(data)
       .then(trippian => {
-        console.log('---posted', trippian)
+        log.info('---posted', trippian)
         dispatch(addAdminTrippian(trippian))
         dispatch(setFormSubmitted(true))
         alertSuccess('Successfully added trippian')
@@ -373,11 +374,11 @@ export function postInquiry(data) {
   attachInfoToData(data, {
     createdAt: true
   })
-  console.log('-- posting a inquiry now in reducer', data)
+  log.info('-- posting a inquiry now in reducer', data)
   return (dispatch) => {
     return fetchPostInquiry(data)
       .then(inquiry => {
-        console.log('---posted', inquiry)
+        log.info('---posted', inquiry)
         dispatch(setInquiry(inquiry))
         dispatch(addAdminInquiry(inquiry))
         alertSuccess('Successfully submitted inquiry')
@@ -393,11 +394,11 @@ export function postReview(data) {
     user: true,
     createdAt: true
   })
-  console.log('-- posting a review now in reducer', data)
+  log.info('-- posting a review now in reducer', data)
   return (dispatch) => {
     return fetchPostReview(data)
       .then(review => {
-        console.log('---posted', review)
+        log.info('---posted', review)
         dispatch(addReview(review)) // add review to current trippian on the front-end
         alertSuccess('Successfully added review')
       })
@@ -410,11 +411,11 @@ export function postReview(data) {
 // deleting
 export function deleteInquiryById(id) {
   alertInfo('Deleting a Inquiry now..')
-  console.log('-- deleting a Inquiry now', id)
+  log.info('-- deleting a Inquiry now', id)
   return (dispatch) => {
     return fetchDeleteInquiryById(id)
       .then(() => {
-        console.log('--deleted Inquiry', id)
+        log.info('--deleted Inquiry', id)
         dispatch(removeInquiry(id))
         REMOVE_INQUIRY
       })
@@ -423,11 +424,11 @@ export function deleteInquiryById(id) {
 }
 
 export function deleteTripById(id) {
-  console.log('-- deleting a trip now', id)
+  log.info('-- deleting a trip now', id)
   return (dispatch) => {
     return fetchDeleteTripById(id)
       .then(() => {
-        console.log('--deleted Trip', id)
+        log.info('--deleted Trip', id)
           // dispatch(removeTrip(id))
         dispatch(removeTrip(id))
       })
@@ -440,13 +441,13 @@ export function deleteTripById(id) {
 export function voteTrip(vote = 1, tripId) {
   alertInfo('Voting for trip now...')
   const userId = store.getState().appState.get('user').id
-  console.log('-- voting a trip now in reducer', vote, tripId)
+  log.info('-- voting a trip now in reducer', vote, tripId)
   return (dispatch) => {
     return fetchUpdateVote({
         userId, tripId, vote
       })
       .then(trip => {
-        console.log('---voted', trip)
+        log.info('---voted', trip)
         dispatch(updateVote(vote, tripId))
         alertSuccess('Successfully voted for trip', tripId)
       })
@@ -456,13 +457,13 @@ export function voteTrip(vote = 1, tripId) {
 
 export function toggleSaveTrip(saveState, tripId) {
   const userId = store.getState().appState.get('user').id
-  console.log('***inside toggleSaveTrip', saveState, tripId, userId)
+  log.info('***inside toggleSaveTrip', saveState, tripId, userId)
   return (dispatch) => {
     return fetchUpdateSave({
         userId, tripId, saveState
       })
       .then(trip => {
-        console.log('vote on this:', trip)
+        log.info('vote on this:', trip)
         dispatch(updateToggleVote(saveState, tripId))
       })
       .catch(error => apologize(error))
@@ -477,11 +478,11 @@ export function putTrippian(data, isNewTrippian = true) {
     // isAdmin: true,  // only turn on for testing 
     userId: true
   })
-  console.log('-- posting a trippian now in reducer', data)
+  log.info('-- posting a trippian now in reducer', data)
   return (dispatch) => {
     return fetchPutTrippian(data)
       .then(trippian => {
-        console.log('---finish putting', trippian)
+        log.info('---finish putting', trippian)
           // dispatch(addAdminTrippian(trippian))
         dispatch(setFormSubmitted(true))
         dispatch(setUser(trippian))
@@ -494,11 +495,11 @@ export function putTrippian(data, isNewTrippian = true) {
 // Login related 
 export function login(type = 'facebook') {
   alertInfo('Login with facebook now...')
-  console.log('-- login now in reducer', type)
+  log.info('-- login now in reducer', type)
   return (dispatch) => {
     return fetchLogin(type)
       .then(() => {
-        console.log('---logged in')
+        log.info('---logged in')
           // dispatch(updateVote(vote, tripId))
           // TODO: update state 
         alertSuccess('Successfully logged in', window.document.cookie)
@@ -528,11 +529,11 @@ export function localSignup(data) {
 
 export function logout() {
   alertInfo('Logout now...')
-  console.log('-- logout now in reducer')
+  log.info('-- logout now in reducer')
   return (dispatch) => {
     return fetchLogout()
       .then(() => {
-        console.log('---logged out')
+        log.info('---logged out')
           // dispatch(updateVote(vote, tripId))
           // TODO: update state 
         alertSuccess('Successfully logged out', window.document.cookie)

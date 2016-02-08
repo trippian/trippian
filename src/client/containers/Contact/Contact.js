@@ -1,3 +1,4 @@
+import log from '../../log'
 import React, {
   Component, PropTypes
 }
@@ -45,7 +46,7 @@ export default class Contact extends Component {
   }
 
   handleSubmit(data) {
-    console.log('posting data from form', data)
+    log.info('posting data from form', data)
     store.dispatch(postInquiry(data))
       // this.setAlert('success', 'Successfully submitted inquiry')
   }

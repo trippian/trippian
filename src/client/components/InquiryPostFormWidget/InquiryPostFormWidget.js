@@ -1,3 +1,4 @@
+import log from '../../log'
 import React, {
   Component
 }
@@ -21,7 +22,7 @@ from '../../redux/initalState'
 
 class InquiryPostFormWidget extends Component {
   render() {
-    console.log('config', appConfig)
+    log.info('config', appConfig)
     const {
       fields: {
         personCount, startDate, endDate, email, mobile, subject, content

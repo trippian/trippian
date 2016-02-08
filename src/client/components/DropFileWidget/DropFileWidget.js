@@ -1,3 +1,4 @@
+import log from '../../log'
 import Dropzone from 'react-dropzone'
 import axios from 'axios'
 import React, {
@@ -53,10 +54,10 @@ export default class DropFileWidget extends Component {
     files.forEach((file, index) => {
       // give a file path to reduce file name collision 
       file.path = filePath
-      console.log('----file path & name', filePath, file.name)
+      log.info('----file path & name', filePath, file.name)
       apiS3.getS3SignedURL(file).then(data => {
 
-          console.log('got signed url', file.name, data.signed_request, data)
+          log.info('got signed url', file.name, data.signed_request, data)
           return axios.put(data.signed_request, file, {
             headers: {
               'Content-Type': file.type
@@ -67,15 +68,15 @@ export default class DropFileWidget extends Component {
           // update the state, so we can observe the progress and change the preview 
           let uploadedFiles = this.state.uploadedFiles
             // uploadedFiles.push(`${S3Config.baseUrl}/${result.config.data.name}`)
-            // console.log('uploadedFile path', `${S3Config.baseUrl}/${result.config.data.name}`)
+            // log.info('uploadedFile path', `${S3Config.baseUrl}/${result.config.data.name}`)
           uploadedFiles.push(`${S3Config.baseUrl}${filePath}${result.config.data.name}`)
-          console.log('uploadedFile path', `${S3Config.baseUrl}${filePath}${result.config.data.name}`)
+          log.info('uploadedFile path', `${S3Config.baseUrl}${filePath}${result.config.data.name}`)
             //show the progress
           this.setState({
             uploadedFiles: uploadedFiles,
             progress: uploadedFiles.length / files.length
           })
-          console.log('progress----', uploadedFiles.length / files.length)
+          log.info('progress----', uploadedFiles.length / files.length)
           this.props.onUploading(this.state.progress)
 
 
@@ -87,9 +88,9 @@ export default class DropFileWidget extends Component {
             })
             this.props.onUploaded(uploadedFiles)
           }
-          console.log('****uploadedFiles', this.state.uploadedFiles)
+          log.info('****uploadedFiles', this.state.uploadedFiles)
             //TODO, update Store 
-          console.log('saved file to s3', result, result.config.data.name);
+          log.info('saved file to s3', result, result.config.data.name);
         })
         .catch(error => {
           this.props.onUploadError(error)

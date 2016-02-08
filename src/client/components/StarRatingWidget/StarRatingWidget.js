@@ -1,3 +1,4 @@
+import log from '../../log'
 import React from 'react'
 
 let getStars = function (starNum) {

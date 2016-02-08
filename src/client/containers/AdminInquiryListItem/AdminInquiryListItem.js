@@ -1,5 +1,5 @@
 // not using this file now
-
+import log from '../../log'
 import React, {
   Component, PropTypes
 }
@@ -33,12 +33,12 @@ export default class AdminInquiryListItem extends Component {
   }
   componentDidMount() {
     const id = this.props.params.id
-    console.log('will get destination by id', id)
+    log.info('will get destination by id', id)
     store.dispatch(getAdminInquiryById(id))
   }
 
   render() {
-    console.log('***insider render', this.props.inquiry)
+    log.info('***insider render', this.props.inquiry)
     const {
       senderId, receiverId, endDate, sender, subject, mobile, content, trippianId, startDate, email, personCount
     } = this.props.inquiry[0].properties
