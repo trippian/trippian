@@ -8,7 +8,7 @@ import {
 }
 from 'react-router'
 import {
-  VoteWidget, SaveTripButton, OperationMenuWidget
+  VoteWidget, SaveTripButtonWidget, OperationMenuWidget
 }
 from '../index'
 import {
@@ -91,11 +91,8 @@ export default class TripListItemWidget extends Component {
           <Link to={`trip/${id}`}>
             <img className="feature-image" src={feature} alt="" />
           </Link>
-          {isAuthed && <OperationMenuWidget 
-            isEdit={true} isDelete={true} 
-            handleDelete={this.handleDelete.bind(this)} 
-            handleEdit={this.handleEdit.bind(this)}/>
-          }
+         
+          <SaveTripButtonWidget disabledButton={this.state.isSaved} handleSave={this.handleSave.bind(this)} />
         </div>
         <div className="col-xs-12 col-sm-7 col-md-7 col-lg-7">
           <div className="title-section">
@@ -112,12 +109,17 @@ export default class TripListItemWidget extends Component {
         <div className="col-xs-12 col-sm-2 col-md-2 col-lg-2 vote">
           <span className="total-votes"> {this.state.netVote} </span>
           <VoteWidget disableLeft={this.state.currentNetVote === 1} disableRight={this.state.currentNetVote === -1} handleClick={this.handleVote.bind(this)} />
-          <SaveTripButton disabledButton={this.state.isSaved} handleSave={this.handleSave.bind(this)} />
         </div>
       </div>
     )
   }
 }
+
+// {isAuthed && <OperationMenuWidget 
+//   isEdit={true} isDelete={true} 
+//   handleDelete={this.handleDelete.bind(this)} 
+//   handleEdit={this.handleEdit.bind(this)}/>
+// }
 
 TripListItemWidget.displayName = 'TripListItemWidget'
 

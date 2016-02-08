@@ -193,34 +193,35 @@ footer {
                     border: 5px solid white;
                 }
             }
-            .meta-info {
-                float: left;
-                @media screen and (max-width: 1100px) {
-                    width: 100%;
-                    margin: 0;
-                    color: black;
-                }
-                .left {
-                    float: left;
-                    width: 75%;
-                    min-width: 300px;
-                    padding-right: 16px;
-                }
-                .right {
-                    width: 15%;
-                    float: left;
-                    .btn {
-                        margin: 8px;
-                        margin-top: 26px;
-                    }
-                }
-                .text-intro {
-                    width: 100%;
-                    // margin-left: 16px;
-                }
-                .star-rating {}
-            }
         }
+    }
+}
+
+.jumbotron-meta-area-widget {
+    .meta-info {
+        float: left;
+        @media screen and (max-width: 1100px) {
+            width: 100%;
+            margin: 0;
+            color: black;
+        }
+        .text-intro {}
+        .star-rating {}
+        .btn {
+            margin: 8px;
+            margin-top: 26px;
+        }
+        .text-intro {
+            width: 100%;
+            margin-right: 16px;
+        }
+        .contact-button-widget {
+            float: right;
+            margin-right: -36px;
+        }
+    }
+    .meta-info-right {
+        float: right;
     }
 }
 
@@ -306,10 +307,10 @@ footer {
         }
     }
     .facebook {
-        background-color: #2d4373;
+        background-color: $facebook-color;
     }
     .google {
-        background: #c23321;
+        background: $google-color;
     }
 }
 
@@ -414,6 +415,37 @@ footer {
         i {
             display: block;
             font-style: normal;
+        }
+    }
+}
+
+.vote-widget {
+    button {
+        background-color: transparent;
+        border: none;
+    }
+}
+
+.save-trip-button {
+    position: absolute;
+    right: 18px;
+    bottom: 2px;
+    background-color: transparent;
+    border: none;
+    color: $white-base;
+    font-size: 20px;
+}
+
+.user-link-widget {
+    display: inline-block;
+    a {
+        font-size: 20px;
+        padding-right: 8px;
+        .fa-facebook-official {
+            color: $facebook-color;
+        }
+        .fa-google-plus {
+            color: $google-color;
         }
     }
 }

@@ -651,7 +651,7 @@ export default {
   ReviewListItemWidget: {},
   ReviewListWidget: {},
   PreviewImageWidget: {},
-  SaveTripButton: {},
+  SaveTripButtonWidget: {},
   SearchBoxWidget: {
     placeholderText: 'Bali',
     searchButtonText: 'Go'

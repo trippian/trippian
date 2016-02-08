@@ -104,7 +104,6 @@ export default class TrippianDetail extends Component {
                 <SectionHeaderWidget title={appConfig.myTripsSectionTitle} subTitle={appConfig.myTripsSectionSubtitle} />
                 <div className="section-body">
                     <TripListWidget dataList={trips} />
-                    <DummyRichTextWidget />
                 </div>
             </div>
 
