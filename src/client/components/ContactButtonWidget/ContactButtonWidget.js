@@ -8,10 +8,14 @@ import {
 }
 from '../../config/appConfig'
 const ContactButtonWidget = ({
-  to = appConfig.to, text = appConfig.text
+  to = appConfig.to, text = appConfig.text, name = ''
 }) => {
   return (
-    <Link to={to} className="btn btn-primary">{text}</Link>
+    <div className="contact-button-widget">
+        <Link to={to} className="btn btn-primary">{text}
+            {name!== '' && <i>{name}</i>}
+        </Link>
+    </div>
   )
 }
 ContactButtonWidget.displayName = 'ContactButtonWidget'
