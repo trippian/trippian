@@ -52,12 +52,14 @@ class DestinationPostFormWidget extends Component {
   render() {
     const {
       fields: {
-        name, description, feature, whyVisit
+        name, description, feature, thumbnail, whyVisit
       },
       handleSubmit,
       submitting,
       resetForm,
-      load
+      load,
+      isFormEditingMode,
+      destinationName
     } = this.props
 
     // the load is for fast data entry purpose, paste any data here, and click 'Load Account', the form will be automatically filled
@@ -87,7 +89,8 @@ class DestinationPostFormWidget extends Component {
           <div className="row padding-row">
               <div className="pull-left">
                 <label>{appConfig.labels.name}</label>
-                <AutoSuggestBoxWidget />
+                {isFormEditingMode && <h1>{destinationName}</h1> }
+                {!isFormEditingMode && <AutoSuggestBoxWidget />}
               </div>
           </div>
           <div className="form-group">
@@ -98,6 +101,12 @@ class DestinationPostFormWidget extends Component {
             <label>{appConfig.labels.whyVisit}</label>
             <textarea name="whyVisit" className="form-control" className="form-control" rows="3" required="required" {...whyVisit}></textarea>
           </div>
+
+          <div className="form-group">
+            <label>{appConfig.labels.thumbnail}</label> 
+            <input type="url" className="form-control" value='' placeholder="http://..." {...thumbnail}/>
+          </div>
+
           <div className="form-group">
             <label>{appConfig.labels.feature}</label> <i className="text-muted">{appConfig.labels.featureNote}</i>
             <input type="url" className="form-control" value='' placeholder="http://..." {...feature}/>
@@ -116,10 +125,10 @@ class DestinationPostFormWidget extends Component {
 
 DestinationPostFormWidget = reduxForm({
     form: 'destinationPostForm', // a unique name for this form
-    fields: ['name', 'description', 'feature', 'whyVisit'] // all the fields in the form
+    fields: ['name', 'description', 'thumbnail', 'feature', 'whyVisit'] // all the fields in the form
   },
   state => ({ // mapStateToProps
-    initialValues: state.apiTrippian.get('destination') // will pull state into form's initialValues
+    initialValues: state.apiTrippian.get('destination'), // will pull state into form's initialValues
   }), {
     load: setDestination
   } // mapDispatchToProps (will bind action creator to dispatch)
@@ -128,7 +137,9 @@ DestinationPostFormWidget = reduxForm({
 
 DestinationPostFormWidget.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  resetForm: PropTypes.func.isRequired
+  resetForm: PropTypes.func.isRequired,
+  isFormEditingMode: PropTypes.bool,
+  destinationName: PropTypes.string
     // submitting: PropTypes.bool.isRequired
 }
 

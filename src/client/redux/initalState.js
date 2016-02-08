@@ -72,7 +72,8 @@
    title: '',
    summary: '',
    details: '',
-   feature: 'http://lorempixel.com/400/200/city/',
+   feature: '',
+   thumbnail: '',
    album: [],
    user: trippian
  }
@@ -87,13 +88,14 @@
    content: ''
  }
  export const destination = {
-   feature: 'http://lorempixel.com/200/200/people/',
    name: '',
    whyVisit: '',
    description: '',
    slogan: 'awesome city',
    averageRating: 5,
    popularTrips: [trip],
+   feature: '',
+   thumbnail: '',
    album: []
  }
 

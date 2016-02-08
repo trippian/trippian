@@ -152,7 +152,7 @@ export default class AdminDestinationList extends Component {
                 <td>  
                   <a onClick={this.handleDelete.bind(this, id)}><span aria-hidden="true" className="glyphicon glyphicon-remove" ></span></a>
                   &nbsp;&nbsp;&nbsp;&nbsp;
-                  <Link to="admin/destination/58/edit"><span aria-hidden="true" className="glyphicon glyphicon-pencil" ></span></Link>
+                  <Link to={`admin/destination/${id}/edit`}><span aria-hidden="true" className="glyphicon glyphicon-pencil" ></span></Link>
                 </td>
               </tr>
               )

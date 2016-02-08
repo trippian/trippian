@@ -8051,26 +8051,26 @@ footer {
           width: 150px;
           height: 150px;
           border: 5px solid white; }
-      .jumbotron .full-length-container .container .meta-info {
-        float: left; }
-        @media screen and (max-width: 1100px) {
-          .jumbotron .full-length-container .container .meta-info {
-            width: 100%;
-            margin: 0;
-            color: black; } }
-        .jumbotron .full-length-container .container .meta-info .left {
-          float: left;
-          width: 75%;
-          min-width: 300px;
-          padding-right: 16px; }
-        .jumbotron .full-length-container .container .meta-info .right {
-          width: 15%;
-          float: left; }
-          .jumbotron .full-length-container .container .meta-info .right .btn {
-            margin: 8px;
-            margin-top: 26px; }
-        .jumbotron .full-length-container .container .meta-info .text-intro {
-          width: 100%; }
+
+.jumbotron-meta-area-widget .meta-info {
+  float: left; }
+  @media screen and (max-width: 1100px) {
+    .jumbotron-meta-area-widget .meta-info {
+      width: 100%;
+      margin: 0;
+      color: black; } }
+  .jumbotron-meta-area-widget .meta-info .btn {
+    margin: 8px;
+    margin-top: 26px; }
+  .jumbotron-meta-area-widget .meta-info .text-intro {
+    width: 100%;
+    margin-right: 16px; }
+  .jumbotron-meta-area-widget .meta-info .contact-button-widget {
+    float: right;
+    margin-right: -36px; }
+
+.jumbotron-meta-area-widget .meta-info-right {
+  float: right; }
 
 .flexible-photo .main-content-container {
   margin-top: 80px; }
@@ -8209,6 +8209,29 @@ footer {
 .contact-button-widget a i {
   display: block;
   font-style: normal; }
+
+.vote-widget button {
+  background-color: transparent;
+  border: none; }
+
+.save-trip-button {
+  position: absolute;
+  right: 18px;
+  bottom: 2px;
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-size: 20px; }
+
+.user-link-widget {
+  display: inline-block; }
+  .user-link-widget a {
+    font-size: 20px;
+    padding-right: 8px; }
+    .user-link-widget a .fa-facebook-official {
+      color: #2d4373; }
+    .user-link-widget a .fa-google-plus {
+      color: #c23321; }
 
 /**
  * The geosuggest module
