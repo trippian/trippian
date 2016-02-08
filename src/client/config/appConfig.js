@@ -3,17 +3,15 @@ Config the app's front-end
 Make sure the containers and components are in alphabetic / logic order
 */
 
-const env = '' // comment this out for development
-  // const env = 'develop' // comment this out for deployment
-
+const env = 'production' // comment this out for development
+  // const env = 'develop' // comment this out for production
 
 let HOST = window.location.origin // enable this for deploy 
 let isTranslationMode = true // need to turn logger off for translation
 let logOn = false
 
-const setVariablesByEnv = () => {
+function setVariablesByEnv() {
   if (env === 'develop') {
-    console.log('hello')
     HOST = 'http://localhost:4000'
     logOn = true
     isTranslationMode = true
