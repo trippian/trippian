@@ -35,9 +35,11 @@ export GoogleMapWidget from './GoogleMapWidget/GoogleMapWidget'
 export HelloWorldWidget from './HelloWorldWidget/HelloWorldWidget'
 export IconWidget from './IconWidget/IconWidget'
 export ImageLoaderWidget from './ImageLoaderWidget/ImageLoaderWidget'
+
 export InquiryPostFormWidget from './InquiryPostFormWidget/InquiryPostFormWidget'
 export InquiryListWidget from './InquiryListWidget/InquiryListWidget'
 export InquiryListItemWidget from './InquiryListItemWidget/InquiryListItemWidget'
+
 export JumbotronWidget from './JumbotronWidget/JumbotronWidget'
 export JumbotronHomeWidget from './JumbotronHomeWidget/JumbotronHomeWidget'
 export JumbotronInquiryWidget from './JumbotronInquiryWidget/JumbotronInquiryWidget'

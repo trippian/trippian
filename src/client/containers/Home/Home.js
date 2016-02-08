@@ -21,10 +21,11 @@ import {
   bindActionCreators
 }
 from 'redux'
-import store, {
+import store from '../../redux/store'
+import {
   getPopularDestinations, getPopularTrippians
 }
-from '../../redux/store'
+from '../../redux/apiIndex'
 import {
   connect
 }
