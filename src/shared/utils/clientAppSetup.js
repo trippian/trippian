@@ -20,7 +20,11 @@ import {
   setLocale, setLocaleMessages, setUser
 }
 from '../../client/redux/actionCreators'
-
+import {
+  getLocaleFromQueryString,
+  getCookieByName
+}
+from '../../shared/utils/clientUtils'
 
 export function initializeAppStateWithLocale(locale = 'en-US') {
   //set the local 
@@ -32,14 +36,7 @@ export function initializeAppStateWithLocale(locale = 'en-US') {
   addLocaleData(fr)
 
   const messages = getMessagesByLocale(locale)
-    // refactor the dispatch to use actionCreator instead 
   store.dispatch(setLocaleMessages(messages))
-    // store.dispatch({
-    //   type: 'appState.SET_LOCALE_MESSAGES',
-    //   payload: {
-    //     messages: messages
-    //   }
-    // })
 
 }
 
@@ -50,4 +47,11 @@ export function initAppStateUserWithCookie() {
     log.info('----got user from cookie', user)
     store.dispatch(setUser(user))
   }
+}
+
+export function initApp() {
+  let locale = store.getState().appState.get('locale') || getLocaleFromQueryString(window.location.search)
+  initializeAppStateWithLocale(locale)
+  initAppStateUserWithCookie()
+    //TODO: add initStateFromLocalStorage() 
 }
