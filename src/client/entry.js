@@ -26,6 +26,9 @@ import {
   setAppStateUser
 }
 from './utils/storeUtils'
+import log from './utils/log'
+
+log.info('hello world')
 
 // set the locale and intialize the store with the messages from that locale 
 // ideally, we'll read from db (user setting) or user's browser / OS settings
