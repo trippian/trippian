@@ -9,12 +9,14 @@ const env = 'production' // comment this out for development
 let HOST = window.location.origin // enable this for deploy 
 let isTranslationMode = true // need to turn logger off for translation
 let logOn = false
+let showAdminButtons = false
 
 function setVariablesByEnv() {
   if (env === 'develop') {
     HOST = 'http://localhost:4000'
     logOn = true
-    isTranslationMode = false
+    isTranslationMode = false,
+      showAdminButtons = true // set false for deployment if true, will not show buttons such as 'Load dummy data', 'clear values'... 
   }
 }
 setVariablesByEnv()
@@ -108,8 +110,11 @@ export default {
   appDescription: 'your local travel companion',
   logo: defaults.logo,
   log: {
-    logLevel: logOn ? 'info' : 'error', // options: trace, debug, info, warn, error, fatal
+    logLevel: logOn ? 'warn' : 'error', // options: trace, debug, info, warn, error, fatal
     isTranslationMode: isTranslationMode
+  },
+  adminOnly: {
+    showAdminButtons: showAdminButtons
   },
   API_HOST: `${HOST}/api/`,
   Server_HOST: `${HOST}`,

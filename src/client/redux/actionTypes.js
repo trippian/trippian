@@ -13,6 +13,7 @@ export const FETCH_REMOTE_RESOURCE_FAIL = 'appState.FETCH_REMOTE_RESOURCE_FAIL'
 export const SET_SEARCH_TEXT = 'appState.SET_SEARCH_TEXT'
 export const SET_HISTORY = 'appState.SET_HISTORY'
 export const SET_FORM_EDITING_MODE = 'appState.SET_FORM_EDITING_MODE'
+export const SET_SHOW_ADMIN_BUTTONS = 'appState.SET_SHOW_ADMIN_BUTTONS'
 
 //destination
 export const SET_DESTINATIONS = 'apiTrippian.SET_DESTINATIONS'

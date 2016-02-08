@@ -70,6 +70,9 @@ export default class AdminTrippianList extends Component {
   handleAlertDismiss() {
     this.setAlert()
   }
+  handleReset() {
+
+  }
   setAlert(type = 'success', title = '', message = '') {
     this.setState({
       showForm: false,
@@ -98,7 +101,7 @@ export default class AdminTrippianList extends Component {
           <button onClick={()=> this.setState({showForm: !this.state.showForm})} className="btn btn-primary">Create a Trippian</button>
         </div>
           {this.state.showForm && 
-            <TrippianPostFormWidget onSubmit={this.handleSubmit.bind(this)} /> 
+            <TrippianPostFormWidget onSubmit={this.handleSubmit.bind(this)} resetForm={this.handleReset.bind(this)} /> 
           }
 
           <br/>
