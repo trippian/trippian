@@ -1,3 +1,4 @@
+import log from '../../log'
 import {
   GET_DESTINATIONS_FAIL,
   SET_ADMIN_DESTINATIONS, ADD_ADMIN_DESTINATION, REMOVE_ADMIN_DESTINATION, SET_ADMIN_CURRENT_DESTINATION,
@@ -115,7 +116,7 @@ const initialState = new Map({
 import store from '../store'
 
 export default function apiTrippianReducer(state = initialState, action) {
-  console.log('dispatching', action.type, action.payload)
+  log.info('dispatching', action.type, action.payload)
   switch (action.type) {
     // setting 
     case SET_ADMIN_DESTINATIONS:
@@ -246,7 +247,7 @@ export function getAdminDestinations() {
   return (dispatch) => {
     return fetchGetDestinations()
       .then((destinations) => {
-        console.log('got destinations', destinations)
+        log.info('got destinations', destinations)
         dispatch(setAdminDestinations(destinations))
       })
       .catch(error => dispatch(apologize(error)))
@@ -254,7 +255,7 @@ export function getAdminDestinations() {
 }
 
 export function getAdminTrippians() {
-  console.log('-- get a trippians now')
+  log.info('-- get a trippians now')
   return (dispatch) => {
     return fetchGetTrippians()
       .then(trippians => dispatch(setAdminTrippians(trippians)))
@@ -263,7 +264,7 @@ export function getAdminTrippians() {
 }
 
 export function getAdminUsers() {
-  console.log('-- get a trippians now')
+  log.info('-- get a trippians now')
   return (dispatch) => {
     return fetchGetUsers()
       .then(users => dispatch(setAdminUsers(users)))
@@ -272,11 +273,11 @@ export function getAdminUsers() {
 }
 
 export function getAdminInquiries() {
-  console.log('-- get a inquiries now')
+  log.info('-- get a inquiries now')
   return (dispatch) => {
     return fetchGetInquiries()
       .then(inquiries => {
-        console.log('--- got inquiries', inquiries)
+        log.info('--- got inquiries', inquiries)
         dispatch(setAdminInquiries(inquiries))
       })
       .catch(error => dispatch(apologize(error)))
@@ -284,7 +285,7 @@ export function getAdminInquiries() {
 }
 
 export function getAdminTrips() {
-  console.log('-- get a trips now')
+  log.info('-- get a trips now')
   return (dispatch) => {
     return fetchGetTrips()
       .then(trips => dispatch(setAdminTrips(trips)))
@@ -294,11 +295,11 @@ export function getAdminTrips() {
 
 // deleting 
 export function deleteAdminDestinationById(id) {
-  console.log('-- deleting a destination now', id)
+  log.info('-- deleting a destination now', id)
   return (dispatch) => {
     return fetchDeleteDestinationById(id)
       .then(() => {
-        console.log('--deleted', id)
+        log.info('--deleted', id)
         dispatch(removeDestination(id))
         dispatch(removeAdminDestination(id))
       })
@@ -306,11 +307,11 @@ export function deleteAdminDestinationById(id) {
   }
 }
 export function deleteAdminTrippianById(id) {
-  console.log('-- deleting a trippian now', id)
+  log.info('-- deleting a trippian now', id)
   return (dispatch) => {
     return fetchDeleteTrippianById(id)
       .then(() => {
-        console.log('--deleted trippian', id)
+        log.info('--deleted trippian', id)
           // dispatch(removeTrippian(id))
         dispatch(removeAdminTrippian(id))
       })
@@ -319,11 +320,11 @@ export function deleteAdminTrippianById(id) {
 }
 
 export function deleteAdminUserById(id) {
-  console.log('-- deleting a User now', id)
+  log.info('-- deleting a User now', id)
   return (dispatch) => {
     return fetchDeleteUserById(id)
       .then(() => {
-        console.log('--deleted User', id)
+        log.info('--deleted User', id)
           // dispatch(removeUser(id))
         dispatch(removeAdminUser(id))
       })
@@ -331,11 +332,11 @@ export function deleteAdminUserById(id) {
   }
 }
 export function deleteAdminTripById(id) {
-  console.log('-- deleting a trip now', id)
+  log.info('-- deleting a trip now', id)
   return (dispatch) => {
     return fetchDeleteTripById(id)
       .then(() => {
-        console.log('--deleted Trip', id)
+        log.info('--deleted Trip', id)
           // dispatch(removeTrip(id))
         dispatch(removeAdminTrip(id))
       })
@@ -344,11 +345,11 @@ export function deleteAdminTripById(id) {
 }
 
 export function deleteAdminInquiryById(id) {
-  console.log('-- deleting a Inquiry now', id)
+  log.info('-- deleting a Inquiry now', id)
   return (dispatch) => {
     return fetchDeleteInquiryById(id)
       .then(() => {
-        console.log('--deleted Inquiry', id)
+        log.info('--deleted Inquiry', id)
           // dispatch(removeInquiry(id))
         dispatch(removeAdminInquiry(id))
       })
@@ -358,7 +359,7 @@ export function deleteAdminInquiryById(id) {
 
 // getting one
 export function getAdminDestinationById(id) {
-  console.log('-- get a destination now', id)
+  log.info('-- get a destination now', id)
 
   // first check if the store already have the data 
   const localDestinations = store.getState().apiAdmin.get('adminDestinations')
@@ -366,21 +367,21 @@ export function getAdminDestinationById(id) {
 
   for (let i = 0; i < localDestinations.length; i++) {
     const dest = localDestinations[i]
-      // console.log('*** cached?', dest, dest.id === id, dest.id, dest['id'], dest.destinationName)
+      // log.info('*** cached?', dest, dest.id === id, dest.id, dest['id'], dest.destinationName)
     if (+dest.id === +id) {
-      console.log('**getting destination from cached', id)
+      log.info('**getting destination from cached', id)
       return (dispatch) => {
         dispatch(setAdminCurrentDestination(dest))
       }
     }
   }
 
-  console.log('** no cached data available, getting from remote')
+  log.info('** no cached data available, getting from remote')
     // go on the network and fetch the data 
   return (dispatch) => {
     return fetchGetDestinationById(id)
       .then((destination) => {
-        console.log('--got it', destination)
+        log.info('--got it', destination)
         dispatch(setAdminCurrentDestination(destination))
       })
       .catch(error => dispatch(apologize(error)))
@@ -388,7 +389,7 @@ export function getAdminDestinationById(id) {
 }
 
 export function getAdminTripById(id) {
-  console.log('-- get a Trip now', id)
+  log.info('-- get a Trip now', id)
 
   // first check if the store already have the data 
   // const localTrips = store.getState().apiAdmin.get('adminTrips')
@@ -396,21 +397,21 @@ export function getAdminTripById(id) {
 
   // for (let i = 0; i < localTrips.length; i++) {
   //   const trip = localTrips[i]
-  //     // console.log('*** cached?', dest, dest.id === id, dest.id, dest['id'], dest.destinationName)
+  //     // log.info('*** cached?', dest, dest.id === id, dest.id, dest['id'], dest.destinationName)
   //   if (+trip.id === +id) {
-  //     console.log('**getting trip from cached', id)
+  //     log.info('**getting trip from cached', id)
   //     return (dispatch) => {
   //       dispatch(setAdminCurrentTrip(trip))
   //     }
   //   }
   // }
 
-  // console.log('** no cached data available, getting from remote')
+  // log.info('** no cached data available, getting from remote')
   // go on the network and fetch the data 
   return (dispatch) => {
     return fetchGetTripById(id)
       .then((trip) => {
-        console.log('--got it', trip)
+        log.info('--got it', trip)
           // TODO: update once server is updated 
         dispatch(setAdminCurrentTrip(trip))
       })
@@ -419,22 +420,22 @@ export function getAdminTripById(id) {
 }
 
 export function getAdminUserById(id) {
-  console.log('-- get a User now', id)
+  log.info('-- get a User now', id)
   return (dispatch) => {
     return fetchGetUserById(id)
       .then((user) => {
-        console.log('--got user', user)
+        log.info('--got user', user)
         dispatch(setAdminCurrentUser(user))
       })
       .catch(error => dispatch(apologize(error)))
   }
 }
 export function getAdminTrippianById(id) {
-  console.log('-- get a Trippian now', id)
+  log.info('-- get a Trippian now', id)
   return (dispatch) => {
     return fetchGetTrippianById(id)
       .then((trippian) => {
-        console.log('--got trippian', trippian)
+        log.info('--got trippian', trippian)
         dispatch(setAdminCurrentTrippian(trippian))
       })
       .catch(error => dispatch(apologize(error)))
@@ -442,11 +443,11 @@ export function getAdminTrippianById(id) {
 }
 
 export function getAdminInquiryById(id) {
-  console.log('-- get a Inquiry now', id)
+  log.info('-- get a Inquiry now', id)
   return (dispatch) => {
     return fetchGetInquiryByReceiverId(id)
       .then((inquiry) => {
-        console.log('--got inquiry', inquiry)
+        log.info('--got inquiry', inquiry)
         dispatch(setAdminCurrentInquiry(inquiry))
       })
       .catch(error => dispatch(apologize(error)))

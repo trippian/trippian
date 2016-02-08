@@ -1,5 +1,6 @@
 /* global window */
 
+import log from '../../log'
 import React from 'react';
 import GeosuggestItem from './GeosuggestItem'; // eslint-disable-line
 import inputAttributes from './input-attributes';

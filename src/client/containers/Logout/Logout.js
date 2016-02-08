@@ -1,3 +1,4 @@
+import log from '../../log'
 import React, {
   Component, PropTypes
 }
@@ -18,7 +19,7 @@ export default class Logout extends Component {
   componentDidMount() {
     const user = getCookieByName('trippianPass')
       // dipatch set user at appState 
-    console.log('got user from coookie', user)
+    log.info('got user from coookie', user)
     setAppStateUser(false)
 
     window.location.href = `${window.location.origin}`

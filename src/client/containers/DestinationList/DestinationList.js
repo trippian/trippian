@@ -1,4 +1,5 @@
 //not used yet 
+import log from '../../log'
 import React, {
   Component, PropTypes
 }

@@ -1,3 +1,4 @@
+import log from '../../log'
 import React from 'react'
 import {
   TrippianListItemWidget, NoContentWidget
@@ -41,7 +42,7 @@ var trippians = [{
 const TrippianListWidget = ({
   dataList = trippians, noContentMessage = appConfig.noContentMessage
 }) => {
-  console.log('inside', dataList)
+  log.info('inside', dataList)
   return (
     <div className="popular-trippians section-body clearfix">
         {dataList.length === 0 && 

@@ -1,7 +1,7 @@
 // In progress: this is an attempt to replace admin function. Similar to myPostedTrips, it will require server to return myPostedDestinations to function
 // Depend on user's level, we can open create destination for trusted trippians, so as to reduce our data input
 // We'll also need to add one extra field (accepted) to indicate whether we'll use trippian's submit as our official public entry
-
+import log from '../../log'
 import React, {
   Component, PropTypes
 }
@@ -46,7 +46,7 @@ export default class MyDestinationPost extends Component {
   }
 
   handleSubmit(data) {
-    console.log('posting data from destination form', data)
+    log.info('posting data from destination form', data)
     store.dispatch(postDestination(data))
   }
   handleResetForm() {}
@@ -56,7 +56,7 @@ export default class MyDestinationPost extends Component {
     //   postedTrips
     // } = this.props.dashboard
 
-    console.log('inside MyDestinationPost render')
+    log.info('inside MyDestinationPost render')
     return (
       <div className="my-posted-trips-page">
         <h2>Create an Destination</h2>

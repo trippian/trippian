@@ -1,3 +1,4 @@
+import log from './log'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Router from 'react-router'
@@ -26,7 +27,6 @@ import {
   setAppStateUser
 }
 from './utils/storeUtils'
-import log from './utils/log'
 
 log.info('hello world')
 

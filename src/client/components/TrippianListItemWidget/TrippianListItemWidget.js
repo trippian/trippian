@@ -1,4 +1,5 @@
 //not in use yet 
+import log from '../../log'
 import React from 'react'
 import {
   Link

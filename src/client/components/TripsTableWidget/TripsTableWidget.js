@@ -1,3 +1,4 @@
+import log from '../../log'
 import React from 'react'
 
 import {
@@ -32,13 +33,13 @@ const tripsList = [{
 
 const TripsTableWidget = ({
   trips = tripsList, handleDelete = (id) => {
-    console.log('deleting', id)
+    log.info('deleting', id)
   }
 }) => {
   return (
 
-    <Table striped bordered condensed hover >
-      <thead>
+    < Table striped bordered condensed hover >
+    <thead>
         <tr>
           <th>#</th>
           <th>ID</th>
@@ -46,12 +47,13 @@ const TripsTableWidget = ({
           <th>Destination</th>
           <th>Total Votes</th>
         </tr>
-      </thead> 
-    <tbody>
-    {trips.map((trip, key) => {
-      const {id, title, destination, totalVotes} = trip
-      return (
-        <tr key={key}>
+      </thead> < tbody > {
+      trips.map((trip, key) => {
+        const {
+          id, title, destination, totalVotes
+        } = trip
+        return (
+          <tr key={key}>
           <td>{key+1}</td>
           <td>{id}</td>
           <td>{title}</td>
@@ -64,10 +66,10 @@ const TripsTableWidget = ({
           </td>
         </tr>
         )
-    })}
-    </tbody>
-  </Table>
-)}
+      })
+    } < /tbody> < /Table >
+  )
+}
 TripsTableWidget.displayName = 'TripsTableWidget'
 
 export default TripsTableWidget

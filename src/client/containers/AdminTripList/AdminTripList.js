@@ -1,3 +1,4 @@
+import log from '../../log'
 import React, {
   Component, PropTypes
 }
@@ -59,7 +60,7 @@ export default class AdminTripList extends Component {
   }
 
   handleDelete(id) {
-    console.log('deleting trip called', id)
+    log.info('deleting trip called', id)
     store.dispatch(deleteAdminTripById(id))
     this.setAlert('success', 'Successfully deleted trip. Id:', id)
 
@@ -68,7 +69,7 @@ export default class AdminTripList extends Component {
     this.setAlert()
   }
   handleSubmit(data) {
-    console.log('posting data from form', data)
+    log.info('posting data from form', data)
     store.dispatch(postTrip(data))
   }
 
@@ -82,7 +83,7 @@ export default class AdminTripList extends Component {
     })
   }
   render() {
-    console.log('rendering trips', this.props.trips)
+    log.info('rendering trips', this.props.trips)
     const {
       type, title, message
     } = this.state.alert

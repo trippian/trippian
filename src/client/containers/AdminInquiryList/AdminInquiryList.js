@@ -1,3 +1,4 @@
+import log from '../../log'
 import React, {
   Component, PropTypes
 }
@@ -81,11 +82,11 @@ export default class AdminInquiryList extends Component {
   }
 
   componentWillReceiveProps(newProps) {
-    console.log('inside  will receive props', newProps)
+    log.info('inside  will receive props', newProps)
 
   }
   handleDelete(id) {
-    console.log('deleting inquiry called', id)
+    log.info('deleting inquiry called', id)
     store.dispatch(deleteAdminInquiryById(id))
     this.setAlert('success', 'Successfully deleted data', id)
 
@@ -94,7 +95,7 @@ export default class AdminInquiryList extends Component {
     this.setState({
       currentInquiry: this.props.inquiries[index]
     })
-    console.log('show current inquiry called', index, 'before', this.props.inquiries[index])
+    log.info('show current inquiry called', index, 'before', this.props.inquiries[index])
   }
 
   handleAlertDismiss() {
@@ -102,7 +103,7 @@ export default class AdminInquiryList extends Component {
   }
 
   handleSubmit(data) {
-    console.log('posting data from form', data)
+    log.info('posting data from form', data)
     store.dispatch(postInquiry(data))
     this.setAlert('success', 'Successfully submitted data')
   }
@@ -117,7 +118,7 @@ export default class AdminInquiryList extends Component {
     })
   }
   render() {
-    console.log('inside render', this.props.inquiries)
+    log.info('inside render', this.props.inquiries)
     const {
       type, title, message
     } = this.state.alert

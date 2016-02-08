@@ -1,3 +1,4 @@
+import log from '../../log'
 import React, {
   Component, PropTypes
 }
@@ -49,14 +50,14 @@ export default class TrippianEdit extends Component {
   }
 
   handleSubmit(data) {
-    console.log('--- submitting the inquiry now', data)
+    log.info('--- submitting the inquiry now', data)
     this.props.postTrip(data)
   }
   render() {
     const {
       isTrippian
     } = this.props.dashboard
-    console.log('inside my profile render', this.props.dashboard)
+    log.info('inside my profile render', this.props.dashboard)
     return (
       <div className="my-profile-page">
        <h2>My Pofile</h2>

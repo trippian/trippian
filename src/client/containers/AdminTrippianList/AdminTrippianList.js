@@ -1,3 +1,4 @@
+import log from '../../log'
 import React, {
   Component, PropTypes
 }
@@ -56,13 +57,13 @@ export default class AdminTrippianList extends Component {
   }
 
   handleDelete(id) {
-    console.log('deleting trippian called', id)
+    log.info('deleting trippian called', id)
     store.dispatch(deleteAdminTrippianById(id))
     this.setAlert('success', 'Successfully deleted trippian. Id:', id)
 
   }
   handleSubmit(data) {
-    console.log('posting data from form', data)
+    log.info('posting data from form', data)
     store.dispatch(postTrippian(data))
     this.setAlert('success', 'Successfully submitted data', data)
   }
@@ -80,7 +81,7 @@ export default class AdminTrippianList extends Component {
     })
   }
   render() {
-    console.log('rendering admint', this.props.trippians)
+    log.info('rendering admint', this.props.trippians)
     const {
       type, title, message
     } = this.state.alert

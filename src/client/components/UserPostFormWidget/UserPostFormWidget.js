@@ -1,4 +1,5 @@
 // this file is not in use 
+import log from '../../log'
 import React, {
   Component
 }

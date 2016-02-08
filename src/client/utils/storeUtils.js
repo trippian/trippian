@@ -1,3 +1,4 @@
+import log from '../log'
 import store from '../redux/store'
 import {
   setAlert, setLocale, setUser, setTrip, setDestination, setInquiry, setReview, setTrippian, setDashboard, setAvailabLeLocales, setIsFormSubmitted, setIsFormSubmitting, setFiles, setSearchText
@@ -71,7 +72,7 @@ export function attachInfoToData(data, {
 
     // isAdmin is handled by server side and is top secret, we have to persist the state just in case the user data got overwritten 
     data = Object.assign(data, user)
-    console.log('in store util', data)
+    log.info('in store util', data)
   }
   if (isNoUserId) {
     // 
@@ -79,7 +80,7 @@ export function attachInfoToData(data, {
     delete data.id
   }
   data.createdAt = new Date()
-  console.log('store util', data)
+  log.info('store util', data)
   if (userId) data.userId = store.getState().appState.get('user').id
   if (isAdmin) data.isAdmin = true //TODO: will need to coordinate with the form
   if (isTripian) data.isTrippian = true

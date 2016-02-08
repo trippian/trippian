@@ -1,3 +1,4 @@
+import log from '../../log'
 import React, {
   Component, PropTypes
 }
@@ -31,12 +32,12 @@ export default class AdminTripListItem extends Component {
   }
   componentDidMount() {
     const id = this.props.params.id
-    console.log('will get destination by id', id)
+    log.info('will get destination by id', id)
     store.dispatch(getAdminTripById(id))
   }
 
   render() {
-    console.log('***insider render', this.props.trip)
+    log.info('***insider render', this.props.trip)
     const {
       id, title, destination, summary, details
     } = this.props.trip

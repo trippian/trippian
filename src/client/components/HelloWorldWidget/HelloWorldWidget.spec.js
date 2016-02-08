@@ -4,12 +4,13 @@ import {
 }
 from '../../helpers/clientTestHelpers'
 
-// import React from 'react'
-// import TestUtils from 'react-addons-test-utils'
-// import chai, {
-//   expect
-// }
-// from 'chai'
+// import log from '../../log'
+import React from 'react'
+  // import TestUtils from 'react-addons-test-utils'
+  // import chai, {
+  //   expect
+  // }
+  // from 'chai'
 
 // for more info about chai-equal-jsx, visit https://www.npmjs.com/package/chai-equal-jsx
 // import equalJSX from 'chai-equal-jsx';
@@ -21,7 +22,7 @@ describe('HelloWorldWidget', () => {
     render.render(<HelloWorldWidget name="Joe"/>)
     const actual = render.getRenderOutput()
     const expected = (<div>Hello, Joe</div>)
-      // console.log('expected', expected);
+      // log.info('expected', expected);
     expect(actual).to.equalJSX(expected)
   })
 })

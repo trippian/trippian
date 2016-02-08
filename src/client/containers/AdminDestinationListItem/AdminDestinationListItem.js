@@ -1,3 +1,4 @@
+import log from '../../log'
 import React, {
   Component, PropTypes
 }
@@ -42,7 +43,7 @@ export default class AdminDestinationListItem extends Component {
   }
   componentDidMount() {
     const id = this.props.params.id
-    console.log('will get destination by id', id)
+    log.info('will get destination by id', id)
     store.dispatch(getAdminDestinationById(id))
   }
 

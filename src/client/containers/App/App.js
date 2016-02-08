@@ -1,4 +1,4 @@
-import log from '../../utils/log'
+import log from '../../log'
 import React, {
   Component, PropTypes
 }
@@ -54,7 +54,7 @@ class App extends Component {
     //     this.setState({
     //       messages: messages
     //     })
-    //     console.log('locale changed', this.state.locale, messages)
+    //     log.info('locale changed', this.state.locale, messages)
     //   }
     // })
     this.props.history.listen(() => {
@@ -63,7 +63,7 @@ class App extends Component {
 
       const currentPath = getPathNameFromHash(window.location.hash)
       const query = window.location.search
-      console.log('currentPath', currentPath, query)
+      log.info('currentPath', currentPath, query)
       this.state.currentPath = currentPath
         // will need to set stateTree later 
     })

@@ -1,4 +1,5 @@
 // maybe add more helper later
+import log from '../../log'
 export default () => {
-  console.log('I am the react test helper')
+  log.info('I am the react test helper')
 }

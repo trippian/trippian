@@ -47,14 +47,14 @@ class App extends Component {
     // ideally, we shoul use store connect and map to automatically update the App Component's state
     store.subscribe(() => {
       const newLocale = store.getState().appState.get('locale')
-      console.log('current store', store.getState())
+      log.info('current store', store.getState())
       if (newLocale !== this.state.locale) {
         this.state.locale = newLocale
         const messages = store.getState().appState.get('messages')
         this.setState({
           messages: messages
         })
-        console.log('locale changed', this.state.locale, messages)
+        log.info('locale changed', this.state.locale, messages)
       }
     })
 
@@ -62,7 +62,7 @@ class App extends Component {
     this.props.history.listen(() => {
       const currentPath = getPathNameFromHash(window.location.hash)
       const query = window.location.search
-      console.log('currentPath', currentPath, query)
+      log.info('currentPath', currentPath, query)
       this.state.currentPath = currentPath
         // will need to set stateTree later 
     })

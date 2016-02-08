@@ -1,3 +1,4 @@
+import log from '../../log'
 import React from 'react'
 import {
   Link
@@ -22,11 +23,6 @@ import {
 }
 from '../../config/appConfig'
 
-import {
-  logo as appConfigLogo
-}
-from '../../config/appConfig'
-
 function renderSearchForm() {
   return (
     <SearchBoxWidget className="navbar-form navbar-left" role="search" />
@@ -39,7 +35,7 @@ const NavWidget = ({
   const {
     isAuthed, isTrippian
   } = user
-
+  log.info('----logo', appConfig)
   return (
     <nav className="navbar navbar-default" role="navigation">
         <div className="navbar-header">

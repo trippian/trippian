@@ -1,3 +1,4 @@
+import log from '../../log'
 import React from 'react'
 import {
   TripListItemWidget, NoContentWidget
@@ -11,7 +12,7 @@ from '../../config/appConfig'
 const TripListWidget = ({
   dataList = [], noContentMessage = appConfig.noContentMessage
 }) => {
-  console.log('inside Trip list', dataList, dataList.length)
+  log.info('inside Trip list', dataList, dataList.length)
   return (
     <div className="popular-Trips section-body clearfix">
       {dataList.length === 0 && 

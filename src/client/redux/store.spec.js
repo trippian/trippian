@@ -17,7 +17,7 @@ describe('redux store', () => {
     it('has default state for trippians and destinations', () => {
       // apiTrippianReducer 
       let state = store.getState().apiTrippian
-        // console.log('getting state', state.apiTrippian)
+        // log.info('getting state', state.apiTrippian)
       const actualTrippians = state.get('trippians')
       const actualDestinations = state.get('destinations')
       const expected = Immutable.fromJS([])
@@ -59,7 +59,7 @@ describe('redux store', () => {
       const oldDestinations = store.getState().apiTrippian.get('destinations')
       store.dispatch(getPopularDestinations()).then(() => {
         const actual = store.getState().apiTrippian.get('destinations')
-          // console.log(oldDestinations, actual)
+          // log.info(oldDestinations, actual)
         expect(actual).to.not.equal(oldDestinations)
       })
     })

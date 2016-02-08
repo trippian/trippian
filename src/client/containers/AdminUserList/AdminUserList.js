@@ -1,3 +1,4 @@
+import log from '../../log'
 import React, {
   Component, PropTypes
 }
@@ -54,13 +55,13 @@ export default class AdminUserList extends Component {
   }
 
   handleSubmit(data) {
-    console.log('posting data from form', data)
+    log.info('posting data from form', data)
       // store.dispatch(postDestination(data))
     this.setAlert('success', 'Successfully submitted data', `${data.name} ${data.description}`)
   }
 
   handleDelete(id) {
-    console.log('deleting user called', id)
+    log.info('deleting user called', id)
     store.dispatch(deleteAdminUserById(id))
     this.setAlert('success', 'Successfully deleted trippian. Id:', id)
 
@@ -79,7 +80,7 @@ export default class AdminUserList extends Component {
   }
 
   render() {
-    console.log('rendering admin user', this.props.users)
+    log.info('rendering admin user', this.props.users)
     const {
       type, title, message
     } = this.state.alert

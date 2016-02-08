@@ -1,3 +1,4 @@
+import log from '../../client/log'
 require('es6-promise').polyfill()
 require('isomorphic-fetch')
   // a test remote url to make sure the get api is working
@@ -10,11 +11,11 @@ const get = (url) => {
       if (res.status >= 400) {
         throw new Error('Bad response from server')
       }
-      console.log('*** got data from fetch', res)
+      log.info('*** got data from fetch', res)
       return res.json()
     })
     .catch(function (error) {
-      console.log('getting failed at fetch', error)
+      log.info('getting failed at fetch', error)
     })
 }
 
@@ -36,7 +37,7 @@ const post = (url, data) => {
 
     })
     .catch(function (error) {
-      console.log('posting failed at fetch', error)
+      log.info('posting failed at fetch', error)
     })
 }
 
@@ -57,7 +58,7 @@ const put = (url, data) => {
 
     })
     .catch(function (error) {
-      console.log('putting failed at fetch', error)
+      log.info('putting failed at fetch', error)
     })
 }
 
@@ -72,7 +73,7 @@ const deleteApi = (url) => {
       return res.json()
     })
     .catch((error) => {
-      console.log('deleting failed at fetch', error, url)
+      log.info('deleting failed at fetch', error, url)
     })
 }
 
@@ -93,7 +94,7 @@ const putFile = (url, file) => {
       return res.json()
     })
     .catch((error) => {
-      console.log('updating failed at fetch', error, url)
+      log.info('updating failed at fetch', error, url)
     })
 }
 

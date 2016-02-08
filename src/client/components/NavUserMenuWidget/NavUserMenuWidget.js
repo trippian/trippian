@@ -1,4 +1,5 @@
 //not in user
+import log from '../../log'
 import React from 'react'
 
 export default class NavUserMenuWidget extends React.Component {
