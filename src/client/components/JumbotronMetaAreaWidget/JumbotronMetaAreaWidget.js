@@ -34,7 +34,8 @@ const JumbotronMetaAreaWidget = ({
                     <Link to={`trippian/${id}`}> <img src={picture} alt="" /></Link>
                 </div>
                 <div className="meta-info  meta-info-right col-sm-8 col-md-8">
-                    <div className="col-sm-9 col-md-9">
+                    <div className="col-sm-9 col-md-9 left
+">
                         {isTripPage && <h3>{title}</h3>}
                         {!isTripPage && <h3>{name}</h3>}
 
