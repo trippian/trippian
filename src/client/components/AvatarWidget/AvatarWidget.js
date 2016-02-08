@@ -3,9 +3,13 @@ import {
   Link
 }
 from 'react-router'
+import {
+  AvatarWidget as appConfig
+}
+from '../../config/appConfig'
 
 const AvatarWidget = ({
-  link = 'http://trippian.com', imgSrc = 'http://lorempixel.com/200/200/people/', title = 'Avatar'
+  link = appConfig.link, imgSrc = appConfig.imgSrc, title = appConfig.title
 }) => {
   return (
     <Link to={link}>

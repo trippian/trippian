@@ -4,19 +4,26 @@ import {
 }
 from 'react-bootstrap'
 
-const imgs = ['http://lorempixel.com/400/200/animals/', 'http://lorempixel.com/400/200/animals/']
+import {
+  CarouselWidget as appConfig
+}
+from '../../config/appConfig'
+
+// can handle two kinds of inputs 
+// ['imageURL', 'imageURL'] or 
+// [{src: 'imageURL', caption: '...', description: '...' }, {src: 'imageURL', caption: '...', description: '...' }]
 
 const CarouselWidget = ({
-  dataList = imgs
+  dataList = appConfig.images, captionTitle = appConfig.captionTitle, captionContent = appConfig.captionContent
 }) => {
   return (
     <Carousel>
       {dataList.map((image, key)=> 
         <CarouselItem key={key}>
-          <img width={900} height={500} alt="900x500" src={image}/>
+          <img width={appConfig.imageWidth} height={appConfig.imageHeight} alt="appConfig.imageAlt" src={image.src || image}/>
           <div className="carousel-caption">
-            <h3></h3>
-            <p></p>
+            <h3>{image.caption || captionTitle}</h3>
+            <p>{image.description || captionContent}</p>
           </div>
         </CarouselItem>
        )}

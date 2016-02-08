@@ -17,6 +17,10 @@ import {
   postTrip
 }
 from '../../redux/apiIndex'
+import {
+  MyPostedTrips as appConfig
+}
+from '../../config/appConfig'
 
 function mapStateToProps(state) {
   return {
@@ -53,24 +57,18 @@ export default class MyPostedTrips extends Component {
     return (
       <div className="my-posted-trips-page">
         <button onClick={()=> this.setState({showForm: !this.state.showForm})} className="btn btn-primary pull-right">
-          {this.state.showForm ? 'Hide Form' : 'Create a Trip '}
+          {this.state.showForm ? appConfig.postTripButtonHideText : appConfig.postTripButtonShowText}
         </button>
-        {postedTrips.length === 0 && 
-            <div>
-              <h2>You have not created any trips yet. </h2>
-            </div>
 
-          }
         {this.state.showForm && 
           <TripPostFormWidget onSubmit={this.handleSubmit.bind(this)} /> 
         }
 
-        {postedTrips.length > 0 && 
-          <div>
-            <h2>A list of posted trips</h2>
-          <TripListWidget dataList={postedTrips.concat(newTrips)} /> 
-          </div>
-        }
+        <div>
+          <h2>{appConfig.containerTitle}</h2>
+          <TripListWidget dataList={postedTrips.concat(newTrips)} noContentMessage={appConfig.noContentMessage}/>
+        </div>
+        
       </div >
 
     )

@@ -405,6 +405,19 @@ footer {
 
 .inquiry-list-item-widget {}
 
+.contact-button-widget {
+    a {
+        span {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        i {
+            display: block;
+            font-style: normal;
+        }
+    }
+}
+
 
 /**
  * The geosuggest module
