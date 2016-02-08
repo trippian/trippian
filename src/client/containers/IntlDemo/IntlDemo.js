@@ -1,5 +1,5 @@
 // just to demo intl, currently not in use
-
+import log from '../../log'
 import React, {
   Component, PropTypes
 }
@@ -29,7 +29,7 @@ export default class IntlDemo extends Component {
   }
 
   handleClick() {
-    console.log('intl button clicked')
+    log.info('intl button clicked')
   }
 
   render() {

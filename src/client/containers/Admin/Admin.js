@@ -1,3 +1,4 @@
+import log from '../../log'
 import React, {
   Component, PropTypes
 }
@@ -26,7 +27,7 @@ export default class Admin extends Component {
 
   render() {
     const isAdmin = store.getState().appState.get('user').isAdmin
-    console.log('is user admin?', isAdmin)
+    log.info('is user admin?', isAdmin)
     return (
       <div id="admin-page">
         <JumbotronShortWidget title={appConfig.title} subTitle={appConfig.subTitle}/>

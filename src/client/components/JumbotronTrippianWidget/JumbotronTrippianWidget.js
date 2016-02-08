@@ -1,3 +1,4 @@
+import log from '../../log'
 import React from 'react'
 import {
   Link
@@ -27,7 +28,7 @@ const JumbotronTrippianWidget = ({
       backgroundImage: 'url(' + backgroundFeature + ')'
     }
   }
-  console.log('--inside JumbotronTrippianWidget', user, metaTitle)
+  log.info('--inside JumbotronTrippianWidget', user, metaTitle)
   return (
     <div className = "jumbotron jumbotron-trip-widget" style={styles.backgroundImage} > 
       {isTitled && <JumbotronTitleWidget title={title} subTitle={subTitle} />}

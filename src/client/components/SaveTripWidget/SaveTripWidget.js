@@ -1,3 +1,4 @@
+import log from '../../log'
 import React from 'react'
 
 class SaveTripWidget extends React.Component {
@@ -5,8 +6,8 @@ class SaveTripWidget extends React.Component {
     super(props)
   }
 
-  handleClick(){
-    console.log('click')
+  handleClick() {
+    log.info('click')
   }
 
   //require this file in TripListItemWidget

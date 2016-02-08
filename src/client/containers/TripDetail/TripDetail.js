@@ -1,3 +1,4 @@
+import log from '../../log'
 import React, {
   Component, PropTypes
 }
@@ -38,7 +39,7 @@ export default class TripDetail extends Component {
   }
 
   render() {
-    console.log('inside trip detail render', this.props.trip)
+    log.info('inside trip detail render', this.props.trip)
     const {
       netVote, totalVotes, destination, title, summary, details, feature, album
 

@@ -1,3 +1,4 @@
+import log from '../../log'
 import React from 'react'
 
 const FacebookLoginWidget = ({
@@ -14,6 +15,7 @@ FacebookLoginWidget.displayName = 'FacebookLoginWidget'
 
 export default FacebookLoginWidget
 
+// import log from '../../log'
 // import React from 'react'
 // import FacebookLogin from '../helpers/FacebookLogin'
 // import CircleImageLinkWidget from './CircleImageLinkWidget'

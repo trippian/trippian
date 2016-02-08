@@ -3,6 +3,7 @@
 // later， we'll have to refactor it and make it clear and clean
 // but for now, we'll store some commonly used app state variables here 
 
+import log from '../../log'
 import {
   SET_LOCALE, SET_LOCALE_MESSAGES, SET_USERNAME, SET_DISPLAYNAME, SET_ALERT, SET_FILES, SET_USER, SET_FORM_SUBMITTED, SET_FORM_SUBMITTING, SET_SEARCH_TEXT, SET_HISTORY
 }

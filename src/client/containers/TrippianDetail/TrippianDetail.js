@@ -1,3 +1,4 @@
+import log from '../../log'
 import React, {
   Component, PropTypes
 }
@@ -50,7 +51,7 @@ export default class TrippianDetail extends Component {
   // note because we are sharing data in the main container and jumbotron area, we just have to make one 'getTrippianById' at the store at higher level ('Trippian.js'), then we can ask the store for the data 
   // componentDidMount() {
   //   const id = this.props.params.id
-  //   console.log('will get trippian by id', id)
+  //   log.info('will get trippian by id', id)
   //   store.dispatch(getTrippianById(id))
   // }
   handleAlertDismiss() {
@@ -67,14 +68,14 @@ export default class TrippianDetail extends Component {
     })
   }
   handleReviewSubmit(data) {
-    console.log('posting data from form', data)
+    log.info('posting data from form', data)
     data.trippianId = this.props.trippian.id
     store.dispatch(postReview(data))
     this.setAlert('success', 'Successfully submitted data', data.title)
   }
 
   render() {
-    console.log('***insider trippian detail render', this.props.trippian)
+    log.info('***insider trippian detail render', this.props.trippian)
 
     const {
       name, bio, picture, slogan, reviews, introduction, location, averageRating, trips

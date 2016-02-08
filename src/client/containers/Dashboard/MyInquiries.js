@@ -1,3 +1,4 @@
+import log from '../../log'
 import React, {
   Component, PropTypes
 }
@@ -43,14 +44,14 @@ export default class MyInquiries extends Component {
   }
 
   handleSubmit(data) {
-    console.log('--- submitting the inquiry now', data)
+    log.info('--- submitting the inquiry now', data)
     this.props.postTrip(data)
   }
   render() {
     const {
       inquiries
     } = this.props.dashboard
-    console.log('inside MyInquiries render', inquiries)
+    log.info('inside MyInquiries render', inquiries)
     return (
       <div className="my-inquiries-page">
         <h2>{appConfig.containerTitle}</h2>

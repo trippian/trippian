@@ -1,3 +1,4 @@
+import log from '../../log'
 import React, {
   Component, PropTypes
 }
@@ -42,7 +43,7 @@ export default class TrippianEdit extends Component {
   }
 
   handleSubmit(data) {
-    console.log('--- submitting the inquiry now', data)
+    log.info('--- submitting the inquiry now', data)
     store.dispatch(postTrip(data))
     this.setAlert('success', 'Successfully deleted trip. Id:', id)
   }

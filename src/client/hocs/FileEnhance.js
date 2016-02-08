@@ -1,3 +1,4 @@
+import log from '../log'
 import React, {
   Component, PropTypes
 }
@@ -26,13 +27,13 @@ export const FileEnhance = ComposedComponent => class extends Component {
     this.setState({
       isFileUploading: true
     })
-    console.log('-----fileEnhance*****, starting...', files)
+    log.info('-----fileEnhance*****, starting...', files)
   }
   onUploading(progress) {
-    console.log('-----fileEnhance*****, uploading...', progress)
+    log.info('-----fileEnhance*****, uploading...', progress)
   }
   onUploaded(uploadedFiles) {
-    console.log('-----fileEnhance*****, uploaded file', uploadedFiles)
+    log.info('-----fileEnhance*****, uploaded file', uploadedFiles)
     this.setState({
       isFileUploading: false,
       files: uploadedFiles // now the composedComponent will have access to the uploaded files
@@ -40,7 +41,7 @@ export const FileEnhance = ComposedComponent => class extends Component {
     store.dispatch(setFiles(uploadedFiles))
   }
   onUploadError(error) {
-    console.log('-----fileEnhance*****, upload error', error)
+    log.info('-----fileEnhance*****, upload error', error)
   }
 
   render() {

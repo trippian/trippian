@@ -1,4 +1,5 @@
 // not in use
+import log from '../../log'
 import React from 'react'
 
 const FacebookAvatarWidget = ({

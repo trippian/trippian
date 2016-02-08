@@ -1,3 +1,4 @@
+import log from '../../log'
 import React from 'react'
 import {
   defineMessages, intlShape, injectIntl
@@ -35,7 +36,7 @@ class SearchBoxWidget extends React.Component {
   handleClick() {
     const search = store.getState().appState.get('searchText')
     const searchText = search.label
-    console.log('search clicked', search, searchText)
+    log.info('search clicked', search, searchText)
       // FIX: pushState will reload the page, it seems to be a problem working in progress: https://github.com/rackt/history/issues/105
     store.getState().appState.get('history').pushState({
       state: searchText

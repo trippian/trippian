@@ -1,3 +1,4 @@
+import log from '../../log'
 import React, {
   Component, PropTypes
 }
@@ -34,13 +35,13 @@ export default class TrippianDetail extends Component {
 
   componentDidMount() {
     const id = this.props.params.id
-    console.log('will get trippian by id', id)
+    log.info('will get trippian by id', id)
     store.dispatch(getTrippianById(id))
   }
 
 
   render() {
-    console.log('***insider trippian detail render', this.props.trippian)
+    log.info('***insider trippian detail render', this.props.trippian)
 
     const {
       name, bio, picture, slogan

@@ -1,3 +1,4 @@
+import log from '../../log'
 import React, {
   Component, PropTypes
 }
@@ -23,12 +24,12 @@ class TrippianSignupFormWidget extends React.Component {
   }
 
   handleClick() {
-    console.log('clicked', this.refs.nameText.value, this.refs.locationText.value, this.refs.mobileText.value,
+    log.info('clicked', this.refs.nameText.value, this.refs.locationText.value, this.refs.mobileText.value,
       this.refs.emailText.value, this.refs.sloganText.value, this.refs.websiteText.value, this.refs.bioText.value,
       this.refs.tripText.value)
   }
   handleSubmit(data) {
-    console.log('******submitting in the form', this.props.files, this.props.isFileUploading)
+    log.info('******submitting in the form', this.props.files, this.props.isFileUploading)
     if (this.props.isFileUploading) {
       // TODO: set alert here 
     } else {

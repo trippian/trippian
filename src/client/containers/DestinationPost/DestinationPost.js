@@ -1,3 +1,4 @@
+import log from '../../log'
 import React, {
   Component, PropTypes
 }
@@ -53,12 +54,12 @@ export default class DestinationPost extends Component {
 
   componentDidMount() {
     // demo for posting data and deleting data 
-    // postDestination().then(data => console.log('posted', data))
-    // deleteDestinationById(55).then(data => console.log('posted', data))
+    // postDestination().then(data => log.info('posted', data))
+    // deleteDestinationById(55).then(data => log.info('posted', data))
   }
 
   handleSubmit(data) {
-    console.log('posting data from form', data)
+    log.info('posting data from form', data)
     store.dispatch(postDestination(data))
     this.setAlert('success', 'Successfully submitted data', `${data.destinationName} ${data.destinationDescription}`)
   }

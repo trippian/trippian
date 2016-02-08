@@ -1,3 +1,4 @@
+import log from '../../log'
 import React, {
   Component, PropTypes
 }
@@ -23,13 +24,13 @@ export default class LoginSuccess extends Component {
   componentDidMount() {
     const user = getCookieByName('trippianPass')
       // dipatch set user at appState 
-    console.log('got user from coookie', user)
+    log.info('got user from coookie', user)
     setAppStateUser()
 
     window.location.href = `${window.location.origin}/#/dashboard`
       //TODO: read history data and redirect user to previous page 
       // const history = store.getState().appState.get('history')
-      // console.log('----history', history)
+      // log.info('----history', history)
       // history.goBack()
 
   }

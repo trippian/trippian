@@ -1,3 +1,4 @@
+import log from '../../log'
 import React, {
   Component, PropTypes
 }
@@ -32,17 +33,17 @@ connect(mapStateToProps)
 export default class Destination extends Component {
   constructor(props) {
     super(props)
-    console.log('inside', this.props)
+    log.info('inside', this.props)
   }
 
   componentDidMount() {
     const id = this.props.params.id
-    console.log('will get destination by id', id)
+    log.info('will get destination by id', id)
     store.dispatch(getDestinationById(id))
   }
 
   render() {
-    console.log('..inside destination render', this.props.destination)
+    log.info('..inside destination render', this.props.destination)
     return (
       <div id="destination-page">
         <JumbotronDestinationWidget isMetad {...this.props.destination}/>

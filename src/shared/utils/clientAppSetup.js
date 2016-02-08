@@ -1,5 +1,5 @@
 // this will help initialize the app state with the locale and messages
-
+import log from '../../client/log'
 import store from '../../client/redux/store'
 import {
   addLocaleData
@@ -47,7 +47,7 @@ export function initAppStateUserWithCookie() {
   const user = readerUserFromCookie()
   if (user) {
     user.isAuthed = true
-    console.log('----got user from cookie', user)
+    log.info('----got user from cookie', user)
     store.dispatch(setUser(user))
   }
 }

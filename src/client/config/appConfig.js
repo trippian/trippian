@@ -6,7 +6,7 @@ Make sure the containers and components are in alphabetic / logic order
 //TODO: read HOST from a get request or send it by cookie 
 const HOST = window.location.origin // enable this for deploy 
   // const HOST = 'http://localhost:4000' // enable this for react dev
-const isTranslationMode = false // need to turn logger off for translation
+const isTranslationMode = true // need to turn logger off for translation
 
 // reusable configs 
 const defaults = {
@@ -95,7 +95,7 @@ export default {
   appDescription: 'your local travel companion',
   logo: defaults.logo,
   log: {
-    logLevel: 'info', // options: trace, debug, info, warn, error, fatal
+    logLevel: 'error', // options: trace, debug, info, warn, error, fatal
     isTranslationMode: isTranslationMode
   },
   API_HOST: `${HOST}/api/`,

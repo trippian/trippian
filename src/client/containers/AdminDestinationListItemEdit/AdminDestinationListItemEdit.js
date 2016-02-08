@@ -1,3 +1,4 @@
+import log from '../../log'
 import React, {
   Component, PropTypes
 }
@@ -18,7 +19,7 @@ export default class AdminDestinationListItemEdit extends Component {
   }
 
   handleDelete() {
-    console.log('deleting')
+    log.info('deleting')
   }
 
   render() {

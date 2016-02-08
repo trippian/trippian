@@ -1,3 +1,4 @@
+import log from '../../log'
 import React, {
   Component
 }
@@ -39,10 +40,10 @@ class TripPostFormWidget extends Component {
   }
 
   componentDidReceiveProps(newProps) {
-    console.log('******* inside post form, recieving new props')
+    log.info('******* inside post form, recieving new props')
   }
   handleSubmit(data) {
-    console.log('******submitting in the form', this.props.files, this.props.isFileUploading)
+    log.info('******submitting in the form', this.props.files, this.props.isFileUploading)
     if (this.props.isFileUploading) {
       // TODO: set alert here 
     } else {
