@@ -94,8 +94,8 @@ export function attachInfoToData(data, {
       delete data.album
     }
   }
-
-  if (feature) {
+  // process feature image. TODO: add more logic control 
+  if (feature && !data.feature) {
     if (data.album && data.album.length > 0) {
       data.feature = data.album[0]
     } else {
