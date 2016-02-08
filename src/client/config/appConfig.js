@@ -108,7 +108,7 @@ export default {
   appDescription: 'your local travel companion',
   logo: defaults.logo,
   log: {
-    logLevel: logOn ? 'warn' : 'error', // options: trace, debug, info, warn, error, fatal
+    logLevel: logOn ? 'info' : 'error', // options: trace, debug, info, warn, error, fatal
     isTranslationMode: isTranslationMode
   },
   API_HOST: `${HOST}/api/`,
@@ -219,7 +219,7 @@ export default {
       'location': 'San Francisco',
       'role': 'Software Engineer & Scrum Master',
       'image': 'https://s3-us-west-1.amazonaws.com/trippian/about/Elliot-1.jpg ',
-      'about': 'I enjoy watching the Warriors and cheering for Steph Curry. I have a man crush on him. I enjoy watching the Warriors and cheering for Steph Curry. I have a man crush on him.'
+      'about': 'I like to watch and play basketball.  I cheer for anyone that is playing against the Warriors.  I like going out and trying new food in San Francisco'
     }, {
       'name': 'Joe Lagasse',
       'location': 'San Francisco',
@@ -231,7 +231,7 @@ export default {
       'location': 'San Francisco',
       'role': 'Software Engineer',
       'image': 'https://s3-us-west-1.amazonaws.com/trippian/about/Yale.jpg ',
-      'about': 'I am basically married. Elliot is my side piece.I am basically married. Elliot is my side piece.I am basically married. Elliot is my side piece.'
+      'about': 'Born and raised my whole life in San Francisco. I love to go drink boba, coffee, and milktea whenever I get a chance. Hobbies include e-sports and chilling with my dog'
     }]
   },
   App: {},
@@ -396,7 +396,7 @@ export default {
   TrippianProfileWidget: {
 
   },
-  TrippianSignUp: {
+  TrippianSignup: {
     title: 'Become a Trippian',
     subTitle: 'Lorem ipsum dolor sit.',
     formTitle: 'Sign up to become a trippian'
