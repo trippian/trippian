@@ -1,6 +1,6 @@
 import log from '../../log'
 import React, {
-  Component
+  Component, PropTypes
 }
 from 'react'
 import {
@@ -59,11 +59,15 @@ class TripPostFormWidget extends Component {
       },
       handleSubmit,
       submitting,
+      destinationName,
       resetForm,
+      isFormEditingMode,
       load
 
     } = this.props
-      // TODO: dummy data here, remove later 
+    const showAdminButtons = store.getState().appState.get('showAdminButtons')
+
+    // TODO: dummy data here, remove later 
     let data = {
       netVote: 0,
       totalVotes: 0,
@@ -79,7 +83,9 @@ class TripPostFormWidget extends Component {
         <div className="row padding-row">
             <div className="pull-left">
               <label>{appConfig.labels.destination}</label>
-              <AutoSuggestBoxWidget />
+              {isFormEditingMode && <h1>{destinationName}</h1> }
+              {!isFormEditingMode && <AutoSuggestBoxWidget />}
+
             </div>
         </div>
         <div className="form-group">
@@ -107,15 +113,14 @@ class TripPostFormWidget extends Component {
           <label>{appConfig.labels.album}</label>
         </div>
         <div className="pull-right">
-          <button type="button" className="btn btn-default" onClick={() => load(data)}>Load Dummy Data</button>
-          <button type="button" className="btn btn-default" disabled={submitting} onClick={()=> load(initalTripData)} > Clear Values</button>
+          {showAdminButtons && <button type="button" className="btn btn-default" onClick={() => load(data)}>Load Dummy Data</button>}
+          {showAdminButtons && <button type="button" className="btn btn-default" disabled={submitting} onClick={()=> load(initalTripData)} > Clear Values</button> }
           <button  disabled={this.props.isFileUploading || submitting} className={'btn ' + (this.props.isFileUploading ? 'disabled' : 'btn-success') } onClick={this.handleSubmit.bind(this)}>Submit</button> 
         </div>
       </form>
     )
   }
 }
-
 
 TripPostFormWidget = reduxForm({
     form: 'tripPostForm', // a unique name for this form
@@ -127,6 +132,13 @@ TripPostFormWidget = reduxForm({
     load: setTrip
   })(TripPostFormWidget)
 
+TripPostFormWidget.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  resetForm: PropTypes.func.isRequired,
+  isFormEditingMode: PropTypes.bool,
+  destinationName: PropTypes.string
+    // submitting: PropTypes.bool.isRequired
+}
 
 
 TripPostFormWidget.displayName = 'TripPostFormWidget'

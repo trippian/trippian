@@ -122,6 +122,11 @@ export const fetchPostTrip = (data) => {
   console.log('fetchPostTrip', url, data)
   return api.post(url, data)
 }
+export const fetchPutTrip = (data) => {
+  const url = `${API_HOST}${routeConfig.trip}/${data.id}`
+  console.log('fetchPutTrip', url, data)
+  return api.put(url, data)
+}
 
 //save trip 
 export const fetchUpdateSave = ({

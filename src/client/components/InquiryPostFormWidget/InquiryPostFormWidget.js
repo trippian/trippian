@@ -19,10 +19,11 @@ import {
   inquiry as initalInquiryData
 }
 from '../../redux/initalState'
+import store from '../../redux/store'
 
 class InquiryPostFormWidget extends Component {
   render() {
-    log.info('config', appConfig)
+    const showAdminButtons = store.getState().appState.get('showAdminButtons')
     const {
       fields: {
         personCount, startDate, endDate, email, mobile, subject, content
@@ -75,8 +76,8 @@ class InquiryPostFormWidget extends Component {
         </div>
 
         <div className="pull-right">
-          <button type="button" className="btn btn-default" onClick={() => load(data)}>Load Dummy Data</button>
-          <button type="button" className="btn btn-default" disabled={submitting} onClick={()=> load(initalInquiryData)} > Clear Values</button>
+          {showAdminButtons && <button type="button" className="btn btn-default" onClick={() => load(data)}>Load Dummy Data</button> }
+          {showAdminButtons && <button type="button" className="btn btn-default" disabled={submitting} onClick={()=> load(initalInquiryData)} > Clear Values</button> }
           <button  disabled={submitting} className={'btn ' + (submitting ? 'disabled' : 'btn-success') } onClick={handleSubmit}>Submit</button> 
         </div>
       </form>

@@ -35,6 +35,7 @@ from '../../redux/apiIndex'
 function mapStateToProps(state) {
   return {
     trips: state.apiAdmin.get('adminTrips'),
+    trip: state.apiTrippian.get('trip'),
     isFormSubmitting: state.appState.get('isFormSubmitting'),
     isFormSubmitted: state.appState.get('isFormSubmitted')
   }
@@ -62,14 +63,13 @@ export default class AdminTripList extends Component {
   handleDelete(id) {
     log.info('deleting trip called', id)
     store.dispatch(deleteAdminTripById(id))
-    this.setAlert('success', 'Successfully deleted trip. Id:', id)
 
   }
   handleAlertDismiss() {
     this.setAlert()
   }
   handleSubmit(data) {
-    log.info('posting data from form', data)
+    console.log('posting data from form', data)
     store.dispatch(postTrip(data))
   }
 
@@ -100,7 +100,11 @@ export default class AdminTripList extends Component {
           <button onClick={()=> this.setState({showForm: !this.state.showForm})} className="btn btn-primary">Create a Trip</button>
         </div>
           {this.state.showForm && 
-            <TripPostFormWidget onSubmit={this.handleSubmit.bind(this)} /> 
+            <TripPostFormWidget 
+              onSubmit={this.handleSubmit.bind(this)} 
+              resetForm={this.handleResetForm.bind(this)} 
+              submitting={this.props.isFormSubmitting}
+              data={this.props.trip} /> 
           }
 
           <br/>

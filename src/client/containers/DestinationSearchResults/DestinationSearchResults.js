@@ -5,7 +5,7 @@ import React, {
 from 'react'
 
 import {
-  JumbotronWidget, TripListWidget, JumbotronPlainBgWidget
+  JumbotronWidget, TripListWidget, JumbotronPlainBgWidget, JumbotronDestinationWidget
 }
 from '../../components/index'
 
@@ -55,12 +55,13 @@ export default class DestinationSearchResults extends Component {
     const {
       name, description, feature, whyVisit, popularTrips
     } = this.props.destination
+      // <JumbotronPlainBgWidget title={appConfig.title} subTitle={`${appConfig.subTitle} ${this.props.params.q}`}/>
     return (
       <div id="destination-search-results-page">
-        <JumbotronPlainBgWidget title={appConfig.title} subTitle={`${appConfig.subTitle} ${this.props.params.q}`}/>
+        <JumbotronDestinationWidget isMetad {...this.props.destination}/>
+      
         <div className="container main-content-container">
           <div className="col-sm-12 col-md-10 col-md-offset-1 content-container">
-            <img src={feature} alt={feature}/>
             <DestinationDetail />
           </div>
         </div>

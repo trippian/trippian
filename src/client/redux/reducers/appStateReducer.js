@@ -5,7 +5,7 @@
 
 import log from '../../log'
 import {
-  SET_LOCALE, SET_LOCALE_MESSAGES, SET_USERNAME, SET_DISPLAYNAME, SET_ALERT, SET_FILES, SET_USER, SET_FORM_SUBMITTED, SET_FORM_SUBMITTING, SET_SEARCH_TEXT, SET_HISTORY, SET_FORM_EDITING_MODE
+  SET_LOCALE, SET_LOCALE_MESSAGES, SET_USERNAME, SET_DISPLAYNAME, SET_ALERT, SET_FILES, SET_USER, SET_FORM_SUBMITTED, SET_FORM_SUBMITTING, SET_SEARCH_TEXT, SET_HISTORY, SET_FORM_EDITING_MODE, SET_SHOW_ADMIN_BUTTONS
 }
 from '../actionTypes'
 import * as initialStateData from '../initalState'
@@ -30,6 +30,7 @@ const initialState = new Map({
   isFormSubmitted: false,
   isFormSubmitting: false,
   isFormEditingMode: true,
+  showAdminButtons: true,
   files: [],
   alert: initialStateData.alert,
   user: initialStateData.user,
@@ -70,6 +71,10 @@ export default function appStateReducer(state = initialState, action) {
 
     case SET_FORM_EDITING_MODE:
       return state.set('isFormEditingMode', action.payload.isFormEditingMode)
+
+    case SET_SHOW_ADMIN_BUTTONS:
+      return state.set('showAdminButtons', action.payload.showAdminButtons)
+
     default:
       return state
   }

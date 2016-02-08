@@ -60,8 +60,7 @@ export default class IntlDemo extends Component {
                       <FormattedMessage
                           id="app.title"
                           description="this is a formated title message"
-                          defaultMessage="Trippian Intl Demo Page "
-                      />
+                          defaultMessage="Trippian Intl Demo Page "/>
                       <hr />
                       <h3>FormattedDate</h3>
                       <time dateTime={now} className="fancy-date">
