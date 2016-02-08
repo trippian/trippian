@@ -107,7 +107,7 @@ class Home extends Component {
 
     return (
       <div id="home-page">
-      <JumbotronVideoWidget />
+       <JumbotronVideoWidget />
        <JumbotronHomeWidget title={appConfig.jumbotron.title} subTitle={appConfig.jumbotron.subTitle} /> 
          <div className="container">
             <div className="main-content-container">
@@ -122,7 +122,6 @@ class Home extends Component {
                   <TrippianListRoundWidget dataList={this.props.popularTrippians} />
                  </div>
              </div>
-
           </div>
          </div>
         </div>

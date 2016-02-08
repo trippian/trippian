@@ -24,7 +24,6 @@ import store from '../../redux/store'
 class InquiryPostFormWidget extends Component {
   render() {
     const showAdminButtons = store.getState().appState.get('showAdminButtons')
-    console.log('config', appConfig, 'showAdminButtons?', showAdminButtons)
     const {
       fields: {
         personCount, startDate, endDate, email, mobile, subject, content

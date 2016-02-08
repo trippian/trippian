@@ -37,7 +37,7 @@ import {
   fetchGetTrippians, fetchDeleteTrippianById, fetchGetTrippianById, fetchPostTrippian, fetchPutTrippian,
   fetchGetUsers, fetchDeleteUserById, fetchGetUserById, fetchPostUser,
   fetchGetInquiries, fetchDeleteInquiryById, fetchGetInquiryByReceiverId, fetchPostInquiry,
-  fetchGetTrips, fetchDeleteTripById, fetchGetTripById, fetchPostTrip, fetchUpdateSave,
+  fetchGetTrips, fetchDeleteTripById, fetchGetTripById, fetchPostTrip, fetchUpdateSave, fetchPutTrip,
   fetchPostReview, fetchUpdateVote, fetchLogin, fetchLogout, fetchGetDashboardById, fetchPostLogin, fetchPostSignup
 }
 from '../../utils/apiTrippian'
@@ -283,7 +283,7 @@ export function getInquiryById(id) {
 
 // posting 
 export function postDestination(data) {
-  store.dispatch(setFormSubmitting())
+  store.dispatch(setFormSubmitting(true))
   alertInfo('Submitting the destination information now...')
   attachInfoToData(data, {
     searchAsName: true,
@@ -299,6 +299,8 @@ export function postDestination(data) {
         dispatch(addDestination(destination))
         dispatch(addAdminDestination(destination))
         dispatch(setFormSubmitted(true))
+        store.dispatch(setFormSubmitting(false))
+
         alertSuccess('Successfully added destination')
       })
       .catch(error => apologize(error))
@@ -306,7 +308,7 @@ export function postDestination(data) {
 }
 
 export function putDestination(data) {
-  store.dispatch(setFormSubmitting())
+  store.dispatch(setFormSubmitting(true))
   alertInfo('Submitting the destination information now...')
   attachInfoToData(data, {
     // searchAsName: true,  
@@ -323,6 +325,7 @@ export function putDestination(data) {
           // dispatch(updateDestination(destination))  //TODO: update the front-end view
           // dispatch(addAdminDestination(destination))  // TODO: update the admin view
         dispatch(setFormSubmitted(true))
+        store.dispatch(setFormSubmitting(false))
         alertSuccess('Successfully updated destination')
       })
       .catch(error => apologize(error))
@@ -330,7 +333,7 @@ export function putDestination(data) {
 }
 
 export function postTrip(data) {
-  store.dispatch(setFormSubmitting())
+  store.dispatch(setFormSubmitting(true))
     //TODO, update userId to global 
   attachInfoToData(data, {
     searchAsDestination: true,
@@ -348,6 +351,7 @@ export function postTrip(data) {
       .then(trip => {
         log.info('---posted', trip)
         dispatch(setFormSubmitted(true))
+        store.dispatch(setFormSubmitting(false))
         dispatch(addTrip(trip))
         dispatch(addAdminTrip(trip))
         alertSuccess('Succeed', `${trip.id}: ${trip.title}`)
@@ -357,8 +361,31 @@ export function postTrip(data) {
   }
 }
 
+export function putTrip(data) {
+  store.dispatch(setFormSubmitting(true))
+  alertInfo('Submitting the Trip information now...')
+  attachInfoToData(data, {
+    album: true,
+    isPutTrip: true // will delete a few fields and add UpdatedAt
+  })
+  console.log('-- putting a Trip now in reducer', data)
+
+  return (dispatch) => {
+    return fetchPutTrip(data)
+      .then(trip => {
+        console.log('--- already put', trip)
+          // dispatch(updateTrip(Trip))  //TODO: update the front-end view
+          // dispatch(addAdminTrip(Trip))  // TODO: update the admin view
+        dispatch(setFormSubmitted(true))
+        store.dispatch(setFormSubmitting(false))
+        alertSuccess('Successfully updated trip')
+      })
+      .catch(error => apologize(error))
+  }
+}
+
 export function postUser(data) {
-  store.dispatch(setFormSubmitting())
+  store.dispatch(setFormSubmitting(true))
     //TODO, update userId to global 
   data.senderId = 32
   data.trippianId = 31
@@ -368,6 +395,7 @@ export function postUser(data) {
       .then(user => {
         log.info('---posted', user)
         dispatch(setFormSubmitted(true))
+        store.dispatch(setFormSubmitting(false))
         dispatch(addAdminUser(user))
       })
       .catch(error => apologize(error))
@@ -375,7 +403,7 @@ export function postUser(data) {
 }
 
 export function postTrippian(data) {
-  store.dispatch(setFormSubmitting())
+  store.dispatch(setFormSubmitting(true))
   alertInfo('Submitting now...')
   log.info('-- posting a trippian now in reducer', data)
   return (dispatch) => {
@@ -384,6 +412,7 @@ export function postTrippian(data) {
         log.info('---posted', trippian)
         dispatch(addAdminTrippian(trippian))
         dispatch(setFormSubmitted(true))
+        store.dispatch(setFormSubmitting(false))
         alertSuccess('Successfully added trippian')
       })
       .catch(error => apologize(error))
@@ -391,13 +420,13 @@ export function postTrippian(data) {
 }
 
 export function postInquiry(data) {
-  store.dispatch(setFormSubmitting())
+  store.dispatch(setFormSubmitting(true))
   alertInfo('Submitting inquiry now...')
-  data.senderId = store.getState().apiTrippian.get('currentUser').id
+  data.senderId = store.getState().appState.get('user').id
   data.trippianId = store.getState().apiTrippian.get('trippian').id || appConfig.defaultTrippianIDForInquiry //Normally you'd read
-  attachInfoToData(data, {
-    createdAt: true
-  })
+    // attachInfoToData(data, {
+    //   createdAt: true
+    // })
   log.info('-- posting a inquiry now in reducer', data)
   return (dispatch) => {
     return fetchPostInquiry(data)
@@ -406,13 +435,15 @@ export function postInquiry(data) {
         dispatch(setInquiry(inquiry))
         dispatch(addAdminInquiry(inquiry))
         alertSuccess('Successfully submitted inquiry')
+        store.dispatch(setFormSubmitting(false))
+        store.dispatch(setFormSubmitted(true))
       })
       .catch(error => apologize(error))
   }
 }
 
 export function postReview(data) {
-  store.dispatch(setFormSubmitting())
+  store.dispatch(setFormSubmitting(true))
   alertInfo('Submitting review now...')
   attachInfoToData(data, {
     user: true,
@@ -425,6 +456,9 @@ export function postReview(data) {
         log.info('---posted', review)
         dispatch(addReview(review)) // add review to current trippian on the front-end
         alertSuccess('Successfully added review')
+        store.dispatch(setFormSubmitted(true))
+        store.dispatch(setFormSubmitting(false))
+
       })
       .catch(error => apologize(error))
   }
@@ -495,7 +529,7 @@ export function toggleSaveTrip(saveState, tripId) {
 }
 //isNewTrippian will attach new trippian data, otherwise, it's just an update 
 export function putTrippian(data, isNewTrippian = true) {
-  store.dispatch(setFormSubmitting())
+  store.dispatch(setFormSubmitting(true))
   alertInfo('Submitting now...')
   attachInfoToData(data, {
     isTripian: true,

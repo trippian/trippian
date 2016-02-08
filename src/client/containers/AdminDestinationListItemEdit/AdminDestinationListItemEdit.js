@@ -61,7 +61,7 @@ export default class AdminDestinationListItemEdit extends Component {
     log.info('inside AdminDestinationListItemEdit render', this.props.destination)
     console.log('editing mode?', this.props.isFormEditingMode)
     return (
-      <div id="admin-destination-page">
+      <div id="admin-destination-edit-page">
         <h3>AdminDestinationListItemEdit</h3>
         <DestinationPostFormWidget 
           onSubmit={this.handleSubmit.bind(this)} 
