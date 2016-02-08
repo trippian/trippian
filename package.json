@@ -42,6 +42,7 @@
   },
   "homepage": "https://github.com/trippian/trippian#readme",
   "dependencies": {
+    "Faker": "0.7.2",
     "aws-sdk": "^2.2.30",
     "axios": "0.9.1",
     "babel-cli": "^6.4.5",
@@ -50,6 +51,7 @@
     "bcrypt": "^0.8.5",
     "bluebird": "^3.1.1",
     "body-parser": "^1.14.2",
+    "bunyan": "1.5.1",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.1",
     "cors": "^2.7.1",

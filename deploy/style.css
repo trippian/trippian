@@ -5437,7 +5437,7 @@ button.close {
       line-height: 1;
       margin: 0 auto;
       width: auto;
-      height: 320px; }
+      height: 400px; }
     @media all and (transform-3d), (-webkit-transform-3d) {
       .carousel-inner > .item {
         -webkit-transition: -webkit-transform 0.6s ease-in-out;
@@ -8201,6 +8201,14 @@ footer {
     width: 40px !important;
     height: 40px !important;
     margin: -10px 10px !important; }
+
+.contact-button-widget a span {
+  font-size: 18px;
+  font-weight: bold; }
+
+.contact-button-widget a i {
+  display: block;
+  font-style: normal; }
 
 /**
  * The geosuggest module
