@@ -16,7 +16,7 @@ function setVariablesByEnv() {
     HOST = 'http://localhost:4000'
     logOn = true
     isTranslationMode = false,
-      showAdminButtons = false
+      showAdminButtons = true // set false for deployment if true, will not show buttons such as 'Load dummy data', 'clear values'... 
   }
 }
 setVariablesByEnv()
