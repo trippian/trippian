@@ -14,7 +14,7 @@ function setVariablesByEnv() {
   if (env === 'develop') {
     HOST = 'http://localhost:4000'
     logOn = true
-    isTranslationMode = true
+    isTranslationMode = false
   }
 }
 setVariablesByEnv()
@@ -106,9 +106,8 @@ export default {
   appDescription: 'your local travel companion',
   logo: defaults.logo,
   log: {
-    logLevel: 'error', // options: trace, debug, info, warn, error, fatal
-    isTranslationMode: isTranslationMode,
-    logOn: logOn
+    logLevel: logOn ? 'info' : 'error', // options: trace, debug, info, warn, error, fatal
+    isTranslationMode: isTranslationMode
   },
   API_HOST: `${HOST}/api/`,
   Server_HOST: `${HOST}`,

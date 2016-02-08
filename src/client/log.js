@@ -7,7 +7,7 @@ from '../client/config/appConfig'
 
 export default bunyan.createLogger({
   name: 'trippian',
-  level: appConfig.logLevel || 'info'
+  level: appConfig.logLevel
 })
 
 //example usage 
