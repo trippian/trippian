@@ -3,10 +3,23 @@ Config the app's front-end
 Make sure the containers and components are in alphabetic / logic order
 */
 
-//TODO: read HOST from a get request or send it by cookie 
-const HOST = window.location.origin // enable this for deploy 
-  // const HOST = 'http://localhost:4000' // enable this for react dev
-const isTranslationMode = true // need to turn logger off for translation
+// const env= '' // comment this out for development
+const env = 'develop' // comment this out for deployment
+
+
+let HOST = window.location.origin // enable this for deploy 
+let isTranslationMode = true // need to turn logger off for translation
+let logOn = false
+
+const setVariablesByEnv = () => {
+  if (env === 'develop') {
+    console.log('hello')
+    HOST = 'http://localhost:4000'
+    logOn = true
+    isTranslationMode = true
+  }
+}
+setVariablesByEnv()
 
 // reusable configs 
 const defaults = {
@@ -96,7 +109,8 @@ export default {
   logo: defaults.logo,
   log: {
     logLevel: 'error', // options: trace, debug, info, warn, error, fatal
-    isTranslationMode: isTranslationMode
+    isTranslationMode: isTranslationMode,
+    logOn: logOn
   },
   API_HOST: `${HOST}/api/`,
   Server_HOST: `${HOST}`,
