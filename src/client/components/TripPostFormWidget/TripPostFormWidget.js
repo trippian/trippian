@@ -55,7 +55,7 @@ class TripPostFormWidget extends Component {
   render() {
     const {
       fields: {
-        destination, title, summary, details, feature, album
+        destination, title, summary, details, feature, thumbnail, album
       },
       handleSubmit,
       submitting,
@@ -95,7 +95,12 @@ class TripPostFormWidget extends Component {
           <textarea name="whyVisit" className="form-control" className="form-control" rows="3" {...details}></textarea>
         </div>
         <div className="form-group">
-          <label>Feature Image</label>
+          <label>{appConfig.labels.thumbnail}</label> 
+          <input type="url" className="form-control" value='' placeholder="http://..." {...thumbnail}/>
+        </div>
+
+        <div className="form-group">
+          <label>{appConfig.labels.feature}</label>
           <input type="url" className="form-control" placeholder="http://..." value="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Beijing_montage_1.png/250px-Beijing_montage_1.png" {...feature}/>
         </div>
         <div className="form-group">
@@ -114,7 +119,7 @@ class TripPostFormWidget extends Component {
 
 TripPostFormWidget = reduxForm({
     form: 'tripPostForm', // a unique name for this form
-    fields: ['destination', 'title', 'summary', 'details', 'feature', 'album']
+    fields: ['destination', 'title', 'summary', 'details', 'feature', 'thumbnail', 'album']
   },
   state => ({ // mapStateToProps
     initialValues: state.apiTrippian.get('trip') // will pull state into form's initialValues
