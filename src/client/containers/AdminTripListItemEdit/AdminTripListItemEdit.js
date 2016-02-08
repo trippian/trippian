@@ -56,7 +56,6 @@ export default class AdminTripListItemEdit extends Component {
     } = this.props.trip
 
     log.info('inside AdminTripListItemEdit render', this.props.trip)
-    console.log('editing mode?', this.props.isFormEditingMode)
     return (
       <div id="admin-trip-edit-page">
           <h3>AdminTripListItemEdit</h3>
