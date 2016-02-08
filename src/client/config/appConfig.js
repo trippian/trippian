@@ -3,8 +3,8 @@ Config the app's front-end
 Make sure the containers and components are in alphabetic / logic order
 */
 
-// const env= '' // comment this out for development
-const env = 'develop' // comment this out for deployment
+const env = '' // comment this out for development
+  // const env = 'develop' // comment this out for deployment
 
 
 let HOST = window.location.origin // enable this for deploy 
