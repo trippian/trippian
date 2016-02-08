@@ -41,7 +41,7 @@ export default class About extends Component {
                       <h3>{appConfig.teamSectionTitle}</h3>
                   </div>
                   <div className="section-body">
-                    <TeamCardsWidget />
+                    <TeamCardsWidget dataList={appConfig.team}/>
                   </div>
               </div>
             </div>

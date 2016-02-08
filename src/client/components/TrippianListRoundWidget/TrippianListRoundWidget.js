@@ -3,15 +3,19 @@ import {
   TrippianListItemRoundWidget, NoContentWidget
 }
 from '../index'
+import {
+  TrippianListRoundWidget as appConfig
+}
+from '../../config/appConfig'
 
 const TrippianListRoundWidget = ({
-  dataList = [], emptyMessage = 'There is no Trippian'
+  dataList = [], noContentMessage = appConfig.noContentMessage
 }) => {
   console.log('inside trippian list', dataList, dataList.length)
   return (
     <div className="popular-trippians section-body clearfix">
     {dataList.length === 0 && 
-        <NoContentWidget message={emptyMessage} />
+        <NoContentWidget message={noContentMessage} />
     }
     { 
        dataList.map((trippian, key) => (
