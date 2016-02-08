@@ -3,13 +3,18 @@ import {
   DashboardMenuWidget
 }
 from '../index'
+import {
+  JumbotronDashboardWidget as appConfig
+}
+from '../../config/appConfig'
+
 const JumbotronDashboardWidget = ({
-  title = '', subTitle = '', user
+  title = appConfig.title, subTitle = appConfig.subTitle, user
 }) => {
   return (
     <div className="jumbotron-dashboard-widget">
       <div className="container">
-        <h1>User Dashboard</h1>
+        <h1>{title}</h1>
        <DashboardMenuWidget {...user} />
       </div>
     </div>

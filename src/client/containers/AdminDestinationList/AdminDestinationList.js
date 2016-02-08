@@ -30,6 +30,10 @@ import {
   postDestination
 }
 from '../../redux/apiIndex'
+import {
+  AdminDestinationList as appConfig
+}
+from '../../config/appConfig'
 
 function mapStateToProps(state) {
   return {
@@ -124,7 +128,7 @@ export default class AdminDestinationList extends Component {
           }
 
           <br/>
-        <h3>Destination List</h3>
+        <h3>{appConfig.containerTitle}</h3>
         <Table striped bordered condensed hover>
             <thead>
               <tr>

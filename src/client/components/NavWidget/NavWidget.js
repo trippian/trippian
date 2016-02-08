@@ -17,6 +17,15 @@ import {
   UserMenuWidget
 }
 from '../index'
+import {
+  NavWidget as appConfig
+}
+from '../../config/appConfig'
+
+import {
+  logo as appConfigLogo
+}
+from '../../config/appConfig'
 
 function renderSearchForm() {
   return (
@@ -35,28 +44,25 @@ const NavWidget = ({
     <nav className="navbar navbar-default" role="navigation">
         <div className="navbar-header">
             <button type="button" className="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                <span className="sr-only">Toggle navigation</span>
+                <span className="sr-only">{appConfig.srToggleText} </span>
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
             </button>
             <Link className="navbar-brand" to="/">
-                <img src="https://s3-us-west-1.amazonaws.com/trippian/logo-trans-white.png" alt="Trippian"/>
+                <img src={appConfig.logo} alt="Trippian"/>
             </Link>
         </div>
         <div className="collapse navbar-collapse navbar-ex1-collapse">
             <LocaleMenuWidget className="nav navbar-nav navbar-right list-inline"/>
             <ul className="nav navbar-nav navbar-right">
-                {!isTrippian&& <li>
+                {!isTrippian && <li>
                     <Link to='become-a-trippian' className="btn btn-bordered">
-                        <FormattedMessage 
-                            id="app-pages.become-a-trippian" 
-                            description="become a trippian page title"
-                            defaultMessage="Become a Trippian"/>
+                      {appConfig.becomeATrippianButtonText}
                     </Link>
                 </li>}
                 {isAuthed && <UserMenuWidget {...user}/>}
-                {!isAuthed && <li><Link to="login">Login </Link></li>}
+                {!isAuthed && <li><Link to="login">{appConfig.loginButtonText} </Link></li>}
             </ul>
         </div>
     </nav>

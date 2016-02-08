@@ -1,7 +1,12 @@
 import React from 'react'
 
+import {
+  JumbotronShortWidget as appConfig
+}
+from '../../config/appConfig'
+
 const JumbotronShortWidget = ({
-  title = '', subTitle = ''
+  title = appConfig.title, subTitle = appConfig.subTitle
 }) => {
   return (
     <div className="jumbotron-dashboard-widget">

@@ -18,6 +18,12 @@ import {
   PreviewImageWidget
 }
 from '../index'
+import {
+  DropFileWidget as appConfig
+}
+from '../../config/appConfig'
+
+const maxNumberOfFilesAllowed = appConfig.maxNumberOfFilesAllowed || 5
 export default class DropFileWidget extends Component {
 
   constructor(props) {
@@ -32,8 +38,8 @@ export default class DropFileWidget extends Component {
   }
 
   onDrop(files) {
-    if (files.length > 5) {
-      this.props.onUploadError('Sorry, maximum 5 files are allowed')
+    if (files.length > maxNumberOfFilesAllowed) {
+      this.props.onUploadError(appConfig.exceedMaxNumberOfFilesErrorMessage)
       return
     }
     this.setState({
@@ -97,14 +103,14 @@ export default class DropFileWidget extends Component {
     const showProgress = this.state.progress !== 0
     const showSuccess = this.state.files.length === 0 && this.state.uploadedFiles.length !== 0
     return (
-      <div className="row drop-file-widget">
+      <div className="drop-file-widget">
         <Dropzone ref="dropzone" onDrop={this.onDrop.bind(this)}>
-          <span>Try drop some fiels here or click to select files to upload</span>
+          <span>{appConfig.dropMessage}</span>
         </Dropzone>
-        <div className="row upload-info">
+        <div className="upload-info">
           {showProgress && !showSuccess && <ProgressBar striped bsStyle="success" now={this.state.progress * 100}  /> }
-          {this.state.files.length > 0 ? <h3>Uploading {this.state.files.length} files...</h3> : null}
-          {showSuccess && <h3> {this.state.uploadedFiles.length} file uploaded </h3> }
+          {this.state.files.length > 0 ? <h3>{appConfig.fileUploadingMessage} {this.state.files.length} </h3> : null}
+          {showSuccess && <h3> {appConfig.fileUploadedMessage} {this.state.uploadedFiles.length} </h3> }
         </div>
        <div className="row">
          {this.state.uploadedFiles.map((url, key) => <PreviewImageWidget key={key} src={url} /> )}

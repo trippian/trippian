@@ -9,15 +9,29 @@ import {
 from 'redux-form'
 import appState from './reducers/appStateReducer'
 
-import createLogger from 'redux-logger' // comment all logger related logic for translation or deployment
-
-import apiTrippian, {
-  getPopularDestinations,
-  getPopularTrippians,
-  getDestinationById
-}
-from './reducers/apiTrippianReducer'
+import apiTrippian from './reducers/apiTrippianReducer'
 import apiAdmin from './reducers/apiAdminReducer'
+
+import {
+  log as appConfig
+}
+from '../config/appConfig'
+import createLogger from 'redux-logger' // comment this out for translation or deployment
+
+let createStoreWithMiddleware
+
+// based on if it's translation mode, turn on/off logger 
+if (appConfig.isTranslationMode) {
+  createStoreWithMiddleware = applyMiddleware(
+    thunk
+  )(createStore)
+} else {
+  // add thunk as middleware to support aync dispatch 
+  const logger = createLogger()
+  createStoreWithMiddleware = applyMiddleware(
+    thunk, logger
+  )(createStore)
+}
 
 // combine all reducers 
 const reducer = combineReducers({
@@ -27,19 +41,4 @@ const reducer = combineReducers({
   form
 })
 
-// export default createStore(reducer)
-
-const logger = createLogger()
-  // add thunk as middleware to support aync dispatch 
-const createStoreWithMiddleware = applyMiddleware(
-  thunk, logger
-  // thunk
-)(createStore)
 export default createStoreWithMiddleware(reducer)
-
-// add all reducer functions to the store export 
-export {
-  getPopularDestinations,
-  getPopularTrippians,
-  getDestinationById
-}

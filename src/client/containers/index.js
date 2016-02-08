@@ -28,6 +28,7 @@ export Chat from './Chat/Chat'
 export Contact from './Contact/Contact'
 
 export Dashboard from './Dashboard/Dashboard'
+export MyDestinationPost from './Dashboard/MyDestinationPost'
 export MyProfile from './Dashboard/MyProfile'
 export MyInquiries from './Dashboard/MyInquiries'
 export MyPostedTrips from './Dashboard/MyPostedTrips'

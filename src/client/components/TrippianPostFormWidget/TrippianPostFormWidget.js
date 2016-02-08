@@ -20,6 +20,10 @@ import {
   trippian as emptyData
 }
 from '../../redux/initalState'
+import {
+  TrippianPostFormWidget as appConfig
+}
+from '../../config/appConfig'
 
 class TrippianPostFormWidget extends Component {
   constructor(props) {
@@ -66,41 +70,41 @@ class TrippianPostFormWidget extends Component {
 
       <form onSubmit={handleSubmit} role="form">
        <div className="form-group">
-         <label>Name</label>
+         <label>{appConfig.labels.name}</label>
          <input type="text" className="form-control" placeholder=""  {...name}/>
        </div>
 
        <div className="form-group">
-         <label>Location</label>
+         <label>{appConfig.labels.location}</label>
          <input type="text" className="form-control" {...location}/>
        </div>
 
        <div className="form-group">
-         <label>Mobile</label>
+         <label>{appConfig.labels.mobile}</label>
          <input type="tel" className="form-control" placeholder="+001 123 456 789"  {...mobile}/>
        </div>
 
        <div className="form-group">
-         <label>Slogan</label>
+         <label>{appConfig.labels.slogan}</label>
          <input type="text" className="form-control" placeholder=""  {...slogan}/>
        </div>
        <div className="form-group">
-         <label>Website</label>
+         <label>{appConfig.labels.website}</label>
          <input type="text" className="form-control" placeholder=""  {...website}/>
        </div>
        <div className="form-group">
-         <label>Bio</label>
+         <label>{appConfig.labels.bio}</label>
          <textarea name="bio" className="form-control" className="form-control" rows="3" required="required" {...bio}></textarea>
        </div>
 
        <div className="form-group">
-         <label>Introduction</label>
+         <label>{appConfig.labels.introduction}</label>
          <textarea name="introduction" className="form-control" className="form-control" rows="3" required="required"  {...introduction}></textarea>
        </div>
        <div className="pull-right">
-         <button disabled={this.props.isFileUploading || submitting} className={'btn ' + (this.props.isFileUploading ? 'disabled' : 'btn-success') } onClick={this.handleSubmit.bind(this)}>Submit</button> 
-         <button type="button" className="btn btn-default" disabled={submitting} onClick={()=> load(emptyData)} > Clear Values</button>
-         <button type="button" className="btn btn-default" onClick={() => load(data)}>Load Dummy Data</button>
+         <button disabled={this.props.isFileUploading || submitting} className={'btn ' + (this.props.isFileUploading ? 'disabled' : 'btn-success') } onClick={this.handleSubmit.bind(this)}>{appConfig.buttons.submit}</button> 
+         <button type="button" className="btn btn-default" disabled={submitting} onClick={()=> load(emptyData)} > {appConfig.buttons.reset}</button>
+         <button type="button" className="btn btn-default" onClick={() => load(data)}>{appConfig.buttons.load}</button>
        </div>
      </form>
     )

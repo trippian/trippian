@@ -3,6 +3,10 @@ import {
   TrippianListItemWidget, NoContentWidget
 }
 from '../index'
+import {
+  TrippianListWidget as appConfig
+}
+from '../../config/appConfig'
 
 var trippians = [{
   "name": "Joe Lagasse",
@@ -35,13 +39,13 @@ var trippians = [{
 }]
 
 const TrippianListWidget = ({
-  dataList = trippians, emptyMessage = 'There is no trippian'
+  dataList = trippians, noContentMessage = appConfig.noContentMessage
 }) => {
   console.log('inside', dataList)
   return (
     <div className="popular-trippians section-body clearfix">
         {dataList.length === 0 && 
-                <NoContentWidget message={emptyMessage} />
+                <NoContentWidget message={noContentMessage} />
         }
         {
           dataList.map((trippian, key) => (

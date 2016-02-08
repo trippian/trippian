@@ -4,23 +4,26 @@ import {
 }
 from 'react-router'
 import {
-  routeConfig as appConfig
+  routeConfig as appRouteConfig
+}
+from '../../config/appConfig'
+import {
+  SignupButtonsWidget as appConfig
 }
 from '../../config/appConfig'
 
 const SignupButtonsWidget = ({
-  isHorizontal = false, googleAuth = appConfig.googleAuth,
-  facebookAuth = appConfig.facebookAuth
+  isHorizontal = false, googleAuth = appRouteConfig.googleAuth,
+    facebookAuth = appRouteConfig.facebookAuth
 }) => {
   return (
     <div className="signup-button-widget">
-        <a className="btn facebook"  href={facebookAuth}><i className="fa fa-facebook"></i> Sign Up with facebook</a>
+        <a className="btn facebook"  href={facebookAuth}><i className="fa fa-facebook"></i> {appConfig.facebook}</a>
         {!isHorizontal && <br/>}
-        <a className="btn google" href={googleAuth}><i className="fa fa-google"></i> Sign Up with Google</a>
+        <a className="btn google" href={googleAuth}><i className="fa fa-google"></i> {appConfig.google}</a>
     </div>
-      )
+  )
 }
-SignupButtonsWidget
-  .displayName = 'SignupButtonsWidget'
+SignupButtonsWidget.displayName = 'SignupButtonsWidget'
 
 export default SignupButtonsWidget

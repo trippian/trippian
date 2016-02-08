@@ -1,3 +1,4 @@
+import log from '../../utils/log'
 import React, {
   Component, PropTypes
 }
@@ -41,6 +42,7 @@ class App extends Component {
     }
   }
   componentDidMount() {
+    // log.error(new Error('something is wrong'), 'more on this: %s', 'error detail here')
 
     // temp solution: listen to the store for any locale change and update the App state
     // ideally, we shoul use store connect and map to automatically update the App Component's state

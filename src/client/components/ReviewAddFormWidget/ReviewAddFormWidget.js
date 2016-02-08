@@ -6,6 +6,11 @@ import {
   reduxForm
 }
 from 'redux-form'
+import {
+  ReviewAddFormWidget as appConfig
+}
+from '../../config/appConfig'
+
 
 class ReviewAddFormWidget extends Component {
   render() {
@@ -16,22 +21,21 @@ class ReviewAddFormWidget extends Component {
       handleSubmit
     } = this.props
 
-    const lorem = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur tempore cumque voluptates, velit molestiae suscipit, dolor accusantium aliquam. Et ipsa alias quis recusandae, iure maxime deleniti ab perferendis eligendi saepe!'
     return (
       <form onSubmit={handleSubmit} role="form">
         <div className="form-group">
-          <label>Rating</label>
-          <input type="number" className="form-control" placeholder="5" value="5" {...rating}/>
+          <label>{appConfig.labels.rating}</label>
+          <input type="number" className="form-control" placeholder="5"  value='5' max="1" min="5" {...rating}/>
         </div>
         <div className="form-group">
-          <label>Title</label>
-          <input type="text" className="form-control" placeholder="Paris..."  value="Had Awesome Trip "{...title}/>
+          <label>{appConfig.labels.title}</label>
+          <input type="text" className="form-control" placeholder="Paris..."  {...title}/>
         </div>
         <div className="form-group">
-          <label>Content</label>
-          <textarea name="content" className="form-control" className="form-control" rows="3"  value={lorem} {...content}></textarea>
+          <label>{appConfig.labels.content}</label>
+          <textarea name="content" className="form-control" className="form-control" rows="3" {...content}></textarea>
         </div>
-        <button className='btn btn-success pull-right' onClick={handleSubmit}>Add My Review</button>
+        <button className='btn btn-success pull-right' onClick={handleSubmit}>{appConfig.buttons.submit}</button>
       </form>
     )
   }

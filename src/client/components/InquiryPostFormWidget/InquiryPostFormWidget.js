@@ -6,50 +6,76 @@ import {
   reduxForm
 }
 from 'redux-form'
-
+import {
+  setInquiry
+}
+from '../../redux/actionCreators'
+import {
+  InquiryPostFormWidget as appConfig
+}
+from '../../config/appConfig'
+import {
+  inquiry as initalInquiryData
+}
+from '../../redux/initalState'
 
 class InquiryPostFormWidget extends Component {
   render() {
+    console.log('config', appConfig)
     const {
       fields: {
         personCount, startDate, endDate, email, mobile, subject, content
       },
+      handleSubmit,
       submitting,
-      handleSubmit
+      resetForm,
+      load
     } = this.props
+    let data = {
+      personCount: 5,
+      startDate: '2015-02-14',
+      endDate: '2015-02-28',
+      email: 'me@audreyli.me',
+      mobile: '+001 123 456 789',
+      subject: 'Need A Hiking Trip',
+      content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut voluptate corrupti soluta perferendis error, ipsam!'
+    }
 
     return (
       <form onSubmit={handleSubmit} role="form">
         <div className="form-group">
-          <label>Number of People</label>
-          <input type="number" className="form-control" value="1" {...personCount}/>
+          <label>{appConfig.labels.personCount}</label>
+          <input type="number" className="form-control" value={1} {...personCount}/>
         </div>
         <div className="form-group">
-          <label>Start Date</label>
-          <input type="date" className="form-control" value="2016-02-12" {...startDate} />
+          <label>{appConfig.labels.startDate}</label>
+          <input type="date" className="form-control"  {...startDate} />
         </div>
         <div className="form-group">
-          <label>End Date</label>
-          <input type="date" className="form-control" value="2016-02-28" {...endDate} />
+          <label>{appConfig.labels.endDate}</label>
+          <input type="date" className="form-control" {...endDate} />
         </div>
         <div className="form-group">
-          <label>Email</label>
-          <input type="email" className="form-control" value='me@audreyli.me'  {...email}/>
+          <label>{appConfig.labels.email}</label>
+          <input type="email" className="form-control" {...email}/>
         </div>
         <div className="form-group">
-          <label>Mobile</label>
-          <input type="tel" className="form-control" placeholder="+001 123 456 789" value="+001 123 456 789" {...mobile}/>
+          <label>{appConfig.labels.mobile}</label>
+          <input type="tel" className="form-control" placeholder="+001 123 456 789"  {...mobile}/>
         </div>
 
         <div className="form-group">
-          <label>Subject</label>
-          <input type="text" className="form-control" placeholder="" value="subject here..." {...subject}/>
+          <label>{appConfig.labels.subject}</label>
+          <input type="text" className="form-control" placeholder="" {...subject}/>
         </div>
         <div className="form-group">
-          <label>Content</label>
-          <textarea name="content" className="form-control" className="form-control" rows="3" required="required" value="Lorem ipsum dolor." {...content}></textarea>
+          <label>{appConfig.labels.content}</label>
+          <textarea name="content" className="form-control" className="form-control" rows="3" {...content}></textarea>
         </div>
+
         <div className="pull-right">
+          <button type="button" className="btn btn-default" onClick={() => load(data)}>Load Dummy Data</button>
+          <button type="button" className="btn btn-default" disabled={submitting} onClick={()=> load(initalInquiryData)} > Clear Values</button>
           <button  disabled={submitting} className={'btn ' + (submitting ? 'disabled' : 'btn-success') } onClick={handleSubmit}>Submit</button> 
         </div>
       </form>
@@ -58,10 +84,14 @@ class InquiryPostFormWidget extends Component {
 }
 
 InquiryPostFormWidget = reduxForm({
-  form: 'inquiryPostForm', // a unique name for this form
-  fields: ['personCount', 'startDate', 'endDate', 'email', 'mobile', 'subject', 'content']
-})(InquiryPostFormWidget)
-
+    form: 'inquiryPostForm', // a unique name for this form
+    fields: ['personCount', 'startDate', 'endDate', 'email', 'mobile', 'subject', 'content']
+  },
+  state => ({ // mapStateToProps
+    initialValues: state.apiTrippian.get('inquiry') // will pull state into form's initialValues
+  }), {
+    load: setInquiry
+  })(InquiryPostFormWidget)
 
 InquiryPostFormWidget.displayName = 'InquiryPostFormWidget'
 
