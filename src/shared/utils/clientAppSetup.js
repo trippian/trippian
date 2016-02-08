@@ -17,7 +17,7 @@ import {
 from './clientUtils'
 
 import {
-  setLocale, setLocaleMessages, setUser
+  setLocale, setLocaleMessages, setUser, setShowAdminButtons
 }
 from '../../client/redux/actionCreators'
 import {
@@ -25,6 +25,12 @@ import {
   getCookieByName
 }
 from '../../shared/utils/clientUtils'
+
+import {
+  adminOnly as appConfig
+}
+from '../../client/config/appConfig'
+
 
 export function initializeAppStateWithLocale(locale = 'en-US') {
   //set the local 
@@ -49,9 +55,14 @@ export function initAppStateUserWithCookie() {
   }
 }
 
+
 export function initApp() {
   let locale = store.getState().appState.get('locale') || getLocaleFromQueryString(window.location.search)
   initializeAppStateWithLocale(locale)
   initAppStateUserWithCookie()
     //TODO: add initStateFromLocalStorage() 
+    // hide/hide admin buttons based on config 
+    // 
+    // show / hide certain buttons based on if the user is admin or the appConfig 
+  store.dispatch(setShowAdminButtons(appConfig.showAdminButtons))
 }

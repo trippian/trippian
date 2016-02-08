@@ -66,6 +66,7 @@ class TrippianPostFormWidget extends Component {
       bio: 'Just a curious soul',
       introduction: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam itaque, corporis ipsum facilis asperiores praesentium impedit eius sapiente animi nisi.',
     }
+    const showAdminButtons = store.getState().appState.get('showAdminButtons')
 
     return (
 
@@ -104,8 +105,8 @@ class TrippianPostFormWidget extends Component {
        </div>
        <div className="pull-right">
          <button disabled={this.props.isFileUploading || submitting} className={'btn ' + (this.props.isFileUploading ? 'disabled' : 'btn-success') } onClick={this.handleSubmit.bind(this)}>{appConfig.buttons.submit}</button> 
-         <button type="button" className="btn btn-default" disabled={submitting} onClick={()=> load(emptyData)} > {appConfig.buttons.reset}</button>
-         <button type="button" className="btn btn-default" onClick={() => load(data)}>{appConfig.buttons.load}</button>
+         {showAdminButtons && <button type="button" className="btn btn-default" disabled={submitting} onClick={()=> load(emptyData)} > {appConfig.buttons.reset}</button>}
+         {showAdminButtons && <button type="button" className="btn btn-default" onClick={() => load(data)}>{appConfig.buttons.load}</button>}
        </div>
      </form>
     )
@@ -126,7 +127,7 @@ TrippianPostFormWidget = reduxForm({
 
 TrippianPostFormWidget.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  resetForm: PropTypes.func.isRequired
+  resetForm: PropTypes.func
     // submitting: PropTypes.bool.isRequired
 }
 
