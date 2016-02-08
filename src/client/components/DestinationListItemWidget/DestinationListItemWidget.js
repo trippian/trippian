@@ -11,11 +11,12 @@ from '../index'
 
 
 const DestinationListItemWidget = ({
-  name, id, feature
+  name, id, feature, thumbnail
 }) => {
+  const photo = thumbnail ? thumbnail : feature
   const styles = {
     backgroundImage: {
-      backgroundImage: `url(${feature})`
+      backgroundImage: `url(${photo})`
     }
   }
 

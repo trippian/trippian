@@ -9,13 +9,13 @@ const get = (url) => {
   return fetch(url)
     .then((res) => {
       if (res.status >= 400) {
+        log.error('bad response from server')
         throw new Error('Bad response from server')
       }
-      log.info('*** got data from fetch', res)
       return res.json()
     })
     .catch(function (error) {
-      log.info('getting failed at fetch', error)
+      log.error('getting failed at fetch', error)
     })
 }
 
@@ -31,13 +31,14 @@ const post = (url, data) => {
     })
     .then((res) => {
       if (res.status >= 400) {
+        log.error('bad response from server')
         throw new Error('Bad response from server')
       }
       return res.json()
 
     })
     .catch(function (error) {
-      log.info('posting failed at fetch', error)
+      log.error('posting failed at fetch', error)
     })
 }
 
@@ -52,13 +53,14 @@ const put = (url, data) => {
     })
     .then((res) => {
       if (res.status >= 400) {
+        log.error('bad response from server')
         throw new Error('Bad response from server')
       }
       return res.json()
 
     })
     .catch(function (error) {
-      log.info('putting failed at fetch', error)
+      log.error('putting failed at fetch', error)
     })
 }
 
@@ -68,12 +70,13 @@ const deleteApi = (url) => {
     })
     .then((res) => {
       if (res.status >= 400) {
+        log.error('bad response from server')
         throw new Error('Bad response from server')
       }
       return res.json()
     })
     .catch((error) => {
-      log.info('deleting failed at fetch', error, url)
+      log.error('deleting failed at fetch', error, url)
     })
 }
 

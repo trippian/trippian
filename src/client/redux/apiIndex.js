@@ -1,7 +1,7 @@
 import {
   getPopularDestinations, getPopularTrippians,
   deleteInquiryById,
-  postDestination,
+  postDestination, putDestination,
   postTrip, voteTrip, deleteTripById, toggleSaveTrip, getTripById,
   postUser,
   postTrippian, putTrippian,
@@ -21,7 +21,7 @@ from './reducers/apiTrippianReducer'
 export default {
   getPopularDestinations, getPopularTrippians,
   deleteInquiryById,
-  postDestination,
+  postDestination, putDestination,
   postTrip, voteTrip, deleteTripById, toggleSaveTrip, getTripById,
   postUser,
   postTrippian, putTrippian,

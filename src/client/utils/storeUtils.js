@@ -64,7 +64,8 @@ export function setAppStateUser(isLogin = true) {
 export function attachInfoToData(data, {
   user = false, userId = false, isAdmin = false, isTripian = false, isNoUserId = false,
     userIdAsSenderId = false, userIdAsTrippianId = false, album = false, feature = false, searchAsDestination = false, searchAsName = false,
-    displayName = false, username = false, createdAt = true
+    displayName = false, username = false, createdAt = true,
+    isPutDestination = false
 }) {
   // neo4j can't store object, have to add all fields as properties
   if (user) {
@@ -79,8 +80,7 @@ export function attachInfoToData(data, {
     data.tempId = data.id
     delete data.id
   }
-  data.createdAt = new Date()
-  log.info('store util', data)
+
   if (userId) data.userId = store.getState().appState.get('user').id
   if (isAdmin) data.isAdmin = true //TODO: will need to coordinate with the form
   if (isTripian) data.isTrippian = true
@@ -94,8 +94,8 @@ export function attachInfoToData(data, {
       delete data.album
     }
   }
-
-  if (feature) {
+  // process feature image. TODO: add more logic control 
+  if (feature && !data.feature) {
     if (data.album && data.album.length > 0) {
       data.feature = data.album[0]
     } else {
@@ -112,6 +112,17 @@ export function attachInfoToData(data, {
     data.lng = search.location.lng
   }
 
+  if (isPutDestination) {
+    delete data.createdAt
+    delete data.lng
+    delete data.lat
+    delete data.name
+    const destination = store.getState().apiTrippian.get('destination')
+    data.id = destination.id
+      // data.name = destination.name
+      // data.updatedAt = new Date()  // will do this at server side 
+      // delete data.album  // is this causing trouble?
+  }
   return data
 }
 

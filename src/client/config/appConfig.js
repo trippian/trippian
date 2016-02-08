@@ -38,6 +38,7 @@ const defaults = {
         name: 'Destiantion',
         description: 'Description',
         whyVisit: 'Why Visit',
+        thumbnail: 'Thumbnail Image',
         feature: 'Feature Image',
         featureNote: 'If this is empty, the first uploaded photo will be used as feature'
       }
@@ -70,6 +71,7 @@ const defaults = {
         title: 'Title',
         summary: 'Summary',
         details: 'Details',
+        thumbnail: 'Thumbnail Image',
         feature: 'Feature',
         album: 'Album'
       }
@@ -106,7 +108,7 @@ export default {
   appDescription: 'your local travel companion',
   logo: defaults.logo,
   log: {
-    logLevel: logOn ? 'info' : 'error', // options: trace, debug, info, warn, error, fatal
+    logLevel: logOn ? 'warn' : 'error', // options: trace, debug, info, warn, error, fatal
     isTranslationMode: isTranslationMode
   },
   API_HOST: `${HOST}/api/`,
@@ -282,6 +284,8 @@ export default {
   DestinationDetail: {
     whyVisitTitle: 'Why Visit',
     whyVisitSubtitle: '',
+    descriptionTitle: 'Description',
+    descriptionSubtitle: '',
     popularTripsTitle: 'Popular Trips',
     popularTripsSubtitle: '',
     map: defaults.map
@@ -647,7 +651,7 @@ export default {
   ReviewListItemWidget: {},
   ReviewListWidget: {},
   PreviewImageWidget: {},
-  SaveTripButton: {},
+  SaveTripButtonWidget: {},
   SearchBoxWidget: {
     placeholderText: 'Bali',
     searchButtonText: 'Go'

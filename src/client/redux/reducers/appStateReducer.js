@@ -5,10 +5,18 @@
 
 import log from '../../log'
 import {
-  SET_LOCALE, SET_LOCALE_MESSAGES, SET_USERNAME, SET_DISPLAYNAME, SET_ALERT, SET_FILES, SET_USER, SET_FORM_SUBMITTED, SET_FORM_SUBMITTING, SET_SEARCH_TEXT, SET_HISTORY
+  SET_LOCALE, SET_LOCALE_MESSAGES, SET_USERNAME, SET_DISPLAYNAME, SET_ALERT, SET_FILES, SET_USER, SET_FORM_SUBMITTED, SET_FORM_SUBMITTING, SET_SEARCH_TEXT, SET_HISTORY, SET_FORM_EDITING_MODE
 }
 from '../actionTypes'
 import * as initialStateData from '../initalState'
+export function setFormEditingMode(isFormEditingMode) {
+  return {
+    type: SET_FORM_EDITING_MODE,
+    payload: {
+      isFormEditingMode
+    }
+  }
+}
 
 const defaultMessages = require('../../../../translate/lang/en-US.json')
 import {
@@ -21,6 +29,7 @@ const initialState = new Map({
   // once finishing cleaning up the data, set isFormSubmitted to false again 
   isFormSubmitted: false,
   isFormSubmitting: false,
+  isFormEditingMode: true,
   files: [],
   alert: initialStateData.alert,
   user: initialStateData.user,
@@ -59,6 +68,8 @@ export default function appStateReducer(state = initialState, action) {
     case SET_HISTORY:
       return state.set('history', action.payload.history)
 
+    case SET_FORM_EDITING_MODE:
+      return state.set('isFormEditingMode', action.payload.isFormEditingMode)
     default:
       return state
   }

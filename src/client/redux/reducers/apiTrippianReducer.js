@@ -33,7 +33,7 @@ from 'immutable'
 
 import {
   fetchGetDestinationsByCategory, fetchGetTrippiansByCategory,
-  fetchGetDestinations, fetchDeleteDestinationById, fetchGetDestinationById, fetchGetDestinationByName, fetchPostDestination,
+  fetchGetDestinations, fetchDeleteDestinationById, fetchGetDestinationById, fetchGetDestinationByName, fetchPostDestination, fetchPutDestination,
   fetchGetTrippians, fetchDeleteTrippianById, fetchGetTrippianById, fetchPostTrippian, fetchPutTrippian,
   fetchGetUsers, fetchDeleteUserById, fetchGetUserById, fetchPostUser,
   fetchGetInquiries, fetchDeleteInquiryById, fetchGetInquiryByReceiverId, fetchPostInquiry,
@@ -300,6 +300,30 @@ export function postDestination(data) {
         dispatch(addAdminDestination(destination))
         dispatch(setFormSubmitted(true))
         alertSuccess('Successfully added destination')
+      })
+      .catch(error => apologize(error))
+  }
+}
+
+export function putDestination(data) {
+  store.dispatch(setFormSubmitting())
+  alertInfo('Submitting the destination information now...')
+  attachInfoToData(data, {
+    // searchAsName: true,  
+    album: true,
+    // feature: true,
+    isPutDestination: true // will delete a few fields and add UpdatedAt
+  })
+  console.log('-- putting a destination now in reducer', data)
+
+  return (dispatch) => {
+    return fetchPutDestination(data)
+      .then(destination => {
+        console.log('--- already put', destination)
+          // dispatch(updateDestination(destination))  //TODO: update the front-end view
+          // dispatch(addAdminDestination(destination))  // TODO: update the admin view
+        dispatch(setFormSubmitted(true))
+        alertSuccess('Successfully updated destination')
       })
       .catch(error => apologize(error))
   }
