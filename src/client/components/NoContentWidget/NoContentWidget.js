@@ -1,7 +1,11 @@
 import React from 'react'
+import {
+  NoContentWidget as appConfig
+}
+from '../../config/appConfig'
 
 const NoContentWidget = ({
-  name = 'NoContentWidget', message = 'There is no content'
+  name = 'NoContentWidget', message = appConfig.noContentMessage
 }) => {
   return (
     <div> 

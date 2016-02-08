@@ -9,8 +9,11 @@ from 'react-redux'
 import {
   JumbotronDestinationWidget, CarouselWidget, SectionHeaderWidget, TripListWidget
 }
-
 from '../../components/index'
+import {
+  TripDetail as appConfig
+}
+from '../../config/appConfig'
 
 
 function mapStateToProps(state) {
@@ -43,14 +46,14 @@ export default class TripDetail extends Component {
     return (
       <div>
         <div className="row section">
-          <SectionHeaderWidget title="Summary"/>
+          <SectionHeaderWidget title={appConfig.summarySectionTitle}/>
           <div className="section-body">
             {summary}
           </div>
         </div>
 
         <div className="row section">
-          <SectionHeaderWidget title="Details"/>
+          <SectionHeaderWidget title={appConfig.detailsSectionTitle}/>
           <div className="section-body">
             {details}
           </div>
@@ -58,7 +61,7 @@ export default class TripDetail extends Component {
 
         {album && 
           <div className="row section">
-            <SectionHeaderWidget title="Photos"/>
+            <SectionHeaderWidget title={appConfig.photosSectionTitle}/>
             <div className="section-body">
                 <CarouselWidget dataList={album}/>
             </div>

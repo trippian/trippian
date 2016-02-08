@@ -1,7 +1,11 @@
 import React from 'react'
+import {
+  SectionHeaderWidget as appConfig
+}
+from '../../config/appConfig'
 
 const SectionHeaderWidget = ({
-  title = 'section title', subTitle
+  title = appConfig.title, subTitle = appConfig.subTitle
 }) => {
   return (
     <div className="section-header text-center">

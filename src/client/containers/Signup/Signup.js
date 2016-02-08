@@ -1,11 +1,15 @@
 import React, {
   Component, PropTypes
-} 
+}
 from 'react'
 import {
   SignupButtonsWidget, SignupFormWidget
 }
 from '../../components/index'
+import {
+  Signup as appConfig
+}
+from '../../config/appConfig'
 
 export default class Signup extends Component {
   constructor(props) {
@@ -15,11 +19,11 @@ export default class Signup extends Component {
   render() {
     return (
       <div className="signup">
-        <h3>Signup</h3>
-        <a href="#/login/success">Login Success Page</a>
+        <h3>{appConfig.title}</h3>
         <SignupButtonsWidget />
+        <SignupFormWidget />
       </div>
-      )
+    )
   }
 }
 

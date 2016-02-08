@@ -3,15 +3,19 @@ import {
   TripListItemWidget, NoContentWidget
 }
 from '../index'
+import {
+  TripListWidget as appConfig
+}
+from '../../config/appConfig'
 
 const TripListWidget = ({
-  dataList = [], emptyMessage = 'There is no trip yet. '
+  dataList = [], noContentMessage = appConfig.noContentMessage
 }) => {
   console.log('inside Trip list', dataList, dataList.length)
   return (
     <div className="popular-Trips section-body clearfix">
       {dataList.length === 0 && 
-        <NoContentWidget message={emptyMessage} />
+        <NoContentWidget message={noContentMessage} />
       }
       { 
          dataList.map((trip, key) => (

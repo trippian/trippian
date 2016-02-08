@@ -6,6 +6,11 @@ import {
   JumbotronWidget
 }
 from '../../components/index'
+import {
+  PopularTrips as appConfig
+}
+from '../../config/appConfig'
+
 export default class PopularTrips extends Component {
   constructor(props) {
     super(props)
@@ -14,7 +19,7 @@ export default class PopularTrips extends Component {
   render() {
     return (
       <div id="destination-page">
-        <JumbotronWidget title="Popular Destinations" subTitle="Explore the top rated destinations around the world"/>
+        <JumbotronWidget title={appConfig.title} subTitle={appConfig.subTitle}/>
         <div className="container main-content-container">
           <div className="col-sm-12 col-md-10 col-md-offset-1 content-container">
               <h2>Popular Destinations</h2>

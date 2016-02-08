@@ -1,3 +1,4 @@
+// not in use
 import React from 'react'
 
 const FacebookAvatarWidget = ({

@@ -4,7 +4,7 @@ import React, {
 from 'react'
 
 import {
-  JumbotronWidget
+  JumbotronShortWidget, AdminMenuWidget
 }
 from '../../components/index'
 
@@ -13,6 +13,12 @@ import {
   Link
 }
 from 'react-router'
+import {
+  Admin as appConfig
+}
+
+from '../../config/appConfig'
+
 export default class Admin extends Component {
   constructor(props) {
     super(props)
@@ -23,26 +29,20 @@ export default class Admin extends Component {
     console.log('is user admin?', isAdmin)
     return (
       <div id="admin-page">
-        <JumbotronWidget title="Admin Dashboard" subTitle="Lorem ipsum dolor sit amet."/>
-      <div className="container main-content-container">
-        <div className="col-sm-12 col-md-12 content-container">
-        {!isAdmin && 
-           <h3>You donot have access to this page. Login as admin first</h3>
-        }
-        {isAdmin &&
-            <div>
-              <ul className="list-inline">
-                <li><Link to='admin/destination'>Destination </Link></li>
-                <li><Link to='admin/user'>User </Link></li>
-                <li><Link to='admin/trippian'>Trippian </Link></li>
-                <li><Link to='admin/inquiry'>Inquiry </Link></li>
-                <li><Link to='admin/trip'>Trip </Link></li>
-              </ul>
-              <hr/>
-              {this.props.children}
-            </div>
-         }
-      </div>
+        <JumbotronShortWidget title={appConfig.title} subTitle={appConfig.subTitle}/>
+          <div className="container main-content-container">
+            <div className="col-sm-12 col-md-12 content-container">
+            {!isAdmin && 
+               <h3>{appConfig.noAccessMessage}</h3>
+            }
+            {isAdmin &&
+                <div>
+                 <AdminMenuWidget />
+                  <hr/>
+                  {this.props.children}
+                </div>
+             }
+          </div>
         </div>
     </div>
     )

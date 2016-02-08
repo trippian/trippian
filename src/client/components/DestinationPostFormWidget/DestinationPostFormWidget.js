@@ -19,6 +19,11 @@ import {
   AutoSuggestBoxWidget
 }
 from '../index'
+import {
+  DestinationPostFormWidget as appConfig
+}
+from '../../config/appConfig'
+
 class DestinationPostFormWidget extends Component {
   constructor(props) {
     super(props)
@@ -80,26 +85,26 @@ class DestinationPostFormWidget extends Component {
       <form onSubmit={handleSubmit} role="form">
           <div className="row padding-row">
               <div className="pull-left">
-                <label>Destination</label>
+                <label>{appConfig.labels.name}</label>
                 <AutoSuggestBoxWidget />
               </div>
           </div>
           <div className="form-group">
-            <label>Description</label>
-            <textarea name="Description" className="form-control" className="form-control" rows="2" required="required" value="a great place" {...description}></textarea>
+            <label>{appConfig.labels.description}</label>
+            <textarea name="Description" className="form-control" className="form-control" rows="2" required="required"  {...description}></textarea>
           </div>
           <div className="form-group">
-            <label>Why Visit</label>
-            <textarea name="whyVisit" className="form-control" className="form-control" rows="3" required="required" value="Beijing is the capital of the People's Republic of China and one of the most populous cities in the world." {...whyVisit}></textarea>
+            <label>{appConfig.labels.whyVisit}</label>
+            <textarea name="whyVisit" className="form-control" className="form-control" rows="3" required="required" {...whyVisit}></textarea>
           </div>
           <div className="form-group">
-            <label>Feature Image</label> <i className="text-muted">If this is empty, the first uploaded photo will be used as feature</i>
+            <label>{appConfig.labels.feature}</label> <i className="text-muted">{appConfig.labels.featureNote}</i>
             <input type="url" className="form-control" value='' placeholder="http://..." {...feature}/>
           </div>
           <div className="pull-right">
-            <button  disabled={this.props.isFileUploading || submitting} className={'btn ' + (this.props.isFileUploading ? 'disabled' : 'btn-success') } onClick={this.handleSubmit.bind(this)}>Submit</button> 
-            <button type="button" className="btn btn-default" disabled={submitting} onClick={()=> load(emptyData)} > Clear Values</button>
-            <button type="button" className="btn btn-default" onClick={() => load(data)}>Load Dummy Data</button>
+            <button  disabled={this.props.isFileUploading || submitting} className={'btn ' + (this.props.isFileUploading ? 'disabled' : 'btn-success') } onClick={this.handleSubmit.bind(this)}> {appConfig.buttons.submit}</button> 
+            <button type="button" className="btn btn-default" disabled={submitting} onClick={()=> load(emptyData)} > {appConfig.buttons.reset}</button>
+            <button type="button" className="btn btn-default" onClick={() => load(data)}> {appConfig.buttons.load}</button>
           </div>
         </form>
 

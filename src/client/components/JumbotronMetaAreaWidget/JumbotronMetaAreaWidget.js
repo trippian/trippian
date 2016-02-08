@@ -36,13 +36,14 @@ const JumbotronMetaAreaWidget = ({
                     <div className="left">
                         {isTripPage && <h3>{title}</h3>}
                         {!isTripPage && <h3>{name}</h3>}
-                        <StarRatingWidget stars={averageRating} />
+
                         <UserLinkWidget {...user}/>
+                        <StarRatingWidget stars={averageRating} />
                         <span className="text-intro">
                             {slogan}
                         </span>
                     </div>
-                    {isContact && <div className="right"><ContactButtonWidget to={`trippian/${id}/contact`} /></div> }
+                    {isContact && <div className="right"><ContactButtonWidget to={`trippian/${id}/contact`} name={name} /></div> }
                 </div>
             </div>
         </div>

@@ -20,6 +20,7 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
   - [ ] Improve Redux Store 
 - General 
   - [ ] Clean up front-end messages 
+  - [ ] Can't make inquiry to self problem 
 
 - Admin 
   - [X] Delete Trip By Id
@@ -45,7 +46,9 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
   - [X] Signup Form 
   - [ ] Signin Form 
   - [X] OperationMenuWidget (hold edit, delete... buttons) - Audrey
+  - [ ] Hide 'Load Dummy Data' from non-admin users 
   - [ ] Fix save button position in trip list 
+  - [ ] Fix Signup / Signin form style 
   - [ ] Edit Form 
   - [ ] Refactor console.log with jsLogger
   - [ ] Save and recover redux store from localStorage

@@ -7,12 +7,13 @@ from '../index'
 
 
 const InquiryListWidget = ({
-  name = 'InquiryListWidget', dataList = [], emptyMessage = 'There is no inquiry'
+  name = 'InquiryListWidget', dataList = [], noContentMessage
+ = 'There is no inquiry'
 }) => {
   return (
     <div className="section-body inquiry-list">
       {dataList.length === 0 && 
-        <NoContentWidget message={emptyMessage} />
+        <NoContentWidget message={noContentMessage} />
       }
       { dataList.map((inquiry, key) => (
                <InquiryListItemWidget key={key} {...inquiry} />
