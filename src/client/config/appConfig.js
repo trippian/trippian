@@ -108,7 +108,7 @@ export default {
   appDescription: 'your local travel companion',
   logo: defaults.logo,
   log: {
-    logLevel: logOn ? 'info' : 'error', // options: trace, debug, info, warn, error, fatal
+    logLevel: logOn ? 'warn' : 'error', // options: trace, debug, info, warn, error, fatal
     isTranslationMode: isTranslationMode
   },
   API_HOST: `${HOST}/api/`,
@@ -284,6 +284,8 @@ export default {
   DestinationDetail: {
     whyVisitTitle: 'Why Visit',
     whyVisitSubtitle: '',
+    descriptionTitle: 'Description',
+    descriptionSubtitle: '',
     popularTripsTitle: 'Popular Trips',
     popularTripsSubtitle: '',
     map: defaults.map

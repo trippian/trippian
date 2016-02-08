@@ -4,7 +4,7 @@ import React, {
 }
 from 'react'
 import {
-  getDestinationById, postDestination
+  getDestinationById, putDestination
 }
 from '../../redux/apiIndex'
 import store from '../../redux/store'
@@ -23,6 +23,7 @@ from '../../components/index'
 
 function mapStateToProps(state) {
   return {
+    isFormEditingMode: state.appState.get('isFormEditingMode'),
     destination: state.apiTrippian.get('destination'),
     isFormSubmitting: state.appState.get('isFormSubmitting'),
     isFormSubmitted: state.appState.get('isFormSubmitted')
@@ -45,13 +46,11 @@ export default class AdminDestinationListItemEdit extends Component {
   }
 
   handleSubmit(data) {
-    log.info('posting data from form, submitting?', data, this.props.isFormSubmitted, this.props.isFormSubmitting)
-    store.dispatch(postDestination(data))
-    this.setAlert('success', 'Successfully submitted data', `${data.name} ${data.description}`)
+    log.info('updating data from form, submitting?', data, this.props.isFormSubmitted, this.props.isFormSubmitting)
+    store.dispatch(putDestination(data))
   }
   handleResetForm() {
     log.info('reseting')
-
   }
 
 
@@ -60,7 +59,7 @@ export default class AdminDestinationListItemEdit extends Component {
       name, description, feature, whyVisit, album, lat, lng
     } = this.props.destination
     log.info('inside AdminDestinationListItemEdit render', this.props.destination)
-
+    console.log('editing mode?', this.props.isFormEditingMode)
     return (
       <div id="admin-destination-page">
         <h3>AdminDestinationListItemEdit</h3>
@@ -68,8 +67,9 @@ export default class AdminDestinationListItemEdit extends Component {
           onSubmit={this.handleSubmit.bind(this)} 
           resetForm={this.handleResetForm.bind(this)} 
           submitting={this.props.isFormSubmitting}
-          data={this.props.destination} />
-
+          data={this.props.destination}
+          isFormEditingMode={this.props.isFormEditingMode} 
+          destinationName={this.props.destination.name}/>
         {description} {name}
         
         <h2>{whyVisit}</h2>

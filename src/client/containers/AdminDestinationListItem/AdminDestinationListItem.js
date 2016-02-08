@@ -49,10 +49,11 @@ export default class AdminDestinationListItem extends Component {
 
   render() {
     const {
-      name, description, feature, whyVisit, album, lat, lng
+      name, description, feature, thumbnail = '', whyVisit, album, lat, lng
     } = this.props.destination
     return (
       <div id="admin-destination-list-item-page">
+        <img src={thumbnail} alt=""/>
         <img src={feature} alt=""/>
         <h3>{name}</h3>
         <p><b>Description:</b> {description}</p>

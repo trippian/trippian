@@ -12,6 +12,7 @@ export const SET_DASHBOARD = 'appState.SET_DASHBOARD'
 export const FETCH_REMOTE_RESOURCE_FAIL = 'appState.FETCH_REMOTE_RESOURCE_FAIL'
 export const SET_SEARCH_TEXT = 'appState.SET_SEARCH_TEXT'
 export const SET_HISTORY = 'appState.SET_HISTORY'
+export const SET_FORM_EDITING_MODE = 'appState.SET_FORM_EDITING_MODE'
 
 //destination
 export const SET_DESTINATIONS = 'apiTrippian.SET_DESTINATIONS'
@@ -20,6 +21,7 @@ export const GET_DESTINATIONS_FAIL = 'apiTrippian.GET_DESTINATIONS_FAIL'
 export const GET_DESTINATION_BY_ID = 'apiTrippian.GET_DESTINATION_BY_ID'
 export const ADD_DESTINATION = 'apiTrippian.ADD_DESTINATION'
 export const REMOVE_DESTINATION = 'apiTrippian.REMOVE_DESTINATION'
+export const PUT_DESTINATION = 'apiTrippian.PUT_DESTINATION'
 
 //Trippian
 export const SET_TRIPPIANS = 'apiTrippian.SET_TRIPPIANS'
