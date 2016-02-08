@@ -1,8 +1,9 @@
+// keep this file the same level as entry.js so it's easy to be consistent with import path
 import bunyan from 'bunyan'
 import {
   log as appConfig
 }
-from '../config/appConfig'
+from '../client/config/appConfig'
 
 export default bunyan.createLogger({
   name: 'trippian',

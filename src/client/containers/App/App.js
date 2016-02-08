@@ -1,4 +1,4 @@
-import log from '../../utils/log'
+import log from '../../log'
 import React, {
   Component, PropTypes
 }
