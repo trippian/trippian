@@ -23,7 +23,9 @@ from '../../components/index'
 
 function mapStateToProps(state) {
   return {
-    inquiry: state.apiTrippian.get('inquiry')
+    inquiry: state.apiTrippian.get('inquiry'),
+    isFormSubmitted: state.appState.get('isFormSubmitted'),
+    isFormSubmitting: state.appState.get('isFormSubmitting')
   }
 }
 
@@ -40,40 +42,39 @@ export default class Contact extends Component {
       }
     }
   }
-
+  componentWillReceiveProps(nextProps) {
+    console.log('new props', nextProps, nextProps.isFormSubmitted, nextProps.isFormSubmitting)
+      // Audrey: have a little trouble at with google auth error at server side, and never able to receive isFormSubmitted state. Could be env related 
+      // For now, we know the data is inserted to db, so we'll transition to the new state as if the isFormSubmitted is true  
+    if (nextProps.isFormSubmitting) {
+      const {
+        history
+      } = nextProps
+      history.pushState({
+        state: 'dashboard'
+      }, 'dashboard/my-inquiries')
+    }
+  }
   handleAlertDismiss() {
     this.setAlert()
   }
 
   handleSubmit(data) {
-    log.info('posting data from form', data)
-    store.dispatch(postInquiry(data))
-      // this.setAlert('success', 'Successfully submitted inquiry')
-  }
-  setAlert(type = 'success', title = '', message = '') {
-    this.setState({
-      isInquirySubmitted: false,
-      alert: {
-        type: type,
-        title: title,
-        message: message
-      }
-    })
-  }
+      log.info('posting data from form', data)
+      store.dispatch(postInquiry(data))
+    }
+    //TODO: add loading during submiting 
   render() {
     const {
       type, title, message
     } = this.state.alert
-
+    console.log('-- inside contact', this.props.isFormSubmitted, this.props.isFormSubmitting)
     return (
       <div>
-        {title !== '' && 
-          <Alert bsStyle={type} dismissAfter={5000} onDismiss={this.handleAlertDismiss.bind(this)}>
-            <h4>{title}</h4>
-            <p>{message}</p>
-          </Alert>
-        }
-        {! this.state.isInquirySubmitted && <InquiryPostFormWidget onSubmit={this.handleSubmit.bind(this)} /> }
+        <h2>Hello Contact </h2>
+        {!this.props.isFormSubmitted && <InquiryPostFormWidget onSubmit={this.handleSubmit.bind(this)} /> }
+        {this.props.isFormSubmitting && <h3> Submitting the form now </h3>}
+        {this.props.isFormSubmitted && <h2>Submitted form. Check dashboard now</h2>}
       </div>
     )
   }

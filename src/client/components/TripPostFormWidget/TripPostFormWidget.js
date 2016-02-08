@@ -1,6 +1,6 @@
 import log from '../../log'
 import React, {
-  Component
+  Component, PropTypes
 }
 from 'react'
 import {
@@ -59,7 +59,9 @@ class TripPostFormWidget extends Component {
       },
       handleSubmit,
       submitting,
+      destinationName,
       resetForm,
+      isFormEditingMode,
       load
 
     } = this.props
@@ -81,7 +83,9 @@ class TripPostFormWidget extends Component {
         <div className="row padding-row">
             <div className="pull-left">
               <label>{appConfig.labels.destination}</label>
-              <AutoSuggestBoxWidget />
+              {isFormEditingMode && <h1>{destinationName}</h1> }
+              {!isFormEditingMode && <AutoSuggestBoxWidget />}
+
             </div>
         </div>
         <div className="form-group">
@@ -128,6 +132,13 @@ TripPostFormWidget = reduxForm({
     load: setTrip
   })(TripPostFormWidget)
 
+TripPostFormWidget.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  resetForm: PropTypes.func.isRequired,
+  isFormEditingMode: PropTypes.bool,
+  destinationName: PropTypes.string
+    // submitting: PropTypes.bool.isRequired
+}
 
 
 TripPostFormWidget.displayName = 'TripPostFormWidget'

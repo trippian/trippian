@@ -68,8 +68,6 @@ export default class AdminDestinationList extends Component {
   handleDelete(id) {
     log.info('deleting destination called', id)
     store.dispatch(deleteAdminDestinationById(id))
-    this.setAlert('success', 'Successfully deleted data', id)
-
   }
   handleAlertDismiss() {
     this.setAlert()
@@ -79,8 +77,8 @@ export default class AdminDestinationList extends Component {
   handleSubmit(data) {
     log.info('posting data from form, submitting?', data, this.props.isFormSubmitted, this.props.isFormSubmitting)
     store.dispatch(postDestination(data))
-    this.setAlert('success', 'Successfully submitted data', `${data.name} ${data.description}`)
   }
+
   handleResetForm() {
 
   }
@@ -119,13 +117,11 @@ export default class AdminDestinationList extends Component {
           <button onClick={()=> this.setState({showForm: !this.state.showForm})} className="btn btn-primary">Create a Destination</button>
         </div>
           {this.state.showForm && 
-            <div>
               <DestinationPostFormWidget 
                 onSubmit={this.handleSubmit.bind(this)} 
                 resetForm={this.handleResetForm.bind(this)} 
                 submitting={this.props.isFormSubmitting}
                 data={this.props.destination} /> 
-              </div>
           }
 
           <br/>

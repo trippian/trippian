@@ -65,7 +65,7 @@ export function attachInfoToData(data, {
   user = false, userId = false, isAdmin = false, isTripian = false, isNoUserId = false,
     userIdAsSenderId = false, userIdAsTrippianId = false, album = false, feature = false, searchAsDestination = false, searchAsName = false,
     displayName = false, username = false, createdAt = true,
-    isPutDestination = false
+    isPutDestination = false, isPutTrip = false
 }) {
   // neo4j can't store object, have to add all fields as properties
   if (user) {
@@ -123,6 +123,15 @@ export function attachInfoToData(data, {
       // data.updatedAt = new Date()  // will do this at server side 
       // delete data.album  // is this causing trouble?
   }
+  if (isPutTrip) {
+    delete data.createdAt
+    delete data.lng
+    delete data.lat
+    const trip = store.getState().apiTrippian.get('trip')
+    data.id = trip.id
+    delete data.album
+  }
+
   return data
 }
 
