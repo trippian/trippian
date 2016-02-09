@@ -76,9 +76,8 @@ export function initApp() {
     let cachedMessages = cachedAppState.messages
     store.dispatch(setAppState(cachedAppState))
     store.dispatch(setLocaleMessages(cachedMessages))
-  } else {
-    initAppStateUserWithCookie()
   }
+  initAppStateUserWithCookie()
   store.subscribe(() => {
     log.info('--- store updates', store.getState().appState)
     setDataInLocalStorage(store.getState().appState, 'trippian.appState')
