@@ -43,7 +43,7 @@ export default class Contact extends Component {
     }
   }
   componentWillReceiveProps(nextProps) {
-    console.log('new props', nextProps, nextProps.isFormSubmitted, nextProps.isFormSubmitting)
+    console.info('new props', nextProps, nextProps.isFormSubmitted, nextProps.isFormSubmitting)
       // Audrey: have a little trouble at with google auth error at server side, and never able to receive isFormSubmitted state. Could be env related 
       // For now, we know the data is inserted to db, so we'll transition to the new state as if the isFormSubmitted is true  
     if (nextProps.isFormSubmitting) {
@@ -68,7 +68,7 @@ export default class Contact extends Component {
     const {
       type, title, message
     } = this.state.alert
-    console.log('-- inside contact', this.props.isFormSubmitted, this.props.isFormSubmitting)
+    log.info('-- inside contact', this.props.isFormSubmitted, this.props.isFormSubmitting)
     return (
       <div>
         <h2>Hello Contact </h2>

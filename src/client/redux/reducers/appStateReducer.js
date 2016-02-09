@@ -5,7 +5,7 @@
 
 import log from '../../log'
 import {
-  SET_LOCALE, SET_LOCALE_MESSAGES, SET_USERNAME, SET_DISPLAYNAME, SET_ALERT, SET_FILES, SET_USER, SET_FORM_SUBMITTED, SET_FORM_SUBMITTING, SET_SEARCH_TEXT, SET_HISTORY, SET_FORM_EDITING_MODE, SET_SHOW_ADMIN_BUTTONS
+  SET_APP_STATE, SET_LOCALE, SET_LOCALE_MESSAGES, SET_USERNAME, SET_DISPLAYNAME, SET_ALERT, SET_FILES, SET_USER, SET_FORM_SUBMITTED, SET_FORM_SUBMITTING, SET_SEARCH_TEXT, SET_HISTORY, SET_FORM_EDITING_MODE, SET_SHOW_ADMIN_BUTTONS
 }
 from '../actionTypes'
 import * as initialStateData from '../initalState'
@@ -19,7 +19,7 @@ export function setFormEditingMode(isFormEditingMode) {
 }
 
 const defaultMessages = require('../../../../translate/lang/en-US.json')
-import {
+import Immutable, {
   Map
 }
 from 'immutable'
@@ -45,6 +45,9 @@ const initialState = new Map({
 
 export default function appStateReducer(state = initialState, action) {
   switch (action.type) {
+    case SET_APP_STATE:
+      return Immutable.fromJS(action.payload.appState)
+
     case SET_LOCALE:
       return state.set('locale', action.payload.locale)
     case SET_LOCALE_MESSAGES:

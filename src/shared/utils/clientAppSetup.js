@@ -7,9 +7,9 @@ import {
 from 'react-intl'
 import en from '../../client/locale-data/en'
 import zh from '../../client/locale-data/zh'
-import es from '../../client/locale-data/es'
-import de from '../../client/locale-data/de'
-import fr from '../../client/locale-data/fr'
+  // import es from '../../client/locale-data/es'
+  // import de from '../../client/locale-data/de'
+  // import fr from '../../client/locale-data/fr'
 
 import {
   getMessagesByLocale, readerUserFromCookie
@@ -17,7 +17,7 @@ import {
 from './clientUtils'
 
 import {
-  setLocale, setLocaleMessages, setUser, setShowAdminButtons
+  setLocale, setLocaleMessages, setUser, setShowAdminButtons, setAppState
 }
 from '../../client/redux/actionCreators'
 import {
@@ -41,9 +41,9 @@ export function initializeAppStateWithLocale(locale = 'en-US') {
   store.dispatch(setLocale('en-US'))
   addLocaleData(en)
   addLocaleData(zh)
-  addLocaleData(es)
-  addLocaleData(de)
-  addLocaleData(fr)
+    // addLocaleData(es)
+    // addLocaleData(de)
+    // addLocaleData(fr)
 
   const messages = getMessagesByLocale(locale)
   store.dispatch(setLocaleMessages(messages))
@@ -59,17 +59,28 @@ export function initAppStateUserWithCookie() {
   }
 }
 
-
+// we'll read user's cookie and set the user 
 export function initApp() {
   let locale = store.getState().appState.get('locale') || getLocaleFromQueryString(window.location.search)
   initializeAppStateWithLocale(locale)
-  initAppStateUserWithCookie()
-    //TODO: add initStateFromLocalStorage() 
-    // hide/hide admin buttons based on config 
-    // 
-    // show / hide certain buttons based on if the user is admin or the appConfig 
+
+  // hide/hide admin buttons based on config 
+  // show / hide certain buttons based on if the user is admin or the appConfig 
   store.dispatch(setShowAdminButtons(appConfig.showAdminButtons))
+
+  // if appState exisit in localStorage, read it and use it to set appState
+  let cachedAppState = getDataFromLocalStorage('trippian.appState')
+  log.info('---- ********* got app state from local storage', cachedAppState)
+  if (cachedAppState) {
+    // to prevent overwrite, we'll keep local
+    let cachedMessages = cachedAppState.messages
+    store.dispatch(setAppState(cachedAppState))
+    store.dispatch(setLocaleMessages(cachedMessages))
+  } else {
+    initAppStateUserWithCookie()
+  }
   store.subscribe(() => {
-    log.warn('--- store updates', store.getState().appState)
+    log.info('--- store updates', store.getState().appState)
+    setDataInLocalStorage(store.getState().appState, 'trippian.appState')
   })
 }

@@ -23,6 +23,11 @@
   "menu.item_en_us_description": "English",
   "menu.item_es_description": "西班牙语",
   "menu.item_zh_description": "中文",
+
+  "NavWidget.becomeATrippianButtonText": "成为翠平 ",
+  "NavWidget.loginButtonText": "登录",
+  "UserMenuWdiget.welcomeMessage": "你好",
+
   "nav-widget.welcome-message": "你好",
   "search-box-widget.search-button-text": "搜索",
   "search-box-widget.search-input-place-holder": "巴黎...",
