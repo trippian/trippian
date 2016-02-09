@@ -59,7 +59,7 @@ export default class AdminDestinationListItemEdit extends Component {
       name, description, feature, whyVisit, album, lat, lng
     } = this.props.destination
     log.info('inside AdminDestinationListItemEdit render', this.props.destination)
-    console.log('editing mode?', this.props.isFormEditingMode)
+    console.info('editing mode?', this.props.isFormEditingMode)
     return (
       <div id="admin-destination-edit-page">
         <h3>AdminDestinationListItemEdit</h3>

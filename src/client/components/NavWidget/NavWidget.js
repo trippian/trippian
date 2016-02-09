@@ -54,11 +54,21 @@ const NavWidget = ({
             <ul className="nav navbar-nav navbar-right">
                 {!isTrippian && <li>
                     <Link to='become-a-trippian' className="btn btn-bordered">
-                      {appConfig.becomeATrippianButtonText}
+                      
+                      <FormattedMessage
+                          id="NavWidget.becomeATrippianButtonText"
+                          description="becomeATrippianButtonText"
+                          defaultMessage={appConfig.becomeATrippianButtonText}/>
                     </Link>
                 </li>}
                 {isAuthed && <UserMenuWidget {...user}/>}
-                {!isAuthed && <li><Link to="login">{appConfig.loginButtonText} </Link></li>}
+                {!isAuthed && <li><Link to="login">
+                  <FormattedMessage
+                      id="NavWidget.loginButtonText"
+                      description="loginButtonText"
+                      defaultMessage={appConfig.loginButtonText}/>
+
+                  </Link></li>}
             </ul>
         </div>
     </nav>
