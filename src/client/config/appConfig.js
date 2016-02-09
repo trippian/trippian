@@ -8,7 +8,7 @@ const env = 'production' // comment this out for development
 
 let HOST = window.location.origin // enable this for deploy 
   // let HOST = 'http://localhost:4000'
-let isTranslationMode = false // need to turn logger off for translation
+let isTranslationMode = true // need to turn logger off for translation
 let logOn = false
 let showAdminButtons = false
 
