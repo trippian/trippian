@@ -460,7 +460,7 @@ footer {
 
 .search-box-widget {
     button {
-        background-color: rgba(122, 177, 59, 0.39);
+        background-color: rgba($primary-color, 0.75);
         border: none;
         padding: 10px 16px;
         // margin-left: -50px;
@@ -475,7 +475,7 @@ footer {
     width: 50%;
     margin: 1em auto;
     text-align: left;
-    background-color: rgba(14, 14, 14, 0.18);
+    background-color: rgba(255, 255, 255, 0.75);
     -webkit-transition: border 0.2s, box-shadow 0.2s;
     box-shadow: 0 0 1px #3d464d;
     border-radius: 5px;
@@ -506,7 +506,7 @@ footer {
     max-height: 25em;
     padding: 0;
     margin-top: -1px;
-    background-color: rgba(255, 255, 255, 0.31);
+    background-color: rgba(255, 255, 255, 0.75);
     border: 2px solid #267dc0;
     border-top-width: 0;
     overflow-x: hidden;
@@ -541,7 +541,7 @@ footer {
 }
 
 .geosuggest-item--active {
-    background: #267dc0;
+    background: $primary-color;
     color: #fff;
 }
 

@@ -24,6 +24,11 @@
   "menu.item_es_description": "Espanol",
   "menu.item_zh_description": "中文",
   "nav-widget.welcome-message": "Hello",
+
+  "NavWidget.becomeATrippianButtonText": "Become a Trippian",
+  "NavWidget.loginButtonText": "Login",
+  "UserMenuWdiget.welcomeMessage": "Hello",
+
   "search-box-widget.search-button-text": "Go",
   "search-box-widget.search-input-place-holder": "Paris...",
   "send_button.label": "Send",

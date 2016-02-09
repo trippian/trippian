@@ -6,7 +6,6 @@ require('isomorphic-fetch')
 
 // in order to use ismorphic fetch, the server must support cors;
 const get = (url) => {
-  console.warn('fetching get', url)
   return fetch(url)
     .then((res) => {
       if (res.status >= 400) {

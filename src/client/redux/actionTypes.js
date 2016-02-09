@@ -1,4 +1,5 @@
 // app state
+export const SET_APP_STATE = 'appState.SET_APP_STATE'
 export const SET_LOCALE = 'appState.SET_LOCALE'
 export const SET_LOCALE_MESSAGES = 'appState.SET_LOCALE_MESSAGES'
 export const SET_USERNAME = 'appState.SET_USERNAME'

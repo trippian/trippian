@@ -68,7 +68,7 @@ export function getDashboardById(id1) {
   let localStoreKey = `getDashboardById${id}`
   let cachedData = getDataFromLocalStorage('getDashboardById', id)
 
-  console.log('getDashboardById from local store', cachedData)
+  log.info('getDashboardById from local store', cachedData)
   if (cachedData) return setDashboard(cachedData)
 
   return (dispatch) => {
@@ -211,12 +211,12 @@ export function putDestination(data) {
     // feature: true,
     isPutDestination: true // will delete a few fields and add UpdatedAt
   })
-  console.log('-- putting a destination now in reducer', data)
+  console.info('-- putting a destination now in reducer', data)
 
   return (dispatch) => {
     return fetchPutDestination(data)
       .then(destination => {
-        console.log('--- already put', destination)
+        console.info('--- already put', destination)
           // dispatch(updateDestination(destination))  //TODO: update the front-end view
           // dispatch(addAdminDestination(destination))  // TODO: update the admin view
         dispatch(setFormSubmitted(true))
@@ -265,12 +265,12 @@ export function putTrip(data) {
     album: true,
     isPutTrip: true // will delete a few fields and add UpdatedAt
   })
-  console.log('-- putting a Trip now in reducer', data)
+  console.info('-- putting a Trip now in reducer', data)
 
   return (dispatch) => {
     return fetchPutTrip(data)
       .then(trip => {
-        console.log('--- already put', trip)
+        console.info('--- already put', trip)
           // dispatch(updateTrip(Trip))  //TODO: update the front-end view
           // dispatch(addAdminTrip(Trip))  // TODO: update the admin view
         dispatch(setFormSubmitted(true))

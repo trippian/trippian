@@ -20,11 +20,10 @@ const UserMenuWidget = ({
   return (
     <li className="dropdown">
         <a href="#" className="dropdown-toggle" data-toggle="dropdown"> 
-         <FormattedMessage 
-            id="nav-widget.welcome-message"
-            description="a short welcome message for use at nav menu"
-            defaultMessage="Hello "/> 
-            
+            <FormattedMessage
+               id="UserMenuWdiget.welcomeMessage"
+               description="welcomeMessage"
+               defaultMessage="Hello"/>
             <span className="circle-image nav-user-avatar">
               <img src={picture} alt={displayName} />
             </span>  
