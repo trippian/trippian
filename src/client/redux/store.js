@@ -12,15 +12,20 @@ import appState from './reducers/appStateReducer'
 import apiTrippian from './reducers/apiTrippianReducer'
 import apiAdmin from './reducers/apiAdminReducer'
 
+
+let createStoreWithMiddleware
+
+// createStoreWithMiddleware = applyMiddleware(
+//   thunk
+// )(createStore)
+
+
 import {
   log as appConfig
 }
 from '../config/appConfig'
 import createLogger from 'redux-logger' // comment this out for translation or deployment
-
-let createStoreWithMiddleware
-
-// based on if it's translation mode, turn on/off logger 
+  // based on if it's translation mode, turn on/off logger 
 if (appConfig.isTranslationMode) {
   createStoreWithMiddleware = applyMiddleware(
     thunk

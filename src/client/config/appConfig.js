@@ -6,7 +6,8 @@ Make sure the containers and components are in alphabetic / logic order
 const env = 'production' // comment this out for development
   // const env = 'develop' // comment this out for production
 
-let HOST = window.location.origin // enable this for deploy 
+let HOST = 'http://localhost:4000' // enable this for deploy 
+  // let HOST = window.location.origin // enable this for deploy 
 let isTranslationMode = true // need to turn logger off for translation
 let logOn = false
 let showAdminButtons = false
@@ -448,6 +449,7 @@ export default {
   },
   AlertAutoDismissableWidget: {},
   AutoSuggestBoxWidget: {
+    placeholderText: 'Search places',
     fixtures: [{
       label: 'Hong Kong',
       location: {

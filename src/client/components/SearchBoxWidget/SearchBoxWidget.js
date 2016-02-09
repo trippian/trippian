@@ -10,16 +10,21 @@ import {
 }
 from '../index'
 import store from '../../redux/store'
+import {
+  SearchBoxWidget as appConfig
+}
+from '../../config/appConfig'
+
 const messages = defineMessages({
   searchButtonText: {
     id: 'search-box-widget.search-button-text',
     description: 'text for the search button',
-    defaultMessage: 'Go'
+    defaultMessage: appConfig.searchButtonText
   },
   searchInputPlaceHolder: {
     id: 'search-box-widget.search-input-place-holder',
     description: 'text for the search input placeholder',
-    defaultMessage: 'Paris...'
+    defaultMessage: appConfig.placeholderText
   }
 })
 
@@ -58,9 +63,9 @@ class SearchBoxWidget extends React.Component {
             <AutoSuggestBoxWidget />
           </div> 
           <button type = "submit" onClick={this.handleClick.bind(this)} className = "btn btn-primary" >
-            Go
+            {formatMessage(messages.searchButtonText)}
           </button> 
-      </form >
+      </form>
     )
   }
 }

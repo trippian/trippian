@@ -7,6 +7,7 @@
   "app-pages.user-dashboard": "User Dashboard",
   "app.rich_description": "<h2 style=\"color: red\">大号字 - rich html</h2>",
   "app.title": "Trippian Intl Demo Page",
+  "AutoSuggestBoxWidget.placeholder": "search place",
   "home.jumbotron-sub-title": "Find your local travel companion around the world",
   "home.jumbotron-title": "Start Now",
   "home.popular-destinations-sub-title": "Explore popular destinations around the world",
