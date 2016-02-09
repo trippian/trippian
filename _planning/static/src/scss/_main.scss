@@ -458,25 +458,38 @@ footer {
  * The geosuggest module
  */
 
+.search-box-widget {
+    button {
+        background-color: rgba(122, 177, 59, 0.39);
+        border: none;
+        padding: 10px 16px;
+        // margin-left: -50px;
+    }
+}
+
 .geosuggest {
     font-size: 18px;
     font-size: 1rem;
-    min-width: 250px;
+    min-width: 280px;
     position: relative;
     width: 50%;
     margin: 1em auto;
     text-align: left;
+    background-color: rgba(14, 14, 14, 0.18);
+    -webkit-transition: border 0.2s, box-shadow 0.2s;
+    box-shadow: 0 0 1px #3d464d;
+    border-radius: 5px;
 }
 
 .geosuggest__input {
     width: 100%;
     color: black;
     border: 2px solid transparent;
-    box-shadow: 0 0 1px #3d464d;
     padding: .4em 1em;
-    -webkit-transition: border 0.2s, box-shadow 0.2s;
-    transition: border 0.2s, box-shadow 0.2s;
+    font-size: 18px;
     border-radius: 5px;
+    background-color: transparent;
+    transition: border 0.2s, box-shadow 0.2s;
 }
 
 .geosuggest__input:focus {
@@ -493,7 +506,7 @@ footer {
     max-height: 25em;
     padding: 0;
     margin-top: -1px;
-    background: #fff;
+    background-color: rgba(255, 255, 255, 0.31);
     border: 2px solid #267dc0;
     border-top-width: 0;
     overflow-x: hidden;
