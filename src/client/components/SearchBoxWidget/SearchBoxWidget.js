@@ -57,7 +57,7 @@ class SearchBoxWidget extends React.Component {
       formatMessage
     } = this.props.intl
     return (
-      <form className = {`form-inline ${this.props.className}`} role = "form" onSubmit={this.handleClick.bind(this)}>
+      <form className = {`search-box-widget form-inline ${this.props.className}`} role = "form" onSubmit={this.handleClick.bind(this)}>
           <div className = "form-group" >
           <label className = "sr-only" > search for destinations < /label>            
             <AutoSuggestBoxWidget />
