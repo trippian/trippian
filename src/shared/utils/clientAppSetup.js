@@ -25,6 +25,10 @@ import {
   getCookieByName
 }
 from '../../shared/utils/clientUtils'
+import {
+  getDataFromLocalStorage, setDataInLocalStorage
+}
+from '../../client/utils/storeUtils'
 
 import {
   adminOnly as appConfig
@@ -65,4 +69,7 @@ export function initApp() {
     // 
     // show / hide certain buttons based on if the user is admin or the appConfig 
   store.dispatch(setShowAdminButtons(appConfig.showAdminButtons))
+  store.subscribe(() => {
+    log.warn('--- store updates', store.getState().appState)
+  })
 }

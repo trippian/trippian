@@ -165,18 +165,18 @@ export function getDataFromLocalStorage(func, param) {
   let localStoreKey = `${func}${param ? param : ''}`
   let cachedData = localStore.get(localStoreKey)
   if (cachedData) {
-    console.log('getting data from local storage', localStoreKey)
+    log.warn('-- getting data from local storage', localStoreKey)
     return cachedData
   }
 }
 export function setDataInLocalStorage(data, func, param) {
   let localStoreKey = `${func}${param ? param : ''}`
-  console.log('setting data at local storage', localStoreKey, data)
+  log.warn('-- setting data at local storage', localStoreKey, data)
   localStore.set(localStoreKey, data)
 }
 export function removeDataFromLocalStorage(func, param) {
   let localStoreKey = `${func}${param ? param : ''}`
-  console.log('removing data from local storage', localStoreKey)
+  log.warn('-- removing data from local storage', localStoreKey)
   localStore.remove(localStoreKey)
 }
 
