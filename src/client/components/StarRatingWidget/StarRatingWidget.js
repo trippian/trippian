@@ -12,11 +12,10 @@ let getStars = function (starNum) {
 const StarRatingWidget = ({
   stars = 2
 }) => {
-  const noStars = stars === 0
 
   return (
     <span className="star-rating">
-      {noStars ? <span>This is no rating yet</span> : getStars(stars)}
+      {stars !== 0 &&  getStars(stars)}
     </span>
   )
 }

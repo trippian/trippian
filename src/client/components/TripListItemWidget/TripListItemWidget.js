@@ -83,7 +83,7 @@ export default class TripListItemWidget extends Component {
     log.info('inside TripListItemWidget render')
     const isAuthed = store.getState().appState.get('user').isAuthed || false
     const {
-      id, handleVote, title, destination, summary, details, feature, lat, lng, displayName = 'Trippian'
+      id, userId, handleVote, title, destination, summary, details, feature, lat, lng, displayName = 'Trippian'
     } = this.props
     return (
       <div className="trip-list-item row">
@@ -101,7 +101,7 @@ export default class TripListItemWidget extends Component {
             </Link>
             <div className="sub-title">
               <i className="fa fa-map-marker"></i> By  
-              <Link to={`trippian/${id}`}>{' '+ displayName + ' '}</Link>
+              <Link to={`trippian/${userId}`}>{' '+ displayName + ' '}</Link>
             </div>
             <p>{summary}</p>
           </div>
