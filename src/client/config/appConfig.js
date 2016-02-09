@@ -139,7 +139,7 @@ export default {
   },
   photos: {
     defaultFeature: 'http://media-cdn.tripadvisor.com/media/photo-s/06/04/b0/fb/how-about-a-trip-to-paradise.jpg',
-    defaultTripFeature: 'http://recwell.umd.edu/portals/0/Photos/MAP-trips.jpg',
+    defaultTripFeature: 'http://techdrive.co/wp-content/uploads/2014/11/http-www.bhutantravelshop.com-wp-content-uploads-2014-07-lt.jpg',
     defaultDestinationFeature: 'http://media-cdn.tripadvisor.com/media/photo-s/06/04/b0/fb/how-about-a-trip-to-paradise.jpg',
     defaultAvatar: 'http://funny-pics.info/wp-content/uploads/2015/12/Crazy-Cats-cqpX.jpg',
     spinner: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Spinner_font_awesome.svg/512px-Spinner_font_awesome.svg.png',
@@ -156,21 +156,21 @@ export default {
   assetsURL: {
     homePage: '',
     landingVideo: 'https://s3-us-west-1.amazonaws.com/trippian/backgroundVideo.mp4',
-    poster: 'http://media-cdn.tripadvisor.com/media/photo-s/06/04/b0/fb/how-about-a-trip-to-paradise.jpg',
+    poster: 'http://techdrive.co/wp-content/uploads/2014/11/http-www.bhutantravelshop.com-wp-content-uploads-2014-07-lt.jpg',
     backupVideo: 'http://raw.githubusercontent.com/ronik-design/react-drive-in/master/example/glacier.mp4',
     backupPoster: 'http://raw.githubusercontent.com/ronik-design/react-drive-in/master/example/glacier.jpg',
 
-    aboutPage: 'http://recwell.umd.edu/portals/0/Photos/MAP-trips.jpg',
-    pressPage: 'http://recwell.umd.edu/portals/0/Photos/MAP-trips.jpg',
-    destinationPage: 'http://recwell.umd.edu/portals/0/Photos/MAP-trips.jpg',
-    inquiryDetailPage: 'http://recwell.umd.edu/portals/0/Photos/MAP-trips.jpg',
-    loginPage: 'http://recwell.umd.edu/portals/0/Photos/MAP-trips.jpg',
-    signUpPage: 'http://recwell.umd.edu/portals/0/Photos/MAP-trips.jpg',
-    notFoundPage: 'http://recwell.umd.edu/portals/0/Photos/MAP-trips.jpg',
-    tripPage: 'http://recwell.umd.edu/portals/0/Photos/MAP-trips.jpg',
-    trippianPage: 'http://recwell.umd.edu/portals/0/Photos/MAP-trips.jpg',
-    dashboardPage: 'http://recwell.umd.edu/portals/0/Photos/MAP-trips.jpg',
-    adminPage: 'http://recwell.umd.edu/portals/0/Photos/MAP-trips.jpg'
+    aboutPage: 'http://techdrive.co/wp-content/uploads/2014/11/http-www.bhutantravelshop.com-wp-content-uploads-2014-07-lt.jpg',
+    pressPage: 'http://techdrive.co/wp-content/uploads/2014/11/http-www.bhutantravelshop.com-wp-content-uploads-2014-07-lt.jpg',
+    destinationPage: 'http://techdrive.co/wp-content/uploads/2014/11/http-www.bhutantravelshop.com-wp-content-uploads-2014-07-lt.jpg',
+    inquiryDetailPage: 'http://techdrive.co/wp-content/uploads/2014/11/http-www.bhutantravelshop.com-wp-content-uploads-2014-07-lt.jpg',
+    loginPage: 'http://techdrive.co/wp-content/uploads/2014/11/http-www.bhutantravelshop.com-wp-content-uploads-2014-07-lt.jpg',
+    signUpPage: 'http://techdrive.co/wp-content/uploads/2014/11/http-www.bhutantravelshop.com-wp-content-uploads-2014-07-lt.jpg',
+    notFoundPage: 'http://techdrive.co/wp-content/uploads/2014/11/http-www.bhutantravelshop.com-wp-content-uploads-2014-07-lt.jpg',
+    tripPage: 'http://techdrive.co/wp-content/uploads/2014/11/http-www.bhutantravelshop.com-wp-content-uploads-2014-07-lt.jpg',
+    trippianPage: 'http://techdrive.co/wp-content/uploads/2014/11/http-www.bhutantravelshop.com-wp-content-uploads-2014-07-lt.jpg',
+    dashboardPage: 'http://techdrive.co/wp-content/uploads/2014/11/http-www.bhutantravelshop.com-wp-content-uploads-2014-07-lt.jpg',
+    adminPage: 'http://techdrive.co/wp-content/uploads/2014/11/http-www.bhutantravelshop.com-wp-content-uploads-2014-07-lt.jpg'
   },
 
   // general page titles (ref FooterWidget mostly)
@@ -186,7 +186,7 @@ export default {
   // containers
   Admin: {
     title: 'Admin Dashboard',
-    subTitle: 'Lorem ipsum dolor sit. ',
+    subTitle: 'Manage all Trippian data ',
     noAccessMessage: 'You donot have access to this page. Login as admin first'
   },
   AdminDestinationList: {
@@ -208,16 +208,16 @@ export default {
   AdminUserListItemEdit: {},
 
   About: {
-    title: 'About',
-    subTitle: 'Lorem ipsum dolor sit.',
-    jumbotronBackgroud: 'http://recwell.umd.edu/portals/0/Photos/MAP-trips.jpg',
+    title: 'Our Story',
+    subTitle: 'Passionate about bringing positive changes to the world',
+    jumbotronBackgroud: 'http://techdrive.co/wp-content/uploads/2014/11/http-www.bhutantravelshop.com-wp-content-uploads-2014-07-lt.jpg',
     sectionOneTitle: 'About Us',
-    sectionOneContent: ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam fuga ab, asperiores quidem suscipit quia quos exercitationem, totam ipsum odit molestias, beatae porro possimus consectetur expedita sequi excepturi adipisci reiciendis?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum dolorem quam, perferendis ipsum modi iusto fugiat, iste quia asperiores magnam!',
+    sectionOneContent: ' We are a group of Full Stack software engineer... Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, quod.',
     teamSectionTitle: 'The Team',
     team: [{
       'name': 'Audrey Li',
       'location': 'San Francisco',
-      'role': 'Project Owner & Software Engineeer',
+      'role': 'Project Lead & Software Engineeer',
       'image': 'https://s3-us-west-1.amazonaws.com/trippian/about/Audrey.jpg ',
       'about': 'I was raised in a small remote village in China, and had not been to a big city until I was 19. I am fascinated by different cultures and histories. I enjoy travelling and learning foreign languages, particularly Spanish, German, and French. '
     }, {
@@ -262,13 +262,13 @@ export default {
     voteUp: {
       voteUpButtonShowText: 'Upvoted',
       voteUpButtonHideText: 'Hide Upvoted',
-      containerTitle: 'A list of upvated trips',
+      containerTitle: 'A list of upvoted trips',
       noContentMessage: 'You have not upvoted any trips yet'
     },
     voteDown: {
       voteDownButtonShowText: 'Downvoted',
       voteDownButtonHideText: 'Hide Downvoted',
-      containerTitle: 'A list of Downvated trips',
+      containerTitle: 'A list of downvated trips',
       noContentMessage: 'You have not downvoted any trips yet'
     },
     savedTrip: {
@@ -301,7 +301,7 @@ export default {
   },
   DestinationPost: {
     title: 'Post a Destination',
-    subTitle: 'Lorem ipsum dolor sit.',
+    subTitle: '',
     formTitle: 'Add a Destination'
   },
   DestinationSearchResults: {
@@ -337,8 +337,8 @@ export default {
   },
   JoinUs: {
     title: 'Join Us',
-    subTitle: 'Lorem ipsum dolor sit.',
-    jumbotronBackgroud: 'http://recwell.umd.edu/portals/0/Photos/MAP-trips.jpg',
+    subTitle: 'Building the social networks for passionate travelers',
+    jumbotronBackgroud: 'https://images.trvl-media.com/media/content/expus/graphics/launch/activity1320x742.jpg',
     sectionOneTitle: 'Join Us',
     sectionOneContent: ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam fuga ab, asperiores quidem suscipit quia quos exercitationem, totam ipsum odit molestias, beatae porro possimus consectetur expedita sequi excepturi adipisci reiciendis?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum dolorem quam, perferendis ipsum modi iusto fugiat, iste quia asperiores magnam!',
   },
@@ -353,10 +353,10 @@ export default {
     subTitle: 'Login to manage your trips and profile'
   },
   NotFound: {},
-  pressPage: {
+  Press: {
     title: 'Press',
-    subTitle: 'Lorem ipsum dolor sit.',
-    jumbotronBackgroud: 'http://recwell.umd.edu/portals/0/Photos/MAP-trips.jpg',
+    subTitle: 'Under construction, come back later',
+    jumbotronBackgroud: 'http://techdrive.co/wp-content/uploads/2014/11/http-www.bhutantravelshop.com-wp-content-uploads-2014-07-lt.jpg',
     sectionOneTitle: 'Press',
     sectionOneContent: ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam fuga ab, asperiores quidem suscipit quia quos exercitationem, totam ipsum odit molestias, beatae porro possimus consectetur expedita sequi excepturi adipisci reiciendis?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum dolorem quam, perferendis ipsum modi iusto fugiat, iste quia asperiores magnam!',
   },
@@ -407,7 +407,7 @@ export default {
   },
   TrippianSignup: {
     title: 'Become a Trippian',
-    subTitle: 'Lorem ipsum dolor sit.',
+    subTitle: 'Show great trips to the travelers around the world',
     formTitle: 'Sign up to become a trippian'
   },
   TrippianList: {},
@@ -461,6 +461,12 @@ export default {
       location: {
         lat: 40.7033127,
         lng: -73.979681
+      }
+    }, {
+      label: 'Chengdu, Sichuan, China',
+      location: {
+        lat: 30.664135,
+        lng: 104.046669
       }
     }, {
       label: 'Rio de Janeiro - State of Rio de Janeiro, Brazil',
@@ -612,7 +618,7 @@ export default {
   },
   JumbotronInquiryWidget: {
     title: 'Contact',
-    subTitle: 'Lorem ipsum dolor sit amet, consectetur.'
+    subTitle: 'Send your inquiry to the trippian'
   },
   JumbotronDestinationWidget: {},
   JumbotronDashboardWidget: {
