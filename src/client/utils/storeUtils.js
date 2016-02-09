@@ -10,6 +10,7 @@ import {
 from '../../shared/utils/clientUtils'
 
 import * as initialStateData from '../redux/initalState'
+import localStore from 'store'
 
 export function apologize(title = 'Operation failed', message = '') {
   store.dispatch(setAlert({
@@ -159,6 +160,26 @@ export function resetState({
   if (searchText) store.dispatch(setSearchText(initialStateData.appState.searchText))
 
 }
+// for now, just take one param to identify the local storage
+export function getDataFromLocalStorage(func, param) {
+  let localStoreKey = `${func}${param ? param : ''}`
+  let cachedData = localStore.get(localStoreKey)
+  if (cachedData) {
+    log.warn('-- getting data from local storage', localStoreKey)
+    return cachedData
+  }
+}
+export function setDataInLocalStorage(data, func, param) {
+  let localStoreKey = `${func}${param ? param : ''}`
+  log.warn('-- setting data at local storage', localStoreKey, data)
+  localStore.set(localStoreKey, data)
+}
+export function removeDataFromLocalStorage(func, param) {
+  let localStoreKey = `${func}${param ? param : ''}`
+  log.warn('-- removing data from local storage', localStoreKey)
+  localStore.remove(localStoreKey)
+}
+
 export function setFetchingState({}) {
 
 }

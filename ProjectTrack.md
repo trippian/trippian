@@ -44,6 +44,7 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
   - [X] Add Trip Detail Page 
   - [X] Add Map Display 
   - [X] Signup Form 
+  - [ ] Remove Secretive LocalStorage when user signed out
   - [ ] Signin Form 
   - [X] OperationMenuWidget (hold edit, delete... buttons) - Audrey
   - [ ] Hide 'Load Dummy Data' from non-admin users 

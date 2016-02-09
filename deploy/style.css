@@ -8246,7 +8246,7 @@ footer {
 .geosuggest {
   font-size: 18px;
   font-size: 1rem;
-  min-width: 320px;
+  min-width: 280px;
   position: relative;
   width: 50%;
   margin: 1em auto;
@@ -8344,6 +8344,9 @@ footer {
         color: #fff;
         background-color: #8BC34A;
         border: none; }
+
+#home-page .jumbotron {
+  min-height: 660px; }
 
 #home-page .main-content-container {
   margin: 32px 0 50px 0; }
