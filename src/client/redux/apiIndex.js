@@ -1,5 +1,6 @@
 import {
-  getPopularDestinations, getPopularTrippians,
+  getPopularDestinations,
+  getPopularTrippians,
   deleteInquiryById,
   postDestination, putDestination,
   postTrip, voteTrip, deleteTripById, toggleSaveTrip, getTripById, putTrip,
@@ -15,7 +16,8 @@ import {
   getDashboardById,
   setSearchText
 }
-from './reducers/apiTrippianReducer'
+from './reducers/apiAsyncReducer'
+
 
 // will move the functions inside apiTrippianReducer into different files
 export default {
