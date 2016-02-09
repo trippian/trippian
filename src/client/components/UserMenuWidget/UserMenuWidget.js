@@ -31,7 +31,7 @@ const UserMenuWidget = ({
         <b className="caret"></b>
         </a>
         <ul className="dropdown-menu">
-            {isAdmin && <li><Link to='admin'>Admin Dashboard</Link></li>}
+            {isAdmin && <li><Link to='admin'>Settings</Link></li>}
             <li>
                 <Link to='dashboard'>
                     <FormattedMessage 

@@ -69,10 +69,12 @@ export default class AdminTripList extends Component {
     this.setAlert()
   }
   handleSubmit(data) {
-    console.log('posting data from form', data)
+    log.info('posting data from form', data)
     store.dispatch(postTrip(data))
   }
-
+  handleResetForm() {
+    log.info('will handle form reset')
+  }
   setAlert(type = 'success', title = '', message = '') {
     this.setState({
       alert: {
