@@ -111,7 +111,7 @@ export default {
   appDescription: 'your local travel companion',
   logo: defaults.logo,
   log: {
-    logLevel: logOn ? 'warn' : 'error', // options: trace, debug, info, warn, error, fatal
+    logLevel: logOn ? 'info' : 'error', // options: trace, debug, info, warn, error, fatal
     isTranslationMode: isTranslationMode
   },
   adminOnly: {
