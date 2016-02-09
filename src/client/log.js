@@ -7,7 +7,8 @@ from '../client/config/appConfig'
 
 export default bunyan.createLogger({
   name: 'trippian',
-  level: appConfig.logLevel
+  level: appConfig.logLevel // disable this for translation 
+    // level: 'error' // enable this for development
 })
 
 //example usage 

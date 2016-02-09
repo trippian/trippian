@@ -1,0 +1,7 @@
+[
+  {
+    "id": "AutoSuggestBoxWidget.placeholder",
+    "description": "text for the search input placeholder",
+    "defaultMessage": "search place"
+  }
+]

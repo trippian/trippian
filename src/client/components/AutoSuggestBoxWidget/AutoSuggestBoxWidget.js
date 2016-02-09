@@ -10,6 +10,19 @@ import {
   AutoSuggestBoxWidget as appConfig
 }
 from '../../config/appConfig'
+import {
+  FormattedNumber, FormattedPlural, FormattedMessage, defineMessages, intlShape, injectIntl
+}
+from 'react-intl'
+
+const messages = defineMessages({
+  placeholder: {
+    id: 'AutoSuggestBoxWidget.placeholder',
+    description: 'text for the search input placeholder',
+    // defaultMessage: appConfig.placeholder
+    defaultMessage: 'search place'
+  }
+})
 
 // this result will always tied to the destinationName at the store
 class AutoSuggestBoxWidget extends React.Component {
@@ -32,9 +45,13 @@ class AutoSuggestBoxWidget extends React.Component {
     store.dispatch(setSearchText(suggest))
   }
   render() {
+    const {
+      formatMessage
+    } = this.props.intl
     return (
       <Geosuggest
         fixtures={appConfig.fixtures}
+        placeholder={formatMessage(messages.placeholder)}
         onFocus={this.onFocus}
         onBlur={this.onBlur}
         onChange={this.onChange}
@@ -47,5 +64,4 @@ class AutoSuggestBoxWidget extends React.Component {
 
 
 AutoSuggestBoxWidget.displayName = 'AutoSuggestBoxWidget'
-
-export default AutoSuggestBoxWidget
+export default injectIntl(AutoSuggestBoxWidget)
