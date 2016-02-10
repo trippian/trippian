@@ -10,7 +10,9 @@
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=flat-square)](https://github.com/semantic-release/semantic-release)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square)](http://commitizen.github.io/cz-cli/)
 
-Your local trip companion! Trippian is a web application that allows tourists (Trippees) to connect with a Trippian, a local who wants to show people around and show them what it would be like to live in a different city/country.
+Trippian was responsive web app created by four talented full stack engineers: Audrey Li, Joe Lagasse, Yale Yuen, and Elliot Chi. Our mission is to connect passionate travelers with the best trip companions around the world. Check us now at [www.trippian.com](http://trippian.com)  
+
+![Screenshot](https://raw.githubusercontent.com/vidaaudrey/trippian/develop/_planning/info/trippian.com.png)
 
 ###Architecture
 <img src="https://s3-us-west-1.amazonaws.com/trippian/trippian-architecture.png" width="800">
@@ -20,18 +22,8 @@ Your local trip companion! Trippian is a web application that allows tourists (T
 
 In a typical graph database, there are two different data types: nodes and relationships between those nodes. An unlimited amount of properties can be stored in both of these data constructs. In Neo4j, there are nodes with different labels, which are similar to subclasses and can be filtered by the label. We have 3 different labels for these nodes: User, Trip, and Destination. In addition to these labels, we have two different kinds of users, a Trippian and a Trippee. We differentiate between these two user by storing a property called isTrippian as a boolean value. We also have 8 different types of relationships between nodes that are represented in the diagram above. The arrows represent the direction of the relationship from one node to another. 
 
-### Technology Stack
-- React
-- Node/Express
-- Neo4j
-- Babel/ES6
-- Travis CI
-- Mocha
-- Chai
-- AWS S3
-- webpack
-- Sass
-- Gulp
+### 
+![Tech Stack](https://raw.githubusercontent.com/vidaaudrey/trippian/ffed91766303658bddd15ba6aa554cc4f77534a2/_planning/info/trippian-tech-stack.png)
 
 ###Setup
 For this project, we develop using webpack to bundle our react code and gulp to watch and compile all our styling files. Thus, during development, we have the server running on localhost port 4000 and our webpack server on localhost port 3000.
