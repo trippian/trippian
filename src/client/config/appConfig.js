@@ -139,7 +139,7 @@ export default {
   },
   photos: {
     defaultFeature: 'http://media-cdn.tripadvisor.com/media/photo-s/06/04/b0/fb/how-about-a-trip-to-paradise.jpg',
-    defaultTripFeature: 'http://techdrive.co/wp-content/uploads/2014/11/http-www.bhutantravelshop.com-wp-content-uploads-2014-07-lt.jpg',
+    defaultTripFeature: 'https://s3-us-west-1.amazonaws.com/trippian/destination/94/tripbg.jpg',
     defaultDestinationFeature: 'http://media-cdn.tripadvisor.com/media/photo-s/06/04/b0/fb/how-about-a-trip-to-paradise.jpg',
     defaultAvatar: 'http://funny-pics.info/wp-content/uploads/2015/12/Crazy-Cats-cqpX.jpg',
     spinner: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Spinner_font_awesome.svg/512px-Spinner_font_awesome.svg.png',
@@ -156,21 +156,21 @@ export default {
   assetsURL: {
     homePage: '',
     landingVideo: 'https://s3-us-west-1.amazonaws.com/trippian/backgroundVideo.mp4',
-    poster: 'http://techdrive.co/wp-content/uploads/2014/11/http-www.bhutantravelshop.com-wp-content-uploads-2014-07-lt.jpg',
+    poster: 'https://s3-us-west-1.amazonaws.com/trippian/destination/94/tripbg.jpg',
     backupVideo: 'http://raw.githubusercontent.com/ronik-design/react-drive-in/master/example/glacier.mp4',
     backupPoster: 'http://raw.githubusercontent.com/ronik-design/react-drive-in/master/example/glacier.jpg',
 
-    aboutPage: 'http://techdrive.co/wp-content/uploads/2014/11/http-www.bhutantravelshop.com-wp-content-uploads-2014-07-lt.jpg',
-    pressPage: 'http://techdrive.co/wp-content/uploads/2014/11/http-www.bhutantravelshop.com-wp-content-uploads-2014-07-lt.jpg',
-    destinationPage: 'http://techdrive.co/wp-content/uploads/2014/11/http-www.bhutantravelshop.com-wp-content-uploads-2014-07-lt.jpg',
-    inquiryDetailPage: 'http://techdrive.co/wp-content/uploads/2014/11/http-www.bhutantravelshop.com-wp-content-uploads-2014-07-lt.jpg',
-    loginPage: 'http://techdrive.co/wp-content/uploads/2014/11/http-www.bhutantravelshop.com-wp-content-uploads-2014-07-lt.jpg',
-    signUpPage: 'http://techdrive.co/wp-content/uploads/2014/11/http-www.bhutantravelshop.com-wp-content-uploads-2014-07-lt.jpg',
-    notFoundPage: 'http://techdrive.co/wp-content/uploads/2014/11/http-www.bhutantravelshop.com-wp-content-uploads-2014-07-lt.jpg',
-    tripPage: 'http://techdrive.co/wp-content/uploads/2014/11/http-www.bhutantravelshop.com-wp-content-uploads-2014-07-lt.jpg',
-    trippianPage: 'http://techdrive.co/wp-content/uploads/2014/11/http-www.bhutantravelshop.com-wp-content-uploads-2014-07-lt.jpg',
-    dashboardPage: 'http://techdrive.co/wp-content/uploads/2014/11/http-www.bhutantravelshop.com-wp-content-uploads-2014-07-lt.jpg',
-    adminPage: 'http://techdrive.co/wp-content/uploads/2014/11/http-www.bhutantravelshop.com-wp-content-uploads-2014-07-lt.jpg'
+    aboutPage: 'https://s3-us-west-1.amazonaws.com/trippian/destination/94/tripbg.jpg',
+    pressPage: 'https://s3-us-west-1.amazonaws.com/trippian/destination/94/tripbg.jpg',
+    destinationPage: 'https://s3-us-west-1.amazonaws.com/trippian/destination/94/tripbg.jpg',
+    inquiryDetailPage: 'https://s3-us-west-1.amazonaws.com/trippian/destination/94/tripbg.jpg',
+    loginPage: 'https://s3-us-west-1.amazonaws.com/trippian/destination/94/tripbg.jpg',
+    signUpPage: 'https://s3-us-west-1.amazonaws.com/trippian/destination/94/tripbg.jpg',
+    notFoundPage: 'https://s3-us-west-1.amazonaws.com/trippian/destination/94/tripbg.jpg',
+    tripPage: 'https://s3-us-west-1.amazonaws.com/trippian/destination/94/tripbg.jpg',
+    trippianPage: 'https://s3-us-west-1.amazonaws.com/trippian/destination/94/tripbg.jpg',
+    dashboardPage: 'https://s3-us-west-1.amazonaws.com/trippian/destination/94/tripbg.jpg',
+    adminPage: 'https://s3-us-west-1.amazonaws.com/trippian/destination/94/tripbg.jpg'
   },
 
   // general page titles (ref FooterWidget mostly)
@@ -210,30 +210,34 @@ export default {
   About: {
     title: 'Our Story',
     subTitle: 'Passionate about bringing positive changes to the world',
-    jumbotronBackgroud: 'http://techdrive.co/wp-content/uploads/2014/11/http-www.bhutantravelshop.com-wp-content-uploads-2014-07-lt.jpg',
+    jumbotronBackgroud: 'https://s3-us-west-1.amazonaws.com/trippian/destination/94/tripbg.jpg',
     sectionOneTitle: 'About Us',
-    sectionOneContent: ' We are a group of Full Stack software engineer... Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, quod.',
+    sectionOneContent: 'Trippian was created by four talented full stack engineers. Our mission is to connect with travelers with the best travel companions around the world. Reach out to us or check out code at  github.com/trippian (http://github.com/trippian).',
     teamSectionTitle: 'The Team',
     team: [{
       'name': 'Audrey Li',
+      'github': 'https://github.com/vidaaudrey',
       'location': 'San Francisco',
       'role': 'Project Lead & Full Stack Software Engineeer',
       'image': 'https://s3-us-west-1.amazonaws.com/trippian/about/Audrey.jpg ',
       'about': 'I was raised in a small remote village in China, and had not been to a big city until I was 19. I am fascinated by different cultures and histories. I enjoy travelling and learning foreign languages, particularly Spanish, German, and French. '
     }, {
       'name': 'Elliot Chi',
+      'github': 'https://github.com/elliotschi',
       'location': 'San Francisco',
       'role': 'Full Stack Software Engineer & Scrum Master',
       'image': 'https://s3-us-west-1.amazonaws.com/trippian/about/Elliot-1.jpg ',
       'about': 'I like to watch and play basketball.  I cheer for anyone that is playing against the Warriors.  I like going out and trying new food in San Francisco'
     }, {
       'name': 'Joe Lagasse',
+      'github': 'https://github.com/jlag34',
       'location': 'San Francisco',
       'role': 'Full Stack Software Engineer',
       'image': 'https://s3-us-west-1.amazonaws.com/trippian/about/Joe.jpg ',
       'about': 'Leading the protests for more Qdobas in California, weekend security tester, lifter of all heavy things and living the vegetarian lifestyle since the days where your “friends” would put their lunch meat in your lunch box when you weren’t looking.'
     }, {
       'name': 'Yale Yuen',
+      'github': 'https://github.com/ycube',
       'location': 'San Francisco',
       'role': 'Full Stack Engineer',
       'image': 'https://s3-us-west-1.amazonaws.com/trippian/about/Yale.jpg ',
@@ -337,10 +341,10 @@ export default {
   },
   JoinUs: {
     title: 'Join Us',
-    subTitle: 'Building the social networks for passionate travelers',
+    subTitle: 'Building a beautiful social networks between travelers and local trip companions',
     jumbotronBackgroud: 'https://images.trvl-media.com/media/content/expus/graphics/launch/activity1320x742.jpg',
     sectionOneTitle: 'Join Us',
-    sectionOneContent: ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam fuga ab, asperiores quidem suscipit quia quos exercitationem, totam ipsum odit molestias, beatae porro possimus consectetur expedita sequi excepturi adipisci reiciendis?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum dolorem quam, perferendis ipsum modi iusto fugiat, iste quia asperiores magnam!',
+    sectionOneContent: 'We are a small team of four. If you have any ideas, let\'s talk more at github.com/trippian/ '
   },
   Login: {
     title: 'Destination Search Result',
@@ -356,9 +360,9 @@ export default {
   Press: {
     title: 'Press',
     subTitle: 'Under construction, come back later',
-    jumbotronBackgroud: 'http://techdrive.co/wp-content/uploads/2014/11/http-www.bhutantravelshop.com-wp-content-uploads-2014-07-lt.jpg',
+    jumbotronBackgroud: 'https://s3-us-west-1.amazonaws.com/trippian/destination/94/tripbg.jpg',
     sectionOneTitle: 'Press',
-    sectionOneContent: ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam fuga ab, asperiores quidem suscipit quia quos exercitationem, totam ipsum odit molestias, beatae porro possimus consectetur expedita sequi excepturi adipisci reiciendis?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum dolorem quam, perferendis ipsum modi iusto fugiat, iste quia asperiores magnam!',
+    sectionOneContent: 'For more info, please reach us at github.com/trippian'
   },
   Signup: {
     title: 'Signup'

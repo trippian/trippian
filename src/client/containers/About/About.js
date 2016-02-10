@@ -25,7 +25,7 @@ export default class About extends Component {
     return (
       <div>
         <div id="about-page">
-        <JumbotronWidget title={appConfig.title} subTitle={appConfig.subTitle} backgroundImage={appConfig.jumbotronBackground} />
+        <JumbotronWidget title={appConfig.title} subTitle={appConfig.subTitle} backgroundImage={appConfig.jumbotronBackgroud} />
           <div className="container main-content-container">
             <div className="col-sm-12 col-md-10 col-md-offset-1 content-container">
               <div className="section">
