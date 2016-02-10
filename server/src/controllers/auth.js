@@ -36,7 +36,7 @@ export default {
     // very large integers
     let googleId = req.user.id
     req.session.googleId = googleId
-    req.session.picture = req.user._json.image.url
+    req.session.picture = req.user._json.image.url + '0'
     req.session.email = req.user.emails[0].value
 
     User.getUserByParameter('googleId', `str("${googleId}")`)
@@ -46,7 +46,7 @@ export default {
             googleId: `"${googleId}"`,
             name: req.user.displayName,
             email: req.user.emails[0].value,
-            picture: req.user._json.image.url
+            picture: req.user._json.image.url + '0'
           })
             .then(newUser => {
               res.cookie('trippianPass', {
@@ -54,7 +54,7 @@ export default {
                 id: newUser.id,
                 name: req.user.displayName,
                 email: req.user.emails[0].value,
-                picture: req.user._json.image.url,
+                picture: req.user._json.image.url + '0',
                 isAdmin: newUser.isAdmin,
                 isTrippian: newUser.isTrippian
               })
@@ -66,7 +66,7 @@ export default {
             id: user.id,
             displayName: req.user.displayName,
             email: req.user.emails[0].value,
-            picture: req.user._json.image.url,
+            picture: req.user._json.image.url + '0',
             isAdmin: user.isAdmin,
             isTrippian: user.isTrippian
           })
