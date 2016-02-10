@@ -18,6 +18,8 @@ Check us now at [www.trippian.com](http://trippian.com)
 ### 
 ![Tech Stack](https://raw.githubusercontent.com/vidaaudrey/trippian/ffed91766303658bddd15ba6aa554cc4f77534a2/_planning/info/trippian-tech-stack.png)
 
+![Features](https://raw.githubusercontent.com/vidaaudrey/trippian/develop/_planning/info/trippian-features.png)
+
 ###Architecture
 <img src="https://s3-us-west-1.amazonaws.com/trippian/trippian-architecture.png" width="800">
 
