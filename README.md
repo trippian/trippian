@@ -10,7 +10,7 @@
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=flat-square)](https://github.com/semantic-release/semantic-release)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square)](http://commitizen.github.io/cz-cli/)
 
-Trippian is a responsive web app created by four talented Full Stack Software Engineers: Audrey Li, Joe Lagasse, Yale Yuen, and Elliot Chi. Our mission is to connect passionate travelers with the best trip companions around the world. 
+Trippian is a responsive web app created by four talented Full Stack Software Engineers: [Audrey Li](https://github.com/vidaaudrey), [Joe Lagasse](https://github.com/jlag34), [Yale Yuen](https://github.com/ycube), and [Elliot Chi](https://github.com/elliotschi). Our mission is to connect passionate travelers with the best trip companions around the world. 
 
 Check us now at [www.trippian.com](http://trippian.com)  
 ![Screenshot](https://raw.githubusercontent.com/vidaaudrey/trippian/develop/_planning/info/trippian.com.png)
