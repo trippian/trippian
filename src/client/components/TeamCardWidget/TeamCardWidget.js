@@ -2,13 +2,15 @@ import log from '../../log'
 import React from 'react'
 
 const TeamCardWidget = ({
-  name = '', image = '', about = '', location = '', role = 'Software Engineer'
+  github = 'https://github.com/trippian/', name = '', image = '', about = '', location = '', role = 'Software Engineer'
 }) => {
   return (
     <div className="col-xs-12 col-sm-6 col-md-6 team">
       <div className="text-center">
         <div className="circle-image photo">
-            <img src={image} alt={name} />
+            <a href={github}>
+              <img src={image} alt={name} />
+            </a>
         </div>
         <div className="row">
             <h2>{name}</h2>
