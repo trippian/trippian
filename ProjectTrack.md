@@ -15,12 +15,12 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
   - [ ] Add destination photos to database
 - Client 
   - [ ] Localize the whole front-end 
-  - [ ] Handle form submit with redux-form
-  - [ ] Move Common API logic to redux store from the Container 
+  - [X] Handle form submit with redux-form
+  - [X] Move Common API logic to redux store from the Container 
   - [ ] Improve Redux Store 
 - General 
   - [ ] Clean up front-end messages 
-  - [ ] Can't make inquiry to self problem 
+  - [X] Can't make inquiry to self problem 
 
 - Admin 
   - [X] Delete Trip By Id
@@ -47,37 +47,37 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
   - [ ] Remove Secretive LocalStorage when user signed out
   - [ ] Signin Form 
   - [X] OperationMenuWidget (hold edit, delete... buttons) - Audrey
-  - [ ] Hide 'Load Dummy Data' from non-admin users 
-  - [ ] Fix save button position in trip list 
+  - [X] Hide 'Load Dummy Data' from non-admin users 
+  - [X] Fix save button position in trip list 
   - [ ] Fix Signup / Signin form style 
   - [ ] Edit Form 
-  - [ ] Refactor console.log with jsLogger
-  - [ ] Save and recover redux store from localStorage
+  - [X] Refactor console.log with jsLogger
+  - [X] Save and recover redux store from localStorage
   - [ ] Add hover mouse pointer for all links 
-  - [ ] Form Edit - Audrey 
-  - [ ] MyProfile Display (beautify view) - Joe
-  - [ ] MyInquiries Display (beautify view)
+  - [X] Form Edit - Audrey 
+  - [X] MyProfile Display (beautify view) 
+  - [X] MyInquiries Display (beautify view)
   - [ ] Intl Messages
-  - [ ] Optimize HomePage background (video/gif) loading
+  - [X] Optimize HomePage background (video/gif) loading
   - [ ] Data Faker 
   
-  - [ ] Add user link to trips
+  - [X] Add user link to trips
   - [ ] Enhance AlertComponent with reset 
   
   - Fixes 
     - [X] Add destination name to home page popular destinations  
     - [X] Review display after submit 
     - [X] Add isAdmin to user 
-    - [ ] Update NavWidget display based on user state 
+    - [X] Update NavWidget display based on user state 
     - [ ] NestedObject not updating (dashboard -> PostedTrips)
-    - [ ] SearchBoxWidget and History (state change is not smooth)
-    - [ ] Add trip link to review
+    - [X] SearchBoxWidget and History (state change is not smooth)
+    - [X] Add trip link to review
     - [ ] disable review when trippian is at his own page 
   - Perf
     - [ ] Unify Alert display
-    - [ ] Update appConfig 
-    - [ ] Add Inquiry success route 
-    - [ ] Add links to login/logout success page, CommonLinksWidget  
+    - [X] Update appConfig 
+    - [X] Add Inquiry success route 
+    - [X] Add links to login/logout success page, CommonLinksWidget  
     - [ ] Add loading state 
     - [ ] Update error handling in fetch 
     - [ ] Improve state transition, animation ??
@@ -95,41 +95,40 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
   - [ ] Add popular Trippians to destination ????? 
   - [ ] LoadingWidget 
   - [ ] React Animation ???? 
-  - [ ] User Dashboard 
-  - [ ] Add Map Location  
-  - [ ] Destination Edit 
-  - [ ] Fix Search URL transition 
+  - [X] User Dashboard 
+  - [X] Add Map Location  
+  - [X] Destination Edit 
+  - [X] Fix Search URL transition 
   
   - Inquiry 
-    - [ ] Hide form and show data upon submission 
-  - [ ] File Uploads
-  - [ ] Save trips, close trips, review trips (link)
-  - [ ] Update data (Redux form prefill)
-    - [ ] Destination 
-    - [ ] Trippian  
-  - [ ] Login with Facebook 
-  - [ ] Login with Google
-  - [ ] Search and Search Result page 
-  - [ ] User 
-    - [ ] InquiryList 
-    - [ ] User Profile 
-    - [ ] Logout  
-  - [ ] Vote 
+    - [X] Hide form and show data upon submission 
+  - [X] File Uploads
+  - [X] Save trips, close trips, review trips (link)
+  - [X] Update data (Redux form prefill)
+    - [X] Destination 
+    - [X] Trippian  
+  - [X] Login with Facebook 
+  - [X] Login with Google
+  - [X] Search and Search Result page 
+  - [X] User 
+    - [X] InquiryList 
+    - [X] User Profile 
+    - [X] Logout  
+  - [X] Vote 
   - Widgets & Misc.
     - [X] Rating 
-    - [ ] Carousal 
-    - [ ]
-  - [ ] SearchBox (auto suggest)
-  - [ ] S3 image upload 
+    - [X] Carousal 
+  - [X] SearchBox (auto suggest)
+  - [X] S3 image upload 
   - [ ] Rich Text Editing for Trippian 
   - [ ] Inline Editing 
     - [ ] Profile 
     - [ ] Destination 
-  - [ ] Album for Destination 
-  - [ ] Album for Trip  
-  - [ ] Background photos for all pages 
+  - [X] Album for Destination 
+  - [X] Album for Trip  
+  - [X] Background photos for all pages 
   - [ ] Edit front-end text 
-  - [ ] Extract front-end page text 
+  - [X] Extract front-end page text 
   - [ ] Press Page 
   - [ ] Add popular trips to home page 
   - [ ] TripsListPage 
@@ -137,7 +136,7 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
   - [ ] Contact (Inquiry) Page 
   - [ ] PopularTrippians at Destination
   - [ ] Update access control  
-  - [ ] Save (heart) destinations / trips 
+  - [X] Save (heart) destinations / trips 
   - [ ] Map Search (add position first)
   
   - Clean up 
@@ -283,242 +282,3 @@ After our daily meeting, we'll move the tasks under meeting memo to Github issue
 
 - **Daily Review** - 7:55pm 
 
-
-### Achieved or Future Planning 
-
-
-
-#### W1 - Saturday January 17 2016
-- **Prepare** 
-  * Mini-sprint: static front-end mockup (will add build process first)
-  * Learn: basic testing, git flow and deployment (CI) integrated with testing
-  * Explore: 
-  * Discuss: project management platform, scrumb master tasks for project tracking 
-
-- **Morning Planning** - 10:00am
-
-
-
-- **Middle Day Progress Review** - 3pm 
-
-
-- **Demo Time** - 5pm
-
-
-- **Daily Review** - 7:55pm 
-
-
-#### W2 - Monday January 19 2016
-- **Prepare** 
-  * Mini-sprint: 
-  * Learn: 
-  * Explore: 
-  * Discuss: divide the project into small tasks (as many as possible, cover all), finalize the development workflow
-
-- **Morning Planning** - 10:00am
-
-
-
-- **Middle Day Progress Review** - 3pm 
-
-
-- **Demo Time** - 5pm
-
-
-- **Daily Review** - 7:55pm 
-
-#### W2 - Tuesday January 20 2016
-- **Prepare** 
-  * Mini-sprint: 
-  * Learn: 
-  * Explore: 
-  * Discuss: 
-
-- **Morning Planning** - 10:00am
-
-
-
-- **Middle Day Progress Review** - 3pm 
-
-
-- **Demo Time** - 5pm
-
-
-- **Daily Review** - 7:55pm 
-
-#### W2 - Tuesday January 20 2016
-- **Prepare** 
-  * Mini-sprint: 
-  * Learn: 
-  * Explore: 
-  * Discuss: 
-
-- **Morning Planning** - 10:00am
-
-
-
-- **Middle Day Progress Review** - 3pm 
-
-
-- **Demo Time** - 5pm
-
-
-- **Daily Review** - 7:55pm 
-
-#### W2 - Tuesday January 20 2016
-- **Prepare** 
-  * Mini-sprint: 
-  * Learn: 
-  * Explore: 
-  * Discuss: 
-
-- **Morning Planning** - 10:00am
-
-
-
-- **Middle Day Progress Review** - 3pm 
-
-
-- **Demo Time** - 5pm
-
-
-- **Daily Review** - 7:55pm 
-
-#### W2 - Tuesday January 20 2016
-- **Prepare** 
-  * Mini-sprint: 
-  * Learn: 
-  * Explore: 
-  * Discuss: 
-
-- **Morning Planning** - 10:00am
-
-
-
-- **Middle Day Progress Review** - 3pm 
-
-
-- **Demo Time** - 5pm
-
-
-- **Daily Review** - 7:55pm 
-
-
-#### W2 - Tuesday January 20 2016
-- **Prepare** 
-  * Mini-sprint: 
-  * Learn: 
-  * Explore: 
-  * Discuss: 
-
-- **Morning Planning** - 10:00am
-
-
-
-- **Middle Day Progress Review** - 3pm 
-
-
-- **Demo Time** - 5pm
-
-
-- **Daily Review** - 7:55pm 
-
-
-#### W2 - Tuesday January 20 2016
-- **Prepare** 
-  * Mini-sprint: 
-  * Learn: 
-  * Explore: 
-  * Discuss: 
-
-- **Morning Planning** - 10:00am
-
-
-
-- **Middle Day Progress Review** - 3pm 
-
-
-- **Demo Time** - 5pm
-
-
-- **Daily Review** - 7:55pm 
-
-
-#### W2 - Tuesday January 20 2016
-- **Prepare** 
-  * Mini-sprint: 
-  * Learn: 
-  * Explore: 
-  * Discuss: 
-
-- **Morning Planning** - 10:00am
-
-
-
-- **Middle Day Progress Review** - 3pm 
-
-
-- **Demo Time** - 5pm
-
-
-- **Daily Review** - 7:55pm 
-
-
-#### W2 - Tuesday January 20 2016
-- **Prepare** 
-  * Mini-sprint: 
-  * Learn: 
-  * Explore: 
-  * Discuss: 
-
-- **Morning Planning** - 10:00am
-
-
-
-- **Middle Day Progress Review** - 3pm 
-
-
-- **Demo Time** - 5pm
-
-
-- **Daily Review** - 7:55pm 
-
-
-#### W2 - Tuesday January 20 2016
-- **Prepare** 
-  * Mini-sprint: 
-  * Learn: 
-  * Explore: 
-  * Discuss: 
-
-- **Morning Planning** - 10:00am
-
-
-
-- **Middle Day Progress Review** - 3pm 
-
-
-- **Demo Time** - 5pm
-
-
-- **Daily Review** - 7:55pm 
-
-
-#### W2 - Tuesday January 20 2016
-- **Prepare** 
-  * Mini-sprint: 
-  * Learn: 
-  * Explore: 
-  * Discuss: 
-
-- **Morning Planning** - 10:00am
-
-
-
-- **Middle Day Progress Review** - 3pm 
-
-
-- **Demo Time** - 5pm
-
-
-- **Daily Review** - 7:55pm 
