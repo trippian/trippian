@@ -71,14 +71,15 @@ export default class Contact extends Component {
     log.info('-- inside contact', this.props.isFormSubmitted, this.props.isFormSubmitting)
     return (
       <div>
-        <h2>Hello Contact </h2>
+        <h2>Contact </h2>
         {!this.props.isFormSubmitted && <InquiryPostFormWidget onSubmit={this.handleSubmit.bind(this)} /> }
         {this.props.isFormSubmitting && <h3> Submitting the form now </h3>}
-        {this.props.isFormSubmitted && <h2>Submitted form. Check dashboard now</h2>}
       </div>
     )
   }
 }
+//TODO: Fix the state  {this.props.isFormSubmitted && <h2>Submitted form. Check dashboard now</h2>}
+
 Contact.propTypes = {
   // name: PropTypes.string
 }
