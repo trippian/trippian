@@ -13,12 +13,12 @@
 Trippian is a responsive web app created by four talented Full Stack Software Engineers: [Audrey Li](https://github.com/vidaaudrey), [Joe Lagasse](https://github.com/jlag34), [Yale Yuen](https://github.com/ycube), and [Elliot Chi](https://github.com/elliotschi). Our mission is to connect passionate travelers with the best trip companions around the world. 
 
 Check us now at [www.trippian.com](http://trippian.com)  
-![Screenshot](https://raw.githubusercontent.com/vidaaudrey/trippian/develop/_planning/info/trippian.com.png)
+![Screenshot](https://raw.githubusercontent.com/vidaaudrey/trippian/master/_planning/info/trippian.com.png)
 
 ### 
 ![Tech Stack](https://raw.githubusercontent.com/vidaaudrey/trippian/ffed91766303658bddd15ba6aa554cc4f77534a2/_planning/info/trippian-tech-stack.png)
 
-![Features](https://raw.githubusercontent.com/vidaaudrey/trippian/develop/_planning/info/trippian-features.png)
+![Features](https://raw.githubusercontent.com/vidaaudrey/trippian/master/_planning/info/trippian-features.png)
 
 ###Architecture
 <img src="https://s3-us-west-1.amazonaws.com/trippian/trippian-architecture.png" width="800">
