@@ -15,7 +15,7 @@ Trippian is a responsive web app created by four talented Full Stack Software En
 Check us now at [www.trippian.com](http://trippian.com)  
 ### [Watch 3 Minutes Introduction Video](https://youtu.be/PMXk_eTZx5g) 
 
-![![Screenshot](https://raw.githubusercontent.com/vidaaudrey/trippian/master/_planning/info/trippian.com.png)](https://youtu.be/PMXk_eTZx5g)
+[![Screenshot](https://raw.githubusercontent.com/vidaaudrey/trippian/master/_planning/info/trippian.com.png)](https://youtu.be/PMXk_eTZx5g)
 
 ### 
 ![Tech Stack](https://raw.githubusercontent.com/vidaaudrey/trippian/ffed91766303658bddd15ba6aa554cc4f77534a2/_planning/info/trippian-tech-stack.png)
