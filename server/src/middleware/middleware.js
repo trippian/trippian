@@ -11,13 +11,16 @@ import PassportConnection from '../passport'
 import session from 'express-session'
 import cors from 'cors'
 import express from 'express'
+import compression from 'compression';
 
 export default function (app) {
   let router = express.Router()
   let authRouter = express.Router()
 
   // logs requests during development
+  
   app.use(morgan('dev'))
+  app.use(compression())
   app.use(cookieParser())
   app.use(json())
   app.use(urlencoded({extended:true}))
