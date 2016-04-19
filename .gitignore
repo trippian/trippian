@@ -39,3 +39,5 @@ dist/font-awesome
 wiki
 git rebase --continue
 _planning/static/build/**/*.*
+
+server/dist
