@@ -25,7 +25,9 @@
     "trans-extract": " babel-node --plugins react-intl --presets es2015,stage-1,react translate/script/translate.js",
     "translate": "npm run trans-component && npm run trans-container && npm run trans-extract",
     "start": "npm run webpack-server & npm run web-server",
-    "start:server": "nodemon server/src/server.js --exec babel-node --presets es2015"
+    "start:server": "nodemon server/src/server.js --exec babel-node --presets es2015",
+    "build:server": "babel --presets es2015 server/src --out-dir server/dist",
+    "production": "npm run build:server && node server/dist/server"
   },
   "repository": {
     "type": "git",
